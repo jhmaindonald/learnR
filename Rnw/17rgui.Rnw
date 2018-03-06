@@ -1,0 +1,93 @@
+% !Rnw root = learnR.Rnw
+<<echo=FALSE, cache=FALSE>>=
+opts_knit$set(self.contained=FALSE)
+@
+
+<<echo=FALSE, cache=FALSE>>=
+Hmisc::knitrSet()
+Hmisc::knitrSet(w=3, h=3.15)
+opts_chunk$set(fig.path='figs/17-', cache.path='cache/17-',
+               fig.align='center', dev='pdf',  
+               fig.show='hold', out.width="0.47\\textwidth", 
+               tidy=FALSE, comment=NA)
+pdf.options(pointsize=12)
+oldopt <- options(digits=4)
+@ %
+
+To start the R commander, start R and enter:
+<<start-Rcmdr, eval=FALSE>>=
+library(Rcmdr)
+@ %
+This opens an R Commander script window, with the output window
+underneath.  \marginnote[-1.5cm]{At startup, the R Commander checks
+  whether all packages are available that are needed for the full
+  range of features. If some are missing, the R commander offers to
+  install them. (This requires a live internet connection.)}
+This window can be closed by clicking on the {\large
+  \texttt{$\times$}} in the top left corner. If thus closed,
+enter \txtt{Commander()} to reopen it again later in the session.
+
+\paragraph{From GUI to writing code:}
+\marginnote[10pt]{The code can be run either from the
+  script window or from the R console window (if open).}  The R commander
+displays the code that it generates.  Users can take this code, modify
+it, and re-run it.
+
+\paragraph{The active data set:} There is, at any one time,
+a single ``active'' data set. Start by clicking on the
+\underline{Data} drop-down menu. To select
+or create or change the active data set, do one of the following:
+\begin{itemize}
+\item Click on \underline{Active data set}, and pick from among data
+  sets, if any, in the workspace.
+\item Click on \underline{Import data}, and follow instructions, to
+  read in data from a file.  The data set is read into the workspace,
+  at the same time becoming the active data set.
+\item Click on \underline{New data set \ldots}, then entering data via
+  a spreadsheet-like interface.
+\item Click on \underline{Data in packages}, then \underline{Read
+    Data from Package}.  Then select an attached package and
+  choose a data set from among those included with the
+  package.
+\item A further possibility is to load data from an R image
+  (\path{.RData}) file; click on \underline{Load data set \ldots}
+\end{itemize}
+
+\paragraph{Creating graphs:}
+To draw graphs, click on the \underline{Graphs} drop-down menu. Then,
+among other possibilities:
+\begin{itemize}
+\item Click on \underline{Scatterplot \ldots} to obtain a
+  scatterplot.\sidenote[][-24pt]{This uses \margtt{scatterplot()} (\textit{car}
+    package), which in turn uses functions from base graphics.}
+\item Click on \underline{X$\;$Y conditioning plot \ldots}
+for {\em lattice} scatterplots and panels of scatterplots.
+\item Click on \underline{3D graph} to obtain a 3D
+scatterplot.\footnote{This uses
+  the R Commander function \margtt{scatter3d()} that is an interface
+  to functions in the \textit{rgl} package.}
+\end{itemize}
+
+\paragraph{Statistics (\& fitting models):} Click on the
+\underline{Statistics} drop down menu to get submenus that give
+summary statistics and/or carry out various statistical tests.  This
+includes (under \underline{Contingency tables}) tables of counts
+and (under \underline{Means}) \underline{One-way ANOVA}.
+Also, click here to get access to the \underline{Fit models} submenu.
+
+\paragraph{*Models:} Click here to extract information from model
+objects once they have been fitted.  (NB: To fit a model, go to the
+\underline{Statistics} drop down menu, and click on \underline{Fit
+  models}).
+
+\subsection*{Other GUIs for R}
+
+The {\em rattle} GUI, aimed broadly at ``data mining'' \marginnote{
+  Note also the abilities in \textit{playwith} and \textit{latticist}
+  for interaction with graphs.  These are both discussed in Subsection
+  \ref{ssec:playwith}.  See also Figure \ref{fig:playwith}} (data
+manipulation, regression, classification and clustering) applications,
+is a powerful and sophisticated system.  It has a number of features
+that make it attractive for use in standard data mining applications.
+Note also \textit{JGR} (Java Graphics for R) and \textit{pmg} (Poor
+Man's GUI).

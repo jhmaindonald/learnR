@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+test-concordance.tex
+test.log
+test.pdf
+test.synctex.gz
+test.Rnw
+test.tex
+learnR.out
+learnR.log
+.DS_Store

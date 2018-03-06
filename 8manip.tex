@@ -1,0 +1,956 @@
+% !Rnw root = learnR.Rnw
+
+
+
+
+Data analysis has as its end point the use of forms of data summary
+that will convey, fairly and succinctly, the information that is in
+the data.  The fitting of a model is itself a form of data summary.
+
+\marginnote[11pt]{Data summaries that can lead to misleading
+  inferences arise often, from a unbalance in the data and/or failure
+  to account properly for important variables or factors.}Be warned of
+the opportunities that simple forms of data summary, which seem
+superficially harmless, can offer for misleading inferences.  These
+issues affect, not just data summary per se, but all modeling.  Data
+analysis is a task that should be undertaken with critical
+faculties fully engaged.
+
+\subsection*{Alternative types of data objects}
+
+\begin{trivlist}
+\item[{\bf Column objects:}] These include (atomic) vectors,
+factors, and dates.
+\item[{\bf Date and date-time objects:}] The creation and
+manipulations of date objects will be described below.
+\item[{\bf Data Frames:}] These are rectangular structures.
+  \marginnote{A data frame is a list of column objects, all of
+    the same length.}  Columns may be ``atomic'' vectors, or
+  factors, or other objects (such as dates) that are one-dimensional.
+\item[{\bf Matrices and arrays:}] Matrices\footnote{Internally,
+    matrices are one long vector in which the columns follow one after
+    the other.} are rectangular arrays in which all elements have the
+  same mode.  An array is a generalization of a matrix to allow
+an arbitrary number of dimensions.
+\item[{\bf Tables:}]  A table is a specialized form of array.
+\item[{\bf Lists:}] A list is a collection of objects that can be of
+  arbitrary class. List elements are themselves lists.  In
+    more technical language, lists are {\em recursive} data structures.
+\item[{\bf S3 model objects:}] These are lists that have a defined
+  structure.
+\item[{\bf S4 objects:}] These are specialized data structures with
+  tight control on the structure. Unlike S3 objects, they cannot be
+  manipulated as lists.  Modeling functions in certain of the newer
+  packages\sidenote{These include {\em lme4}, the Bioconductor
+    packages, and the spatial analysis packages.} return S4 objects.
+\end{trivlist}
+
+\section{Manipulations with Lists, Data Frames and Arrays}
+
+Recall that data frames are lists of columns that all have the
+same length.  They are thus a specialised form of list.  Matrices
+are two-dimensional arrays.  Tables are in essence arrays that
+hold numeric values.
+
+\subsection{Tables and arrays}
+The dataset \txtt{UCBAdmissions} is stored as a 3-dimensional
+table.  If we convert it to an array, very little changes:
+
+It changes from a table object to a numeric object, which
+affects the way that it is handled by some functions.  In
+either case, what we have is a numeric vector of length 24
+(= 2 $\times$ 2 $\times$ 6) that is structured to have
+dimensions 2 by 2 by 6.
+
+\subsection{Conversion between data frames and tables}
+The three-way table \txtt{UCBAdmissions} are admission frequencies,
+by Gender, for the six largest departments at the University of
+California at Berkeley in 1973. For a reference to a web page that
+has the details; see the belp page for \txtt{UCBAdmissions}.  Type
+\begin{Schunk}
+\begin{Sinput}
+help(UCBAdmissions)     # Get details of the data
+example(UCBAdmissions)
+\end{Sinput}
+\end{Schunk}
+Note the margins of the table:
+\begin{fullwidth}
+\begin{Schunk}
+\begin{Sinput}
+str(UCBAdmissions)
+\end{Sinput}
+\begin{Soutput}
+ table [1:2, 1:2, 1:6] 512 313 89 19 353 207 17 8 120 205 ...
+ - attr(*, "dimnames")=List of 3
+  ..$ Admit : chr [1:2] "Admitted" "Rejected"
+  ..$ Gender: chr [1:2] "Male" "Female"
+  ..$ Dept  : chr [1:6] "A" "B" "C" "D" ...
+\end{Soutput}
+\end{Schunk}
+\end{fullwidth}
+%$
+
+In general, operations with a table or array are easiest to
+conceptualise if the table is first converted to a data frame
+in which the separate dimensions of the table become columns.
+Thus, the \txtt{UCBAdmissions} table will be converted to
+a data frame that has columns \txtt{Admit}, \txtt{Gender} and
+\txtt{Dept}. Either use the \txtt{as.data.frame.table()}
+command from base R, or use the \txtt{adply()} function from
+the {\em plyr} package.
+
+\marginnote[12pt]{As \txtt{UCBAdmissions} is a table (not an array),
+\txtt{as.data.frame(UCBAdmissions)} will give the same result.}
+The following uses the function \txtt{as.data.frame.table()} to convert
+the 3-way table \txtt{UCBAdmissions} into a data frame in which the
+margins are columns:
+\begin{Schunk}
+\begin{Sinput}
+UCBdf <- as.data.frame.table(UCBAdmissions)
+head(UCBdf, 5)
+\end{Sinput}
+\begin{Soutput}
+     Admit Gender Dept Freq
+1 Admitted   Male    A  512
+2 Rejected   Male    A  313
+3 Admitted Female    A   89
+4 Rejected Female    A   19
+5 Admitted   Male    B  353
+\end{Soutput}
+\end{Schunk}
+\begin{quote}
+{\small
+Alternatively, use the function \txtt{adply()}
+  from the {\em plyr} package that is described in Section
+  \ref{sec:plyr}. Here the \txtt{identity()} function does the
+manipulation, working with all three dimensions of the array:
+\begin{Schunk}
+\begin{Sinput}
+library(plyr)
+UCBdf <- adply(.data=UCBAdmissions,
+               .margins=1:3,
+               .fun=identity)
+names(UCBdf)[4] <- "Freq"
+\end{Sinput}
+\end{Schunk}
+}
+\end{quote}
+First, calculate overall admission percentages for
+females and males. The following calculates also the total accepted,
+and the total who applied:
+\begin{fullwidth}
+
+\begin{Schunk}
+\begin{Sinput}
+library(dplyr)
+gpUCBgender <- dplyr::group_by(UCBdf, Gender)
+AdmitRate <- dplyr::summarise(gpUCBgender,
+                              Accept=sum(Freq[Admit=="Admitted"]),
+                              Total=sum(Freq),
+                              pcAccept=100*Accept/Total)
+AdmitRate
+\end{Sinput}
+\begin{Soutput}
+# A tibble: 2 x 4
+  Gender Accept Total pcAccept
+  <fctr>  <dbl> <dbl>    <dbl>
+1   Male   1198  2691    44.52
+2 Female    557  1835    30.35
+\end{Soutput}
+\end{Schunk}
+
+\end{fullwidth}
+
+Now calculate admission rates, total number of females applying,
+and total number of males applying, for each department:
+\begin{Schunk}
+\begin{Sinput}
+gpUCBgd <- dplyr::group_by(UCBdf, Gender, Dept)
+rateDept <- dplyr::summarise(gpUCBgd,
+    Total=sum(Freq),
+    pcAccept=100*sum(Freq[Admit=="Admitted"])/Total)
+\end{Sinput}
+\end{Schunk}
+
+Results can conveniently be displayed as follows.  First show
+admission rates, for females and males separately:
+\begin{Schunk}
+\begin{Sinput}
+xtabs(pcAccept~Gender+Dept, data=rateDept)
+\end{Sinput}
+\begin{Soutput}
+        Dept
+Gender        A      B      C      D      E      F
+  Male   62.061 63.036 36.923 33.094 27.749  5.898
+  Female 82.407 68.000 34.064 34.933 23.919  7.038
+\end{Soutput}
+\end{Schunk}
+
+Now show total numbers applying:
+\begin{Schunk}
+\begin{Sinput}
+xtabs(Total~Gender+Dept, data=rateDept)
+\end{Sinput}
+\begin{Soutput}
+        Dept
+Gender     A   B   C   D   E   F
+  Male   825 560 325 417 191 373
+  Female 108  25 593 375 393 341
+\end{Soutput}
+\end{Schunk}
+
+\marginnote[12pt]{The overall bias arose because males favored
+departments where admission rates were relatively high.}
+As a fraction of those who applied, females were strongly favored
+in department A, and males somewhat favored in departments C and E.
+Note however that relatively many males applied to A and B, where admission
+  rates were high. This biased overall male rates upwards. Relatively
+  many females applied to C, D and F, where rates were low.
+  This biased the overall female rates downwards.
+
+\subsection{Table margins}
+
+For working directly on tables, note the function \txtt{margin.table()}.
+The following retains margin 1 (\txtt{Admit}) and margin 2 (\txtt{Gender}),
+adding over \txtt{Dept} (the remaining margin):
+\marginnote[12pt]{Take margin 2, first, then margin 1, gving a
+  table where rows correspond to levels of \margtt{Gender}.}
+\begin{Schunk}
+\begin{Sinput}
+## Tabulate by Admit (margin 2) & Gender (margin 1)
+(margin21 <- margin.table(UCBAdmissions,
+                          margin=2:1))
+\end{Sinput}
+\begin{Soutput}
+        Admit
+Gender   Admitted Rejected
+  Male       1198     1493
+  Female      557     1278
+\end{Soutput}
+\end{Schunk}
+
+Use the function \txtt{margin.table()} to turn this into a table
+that has the proportions in each row:
+\begin{Schunk}
+\begin{Sinput}
+prop.table(margin21, margin=1)
+\end{Sinput}
+\begin{Soutput}
+        Admit
+Gender   Admitted Rejected
+  Male     0.4452   0.5548
+  Female   0.3035   0.6965
+\end{Soutput}
+\end{Schunk}
+
+\subsection{Categorization of continuous data}\label{ss:cat-cig}
+\marginnote[11pt]{The dataset \margtt{bronchit} may alternatively be found
+  in the {\em SMIR} package.}
+The data frame \txtt{bronchit}, in the \textit{DAAGviz} package,
+has observations on 212 men in a sample of Cardiff (Wales, UK)
+enumeration districts. Variables are \txtt{r} (1 if respondent
+suffered from chronic bronchitis and 0 otherwise), \txtt{cig} (number
+of cigarettes smoked per day) and \txtt{poll} (the smoke level in the
+locality).
+
+It will be convenient to define a function \txtt{props} that
+calculates the proportion of the total in the first (or other nominated
+element) of a vector:
+\begin{Schunk}
+\begin{Sinput}
+props <- function(x, elem=1)sum(x[elem])/sum(x)
+\end{Sinput}
+\end{Schunk}
+Now use the function \txtt{cut()} to classify the data into four
+\marginnote{The argument \txtt{breaks} can be either the number of
+  intervals, or it can be a vector of break points such that all data
+  values lie within the range of the breaks. If the smallest of the
+  break points equals the smallest data value, supply the argument
+  \txtt{include.lowest=TRUE}.}  categories, and form tables:
+\begin{Schunk}
+\begin{Sinput}
+library(DAAGviz)
+catcig <- with(bronchit,
+               cut(cig, breaks=c(0,1,10,30),
+                   include.lowest=TRUE))
+tab <- with(bronchit, table(r, catcig))
+round(apply(tab, 2, props, elem=2), 3)
+\end{Sinput}
+\begin{Soutput}
+  [0,1]  (1,10] (10,30] 
+  0.072   0.281   0.538 
+\end{Soutput}
+\end{Schunk}
+\noindent
+There is a clear increase in the risk of bronchitis with the number
+of cigarettes smoked.
+
+This categorization was purely for\marginnote{It was at one time
+  common practice to categorize continuous data, in order to allow
+  analysis methods for multi-way tables.  There is a loss of
+  information, which can at worst be serious.}  purposes of
+preliminary analysis.  Categorization for purposes of analysis is,
+with the methodology and software that are now available, usually
+undesirable. Tables that are based on categorization can nevertheless
+be useful in data exploration.
+
+\subsection{$^*$Matrix Computations}
+Let \txtt{X} ($n$ by $p$), \txtt{Y} ($n$ by $p$) and B ($p$ by $k$) be
+numeric matrices. Some of the possibilities are:
+\marginnote{Note that if \margtt{t()} is used with a data
+  frame, a matrix is returned.  If necessary, all values are coerced
+  to the same mode.}
+\begin{Schunk}
+\begin{Sinput}
+X + Y             # Elementwise addition
+X * Y             # Elementwise multiplication
+X %*% B           # Matrix multiplication
+solve(X, Y)       # Solve X B = Y for B
+svd(X)            # Singular value decomposition
+qr(X)             # QR decomposition
+t(X)              # Transpose of X
+\end{Sinput}
+\end{Schunk}
+
+\marginnote{Section \ref{ss:apply} will discuss the use of
+\margtt{apply()} for operations with matrices, arrays and tables.
+}
+Calculations with data frames that are slow and time consuming will
+often be much faster if they can be formulated as matrix calculations.
+This is in general become an issue only for very large datasets,
+with perhaps millions of observations. Section \ref{sec:large-dset}
+has examples.  For small or modest-sized datasets, convenience in
+formulating the calculations is likely to be more important than
+calculation efficiency.
+
+
+\section{{\em plyr},  {\em dplyr} \& {\em reshape2}  Data Manipulation}\label{sec:plyr}
+
+The {\em plyr} package has functions that together:
+\begin{itemize}
+\item provide a systematic approach to computations that perform a
+  desired operation across one or more dimensions of an array, or
+  of a data frame, or of a list;
+\item allow the user to choose whether results will be returned as an
+array, or as a data frame, or as a list.
+\end{itemize}
+
+The {\em dplyr} package has functions for performing various summary
+and other operations on data frames. For many purposes, it supersedes
+the {\em plyr} package.
+
+The {\em reshape2} package is, as its name suggests, designed for
+moving between alternative data layouts.
+
+\subsection{{\em plyr} }
+
+The {\em plyr} package has a separate function for each of the nine
+possible mappings.  The first letter of the function name (one of
+\txtt{a} = array, \txtt{d} = data frame, \txtt{l} = list) denotes the
+class of the input object, while the second letter (the same choice of
+one of three letters) denotes the class of output object that is
+required.  This pair of letters is then followed by \txtt{ply}.
+
+Here is the choice of functions:
+% Wed Nov 11 09:01:36 2009
+\begin{center}
+\begin{tabular}{rlll}
+  \hline
+& \multicolumn{3}{c}{Class of Output Object}\\
+ & \txtt{a} (array) & \txtt{d} (data frame) & \txtt{l} (list) \\
+  \hline
+Class of Input Object\\
+a (array) & aa{\color{gray40} ply} & ad{\color{gray40} ply} & al{\color{gray40} ply} \\
+  d (data frame) & da{\color{gray40} ply} & dd{\color{gray40} ply} & dl{\color{gray40} ply} \\
+  l (list) & la{\color{gray40} ply} & ld{\color{gray40} ply} & ll{\color{gray40} ply} \\
+   \hline
+\end{tabular}
+\end{center}
+
+First observe how the function \txtt{adply} can be used to change from
+a tabular form of representation to a data frame.  The dimension names
+will become columns in the data frame.
+
+\noindent
+\begin{minipage}[t]{\textwidth}
+\begin{Schunk}
+\begin{Sinput}
+detach("package:dplyr")
+library(plyr)
+\end{Sinput}
+\begin{Sinput}
+dreamMoves <-
+   matrix(c(5,3,17,85), ncol=2,
+          dimnames=list("Dreamer"=c("Yes","No"),
+                        "Object"=c("Yes","No")))
+(dfdream <- plyr::adply(dreamMoves, 1:2,
+                        .fun=identity))
+\end{Sinput}
+\begin{Soutput}
+  Dreamer Object V1
+1     Yes    Yes  5
+2      No    Yes  3
+3     Yes     No 17
+4      No     No 85
+\end{Soutput}
+\end{Schunk}
+\end{minipage}
+
+To get the table back, do:
+\begin{Schunk}
+\begin{Sinput}
+plyr::daply(dfdream, 1:2, function(df)df[,3])
+\end{Sinput}
+\begin{Soutput}
+       Object
+Dreamer Yes No
+    Yes   5 17
+    No    3 85
+\end{Soutput}
+\end{Schunk}
+
+The following calculates sums over the first two dimensions of the
+table \txtt{UCBAdmissions}:
+
+\marginnote[12pt]{Here, \txtt{aaply()} behaves exactly like \txtt{apply()}.}
+\begin{Schunk}
+\begin{Sinput}
+plyr::aaply(UCBAdmissions, 1:2, sum)
+\end{Sinput}
+\begin{Soutput}
+          Gender
+Admit      Male Female
+  Admitted 1198    557
+  Rejected 1493   1278
+\end{Soutput}
+\end{Schunk}
+
+The following calculates, for each level of the column \txtt{trt}
+in the data frame \txtt{nswdemo}, the number of values of \txtt{re74}
+that are zero:
+\begin{Schunk}
+\begin{Sinput}
+library(DAAG, quietly=TRUE)
+plyr::daply(nswdemo, .(trt),
+      function(df)sum(df[,"re74"]==0, na.rm=TRUE))
+\end{Sinput}
+\begin{Soutput}
+  0   1 
+195 131 
+\end{Soutput}
+\end{Schunk}
+To calculate the proportion that are zero, \marginnote{Notice the use
+  of the syntax \txtt{.(trt, black)} to identify the columns
+  \txtt{trt} and \txtt{black}.  This is an alternative to
+  \txtt{c("trt", "black")}.}  for each of control and treatment and
+for each of non-black and black, do:
+\begin{Schunk}
+\begin{Sinput}
+options(digits=3)
+plyr::daply(nswdemo, .(trt, black),
+      function(df)sum(df[,"re75"]==0)/nrow(df))
+\end{Sinput}
+\begin{Soutput}
+   black
+trt     0     1
+  0 0.353 0.435
+  1 0.254 0.403
+\end{Soutput}
+\end{Schunk}
+
+The function \txtt{colwise()} takes as argument a function that operates
+on a column of data, returning a function that operates on all
+nominated columns of a data frame.
+To get information on the proportion of zeros for both of the columns
+\txtt{re75} and \txtt{re78}, and for each of non-black and black, do:
+\marginnote{Here, \margtt{colwise()} operates on the objects that are returned
+by splitting up the data frame \margtt{nswdemo} according to levels of
+\margtt{trt} and \margtt{black}.  Note the use of \margtt{ddply()}, not
+\margtt{daply()}.
+}
+\begin{Schunk}
+\begin{Sinput}
+plyr::ddply(nswdemo, .(trt, black),
+      colwise(function(x)sum(x==0)/length(x),
+              .cols=.(re75, re78)))
+\end{Sinput}
+\begin{Soutput}
+  trt black  re75   re78
+1   0     0 0.353 0.1529
+2   0     1 0.435 0.3412
+3   1     0 0.254 0.0847
+4   1     1 0.403 0.2605
+\end{Soutput}
+\end{Schunk}
+
+\subsection{Use of {\em dplyr} with Word War 1 cricketer data}
+
+Data in the data frame \txtt{cricketer}, extracted by John Aggleton
+(now at Univ of Cardiff), are from records of UK first class
+cricketers born 1840 -- 1960.  Variables are
+\begin{list}{}{
+\setlength{\itemsep}{1pt}
+\setlength{\parsep}{1pt}}
+\item[-] Year of birth
+\item[-] Years of life (as of 1990)
+\item[-] 1990 status (dead or alive)
+\item[-] Cause of death: killed in action / accident / in bed
+\item[-] Bowling hand -- right or left
+\end{list}
+The following creates a data frame in which the first column has the
+year, the second the number of right-handers born in that year, and
+the third the number of left-handers born in that year.
+\marginnote[12pt]{Both {\em plyr} and {\em dplyr} have functions
+  \margtt{summarise()}.  As in the code shown, detach {\em plyr}
+  before     proceeding. Alternatively, or additionally,
+  specify \margtt{dplyr::summarise()} rather than \margtt{summarise()}}.
+\begin{Schunk}
+\begin{Sinput}
+library(DAAG)
+detach("package:plyr")
+library(dplyr)
+\end{Sinput}
+\begin{Sinput}
+names(cricketer)[1] <- "hand"
+gpByYear <- group_by(cricketer, year)
+lefrt <- dplyr::summarise(gpByYear,
+                          left=sum(hand=='left'),
+                          right=sum(hand=='right'))
+## Check first few rows
+lefrt[1:4, ]
+\end{Sinput}
+\begin{Soutput}
+# A tibble: 4 x 3
+   year  left right
+  <int> <int> <int>
+1  1840     1     6
+2  1841     4    16
+3  1842     5    16
+4  1843     3    25
+\end{Soutput}
+\end{Schunk}
+The data frame is split by values of \txtt{year}.  Numbers of left
+and right handers are then tabulated.
+
+\marginnote[12pt]{Note that a cricketer who was born in 1869 would be
+45 in 1914, while a cricketer who was born in 1896 would be 18 in 1914.}
+From the data frame \txtt{cricketer}, we determine the range of birth
+years for players who died in World War 1.  We then extract data for
+all cricketers, whether dying or surviving until at least the final
+year of Workd War 1, whose birth year was within this range of years.
+The following code extracts the relevant range of birth years.
+\begin{Schunk}
+\begin{Sinput}
+## Use subset() from base R
+ww1kia <- subset(cricketer,
+                 kia==1 & (year+life)%in% 1914:1918)
+range(ww1kia$year)
+\end{Sinput}
+\begin{Soutput}
+[1] 1869 1896
+\end{Soutput}
+\end{Schunk}
+
+Alternatively, use \txtt{filter()} from {\em dplyr}:
+\begin{Schunk}
+\begin{Sinput}
+ww1kia <- filter(cricketer,
+                 kia==1, (year+life)%in% 1914:1918)
+\end{Sinput}
+\end{Schunk}
+
+For each year of birth between 1869 and 1896, the following expresses
+the number of cricketers killed in action as a fraction of the total
+number of cricketers (in action or not) who were born in that year:
+\begin{fullwidth}
+\begin{Schunk}
+\begin{Sinput}
+## Use filter(), group_by() and summarise() from dplyr
+crickChoose <- filter(cricketer,
+                      year%in%(1869:1896), ((kia==1)|(year+life)>1918))
+gpByYearKIA <- group_by(crickChoose, year)
+crickKIAyrs <- dplyr::summarise(gpByYearKIA,
+                                kia=sum(kia), all=length(year), prop=kia/all)
+crickKIAyrs[1:4, ]
+\end{Sinput}
+\begin{Soutput}
+# A tibble: 4 x 4
+   year   kia   all   prop
+  <int> <int> <int>  <dbl>
+1  1869     1    37 0.0270
+2  1870     2    36 0.0556
+3  1871     1    45 0.0222
+4  1872     0    39 0.0000
+\end{Soutput}
+\end{Schunk}
+\end{fullwidth}
+
+For an introduction to {\em dplyr}, enter:
+\begin{Schunk}
+\begin{Sinput}
+vignette("introduction", package="dplyr")
+\end{Sinput}
+\end{Schunk}
+
+\subsection{{\em reshape2}: \txtt{melt()}, \txtt{acast()} \& \txtt{dcast()}
+}\label{ss:reshape2}
+
+The {\em reshape2} package has functions that move between a
+dataframe layout where selected columns are unstacked, and a layout
+where they are stacked.  In moving from an unstacked to a stacked
+layout, column names become levels of a factor.  In the move back from
+stacked to unstacked, factor levels become column names.
+
+Here is an example of the use of \txtt{melt()}:
+\begin{fullwidth}
+\begin{Schunk}
+\begin{Sinput}
+## Create dataset Crimean, for use in later calculations
+library(HistData)   # Nightingale is from this package
+library(reshape2)   # Has the function melt()
+Crimean <- melt(Nightingale[,c(1,8:10)], "Date")
+names(Crimean) <- c("Date", "Cause", "Deaths")
+Crimean$Cause <- factor(sub("\\.rate", "", Crimean$Cause))
+Crimean$Regime <- ordered(rep(c(rep('Before', 12), rep('After', 12)), 3),
+                          levels=c('Before', 'After'))
+formdat <- format.Date(sort(unique(Crimean$Date)), format="%d %b %y")
+Crimean$Date <- ordered(format.Date(Crimean$Date,
+                        format="%b %y"), levels=formdat)
+\end{Sinput}
+\end{Schunk}
+\end{fullwidth}
+\marginnote[12pt]{The dataset \margtt{Crimean} has been included in the
+  {\em DAAGviz} package.}
+The dataset is now in a suitable form for creating a Florence
+Nightingale style wedge plot, in Figure \ref{col:wedgeplot}.
+
+\subsection*{Reshaping data for Motion Chart display -- an example}
+
+The following inputs and displays World Bank Development Indicator
+data that has been included with the package {\em DAAGviz}:
+\begin{fullwidth}
+\small
+\begin{Schunk}
+\begin{Sinput}
+## DAAGviz must be installed, need not be loaded
+path2file <- system.file("datasets/wdiEx.csv", package="DAAGviz")
+wdiEx <- read.csv(path2file)
+print(wdiEx, row.names=FALSE)
+\end{Sinput}
+\begin{Soutput}
+ Country.Name Country.Code     Indicator.Name Indicator.Code    X2010    X2000
+    Australia          AUS Labor force, total SL.TLF.TOTL.IN 1.17e+07 9.62e+06
+    Australia          AUS  Population, total    SP.POP.TOTL 2.21e+07 1.92e+07
+        China          CHN Labor force, total SL.TLF.TOTL.IN 8.12e+08 7.23e+08
+        China          CHN  Population, total    SP.POP.TOTL 1.34e+09 1.26e+09
+\end{Soutput}
+\end{Schunk}
+\end{fullwidth}
+
+A {\em googleVis} Motion Chart does not make much sense for this
+dataset as it stands, with data for just two countries and two years.
+Motion charts are designed for showing how scatterplot relationships,
+here between forest area and population, have changed over a number of
+years.  The dataset will however serve for demonstrating the reshaping
+that is needed.
+
+For input to Motion Charts, we want indicators to be
+columns, and years to be rows.  The \txtt{melt()} and
+\txtt{dcast()}\sidenote{Note also \txtt{acast()}, which outputs
+  an array or a matrix.}  functions from the {\em reshape2}
+  package can be used to achieve the desired result.  First, create a
+  single column of data, indexed by classifying factors:
+\begin{fullwidth}
+
+\begin{Schunk}
+\begin{Sinput}
+library(reshape2)
+wdiLong <- melt(wdiEx, id.vars=c("Country.Code",
+                "Indicator.Name"),
+                measure.vars=c("X2000", "X2010"))
+## More simply: wdiLong <- melt(wdiEx[, -c(2,4)])
+wdiLong
+\end{Sinput}
+\begin{Soutput}
+  Country.Code     Indicator.Name variable    value
+1          AUS Labor force, total    X2000 9.62e+06
+2          AUS  Population, total    X2000 1.92e+07
+3          CHN Labor force, total    X2000 7.23e+08
+4          CHN  Population, total    X2000 1.26e+09
+5          AUS Labor force, total    X2010 1.17e+07
+6          AUS  Population, total    X2010 2.21e+07
+7          CHN Labor force, total    X2010 8.12e+08
+8          CHN  Population, total    X2010 1.34e+09
+\end{Soutput}
+\end{Schunk}
+
+\end{fullwidth}
+
+Now\marginnote{If a matrix or array is required, use \margtt{acast()}
+in place of \margtt{dcast()}.}
+ use \txtt{dcast()} to ``cast'' the data frame into a form where the
+indicator variables are columns:
+\begin{fullwidth}
+
+\begin{Schunk}
+\begin{Sinput}
+names(wdiLong)[3] <- "Year"
+wdiData <- dcast(wdiLong,
+                 Country.Code+Year ~ Indicator.Name,
+                 value.var="value")
+wdiData
+\end{Sinput}
+\begin{Soutput}
+  Country.Code  Year Labor force, total Population, total
+1          AUS X2000           9.62e+06          1.92e+07
+2          AUS X2010           1.17e+07          2.21e+07
+3          CHN X2000           7.23e+08          1.26e+09
+4          CHN X2010           8.12e+08          1.34e+09
+\end{Soutput}
+\end{Schunk}
+
+\end{fullwidth}
+
+A final step is to replace the factor \txtt{Year} by a variable that
+has the values 2000 and 2010.
+\begin{fullwidth}
+
+\begin{Schunk}
+\begin{Sinput}
+wdiData <- within(wdiData, {
+   levels(Year) <- substring(levels(Year),2)
+   Year <- as.numeric(as.character(Year))
+})
+wdiData
+\end{Sinput}
+\begin{Soutput}
+  Country.Code Year Labor force, total Population, total
+1          AUS 2000           9.62e+06          1.92e+07
+2          AUS 2010           1.17e+07          2.21e+07
+3          CHN 2000           7.23e+08          1.26e+09
+4          CHN 2010           8.12e+08          1.34e+09
+\end{Soutput}
+\end{Schunk}
+
+\end{fullwidth}
+
+\section{Session and Workspace Management}
+
+\subsection{Keep a record of your work}
+
+A recommended procedure
+\marginnote{Be sure to save the script file from time to time during
+the session, and upon quitting the session.}
+is to type commands into an editor window,
+then sending them across to the command line. This makes it possible
+to recover work on those hopefully rare occasions when the
+session aborts.
+
+\subsection{Workspace management}
+
+For tasks that make heavy memory demands, it may be important to
+ensure that large data objects do not remain in memory once they are
+no longer needed. There are two complementary strategies:
+\begin{itemizz}
+\item[-] Objects that cannot easily be reconstructed or copied from elsewhere,
+but are not for the time being required, are conveniently saved
+to an image file, using the \txtt{save()} function.
+
+\item[-] Use a separate working directory for each major project.
+\end{itemizz}
+
+Note the utility function \txtt{dir()}\marginnote{Use \margtt{getwd()}
+  to check the name and path of the current working directory.  Use
+  \margtt{setwd()} to change to a new working directory, while leaving
+  the workspace contents unchanged.}  (get the names of files, by
+default in the current working directory).
+
+Several image files (``workspaces'') that have distinct names can live
+in the one working directory.  The image file, if any, that is called
+\textbf{.RData} is the file whose contents will be loaded at the
+beginning of a new session in the directory.
+
+\paragraph{The removal of clutter:}
+
+Use a command of the form\marginnote{As noted in Section
+  \ref{ss:saveobjs}, a good precaution can be to make an archive of
+  the workspace before such removal.}  \txtt{rm(x, y, tmp)} to remove
+objects (here \txtt{x}, \txtt{y}, \txtt{tmp}) that are no longer
+required.
+
+\paragraph{Movement of files between computers:}\label{ss:dump}
+Files that are saved in the default binary save file format, as above,
+can be moved between different computer systems.
+
+\paragraph{Further possibilities -- saving objects in text form:}
+An alternative to saving objects\sidenote{Dumps of S4 objects and
+  environments, amongs others, cannot currently be retrieved using
+  \margtt{source()}.  See \margtt{help(dump)}.} in an
+image file is to dump them, in a text format, as dump files, e.g.
+\begin{Schunk}
+\begin{Sinput}
+volume <- c(351, 955, 662, 1203, 557, 460)
+weight <- c(250, 840, 550, 1360, 640, 420)
+dump(c("volume", "weight"), file="books.R")
+\end{Sinput}
+\end{Schunk}
+The objects can be recreated
+\sidenote{The same checks are performed on dump files as if the text had been
+entered at the command line. These can slow down entry of the data or
+other object.  Checks on dependencies can be a problem.  These can
+usually be resolved by editing the R source file to change or remove
+offending code.}
+ from this ``dump'' file by inputting the
+lines of \textbf{books.R} one by one at the command line. This is what,
+effectively, the command \txtt{source()} does.
+\begin{Schunk}
+\begin{Sinput}
+source("books.R")
+\end{Sinput}
+\end{Schunk}
+
+For long-term archival storage, dump (\textbf{.R}) files may be
+preferable to image files.  For added security, retain a printed
+version.  If a problem arises (from a system change, or because the
+file has been corrupted), it is then possible to check through the
+file line by line to find what is wrong.
+
+\section{Computer Intensive Computations}\label{sec:large-dset}
+Computations may be computer intensive because of the size of
+datasets.  Or the computations may themselves be demanding, even for
+data sets that are of modest size.
+
+Note that using all of the data for an analysis or for a plot is not
+always the optimal strategy.  Running calculations separately on
+different subsets may afford insights that are not otherwise
+available. The subsets may be randomly chosen, or they may be chosen
+to reflect, e.g., differences in time or place.
+
+\marginnote[12pt]{The computationally intensive parts
+of regression calculations with \txtt{lm()} work with
+matrices, making these relatively efficient.}
+Computation will be slow where computationally intensive calculations
+are implemented directly in R code, rather than passed to efficient
+compiled code that is called from R.  Matrix calculations are passed
+to highly efficient compiled code.
+
+Where
+\marginnote{The relatively new Julia language appears to offer
+spectacular improvements on both R and Python, with times that
+are within a factor of 2 of the Fortran or C times.  See
+  \url{http://julialang.org/}.}
+it is necessary to look for ways to speed up computations, it is
+important to profile computations to find which parts of the code
+are taking the major time.  Really big improvements will come from
+implementing key parts of the calculation in C or Fortran rather than
+in an application oriented language such as R or Python.  Python may
+do somewhat better than R.
+
+There can be big differences between the alternatives that may be
+available in R for handling a calculation. Some broad guidelines will
+now be provided, with examples of how differences in the handling of
+calculations can affect timings.
+
+\paragraph{Use matrices, where possible, in preference to data frames:}
+
+Most\marginnote{Biological expression array
+  applications are among those that are commonly designed to work with
+  data that is in a matrix format.  The matrix or matrices may be
+  components of a more complex data structure.}
+of R's modeling functions (regression, smoothing, discriminant
+analysis, etc.) are designed to work with data frames. Where an
+alternative available that works with matrices, this will be faster.
+
+Matrix operations can be more efficient even for such a simple
+operation as adding a constant quantity to each element of the array,
+or taking logarithms of all elements.  Here is an
+example:
+\begin{Schunk}
+\begin{Sinput}
+xy <- matrix(rnorm(5*10^7), ncol=100)
+dim(xy)
+\end{Sinput}
+\begin{Soutput}
+[1] 500000    100
+\end{Soutput}
+\end{Schunk}
+\marginnote{Timings are on a mid 2012 1.8 Ghz Intel i5 Macbook Air
+  laptop with 8 gigabytes of random access memory.}
+\begin{Schunk}
+\begin{Sinput}
+system.time(xy+1)
+\end{Sinput}
+\begin{Soutput}
+   user  system elapsed 
+  0.162   0.149   0.313 
+\end{Soutput}
+\begin{Sinput}
+xy.df <- data.frame(xy)
+system.time(xy.df+1)
+\end{Sinput}
+\begin{Soutput}
+   user  system elapsed 
+  0.166   0.137   0.306 
+\end{Soutput}
+\end{Schunk}
+\vspace*{-12pt}
+
+\paragraph{Use efficient coding:}
+Matrix arithmetic can be faster than the equivalent computations
+that use \txtt{apply()}. Here are timings for some alternatives that
+find the sums of rows of the matrix \txtt{xy} above:\\[-4pt]
+% latex table generated in R 2.5.1 by xtable 1.4-6 package
+% Tue Aug 21 18:37:55 2007
+
+\begin{center}
+\begin{tabular}{rrrr}
+  \hline
+ & user & system & elapsed \\
+  \hline
+\txtt{apply(xy,1,sum)}      & 0.528 & 0.087 & 0.617 \\
+ \txtt{xy \%*\% rep(1,100)} & 0.019 & 0.001 & 0.019 \\
+ \txtt{rowSums(xy)}         & 0.034 & 0.001 & 0.035 \\
+   \hline
+\end{tabular}
+\end{center}
+\vspace*{-9pt}
+
+\paragraph{The bigmemory project:} For details, go to
+\url{http://www.bigmemory.org/}. The {\em bigmemory} package for R
+``supports the creation, storage, access, and manipulation of massive
+matrices''. Note also the associated packages {\em biganalytics}, {\em bigtabulate},
+{\em synchronicity}, and {\em bigalgebra}.
+
+\paragraph{The \textit{data.table} package:}
+This allows the creation
+\marginnote{On 64-bit systems, massive
+  data sets, e.g., with tens or hundreds of millions of rows, are
+  possible.  For such large data objects, the time saving can be huge.}
+of \txtt{data.table} objects from which information can be quickly
+extracted, often in a fraction of the time required for extracting the
+same information from a data frame.  The package has an accompanying
+vignette.  To display it (assuming that the package has been
+installed), type
+\begin{Schunk}
+\begin{Sinput}
+vignette("datatable-intro", package="data.table")
+\end{Sinput}
+\end{Schunk}
+
+\section{Summary}
+\begin{itemize}
+\item[] \txtt{apply(),} and \txtt{sapply()} can be useful for
+  manipulations with data frames and matrices.  Note also the
+  functions \txtt{melt()}, \txtt{dcast()} and \txtt{acast()} from the
+  \textit{reshape2} package.
+
+\item[] Careful workspace management is important when files
+are large.  It pays to use separate working directories for each
+different project, and to save important data objects as image files
+when they are, for the time being, no longer required.
+
+\item[] In computations with large datasets, operations that
+are formally equivalent can differ greatly in their use of
+computational resources.
+
+\end{itemize}

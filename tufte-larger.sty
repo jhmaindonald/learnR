@@ -1,0 +1,86 @@
+%
+% This package adjusts the font sizes and spacing for large-print readers.
+%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+
+\ProvidesPackage{tufte-larger}[2012/09/15 v1.0.0 Large-print Tufte styles]
+
+
+%
+% Adjust the font sizes and leading
+%
+
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize{11}{13}%
+}
+\renewcommand\small{%
+   \@setfontsize\small{9}{11}%
+}
+\renewcommand\footnotesize{%
+   \@setfontsize\footnotesize{10}{12}%
+}
+\renewcommand\scriptsize{\@setfontsize\scriptsize{8}{9}}
+\renewcommand\tiny{\@setfontsize\tiny{6}{7}}
+\renewcommand\large{\@setfontsize\large{13}{15}}
+\renewcommand\Large{\@setfontsize\Large{15}{16}}
+\renewcommand\LARGE{\@setfontsize\LARGE{16}{18}}
+\renewcommand\huge{\@setfontsize\huge{20.74}{30}}
+\renewcommand\Huge{\@setfontsize\Huge{24}{36}}
+
+%
+% Indentation spacing
+%
+
+\setlength{\parindent}{1.5em}%
+\setlength{\parskip}{0pt}%
+\setlength{\RaggedRightRightskip}{\z@ plus 0.08\hsize}
+
+% Paragraph indentation and separation for normal text
+\def\@tufte@reset@par{%
+  \setlength{\RaggedRightParindent}{1.5em}%
+  \setlength{\JustifyingParindent}{1.5em}%
+  \setlength{\parindent}{1.5pc}%
+  \setlength{\parskip}{0pt}%
+}
+\@tufte@reset@par
+
+% Paragraph indentation and separation for marginal text
+\def\@tufte@margin@par{%
+  \setlength{\RaggedRightParindent}{0.75em}%
+  \setlength{\JustifyingParindent}{0.75em}%
+  \setlength{\parindent}{0.75em}%
+  \setlength{\parskip}{0pt}%
+}
+
+
+\setlength\leftmargini   {1.0em}
+\setlength\leftmarginii  {1.0em}
+\setlength\leftmarginiii {1.0em}
+\setlength\leftmarginiv  {1.0em}
+\setlength\leftmarginv   {1.0em}
+\setlength\leftmarginvi  {1.0em}
+\setlength\labelsep      {0.75em}
+\setlength\labelwidth    {\leftmargini}
+\addtolength\labelwidth{-\labelsep}
+
+%
+% Adjust the page margins
+%
+
+% \geometry{letterpaper,left=1in,top=1in,headsep=\baselineskip,textwidth=26pc,marginparsep=2pc,marginparwidth=12pc,textheight=28\baselineskip,headheight=\baselineskip}%
+
+  \geometry{a4paper,left=24.8mm,top=27.4mm,headsep=\baselineskip,textwidth=107mm,marginparsep=8.2mm,marginparwidth=49.4mm,textheight=45\baselineskip,headheight=\baselineskip}%
+
+% TODO: adjust for A5 paper, too
+
+%
+% Prevent a bunch of line overruns by allowing sloppier paragraphs
+%
+
+\sloppy
+
+%
+% That's it!
+%
+\endinput

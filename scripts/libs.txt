@@ -1,0 +1,113 @@
+Chapter 1
+Chapter 2
+library(lattice)
+library(vcd)
+library(DAAG)     # Attach the DAAG package
+library(DAAG)
+Chapter 3
+Chapter 4
+library(DAAG)
+Chapter 5
+## Below, the dataset MASS::mammals will be required
+library(MASS, quietly=TRUE)
+library(DAAG, quietly=TRUE)
+library(lattice)
+library(lattice)
+library(ggplot2)
+library(DAAG)
+library(DAAG)
+Chapter 6
+library(DAAG, quietly=TRUE)
+library(DAAG)        # possum is from DAAG
+library(DAAG)
+library(DAAG)
+library(DAAG)
+library(MASS)
+library(DAAG); library(lattice)
+library(sp)
+Chapter 2
+library(xlsx)
+library(memisc)
+path2file <- memisc::UnZip(zipfile="anes/NES1948.ZIP", item="NES1948.POR",
+library(WDI)
+library(WDI)
+library(XML)
+library(DAAG)
+library(RSQLite)
+Chapter 8
+library(plyr)
+library(dplyr)
+AdmitRate <- dplyr::summarise(gpUCBgender,
+rateDept <- dplyr::summarise(gpUCBgd,
+library(DAAGviz)
+library(plyr)
+library(DAAG, quietly=TRUE)
+library(DAAG)
+library(dplyr)
+library(HistData)   # Nightingale is from this package
+library(reshape2)   # Has the function melt()
+library(reshape2)
+library(WDI)
+library(WDI)
+library(XML)
+library(DAAG)
+library(RSQLite)
+Chapter 9
+library(DAAG, quietly=TRUE)
+library(RColorBrewer)   # Required for Set1 and Dark2 RColorBrewer palettes
+library(MASS)
+library(latticeExtra, quietly=TRUE)
+library(playwith)
+library(playwith)
+library(ggplot2)
+library(MASS)
+library(DAAG)
+library(ggplot2)
+library(quantreg)
+library(splines)
+library(lattice)
+library(lattice)
+Chapter 10
+library(rgl, quietly=TRUE)
+library(car, quietly=TRUE)
+library(DAAG, quietly=TRUE)
+library(googleVis)
+Chapter 11
+library(DAAG)
+library(lattice)
+library(DAAG)
+library(quantreg)
+library(splines)
+library(car)
+library(Ecdat)
+library(DAAGviz, quietly=TRUE)
+library(KernSmooth, quietly=TRUE)
+Chapter 12
+library(DAAG)
+library(DAAGviz)
+library(mgcv)
+library(mgcv)
+library(forecast)
+library(DAAGviz)
+library(mgcv)
+library(MASS, quietly=TRUE)
+library(DAAG)
+library(lattice)
+library(rpart)
+library(randomForest, quietly=TRUE)
+library(oz, quietly=TRUE)
+Chapter 13
+library(oz)
+library(DAAG)
+library(dismo, quietly=TRUE)
+library(DAAGviz)
+require(plotKML)
+library(rgdal)
+library(sp)
+Chapter 14
+library(tm)
+library(wordcloud)
+Chapter 15
+library(DAAG)
+library(lme4)
+library(sp)

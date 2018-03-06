@@ -1,0 +1,1188 @@
+% !Rnw root = learnR.Rnw
+<<echo=FALSE, cache=FALSE>>=
+opts_knit$set(self.contained=FALSE)
+@
+
+<<echo=FALSE, cache=FALSE>>=
+Hmisc::knitrSet()
+Hmisc::knitrSet(w=3, h=3.15)
+opts_chunk$set(fig.path='figs/12-', cache.path='cache/12-',
+               fig.align='center', dev='pdf',  
+               fig.show='hold', out.width="0.47\\textwidth", 
+               tidy=FALSE, comment=NA)
+pdf.options(pointsize=12)
+oldopt <- options(digits=4)
+read_chunk("../scripts/further-code.R")
+@
+
+This chapter is a tour through models and methods that are
+straightforward to fit using R.  Some of these lend themselves
+to relatively automated use.   There is some limited attention
+to the traps that can catch users who are unwary, or who have
+ventured too easily into areas that call for some greater level
+of statistical sophistication than their training and experience
+has given them.
+
+In each case, comments with be introductory and brief.  Firstly, there
+are brief comments on the fitting of smooth curves.  The second and
+third topics highlight specific types of departure from the iid
+(independently and identically distributed) assumption.
+
+\section{Regression with Fitted Smooth Curves}
+
+Load the {\em DAAG} package:
+<<loadDAAG>>=
+@ %
+
+\subsection*{Commentary  on Smoothing Methods}
+
+Two types of methods will be described -- those where the user
+controls the choice of smoothing parameter, and statistical learning
+type methods where the amount of smoothing is chosen automatically:
+\begin{itemize}
+\item The first class of methods rely on the user to make a suitable
+  choice of a parameter that controls the smoothness.  The default
+choice is often a good first approximation.  Note here:
+\begin{itemize}
+\item Smoothing using a ``locally weighted regression
+smoother''.\marginnote{Smoothness
+is controlled by the width of the smoothing window. The default is
+  \txtt{f=2/3} for \txtt{lowess()}, or \txtt{span=0.75} for
+  \txtt{loess()}. For other functions that rely on this methodology,
+check the relevant help page.}
+Functions that use this approach include \txtt{lowess()}, \txtt{loess()},
+\txtt{loess.smooth()}, and \txtt{scatter.smooth()}.
+\item Use of a regression spline basis in a linear model.  Here the smoothness
+is usually controlled by the choice of number of spline basis terms.
+\end{itemize}
+\item A second class of methods use a ``statistical learning''
+  approach in which the amount of smoothing is chosen automatically.
+  The approach of the \textit{mgcv} package extends and adapts the
+  regression spline approach.\sidenote{Strong assumptions are
+    required, notably that observations are independent.  Normality
+    assumptions are, often, less critical.}  The methodology
+  generalizes to handle more general types of outcome variables,
+  including proportions and counts.  These extensions will not be
+  further discussed here.
+\end{itemize}
+
+\subsection{Locally weighted scatterplot smoothers}
+
+Locally weighted scatterplot smoothers pass a window across
+the data, centering the window in turn at each of a number points that
+are equally spaced through the data. The smooth at an $x$-value where
+the window has been centred is the predicted value from a line (or
+sometimes a quadratic or other curve) that is fitted to values that
+lie within the window. A weighted fit is used, so that neighbouring
+points get greater weight than points out towards the edge of the
+window.
+
+Figure \ref{fig:fruitohms} shows a smooth that has been fitted using
+the \txtt{lowess} (locally weighted scatterplot smoothing)
+methodology.  The default choice of with of smoothing window (a fraction
+$f = \frac{2}{3}$ of the total range of $x$) gives a result that,
+for these data, looks about right. The curve does however trend
+slightly upwards at the upper end of its range.  A monotonic
+response might seem more appropriate.
+
+\begin{marginfigure}
+<<smooth-ohms, echo=FALSE, w=2.5, h=2.0, out.width="0.98\\textwidth">>=
+@ %
+  \caption{Resistance in ohms is plotted against apparent juice
+    content.  A smooth curve (in gray) has been added, using the
+    \txtt{lowess} smoother.  The width of the smoothing window was the
+    default fraction $f = \frac{2}{3}$ of the range of values of the
+    $x$-variable.}\label{fig:fruitohms}
+\end{marginfigure}
+
+The code used to plot the graph is:
+<<smooth-ohms, eval=FALSE>>=
+@ %
+
+A more sophisticated approach uses the \txtt{gam()} function
+in the {\em mgcv} package.  This allows automatic determination of the
+amount of smoothing, providing the assumption of independent residuals
+from the curve is reasonable.  We now demonstrate the use of a GAM
+model for a two-dimensional smooth.
+
+\subsection{Contours from 2-dimensional Smooths}
+Data are the amplitudes of responses to a visual stimulus, for each of
+20 individuals, at different regions of the left eye.  We use the
+function \txtt{gam()} to create smooth
+surfaces, for males and females separately. Figure \ref{fig:visAmp}
+then uses the function \txtt{vis.gam()} to plot heatmaps that show the
+contours:
+\begin{fullwidth}
+\begin{figure*}
+<<plotVIS, w=8.5, h=3.5, mfrow=c(1,2), top=2, out.width="0.97\\textwidth", echo=FALSE>>=
+@ %
+\caption{Estimated contours of left eye responses to visual stimulae,
+projected onto the plane.\label{fig:visAmp}}
+\end{figure*}
+\end{fullwidth}
+\enlargethispage{12pt}
+
+The GAM fit will as far as possible use the smooth surface
+to account for the pattern of variation across the eye, with
+residuals from the surface treated as random normal noise.
+\vspace*{24pt}
+
+\begin{fullwidth}
+<<opt78, echo=FALSE>>=
+@ %
+<<plotVIS, eval=FALSE, echo=TRUE>>=
+@ %
+<<opt54, echo=FALSE>>=
+@ %
+\end{fullwidth}
+
+\section{Hierarchical Multi-level Models}\label{sec:hmlm}
+
+\noindent
+\fbox{
+\parbox{\textwidth}{{\bf Models with Non-iid Errors -- Multi-level models}:\\[4pt]
+\begin{tabular}{ll}
+Error Term & Errors do not have to be (and often are not) iid\\[6pt]
+Multi-level & Multi-level models are a (relatively) simple type of
+\\ models & non-iid model, implemented using \txtt{lme()}
+(\textit{nlme}) or \\ & \txtt{lmer()}\ (\textit{lme4} package).\\ & Such
+models allow different errors of prediction,\\ & depending on the
+intended prediction.
+\end{tabular}
+}}
+\begin{marginfigure}
+<<ant111b, echo=FALSE, w=3, h=2.65, out.width="0.98\\textwidth">>=
+@ %
+\caption{Yields from 4 packages of land on each of eight sites on the
+  Caribbean island of Antigua. Data are a summarized version of a
+  subset of data given in Andrews and Herzberg 1985,
+  pp.\~339-353.\label{fig:caribbean}}
+\end{marginfigure}
+\vspace*{15pt}
+
+Figure \ref{fig:caribbean} shows corn yield data from the Caribbean island of
+Antigua, as in the second column (``Yields'') of Table \ref{tab:ant111b}.
+Each value is for one package of land.
+The code for the figure is:
+<<ant111b, eval=FALSE>>=
+@ %
+
+\begin{table}
+\begin{center}
+{\small
+\begin{tabular}{@{}rc||r@{\hspace{1mm}}lcc@{}}
+\hline
+\multicolumn{1}{c}{Location}  & \multicolumn{1}{c}{Yields}  &
+\multicolumn{2}{l}{Location} & Residuals from\\
+ & & \multicolumn{2}{l}{effect} & \multicolumn{1}{c}{location mean}\\
+\hline
+DBAN &  5.16, 4.8, 5.07, 4.51 &  \vline& $+$0.59 & 0.28, $-$0.08, 0.18, $-$0.38 \\
+LFAN &  2.93, 4.77, 4.33, 4.8 &  \vline& $-$0.08 &  $-$1.28, 0.56, 0.12, 0.59 \\
+NSAN & 1.73, 3.17, 1.49, 1.97 &  \vline& $-$2.2 & $-$0.36, 1.08, $-$0.6, $-$0.12 \\
+ORAN & 6.79, 7.37, 6.44, 7.07 & $_{(4.29)} $ \vline& $+$2.62 & $-$0.13, 0.45, $-$0.48, 0.15 \\
+OVAN & 3.25, 4.28, 5.56, 6.24 &  \vline& $+$0.54 &  $-$1.58, $-$0.56, 0.73, 1.4 \\
+TEAN & 2.65, 3.19, 2.79, 3.51 &  \vline& $-$1.26 & $-$0.39, 0.15, $-$0.25, 0.48 \\
+WEAN &  5.04, 4.6, 6.34, 6.12 &  \vline& $+$1.23 &  $-$0.49, $-$0.93, 0.81, 0.6 \\
+WLAN & 2.02, 2.66, 3.16, 3.52 &  \vline& $-$1.45 & $-$0.82, $-$0.18, 0.32, 0.68 \\
+\hline
+\end{tabular}
+}
+\caption{The leftmost column has harvest weights (\txtt{harvwt}), for
+  the packages of land in each location, for the Antiguan corn data.  Each of
+  these harvest weights can be expressed as the sum of the overall
+  mean (= 4.29), location effect (third column), and residual from the
+  location effect (final column).
+\label{tab:ant111b}}
+\end{center}
+\vspace*{-0pt}
+\end{table}
+\vspace*{3pt}
+
+Depending on the use that will be made of the results, it may be
+essential to correctly model the structure of the random part of the
+model.  In comparing yields from different packages of land, there are
+two sorts of comparison.  Packages on the same location should be
+relatively similar, while packages on different locations should be
+relatively more different, as Figure \ref{fig:caribbean} suggests.
+A prediction for a new package at one of the existing locations is
+likely to be more accurate than a prediction for a totally new
+location.
+
+\marginnote[10pt]{Because of the balance the corn yield data, an
+  analysis of variance that specifies a formal \txtt{Error} term is an
+  alternative to the fitting of a multi-level model.}  Multi-level
+models are able to account for such differences in predictive
+accuracy.  For the Antiguan corn yield data, it is necessary to
+account both for variation within sites and for variation between
+sites.  The R packages \txtt{nlme} and \txtt{lme4} are both able to
+handle such data.
+
+
+\section{Regular Time Series in R}\label{sec:ts}
+\noindent
+\fbox{
+\parbox{\textwidth}{{\bf Models with Non-iid Errors -- Time Series}:\\[4pt]
+\begin{tabular}{ll}
+Time & Points that are close together in time commonly show\\
+sequential & a (usually, +ve) correlation. R's \txtt{acf()} and
+\txtt{arima()}\\ & functions are powerful tools for use with time
+series.
+\end{tabular}
+}}
+\vspace*{15pt}
+
+\marginnote{Smoothing terms can be fitted to the pattern apparent in
+  serially correlated data, leaving {\em errors} that are pretty much
+  uncorrelated.  Such a pattern is in general, however, unrepeatable.
+  It gives little clue of what may happen the future.}
+
+In a time series, the value at the current time can be correlated with
+the value at the previous time, perhaps on the values several time
+points back.  If possible, the analyst will want to find covariates
+that largely or partly explain that dependence.  At best, such
+covariates will commonly explain part only of the dependence,
+and there will remain dependence that requires to be modeled.
+
+What sorts of patterns may then be repeatable?  Indications that a
+pattern may be repeatable include:
+\begin{itemize}
+\item A straight line trend is a good starting point for some
+  limited extrapolation. But think: Is it plausible that the trend
+  will continue more than a short distance into the future?
+\item There may be a clear pattern of seasonal change, e.g.,
+with seasons of the year or (as happens with airborne pollution)
+with days of the week. If yearly seasonal changes persist over
+different years, or weekly day-of-the-week changes persist over
+different weeks, these effects can perhaps be extrapolated with
+some reasonable confidence.
+\item There is a regression relationship that seems likely to
+explain future as well as current data.
+\end{itemize}
+
+\subsection{Data exploration -- the Lake Erie data}
+
+The data series \txtt{Erie}, giving levels of Lake Erie
+from 1918 to 2009, will be used as a basis for discussion.\sidenote{Data are
+  from {\scriptsize
+\url{http://www.lre.usace.army.mil/greatlakes/hh/greatlakeswaterlevels/historicdata/greatlakeshydrographs/}}}
+    The series is available in the
+    \textit{DAAG} package, as the column \txtt{Erie} in the
+    multivariate time series object \txtt{greatLakes}.
+First, extract that column of data:
+<<getErie, cache=FALSE>>=
+@ %
+
+Figure \ref{fig:erie} shows a plot of the series.
+
+\begin{figure}
+<<Erie1, echo=FALSE, w=5.5, h=2.5, out.width="0.98\\textwidth">>=
+@ %
+\caption{Lake Erie levels (m).
+}\label{fig:erie}
+% \setfloatalignment{t}
+\end{figure}
+\begin{marginfigure}[-7cm]
+<<Erie1, eval=FALSE>>=
+@ %
+\end{marginfigure}
+
+An ideal would be to find a covariate or covariates than can largely
+explain the year to year changes.  For this series, this does not seem
+a possibility.  In the absence of identifiable direct cause for the
+year to year changes, a reasonable recourse is to look for a
+correlation structure that largely accounts for the pattern of the
+year to year change.  A re-run of the process (a new {\em
+  realization}) will produce a different series, albeit one that shows
+the same general tendency to move up and down.
+
+While smoothing methods can be used, assuming independent errors, to
+fit a curve to such data, such a curve will not be repeatable.  The
+smoothing curve does not separate systematic effects from effects due
+to processes that evolve in time.  Any process that evolves in time is
+likely to have a strong sequential correlation structure.
+
+The plots in Figure \ref{erie-lagplot} are a good starting point for
+investigation of the corrrelation structure.  Panel A shows lag plots,
+up to a lag of 3.  Panel B shows estimates of the successive
+correlations, in this context are called autocorrelations.
+\vspace*{-12pt}
+
+\begin{figure}
+<<lagErie, echo=FALSE, w=6, h=2.75, out.width="0.98\\textwidth">>=
+@ %
+\vspace*{-3pt}
+
+<<acfErie, echo=FALSE, w=5.4, h=2.5, out.width="0.7\\textwidth">>=
+@ %
+\caption{Panel A plots Lake Erie levels vs levels at lags 1, 2 and 3
+  respectively. Panel B shows a consistent pattern of decreasing
+  autocorrelation at successive lags.
+}\label{erie-lagplot}
+\vspace*{-6pt}
+\end{figure}
+
+\begin{marginfigure}[-10cm]
+<<lagErie, eval=FALSE, echo=1:4>>=
+@ %
+<<acfErie, eval=FALSE, echo=1:2>>=
+@ %
+\end{marginfigure}
+
+There is a strong correlation at lag 1, a strong but weaker
+correlation at lag 2, and a noticeable correlation at lag 3.  Such a
+correlation pattern is typical of an autoregressive process where
+most of the sequential dependence can be explained as a flow-on
+effect from a dependence at lag 1.
+
+In an autoregressive time series, an\marginnote{An autoregressive
+  model is a special case of an Autoregressive Moving Average (ARMA)
+  model.}  independent error component, or ``innovation'' is
+associated with each time point. For an order $p$ autoregressive time
+series, the error for any time point is obtained by taking the
+innovation for that time point, and adding a linear combination of the
+innovations at the $p$ previous time points.  (For the present time
+series, initial indications are that $p=1$ might capture most of the
+correlation structure.)
+
+\subsection*{Smooth, with automatic choice of smoothing parameter}
+
+We can fit a smoothing term to the \txtt{Erie} series.  Using the
+abilities of the {\em mgcv} package, this can be done with an
+automatice choice of the smoothing parameter.  The smooth
+assumes\marginnote{The fitted model is conditional on the particular
+  realization of the time series process.}  independently and
+identically distributed data, and in particular that there is no
+serial correlation!  Figure \ref{lh-smoothplot} shows the result.
+
+\begin{figure}
+<<gamErie, echo=FALSE, w=5.5, h=2.75, out.width="0.98\\textwidth">>=
+@ %
+\caption{GAM smoothing term, fitted to the Lake Erie Data.
+    Most of the autocorrelation structure has been
+    removed, leaving residuals that are very nearly independent.
+  }\label{lh-smoothplot}
+\end{figure}
+%$
+
+\begin{marginfigure}[-5cm]
+<<gamErie, eval=FALSE>>=
+@ %
+\end{marginfigure}
+
+As the curve is conditional on a particular realization of the process
+that generated it, its usefulness is limited.  It may be useful as a
+broad summary of the pattern of change over time.
+
+The pointwise confidence limits are similarly conditioned, relevant
+perhaps for interpolalation given this particular realization.
+All that is repeatable, given another realization, is the
+process that generated the curve, not the curve itself. Time series
+models, such as will now be considered, are designed to account for
+such processes.
+
+\subsection{Fitting and use of an autoregressive model}
+
+An autoregressive model gives insight that makes it possible to
+estimate the level of the lake a short time ahead, and to put
+realistic confidence bounds around those estimates.  For the Lake Erie
+data, an autoregressive correlation structure does a good job of
+accounting for the pattern of change around a mean that stays
+constant.
+
+Figure \ref{erie-lagplot} suggested that a correlation between each
+year and the previous year accounted for the main part of the
+autocorrelation structure in Figure \ref{fig:erie}. An AR1 model
+(autoregressive with a correlation at lag 1 only), which we now fit,
+formalizes this.
+<<ar1-Erie>>=
+@ %
+The one coefficient that is now given is the lag 1 correlation,
+equalling 0.851.
+
+Figure \ref{fig:ar1fits} then investigates how repeated simulations of
+this process, with a lag 1 correlation of 0.0.85, compare with Figure
+\ref{fig:erie}.  This helps to emphasis that a GAM smooth will
+extract, from an autoregressive process with mean 0, a pattern that is
+not repeatable when the process is re-run.
+
+\begin{figure}
+<<arima-sim, w=8, h=3.5, mfrow=c(2,3), echo=FALSE, out.width="0.97\\textwidth">>=
+@ %
+\caption{The plots are from repeated simulations of an AR1 process with a
+  lag 1 correlation of 0.85.  Smooth curves, assuming independent
+  errors, have been fitted.}\label{fig:ar1fits}
+\end{figure}
+
+\begin{marginfigure}[18pt]
+<<arima-sim, eval=FALSE>>=
+@ %
+\end{marginfigure}
+
+The curves are different on each occasion.  For generalization beyond
+the particular realization that generated them, they serve no useful
+purpose.
+
+Once an autoregressive model has been fitted, the function
+\txtt{forecast()} in the \textit{forecast} package can be used to
+predict future levels, albeit with very wide confidence bounds.
+For this, it is necessary to refit the model using the function
+\txtt{arima()}. An arima model with order (1,0,0) is an autoregressive
+model with order 1.
+\vspace*{10pt}
+
+\begin{figure}
+<<Erie-fcast, echo=FALSE, cache=FALSE, w=5.5, h=2.75, out.width="0.98\\textwidth">>=
+@ %
+\caption{Predictions, 15 years into the future, of lake levels
+  (m). The shaded areas give 80\% and 95\% confidence bounds.
+}\label{Erie-fcastplot}
+\setfloatalignment{t}
+\end{figure}
+
+\begin{marginfigure}[-4.5cm]
+<<Erie-fcast, eval=FALSE>>=
+@ %
+\end{marginfigure}
+
+This brief excursion into a simple form of time series model is
+intended only to indicate the limitations of automatic smooths.  and
+to give a sense of the broad style of time series modeling.  The list
+of references at the end of the chapter has details of several books
+on time series.
+
+\subsection{Regression with time series errors}
+
+Figure \ref{fig:mdbRainSM} fits annual rainfall, in the Murray-Darling basin of
+Australia, as a sum of smooth functions of \txtt{Year} and \txtt{SOI}.
+Figure \ref{fig:mdbRain} shows the estimated contributions of the two
+model terms.
+<<mdb-gam, eval=FALSE>>=
+@ %
+\begin{figure}
+<<mdb-gam, echo=FALSE, warning=FALSE, w=7.5, h=3.75, top=2,  mfrow=c(1,2)>>=
+@ %
+  \caption{Estimated contributions of model terms to
+    \txtt{mdbRain}, in a GAM model that adds smooth terms in
+    \txtt{Year} and \txtt{Rain}. The dashed curves show pointwise
+    2-SE limits, for the fitted curve.}\label{fig:mdbRainSM}
+\end{figure}
+
+\subsection*{Investigation of the residual error structure}
+Sequential correlation structures are a common type of departure from
+iid errors.  Where there is a sequential correlation structure
+structure in the data, the methodology will if possible use a smooth
+curve to account for it.
+
+The residuals can be checked to determine whether the fitted curve
+has removed most of the correlation structure in the data.
+Figure \ref{fig:ar1sims} shows the autocorrelation function of the
+residuals, followed by autocorrelation functions for several series of
+independent random normal numbers.  Apart from the weakly attested
+correlation at a lag of 12 years, which is a commonplace of weather
+data, the pattern of sequential correlation is not much different from
+what can be expected in a sequence of independent random normal
+numbers.
+
+\begin{figure*}
+<<ar1sims, echo=FALSE, warning=FALSE, w=6.5, left=1, h=3, mfrow=c(2,3), out.width="0.97\\textwidth">>=
+@ %
+\caption{The top left panel shows the autocorrelations of the
+  residuals from the model \txtt{mdbRain.gam}.  The five remaining
+  panels are the equivalent plots for sequences of independent random
+  normal numbers.}\label{fig:ar1sims}
+\end{figure*}
+
+Code is:
+<<ar1sims, eval=FALSE, echo=2:7>>=
+@ %
+
+The residuals can be checked to determine whether the fitted curve
+has removed most of the correlation structure in the data.
+Figure \ref{fig:ar1sims} shows the autocorrelation function of the
+residuals, followed by autocorrelation functions for several series of
+independent random normal numbers.  Apart from the weakly attested
+correlation at a lag of 12 years, which is a commonplace of weather
+data, the pattern of sequential correlation is not much different from
+what can be expected in a sequence of independent random normal
+numbers.
+
+The left panel indicates a consistent pattern of increase of rainfall
+with succeeding years, given an adjustment for the effect of SOI.
+Errors from the fitted model are consistent with the independent
+errors assumption.  The model has then identified a pattern of
+increase of rainfall with time, given SOI, that does seem real.  It is
+necessary to warn against reliance on extrapolation more than a few
+time points into the future. While the result is conssitent with
+well-established from global warming, those effects are known to play
+out very differently in different parts of the globe.
+
+\subsection{$^*$Box-Jenkins ARIMA Time Series Modeling}
+
+\marginnote{Models that are closely analagous to ARIMA models had been
+  used earlier in control theory.  ARIMA models are feedback systems!}
+From the perspective of the Box-Jenkins ARIMA (Autoregressive
+Integrated Moving Average) approach to time series models,
+autoregressive models are a special case.  Many standard types of time
+series can be modeled very satisfactorily as ARIMA processes.
+
+\subsection*{Exercise}
+The simulations in Figure \ref{fig:ar1fits} show a pattern of
+  variation that seems not too different from that in the actual series.
+  Modeling of the process as an ARMA or ARIMA process (i.e., allow
+  for a moving average term) may do even better.  Use the
+  \txtt{auto.arima()} function in the {\em forecast} package to fit an
+  ARIMA process:
+
+\subsection{Count Data with Poisson Errors}
+
+Data is for aircraft accidents, from the website
+\url{http://www.planecrashinfo.com/}.  Files follow the pattern
+\url{http://www.planecrashinfo.com/1920/1920.htm},
+for years from 1920 through to 2014.  The 1920 file has
+accidents starting from 1908.
+
+Data are a time series.  Serious accidents are however sufficently
+that occasions where events occur together, or where one event
+changes the probability of the next event, seem likely to be
+unusual.
+
+The full data are in the dataset \txtt{airAccs} ({\em gamclass}).
+We use the function \txtt{eventCounts()}, defined in Section
+\ref{ss:dates} and available from {\em gamclass}, to create counts of
+accidents, i) by day, and ii) by week, in both cases from January 1,
+2006:
+
+\begin{fullwidth}
+<<opt78, echo=FALSE>>=
+@ %
+<<use-eventCounts>>=
+@ %
+<<opt54, echo=FALSE>>=
+@ %
+\end{fullwidth}
+
+The following code fits from two slightly different GAM smoothing
+models, leading to the plots shown in Figure \ref{fig:planeCrash}:
+\begin{fullwidth}
+<<opt78, echo=FALSE>>=
+@ %
+<<plotGAM, eval=FALSE>>=
+@ %
+<<opt54, echo=FALSE>>=
+@ %
+\end{fullwidth}
+\begin{fullwidth}
+\begin{figure*}
+\vspace*{-12pt}
+<<plotGAM, w=8.5, h=3.5, mfrow=c(1,2), top=2, out.width="0.97\\textwidth", echo=FALSE>>=
+@ %
+\vspace*{-6pt}
+\caption{Estimated number of events (aircraft crashes) per time
+  interval versus time.  In Panel A, the outcome variable was events
+  per day, while in Panel B it was events per
+  week,\label{fig:planeCrash}}
+\end{figure*}
+\end{fullwidth}
+
+The argument `\txtt{k}' to the function \txtt{s()} that sets up the
+smooth controls the temporal resolution.  A large \txtt{k} allows, if the data
+seem to justify it, for fine resolution. A penalty is applied that discriminates
+against curves that are overly ``wiggly''.  The resolution in Panel B is
+limited, also, by use of number of events per week, rather than number
+of events per day, as the outcome.
+\enlargethispage{12pt}
+
+Not all count data is suitable for modeling assuming a Poisson type
+rare event distribution. For example, the dataset
+\url{http://maths-people.anu.edu.au/~johnm/stats-issues/data/hurric2014.csv}
+has details, for the years 1950-2012, of US deaths from Atlantic
+hurricanes.  For any given hurricane, deaths are not at all independent
+rare events.
+
+\section{Classification}
+
+Classification models have the character of regression models where
+the outcome is categorical, one of $g$ classes.  For example, the
+\texttt{fgl} (forensic glass) dataset that will be used as an example
+has measurements of each on nine physical properties, for 214 samples
+of glass that are classified into $g=6$ different glass types.  For
+the special case $g = 2$, logistic regression models are an
+option. The approaches described here are more general in that they
+are able to handle $g > 2$ classes.
+
+This section will describe a very limited range of available
+approaches.  For details
+on how and why these methods work, it will be necessary to look
+elsewhere.\sidenote{Limited further details and references are provided in
+  Maindonald and Braun: {\em Data Analysis and Graphics
+    Using R}, Cambridge University Press, 3$^{rd}$ edn 2010.}
+
+Linear discriminant analysis (LDA), and quadratic
+discriminant analysis (QDA) which slightly generalizes LDA,
+both use linear functions of the explanatory variables in the
+modeling of the probabilities of group membership.  These
+methods will be contrasted with the strongly non-parameteric
+approaches of tree-based classification and of random forests.
+
+\subsection*{Linear and quadratic discriminant analysis}
+
+The functions that will be used are \txtt{lda()}
+and \txtt{qda()}, from the \textit{MASS} package.  The function
+\txtt{lda()} implements linear discriminant analysis, while
+\txtt{qda()} implements quadratic discriminant analysis.\sidenote{Quadratic
+discriminant analysis is an adaptation of linear discriminant analysis
+to handle data where the variance-covariance matrices of the different
+classes are markedly different.}
+
+<<loadMASS>>=
+@ %
+
+Results from use of \txtt{lda()} lead very
+  naturally to useful and informative plots.  Where \txtt{lda()}
+  gives results that are a sub-optimal fit to the data,
+  the plots may hint at what type of alternative method
+  may be preferable.  They may identify subgroups of
+  the orginal $g$ groups, and/or identify points that seem
+  misclassified.   For $g = 2$ groups the logistic
+regression model, fitted using R's \txtt{glm()} function, is closely
+analagous to the linear discriminant model that is fitted using
+\txtt{lda()}.  The difference can however be important.
+
+An attractive feature of \txtt{lda()} is that the discriminant rule
+that is obtained has a natural representation $r$-dimensional space.
+Providing that there is sufficient independent covariate data, $r$ =
+$g-1$.  The analysis leads\sidenote{This is based on a {\em spectral}
+  decomposition of the model matrix.}  to $r$ sets of scores, where
+each set of scores explains a successively smaller (or at least, not
+larger) proportion of the sum of squares of differences of group means
+from the overall mean.
+\marginnote{With three groups, two dimensions will account for
+  all the variation.  A scatterplot is then a geometrically complete
+  representation of what the analysis has achieved.}
+The $r$ sets of scores can be examined using a
+pairs plot.  With larger numbers of groups, it will often happen that
+a two or at most three dimensions will account for most of the
+variation.
+
+\subsection*{Use of \txtt{lda()} to analyse the forensic glass data}
+
+As noted above, the data frame \txtt{fgl} has 10 measured physical
+characteristics for each of 214 glass fragments that are classified
+into 6 different types.  First, fit a linear discriminant analysis,
+and use leave-one-out cross-validation to check the accuracy, thus:
+<<fgl-ldaCV, eval=TRUE, echo=TRUE>>=
+@ %
+
+The function \txtt{confusion()} (\textit{DAAG}) makes it easy to
+get all the above output.  Enter:
+<<confusion, eval=FALSE>>=
+@ %
+
+\subsection*{Two-dimensional representation}
+
+Now fit the model with \txtt{CV=FALSE}, which is the default:
+<<fgl-lda>>=
+@ %
+The final three lines of the output, obtained by entering
+\txtt{fgl.lda} at the command line, are:
+\begin{Schunk}
+\begin{Soutput}
+Proportion of trace:
+  LD1   LD2   LD3   LD4   LD5
+0.815 0.117 0.041 0.016 0.011
+\end{Soutput}
+\end{Schunk}
+The numbers show the successive proportions of a measure of the
+variation that are accounted for by projections onto spaces with
+successively larger numbers of dimensions.  Observe that most of the
+discriminatory power is in the first two dimensions.
+
+% $
+
+Figure \ref{fig:fgl} shows the two-dimensional
+representation.  Code is:
+<<fgl-scores2D, eval=FALSE, echo=2:8>>=
+@ %
+
+\begin{figure}
+<<fgl-scores2D, eval=TRUE, echo=FALSE, w=5, h=3.5, cache=FALSE, out.width="0.85\\textwidth">>=
+@ %
+\caption{Visual representation of scores from a
+  {\em linear discriminant analysis}, for the forensic glass data.  A
+  six-dimensional pattern of separation between the categories has
+  been collapsed to two dimensions.  Some categories may therefore
+be better distinguished than is evident from this figure.\label{fig:fgl}}
+\end{figure}
+
+Additionally, it may be useful to examine the plot of the third
+versus the second discriminant.  Better still, use the abilites of the
+\textit{rgl} package to examine a 3-dimensional dynamic representation.
+
+With most other methods, a low-dimensional representation does not
+arise so directly from the analysis. An approach that will be
+demonstrated with random forests can be adapted for use with
+other methods.
+
+\subsection*{Two groups -- comparison with logistic regression}
+
+The approach is to model the probabability of class membership given
+the covariates, using the same logistic model as for linear and
+quadratic discriminant analysis.  With $\pi$ equal to the probability
+of membership in the second class, the model assumes that
+\[ \log(\pi/(1-\pi) = \beta' \mathbf{x}\]
+where $\beta$ is a vector of  coefficients that are to be estimated,
+and $\mathbf{x}$ is a vector of covariate values.
+
+The following comments on logistic regression
+\marginnote{Technicalities of logistic regression, using, e.g.,
+  R's function \txtt{glm()}:
+  \begin{itemizz}
+\item[-] The fitting procedure minimizes the {\em deviance}. This
+  equals 2 ( {\em loglikelihood} for fitted model - loglikelihood for
+  `saturated' model). The `saturated model has predicted values
+equal to observed values.
+\item[-] Standard errors and Wald statistics (roughly comparable to
+  $t$-statistics) are given for parameter estimates.  These
+  depend on approximations that may fail if predicted proportions are
+  close to 0 or 1 and/or the sample size is small.
+\item[-] Logistic regression is a special case of a Generalized Linear
+  Model (GLM).
+\end{itemizz}
+}
+highlight points of difference from linear discriminant analysis:
+
+\begin{itemize}
+\item There is no provision to adjust predictions to take account of
+prior probabilities, though this can be done as an add-on to the analysis.
+\item Inference is conditional on the observed covariate values. A model
+  for the probability of covariate values $\mathbf{x}$ given the class
+  $c$, as for linear discriminant analysis, is not required.
+  (Linear discriminant analysis assumes a multivariate normal distribution
+  assumptions for $\mathbf{x}$, given the class $c$. In practice, results
+  seem relatively robust against failure of this assumption.)
+\item The logit model uses the {\em link} function $f(\pi) =
+  \log(\pi/(1-\pi)$. Other choices of link function are available.
+  Where there are sufficient data to check whether one of these other
+  links may be more appropriate, this should be checked.  Or there may
+  be previous experience with comparable data that suggests use of a
+  link other than the logit.
+\item Observations can be given prior weights.
+\end{itemize}
+
+\section{Tree-based methods and random forests}
+On a scale in which highly parametric methods lie at one end and
+highly non-parametric methods at the other, linear discriminant
+methods lie at the parametric end, and tree-based methods and random
+forests at the non-parametric extreme.  An attraction of tree-based
+methods and random forests is that model choice can be pretty much
+automated.
+
+We begin by loading the {\em rpart} package:
+<<load-rpart>>=
+@ %
+
+\marginnote[12pt]{The dataset \margtt{bronchit} may alternatively be
+found in the {\em SMIR} package.}
+For the calculations that follow, data are columns in the data frame
+\texttt{bronchit}, in the {\em DAAGviz} package.
+<<bronchit-first3>>=
+@ %
+Here \txtt{r=1} denotes bronchitis,  while \txtt{r=0}
+indicates that bronchitis is absent.
+In place of the variable \txtt{r} with values 0 and 1, we use a
+factor with levels \txtt{abs} and \txtt{pres} that will be used
+to give more meaningful labels in the output.
+<<bronchit-rfac>>=
+@ %
+
+\marginnote[12pt]{With a factor (\txtt{rfac}) as outcome,
+\txtt{method="class"} is the default.}
+The following fits a tree-based model:
+<<bronchit-rp>>=
+@ %
+\noindent
+Note the desirability of using a splitting rule, here \txtt{"class"}
+that is appropriate to a categorical outcome, rather than one that
+is appropriate for a continuous outcome.
+
+The ``complexity'' paremeter \txtt{cp}, by default set to 0.01,
+controls how far splitting continues.  In practice, it is usual to
+set \txtt{cp} small enough that splitting continues further than
+is optimal, then pruning the tree back. Cross-validation based
+accuracies are calculated at each split, and can be used to determine
+the optimal depth of tree.  Details will not be given at this point,
+as the interest is in trees as a lead-in to random forests.  For
+random forests, the depth of the splits in individual trees is not
+of great consequence --- it is not important for individual trees
+to be optimal.
+
+\begin{marginfigure}
+<<treefig, echo=FALSE, w=3, h=3, out.width="0.98\\textwidth">>=
+@ %
+\caption{Decision tree for predicting whether a miner has
+    bronchitis.
+}\label{fig:tree}
+\end{marginfigure}
+
+Figure \ref{fig:tree} is a visual summary of results from the
+tree-based classification, designed to predict the probability that a
+miner will have bronchitis.  Where the condition at a node is
+satisfied, the left branch is taken. Thus, at the initial node,
+\txtt{cig$<$4.385} takes the branch to the left.  In general (no
+random number seed), the tree may be different for each
+different run of the calculations.
+
+Tree-based classification proceeds by constructing a sequence of
+decision steps. At each node, the split is used that best separates
+the data into two groups.  Here (Figure \ref{fig:tree}) tree-based
+regression does unusually well (CV accuracy = 97.2\%), perhaps because
+it is well designed to reproduce a simple form of sequential decision
+rule that has been used by the clinicians.
+
+\begin{marginfigure}
+Code for Figure \ref{fig:tree} is:
+<<treefig, eval=FALSE, echo=2:3>>=
+@ %
+\end{marginfigure}
+
+How is `best' defined? Splits are chosen so that the Gini index of
+``impurity'' is minimized.  Other criteria are possible, but this is
+how \txtt{randomForest()} constructs its trees.
+
+\subsection{Random forests}
+
+<<loadrf>>=
+@ %
+
+Figure \ref{fig:brontrees} shows trees that have been fitted to
+different bootstrap samples of the bronchitis data.  Typically 500 or
+more trees are fitted, without a stopping rule.  Individual trees are
+likely to overfit.  As each tree is for a different random sample of
+the data, there is no overfitting overall.
+
+\begin{figure}
+<<rf-x-bronchit, echo=FALSE, w=7, h=4.5, mfrow=c(3,4)>>=
+@ %
+\caption{Each tree is for a different bootstrap sample of
+  observations.  The final classification is determined by a random
+  vote over all trees.  Where there are $>$ 2 explanatory variables
+  (but not here) a different random sample of variables is typically
+  used for each different split. The final classification is
+  determined by a random vote over all trees.}\label{fig:brontrees}
+\end{figure}
+
+For each bootstrap sample, predictions are made for the observations
+that were not included -- i.e., for the out-of-bag data.  Comparison
+with the actual group assignments then provides an unbiased estimate
+of accuracy.
+
+For the \texttt{bronchit} data, here is the \texttt{randomForest()}
+result.
+<<rf-bronchit>>=
+@ %
+The accuracy is much better than the \texttt{rpart()} accuracy.  The
+random forest methodology will often improve, sometimes quite
+dramatically, on tree-based classification.
+
+\begin{marginfigure}
+<<proximity-plot, eval=TRUE, echo=FALSE, w=3.5, h=3.65, out.width="0.98\\textwidth">>=
+@ %
+\caption{The plot is designed to represent, in two dimensions, the random
+  forest result. It aims to reflect probabilities of group membership
+  given by the analysis.  It is not derived by a 'scaling' of the
+  feature space.
+}\label{fig:rfbronchit}
+\end{marginfigure}
+%$
+
+Figure \ref{fig:rfbronchit} is a visual summary of the random forest
+classification result.  The proportion of trees in which any pair of
+points appear together at the same node may be used as a measure of
+the ``proximity'' between that pair of points.  Then, subtracting
+proximity from one to obtain a measure of distance, an ordination
+method is used to find an approximates representation of those points in a
+low-dimensional space.
+
+There is a tuning parameter \txtt{mtry} which controls the number of
+randomly chosen variables considered for each tree.  This is not too
+much of an issue for the present data, where there are only two
+explanatory variables.
+
+Code for Figure \ref{fig:rfbronchit} is:
+<<proximity-plot, eval=FALSE, echo=TRUE>>=
+@ %
+
+\subsection*{A random forest fit to the forensic glass data}
+
+The algorithm can be used in a highly automatic manner.  Here then is
+the random forest analysis for the forensic glass data, leaving the
+tuning parameter (\txtt{mtry}) at its default\sidenote{The default is
+  to set \margtt{mtry} to the square root of the total number of
+  variables, rounded up to an integral value.}:
+<<fgl-rf>>=
+@ %
+This improves substantially on the linear discriminant result.
+This may happen because the explanatory variables have effects
+that are non-linear on a logit scale.  The more likely reason
+is that there are interaction effects, perhaps of a relatively
+complicated kind, for which the \txtt{lda()} analysis has not
+accounted.
+
+The predictive accuracy might be further improved by varying the
+tuning parameter \txtt{mtry} from its default.  See \txtt{help(tuneRF)}
+for details of the function \txtt{tuneRF()} that is designed to
+assist in findind=g the optimum choice of \txtt{mtry}.
+
+\section{$^*$Ordination}
+
+\marginnote{An ordination might alternatively be based on road travel
+  times, or on air travel times.}
+From Australian road travel distances between cities and larger towns,
+can we derive a plausible ``map'', or ``ordination'', showing the relative
+locations?  The resulting ``map'' would give a better indication
+than a geographical map of the road travel effort involved in getting
+from one place to another.
+
+\marginnote{The ordination methods described here are all versions of
+multi-dimensional scaling (MDS).  If distances are not already given,
+a first tasl is to calculate `distances' between points.  Or if
+similarities are given, they must be first be transformed into `distances'.}
+
+Genomic data provides another example. Various methods are available
+for calculating genomic ``distances '' between, e.g., different insect
+species. The distance measures are based on evolutionary models that
+aim to give distances between pairs of species that are a monotone
+function of the time since the two species separated.
+
+Ordination is a generic name for methods for providing a low-dimensional
+view of points in multi-dimensional space, such that ``similar'' objects
+are near each other and dissimilar objects are separated.  The plot(s)
+from an ordination in 2 or 3 dimensions may provide useful visual clues
+on clusters in the data and/or on outliers.
+
+One standard type of problem starts from a matrix $\bX$ of $n$
+observations by $p$ variables, then seeking a low-dimensional
+representation.  A first step is then to calculate distances between
+observations.\sidenote{Principal components analysis
+  circumvents the calculation of distances, for the commonly used
+  Euclidean distance measure.  See below.}
+  The hope is that a major part of the information
+content in the $p$ variables, as it relates to the separation between
+observations, can be pretty much summarized in a small number of
+constructed variables.
+
+There is typically no good model, equivalent
+to the evolutionary models used by molecular biologists, that can be
+used to motivate distance calculations.  There is then a large element
+of arbritariness in the distance measure used.
+Results may depend strongly on the distance measure used.  Unless
+measurements are comparable (e.g., relative growth, as measured
+perhaps on a logarithmic scale, for different body measurements), it
+is usually desirable to calculate distances from standardized variable
+values.  This is done by subtracting the mean and dividing by the
+standard deviation.
+
+If data can be separated into known classes that should be reflected
+in any ordination, then the scores from classification using
+\txtt{lda()} may be a good basis for an ordination. Plots in 2 or
+perhaps 3 dimensions may then reveal additional classes and/or
+identify points that may be misclassified and/or are in some sense
+outliers.  They give an indication of the effectiveness of the
+discrimination method in choosing the boundaries between classes.
+
+Figure \ref{fig:rfbronchit} demonstrated the use of ``proximities''
+that are available from \txtt{randomForest()} as measures of the
+closeness of any pair of points.  These were then turned into rough
+distance measures that then formed the basis for an ordination.  With
+Support Vector Machines, distance measures can be derived from the
+'decision values' and used for ordination.
+
+\subsection{Distance measures}
+
+\subsection*{Euclidean distances}
+
+Treating the rows of $\bX$ ($n$ by $p$) as points in a $p$-dimensional
+space, the squared Euclidean distance  $d_{ij}^2$ between points $i$ and $j$ is
+\[
+ d_{ij}^2 = \sum_{k=1}^p (x_{ik}-x_{jk})^2
+\]
+The distances satisfy the triangle inequality\sidenote{This says
+  that a straight line is the shortest distance between two points!}
+\[ d_{ij} \le d_{ik} + d_{kj} \]
+
+The columns may be weighted differently.\sidenote{More generally, they
+  can be arbitrarily transformed before calculating the $d_{ij}$.}
+Use of an unweighted measure with all columns scaled to a standard
+deviation of one is equivalent to working with the unscaled columns
+and calculating $d_{ij}^2$ as
+\[
+d_{ij}^2 = \sum_{k=1}^p w_{ij} (x_{ik}-x_{jk})^2
+\]
+where $w_{ij} = (s_i s_j)^{-1}$ is the inverse of the product of
+the standard deviations for columns $i$ and $j$.
+
+Where all elements of a column are positive, use of the
+logarithmic transformation is common. A logarithmic scale makes sense
+for biological morphometric data, and for other data with similar
+characteristics.  For morphometric data, the effect is to focus
+attention on relative changes in the various body proportions,
+rather than on absolute magnitudes.
+
+\subsection*{Non-Euclidean distance measures}
+
+Euclidean distance is one of many possible choices of distance
+measures, still satisfying the triangle inequality.  As an example of
+a non-Euclidean measure, consider the Manhattan distance.
+\marginnote{For the Manhattan distance:
+\[
+ d_{ij} = \sum_{k=1}^p \mid x_{ik}-x_{jk} \mid
+\]
+}
+The Manhattan distance is the shortest distance for a journey that
+always proceeds along one of the co-ordinate axes.  In Manhattan in
+New York, streets are laid out in a rectangular grid.  This is then
+(with $k=2$) the walking distance along one or other street.  For
+other choices, see the help page for the function
+\txtt{dist()}.\sidenote{The function \txtt{daisy()} in the
+  \textit{cluster} package offers a wider choice, including
+  distance measures for factor or ordinal data.  Its
+  argument \txtt{stand} causes prior standardization of data.
+\vspace{12pt}
+}
+
+\subsection*{From distance values to a representation in Euclidean space}
+
+Irrespective of the method of calculation of the distance measure,
+ordination methods yield a representation in Euclidean space.  It is
+always possible to find a configuration $\sfX$ in Euclidean space in
+which the ``distances'' are approximated, perhaps rather
+poorly.\sidenote{This is true whether ot not the triangle inequality
+  is satisfied.}  It will become apparent in the course of seeking the
+configuration whether an exact embedding (matrix $\sfX$) is possible,
+and how accurate this embedding is.
+The representation is not
+unique.  The matrices $\sfX$ and $\sfX \bP$, where $\bP$ is an
+orthonormal matrix, give exactly the same distances.
+
+
+\subsection*{The connection with principal components}
+\marginnote{We assume that none of the columns can be written as a
+  linear combination of other columns.}
+Let $\bX$ be an $n$ by $p$ matrix that is used for the calculation of
+Euclidean distances, after any transformations and/or weighting.
+Then metric $p$-dimensional ordination, applied to Euclidean distances
+between the rows of $\bX$, yields a representation in $p$-dimensional
+space that is formally equivalent to that derived from the use of
+principal components.  The function \txtt{cmdscale()} yields, by a
+different set of matrix manipulations, what is essentially a principal
+components decomposition.  Principal components circumvents the
+calculation of distances.
+
+\subsection*{Semi-metric and non-metric scaling}
+
+\marginnote[12pt]{The assumption of a Euclidean distance scale is a
+  convenient starting point for calculations.  An ordination that
+  preserves relative rather than absolute distances can often be more
+  appropriate.  Additionally, small distances may be measured more
+  accurately than large distances.}
+Semi-metric and non-metric methods all start from ``distances'', but
+allow greater flexibility in their use to create an ordination. The
+aim is to represent the ``distances'' in some specified number of
+dimensions, typically two dimensions.  As described here, a first step
+is to treat the distances as Euclidean, and determine a configuration
+in Euclidean space.  These Euclidean distances are then used as a
+starting point for a representation in which the requirement that
+these are Euclidean distances, all determined with equal accuracy, is
+relaxed.  The methods that will be noted here are Sammon scaling and
+Kruskal's non-metric multidimensional scaling.
+
+\subsection*{Example -- Australian road distances}
+The distance matrix that will be used is in the matrix \txtt{audists},
+from the \txtt{DAAG} package.  Figure \ref{fig:audists} is from the
+use of classical multi-dimensional scaling, as implemented in the
+function \txtt{cmdscale()}:
+\begin{marginfigure}
+<<aupoints, eval=T, echo=F, w=3.75, h=3.25, left=-2, rt=3, out.width="0.98\\textwidth">>=
+@ %
+\caption{Relative locations of Australian cities, derived from road
+  map distances, using metric scaling.\label{fig:audists}}
+\end{marginfigure}
+Code is:
+<<aupoints, eval=FALSE>>=
+@ %
+
+\noindent
+An alternative way to add names of cities or other labels is to use
+\txtt{identify()} to add labels interactively, thus:
+<<identify, eval=FALSE>>=
+@
+
+Classical multi-dimensional scaling, as implemented by
+ \txtt{cmdscale()}, gives long distances the same weight as short
+ distances.  It is just as prepared to shift Canberra around relative
+ to Melbourne and Sydney, as to move Perth.  It makes more sense to
+ give reduced weight to long distances, as is done by \txtt{sammon()}
+ (\textit{MASS}).
+<<load-oz, eval=TRUE, echo=FALSE>>=
+@ %
+
+<<cfPhysical,  eval=TRUE, echo=FALSE>>=
+@ %
+
+\begin{figure*}[h]
+<<au-both, echo=FALSE, w=5.5, h=4.5, out.width="0.47\\textwidth">>=
+<<au-overlay>>
+mtext(side=3, line=0.5, adj=0, "A: Using Classical MDS")
+<<au-sammon>>
+mtext(side=3, line=0.5, adj=0, "B: Using Sammon Scaling")
+@ %
+      \caption{In Panel A, Figure \ref{fig:audists} has been linearly
+        transformed, to give a best fit to a map of Australia.  Each city
+        moves as shown by the line that radiates out from it.  Panel B
+        is the equivalent plot for Sammon scaling.
+\label{fig:aufit}}
+ \end{figure*}
+ Figure \ref{fig:aufit} shows side by side the overlays of the
+ ``maps'' that result from the different ordinations, onto a physical
+ map of Australia.  Panel A shows the result for classical
+ multi-dimensional scaling.  Panel B does the same, now for the result
+ from Sammon scaling.  Notice how Brisbane, Sydney, Canberra and
+ Melbourne now maintain their relative positions better.
+
+
+
+To see the code for Figure \ref{fig:aufit}, source the file that has the
+code for the figures of this chapter, and type:
+<<type-11_x, eval=FALSE>>=
+fig12.15A
+fig12.15B
+@ %
+
+The exercise can be repeated for multidimensional scaling (MDS). MDS
+preserves only, as far as possible, the relative distances.  A
+starting configuration of points is required.  This might come from
+the configuration given by \txtt{cmdscale()}.  For the supplementary
+figure \txtt{supp12.1()} that shows the MDS configuration, however, we
+use the physical latitudes and longitudes.
+
+To show this figure, source the file, if this has not been done
+previously, that has the code for the figures of this chapter. Then
+type:
+<<supp-12_1, eval=FALSE>>=
+supp12.1()
+@ %
+
+\section*{References}
+\begin{itemizz}
+\item[] Cowpertwait P.~S.~P.\ and Metcalfe A.~V.\ 2009.
+\newblock {\em Introductory Time Series with R.} Springer.
+\item[]
+Hyndman, R.~J.; Koehler, A.~B.; Od, J.~K.; and Snyder, R.~D. 2008.
+\newblock {\em Forecasting with Exponential Smoothing: The State Space
+  Approach\/}, 2$^{nd}$ edn, Springer.
+\item[] Taleb, Naseem. 2004.  \newblock {\em
+    Fooled By Randomness: The Hidden Role Of Chance In Life And In The
+    Markets.} Random House, 2ed.\newline [Has insightful comments
+  about the over-interpretation of phenomena in which randomness is
+  likely to have a large role.]
+\end{itemizz}

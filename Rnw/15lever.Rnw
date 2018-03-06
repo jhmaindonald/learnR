@@ -1,0 +1,366 @@
+% !Rnw root = learnR.Rnw
+<<echo=FALSE, cache=FALSE>>=
+opts_knit$set(self.contained=FALSE)
+@
+
+<<echo=FALSE, cache=FALSE>>=
+Hmisc::knitrSet()
+Hmisc::knitrSet(w=3, h=3.15)
+opts_chunk$set(fig.path='figs/15-', cache.path='cache/15-',
+               fig.align='center', dev='pdf',  
+               fig.show='hold', out.width="0.47\\textwidth", 
+               tidy=FALSE, comment=NA)
+pdf.options(pointsize=12)
+oldopt <- options(digits=4)
+read_chunk("../scripts/lever-code.R")
+@ %
+
+\section{Manipulation of Language Constructs}
+
+Language structures can be manipulated, just like any other object.
+Below, we will show how formulae, expressions, and argument lists
+for functions, can be pasted together.
+
+\subsection{Manipulation of Formulae}
+
+Formulae are a key idea in R, though their implementation is
+incomplete. They are widely available for specifying graphs,
+models and tables. Details will be given below.
+
+\subsection*{Model, graphics and table formulae}
+We demonstrate the construction of model or graphics formulae from
+text strings. The following plots the column \txtt{mpg}, from the data
+frame \txtt{mtcars} (\textit{MASS}), against \txtt{disp}:
+<<mgpVSdisp, eval=FALSE>>=
+@ %
+The following gives the same result:
+<<mgpVSdisp-equiv, eval=FALSE>>=
+@ %
+The usefulness of this second way to do the plot is that \txtt{yvar}
+and \txtt{xvar} can be arguments to a function.  Then, \txtt{xvar} and
+\txtt{yvar} can be any pair of columns.  Here is the function:
+<<fun-args, eval=FALSE>>=
+@ %
+
+The data frame \txtt{mtcars} has 11 columns from which we might want
+to choose the two axes for a scatterplot:
+<<mtcars-nam>>=
+@ %
+
+The following calls the function with \txtt{xvar="hp"} and
+\txtt{yvar="mpg"}:
+<<mtcars-gph, eval=FALSE>>=
+@ %
+
+\subsection{Extraction of names from a formula}
+
+Use the function \txtt{all.vars()} to extract the variable names from
+a formula, thus:
+<<all-vars>>=
+@ %
+
+As well as using a formula to specify the graph, the following gives
+more informative $x$- and $y$-labels:
+\begin{fullwidth}
+<<mtcars-gph-plus, eval=FALSE>>=
+@ %
+\end{fullwidth}
+
+\section{Function Arguments and Environments}
+
+\subsection{Extraction of arguments to functions}
+
+A simple use of \txtt{substitute()} is to extract a text string
+representation of a function argument:
+<<mtcars-subs, eval=FALSE>>=
+@ %
+
+\subsection{Use of a list to pass parameter values}
+The following are equivalent:
+<<do.call, eval=FALSE>>=
+@ %
+
+Use of \txtt{do.call()} allows the parameter list to be set up in
+advance of the call. The following shows the use of \txtt{do.call()}
+to achieve the same effect as \verb!mean(possum$totlngth)!:
+<<do-possum, eval=FALSE>>=
+@ %
+This makes more sense in a function, thus:
+<<av-fun, eval=FALSE>>=
+@ %
+
+This allows, e.g., the following:
+<<av-exec, eval=FALSE>>=
+@ %
+
+Note also \txtt{call()}, which sets up an unevaluated expression.
+The expression can be evaluated at some later time, using \txtt{eval()}.
+Here is an example:
+<<later-eval>>=
+@ %
+Notice that the argument \txtt{x} was evaluated when \txtt{call()}
+was evoked. The result is therefore unchanged upon repeating the
+call \txtt{eval(mean.call)}. This can be verified by printing out the
+expression:
+\begin{fullwidth}
+<<opt78, echo=FALSE>>=
+@ %
+<<mean-call>>=
+@ %
+<<opt54, echo=FALSE>>=
+@ %
+\end{fullwidth}
+
+\subsection{Function environments}
+Every call to a function creates a frame that contains the local
+variables created in the function. This combines with the environment
+in which the function was defined to create a new environment.
+
+The global environment, \txtt{.Globalenv}, is the workspace.  This is
+frame 0. The frame number increases by 1 with each new function
+call.\sidenote[][-2cm]{Additionally, frames may be referred to by name. Use
+\begin{list}{}{
+\setlength{\itemsep}{1pt}
+\setlength{\parsep}{1pt}}
+\item[] \txtt{sys.nframe()} to get the number of the
+current evaluation frame
+
+\item[] \txtt{sys.frame(sys.nframe())} to identify the frame by
+name
+
+\item[] \txtt{sys.parent()} to get the number of the parent frame.
+\end{list}
+}
+
+
+Here is code that determines, from within a function,
+the function name:
+<<fun-name>>=
+@ %
+
+When a number of graphs are required, all for the one dociment, a
+sequential naming system, e.g., \txtt{fig1()}, \txtt{fig2()}, \ldots,
+may be convenient, with matching names \textbf{fig1.pdf},
+\textbf{fig2.pdf}, \ldots for the respective graphics files.  The
+following function \txtt{gf()} generates the file name automatically,
+for passing to the graphics device that is opened.
+<<auto-name, eval=FALSE>>=
+@ %
+
+Now create a function that calls \txtt{gf()}:
+<<fig1, eval=FALSE>>=
+@ %
+\noindent
+Output goes to the file \textbf{fig1.pdf}.  For a function
+\txtt{fig2()} that calls \txtt{gf()}, output goes to the file
+\textbf{fig2.pdf}, and so on.
+
+\subsection*{Scoping of object names}
+Local objects are those that are created within the body of the
+function.  Objects that are not local and not passed as parameters are
+first searched for in the frame of the function, then in the parent
+frame, and so on. If they are not found in any of the frames, then
+they are sought in the search list.
+
+\section{Creation of R Packages}
+\marginnote{The RStudio documentation includes a large amount of
+information on package preparation, testing, and submission to
+CRAN or other repositories.  Click on\\
+\underline{Help} | \underline{RStudio Docs}\\
+\noindent and look under\\
+\underline{PACKAGE DEVELOPMENT}.}
+Much of the functionality of R, for many important tasks, comes from
+the packages that are built on top of base R. Users who make extenive
+use of R may soon find a need to document and organize both their
+own functions and associated data. Packages are the preferred vehicle
+for making functions and/or data available to others, or for use by
+posterity.
+
+Organisation of data and functions into a package may have the
+following benefits:
+\begin{itemize}
+\item Where the package relates to a project, it should be straightforward
+to return to the project at some later time, and/or to pass the project
+across to someone else.
+\item Attaching the packages give immediate access to functions, data
+  and associated documentation.
+\marginnote[12pt]{CRAN checks include checks for consistency between
+    code and documentation, e.g., in names of arguments.  Code must
+    conform to CRAN standards.}
+\item Where a package is submitted to CRAN (Comprehensive R Archive
+  Network) and used by others, this extends opportunities for testing
+  and/or getting contributions from other workers. Checks that are
+  required by CRAN ensure that the package (code and documentation)
+  meets certain formal standards.
+\end{itemize}
+
+It is relatively straightforward to create packages that make no calls
+to externally compiled C or Fortran code. A good starting point is a
+very simple example package that can be created from within RStudio,
+and can be used as a starting point for further development.
+Click on\\
+\underline{File} | \underline{New Project \ldots} |
+\underline{New Directory} | \underline{R Package} \\
+\noindent and fill in the spaces as appropriate.  Thus, as an example,
+create the project as a subdirectory of \textbf{$~$/pkgs}, with the
+name {\em testpkg}.  The effect will be to create the subdirectory
+\textbf{$~$/pkgs/testpkg/} as the project directory, which is also
+the package directory.  The package directory contains the following
+files:
+\begin{itemize}
+  \marginnote[15pt]{Note also several files whose name starts with
+    '\textbf{.}', plus \textbf{testpkg.Rproj} which is used by RStudio.
+    These can be left as they are. All package directories have this
+    same basic structure, though usually with some further
+    subdirectories.  In particular, most packages will have a
+    subdirectory \textbf{data} that holds data files.}
+
+\item \textbf{DESCRIPTION}, with enough details entered to allow
+creation of the package to proceed.
+\item \textbf{NAMESPACE}, with details entered that will allow
+creation of a package to proceed.
+\item The sub-directory \textbf{R}, containing only the R script file
+ \textbf{hello.R}
+\item The sub-directory \textbf{man}, containing only the help file
+ \textbf{hello.Rd}
+\end{itemize}
+The code for the function \txtt{hello()} will appear in the ``Files''
+panel, which in an off-the-shelf RStudio installation will appear
+in the lower left panel.
+
+The package, although missing some features, can be loaded into the
+session as it stands.  Click on \underline{Build} (in the top right
+panel, for the default panel layout), then on \underline{Build \&
+  Reload}.  The package will be built and loaded into the session.
+Unless the relevant {\em Rtools} have been installed on the
+system,\sidenote{This has to be done from the operating system, not
+  from R.} the attached version of the package will lack some standard
+features, and a warning will accordingly appear.  For
+building a \txtt{.tar.gz} package file, click on
+\underline{Build}, then on \underline{More} | \underline{Build Source
+  Package}.
+
+This may be a good point at which to try adding your own further
+function and/or dataset.  Click on\\
+\qquad \underline{File} | \underline{New File} | \underline{R
+  Script}\\
+\noindent and type in, e.g., the following function:
+\begin{fullwidth}
+<<opt78, echo=FALSE>>=
+@ %
+<<breakIntoWords>>=
+@ %
+<<opt56, echo=FALSE>>=
+@ %
+\end{fullwidth}
+
+Select the function code and click \underline{Run} to load
+the function into your session.  Then type, for example:
+\begin{fullwidth}
+<<opt78, echo=FALSE>>=
+@ %
+<<BIWtest>>=
+@ %
+\end{fullwidth}
+
+\marginnote[12pt]{The function can be improved!  The fullstop
+should be dropped from the final word.}
+Now type
+<<BIWhelp, eval=FALSE>>=
+@ %
+In the help file thus created, replace
+\verb!%%  ~~function to do ... ~~! \\
+\noindent by a title, e.g.,\\
+\verb!Break sentence into words!.\\
+\noindent Other entries should
+in due course also get attention, but this is enough to
+allow \underline{Build \& Reload} to run.
+
+\subsection*{Namespaces}
+Packages can have their own namespaces, with private functions and
+classes that are not ordinarily visible from the command line, or from
+other packages.  For example, the function \txtt{intervals.lme()}
+that is part of the \textit{lme} package must be called via the generic
+function \txtt{intervals()}.
+
+\section{S4 Classes and Methods}\label{sec:s4}
+There are two implementations of classes and methods -- those of
+version 3 of the S language (S3), and those of version 4 of the S
+language (S4).  The \textit{methods} package supplies the
+infrastructure for the S4 implementation. This extends the abilities
+available under S3, builds in checks that are not available with S3,
+and are is conducive to good software engineering practice.  The
+Bioconductor bundle of packages makes extensive use of S4 style
+classes and methods. See \txtt{help(Methods)} (note the upper case M)
+for a brief overview of S4 classes and methods.
+
+Where available, extractor functions should be used to extract slot
+contents. If this is not possible, use the function
+\txtt{slotNames()} to obtain the names of the slots, and either the
+function \txtt{slot()} or the operator \verb!@! to extract or
+replace a slot.  For example:
+<<S4>>=
+@ %
+
+The following are alternative ways to display the contents of the
+\txtt{"call"} slot:
+\begin{fullwidth}
+<<slot-call>>=
+@ %
+\end{fullwidth}
+
+Where available, use an extractor function to extract some relevant
+part of the output, thus:
+<<coef-lmList>>=
+@ %
+
+For moderately simple examples of the definition and use of S4 classes
+and methods, see \txtt{help(setClass)} and \txtt{help(setMethod)}.
+
+How is it possible to identify, for a particular S4 class, the
+function that implements a method.  To identify the function
+in the \txtt{sp} package that implements the \txtt{spplot} method
+for \txtt{SpatialGridDataFrame} objects, type:
+<<selectMethod>>=
+@ %
+This makes it clear that the \txtt{spplot} method for
+\txtt{SpatialGridDataFrame} objects calls the function
+\txtt{spplot.grid()}. To display the function \txtt{spplot.grid()},
+type:
+<<fromNS, eval=FALSE>>=
+@ %
+\noindent
+Alternatively, use the less targeted
+\txtt{getAnywhere("spplot.grid")}.
+
+Use \txtt{showMethods()} to show all the methods for one or more
+classes of object.  For example:
+<<showMethods, eval=FALSE>>=
+@ %
+
+\section{Summary}
+\begin{itemize}
+\item[] Language structures (formulae and expressions) can be manipulated,
+just like any other object.
+
+\item[] R uses formulae to specify models, graphs and (\txtt{xtabs()}
+only) tables.
+
+\item[] The expression syntax allows the plotting of juxtaposed text
+strings, which may include mathematical text.
+
+\item[] All evaluations have an environment that determines what
+  objects will be visible. This can be especially important for the
+writing and testing of functions.
+
+\item[] Packages are the preferred vehicle for making substantial
+  collections of functions and/or data available to others, or for use
+  by posterity.  They facilitate re-use of code and enforce checks for
+  common inconsistencies. They make it straighforward to enforce high
+  standards of documentation.
+
+\item[] Many of R's more recent packages use S4 classes and methods.
+Extractor functions are in most cases available that can provide
+imformation that is required.
+
+\end{itemize}
