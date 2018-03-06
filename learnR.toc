@@ -162,104 +162,104 @@
 \contentsline {section}{\numberline {9.5}Summary}{126}{section.9.5}
 \contentsline {section}{\numberline {9.6}Exercises}{126}{section.9.6}
 \contentsline {chapter}{\numberline {10}Dynamic Interaction with Graphs}{129}{chapter.10}
-\contentsline {section}{\numberline {10.1}Dynamic Graphics -- \textit {rgl}}{130}{section.10.1}
-\contentsline {section}{\numberline {10.2}The {\em googleVis} Package}{131}{section.10.2}
+\contentsline {section}{\numberline {10.1}Dynamic Graphics -- \textit {rgl}}{129}{section.10.1}
+\contentsline {section}{\numberline {10.2}The {\em googleVis} Package}{130}{section.10.2}
 \contentsline {subsection}{\numberline {10.2.1}Google's Public Data Explorer}{131}{subsection.10.2.1}
 \contentsline {subsection}{\numberline {10.2.2}Use of {\em googleVis} to create motion charts}{131}{subsection.10.2.2}
-\contentsline {chapter}{\numberline {11}Regression with Linear Terms and Factors}{135}{chapter.11}
-\contentsline {section}{\numberline {11.1}Linear Models in R -- Basic Ideas}{135}{section.11.1}
-\contentsline {subsection}{\numberline {11.1.1}Straight line regression -- algebraic details}{136}{subsection.11.1.1}
-\contentsline {subsection}{\numberline {11.1.2}Syntax -- model, graphics and table formulae:}{137}{subsection.11.1.2}
-\contentsline {subsection}{\numberline {11.1.3}Matrix algebra -- straight line regression example}{138}{subsection.11.1.3}
-\contentsline {subsection}{\numberline {11.1.4}A note on the least squares methodology}{138}{subsection.11.1.4}
-\contentsline {section}{\numberline {11.2}Checks --- Before and After Fitting a Line}{139}{section.11.2}
-\contentsline {paragraph}{Untransformed scales:}{139}{paragraph*.33}
-\contentsline {paragraph}{Logarithmic scales:}{139}{paragraph*.34}
-\contentsline {paragraph}{The common benefits of a logarithmic transformation:}{140}{paragraph*.35}
-\contentsline {subsection}{\numberline {11.2.1}$^*$Diagnostics -- checks on the fitted model}{141}{subsection.11.2.1}
-\contentsline {paragraph}{Panel 2 --- A check for normality:}{142}{paragraph*.36}
-\contentsline {paragraph}{Panel 3 --- Is the variance constant?:}{143}{paragraph*.37}
-\contentsline {paragraph}{Panel 4 --- a check for high leverage points:}{143}{paragraph*.38}
-\contentsline {subsection}{\numberline {11.2.2}The independence assumption is crucial}{143}{subsection.11.2.2}
-\contentsline {section}{\numberline {11.3}$^*$Simulation Based Checks}{144}{section.11.3}
-\contentsline {section}{\numberline {11.4}Key questions for the use of models}{145}{section.11.4}
-\contentsline {paragraph}{The choice of method:}{145}{paragraph*.39}
-\contentsline {paragraph}{Which are the important variables?}{146}{paragraph*.40}
-\contentsline {section}{\numberline {11.5}Factor Terms -- Contrasts}{146}{section.11.5}
-\contentsline {subsection}{\numberline {11.5.1}Example -- tomato root weight}{147}{subsection.11.5.1}
-\contentsline {subsection}{\numberline {11.5.2}Factor terms -- different choices of model matrix}{148}{subsection.11.5.2}
-\contentsline {section}{\numberline {11.6}Regression with two explanatory variables}{151}{section.11.6}
-\contentsline {subsection}{\numberline {11.6.1}The regression fit}{152}{subsection.11.6.1}
-\contentsline {section}{\numberline {11.7}Variable Selection -- Stepwise and Other}{153}{section.11.7}
-\contentsline {subsection}{\numberline {11.7.1}Use of simulation to check out selection effects:}{154}{subsection.11.7.1}
-\contentsline {paragraph}{The extent of selection effects -- a detailed simulation:}{154}{paragraph*.41}
-\contentsline {paragraph}{Examples from the literature}{155}{paragraph*.42}
-\contentsline {subsection}{\numberline {11.7.2}Variable and model selection -- strategies}{155}{subsection.11.7.2}
-\contentsline {section}{\numberline {11.8}1970 cost for US electricity producers}{155}{section.11.8}
-\contentsline {subsection}{\numberline {11.8.1}Model fitting strategy}{156}{subsection.11.8.1}
-\contentsline {section}{\numberline {11.9}An introduction to logistic regression}{159}{section.11.9}
-\contentsline {section}{\numberline {11.10}Exercises}{161}{section.11.10}
-\contentsline {chapter}{\numberline {12}A Miscellany of Models \& Methods}{163}{chapter.12}
-\contentsline {section}{\numberline {12.1}Regression with Fitted Smooth Curves}{163}{section.12.1}
-\contentsline {subsection}{\numberline {12.1.1}Locally weighted scatterplot smoothers}{164}{subsection.12.1.1}
-\contentsline {subsection}{\numberline {12.1.2}Contours from 2-dimensional Smooths}{164}{subsection.12.1.2}
-\contentsline {section}{\numberline {12.2}Hierarchical Multi-level Models}{165}{section.12.2}
-\contentsline {section}{\numberline {12.3}Regular Time Series in R}{166}{section.12.3}
-\contentsline {subsection}{\numberline {12.3.1}Data exploration -- the Lake Erie data}{167}{subsection.12.3.1}
-\contentsline {subsection}{\numberline {12.3.2}Fitting and use of an autoregressive model}{169}{subsection.12.3.2}
-\contentsline {subsection}{\numberline {12.3.3}Regression with time series errors}{170}{subsection.12.3.3}
-\contentsline {subsection}{\numberline {12.3.4}$^*$Box-Jenkins ARIMA Time Series Modeling}{172}{subsection.12.3.4}
-\contentsline {subsection}{\numberline {12.3.5}Count Data with Poisson Errors}{172}{subsection.12.3.5}
-\contentsline {section}{\numberline {12.4}Classification}{174}{section.12.4}
-\contentsline {section}{\numberline {12.5}Tree-based methods and random forests}{177}{section.12.5}
-\contentsline {subsection}{\numberline {12.5.1}Random forests}{178}{subsection.12.5.1}
-\contentsline {section}{\numberline {12.6}$^*$Ordination}{180}{section.12.6}
-\contentsline {subsection}{\numberline {12.6.1}Distance measures}{181}{subsection.12.6.1}
-\contentsline {chapter}{\numberline {13}Map Overlays and Spatial Modeling}{185}{chapter.13}
-\contentsline {section}{\numberline {13.1}Static Overlay onto Maps}{185}{section.13.1}
-\contentsline {subsection}{\numberline {13.1.1}Overlay onto country and regional outlines}{185}{subsection.13.1.1}
-\contentsline {subsection}{\numberline {13.1.2}The {\em dismo} package's Interface to Google maps}{186}{subsection.13.1.2}
-\contentsline {paragraph}{Basic syntax, accepting defaults:}{186}{paragraph*.43}
-\contentsline {paragraph}{Specify map longitude/latitude extent; overlay onto map:}{186}{paragraph*.44}
-\contentsline {paragraph}{Interactive selection of a map extent from a screen display:}{186}{paragraph*.45}
-\contentsline {subsection}{\numberline {13.1.3}The {\em plotKML} package}{187}{subsection.13.1.3}
-\contentsline {subsection}{\numberline {13.1.4}Specifying projections}{187}{subsection.13.1.4}
-\contentsline {section}{\numberline {13.2}Working with Raster (Image) Files}{187}{section.13.2}
-\contentsline {subsection}{\numberline {13.2.1}Overlaying onto a bubble plot}{189}{subsection.13.2.1}
-\contentsline {section}{\numberline {13.3}$^*$Reading and Processing Shapefiles}{189}{section.13.3}
-\contentsline {section}{\numberline {13.4}Other software -- QGIS}{192}{section.13.4}
-\contentsline {section}{\numberline {13.5}References}{192}{section.13.5}
-\contentsline {chapter}{\numberline {14}Brief Notes on Text Mining}{195}{chapter.14}
-\contentsline {section}{\numberline {14.1}Creation of a Volatile Corpus}{195}{section.14.1}
-\contentsline {section}{\numberline {14.2}Creation of a Corpus from PDF Files}{197}{section.14.2}
-\contentsline {section}{\numberline {14.3}Document Collections Supplied With {\em tm}}{198}{section.14.3}
-\contentsline {chapter}{\numberline {15}$^*$Leveraging R Language Abilities }{199}{chapter.15}
-\contentsline {section}{\numberline {15.1}Manipulation of Language Constructs}{199}{section.15.1}
-\contentsline {subsection}{\numberline {15.1.1}Manipulation of Formulae}{199}{subsection.15.1.1}
-\contentsline {subsection}{\numberline {15.1.2}Extraction of names from a formula}{200}{subsection.15.1.2}
-\contentsline {section}{\numberline {15.2}Function Arguments and Environments}{200}{section.15.2}
-\contentsline {subsection}{\numberline {15.2.1}Extraction of arguments to functions}{200}{subsection.15.2.1}
-\contentsline {subsection}{\numberline {15.2.2}Use of a list to pass parameter values}{201}{subsection.15.2.2}
-\contentsline {subsection}{\numberline {15.2.3}Function environments}{201}{subsection.15.2.3}
-\contentsline {section}{\numberline {15.3}Creation of R Packages}{202}{section.15.3}
-\contentsline {section}{\numberline {15.4}S4 Classes and Methods}{204}{section.15.4}
-\contentsline {section}{\numberline {15.5}Summary}{206}{section.15.5}
-\contentsline {chapter}{\numberline {A}$^*$R System Configuration}{207}{appendix.A}
-\contentsline {section}{\numberline {A.1}Fine tuning the installation}{207}{section.A.1}
-\contentsline {paragraph}{The working directory:}{207}{paragraph*.46}
-\contentsline {paragraph}{Multiple (MDI) or Single (SDI) display interface for Windows:}{207}{paragraph*.47}
-\contentsline {section}{\numberline {A.2}Setting the Default CRAN Mirror}{207}{section.A.2}
-\contentsline {section}{\numberline {A.3}R system information}{208}{section.A.3}
-\contentsline {section}{\numberline {A.4}Repositories additional to CRAN}{209}{section.A.4}
-\contentsline {section}{\numberline {A.5}Running R in Batch Mode}{209}{section.A.5}
-\contentsline {section}{\numberline {A.6}The R Windows installation directory tree}{209}{section.A.6}
-\contentsline {section}{\numberline {A.7}Library directories}{210}{section.A.7}
-\contentsline {section}{\numberline {A.8}The Startup mechanism}{211}{section.A.8}
-\contentsline {chapter}{\numberline {B}The R Commander Graphical User Interface}{213}{appendix.B}
-\contentsline {paragraph}{From GUI to writing code:}{213}{paragraph*.48}
-\contentsline {paragraph}{The active data set:}{213}{paragraph*.49}
-\contentsline {paragraph}{Creating graphs:}{213}{paragraph*.50}
-\contentsline {paragraph}{Statistics (\& fitting models):}{214}{paragraph*.51}
-\contentsline {paragraph}{*Models:}{214}{paragraph*.52}
-\contentsline {chapter}{\numberline {C}Color Versions of Selected Graphs}{215}{appendix.C}
+\contentsline {chapter}{\numberline {11}Regression with Linear Terms and Factors}{133}{chapter.11}
+\contentsline {section}{\numberline {11.1}Linear Models in R -- Basic Ideas}{133}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Straight line regression -- algebraic details}{134}{subsection.11.1.1}
+\contentsline {subsection}{\numberline {11.1.2}Syntax -- model, graphics and table formulae:}{135}{subsection.11.1.2}
+\contentsline {subsection}{\numberline {11.1.3}Matrix algebra -- straight line regression example}{136}{subsection.11.1.3}
+\contentsline {subsection}{\numberline {11.1.4}A note on the least squares methodology}{136}{subsection.11.1.4}
+\contentsline {section}{\numberline {11.2}Checks --- Before and After Fitting a Line}{137}{section.11.2}
+\contentsline {paragraph}{Untransformed scales:}{137}{paragraph*.33}
+\contentsline {paragraph}{Logarithmic scales:}{137}{paragraph*.34}
+\contentsline {paragraph}{The common benefits of a logarithmic transformation:}{138}{paragraph*.35}
+\contentsline {subsection}{\numberline {11.2.1}$^*$Diagnostics -- checks on the fitted model}{139}{subsection.11.2.1}
+\contentsline {paragraph}{Panel 2 --- A check for normality:}{140}{paragraph*.36}
+\contentsline {paragraph}{Panel 3 --- Is the variance constant?:}{141}{paragraph*.37}
+\contentsline {paragraph}{Panel 4 --- a check for high leverage points:}{141}{paragraph*.38}
+\contentsline {subsection}{\numberline {11.2.2}The independence assumption is crucial}{141}{subsection.11.2.2}
+\contentsline {section}{\numberline {11.3}$^*$Simulation Based Checks}{142}{section.11.3}
+\contentsline {section}{\numberline {11.4}Key questions for the use of models}{143}{section.11.4}
+\contentsline {paragraph}{The choice of method:}{143}{paragraph*.39}
+\contentsline {paragraph}{Which are the important variables?}{144}{paragraph*.40}
+\contentsline {section}{\numberline {11.5}Factor Terms -- Contrasts}{144}{section.11.5}
+\contentsline {subsection}{\numberline {11.5.1}Example -- tomato root weight}{145}{subsection.11.5.1}
+\contentsline {subsection}{\numberline {11.5.2}Factor terms -- different choices of model matrix}{146}{subsection.11.5.2}
+\contentsline {section}{\numberline {11.6}Regression with two explanatory variables}{149}{section.11.6}
+\contentsline {subsection}{\numberline {11.6.1}The regression fit}{150}{subsection.11.6.1}
+\contentsline {section}{\numberline {11.7}Variable Selection -- Stepwise and Other}{151}{section.11.7}
+\contentsline {subsection}{\numberline {11.7.1}Use of simulation to check out selection effects:}{152}{subsection.11.7.1}
+\contentsline {paragraph}{The extent of selection effects -- a detailed simulation:}{152}{paragraph*.41}
+\contentsline {paragraph}{Examples from the literature}{153}{paragraph*.42}
+\contentsline {subsection}{\numberline {11.7.2}Variable and model selection -- strategies}{153}{subsection.11.7.2}
+\contentsline {section}{\numberline {11.8}1970 cost for US electricity producers}{153}{section.11.8}
+\contentsline {subsection}{\numberline {11.8.1}Model fitting strategy}{154}{subsection.11.8.1}
+\contentsline {section}{\numberline {11.9}An introduction to logistic regression}{157}{section.11.9}
+\contentsline {section}{\numberline {11.10}Exercises}{159}{section.11.10}
+\contentsline {chapter}{\numberline {12}A Miscellany of Models \& Methods}{161}{chapter.12}
+\contentsline {section}{\numberline {12.1}Regression with Fitted Smooth Curves}{161}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}Locally weighted scatterplot smoothers}{162}{subsection.12.1.1}
+\contentsline {subsection}{\numberline {12.1.2}Contours from 2-dimensional Smooths}{162}{subsection.12.1.2}
+\contentsline {section}{\numberline {12.2}Hierarchical Multi-level Models}{163}{section.12.2}
+\contentsline {section}{\numberline {12.3}Regular Time Series in R}{164}{section.12.3}
+\contentsline {subsection}{\numberline {12.3.1}Data exploration -- the Lake Erie data}{165}{subsection.12.3.1}
+\contentsline {subsection}{\numberline {12.3.2}Fitting and use of an autoregressive model}{167}{subsection.12.3.2}
+\contentsline {subsection}{\numberline {12.3.3}Regression with time series errors}{168}{subsection.12.3.3}
+\contentsline {subsection}{\numberline {12.3.4}$^*$Box-Jenkins ARIMA Time Series Modeling}{170}{subsection.12.3.4}
+\contentsline {subsection}{\numberline {12.3.5}Count Data with Poisson Errors}{170}{subsection.12.3.5}
+\contentsline {section}{\numberline {12.4}Classification}{172}{section.12.4}
+\contentsline {section}{\numberline {12.5}Tree-based methods and random forests}{175}{section.12.5}
+\contentsline {subsection}{\numberline {12.5.1}Random forests}{176}{subsection.12.5.1}
+\contentsline {section}{\numberline {12.6}$^*$Ordination}{178}{section.12.6}
+\contentsline {subsection}{\numberline {12.6.1}Distance measures}{179}{subsection.12.6.1}
+\contentsline {chapter}{\numberline {13}Map Overlays and Spatial Modeling}{183}{chapter.13}
+\contentsline {section}{\numberline {13.1}Static Overlay onto Maps}{183}{section.13.1}
+\contentsline {subsection}{\numberline {13.1.1}Overlay onto country and regional outlines}{183}{subsection.13.1.1}
+\contentsline {subsection}{\numberline {13.1.2}The {\em dismo} package's Interface to Google maps}{184}{subsection.13.1.2}
+\contentsline {paragraph}{Basic syntax, accepting defaults:}{184}{paragraph*.43}
+\contentsline {paragraph}{Specify map longitude/latitude extent; overlay onto map:}{184}{paragraph*.44}
+\contentsline {paragraph}{Interactive selection of a map extent from a screen display:}{184}{paragraph*.45}
+\contentsline {subsection}{\numberline {13.1.3}The {\em plotKML} package}{185}{subsection.13.1.3}
+\contentsline {subsection}{\numberline {13.1.4}Specifying projections}{185}{subsection.13.1.4}
+\contentsline {section}{\numberline {13.2}Working with Raster (Image) Files}{185}{section.13.2}
+\contentsline {subsection}{\numberline {13.2.1}Overlaying onto a bubble plot}{187}{subsection.13.2.1}
+\contentsline {section}{\numberline {13.3}$^*$Reading and Processing Shapefiles}{187}{section.13.3}
+\contentsline {section}{\numberline {13.4}Other software -- QGIS}{190}{section.13.4}
+\contentsline {section}{\numberline {13.5}References}{190}{section.13.5}
+\contentsline {chapter}{\numberline {14}Brief Notes on Text Mining}{193}{chapter.14}
+\contentsline {section}{\numberline {14.1}Creation of a Volatile Corpus}{193}{section.14.1}
+\contentsline {section}{\numberline {14.2}Creation of a Corpus from PDF Files}{195}{section.14.2}
+\contentsline {section}{\numberline {14.3}Document Collections Supplied With {\em tm}}{196}{section.14.3}
+\contentsline {chapter}{\numberline {15}$^*$Leveraging R Language Abilities }{197}{chapter.15}
+\contentsline {section}{\numberline {15.1}Manipulation of Language Constructs}{197}{section.15.1}
+\contentsline {subsection}{\numberline {15.1.1}Manipulation of Formulae}{197}{subsection.15.1.1}
+\contentsline {subsection}{\numberline {15.1.2}Extraction of names from a formula}{198}{subsection.15.1.2}
+\contentsline {section}{\numberline {15.2}Function Arguments and Environments}{198}{section.15.2}
+\contentsline {subsection}{\numberline {15.2.1}Extraction of arguments to functions}{198}{subsection.15.2.1}
+\contentsline {subsection}{\numberline {15.2.2}Use of a list to pass parameter values}{199}{subsection.15.2.2}
+\contentsline {subsection}{\numberline {15.2.3}Function environments}{199}{subsection.15.2.3}
+\contentsline {section}{\numberline {15.3}Creation of R Packages}{200}{section.15.3}
+\contentsline {section}{\numberline {15.4}S4 Classes and Methods}{202}{section.15.4}
+\contentsline {section}{\numberline {15.5}Summary}{204}{section.15.5}
+\contentsline {chapter}{\numberline {A}$^*$R System Configuration}{205}{appendix.A}
+\contentsline {section}{\numberline {A.1}Fine tuning the installation}{205}{section.A.1}
+\contentsline {paragraph}{The working directory:}{205}{paragraph*.46}
+\contentsline {paragraph}{Multiple (MDI) or Single (SDI) display interface for Windows:}{205}{paragraph*.47}
+\contentsline {section}{\numberline {A.2}Setting the Default CRAN Mirror}{205}{section.A.2}
+\contentsline {section}{\numberline {A.3}R system information}{206}{section.A.3}
+\contentsline {section}{\numberline {A.4}Repositories additional to CRAN}{207}{section.A.4}
+\contentsline {section}{\numberline {A.5}Running R in Batch Mode}{207}{section.A.5}
+\contentsline {section}{\numberline {A.6}The R Windows installation directory tree}{207}{section.A.6}
+\contentsline {section}{\numberline {A.7}Library directories}{208}{section.A.7}
+\contentsline {section}{\numberline {A.8}The Startup mechanism}{209}{section.A.8}
+\contentsline {chapter}{\numberline {B}The R Commander Graphical User Interface}{211}{appendix.B}
+\contentsline {paragraph}{From GUI to writing code:}{211}{paragraph*.48}
+\contentsline {paragraph}{The active data set:}{211}{paragraph*.49}
+\contentsline {paragraph}{Creating graphs:}{211}{paragraph*.50}
+\contentsline {paragraph}{Statistics (\& fitting models):}{212}{paragraph*.51}
+\contentsline {paragraph}{*Models:}{212}{paragraph*.52}
+\contentsline {chapter}{\numberline {C}Color Versions of Selected Graphs}{213}{appendix.C}
 \contentsfinish 

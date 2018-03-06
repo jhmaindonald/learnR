@@ -281,8 +281,7 @@ render_listings()
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{\baselineskip}
 Copyright \copyright\ \the\year\ \thanklessauthor\\
-Copies may be made for individual study and research.  Other uses
-are prohibited.
+This text is dual licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License (CC-BY-SA) and the GNU Free Documentation License (GFDL). 
 
 % \par\smallcaps{Published by \thanklesspublisher}
 

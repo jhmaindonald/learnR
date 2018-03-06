@@ -280,8 +280,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{\baselineskip}
 Copyright \copyright\ \the\year\ \thanklessauthor\\
-Copies may be made for individual study and research.  Other uses
-are prohibited.
+This text is dual licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License (CC-BY-SA) and the GNU Free Documentation License (GFDL). 
 
 % \par\smallcaps{Published by \thanklesspublisher}
 
@@ -598,17 +597,11 @@ Asterisks are used to identify material that is more technical or
 specialized, and that might be omitted at a first reading.
 
 \subsection*{The {\em DAAGviz} package}
-\marginnote{Note that {\em DAAGviz} is not available on CRAN.
-It collects scripts and datasets together in a way that may be
-useful to course participants.  Those materials are also
-available separately.}
-This package is an optional companion to these notes. To
-download installation files (Windows, Mac or Linux) go to
-the web page \url{https://www.acspri.org.au/springprogram2015},
-navigate to the website for this course, and log in with
-your ACSPRI user name and password.  A link will appear
-at the bottom of the page, under {\bf Files for this course}.
-Alternatively, go the web address \url{https://www.acspri.org.au/node/1566} and log in.
+\marginnote{The {\em DAAGviz} package collects scripts and
+datasets together in a way that may be useful to readers of
+these notes.}
+This package, available from Github, is an optional companion
+to these notes. 
 
 \begin{marginfigure}Assuming that the {\em DAAGviz} package has been installed, it can be attached thus:
 \begin{Schunk}
@@ -667,27 +660,6 @@ source(path2figs5)
   \txtt{Crimean}, which feature later in these notes.
 \end{itemizz}
 \newpage
-
-\subsection*{Alternative sources for some datasets}
-{\color{gray40}
-The web page \url{http://maths-people.anu.edu.au/~johnm/} may in a few cases
-be a convenient source for datasets that are referred to in this text:
-\begin{itemizz}
-\item[-] 
-Look in \url{http://maths-people.anu.edu.au/~johnm/r/rda} for
-  various image ({\bf .RData}) files.\sidenote{{\em Image} files hold 
-  copies of one or more R objects, in a format that facilitates rapid 
-  access from R.}  Use the function \txtt{load()} to bring any of these 
-  into R.
-\item[-] Look in \url{http://maths-people.anu.edu.au/~johnm/datasets/text}
-  for the files {\bf bestTimes.txt}, {\bf molclock.txt}, and other such
-  text files.
-\item[=] Look in \url{http://maths-people.anu.edu.au/~johnm/datasets/csv}
-  for several {\bf .csv} files.
-\end{itemizz}
-\vspace*{-9pt}
-}
-
 
 % Start the main matter (normal chapters)
 \mainmatter
@@ -1814,13 +1786,8 @@ functions, or perhaps the {\em lattice} function \txtt{xyplot()}.
 \subsection{Exercises}\label{ss:ch2ex}
 
 \begin{enumerate}
-\item Copy the file \textbf{bestTimes.txt} from a supplied memory
-  stick or from the web page
-  \url{http://maths-people.anu.edu.au/~johnm/datasets/text/} and place it
-  in the working directory.\sidenote[][-1.0cm]{Alternatively, use the code:\\
-\margtt{library(DAAG)}\\
-\margtt{datafile(``bestTimes'')}\\ \noindent
-to place the file in the working directory.}
+\item Use the following code to to place the file 
+\texttt{bestTimes.txt} in the working directory:
 
 \begin{enumerate}
 \item  Examine the file, perhaps using the function \txtt{file.show()}.
@@ -4661,14 +4628,14 @@ mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
   mean     sd 
-0.1037 1.1929 
+0.2189 1.1831 
 \end{Soutput}
 \begin{Sinput}
 mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
-  mean     sd 
-0.1413 0.8546 
+   mean      sd 
+-0.1110  0.7672 
 \end{Soutput}
 \end{Schunk}
 
@@ -5782,6 +5749,8 @@ and stores the path to the file in the text string \txtt{path2file}:
 \begin{Schunk}
 \begin{Sinput}
 library(memisc)
+\end{Sinput}
+\begin{Sinput}
 ## Unzip; return path to "NES1948.POR"
 path2file <- unzip(system.file("anes/NES1948.ZIP",package="memisc"),
                      "NES1948.POR",exdir=tempfile())
@@ -5803,7 +5772,7 @@ show(nes1948imp)
 \begin{Schunk}
 \begin{Soutput}
 
-SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//RtmpCES8qI/file14ab64fc35b5c/NES1948.POR' 
+SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmp9xUNvq/file14db5ce7b3d6/NES1948.POR' 
 	with 67 variables and 662 observations
 \end{Soutput}
 \end{Schunk}
@@ -6167,6 +6136,8 @@ given by such a search:
 \begin{Schunk}
 \begin{Sinput}
 library(WDI)
+\end{Sinput}
+\begin{Sinput}
 WDIsearch('co2')[1:4,]
 \end{Sinput}
 \begin{Soutput}
@@ -6460,6 +6431,8 @@ and the total who applied:
 \begin{Schunk}
 \begin{Sinput}
 library(dplyr)
+\end{Sinput}
+\begin{Sinput}
 gpUCBgender <- dplyr::group_by(UCBdf, Gender)
 AdmitRate <- dplyr::summarise(gpUCBgender,
                               Accept=sum(Freq[Admit=="Admitted"]),
@@ -7199,7 +7172,7 @@ system.time(xy+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.150   0.136   0.287 
+  0.159   0.130   0.289 
 \end{Soutput}
 \begin{Sinput}
 xy.df <- data.frame(xy)
@@ -7207,7 +7180,7 @@ system.time(xy.df+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.169   0.142   0.311 
+  0.447   0.161   0.812 
 \end{Soutput}
 \end{Schunk}
 \vspace*{-12pt}
@@ -9441,13 +9414,9 @@ densityplot( ~ npreg + glu | type, groups=anymiss, data=Pima.tr2,
 
 \begin{Schunk}
 \begin{Soutput}
-RStudioGD 
-        2 
+null device 
+          1 
 \end{Soutput}
-
-
-\centerline{\includegraphics[width=\textwidth]{figs/09-unnamed-chunk-25-1} }
-
 \end{Schunk}
 
 This chapter will describe a range of abilities that create displays
@@ -13390,6 +13359,8 @@ access and download Google map data.
 \begin{Schunk}
 \begin{Sinput}
 library(dismo, quietly=TRUE)
+\end{Sinput}
+\begin{Sinput}
   ## The raster and sp packages are dependencies
 \end{Sinput}
 \end{Schunk}
@@ -13538,6 +13509,8 @@ R package \txtt{rgdal}:
 \begin{Schunk}
 \begin{Sinput}
 library(rgdal)
+\end{Sinput}
+\begin{Sinput}
 logofile <- system.file("pictures/Rlogo.jpg",
                         package = "rgdal")[1]
 rlogo <- readGDAL(logofile, silent=TRUE)
@@ -14741,6 +14714,8 @@ replace a slot.  For example:
 \begin{Sinput}
 library(DAAG)
 library(lme4)
+\end{Sinput}
+\begin{Sinput}
 hp.lmList <- lmList(o2 ~ wattsPerKg | id,
                     data=humanpower1)
 slotNames(hp.lmList)
