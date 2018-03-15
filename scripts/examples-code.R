@@ -12,12 +12,13 @@ library(MASS, quietly=TRUE)
 
 ## ---- brain-bodyA ----
 plot(brain ~ body, data=mammals)
-mtext(side=3, line=0.5, adj=0, "A: Unlogged data")
+mtext(side=3, line=0.5, adj=0,
+      "A: Unlogged data", cex=1.1)
 
 ## ---- brain-bodyB ----
 plot(brain ~ body, data=mammals, log="xy")
 mtext(side=3, line=0.5, adj=0,
-      "B: Log scales (both axes)")
+      "B: Log scales (both axes)", cex=1.1)
 
 ## ---- plot-trees ----
 ## Code used for the plot
@@ -144,8 +145,10 @@ nihills.lm <- lm(ltime ~ lclimb + ldist,
 ## ---- gg-tomato ----
 ## Code
 library(ggplot2)
-tomato <- within(tomato, trt <- relevel(trt, ref="water only"))
-quickplot(weight, trt, data=tomato, xlab="Weight (g)", ylab="")
+tomato <- within(DAAG::tomato, 
+                 trt <- relevel(trt, ref="water only"))
+quickplot(weight, trt, data=tomato,
+          xlab="Weight (g)", ylab="")
 
 ## ---- aov-tomato ----
 tomato.aov <- aov(weight ~ trt, data=tomato)

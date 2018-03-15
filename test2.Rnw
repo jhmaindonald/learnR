@@ -1,0 +1,32 @@
+\documentclass{article}
+
+\begin{document}
+
+<<echo=FALSE, cache=FALSE>>=
+Hmisc::knitrSet()
+Hmisc::knitrSet(w=3, h=3.15)
+opts_chunk$set(fig.path='figs/11-', cache.path='cache/11-',
+               fig.align='center', dev='pdf',  
+               fig.show='hold', out.width="0.47\\textwidth", 
+               tidy=FALSE, comment=NA)
+pdf.options(pointsize=12)
+oldopt <- options(digits=4)
+read_chunk("scripts/reg-code.R")
+@ 
+
+\begin{figure}
+<<fVSmTimeAB, echo=FALSE, w=5.5, h=3.05, bot=2, top=1, out.width="\\textwidth", cache=FALSE>>=
+@ %
+  \caption{Graphs compare female with male record times,
+  for Northern Ireland hill races.  Least squares lines
+    are added, and marginal boxplots are shown on the
+    horizontal axis. Panel A
+    has untransformed scales, while Panel B has log
+    transformed scales.}\label{fig:nimff}
+% \setfloatalignment{t}% forces caption to be top-aligned
+\end{figure}
+
+
+
+
+\end{document}

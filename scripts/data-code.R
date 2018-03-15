@@ -5,7 +5,7 @@ options(width=78)
 options(width=54)
 
 
-## ---- sec-6.1 ----
+## ---- sec-4.1 ----
 
 ## ---- vecs ----
 c(2,3,5,2,7,1)
@@ -91,7 +91,7 @@ is.na(c(1, NA, 3, 0, NA))
 ## ---- eqna ----
 c(1, NA, 3, 0, NA) == NA
 
-## ---- sec-6.2 ----
+## ---- sec-4.2 ----
 
 ## ---- place-travelbooks ----
 ## Place the file in the working directory
@@ -165,7 +165,7 @@ rCBR[[4]]         # Contents of 4th list element
 rCBR$tutors       # Equivalent to rCBR[["tutors"]]
 
 
-## ---- sec-6.3 ----
+## ---- sec-4.3 ----
 
 ## ---- rem-dim ----
 travelvec <-  as.matrix(travelbooks[, 1:4])
@@ -192,7 +192,7 @@ head(UCBdf, n=3)
 ## ---- admit ----
 xtabs(Freq ~  Admit+Dept, data=UCBdf)
 
-## ---- sec-6.4 ----
+## ---- sec-4.4 ----
 
 ## ---- mean-na-rm ----
 mean(c(1, NA, 3, 0, NA), na.rm=T)
@@ -347,7 +347,7 @@ prop0 <-
          FUN=function(z)sapply(z, countprop))
 round(t(prop0), 2)
 
-## ---- sec-6.5 ----
+## ---- sec-4.5 ----
 
 ## ---- spatPointsDF ----
 library(sp)
@@ -363,7 +363,7 @@ bubble(meuse, zcol="zinc", scales=list(tck=0.5),
 ## ---- slotNames ----
 slotNames(meuse)
 
-## ---- sec-6.8 ----
+## ---- sec-4.8 ----
 
 ## ---- naINassign ----
 y <- c(1, NA, 3, 0, NA)

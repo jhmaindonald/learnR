@@ -8,9 +8,9 @@ options(width=54)
 ## DAAG has several datasets that will be required
 library(DAAG, quietly=TRUE)
 
-## ---- sec-9.1 ----
+## ---- sec-7.1 ----
 
-## ---- ss-9.1.1 ----
+## ---- ss-7.1.1 ----
 
 ## ---- demo-baseg ----
 demo(graphics)
@@ -53,13 +53,13 @@ with(primates,
           labels=rownames(primates), pos=4))
 # pos: pos=1 (below), 2 (left), 3 (above)
 
-## ---- ss-9.1.2 ----
+## ---- ss-7.1.2 ----
 
 ## ---- setpar ----
 oldpar <- par(cex=1.25)
   # par(oldpar) to restore
 
-## ---- ss-9.1.3 ----
+## ---- ss-7.1.3 ----
 
 ## ---- load-Brewer ----
 ## Load to run code for Supplementary Figure 1
@@ -110,13 +110,13 @@ with(dfsamp, smoothScatter(re75~re74, , fg="gray",
 mtext(side=3, line=0.5, "C: Color density plot",
       adj=0)
 
-## ---- ss-9.1.4 ----
+## ---- ss-7.1.4 ----
 
 ## ---- aspect ----
 plot((1:30)*0.92, sin((1:30)*0.92),
      xlab="", ylab="")
 
-## ---- ss-9.1.5 ----
+## ---- ss-7.1.5 ----
 
 ## ---- Animals-body-brain ----
 ## Supplementary figure 9.2
@@ -138,7 +138,7 @@ par(fig = c(0, 1, 0, 0.38), new=TRUE)
 ## Plot graph B
 par(fig = c(0, 1, 0, 1))    # Restore settings
 
-## ---- ss-9.1.6 ----
+## ---- ss-7.1.6 ----
 
 ## ---- poss-hist ----
 par(mgp=c(3,0.5,0))
@@ -191,18 +191,18 @@ qqnorm(ftotlen, xlab="",
 ## Code for a plot with random normal data
 qqnorm(rnorm(43), xlab="", ylab="Simulated")
 
-## ---- ss-9.1.7 ----
+## ---- ss-7.1.7 ----
 
 ## ---- plot-expr ----
 yl <- expression("Area = " * pi * r^~2)
 plot(1:5, pi*(1:5)^2, xlab="Radius (r)", ylab=yl)
 
-## ---- sec-9.2 ----
+## ---- sec-7.2 ----
 
 ## ---- load-latticeExtra ----
 library(latticeExtra, quietly=TRUE)
 
-## ---- ss-9.2.1 ----
+## ---- ss-7.2.1 ----
 
 ## ---- demo-lattice ----
 demo(lattice)
@@ -228,7 +228,7 @@ print(gph2)  # Or it is enough to type 'gph2'
 ## ---- ACTgph ----
 print(xyplot(ACT ~ year, data=austpop))
 
-## ---- ss-9.2.2 ----
+## ---- ss-7.2.2 ----
 
 ## ---- sexSport ----
 options(width=84)
@@ -247,7 +247,7 @@ dev.off()            # Close device
 trellis.device()     # Start new device,
 # by default with color=TRUE
 
-## ---- ss-9.2.4 ----
+## ---- ss-7.2.4 ----
 
 ## ---- grog-simple ----
 ## Simple version of plot
@@ -270,7 +270,7 @@ xyplot(Beer+Spirit+Wine ~ Year,
        groups=Country, outer=TRUE,
        data=grog, auto.key=list(columns=2) )
 
-## ---- ss-9.2.5 ----
+## ---- ss-7.2.5 ----
 
 ## ---- strip-grob ----
 plotnam <- "Stripplot of cuckoo data"
@@ -281,7 +281,7 @@ stripplot(species ~ length, xlab="", data=cuckoos,
 # x=0 is equivalent to x=unit(0,"npc")
 # npc units are on a scale from 0 to 1
 
-## ---- ss-9.2.6 ----
+## ---- ss-7.2.6 ----
 
 ## ---- nam-t-p-g ----
 names(trellis.par.get())
@@ -316,7 +316,7 @@ update(jobsB.xyplot, xlab="", between=list(x=0.5, y=0.5),
        scales=list(x=list(at=atdates, labels=datelabs),
                    y=list(at=ylabpos, labels=ylabels), tck=0.6) )
 
-## ---- ss-9.2.7 ----
+## ---- ss-7.2.7 ----
 
 ## ---- improved ----
 levels(cuckoos$species) <-
@@ -338,7 +338,7 @@ densityplot(~ earconch | sex, groups=Pop,
             par.settings=simpleTheme(col=colset),
             auto.key=list(space="right"))
 
-## ---- ss-9.2.8 ----
+## ---- ss-7.2.8 ----
 
 ## ---- gph-equiv ----
 xyplot(species ~ length, xlab="", data=cuckoos)
@@ -362,7 +362,7 @@ update(gph, panel=my.panel,
 xyplot(Brainwt ~ Bodywt, data=primates,
        xlim=c(0,300), panel=my.panel)
 
-## ---- ss-9.2.9 ----
+## ---- ss-7.2.9 ----
 
 ## ---- gph-again ----
 gph <- xyplot(Brainwt ~ Bodywt,  data=primates,
@@ -373,7 +373,7 @@ gph + latticeExtra::layer(panel.text(x,y,
                        labels=rownames(primates),
                        pos=4))
 
-## ---- ss-9.2.10 ----
+## ---- ss-7.2.10 ----
 
 ## ---- playwith ----
 ## Code that initiates interactive display
@@ -389,7 +389,7 @@ library(playwith)
 playwith(update(gph),
     labels=hotspots$name)
 
-## ---- sec-9.3 ----
+## ---- sec-7.3 ----
 
 ## ---- load-ggplot2 ----
 library(ggplot2)
@@ -503,9 +503,9 @@ print(cuckoos.strip, position=c(0,0.5,1,1))
 cuckoos.bw <- bwplot(species ~ length, xlab="", data=cuckoos)
 print(cuckoos.bw, position=c(0,0,1,0.5), newpage=FALSE)
 
-## ---- sec-9.4 ----
+## ---- sec-7.4 ----
 
-## ---- ss-9.4.1 ----
+## ---- ss-7.4.1 ----
 
 ## ---- figlim ----
 par(fig = c(0, 1, 0.38, 1))
@@ -523,7 +523,76 @@ mtext(side=3, line=3, lab)
 cuckoos.bw <- bwplot(species~length, data=cuckoos)
 print(cuckoos.bw, newpage=FALSE)
 
-## ---- sec-9.6-Exercises ----
+
+## ---- sec-7.5 ----
+
+## ---- ss7.5.1 ----
+
+## ---- load-carANDrgl ----
+## The car and rgl packages must be installed
+library(rgl, quietly=TRUE)
+library(car, quietly=TRUE)
+rgl::setupKnitr()
+knit_hooks$set(rgl=hook_rgl)
+
+## ---- rgl-demo ----
+library(DAAG, quietly=TRUE)
+open3d()            # Precedes the call to par3d()
+par3d(cex=0.75)     # Optional
+                    # Other params: see help(par3d)
+with(nihills, scatter3d(x=log(dist), y=log(climb),
+                        z=log(time),
+                        grid=FALSE,
+                        surface=FALSE,
+                        point.col="black",
+                        axis.scales=FALSE))
+## NB: Use middle or right mouse button to drag a
+## rectangle around a point that is to be labeled.
+
+## ---- source-rggobi ----
+source("http://www.ggobi.org/downloads/install.r")
+
+## ---- label-points ----
+with(nihills, identify3d(x=log(dist), y=log(climb),
+                         z=log(time),
+                         labels=row.names(nihills),
+                         col="gray"))
+
+## ---- ss-7.5.2 ----
+
+## ---- grogVis ----
+library(googleVis)
+M <- gvisMotionChart(grog, id="Country", timevar="Year")
+## This next line requires a live internet connection,
+## and Adobe Flash must be installed.
+plot(M)
+
+## ---- demo-WorldBank ----
+demo(WorldBank)
+
+## ---- gvisMotionChart ----
+M <- gvisMotionChart(WorldBank, idvar="country",
+          timevar="year",
+          xvar="life.expectancy",
+          yvar="fertility.rate",
+          colorvar="region", sizevar="population",
+          options=list(width=700, height=600))
+## Now display the motion chart
+plot(M)
+
+## ---- ElecVis ----
+xnam <- "Electric power consumption (kWh per capita)"
+ynam <- "Mobile cellular subscriptions (per 100 people)"
+M <- gvisMotionChart(wdiSel, idvar="Country.Name", timevar="Year",
+                     xvar=xnam, yvar=ynam,
+                     colorvar="region", sizevar="Population, total",
+                     options=list(width=600, height=500),
+                     chartid="wbMotionChartSel")
+plot(M)
+
+
+
+## ---- sec-7.7-Exercises ----
 
 ## ---- hotspots ----
 ## Exercise 3

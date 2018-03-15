@@ -1,10 +1,11 @@
-## ---- sec-12.1 ----
+## ---- sec-11.1 ----
 
 ## ---- load-tm ----
 library(tm)
 
 ## ---- make-paths ----
-## Create paths to the files
+## Create paths to the text files, stored in the
+## subdirectory "texts" of the DAAGviz package.
 txdir <- system.file("texts", package="DAAGviz")
 dir(txdir, pattern=".txt$")
 txfiles <- dir(txdir, pattern=".txt$", full.names=TRUE)
@@ -52,18 +53,18 @@ library(wordcloud)
 pal <- brewer.pal(6, "Dark2")
 fnam1 <- as.matrix(tx.tdm)[,1]
 wordcloud(names(fnam1), fnam1, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(6.5,.5))
+          random.order=FALSE, scale=c(8.5,.5))
 mtext(side=3, line=3.5, "A: Chapters 1 - 5", adj=0, cex=1.8)
 fnam2 <- as.matrix(tx.tdm)[,2]
 wordcloud(names(fnam2), fnam2, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(10,.5))
+          random.order=FALSE, scale=c(4.5,.5))
 mtext(side=3, line=3.5, "B: Chapters 6 - 7", adj=0, cex=1.8)
 fnam3 <- as.matrix(tx.tdm)[,3]
 wordcloud(names(fnam3), fnam3, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(5,.5))
+          random.order=FALSE, scale=c(6.0,.5))
 mtext(side=3, line=3.5, "C: Chapters 8 - 9", adj=0, cex=1.8)
 
-## ---- sec-12.2 ----
+## ---- sec-11.2 ----
 
 ## ---- from-pdf ----
 uri <- "doc/ch1-5prelims.pdf"
@@ -76,7 +77,7 @@ txXpdf <- Corpus(DirSource(directory="doc", pattern=".pdf$"),
                  readerControl=list(reader=readPDF,
                  PdftotextOptions = "-layout"))
 
-## ---- sec-12.3 ----
+## ---- sec-11.3 ----
 
 ## ---- pathto ----
 (pathto <- system.file("texts", package="tm"))

@@ -11,7 +11,7 @@ library(DAAG)
 
 ## ---- smooth-ohms ----
 ## Plot points
-plot(ohms ~ juice, data=fruitohms)
+plot(ohms ~ juice, data=fruitohms, fg="gray")
 ## Add smooth curve, using default
 ## smoothing window
 with(fruitohms,
@@ -35,7 +35,7 @@ mtext(side=3, line=0.5, adj=0, "B: Response amplitudes, Females")
 # ant111b is in DAAG
 Site <- with(ant111b, reorder(site, harvwt,
                               FUN=mean))
-stripplot(Site ~ harvwt, data=ant111b,
+stripplot(Site ~ harvwt, data=ant111b, fg="gray",
           scales=list(tck=0.5),
           xlab="Harvest weight of corn")
 
@@ -47,8 +47,7 @@ stripplot(Site ~ harvwt, data=ant111b,
 Erie <- greatLakes[,"Erie"]
 
 ## ---- Erie1 ----
-## Code
-plot(Erie, xlab="",
+plot(Erie, xlab="", fg="gray",
      ylab="Level (m)")
 
 ## ---- ar-Erie ----
@@ -61,14 +60,14 @@ ar(Erie, order.max=1)
 ## Panel A
 lag.plot(Erie, lags=3,
          do.lines=FALSE,
-         layout=c(1,3),
+         layout=c(1,3), fg="gray",
          main="  ")
 mtext(side=3, line=2, adj=0,
       "A: Lag plots, at lags of 1, 2 and 3")
 
 ## ---- acfErie ----
 ## Panel B
-acf(Erie, main="")
+acf(Erie, main="", fg="gray")
 mtext(side=3, line=1, adj=0, cex=1.25,
       "B: Autocorrelation function")
 
@@ -80,7 +79,7 @@ df <-  data.frame(
   year=time(Erie))
 obj <- gam(height ~ s(year),
            data=df)
-plot(obj,
+plot(obj, fg="gray",
      shift=mean(df$height),
      residuals=TRUE, pch=1,
      xlab="",
@@ -97,7 +96,7 @@ df <- data.frame(x=1:200,
                  y=ysim)
 df.gam <- gam(y ~ s(x),
               data=df)
-plot(df.gam,
+plot(df.gam, fg="gray",
      ylab=paste("Sim", i),
      residuals=TRUE)
 }
@@ -108,7 +107,7 @@ erie.ar <- arima(Erie,
 library(forecast)
 fc <- forecast(erie.ar,
                h=15)
-plot(fc, main="",
+plot(fc, main="", fg="gray",
      ylab="Lake level (m)")
   # 15 time points ahead
 
@@ -118,11 +117,11 @@ plot(fc, main="",
 ## Code
 mdbRain.gam <- gam(mdbRain ~ s(Year) + s(SOI),
                    data=bomregions)
-plot(mdbRain.gam, residuals=TRUE, se=2, pch=1,
-     select=1, cex=1.35, ylab="Partial of Year")
+plot(mdbRain.gam, residuals=TRUE, se=2, fg="gray",
+     pch=1, select=1, cex=1.35, ylab="Partial, Year")
 mtext(side=3, line=0.75, "A: Effect of Year", adj=0)
-plot(mdbRain.gam, residuals=TRUE, se=2, pch=1,
-     select=2, cex=1.35, ylab="Partial of SOI")
+plot(mdbRain.gam, residuals=TRUE, se=2, fg="gray",
+     pch=1, select=2, cex=1.35, ylab="Partial, SOI")
 mtext(side=3, line=0.75, "B: Effect of SOI", adj=0)
 
 ## ---- ar1sims ----
@@ -132,37 +131,44 @@ mdbRain.gam <- gam(mdbRain ~ s(Year) + s(SOI),
 n <-  dim(bomregions)[1]
 acf(resid(mdbRain.gam), ylab="MDB series")
 for(i in 1:5)acf(rnorm(n), ylab=paste("Sim",i),
-                 col="gray40")
+                 fg="gray", col="gray40")
 par(opar)
 
 ## ---- use-eventCounts ----
 ## Code
 airAccs <- gamclass::airAccs
 fromDate <- as.Date("2006-01-01")
+dfWeek06 <- gamclass::eventCounts(airAccs, dateCol="Date",
+                                  from=fromDate,
+                                by="1 week", prefix="num")
+dfWeek06$day <- julian(dfWeek06$Date, origin=fromDate)
+
+## ---- plotGAM-byWk ----
+## Code
+library(mgcv)
+year <- seq(from=fromDate, to=max(dfWeek06$Date), by="1 year")
+at6 <- julian(seq(from=fromDate, to=max(dfWeek06$Date), by="6 months"), origin=fromDate)
+atyear <- julian(year, origin=fromDate)
+dfWeek06.gam <- gam(num~s(day, k=200), data=dfWeek06, family=quasipoisson)
+avWk <- mean(predict(dfWeek06.gam))
+plot(dfWeek06.gam, xaxt="n", shift=avWk, trans=exp, rug=FALSE, 
+     xlab="", ylab="Estimated rate per week", fg="gray")
+axis(1, at=atyear, labels=format(year, "%Y"), lwd=0, lwd.ticks=1)
+abline(h=0.5+(1:4)*0.5, v=at6, col="gray", lty=3, lwd=0.5)
+# mtext(side=3, line=0.75, "A: Events per week, vs date", adj=0)
+
+## ---- plotGAM-byDay ----
 dfDay06 <- gamclass::eventCounts(airAccs, dateCol="Date", from= fromDate,
                                  by="1 day", prefix="num")
 dfDay06$day <- julian(dfDay06$Date, origin=fromDate)
-dfWeek06 <- gamclass::eventCounts(airAccs, dateCol="Date", from=fromDate,
-                                  by="1 week", prefix="num")
-dfWeek06$day <- julian(dfWeek06$Date, origin=fromDate)
-
-## ---- plotGAM ----
-library(mgcv)
 year <- seq(from=fromDate, to=max(dfDay06$Date), by="1 year")
-atyear <- julian(year, origin=fromDate)
 dfDay06.gam <- gam(formula = num ~ s(day, k=200), family = quasipoisson,
                    data = dfDay06)
-av <- mean(predict(dfDay06.gam))
-plot(dfDay06.gam, xaxt="n", shift=av, trans=exp, rug=FALSE, xlab="",
-     ylab="Estimated rate per day")
+avDay <- mean(predict(dfDay06.gam))
+plot(dfDay06.gam, xaxt="n", shift=avDay, trans=exp, rug=FALSE, 
+     fg="gray", xlab="", ylab="Estimated rate per day")
 axis(1, at=atyear, labels=format(year, "%Y"))
-mtext(side=3, line=0.75, "A: Events per day, vs date", adj=0)
-dfWeek06.gam <- gam(num~s(day, k=200), data=dfWeek06, family=quasipoisson)
-av <- mean(predict(dfWeek06.gam))
-plot(dfWeek06.gam, xaxt="n", shift=av, trans=exp, rug=FALSE, xlab="",
-      ylab="Estimated rate per week")
-axis(1, at=atyear, labels=format(year, "%Y"))
-mtext(side=3, line=0.75, "B: Events per week, vs date", adj=0)
+# mtext(side=3, line=0.75, "B: Events per day, vs date", adj=0)
 
 ## ---- sec-12.4 ----
 
@@ -184,6 +190,7 @@ confusion(fgl$type, fglCV.lda$class)
 fgl.lda <- lda(type ~ ., data=fgl)
 
 ## ---- fgl-scores2D ----
+## Code
 library(lattice)
 scores <- predict(fgl.lda)$x
 xyplot(scores[,2] ~ scores[,1], groups=fgl$type,

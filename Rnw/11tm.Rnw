@@ -1,0 +1,209 @@
+% !Rnw root = learnR.Rnw
+<<echo=FALSE, cache=FALSE>>=
+opts_knit$set(self.contained=FALSE)
+@
+
+<<echo=FALSE, cache=FALSE>>=
+Hmisc::knitrSet()
+Hmisc::knitrSet(w=3, h=3.15)
+opts_chunk$set(fig.path='figs/11-', cache.path='cache/11-',
+               fig.align='center', dev='pdf',  
+               fig.show='hold', out.width="0.47\\textwidth", 
+               tidy=FALSE, comment=NA)
+pdf.options(pointsize=12)
+oldopt <- options(digits=4)
+read_chunk("../scripts/tm-code.R")
+@ %
+
+A first step is to load the \textit{tm} package.  This is designed for
+working with a \textit{corpus} --- \textit{corpus} is the name for a
+collection of documents.
+<<load-tm>>=
+@ %
+
+\section{Creation of a Volatile Corpus}\label{sec:volatile}
+
+\marginnote[11pt]{A pdf to text converter has taken the pdf for this
+  document, and extracted the three chapter ranges into the
+  respective files {\bf ch1-5prelims.txt}, {\bf ch6-7data.txt}, and
+  {\bf ch8-9graphics.txt}.}
+
+The data used is from three text files, stored in the {\em DAAGviz}
+directory tree.  They hold text from the respective chapter ranges 1 -
+5, 6 - 7, and 8 - 9 of an older version of this present document.
+We show two ways to use
+it to form a corpus.  The first breaks the process down into detailed
+steps, while the second uses a much terser and summary approach.  The
+resultant corpus is {\em volatile}, so described because stored in the
+workspace.  Unless saved separately or as part of the workspace, it
+will disappear at the end of the session.
+
+\subsection*{Detailed steps}
+
+First create paths to the files, and check that they seem correct:
+\begin{fullwidth}
+<<make-paths>>=
+@ #
+\end{fullwidth}
+
+The following brings the first of these files into the workspace,
+with one text string per line. The separate text strings are then
+collapsed into a single character vector, with spaces at the end
+of each line:
+\begin{fullwidth}
+<<readLines-1>>=
+@ %
+\end{fullwidth}
+
+Repeat this process for files 2 and 3:
+\begin{fullwidth}
+<<readLines2-3>>=
+@ %
+\end{fullwidth}
+
+Now bring the three text strings together into a corpus:
+<<VectorSource>>=
+@ %
+
+\subsection*{Creation of a corpus using \txtt{DirSource()}}
+
+\marginnote{The call to \margtt{tm\_map()} is a mechanism for marking the
+  document as UTF-8. The pdf to text converter creates UTF-8
+  documents.  The tokenizer \margtt{scan\_takenizer} then calls
+  \margtt{scan()}, but without marking the document that results as
+  UTF-8, as required for use of \margtt{termDocumentMatrix()} or
+  \txtt{termFreq()}.}
+The following creates a directory source:
+<<DirSource>>=
+@ %
+
+Now create the corpus.  The text will be input from the files that
+were identified, within the specified directory {\bf doc}:
+<<dirTOcorpus, cache=FALSE>>=
+@ %
+
+\subsection*{Next steps}
+
+A common starting point for further work is a term by document matrix.
+For this, use \txtt{TermDocumentMatrix()}.  Or if a
+document by term matrix is required, use \txtt{DocumentTermMatrix()}
+
+%' \begin{marginfigure}[12pt]
+%'   Alternatively, make repeated use of \margtt{tm\_map()} to
+%'   operate directly on the corpus, thus:
+%' <<tm-map, eval=FALSE>>=
+%' @ %
+%' \end{marginfigure}
+Pre-processing steps prior to creating such a matrix may include
+stripping away stopwords, elimination of white space, and conversion
+to lower case.  These can be performed in the process of creating a
+term document matrix, thus:
+\begin{fullwidth}
+<<make-tdm>>=
+@ %
+\end{fullwidth}
+\noindent
+Notice the identification of \txtt{[1]}, which appears quite
+frequently in the R output, as a stopword.  This omits it from the
+list of terms.  Closer investigation would reveal other issues, most
+because the default tokenizer\sidenote{See \margtt{help(termFreq)} for
+  an example of a user-supplied tokenizer.} is not designed to handle
+R code and output.
+
+Now list terms that occur 100 or more times:
+\begin{fullwidth}
+<<findFreq100>>=
+@ %
+\end{fullwidth}
+
+\subsection*{Wordclouds}
+
+First load the {\em wordcloud} package:
+<<load-wordcloud>>=
+@ %
+
+Figure \ref{fig:wc} shows wordcloud plots for the first (chapters 1-5),
+second (6-7) and third (8-9) documents in the corpus.
+\vspace*{15pt}
+
+\begin{figure*}
+<<wordcloud1-3, mfrow=c(1,3), w=15, h=5.25, echo=FALSE, out.width="0.92\\textwidth", top=5>>=
+@ %
+\caption[][-12pt]{Wordcloud plots are A: for the words in Chapters 1 - 5; B: 6 -
+  7; and C: 8 - 9.\label{fig:wc}}
+\setfloatalignment{b}
+\end{figure*}
+
+\vspace*{-9pt}
+
+\noindent
+Code for the plots is:
+\begin{fullwidth}
+<<wordcloud1-3, eval=FALSE>>=
+@ %
+\end{fullwidth}
+\marginnote[12pt]{All three panels used a 5in by 5in graphics page,
+  with a pdf pointsize of 12.} Less frequent words will be lost off the
+edge of the plot if the size of the graphics page is too small
+relative to the pointsize.  Note the different scaling ranges used in
+the three cases, with the large scaling range for Panel B
+(\txtt{scale=c(10,.5)}) used to accommmodate a frequency distribution
+in which one item (`data') is a marked outlier.
+
+\section{Creation of a Corpus from PDF Files}
+
+The {\em tm} package has functions that can be used to create readers
+for several different types of files.  Type \txtt{getReaders()} to get
+a list.  Note in particular \txtt{readPDF()} that can be used with pdf
+files.  See \txtt{?tm::readPDF} for details of PDF extraction
+engines that may be used.  The default is to use the Poppler PDF
+rendering library as provided in the {\bf pdftools} package.
+
+The following reads in the text from the file {\bf ch1-5prelims.pdf}.
+The result is equivalent to using \txtt{readLines()} as above to
+input lines from the text file {\bf ch1-5prelims.txt}:
+<<from-pdf, eval=FALSE>>=
+@ %
+
+The corpus that has all three documents is, starting with the
+pdf files, most easily created thus:
+\begin{fullwidth}
+<<ex-pdf-Corpus, eval=FALSE>>=
+@ %
+\end{fullwidth}
+
+\section{Document Collections Supplied With {\em tm}}
+Several document collections are supplied with the package,
+as text files or as XML files.  To get the path to the
+directories where these document collections are stored, type
+\begin{fullwidth}
+<<wid-80, echo=FALSE>>=
+options(width=80)
+@ %
+<<pathto, eval=TRUE, echo=TRUE>>=
+@ %
+<<wid-54, echo=FALSE>>=
+options(width=54)
+@ %
+\end{fullwidth}
+The subdirectory \textbf{acq} has 50 Reuters documents in XML format,
+\textbf{crude} has the first 23 of these, and \textbf{txt} has a
+small collection of 5 text documents from the Roman poet Ovid.
+These can be accessed and used for experimenation with the abilities
+provided in {\em tm}, as required.
+
+The following are the names of the five Ovid documents:
+\begin{fullwidth}
+<<wid-80, echo=FALSE>>=
+@ %
+<<docnames-Ovid, eval=TRUE, echo=TRUE>>=
+@ %
+<<wid-54, echo=FALSE>>=
+@ %
+\end{fullwidth}
+
+The following brings these documents into a volatile corpus, i.e.,
+a corpus that is stored in memory:
+<<ovid>>=
+@ %
+

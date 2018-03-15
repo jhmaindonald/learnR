@@ -64,7 +64,7 @@
 
 %%
 % Book metadata
-\title{Learning R: Open Source (Free) System for Statistics and Much Else}
+\title{Learning and Exploring R}
 \author[]{J H Maindonald}
 \publisher{}
 
@@ -664,12 +664,16 @@ source(path2figs5)
 % Start the main matter (normal chapters)
 \mainmatter
 \setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
 
-\chapter{Preliminaries}
+\chapter{Getting started with R}\label{ch:getStart}
 
 % !Rnw root = learnR.Rnw
 
 
+
+
+% !Rnw root = learnR.Rnw
 
 
 \section{Installation of R}
@@ -727,7 +731,7 @@ An optional additional step is to install RStudio.
   the same time start R. RStudio has its own command line interface,
   where users can type R commands.}  RStudio has abilities that
 help in managing workflow, in navigating between projects, and in
-accessing R system information.  See Chapter \ref{ch:rstudio}.
+accessing R system information.  See Section \ref{sec:RStudio}.
 
 \section{First steps}\label{sec:step1}
 
@@ -1033,27 +1037,7 @@ biocLite(c("GenomicFeatures", "AnnotationDbi"))
 \end{Schunk}
 See further \url{http://www.bioconductor.org/install/}.
 
-\section{Summary}
-\begin{itemizz}
-\item[] One use of R is as a calculator, to evaluate arithmetic
-expressions. Calculations can be carried out in parallel, across all
-elements of a vector at once.
-
-\item[] The R Commander GUI can be helpful in getting quickly into use
-  of R for many standard purposes.  It may, depending on requirements,
-  be limiting for serious use of R.
-
-\item[] Use \txtt{q()} to quit from an R session. To retain objects in
-  the workspace, accept the offer to save the workspace.
-\end{itemizz}
-
-
-\chapter{An Overview of R}\label{ch:oview}
-
-% !Rnw root = learnR.Rnw
-
-
-
+\section{Practice with R commands}
 
 \marginnote{Read \margtt{c} as ``\underline{c}oncatenate'',
 or perhaps as ``column''.\\[6pt]
@@ -1077,7 +1061,6 @@ A data frame is a list of column objects, all of the same length.\\
 \vspace*{-3pt}}}
 \vspace*{3pt}
 
-\section{Practice with R commands}
 \marginnote{The R language has the standard abilities for evaluating
 arithmetic and logical expressions.  There are numerous functions
 that extend these basic arithmetic and logical abilities.}
@@ -1259,7 +1242,7 @@ of the workspace.
 ls()
 \end{Sinput}
 \begin{Soutput}
-[1] "description" "volume"      "weight"     
+[1] "description" "result"      "volume"      "weight"     
 \end{Soutput}
 \end{Schunk}
 Use the argument \txtt{pattern} to specify a search pattern:
@@ -1388,7 +1371,7 @@ used in specifying models, and in the functions \txtt{xtabs()} and
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{../figs/02-denplot-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/01-denplot-1} }
 
 \end{Schunk}
  \caption{Weight versus volume, for six Australian travel
@@ -1726,7 +1709,7 @@ non-trivial technical detail.
 \marginnote[12pt]{Vignettes are created from a Markdown or HTML or
   LaTeX document in which R code is embedded, surrounded by
   markup that controls what is to be done with the code and with any
-  output generated.  See Chapter \ref{ch:rstudio}.}  Many packages
+  output generated.  See Section \ref{sec:RStudio}.}  Many packages
 have vignettes; these are typically pdf or (with version $\ge$ 3.0.0
 of R) HTML files that give information on the package or on specific
 aspects of the package. To get details of vignettes that are available
@@ -1752,6 +1735,16 @@ popular, and what users think of them.
 
 \subsection{Summary}
 \begin{itemizz}
+\item[] One use of R is as a calculator, to evaluate arithmetic
+expressions. Calculations can be carried out in parallel, across all
+elements of a vector at once.
+
+\item[] The R Commander GUI can be helpful in getting quickly into use
+  of R for many standard purposes.  It may, depending on requirements,
+  be limiting for serious use of R.
+
+\item[] Use \txtt{q()} to quit from an R session. To retain objects in
+  the workspace, accept the offer to save the workspace.
 \item[-] Useful help functions\marginnote{NB also: Use
 \margtt{apropos()} to search for functions that include a
 stated text string as part of their name.}
@@ -1863,292 +1856,14 @@ which of the above gives the most useful information?
   \end{enumerate}
 \end{enumerate}
 
+
+
 \cleartooddpage
 
-\chapter{Enhancing the R Experience -- RStudio}\label{ch:rstudio}
+\chapter{The R Working Environment}\label{ch:workenv}
 
 % !Rnw root = learnR.Rnw
 
-
-
-
-\marginnote{The screenshots here are for version 0.98.501 of RStudio.}
-The url for RStudio is \url{http://www.rstudio.com/}.  Click on the
-icon for the downloaded installation file to install it. An RStudio
-icon will appear.  Click on the icon to start RStudio.  RStudio should
-find any installed version of R, and if necessary start R.  Figure
-\ref{fig:rstudio} shows an RStudio display, immediately after starting
-up and entering, very unimaginatively, \txtt{1+1}.
-
-\begin{figure*}
-\includegraphics{figs-inc/03i-all4.png}
-\caption{Here is shown the RStudio interface, after starting up and
-  entering \txtt{1+1}.}\label{fig:rstudio}
-\end{figure*}
-\pagebreak
-
-Techncally, \marginnote{Extensive and careful RStudio documentation
-  can be accessed, assuming an internet connection, from the
-  \underline{Help} drop-down menu.  The notes included here are
-  designed to draw attention to some of the more important RStudio
-  abilities and features.}
-RStudio offers an Interactive Development Environment.  It
-provides, from a graphical user interface, a range of abilities that
-are helpful for organizing and managing work with R.  Helpful features
-of RStudio include:
-\begin{itemize}
-\item The organisation of work into projects.
-\item The recording of files that have been accessed from RStudio, of
-  help pages accessed, and of plots.  The record of files is
-  maintained from one session of a project to the next.
-\item By default, a miniature is displayed of any graph that is
-  plotted.  A single click expands the miniature to a full graphics
-  window.
-\item The editing, maintenance and display of code files.
-\item Abilities that assist reproducible reporting.
-   \marginnote{Alternative available types of markup are R
-    Markdown or R HTML or Sweave with LaTeX.}  Markup text
-  surrounds R code that is incorporated into a document, with option
-  settings used to control the inclusion of code and/or computer
-  output in the final document. Output may include tables and graphs.
-\item Abilities that help in the creation of packages.
-\end{itemize}
-
-\section{The RStudio file menu}
-
-\begin{figure}
-\includegraphics{figs-inc/03i-menu.png}
-\caption{The RStudio \underline{File} drop-down menu.  The
-  \underline{New File} submenu has been further expanded.}\label{fig:file-menu}
-\end{figure}
-
-For now, the RStudio drop-down menus that are of most immediate
-importance are \underline{File} and \underline{Help}.  Here (Figure
-\ref{fig:file-menu}) is the \underline{File} menu, with the
-\underline{New File} submenu also shown.
-
-Here, note the possibility of opening a new R script file, and
-entering code into that file. Or, to open an existing R code file,
-click on the \underline{Open File...} submenu.
-
-The key combination <CTRL><ENTER> \marginnote{Here, <CTRL> is the
-  control key and <ENTER> is the Enter key.}can be used to send code
-to the command line.  Code that has been selected will be sent to the
-command line.  Or if no code has been selected, the line on which the
-cursor is placed will be sent to the command line.
-
-\subsection{Compile a code notebook}
-
-Figure \ref{fig:code-history} shows a script file in the upper left
-panel.  The code has been sent to the command line, so that it also
-appears in the code history panel on the upper right.
-
-\begin{figure*}
-\includegraphics{figs-inc/03i-3panels.png}
-\vspace*{-15pt}
-
-\caption{Code from the script window has been sent to the command
-  line.}\label{fig:code-history}
-\end{figure*}
-
-In Figure \ref{fig:code-history}, take particular note of the icon on
-which you can click to create an R notebook. Upon clicking this icon,
-the system will ask for a name for the file.  It will then create an
-HTML file that has, along with the code and comment, the compluter
-output.
-\marginnote{For the code that is shown, the HTML file that results
-will include the output from \txtt{summary(cars)} and the graph from
-  \txtt{plot(cars)}.}  An alternative to clicking on the icon is to
-click on the \underline{File} drop-down menu, and then on
-\underline{Compile Notebook... }.
-
-\section{Abilities for reproducible reporting}
-Markdown editors use simple markup conventions to control how text and
-other document features will appear.  For example:
-\begin{itemize}
-\item[] \txtt{**Help**} or \txtt{\_\_Help\_\_} will be rendered as
-\textbf{Help}
-\item[] \txtt{*Help*} or \txtt{\_Help\_} will be rendered as {\em Help}.
-\end{itemize}
-
-\subsection{R Markdown}
-\marginnote{R Markdown, as available under RStudio, is an enhanced
-  version of Markdown.  It adds the ability to include R code,
-  surrounded by markup that controls what code and/or output will appear
-  in the final document.
-
-R users are strongly encouraged to use R Markdown, or another
-such markup system that allows embedded R code, for documenting any
-work that is more than trivial.  Those who are familiar with
-more sophisticated markdown languages may still, for some types
-of work, find benefit in the simplicity and speed of working with R
-markdown.}
-
-Click on \underline{File} | \underline{New File} | \underline{R
-  Markdown...}.  Clicking on HTML (alternatives are PDF, Word), on
-\underline{Document} (alternatives are Presentation, Shiny, From
-Template) and then on \underline{OK} displays a simple skeleton R
-Markdown document thus:
-\begin{verbatim}
----
-title: "Untitled"
-output: html_document
----
-
-This is an R Markdown document. Markdown is a simple
-formatting syntax for authoring HTML, PDF, and MS
-Word documents. For more details on using R Markdown
-see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will
-be generated that includes both content as well as
-the output of any embedded R code chunks within the
-document. You can embed an R code chunk like this:
-
-```{r}
-summary(cars)
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added
-to the code chunk to prevent printing of the R
-code that generated the plot.
-\end{verbatim}
-\marginnote[-36pt]{For tutorial purposes, the file can
-be processed as it stands.  Click the \underline{Knit HTML}
-button to start the process of generating the HTML file.  When
-prompted, enter a name for the file.  An HTML file will be
-generated and displayed in a browser.}
-
-In actual use, one would edit out the text and R code and replace
-it with one's own text and R code chunks, then clicking on
-\underline{Knit HTML}. When prompted, enter a name for the file.
-
-
-\subsection*{R Markdown code chunk options}
-The markup that surrounds R code can include instructions on what to
-do with R code and/or any output, including tables and graphs. Should
-code be executed, should it be echoed, and what output text and/or
-tables and/or graphs should appear in the final document?
-
-Here is an example of code with surrounding markup, with the
-code chunk options \txtt{fig.width} and \txtt{fig.height}
-giving the width and height of the initial figure, and
-\txtt{out.width} giving the width to which it should be scaled
-in the final document:
-\begin{minipage}[t]{1.05\textwidth}
-\begin{verbatim}
-```{r plotgph, fig.width=7, fig.height=6, out.width="80%"}
-plot(cars)
-```
-\end{verbatim}
-\end{minipage}
-
-Giving the code chunk a name, here \txtt{plotgph}, is optional.
-\marginnote{Other possible settings include:
-  \margtt{echo=FALSE} (do not show code), \&
-\margtt{eval=FALSE} (do not evaluate).}
- The \txtt{fig.width} and \txtt{fig.height} settings
-  control the size of the output plot, before it is scaled to fit
-  within the available line width.  The \txtt{out.width} setting
-  controls the width (here given as a percentage of the line
-  width) in the final HTML document.  The width may alternatively
-  be given in pixels, e.g., `out.width="600px"`.
-  
-An image from a file {\bf pic.png} that has been generated
-separately from the markup R code can be input thus:
-
-\begin{minipage}[t]{1.05\textwidth}
-\begin{verbatim}
-```{r, out.width="80%"}
-knitr::include\_graphics("pic.png")
-```
-\end{verbatim}
-\end{minipage}
-  
-\subsection*{$^*$Inclusion of HTML in R Markdown documents}
-Note also that HTML markup can be included in R Markdown documents.
-The following is a less preferred alternative to the
-R code \txtt{knitr::include\_graphics("pic.png")} whose use was
-demonstrated above:
-\begin{verbatim}
-<IMG SRC="pic.png" alt="Show this, if no image" STYLE="width: 1200px"/>
-\end{verbatim}
-
-The image position can if necessary be adjusted thus:
-\begin{verbatim}
-<IMG SRC="pic.png" alt="Show this, if no image" STYLE="position:absolute;
-TOP:-25px; LEFT:40px; WIDTH:800px; HEIGHT:500px"/>
-\end{verbatim}
-
-\subsection*{R Presentation}
-
-Note the R Presentation variant of R Markdown.
-To display a simple skeleton  document, click on:
-\begin{quote}
-\underline{File} | \underline{New File} | \underline{R Presentation}
-\end{quote}
-An R Presentation document is a specific type of R Markdown document
-that is formatted to provide slides that can be displayed using a
-browser.
-
-Click on \underline{Knit HTML} to process the document, either as it
-stands or after replacing the sample text and code with one's own text
-and code.
-
-\subsection{$^*$Other markup types -- HTML,  LaTeX, \ldots}
-
-\subsection*{R HTML}
-\marginnote{Also available is reStructuredText (reST), which is an
-  extended variant of R Markdown.}
-
-Click on \underline{File} | \underline{New File} | \underline{R HTML}
-to display a skeleton HTML document that has embedded R code.
-The following shows the markup format:
-\begin{verbatim}
-<!--begin.rcode fig.width=7, fig.height=6, out.width="600px"
-plot(cars)
-end.rcode-->
-\end{verbatim}
-
-Again, the document that appears can be processed as it stands --
-click on \underline{Knit HTML}.
-
-\subsection*{R Sweave: }
-
-Click on \underline{File} | \underline{New
-  File} | \underline{R Sweave} to display a template for a LaTeX file.
-The web page \url{http://maths-people.anu.edu.au/~johnm/r-book/knitr/} has
-files that demonstrate the use of {\em knitr} Sweave type markup.
-
-\subsection{RStudio documentation -- markup and other}
-
-Extensive RStudio documentation is available online.  Click on
-\underline{Help} | \underline{RStudio Docs} to go to the relevant web
-page. For \underline{R Markdown} and \underline{R Presentation}, note
-the documentation files for {\bf Using R Markdown}.  \LaTeX\ users
-should note the {\bf Sweave and knitr} documentation files.
-
-\subsection{A strategy for RStudio project management}
-
-RStudio is designed to encourage good project management practices,
-using a strategy akin to the following:
-\begin{itemize}
-\item[] Set up each new project in its own working directory.
-\item[] For each project, maintain one or more script files that
-holds the code.  Script files can be compiled into "notebooks"
-for purposes of keeping a paper record.
-\item[] Script files are readily expanded into R Markdown documents
--- a simple form of "reproducible reporting" document.  They can
-as required be expanded into a draft for a paper.
-\end{itemize}
-
-\chapter{The R Working Environment}\label{ch:workenv}
 
 % !Rnw root = learnR.Rnw
 
@@ -2225,7 +1940,7 @@ menu (if available) or from the command line.  Changing the working
 directory from within a session requires a clear head; it is usually
 best to save one's work, quit, and start a new session.
 
-\section{Work and Data Maintenance}
+\section{Code, data, and project Maintenance}
 
 \subsection{Maintenance of R scripts}
 
@@ -2571,6 +2286,285 @@ round(c(sqrt(85/7)*9,  3.48*9), 2)
 \end{Soutput}
 \end{Schunk}
 
+\section{Enhancing the R experience --- RStudio}\label{sec:RStudio}
+
+\marginnote{The screenshots here are for version 0.98.501 of RStudio.}
+The url for RStudio is \url{http://www.rstudio.com/}.  Click on the
+icon for the downloaded installation file to install it. An RStudio
+icon will appear.  Click on the icon to start RStudio.  RStudio should
+find any installed version of R, and if necessary start R.  Figure
+\ref{fig:rstudio} shows an RStudio display, immediately after starting
+up and entering, very unimaginatively, \txtt{1+1}.
+
+\begin{figure*}
+\includegraphics{figs-inc/03i-all4.png}
+\caption{Here is shown the RStudio interface, after starting up and
+  entering \txtt{1+1}.}\label{fig:rstudio}
+\end{figure*}
+\pagebreak
+
+Techncally, \marginnote{Extensive and careful RStudio documentation
+  can be accessed, assuming an internet connection, from the
+  \underline{Help} drop-down menu.  The notes included here are
+  designed to draw attention to some of the more important RStudio
+  abilities and features.}
+RStudio offers an Interactive Development Environment.  It
+provides, from a graphical user interface, a range of abilities that
+are helpful for organizing and managing work with R.  Helpful features
+of RStudio include:
+\begin{itemize}
+\item The organisation of work into projects.
+\item The recording of files that have been accessed from RStudio, of
+  help pages accessed, and of plots.  The record of files is
+  maintained from one session of a project to the next.
+\item By default, a miniature is displayed of any graph that is
+  plotted.  A single click expands the miniature to a full graphics
+  window.
+\item The editing, maintenance and display of code files.
+\item Abilities that assist reproducible reporting.
+   \marginnote{Alternative available types of markup are R
+    Markdown or R HTML or Sweave with LaTeX.}  Markup text
+  surrounds R code that is incorporated into a document, with option
+  settings used to control the inclusion of code and/or computer
+  output in the final document. Output may include tables and graphs.
+\item Abilities that help in the creation of packages.
+\end{itemize}
+
+\subsection{The RStudio file menu}
+
+\begin{figure}
+\includegraphics{figs-inc/03i-menu.png}
+\caption{The RStudio \underline{File} drop-down menu.  The
+  \underline{New File} submenu has been further expanded.}\label{fig:file-menu}
+\end{figure}
+
+For now, the RStudio drop-down menus that are of most immediate
+importance are \underline{File} and \underline{Help}.  Here (Figure
+\ref{fig:file-menu}) is the \underline{File} menu, with the
+\underline{New File} submenu also shown.
+
+Here, note the possibility of opening a new R script file, and
+entering code into that file. Or, to open an existing R code file,
+click on the \underline{Open File...} submenu.
+
+The key combination <CTRL><ENTER> \marginnote{Here, <CTRL> is the
+  control key and <ENTER> is the Enter key.}can be used to send code
+to the command line.  Code that has been selected will be sent to the
+command line.  Or if no code has been selected, the line on which the
+cursor is placed will be sent to the command line.
+
+\subsection{Compile a code notebook}
+
+Figure \ref{fig:code-history} shows a script file in the upper left
+panel.  The code has been sent to the command line, so that it also
+appears in the code history panel on the upper right.
+
+\begin{figure*}
+\includegraphics{figs-inc/03i-3panels.png}
+\vspace*{-15pt}
+
+\caption{Code from the script window has been sent to the command
+  line.}\label{fig:code-history}
+\end{figure*}
+
+In Figure \ref{fig:code-history}, take particular note of the icon on
+which you can click to create an R notebook. Upon clicking this icon,
+the system will ask for a name for the file.  It will then create an
+HTML file that has, along with the code and comment, the compluter
+output.
+\marginnote{For the code that is shown, the HTML file that results
+will include the output from \txtt{summary(cars)} and the graph from
+  \txtt{plot(cars)}.}  An alternative to clicking on the icon is to
+click on the \underline{File} drop-down menu, and then on
+\underline{Compile Notebook... }.
+
+\section{Abilities for reproducible reporting}
+Markdown editors use simple markup conventions to control how text and
+other document features will appear.  For example:
+\begin{itemize}
+\item[] \txtt{**Help**} or \txtt{\_\_Help\_\_} will be rendered as
+\textbf{Help}
+\item[] \txtt{*Help*} or \txtt{\_Help\_} will be rendered as {\em Help}.
+\end{itemize}
+
+\subsection{R Markdown}
+\marginnote{R Markdown, as available under RStudio, is an enhanced
+  version of Markdown.  It adds the ability to include R code,
+  surrounded by markup that controls what code and/or output will appear
+  in the final document.
+
+R users are strongly encouraged to use R Markdown, or another
+such markup system that allows embedded R code, for documenting any
+work that is more than trivial.  Those who are familiar with
+more sophisticated markdown languages may still, for some types
+of work, find benefit in the simplicity and speed of working with R
+markdown.}
+
+Click on \underline{File} | \underline{New File} | \underline{R
+  Markdown...}.  Clicking on HTML (alternatives are PDF, Word), on
+\underline{Document} (alternatives are Presentation, Shiny, From
+Template) and then on \underline{OK} displays a simple skeleton R
+Markdown document thus:
+\begin{verbatim}
+---
+title: "Untitled"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple
+formatting syntax for authoring HTML, PDF, and MS
+Word documents. For more details on using R Markdown
+see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will
+be generated that includes both content as well as
+the output of any embedded R code chunks within the
+document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added
+to the code chunk to prevent printing of the R
+code that generated the plot.
+\end{verbatim}
+\marginnote[-36pt]{For tutorial purposes, the file can
+be processed as it stands.  Click the \underline{Knit HTML}
+button to start the process of generating the HTML file.  When
+prompted, enter a name for the file.  An HTML file will be
+generated and displayed in a browser.}
+
+In actual use, one would edit out the text and R code and replace
+it with one's own text and R code chunks, then clicking on
+\underline{Knit HTML}. When prompted, enter a name for the file.
+
+
+\subsection*{R Markdown code chunk options}
+The markup that surrounds R code can include instructions on what to
+do with R code and/or any output, including tables and graphs. Should
+code be executed, should it be echoed, and what output text and/or
+tables and/or graphs should appear in the final document?
+
+Here is an example of code with surrounding markup, with the
+code chunk options \txtt{fig.width} and \txtt{fig.height}
+giving the width and height of the initial figure, and
+\txtt{out.width} giving the width to which it should be scaled
+in the final document:
+\begin{minipage}[t]{1.05\textwidth}
+\begin{verbatim}
+```{r plotgph, fig.width=7, fig.height=6, out.width="80%"}
+plot(cars)
+```
+\end{verbatim}
+\end{minipage}
+
+Giving the code chunk a name, here \txtt{plotgph}, is optional.
+\marginnote{Other possible settings include:
+  \margtt{echo=FALSE} (do not show code), \&
+\margtt{eval=FALSE} (do not evaluate).}
+ The \txtt{fig.width} and \txtt{fig.height} settings
+  control the size of the output plot, before it is scaled to fit
+  within the available line width.  The \txtt{out.width} setting
+  controls the width (here given as a percentage of the line
+  width) in the final HTML document.  The width may alternatively
+  be given in pixels, e.g., `out.width="600px"`.
+  
+An image from a file {\bf pic.png} that has been generated
+separately from the markup R code can be input thus:
+
+\begin{minipage}[t]{1.05\textwidth}
+\begin{verbatim}
+```{r, out.width="80%"}
+knitr::include\_graphics("pic.png")
+```
+\end{verbatim}
+\end{minipage}
+  
+\subsection*{$^*$Inclusion of HTML in R Markdown documents}
+Note also that HTML markup can be included in R Markdown documents.
+The following is a less preferred alternative to the
+R code \txtt{knitr::include\_graphics("pic.png")} whose use was
+demonstrated above:
+\begin{verbatim}
+<IMG SRC="pic.png" alt="Show this, if no image" STYLE="width: 1200px"/>
+\end{verbatim}
+
+The image position can if necessary be adjusted thus:
+\begin{verbatim}
+<IMG SRC="pic.png" alt="Show this, if no image" STYLE="position:absolute;
+TOP:-25px; LEFT:40px; WIDTH:800px; HEIGHT:500px"/>
+\end{verbatim}
+
+\subsection*{R Presentation}
+
+Note the R Presentation variant of R Markdown.
+To display a simple skeleton  document, click on:
+\begin{quote}
+\underline{File} | \underline{New File} | \underline{R Presentation}
+\end{quote}
+An R Presentation document is a specific type of R Markdown document
+that is formatted to provide slides that can be displayed using a
+browser.
+
+Click on \underline{Knit HTML} to process the document, either as it
+stands or after replacing the sample text and code with one's own text
+and code.
+
+\subsection{$^*$Other markup types -- HTML,  LaTeX, \ldots}
+
+\subsection*{R HTML}
+\marginnote{Also available is reStructuredText (reST), which is an
+  extended variant of R Markdown.}
+
+Click on \underline{File} | \underline{New File} | \underline{R HTML}
+to display a skeleton HTML document that has embedded R code.
+The following shows the markup format:
+\begin{verbatim}
+<!--begin.rcode fig.width=7, fig.height=6, out.width="600px"
+plot(cars)
+end.rcode-->
+\end{verbatim}
+
+Again, the document that appears can be processed as it stands --
+click on \underline{Knit HTML}.
+
+\subsection*{R Sweave: }
+
+Click on \underline{File} | \underline{New
+  File} | \underline{R Sweave} to display a template for a LaTeX file.
+The web page \url{http://maths-people.anu.edu.au/~johnm/r-book/knitr/} has
+files that demonstrate the use of {\em knitr} Sweave type markup.
+
+\subsection{RStudio documentation -- markup and other}
+
+Extensive RStudio documentation is available online.  Click on
+\underline{Help} | \underline{RStudio Docs} to go to the relevant web
+page. For \underline{R Markdown} and \underline{R Presentation}, note
+the documentation files for {\bf Using R Markdown}.  \LaTeX\ users
+should note the {\bf Sweave and knitr} documentation files.
+
+\subsection{A strategy for RStudio project management}
+
+RStudio is designed to encourage good project management practices,
+using a strategy akin to the following:
+\begin{itemize}
+\item[] Set up each new project in its own working directory.
+\item[] For each project, maintain one or more script files that
+holds the code.  Script files can be compiled into "notebooks"
+for purposes of keeping a paper record.
+\item[] Script files are readily expanded into R Markdown documents
+-- a simple form of "reproducible reporting" document.  They can
+as required be expanded into a draft for a paper.
+\end{itemize}
+
+
 \section{Summary and Exercises}
 
 \subsection{Summary}
@@ -2702,7 +2696,7 @@ Now extract the rows for all species except \texttt{C. fraseri}.
 \cleartooddpage
 \cleartooddpage
 
-\chapter{Practical Data Analysis -- Examples}\label{ch:worked}
+\chapter{Examples --- Data analysis with R}\label{ch:worked}
 
 % !Rnw root = learnR.Rnw
 
@@ -2740,7 +2734,7 @@ List objects & An \txtt{lm} model object is a list object. Lists are\\
   extractor functions to extract information from model objects.}
 This chapter will use examples to illustrate common issues in the
 exploration of data and the fitting of regression models.  It will
-round out the discussion of Chapters 1 to \ref{ch:oview} and
+round out the discussion of Chapters \ref{ch:getStart} and
 \ref{ch:workenv} by adding some further important technical details.
 
 \subsection*{Notation, when referring to datasets}
@@ -2752,7 +2746,7 @@ as in the textual description, makes it clear that the dataset
 Should another attached package happen to have a dataset
 \txtt{mammals}, there is no risk of confusion.
 
-\section{The Uses of Scatterplot Matrices}
+\section{The Uses of Scatterplots}
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2793,7 +2787,8 @@ Code for Figure \ref{fig:Animals}A
 \begin{Schunk}
 \begin{Sinput}
 plot(brain ~ body, data=mammals)
-mtext(side=3, line=0.5, adj=0, "A: Unlogged data")
+mtext(side=3, line=0.5, adj=0,
+      "A: Unlogged data", cex=1.1)
 \end{Sinput}
 \end{Schunk}
 
@@ -2801,7 +2796,7 @@ mtext(side=3, line=0.5, adj=0, "A: Unlogged data")
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/05-bbAB-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/03-bbAB-1} }
 
 \end{Schunk}
 \caption{Brain weight (g) versus Body weight (kg), for 62 species of mammal.
@@ -2816,7 +2811,7 @@ Code for Figure \ref{fig:Animals}B is:
 \begin{Sinput}
 plot(brain ~ body, data=mammals, log="xy")
 mtext(side=3, line=0.5, adj=0,
-      "B: Log scales (both axes)")
+      "B: Log scales (both axes)", cex=1.1)
 \end{Sinput}
 \end{Schunk}
 
@@ -2872,7 +2867,7 @@ plot(trees, cex.labels=1.5)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/05-plot-trees-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/03-plot-trees-1} }
 
 \end{Schunk}
 \vspace*{-15pt}
@@ -2958,7 +2953,7 @@ xyplot(Time ~ Distance, scales=list(tck=0.5),
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/05-trackVSroad-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/03-trackVSroad-1} }
 
 \end{Schunk}
 \caption{World record times versus distance, for field and road
@@ -2980,7 +2975,7 @@ orginal units.  Notice the use of
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/05-wrTimesAB-1} \includegraphics[width=0.47\textwidth]{figs/05-wrTimesAB-2} }
+\centerline{\includegraphics[width=0.47\textwidth]{figs/03-wrTimesAB-1} \includegraphics[width=0.47\textwidth]{figs/03-wrTimesAB-2} }
 
 \end{Schunk}
 \caption{World record times versus distance, for field and road
@@ -3066,7 +3061,9 @@ Note that the function \txtt{abline()} can be used
 
 \subsection*{Diagnostic plots}
 
-Insight into the adequacy of the line can be obtained by examining the
+Insight into the adequacy of the line 
+\marginnote{By default, there are four ``diagnostic'' plots.}
+can be obtained by examining the
 ``diagnostic'' plots, obtained by ``plotting'' the model object.
 Figure \ref{fig:wr-diag} following shows the first and last of the default
 plots:
@@ -3082,22 +3079,21 @@ plot(worldrec.lm, which=c(1,5),
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/05-diag12-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/03-diag12-1} }
 
 \end{Schunk}
       \caption{First and last of the default diagnostic plots, from the
         linear model for log(record time) versus log(distance), for
         field and road events.}
 \label{fig:wr-diag}
-\setfloatalignment{t}% forces caption to be bottom-aligned
+\setfloatalignment{t}% forces caption to be top-aligned
 \end{figure}
 
-By default, there are four ``diagnostic'' plots.  Panel A is designed
+Panel A is designed
 to give an indication whether the relationship really is linear, or
 whether there is some further systematic component that should perhaps
 be modeled.  It does show systematic differences from a line.
 
-\pagebreak
 The largest difference is more than a 15\% difference.\sidenote{A
   difference of 0.05 on a scale of $\log_e$ translates to a difference
   of just over 5\%.  A difference of 0.15 translates to a difference
@@ -3264,7 +3260,7 @@ shows the logged data:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.48\textwidth]{figs/05-nihills-spmAB-1} \includegraphics[width=0.48\textwidth]{figs/05-nihills-spmAB-2} }
+\centerline{\includegraphics[width=0.48\textwidth]{figs/03-nihills-spmAB-1} \includegraphics[width=0.48\textwidth]{figs/03-nihills-spmAB-2} }
 
 \end{Schunk}
 \caption{Scatterplot matrices for the Northern Ireland mountain racing
@@ -3357,9 +3353,7 @@ Five plants were grown under each of the treatments:
   \item[-] \txtt{2-4-D + conc nutrient}
   \item[-] \txtt{x conc nutrient}
 \end{itemizz}
-Notice that ``water only'' has been made the referrence level.  This
-is done as a preferred starting point for the analysis of variance
-calculations that appear below.  Figure \ref{fig:Tomato}, created
+Figure \ref{fig:Tomato}, created
 using the function \txtt{quickplot()} from the {\em ggplot2} package,
 shows the plant weights.  Are the apparent differences between
 treatments large enough that they can be distinguished statistically?
@@ -3369,24 +3363,26 @@ treatments large enough that they can be distinguished statistically?
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/05-gg-tomato-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/03-gg-tomato-1} }
 
 \end{Schunk}
 \caption{Weights (g) of tomato plants grown under four different
   treatments.\label{fig:Tomato}}
 \end{figure}
-\begin{fullwidth}
 
+\marginnote{Notice that ``water only'' is made the reference level.
+This choice makes best sense for the analysis of
+variance calculations that appear below.}
 \begin{Schunk}
 \begin{Sinput}
 ## Code
 library(ggplot2)
-tomato <- within(tomato, trt <- relevel(trt, ref="water only"))
-quickplot(weight, trt, data=tomato, xlab="Weight (g)", ylab="")
+tomato <- within(DAAG::tomato, 
+                 trt <- relevel(trt, ref="water only"))
+quickplot(weight, trt, data=tomato,
+          xlab="Weight (g)", ylab="")
 \end{Sinput}
 \end{Schunk}
-
-\end{fullwidth}
 
 \marginnote[12pt]{Observe that, to get estimates and SEs of treatment
   effects, \margtt{tomato.aov} can be treated as an \txtt{lm} (regression)
@@ -3414,35 +3410,31 @@ trtconc nutrient            0.067      0.264   0.253    0.803
 \end{fullwidth}
 Because we made ``\txtt{water only}'' the reference level,
 ``\txtt{(Intercept)}'' is the mean for \txtt{water only}, and the
-other coefficients are for differences from \txtt{water only}.  None
-of the treatments can be distinguished statistically from \txtt{water
-  only}.
+other coefficients are for differences from \txtt{water only}.
 
-Growing conditions in a laboratory or glasshouse or growth chamber ---
-temperature, humidity and air movement --- are rarely totally
-uniform. The preferred way to deal with this is to repeat the
-comparison between treatments in several different
-locations.\sidenote{Technically, each different location (or set of
-conditions) is known as a {\em block}.}  Conditions will vary between
-locations, but each comparison between treatments is conducted under
-the relatively uniform conditions at one particular location.
+\subsection*{A randomized block comparison}
 
-The dataset \txtt{rice} ({\em DAAG}) is from such experiment.
-There are two treatment factors ---  three types of fertilizer
-and two varieties of rice plant.  The six treatment combinations
-are each repeated six times, in each of two blocks.
+Growing conditions in a glasshouse or growth chamber ---
+temperature, humidity and air movement --- will not be totally
+uniform. This makes it desirable to do several repeats of the
+comparison between treatments\sidenote{In language used
+originally in connection with agricultural field trials,
+where the comparison was repeated on different blocks of land,
+each different location  is a "block".}, with conditions
+within each repeat  ("block") kept as uniform as possible.
+Each different "block" may for example be a different part of
+the glasshouse or growth chamber.
 
-For these data, Figure \ref{fig:rice-interact} gives a clear picture
-of the result. For fertilizers \txtt{NH4Cl} and \txtt{NH4NO3}, any difference
-between the varieties is inconsequential.   There is strong ``interaction''
-between \txtt{fert} and \txtt{variety}.  A formal analysis will confirm
-what is already rather clear.  Experimenters are rarely thus fortunate.
+The dataset \txtt{DAAG::rice} is from an experiment
+where there were six treatment combinations ---
+three types of fertilizer were applied to each of two varieties
+of rice plant.  There were two repeats, i.e., two blocks.
 
 \begin{figure}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.55\textwidth]{figs/05-do-interact-1} }
+\centerline{\includegraphics[width=0.65\textwidth]{figs/03-do-interact-1} }
 
 \end{Schunk}
     \caption{Interaction plot for the terms \txtt{fert} and
@@ -3462,6 +3454,17 @@ with(rice, interaction.plot(x.factor=fert,
 \end{Schunk}
 \end{figure}
 
+For these data, 
+\marginnote{The effect of an appropriate choice of clocks, then
+carrying out an analysis that accounts for block effects, is to
+allow a more precise comparison between treatments.}
+Figure \ref{fig:rice-interact} gives a clear picture
+of the result. For fertilizers \txtt{NH4Cl} and \txtt{NH4NO3}, any
+difference between the varieties is inconsequential.   There is
+strong ``interaction'' between \txtt{fert} and \txtt{variety}.  A
+formal analysis, accounting for block differences, will confirm what
+seems already rather clear. 
+
 \section{Time series -- Australian annual climate data}
 \marginnote{Data
   are from the website\\
@@ -3477,7 +3480,7 @@ basin, plotted against year.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/05-MDBrainfall-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/03-MDBrainfall-1} }
 
 \end{Schunk}
 \caption{Annual rainfall in the Australian Murray-Darling Basin.
@@ -3659,8 +3662,15 @@ x[c(2,4)]              # Extract elements 2 and 4
 \noindent
 Negative numbers may be used to omit elements:\sidenote{Mixing of
   positive and negative subscripts is not allowed.}
-<<negative-subs>>-
-@
+\begin{Schunk}
+\begin{Sinput}
+x <- c(3,11,8,15,12)
+x[-c(2,3)]
+\end{Sinput}
+\begin{Soutput}
+[1]  3 15 12
+\end{Soutput}
+\end{Schunk}
 
 2. Specify a vector of logical values.  \marginnote{Arithmetic
   relations that may be used for extraction of subsets are
@@ -4627,15 +4637,15 @@ mean.and.sd <- function(x = rnorm(20))
 mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
-  mean     sd 
-0.2189 1.1831 
+   mean      sd 
+-0.1563  0.8558 
 \end{Soutput}
 \begin{Sinput}
 mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
-   mean      sd 
--0.1110  0.7672 
+  mean     sd 
+0.1434 0.8270 
 \end{Soutput}
 \end{Schunk}
 
@@ -4976,7 +4986,7 @@ Figure \ref{fig:simplatparam} provides an example:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/06-date-labs-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/04-date-labs-1} }
 
 \end{Schunk}
  \caption{Canadian worker force numbers, with dates used to label the
@@ -5269,7 +5279,7 @@ This has created an object of the class \txtt{SpatialPointsDataFrame}.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/06-bubble-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/04-bubble-1} }
 
 \end{Schunk}
 \caption{Bubble plot for \txtt{zinc} concentrations.  Areas of
@@ -5749,8 +5759,6 @@ and stores the path to the file in the text string \txtt{path2file}:
 \begin{Schunk}
 \begin{Sinput}
 library(memisc)
-\end{Sinput}
-\begin{Sinput}
 ## Unzip; return path to "NES1948.POR"
 path2file <- unzip(system.file("anes/NES1948.ZIP",package="memisc"),
                      "NES1948.POR",exdir=tempfile())
@@ -5772,7 +5780,7 @@ show(nes1948imp)
 \begin{Schunk}
 \begin{Soutput}
 
-SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmp9xUNvq/file14db5ce7b3d6/NES1948.POR' 
+SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmp9uICLO/file4f062bbf1949/NES1948.POR' 
 	with 67 variables and 662 observations
 \end{Soutput}
 \end{Schunk}
@@ -6136,8 +6144,6 @@ given by such a search:
 \begin{Schunk}
 \begin{Sinput}
 library(WDI)
-\end{Sinput}
-\begin{Sinput}
 WDIsearch('co2')[1:4,]
 \end{Sinput}
 \begin{Soutput}
@@ -6281,7 +6287,6 @@ example be text that has been input using \txtt{readLines()}.
   archives now offer one or more of several markup formats that
   facilitate selective access.
 \end{itemize}
-% \input{7input}
 \cleartooddpage
 
 \chapter{Data Manipulation and Management}\label{ch:manip}
@@ -6431,8 +6436,6 @@ and the total who applied:
 \begin{Schunk}
 \begin{Sinput}
 library(dplyr)
-\end{Sinput}
-\begin{Sinput}
 gpUCBgender <- dplyr::group_by(UCBdf, Gender)
 AdmitRate <- dplyr::summarise(gpUCBgender,
                               Accept=sum(Freq[Admit=="Admitted"]),
@@ -6950,8 +6953,6 @@ columns, and years to be rows.  The \txtt{melt()} and
   an array or a matrix.}  functions from the {\em reshape2}
   package can be used to achieve the desired result.  First, create a
   single column of data, indexed by classifying factors:
-\begin{fullwidth}
-
 \begin{Schunk}
 \begin{Sinput}
 library(reshape2)
@@ -6973,8 +6974,6 @@ wdiLong
 8          CHN  Population, total    X2010 1.34e+09
 \end{Soutput}
 \end{Schunk}
-
-\end{fullwidth}
 
 Now\marginnote{If a matrix or array is required, use \margtt{acast()}
 in place of \margtt{dcast()}.}
@@ -7172,7 +7171,7 @@ system.time(xy+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.159   0.130   0.289 
+  0.167   0.143   0.311 
 \end{Soutput}
 \begin{Sinput}
 xy.df <- data.frame(xy)
@@ -7180,7 +7179,7 @@ system.time(xy.df+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.447   0.161   0.812 
+  0.177   0.139   0.317 
 \end{Soutput}
 \end{Schunk}
 \vspace*{-12pt}
@@ -7244,10 +7243,9 @@ are formally equivalent can differ greatly in their use of
 computational resources.
 
 \end{itemize}
-% \input{8manip}
 \cleartooddpage
 
-\chapter{Graphics -- Base, Lattice, Ggplot, \ldots}\label{ch:plots}
+\chapter{Graphics -- base, lattice, ggplot2, rgl, googleVis\ldots}\label{ch:plots}
 
 % !Rnw root = learnR.Rnw
 
@@ -7399,7 +7397,7 @@ Gorilla         207     406
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-brain-body-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-brain-body-1} }
 
 \end{Schunk}
 \caption{Plot of brain weight against body weight, for selected
@@ -7569,14 +7567,13 @@ plot(1:7, pch=16, cex=2, col=Set1)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-alpha-ex-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-alpha-ex-1} }
 
 \end{Schunk}
 \caption{In Panel A, points are plotted with the 100\% opacity, i.e.,
   no transparency. In Panel B, \txtt{alpha=0.4}, i.e., 40\% opacity.
   Panel C uses the function \txtt{smoothScatter()} to show a smoothed
-  color density representation of the data.  Figure \ref{col:alphaC}
-  is a color version of Panel C.\label{fig:alpha}}
+  color density representation of the data.\label{fig:alpha}}
 \end{figure}
 
 \marginnote[2pt]{An opacity of 0.4 has the effect that, for an
@@ -7622,7 +7619,7 @@ large say in what is visually obvious.  Figures \ref{fig:aspect}A and
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-fig8_3e-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-fig8_3e-1} }
 
 \end{Schunk}
 \caption[][-15pt]{Figures A and B show the same data, but with widely different
@@ -7715,7 +7712,7 @@ density plot.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-poss-hist-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-poss-hist-1} }
 
 \end{Schunk}
  \caption{The two panels show the same data, but with a different
@@ -7791,7 +7788,7 @@ Figure \ref{fig:boxrugs} is an example.  Code for the plot is:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-boxplot-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-boxplot-1} }
 
 \end{Schunk}
 \vspace*{-12pt}
@@ -7826,7 +7823,7 @@ is an example.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-possum-qqn-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-possum-qqn-1} }
 
 \end{Schunk}
  \caption[][7pt]{Normal probability plots. The top left panel
@@ -7892,7 +7889,7 @@ provide $y$-axis labeling.  The code is:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-plot-expr-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-plot-expr-1} }
 
 \end{Schunk}
 \caption{A mathematical expression is included as part of the
@@ -7975,7 +7972,7 @@ library(latticeExtra, quietly=TRUE)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/09-cline-gph-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/07-cline-gph-1} }
 
 \end{Schunk}
 \caption{Use of lattice function \txtt{xyplot()} to give a graph.
@@ -8091,7 +8088,7 @@ from males.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-rowSwim-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-rowSwim-1} }
 
 \end{Schunk}
       \caption{Height (\texttt{ht}) versus Weight (\texttt{wt}), for
@@ -8205,13 +8202,12 @@ grogplot <- xyplot(
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-grog-all-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-grog-all-1} }
 
 \end{Schunk}
 \caption{Australian and New Zealand apparent per person annual
   consumption (in liters) of the pure alcohol content of liquor products, for
-  1998 to 2006.  Appendix \ref{app:C} (Figure \ref{col:fig31}) has a color
-version of this graph.\label{fig:allgrog}}
+  1998 to 2006.\label{fig:allgrog}}
 \end{figure}
 
 Observe that:
@@ -8311,7 +8307,7 @@ required.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-strip-grob-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-strip-grob-1} }
 
 \end{Schunk}
 \caption{The argument \margtt{legend} has been used to add text,
@@ -8385,7 +8381,7 @@ provides an example.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/09-jobsplot-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/07-jobsplot-1} }
 
 \end{Schunk}
 \caption[][-18pt]{Jobs growth in Canadian provinces, between January 1995
@@ -8459,7 +8455,7 @@ dataset \txtt{cuckoos} from \textit{DAAG}:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/09-strip-bw-1} \includegraphics[width=0.47\textwidth]{figs/09-strip-bw-2} }
+\centerline{\includegraphics[width=0.47\textwidth]{figs/07-strip-bw-1} \includegraphics[width=0.47\textwidth]{figs/07-strip-bw-2} }
 
 \end{Schunk}
 \caption{A stripplot and a dotplot appear side by side.\label{fig:strip-bw}}
@@ -8496,7 +8492,7 @@ and \txtt{Vic}/\txtt{other} populations.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-lattice-density-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-lattice-density-1} }
 
 \end{Schunk}
 \end{center}
@@ -8587,7 +8583,7 @@ now follows, to use this panel function:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/09-my-panel-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/07-my-panel-1} }
 
 \end{Schunk}
 \end{center}
@@ -8765,7 +8761,7 @@ Figure \ref{fig:ggplot2-brain} repeats Figure \ref{fig:Animals}B from Chapter
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.7\linewidth]{figs/09-ggplot2-brain-1} }
+\centerline{\includegraphics[width=0.7\linewidth]{figs/07-ggplot2-brain-1} }
 
 \end{Schunk}
 \caption{Plot of brain weight (gm) versus body weight (kg).
@@ -9017,7 +9013,7 @@ The graph is a tad crowded.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-overlay-dens-frills-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-overlay-dens-frills-1} }
 
 \end{Schunk}
 \caption{Height versus weight, by sex, for Australian athletes in the
@@ -9071,13 +9067,11 @@ aisRS$sport <- droplevels(aisRS$sport)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-quick-rs1-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-quick-rs1-1} }
 
 \end{Schunk}
 \caption{Use \texttt{color} for distinguishing \texttt{sex}es,
-\texttt{shape}s for \texttt{sport}s.
-Figure \ref{col:colshape} in Appendix \ref{app:C}
-shows the graph in color.}\label{fig:colshape}
+\texttt{shape}s for \texttt{sport}s.}\label{fig:colshape}
 
 \end{marginfigure}
 
@@ -9164,7 +9158,7 @@ quickplot(Year, mdbRain, data=bomregions2015,
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-qplot-smooth-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-qplot-smooth-1} }
 
 \end{Schunk}
 \caption{Annual rainfall, from 1901 to 2012, for the Murray-Darling
@@ -9221,7 +9215,7 @@ areas to convey numerical information is however not ideal, especially
 when as here the areas overlap.
 
 
-\section{Graphics -- Additional Points}
+\section{Static graphics -- additional notes}
 \subsection{Multiple graphs on a single graphics page}\label{ssec:xgph}
 
 For \textit{base} graphics, refer back to Subsection \ref{ss:xplots}.
@@ -9277,6 +9271,254 @@ Macintosh under OS X.  On Windows systems, an effective option is to
 use \txtt{win.metafile()} to write graphics output to a Windows
 metafile format that should import without problem into a Word or
 Power Point document.
+
+
+\section{Dynamic Graphics -- \textit{rgl}}\label{sec:dynamicg}
+
+This section will describe a range of abilities that create displays
+which the user can then manipulate dynamically.  Note in particular
+the {\em rgl} and {\em googleVis} packages, designed for interactive
+exploration of dynamic changes in relationships with time.  The 
+{\em googleVis} package reproduces most of the abilities of Google's
+Public Data Explorer, which can be accessed at
+\url{http://www.google.com/publicdata/home}
+
+
+
+\begin{figure}
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.625\textwidth]{figs/07-rgl-demo-1} }
+
+\end{Schunk}
+\caption{Snapshot of a 3-D dynamic display, for the \txtt{nihills}
+data from the {\em DAAG} package.  The display has been dragged to a
+position where points very nearly fall on a line.}\label{fig:rgl-ex}
+\end{figure}
+
+The \textit{rgl} package provides three-dimensional dynamic graphics.
+Use of the functions \txtt{scatter3d()} and \txtt{identify3d()} from
+the \emph{car} package may be more convenient for novices than the
+\emph{rgl} functions that they call.
+Figure \ref{fig:rgl-ex} shows a snapshot of the plot obtained for the
+\txtt{nihills} data from the {\em DAAG} package.
+
+\noindent
+The following loads the needed packages:
+\begin{Schunk}
+\begin{Sinput}
+## The car and rgl packages must be installed
+library(rgl, quietly=TRUE)
+library(car, quietly=TRUE)
+rgl::setupKnitr()
+knit_hooks$set(rgl=hook_rgl)
+\end{Sinput}
+\end{Schunk}
+
+Code for the figure is:
+\begin{Schunk}
+\begin{Sinput}
+library(DAAG, quietly=TRUE)
+open3d()            # Precedes the call to par3d()
+par3d(cex=0.75)     # Optional
+                    # Other params: see help(par3d)
+with(nihills, scatter3d(x=log(dist), y=log(climb),
+                        z=log(time),
+                        grid=FALSE,
+                        surface=FALSE,
+                        point.col="black",
+                        axis.scales=FALSE))
+## NB: Use middle or right mouse button to drag a
+## rectangle around a point that is to be labeled.
+\end{Sinput}
+\end{Schunk}
+\marginnote[11pt]{Use \txtt{rgl.snapshot()} to save the current plot
+  into a file.}
+
+Use the function \txtt{identify3d()} to start the identification of
+points.  Following the call to \txtt{identify3d()}, use the middle (or
+maybe right) mouse button to drag a rectangle around any point that is
+to be labeled.  To cease identifying points, make a middle (or right)
+click on an empty region of the plot.  The labels may appear only at
+this point.  Here, for identification of points shown in Figure
+\ref{fig:rgl-ex}, is suitable code:
+\begin{Schunk}
+\begin{Sinput}
+with(nihills, identify3d(x=log(dist), y=log(climb),
+                         z=log(time),
+                         labels=row.names(nihills),
+                         col="gray"))
+\end{Sinput}
+\end{Schunk}
+
+Such a plot can be helpful in identifying high leverage points,
+e.g., in the regression of \txtt{log(time)} on \txtt{log(dist)}
+and \txtt{log(climb)}.  The plot needs to be rotated to give a view
+in which the leverage is apparent.
+
+\subsection*{The  \texttt{rggobi} package}
+
+The \textit{rggobi} package offers a wider range of features, via an
+interface to the GGobi system.  For installation details go to
+\url{http://www.ggobi.org/}.  Windows users can use the following to
+install all the required files from an R session that has access to a
+live internet connection:
+\begin{Schunk}
+\begin{Sinput}
+source("http://www.ggobi.org/downloads/install.r")
+\end{Sinput}
+\end{Schunk}
+
+\subsection{The {\em googleVis} Package}\label{sec:gvis}
+
+This provides an interface to the abilities of Google's Public Data
+Explorer.  While these abilities can be accessed from the web page
+noted below, there are obvious advantages in setting up the display
+from one's own computer.\sidenote{An internet connection is needed to
+  access Google's API (Application Program Interface) when the chart
+  is displayed.}
+
+\subsection*{Google's Public Data Explorer}
+
+Upon accessing Google's web page
+\url{http://www.google.com/publicdata/home}, the display will cycle
+through examples of the use of Motion Charts, and other related
+charts.  Click on \underline{Explore Data} to go to the interactive
+version of the relevant display.\sidenote{Various controls are placed
+  in the margins of the graph.  Move the pointer over one or other
+  control feature to get information on its purpose, or over a point
+  to display information about that point. For changing the $x$-
+  and/or $y$- variables, or for changing the variable that determines
+  point size, click on the relevant downward pointing selector arrow.
+  Scales, separately for the two axes, can be either linear or
+  logarithmic.}  These charts, which are interesting in themselves,
+show the abilities that {\em googleVis} is designed to emulate.  See
+the annotations in Figure \ref{col:mchart} below for details that
+should be enough to get started.
+
+A slider below the graph can be moved to show how the relationships
+that are plotted change over the available timespan, commonly 1960
+through to 2010 (but note that not all data will be available for all
+years).  Click on the solid right-pointing triangle on the left of
+the slider scale to see the graph changing dynamically in moving from the
+currently shown year through to 2010.
+
+\subsection*{Use of {\em googleVis} to create motion charts}\label{ss:gvis}
+
+\begin{SaveVerbatim}{gvis}
+vignette("googleVis")
+\end{SaveVerbatim}
+
+The details given here should be supplemented with examination
+of the vignette\marginnote{To display the vignette, type:
+\vspace*{-7pt}
+
+\UseVerbatim[fontsize=\relsize{0}]{gvis} } that accompanies the {\em
+googleVis} package.  Note especially Figure 1 on page 5 of the
+vignette.
+
+Creation of a motion chart, once the data is in place, is remarkably
+straightforward. The starting point is a data frame in that has a
+column (e.g.\ Countries) that can be used as an \txtt{id} variable, a
+column (e.g.\ Year) that has a \txtt{timevar} variable, and columns
+that can be used to supply $x$- and $y$- variables.  Optionally,
+columns may be identified for use as a \txtt{colorvar} and/or a
+\txtt{sizevar}.
+
+The dataset \txtt{grog} from the {\em DAAG} package has a suitable
+structure.  One can create a motion chart thus:
+\begin{minipage}[t]{1.075\textwidth}
+\begin{Schunk}
+\begin{Sinput}
+library(googleVis)
+M <- gvisMotionChart(grog, id="Country", timevar="Year")
+## This next line requires a live internet connection,
+## and Adobe Flash must be installed.
+plot(M)
+\end{Sinput}
+\end{Schunk}
+\end{minipage}
+If the browser window that appears displays 'Flash' in gray in the
+middle of the screen, click there to proceed.  A browser window with a
+gray display region should appear.
+
+For the \txtt{grog} dataset, the Motion Chart does a less satisfactory
+job than Figure \ref{fig:allgrog} in Section \ref{ss:grog}.  Motion
+charts come into their own for the examination of steady changes over
+time in a bivariate relationship, with different patterns of
+relationship for different subgroups of the data.
+
+A plot that allows the display of various World Bank development
+indicators can be obtained by typing:\marginnote{The code used to
+  download the data and display the motion chart will appear on your
+  screen.}
+\begin{Schunk}
+\begin{Sinput}
+demo(WorldBank)
+\end{Sinput}
+\end{Schunk}
+This can take a while to start up -- data has to be downloaded from
+the World Bank web site. Hover the mouse pointer over features that
+appear in the margins of the display to see annotation that indicates
+how you can change or manipulate various aspects of the display.
+
+The data from the World Bank site is stored into a data frame
+\txtt{WorldBank}.  The command that creates a gvis object M
+is:\sidenote{Both \txtt{WorldBank} and \txtt{M} should be in your
+  workspace after running \txtt{demo(WorldBank)}.  The data are
+  also alternatively available from the image file
+\txtt{WorldBank.RData} at the url noted
+on the reverse of the title page.}
+\begin{Schunk}
+\begin{Sinput}
+M <- gvisMotionChart(WorldBank, idvar="country",
+          timevar="year",
+          xvar="life.expectancy",
+          yvar="fertility.rate",
+          colorvar="region", sizevar="population",
+          options=list(width=700, height=600))
+## Now display the motion chart
+plot(M)
+\end{Sinput}
+\end{Schunk}
+Change \txtt{width} and \txtt{height} as needed to make better
+use of the screen display.
+
+If arguments are supplied, security setting issues on the user
+computer can result in an initial assignment of columns that does not
+accord with the supplied arguments.\sidenote{The
+  {\em gvis} object M comprises Javascript code that can be
+  included on a web page.  This should display correctly when the web
+  page is accessed.}  The drop-down menus should however function
+correctly, and can be used to obtain a display that accords with any
+choice of arguments that the user may want.
+
+For a further example, load the image file {\bf wdiSel.RData},
+available from the url noted on the reverse of the title page. This
+will make available the data frame \txtt{wdiSel}. This has a larger
+number of indicators, but for 26 countries only.  Figure
+\ref{col:mchart} (with the figures that are shown in color) shows an
+annotated version of a motion chart that was created from this
+dataset.
+
+The following code generated the initial chart.  The change
+to a log scale on the vertical axis was made interactively:
+\begin{fullwidth}
+\begin{Schunk}
+\begin{Sinput}
+xnam <- "Electric power consumption (kWh per capita)"
+ynam <- "Mobile cellular subscriptions (per 100 people)"
+M <- gvisMotionChart(wdiSel, idvar="Country.Name", timevar="Year",
+                     xvar=xnam, yvar=ynam,
+                     colorvar="region", sizevar="Population, total",
+                     options=list(width=600, height=500),
+                     chartid="wbMotionChartSel")
+plot(M)
+\end{Sinput}
+\end{Schunk}
+\end{fullwidth}
+
 
 \section{Summary}
 \begin{itemize}
@@ -9404,266 +9646,7 @@ densityplot( ~ npreg + glu | type, groups=anymiss, data=Pima.tr2,
 \end{fullwidth}
 \end{itemize}
 \end{enumerate}
-% \input{9graphics}
 
-\cleartooddpage
-
-\chapter{Dynamic Interaction with Graphs}\label{ch:dynamic}
-
-
-
-\begin{Schunk}
-\begin{Soutput}
-null device 
-          1 
-\end{Soutput}
-\end{Schunk}
-
-This chapter will describe a range of abilities that create displays
-which the user can then manipulate dynamically.  Note in particular
-the {\em rgl} and {\em googleVis} packages, designed for interactive
-exploration of dynamic changes in relationships with time.  It
-reproduces most of the abilities of Google's Public Data Explorer,
-which can be accessed at \url{http://www.google.com/publicdata/home}
-
-\section{Dynamic Graphics -- \textit{rgl}}\label{sec:dynamicg}
-
-
-
-\begin{figure}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.625\textwidth]{figs/10-rgl-demo-1} }
-
-\end{Schunk}
-\caption{Snapshot of a 3-D dynamic display, for the \txtt{nihills}
-data from the {\em DAAG} package.  The display has been dragged to a
-position where points very nearly fall on a line.}\label{fig:rgl-ex}
-\end{figure}
-
-The \textit{rgl} package provides three-dimensional dynamic graphics.
-Use of the functions \txtt{scatter3d()} and \txtt{identify3d()} from
-the \emph{car} package may be more convenient for novices than the
-\emph{rgl} functions that they call.
-Figure \ref{fig:rgl-ex} shows a snapshot of the plot obtained for the
-\txtt{nihills} data from the {\em DAAG} package.
-
-\noindent
-The following loads the needed packages:
-\begin{Schunk}
-\begin{Sinput}
-## The car and rgl packages must be installed
-library(rgl, quietly=TRUE)
-library(car, quietly=TRUE)
-rgl::setupKnitr()
-knit_hooks$set(rgl=hook_rgl)
-\end{Sinput}
-\end{Schunk}
-
-Code for the figure is:
-\begin{Schunk}
-\begin{Sinput}
-library(DAAG, quietly=TRUE)
-open3d()            # Precedes the call to par3d()
-par3d(cex=0.75)     # Optional
-                    # Other params: see help(par3d)
-with(nihills, scatter3d(x=log(dist), y=log(climb),
-                        z=log(time),
-                        grid=FALSE,
-                        surface=FALSE,
-                        point.col="black",
-                        axis.scales=FALSE))
-## NB: Use middle or right mouse button to drag a
-## rectangle around a point that is to be labeled.
-\end{Sinput}
-\end{Schunk}
-\marginnote[11pt]{Use \txtt{rgl.snapshot()} to save the current plot
-  into a file.}
-
-Use the function \txtt{identify3d()} to start the identification of
-points.  Following the call to \txtt{identify3d()}, use the middle (or
-maybe right) mouse button to drag a rectangle around any point that is
-to be labeled.  To cease identifying points, make a middle (or right)
-click on an empty region of the plot.  The labels may appear only at
-this point.  Here, for identification of points shown in Figure
-\ref{fig:rgl-ex}, is suitable code:
-\begin{Schunk}
-\begin{Sinput}
-with(nihills, identify3d(x=log(dist), y=log(climb),
-                         z=log(time),
-                         labels=row.names(nihills),
-                         col="gray"))
-\end{Sinput}
-\end{Schunk}
-
-Such a plot can be helpful in identifying high leverage points,
-e.g., in the regression of \txtt{log(time)} on \txtt{log(dist)}
-and \txtt{log(climb)}.  The plot needs to be rotated to give a view
-in which the leverage is apparent.
-
-\subsection*{The  \texttt{rggobi} package}
-
-The \textit{rggobi} package offers a wider range of features, via an
-interface to the GGobi system.  For installation details go to
-\url{http://www.ggobi.org/}.  Windows users can use the following to
-install all the required files from an R session that has access to a
-live internet connection:
-\begin{Schunk}
-\begin{Sinput}
-source("http://www.ggobi.org/downloads/install.r")
-\end{Sinput}
-\end{Schunk}
-
-\section{The {\em googleVis} Package}\label{sec:gvis}
-
-This provides an interface to the abilities of Google's Public Data
-Explorer.  While these abilities can be accessed from the web page
-noted below, there are obvious advantages in setting up the display
-from one's own computer.\sidenote{An internet connection is needed to
-  access Google's API (Application Program Interface) when the chart
-  is displayed.}
-
-\subsection{Google's Public Data Explorer}
-
-Upon accessing Google's web page
-\url{http://www.google.com/publicdata/home}, the display will cycle
-through examples of the use of Motion Charts, and other related
-charts.  Click on \underline{Explore Data} to go to the interactive
-version of the relevant display.\sidenote{Various controls are placed
-  in the margins of the graph.  Move the pointer over one or other
-  control feature to get information on its purpose, or over a point
-  to display information about that point. For changing the $x$-
-  and/or $y$- variables, or for changing the variable that determines
-  point size, click on the relevant downward pointing selector arrow.
-  Scales, separately for the two axes, can be either linear or
-  logarithmic.}  These charts, which are interesting in themselves,
-show the abilities that {\em googleVis} is designed to emulate.  See
-the annotations in Figure \ref{col:mchart} below for details that
-should be enough to get started.
-
-A slider below the graph can be moved to show how the relationships
-that are plotted change over the available timespan, commonly 1960
-through to 2010 (but note that not all data will be available for all
-years).  Click on the solid right-pointing triangle on the left of
-the slider scale to see the graph changing dynamically in moving from the
-currently shown year through to 2010.
-
-\subsection{Use of {\em googleVis} to create motion charts}\label{ss:gvis}
-
-\begin{SaveVerbatim}{gvis}
-vignette("googleVis")
-\end{SaveVerbatim}
-
-The details given here should be supplemented with examination
-of the vignette\marginnote{To display the vignette, type:
-\vspace*{-7pt}
-
-\UseVerbatim[fontsize=\relsize{0}]{gvis} } that accompanies the {\em
-googleVis} package.  Note especially Figure 1 on page 5 of the
-vignette.
-
-Creation of a motion chart, once the data is in place, is remarkably
-straightforward. The starting point is a data frame in that has a
-column (e.g.\ Countries) that can be used as an \txtt{id} variable, a
-column (e.g.\ Year) that has a \txtt{timevar} variable, and columns
-that can be used to supply $x$- and $y$- variables.  Optionally,
-columns may be identified for use as a \txtt{colorvar} and/or a
-\txtt{sizevar}.
-
-The dataset \txtt{grog} from the {\em DAAG} package has a suitable
-structure.  One can create a motion chart thus:
-\begin{minipage}[t]{1.075\textwidth}
-\begin{Schunk}
-\begin{Sinput}
-library(googleVis)
-M <- gvisMotionChart(grog, id="Country", timevar="Year")
-## This next line requires a live internet connection,
-## and Adobe Flash must be installed.
-plot(M)
-\end{Sinput}
-\end{Schunk}
-\end{minipage}
-If the browser window that appears displays 'Flash' in gray in the
-middle of the screen, click there to proceed.  A browser window with a
-gray display region should appear.
-
-For the \txtt{grog} dataset, the Motion Chart does a less satisfactory
-job than Figure \ref{fig:allgrog} in Section \ref{ss:grog}.  Motion
-charts come into their own for the examination of steady changes over
-time in a bivariate relationship, with different patterns of
-relationship for different subgroups of the data.
-
-A plot that allows the display of various World Bank development
-indicators can be obtained by typing:\marginnote{The code used to
-  download the data and display the motion chart will appear on your
-  screen.}
-\begin{Schunk}
-\begin{Sinput}
-demo(WorldBank)
-\end{Sinput}
-\end{Schunk}
-This can take a while to start up -- data has to be downloaded from
-the World Bank web site. Hover the mouse pointer over features that
-appear in the margins of the display to see annotation that indicates
-how you can change or manipulate various aspects of the display.
-
-The data from the World Bank site is stored into a data frame
-\txtt{WorldBank}.  The command that creates a gvis object M
-is:\sidenote{Both \txtt{WorldBank} and \txtt{M} should be in your
-  workspace after running \txtt{demo(WorldBank)}.  The data are
-  also alternatively available from the image file
-\txtt{WorldBank.RData} at the url noted
-on the reverse of the title page.}
-\begin{Schunk}
-\begin{Sinput}
-M <- gvisMotionChart(WorldBank, idvar="country",
-          timevar="year",
-          xvar="life.expectancy",
-          yvar="fertility.rate",
-          colorvar="region", sizevar="population",
-          options=list(width=700, height=600))
-## Now display the motion chart
-plot(M)
-\end{Sinput}
-\end{Schunk}
-Change \txtt{width} and \txtt{height} as needed to make better
-use of the screen display.
-
-If arguments are supplied, security setting issues on the user
-computer can result in an initial assignment of columns that does not
-accord with the supplied arguments.\sidenote{The
-  {\em gvis} object M comprises Javascript code that can be
-  included on a web page.  This should display correctly when the web
-  page is accessed.}  The drop-down menus should however function
-correctly, and can be used to obtain a display that accords with any
-choice of arguments that the user may want.
-
-For a further example, load the image file {\bf wdiSel.RData},
-available from the url noted on the reverse of the title page. This
-will make available the data frame \txtt{wdiSel}. This has a larger
-number of indicators, but for 26 countries only.  Figure
-\ref{col:mchart} (with the figures that are shown in color) shows an
-annotated version of a motion chart that was created from this
-dataset.
-
-The following code generated the initial chart.  The change
-to a log scale on the vertical axis was made interactively:
-\begin{fullwidth}
-\begin{Schunk}
-\begin{Sinput}
-xnam <- "Electric power consumption (kWh per capita)"
-ynam <- "Mobile cellular subscriptions (per 100 people)"
-M <- gvisMotionChart(wdiSel, idvar="Country.Name", timevar="Year",
-                     xvar=xnam, yvar=ynam,
-                     colorvar="region", sizevar="Population, total",
-                     options=list(width=600, height=500),
-                     chartid="wbMotionChartSel")
-plot(M)
-\end{Sinput}
-\end{Schunk}
-\end{fullwidth}
-% \input{10dynamic}
 \cleartooddpage
 
 \chapter{Regression with Linear Terms and Factors}
@@ -9744,7 +9727,7 @@ Figure \ref{fig:rollerPlot}) from the \textit{DAAG} package.
 \begin{Schunk}
 \begin{Sinput}
 library(DAAG)
-plot(depression ~ weight, data=roller)
+plot(depression ~ weight, data=roller, fg="gray")
 \end{Sinput}
 \end{Schunk}
 
@@ -9752,7 +9735,7 @@ plot(depression ~ weight, data=roller)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-plt-roller-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-plt-roller-1} }
 
 \end{Schunk}
   \caption{Plot of \txtt{depression} versus \txtt{weight}, using data
@@ -9765,7 +9748,7 @@ graphics formula or as a model formula. The following
 fits a straight line, then adding it to the above plot:
 \begin{Schunk}
 \begin{Sinput}
-plot(depression ~ weight, data=roller)
+plot(depression ~ weight, data=roller, fg="gray")
 roller.lm <- lm(depression ~ weight, data=roller)
 # For a line through the origin, specify
 # depression ~ 0 + weight
@@ -9779,7 +9762,7 @@ fitted line added.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-pltWline-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-pltWline-1} }
 
 \end{Schunk}
 \caption{This repeats Figure \ref{fig:rollerPlot}, now adding a fitted
@@ -9808,9 +9791,9 @@ $\varepsilon_{i}$ is the random noise.
 The line is chosen so that the sum of squares of residuals is as small
 as possible, i.e., the intercept
 $\alpha$ and the slope $\beta$ chosen to minimize
-\[ \sum_{i=1}^n (y_i - \alpha - \beta_i x_i)^2 \].
+\[ \sum_{i=1}^n (y_i - \alpha - \beta_i x_i)^2 \]
 
-Here, the R function \verb!lm()! is used to provide estimates $a$ of
+The R function \verb!lm()! will provide estimates $a$ of
 $\alpha$ and $b$ of $\beta$. The straight line \vspace*{-2pt}
 \[ \widehat{y} = a + b x
 \vspace*{-2pt}
@@ -9847,7 +9830,7 @@ types of tables.
   \txtt{fitted.values()} (\txtt{fitted()}).  For example:\\
   \txtt{coef(roller.lm)} }
 
-The code
+The following code returns a model object to the command line.
 \begin{Schunk}
 \begin{Sinput}
 lm(depression ~ weight, data=roller)
@@ -9863,13 +9846,20 @@ Coefficients:
 \end{Soutput}
 \end{Schunk}
 \noindent
-returns a model object.  When returned to the command line in this way,
-a printed summary is returned.  Alternatively, as was done above, it
-can be saved as a named object.  Here, what is returned is a list.
-The names of the list elements are:
+When returned to the command line in this way,
+a printed summary is returned.  
+
+Alternatively, the result can be saved as a named object,
+which is a form of list.
 \begin{Schunk}
 \begin{Sinput}
 roller.lm <- lm(depression ~ weight, data=roller)
+\end{Sinput}
+\end{Schunk}
+
+The names of the list elements are:
+\begin{Schunk}
+\begin{Sinput}
 names(roller.lm)
 \end{Sinput}
 \begin{Soutput}
@@ -9989,7 +9979,10 @@ an \texttt{lm} model will be problematic or wrong if:
     \item Observations are not independent;
     \item The sampling distributions of parameter estimates are
       noticeably non-normal.
-    \item Model terms (variables, factors and/or interactions) have
+    \item Model terms 
+\marginnote{Simplifying the model, in ways that do not much
+affect coefficients that remain in the model, may be acceptable.}
+    (variables, factors and/or interactions) have
       been chosen from some wider set of possibilities (the theory
       assumes a specfic known model).
  \end{itemize}
@@ -9998,39 +9991,39 @@ an \texttt{lm} model will be problematic or wrong if:
  Outliers, and skewness in the distribution, do often mean that the
  theory cannot be satisfactorily used as a good approxation.
 
- Some very limited selection of model terms may not do undue damage to
- the assumptions noted above.  Further comment on modeling strategies
- is best made in the context of specific examples.
-
 \section{Checks --- Before and After Fitting a Line}
 
 Consider here a female versus male comparison of record times for
 Northern Island hill races.
 
-\paragraph{Untransformed scales:}
+\paragraph{Untransformed vs transformed scales:}
 
-\begin{marginfigure}
+\begin{figure}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/11-fVSmTime-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-fVSmTimeAB-1} }
 
 \end{Schunk}
-  \caption{Data are for Northern Ireland hill races.
-    Females versus male record times, with a least squares line
-    added.}\label{fig:nimff}
-\end{marginfigure}
-Figure \ref{fig:nimff} shows the data.  A
-least squares line has been added to the plot:
-Simplified code for the graph is:
-\begin{Schunk}
-\begin{Sinput}
-gph <- xyplot(timef~time, data=nihills, aspect=1,
-              type=c("p","r"))
-print(gph)
-\end{Sinput}
-\end{Schunk}
-The following fits the regression line:
+  \caption{Graphs compare female with male record times,
+  for Northern Ireland hill races.  Least squares lines
+    are added, and marginal boxplots are shown on the
+    horizontal axis. Panel A
+    has untransformed scales, while Panel B has log
+    transformed scales. For the code, see the script
+    file for this chapter.}\label{fig:nimff}
+\setfloatalignment{t}% forces caption to be top-aligned
+\end{figure}
+
+Figure \ref{fig:nimff} shows two alternative views of the data.
+Least squares line have in each case been added.  
+
+In Panel A, a single data point at the top right lies well
+away from the main body of data.  In Panel B, points are more
+evenly spread out, though still with a tail out to long times.
+
+The following fits a regression line on the untransformed
+scale:
 \begin{Schunk}
 \begin{Sinput}
 mftime.lm <- lm(timef ~ time, data=nihills)
@@ -10044,72 +10037,8 @@ values increase, with one point widely separated from other data.
 That one data point, widely separated from other points, stands
 to have a disproportionate effect in determining the fitted line.
 
-\begin{marginfigure}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-mfdensity-1} }
-
-\end{Schunk}
-  \caption{Density plot comparison of times between males
-    and females.  Note the long tail out to the right.}\label{fig:skewtime}
-\end{marginfigure}
-
-Figure \ref{fig:skewtime} highlights the positive skewness (tail out
-to the right) in the distributions of times:
-\begin{Schunk}
-\begin{Sinput}
-## Simplified code
-densityplot(~ time+timef, data=nihills,
-            ylab="Time (h)", auto.key=TRUE)
-\end{Sinput}
-\end{Schunk}
-
-\paragraph{Logarithmic scales:}
-
-\begin{marginfigure}[-72pt]
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.98\textwidth]{figs/11-rec-logmf-1} }
-
-\end{Schunk}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.98\textwidth]{figs/11-skewtime-log-1} }
-
-\end{Schunk}
-\caption{In these graphs, female and male times are shown on log
-  scales.  The upper panel plots female versus male times.
-  The lower panel shows a
-  density plot comparison.}\label{fig:skewtime-log}
-\end{marginfigure}
-
-In the two panels of Figure \ref{fig:skewtime-log},
-times are shown on a log scale. The ability of the point for the
-largest times to substantially influence the fitted line is greatly
-reduced.  The densities in the lower panel have a much
-reduced tail, relative to the untransformed data in Figure \ref{fig:skewtime}.
-
-Code for the upper panel of Figure \ref{fig:skewtime-log} is:
-\begin{Schunk}
-\begin{Sinput}
-xyplot(timef~time, data=nihills,
-       scales=list(log=10),
-       aspect=1, type=c("p","r"))
-\end{Sinput}
-\end{Schunk}
-\noindent
-Simplified code for the lower panel is:
-\begin{Schunk}
-\begin{Sinput}
-densityplot(~ log(time)+log(timef), data=nihills,
-           ylab="Time (h)", auto.key=TRUE)
-\end{Sinput}
-\end{Schunk}
-
-The coefficients for the fitted line are:
+The coefficients for the line that is fitted on a logarithmic
+scale is:
 \begin{Schunk}
 \begin{Sinput}
 mflogtime.lm <- lm(log(timef) ~ log(time),
@@ -10136,7 +10065,7 @@ clockwise about its mid-point, to the horizontal.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-tohoriz-mf-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-tohoriz-mf-1} }
 
 \end{Schunk}
 \caption{In Panel A, residuals from the line for the unlogged data
@@ -10167,7 +10096,7 @@ differences on the scale of times.
 
 Where measurement data have a long tail out to the right, it
 commonly makes sense to work with logarithms of data values, as in Figure
-\ref{fig:skewtime-log}.  Often, working with data on a logarithmic
+\ref{fig:nimff}B.  Often, working with data on a logarithmic
 scale has several useful consequences:
 \begin{itemize}
   \item[-] The skewness is reduced
@@ -10225,7 +10154,7 @@ diagnostic plots for the regression with the untransformed data:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-diag-mf-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-diag-mf-1} }
 
 \end{Schunk}
 \caption{Diagnostic plots from the regession of \txtt{timef} on
@@ -10249,7 +10178,7 @@ $x$-axis.
 
 \marginnote{Two further plots are available; specify \margtt{which=4}
 or \margtt{which=6}, e.g.\\
-\margtt{plot(mftime.lm, chich=4}.  These give a different slant
+\margtt{plot(mftime.lm, which=4}.  These give a different slant
 on what is shown in the fourth default plot (\margtt{which=5}).}
 Figure \ref{fig:diag-mftime-log} shows the default
 diagnostic plots for the transformed data.
@@ -10264,10 +10193,10 @@ par(opar)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-diag-logmf-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-diag-logmf-1} }
 
 \end{Schunk}
-\caption{Diagnostic plots from the regession of \txtt{log(timef)} on
+\caption{Diagnostic plots from the regression of \txtt{log(timef)} on
   \txtt{log(time)}.}\label{fig:diag-mftime-log}
 \end{figure*}
 \noindent
@@ -10311,7 +10240,7 @@ to an increase of close to 1.042 $\times$ 1\% in the
 female time.  The predicted increase is 133.4 $\times$ 1.042m.
 
 \paragraph{Panel 2 --- A check for normality:}
-\begin{marginfigure}[1.7cm]
+\begin{marginfigure}[1.0cm]
 To obtain this second plot only, without the others, type:
 \begin{Schunk}
 \begin{Sinput}
@@ -10330,7 +10259,7 @@ se. Heterogeneity of variance, and outliers in the data, are likely to
 be the more serious issues.
 
 \paragraph{Panel 3 --- Is the variance constant?:}
-\begin{marginfigure}[1.7cm]
+\begin{marginfigure}[1.0cm]
  To obtain this third plot only, without the others, type:
 \begin{Schunk}
 \begin{Sinput}
@@ -10346,7 +10275,7 @@ upward trend in the third panel of
 of Figure \ref{fig:diag-mftime-log}.
 
 \paragraph{Panel 4 --- a check for high leverage points:}
-\begin{marginfigure}[1.7cm]
+\begin{marginfigure}[1.0cm]
  To obtain this fourth plot only, without the others, type:
 \begin{Schunk}
 \begin{Sinput}
@@ -10436,15 +10365,16 @@ These may be specific to the particular model.
 
 \section{$^*$Simulation Based Checks}\label{sec:simcheck}
 
-\marginnote{The simulations assume that the model is correct.
-  If the assumption of independent random errors is wrong,
+\marginnote{If the assumption of independent random errors is wrong,
   patterns in the diagnostic plots that call for an explanation
   may be more common than suggested by the simulations.}
 A good way to check whether indications of departures from the model
 may be a result or random variation is to compare the plot with
-similar plots for several sets of simulated data values, as a means of
-verifying that the mismatch is real. This is the motivation for Figure
-\ref{fig:4sim-mftimeres1}.
+similar plots for several sets of simulated data values, as a means
+of verifying that the mismatch is, if residuals from the line are
+independent and normally distributed, real. This is the motivation
+for Figure \ref{fig:4sim-mftimeres1}. 
+  
 
 \begin{figure}
 \vspace*{-12pt}
@@ -10452,7 +10382,7 @@ verifying that the mismatch is real. This is the motivation for Figure
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-simscat-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-simscat-1} }
 
 \end{Schunk}
 \caption{The plots are four simulations of residuals, from the
@@ -10666,7 +10596,7 @@ appears much larger for the controls than for other treatments.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-termplot-aovAB-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-termplot-aovAB-1} }
 
 \end{Schunk}
  \caption{Termplot summary of the one-way analysis of variance result ---
@@ -10684,13 +10614,14 @@ tomato.aov <- aov(weight ~ trt, data=tomato)
 termplot(tomato.aov, xlab="Treatment",
          ylab="Partial for treatment",
          partial.resid=TRUE, se=TRUE, pch=16)
-mtext(side=3, line=0.5, "A: weight", adj=0)
+mtext(side=3, line=0.5, "A: weight", adj=0, cex=1.2)
 ## Panel B: Use log(weight) as outcome variable
 logtomato.aov <- aov(log(weight) ~ trt, data=tomato)
 termplot(logtomato.aov, xlab="Treatment",
          ylab="Partial for treatment",
          partial.resid=TRUE, se=TRUE, pch=16)
-mtext(side=3, line=0.5, "B: log(weight)", adj=0)
+mtext(side=3, line=0.5, "B: log(weight)", adj=0,
+      cex=1.2)
 \end{Sinput}
 \end{Schunk}
 
@@ -10949,7 +10880,7 @@ right panel shows the logged data:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.48\textwidth]{figs/11-splot2-ni-1} \includegraphics[width=0.48\textwidth]{figs/11-splot2-ni-2} }
+\centerline{\includegraphics[width=0.48\textwidth]{figs/8-splot2-ni-1} \includegraphics[width=0.48\textwidth]{figs/8-splot2-ni-2} }
 
 \end{Schunk}
 \caption{Scatterplot matrices for the Northern Ireland mountain racing
@@ -11049,7 +10980,7 @@ sense.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-tplot-ni-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-tplot-ni-1} }
 
 \end{Schunk}
 \caption{The vertical scales in both ``term plot''  panel
@@ -11058,7 +10989,7 @@ sense.
   panel are for $\txtt{lgradient}$, i.e.,
   \txtt{log(climb/dist)}. Smooth curves (dashes) have been passed
   through the points.\label{fig:lnihills-lin}}
-\vspace*{-15pt}
+\vspace*{-5pt}
 \end{figure}
 
 We pause to look more closely at the model that has been fitted.  Does
@@ -11189,7 +11120,7 @@ the ``best'' three variables were selected, by exhaustive search.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-bsnVary-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-bsnVary-1} }
 
 \end{Schunk}
 \caption{$p$-values, versus number of variables available for selection,
@@ -11208,7 +11139,7 @@ library(DAAG)
 library(quantreg)
 library(splines)
 set.seed(37)   # Use to reproduce graph shown
-bsnVaryNvar(m=100, nvar=3:50, nvmax=3)
+bsnVaryNvar(m=100, nvar=3:50, nvmax=3, fg="gray")
 \end{Sinput}
 \end{Schunk}
 
@@ -11245,34 +11176,34 @@ For b) and c), there will be somewhat different selections for each
 different cross-validation fold or bootstrap sample.  This is itself
 instructive.
 
-One possibility, following stepwise or other selection, is that the
+One possibility,\marginnote{If however the coefficients are not themselves very meaningful, what is the point?}
+following stepwise or other selection, is that the
 $p$-values of one or more coefficients may be so small that they are
 very unlikely to be an artefact of the selection process.  In general,
 a simulation will be required, in order to be sure.
 
-If however the coefficients are not themselves very meaningful, what
-is the point?
-
 \subsection*{Model selection more generally:}
 
-\marginnote{A further issue, which use of separate test data does not
+More generally, \marginnote{Use of test data that are separate
+from data used to develop the model deals with this issue.}
+the model may be chosen from a wide class of models.
+Again, model selection biases standard errors to be smaller than
+indicated by the theory, and coefficients and $t$-statistics larger.
+The resulting anti-conservative estimates of standard errors and
+other statistics should be regarded
+sceptically. 
+
+A further issue, which use of separate test data does not
   address, is that none of the models on offer is likely to be
   strictly correct. Mis-specification of the fixed effects will bias
   model estimates, at the same time inflating the error variance or
   variances.  Thus it will to an extent work in the opposite direction
-  to selection effects.}
-
-More generally, the model may be chosen from a wide class of models.
-Again, standard errors will be smaller than indicated by the theory,
-and coefficients and $t$-statistics larger.  Such anti-conservative
-estimates of standard errors and other statistics should be treated
-sceptically.  Use of test data that are separate from data used to
-develop the model deals with this issue.
+  to selection effects.
 
 \section{1970 cost for US electricity producers}\label{ss:elec}
 
-Here, there is a wide range of possible choices of model terms.  First
-(Figure \ref{fig:elec-spm}), examine scatterplot matrices for the
+There is a wide range of possible choices of model terms.
+Figure \ref{fig:elec-spm} shows the scatterplot matrices of the
 variables. Code is:
 \begin{Schunk}
 \begin{Sinput}
@@ -11290,7 +11221,7 @@ spm(Electricity, smooth=TRUE, reg.line=NA,
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.775\textwidth]{figs/11-Elec-spm-1} }
+\centerline{\includegraphics[width=0.775\textwidth]{figs/8-Elec-spm-1} }
 
 \end{Schunk}
 }
@@ -11342,7 +11273,7 @@ is:
  \marginnote{Removal of terms with $p > 0.15$ or $p > 0.2$
      rather than $p$ > 0.05 greatly reduces the risk that estimates of
      other parameters, and their standard errors, will change in ways
-     that affect the interpretation of model results.}
+     that affect the interpretation of model results.}[21pt]
    Model simplification may be acceptable, if it does not
    change the parameters of interest to an extent that affects
    interpretation. The common $p$ > 0.05 is too
@@ -11378,11 +11309,11 @@ Figure \ref{fig:elec-dens} examines the scatterplot matrix for the
 logarithms of the variables \txtt{cost} and \txtt{q}.
 \noindent
 Code is:
-\begin{marginfigure}
+\begin{marginfigure}[-3.5cm]
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-spm-cost-q-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-spm-cost-q-1} }
 
 \end{Schunk}
   \caption{Scatterplot matrix for the logarithms of the variables
@@ -11411,7 +11342,7 @@ Now examine the termplot (Figure \ref{fig:elec-log-tplot}):
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-elec-me-tplot-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-elec-me-tplot-1} }
 
 \end{Schunk}
 \caption{Termplot summary for the model that has been fitted to the
@@ -11574,7 +11505,7 @@ case, points are identified as with or without bronchitis.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-bronchitAB-1} }
+\centerline{\includegraphics[width=0.95\textwidth]{figs/8-bronchitAB-1} }
 
 \end{Schunk}
 \caption{Panel A plots \txtt{poll} (pollution level) against
@@ -11668,7 +11599,7 @@ Number of Fisher Scoring iterations: 5
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/11-cig2-tplot-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-cig2-tplot-1} }
 
 \end{Schunk}
 \caption{The panels show the contributions that the respective terms
@@ -11739,7 +11670,6 @@ the standard errors.
   %% proportional to sequence length.  Use regression to determine the
   %% weights that were used.
 \end{enumerate}
-% \input{11reg}
 \cleartooddpage
 
 \chapter[A Miscellany of Models \& Methods]{$^*$A Miscellany of Models \& Methods}
@@ -11826,7 +11756,7 @@ response might seem more appropriate.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-smooth-ohms-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-smooth-ohms-1} }
 
 \end{Schunk}
   \caption{Resistance in ohms is plotted against apparent juice
@@ -11840,7 +11770,7 @@ The code used to plot the graph is:
 \begin{Schunk}
 \begin{Sinput}
 ## Plot points
-plot(ohms ~ juice, data=fruitohms)
+plot(ohms ~ juice, data=fruitohms, fg="gray")
 ## Add smooth curve, using default
 ## smoothing window
 with(fruitohms,
@@ -11866,11 +11796,13 @@ contours:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/12-plotVIS-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/9-plotVIS-1} }
 
 \end{Schunk}
+\vspace*{-7pt}
 \caption{Estimated contours of left eye responses to visual stimulae,
 projected onto the plane.\label{fig:visAmp}}
+\vspace*{15pt}
 \end{figure*}
 \end{fullwidth}
 \enlargethispage{12pt}
@@ -11878,7 +11810,7 @@ projected onto the plane.\label{fig:visAmp}}
 The GAM fit will as far as possible use the smooth surface
 to account for the pattern of variation across the eye, with
 residuals from the surface treated as random normal noise.
-\vspace*{24pt}
+\vspace*{7pt}
 
 \begin{fullwidth}
 
@@ -11917,7 +11849,7 @@ intended prediction.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-ant111b-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-ant111b-1} }
 
 \end{Schunk}
 \caption{Yields from 4 packages of land on each of eight sites on the
@@ -11936,7 +11868,7 @@ The code for the figure is:
 # ant111b is in DAAG
 Site <- with(ant111b, reorder(site, harvwt,
                               FUN=mean))
-stripplot(Site ~ harvwt, data=ant111b,
+stripplot(Site ~ harvwt, data=ant111b, fg="gray",
           scales=list(tck=0.5),
           xlab="Harvest weight of corn")
 \end{Sinput}
@@ -12006,17 +11938,123 @@ series.
 }}
 \vspace*{15pt}
 
-\marginnote{Smoothing terms can be fitted to the pattern apparent in
-  serially correlated data, leaving {\em errors} that are pretty much
-  uncorrelated.  Such a pattern is in general, however, unrepeatable.
-  It gives little clue of what may happen the future.}
+Any process that evolves in time is likely to have a
+sequential correlation structure.  The value at the current
+time is likely to be correlated with the value at the previous
+time, and perhaps with values several time points back.
+The discussion that follows will explore implications for data
+analysis.
 
-In a time series, the value at the current time can be correlated with
-the value at the previous time, perhaps on the values several time
-points back.  If possible, the analyst will want to find covariates
+\subsection{Example -- the Lake Erie data}
+
+
+
+\begin{figure}
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-Erie1-1} }
+
+\end{Schunk}
+\caption{Lake Erie levels (m).
+}\label{fig:erie}
+% \setfloatalignment{t}
+\end{figure}
+\begin{marginfigure}[-7cm]
+\begin{Schunk}
+\begin{Sinput}
+Erie <- greatLakes[,"Erie"]
+plot(Erie, xlab="", fg="gray",
+     ylab="Level (m)")
+\end{Sinput}
+\end{Schunk}
+\end{marginfigure}
+
+The data series \txtt{Erie}, giving levels of Lake Erie
+from 1918 to 2009, will be used as an example from which
+to start the discussion.\sidenote{Data are
+  from {\scriptsize
+\url{http://www.lre.usace.army.mil/greatlakes/hh/greatlakeswaterlevels/historicdata/greatlakeshydrographs/}}}
+    The series is available in the
+    \textit{DAAG} package, as the column \txtt{Erie} in the
+    multivariate time series object \txtt{greatLakes}.
+
+Figure \ref{fig:erie} shows a plot of the series.
+
+\begin{figure}
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-lagErie-1} }
+
+\end{Schunk}
+\vspace*{-3pt}
+
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.7\textwidth]{figs/9-acfErie-1} }
+
+\end{Schunk}
+\caption{Panel A plots Lake Erie levels vs levels at lags 1, 2 and 3
+  respectively. Panel B shows a consistent pattern of decreasing
+  autocorrelation at successive lags.
+}\label{erie-lagplot}
+\vspace*{-6pt}
+\end{figure}
+
+\begin{marginfigure}[-10cm]
+\begin{Schunk}
+\begin{Sinput}
+## Panel A
+lag.plot(Erie, lags=3,
+         do.lines=FALSE,
+         layout=c(1,3), fg="gray",
+\end{Sinput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+## Panel B
+acf(Erie, main="", fg="gray")
+\end{Sinput}
+\end{Schunk}
+\end{marginfigure}
+
+The plots in Figure \ref{erie-lagplot} are a good starting point for
+investigation of the correlation structure.  Panel A shows lag plots,
+up to a lag of 3.  Panel B shows estimates of the successive
+correlations, in this context are called autocorrelations.
+
+There is a strong correlation at lag 1, a strong but weaker
+correlation at lag 2, and a noticeable correlation at lag 3.  Such
+a correlation pattern is typical of an autoregressive process where
+most of the sequential dependence can be explained as a flow-on
+effect from a dependence at lag 1.
+
+If possible, the analyst will want to find covariates
 that largely or partly explain that dependence.  At best, such
 covariates will commonly explain part only of the dependence,
 and there will remain dependence that requires to be modeled.
+
+In an autoregressive time series, an\marginnote{An autoregressive
+  model is a special case of an Autoregressive Moving Average (ARMA)
+  model.}  independent error component, or ``innovation'' is
+associated with each time point. For an order $p$ autoregressive time
+series, the error for any time point is obtained by taking the
+innovation for that time point, and adding a linear combination of the
+innovations at the $p$ previous time points.  (For the present time
+series, initial indications are that $p=1$ might capture most of the
+correlation structure.)
+
+\subsection{Patterns that are repeatable}
+
+\marginnote{Smoothing terms can be fitted to the pattern apparent in
+  serially correlated data, leaving {\em errors} that are pretty much
+  uncorrelated.  Such a pattern is in general, however, unrepeatable.
+  It gives little clue of what may happen the future.  A re-run of
+  the process (a new {\em realization}) will produce a different
+  series, albeit one that shows the same general tendency to move up
+  and down.}
 
 What sorts of patterns may then be repeatable?  Indications that a
 pattern may be repeatable include:
@@ -12034,136 +12072,20 @@ some reasonable confidence.
 explain future as well as current data.
 \end{itemize}
 
-\subsection{Data exploration -- the Lake Erie data}
-
-The data series \txtt{Erie}, giving levels of Lake Erie
-from 1918 to 2009, will be used as a basis for discussion.\sidenote{Data are
-  from {\scriptsize
-\url{http://www.lre.usace.army.mil/greatlakes/hh/greatlakeswaterlevels/historicdata/greatlakeshydrographs/}}}
-    The series is available in the
-    \textit{DAAG} package, as the column \txtt{Erie} in the
-    multivariate time series object \txtt{greatLakes}.
-First, extract that column of data:
-\begin{Schunk}
-\begin{Sinput}
-Erie <- greatLakes[,"Erie"]
-\end{Sinput}
-\end{Schunk}
-
-Figure \ref{fig:erie} shows a plot of the series.
-
-\begin{figure}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-Erie1-1} }
-
-\end{Schunk}
-\caption{Lake Erie levels (m).
-}\label{fig:erie}
-% \setfloatalignment{t}
-\end{figure}
-\begin{marginfigure}[-7cm]
-\begin{Schunk}
-\begin{Sinput}
-## Code
-plot(Erie, xlab="",
-     ylab="Level (m)")
-\end{Sinput}
-\end{Schunk}
-\end{marginfigure}
-
 An ideal would be to find a covariate or covariates than can largely
 explain the year to year changes.  For this series, this does not seem
 a possibility.  In the absence of identifiable direct cause for the
 year to year changes, a reasonable recourse is to look for a
 correlation structure that largely accounts for the pattern of the
-year to year change.  A re-run of the process (a new {\em
-  realization}) will produce a different series, albeit one that shows
-the same general tendency to move up and down.
-
-While smoothing methods can be used, assuming independent errors, to
-fit a curve to such data, such a curve will not be repeatable.  The
-smoothing curve does not separate systematic effects from effects due
-to processes that evolve in time.  Any process that evolves in time is
-likely to have a strong sequential correlation structure.
-
-The plots in Figure \ref{erie-lagplot} are a good starting point for
-investigation of the corrrelation structure.  Panel A shows lag plots,
-up to a lag of 3.  Panel B shows estimates of the successive
-correlations, in this context are called autocorrelations.
-\vspace*{-12pt}
-
-\begin{figure}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-lagErie-1} }
-
-\end{Schunk}
-\vspace*{-3pt}
-
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.7\textwidth]{figs/12-acfErie-1} }
-
-\end{Schunk}
-\caption{Panel A plots Lake Erie levels vs levels at lags 1, 2 and 3
-  respectively. Panel B shows a consistent pattern of decreasing
-  autocorrelation at successive lags.
-}\label{erie-lagplot}
-\vspace*{-6pt}
-\end{figure}
-
-\begin{marginfigure}[-10cm]
-\begin{Schunk}
-\begin{Sinput}
-## Panel A
-lag.plot(Erie, lags=3,
-         do.lines=FALSE,
-         layout=c(1,3),
-\end{Sinput}
-\end{Schunk}
-\begin{Schunk}
-\begin{Sinput}
-## Panel B
-acf(Erie, main="")
-\end{Sinput}
-\end{Schunk}
-\end{marginfigure}
-
-There is a strong correlation at lag 1, a strong but weaker
-correlation at lag 2, and a noticeable correlation at lag 3.  Such a
-correlation pattern is typical of an autoregressive process where
-most of the sequential dependence can be explained as a flow-on
-effect from a dependence at lag 1.
-
-In an autoregressive time series, an\marginnote{An autoregressive
-  model is a special case of an Autoregressive Moving Average (ARMA)
-  model.}  independent error component, or ``innovation'' is
-associated with each time point. For an order $p$ autoregressive time
-series, the error for any time point is obtained by taking the
-innovation for that time point, and adding a linear combination of the
-innovations at the $p$ previous time points.  (For the present time
-series, initial indications are that $p=1$ might capture most of the
-correlation structure.)
+year to year change.  
 
 \subsection*{Smooth, with automatic choice of smoothing parameter}
 
-We can fit a smoothing term to the \txtt{Erie} series.  Using the
-abilities of the {\em mgcv} package, this can be done with an
-automatice choice of the smoothing parameter.  The smooth
-assumes\marginnote{The fitted model is conditional on the particular
-  realization of the time series process.}  independently and
-identically distributed data, and in particular that there is no
-serial correlation!  Figure \ref{lh-smoothplot} shows the result.
-
 \begin{figure}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-gamErie-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-gamErie-1} }
 
 \end{Schunk}
 \caption{GAM smoothing term, fitted to the Lake Erie Data.
@@ -12173,7 +12095,7 @@ serial correlation!  Figure \ref{lh-smoothplot} shows the result.
 \end{figure}
 %$
 
-\begin{marginfigure}[-5cm]
+\begin{marginfigure}[-3.5cm]
 \begin{Schunk}
 \begin{Sinput}
 ## Code
@@ -12183,7 +12105,7 @@ df <-  data.frame(
   year=time(Erie))
 obj <- gam(height ~ s(year),
            data=df)
-plot(obj,
+plot(obj, fg="gray",
      shift=mean(df$height),
      residuals=TRUE, pch=1,
      xlab="",
@@ -12192,22 +12114,27 @@ plot(obj,
 \end{Schunk}
 \end{marginfigure}
 
+While smoothing methods that asssume independent errors can be
+used, as in Figure \ref{lh-smoothplot}, to fit a curve to such
+data, the curve will not be repeatable.  Figure \ref{lh-smoothplot}
+does not separate systematic effects from effects due to processes
+that evolve in time. Figure \ref{lh-smoothplot} uses the
+abilities of the {\em mgcv} package, assuming independently and
+identically distributed data (hence, no serial correlation!) to
+make an automatic choice of the smoothing parameter.  
 As the curve is conditional on a particular realization of the process
-that generated it, its usefulness is limited.  It may be useful as a
-broad summary of the pattern of change over time.
+that generated it, its usefulness is limited.
 
 The pointwise confidence limits are similarly conditioned, relevant
 perhaps for interpolalation given this particular realization.
 All that is repeatable, given another realization, is the
-process that generated the curve, not the curve itself. Time series
-models, such as will now be considered, are designed to account for
-such processes.
+process that generated the curve, not the curve itself. 
 
 \subsection{Fitting and use of an autoregressive model}
 
-An autoregressive model gives insight that makes it possible to
-estimate the level of the lake a short time ahead, and to put
-realistic confidence bounds around those estimates.  For the Lake Erie
+There are several different types of time series models that
+may be used to model the correlatios structure, allowing realistic estimates of the lake level a short time ahead, with realistic
+confidence bounds around those estimates.  For the Lake Erie
 data, an autoregressive correlation structure does a good job of
 accounting for the pattern of change around a mean that stays
 constant.
@@ -12236,25 +12163,19 @@ Order selected 1  sigma^2 estimated as  0.0291
 The one coefficient that is now given is the lag 1 correlation,
 equalling 0.851.
 
-Figure \ref{fig:ar1fits} then investigates how repeated simulations of
-this process, with a lag 1 correlation of 0.0.85, compare with Figure
-\ref{fig:erie}.  This helps to emphasis that a GAM smooth will
-extract, from an autoregressive process with mean 0, a pattern that is
-not repeatable when the process is re-run.
-
 \begin{figure}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/12-arima-sim-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/9-arima-sim-1} }
 
 \end{Schunk}
-\caption{The plots are from repeated simulations of an AR1 process with a
-  lag 1 correlation of 0.85.  Smooth curves, assuming independent
+\caption{The plots are from repeated simulations of an AR1 process
+with a lag 1 correlation of 0.85.  Smooth curves, assuming independent
   errors, have been fitted.}\label{fig:ar1fits}
 \end{figure}
 
-\begin{marginfigure}[18pt]
+\begin{marginfigure}[-1.5cm]
 \begin{Schunk}
 \begin{Sinput}
 for (i in 1:6){
@@ -12265,13 +12186,19 @@ df <- data.frame(x=1:200,
                  y=ysim)
 df.gam <- gam(y ~ s(x),
               data=df)
-plot(df.gam,
+plot(df.gam, fg="gray",
      ylab=paste("Sim", i),
      residuals=TRUE)
 }
 \end{Sinput}
 \end{Schunk}
 \end{marginfigure}
+
+Figure \ref{fig:ar1fits} then investigates how repeated simulations of
+this process, with a lag 1 correlation of 0.0.85, compare with Figure
+\ref{fig:erie}.  This illustrates the point that a GAM smooth will
+extract, from an autoregressive process with mean 0, a pattern that is
+not repeatable when the process is re-run.
 
 The curves are different on each occasion.  For generalization beyond
 the particular realization that generated them, they serve no useful
@@ -12289,7 +12216,7 @@ model with order 1.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-Erie-fcast-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-Erie-fcast-1} }
 
 \end{Schunk}
 \caption{Predictions, 15 years into the future, of lake levels
@@ -12298,7 +12225,7 @@ model with order 1.
 \setfloatalignment{t}
 \end{figure}
 
-\begin{marginfigure}[-4.5cm]
+\begin{marginfigure}[-5cm]
 \begin{Schunk}
 \begin{Sinput}
 erie.ar <- arima(Erie,
@@ -12306,7 +12233,7 @@ erie.ar <- arima(Erie,
 library(forecast)
 fc <- forecast(erie.ar,
                h=15)
-plot(fc, main="",
+plot(fc, main="", fg="gray",
      ylab="Lake level (m)")
   # 15 time points ahead
 \end{Sinput}
@@ -12330,11 +12257,11 @@ model terms.
 ## Code
 mdbRain.gam <- gam(mdbRain ~ s(Year) + s(SOI),
                    data=bomregions)
-plot(mdbRain.gam, residuals=TRUE, se=2, pch=1,
-     select=1, cex=1.35, ylab="Partial of Year")
+plot(mdbRain.gam, residuals=TRUE, se=2, fg="gray",
+     pch=1, select=1, cex=1.35, ylab="Partial, Year")
 mtext(side=3, line=0.75, "A: Effect of Year", adj=0)
-plot(mdbRain.gam, residuals=TRUE, se=2, pch=1,
-     select=2, cex=1.35, ylab="Partial of SOI")
+plot(mdbRain.gam, residuals=TRUE, se=2, fg="gray",
+     pch=1, select=2, cex=1.35, ylab="Partial, SOI")
 mtext(side=3, line=0.75, "B: Effect of SOI", adj=0)
 \end{Sinput}
 \end{Schunk}
@@ -12342,7 +12269,7 @@ mtext(side=3, line=0.75, "B: Effect of SOI", adj=0)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/12-mdb-gam-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/9-mdb-gam-1} }
 
 \end{Schunk}
   \caption{Estimated contributions of model terms to
@@ -12351,10 +12278,21 @@ mtext(side=3, line=0.75, "B: Effect of SOI", adj=0)
     2-SE limits, for the fitted curve.}\label{fig:mdbRainSM}
 \end{figure}
 
+The left panel indicates a consistent pattern of increase of rainfall
+with succeeding years, given an adjustment for the effect of SOI.
+Errors from the fitted model are consistent with the independent
+errors assumption.  The model has then identified a pattern of
+increase of rainfall with time, given SOI, that does seem real.  It is
+necessary to warn against reliance on extrapolation more than a few
+time points into the future. While the result is consistent with
+expected effects from global warming, those effects are known to play
+out very differently in different parts of the globe.
+
 \subsection*{Investigation of the residual error structure}
-Sequential correlation structures are a common type of departure from
-iid errors.  Where there is a sequential correlation structure
-structure in the data, the methodology will if possible use a smooth
+Sequential correlation structures are often effective, with
+data collected over time, for use in modeling departure from
+iid errors.  Where there is such structure structure in the
+data, the methodology will if possible use a smooth
 curve to account for it.
 
 The residuals can be checked to determine whether the fitted curve
@@ -12371,7 +12309,7 @@ numbers.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/12-ar1sims-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/9-ar1sims-1} }
 
 \end{Schunk}
 \caption{The top left panel shows the autocorrelations of the
@@ -12388,29 +12326,9 @@ mdbRain.gam <- gam(mdbRain ~ s(Year) + s(SOI),
 n <-  dim(bomregions)[1]
 acf(resid(mdbRain.gam), ylab="MDB series")
 for(i in 1:5)acf(rnorm(n), ylab=paste("Sim",i),
-                 col="gray40")
+                 fg="gray", col="gray40")
 \end{Sinput}
 \end{Schunk}
-
-The residuals can be checked to determine whether the fitted curve
-has removed most of the correlation structure in the data.
-Figure \ref{fig:ar1sims} shows the autocorrelation function of the
-residuals, followed by autocorrelation functions for several series of
-independent random normal numbers.  Apart from the weakly attested
-correlation at a lag of 12 years, which is a commonplace of weather
-data, the pattern of sequential correlation is not much different from
-what can be expected in a sequence of independent random normal
-numbers.
-
-The left panel indicates a consistent pattern of increase of rainfall
-with succeeding years, given an adjustment for the effect of SOI.
-Errors from the fitted model are consistent with the independent
-errors assumption.  The model has then identified a pattern of
-increase of rainfall with time, given SOI, that does seem real.  It is
-necessary to warn against reliance on extrapolation more than a few
-time points into the future. While the result is conssitent with
-well-established from global warming, those effects are known to play
-out very differently in different parts of the globe.
 
 \subsection{$^*$Box-Jenkins ARIMA Time Series Modeling}
 
@@ -12432,90 +12350,81 @@ The simulations in Figure \ref{fig:ar1fits} show a pattern of
 \subsection{Count Data with Poisson Errors}
 
 Data is for aircraft accidents, from the website
-\url{http://www.planecrashinfo.com/}.  Files follow the pattern
-\url{http://www.planecrashinfo.com/1920/1920.htm},
-for years from 1920 through to 2014.  The 1920 file has
-accidents starting from 1908.
+\url{http://www.planecrashinfo.com/}.  The 1920 file has
+accidents starting from 1908. The full data are in the
+dataset \txtt{gamclass::airAccs}.
+\marginnote{Data are a time series.  Serious accidents are however
+sufficently uncommon that occasions where events occur together,
+or where one event changes the probability of the next event,
+seem likely to be uncommon.}
+Such issues as there are with sequential correlation
+can be ameliorated by working with weekly, rather than daily,
+counts. 
 
-Data are a time series.  Serious accidents are however sufficently
-that occasions where events occur together, or where one event
-changes the probability of the next event, seem likely to be
-unusual.
 
-The full data are in the dataset \txtt{airAccs} ({\em gamclass}).
-We use the function \txtt{eventCounts()}, defined in Section
-\ref{ss:dates} and available from {\em gamclass}, to create counts of
-accidents, i) by day, and ii) by week, in both cases from January 1,
-2006:
 
-\begin{fullwidth}
-
-\begin{Schunk}
-\begin{Sinput}
-## Code
-airAccs <- gamclass::airAccs
-fromDate <- as.Date("2006-01-01")
-dfDay06 <- gamclass::eventCounts(airAccs, dateCol="Date", from= fromDate,
-                                 by="1 day", prefix="num")
-dfDay06$day <- julian(dfDay06$Date, origin=fromDate)
-dfWeek06 <- gamclass::eventCounts(airAccs, dateCol="Date", from=fromDate,
-                                  by="1 week", prefix="num")
-dfWeek06$day <- julian(dfWeek06$Date, origin=fromDate)
-\end{Sinput}
-\end{Schunk}
-
-\end{fullwidth}
-
-The following code fits from two slightly different GAM smoothing
-models, leading to the plots shown in Figure \ref{fig:planeCrash}:
-\begin{fullwidth}
-
-\begin{Schunk}
-\begin{Sinput}
-library(mgcv)
-year <- seq(from=fromDate, to=max(dfDay06$Date), by="1 year")
-atyear <- julian(year, origin=fromDate)
-dfDay06.gam <- gam(formula = num ~ s(day, k=200), family = quasipoisson,
-                   data = dfDay06)
-av <- mean(predict(dfDay06.gam))
-plot(dfDay06.gam, xaxt="n", shift=av, trans=exp, rug=FALSE, xlab="",
-     ylab="Estimated rate per day")
-axis(1, at=atyear, labels=format(year, "%Y"))
-mtext(side=3, line=0.75, "A: Events per day, vs date", adj=0)
-dfWeek06.gam <- gam(num~s(day, k=200), data=dfWeek06, family=quasipoisson)
-av <- mean(predict(dfWeek06.gam))
-plot(dfWeek06.gam, xaxt="n", shift=av, trans=exp, rug=FALSE, xlab="",
-      ylab="Estimated rate per week")
-axis(1, at=atyear, labels=format(year, "%Y"))
-mtext(side=3, line=0.75, "B: Events per week, vs date", adj=0)
-\end{Sinput}
-\end{Schunk}
-
-\end{fullwidth}
 \begin{fullwidth}
 \begin{figure*}
 \vspace*{-12pt}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/12-plotGAM-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-plotGAM-byWk-1} }
 
 \end{Schunk}
 \vspace*{-6pt}
-\caption{Estimated number of events (aircraft crashes) per time
-  interval versus time.  In Panel A, the outcome variable was events
-  per day, while in Panel B it was events per
-  week,\label{fig:planeCrash}}
+\caption{Estimated number of events (aircraft crashes) per week,
+  versus time.  The yearly tick marks are for January 1 of the
+  stated year.\label{fig:planeCrash}}
 \end{figure*}
 \end{fullwidth}
 
+Figure \ref{fig:planeCrash} shows a fitted smooth curve, with
+pointwise confidence bounds, from a GAM smoothing model that
+was fitted to the weekly counts. 
+
+\marginnote{See Section \ref{ss:dates} for further details
+on the function \txtt{eventCounts()}.}
+The function \txtt{gamclass::eventCounts()} was used to create
+weekly counts of accidents from January 1, 2006:
+
+\begin{Schunk}
+\begin{Sinput}
+## Code
+airAccs <- gamclass::airAccs
+fromDate <- as.Date("2006-01-01")
+dfWeek06 <- gamclass::eventCounts(airAccs, dateCol="Date",
+                                  from=fromDate,
+                                by="1 week", prefix="num")
+dfWeek06$day <- julian(dfWeek06$Date, origin=fromDate)
+\end{Sinput}
+\end{Schunk}
+
+Code for Figure \ref{fig:planeCrash} is then.
+\begin{fullwidth}
+
+\begin{Schunk}
+\begin{Sinput}
+## Code
+library(mgcv)
+year <- seq(from=fromDate, to=max(dfWeek06$Date), by="1 year")
+at6 <- julian(seq(from=fromDate, to=max(dfWeek06$Date), by="6 months"), origin=fromDate)
+atyear <- julian(year, origin=fromDate)
+dfWeek06.gam <- gam(num~s(day, k=200), data=dfWeek06, family=quasipoisson)
+avWk <- mean(predict(dfWeek06.gam))
+plot(dfWeek06.gam, xaxt="n", shift=avWk, trans=exp, rug=FALSE, 
+     xlab="", ylab="Estimated rate per week", fg="gray")
+axis(1, at=atyear, labels=format(year, "%Y"), lwd=0, lwd.ticks=1)
+abline(h=0.5+(1:4)*0.5, v=at6, col="gray", lty=3, lwd=0.5)
+\end{Sinput}
+\end{Schunk}
+
+\end{fullwidth}
+
 The argument `\txtt{k}' to the function \txtt{s()} that sets up the
-smooth controls the temporal resolution.  A large \txtt{k} allows, if the data
-seem to justify it, for fine resolution. A penalty is applied that discriminates
-against curves that are overly ``wiggly''.  The resolution in Panel B is
-limited, also, by use of number of events per week, rather than number
-of events per day, as the outcome.
-\enlargethispage{12pt}
+smooth controls the temporal resolution.  A large \txtt{k} allows,
+if the data seem to justify it, for fine resolution. A penalty is
+applied that discriminates against curves that are overly ``wiggly''.
 
 Not all count data is suitable for modeling assuming a Poisson type
 rare event distribution. For example, the dataset
@@ -12526,14 +12435,13 @@ rare events.
 
 \section{Classification}
 
-Classification models have the character of regression models where
-the outcome is categorical, one of $g$ classes.  For example, the
+Classification models \marginnote{For the special case $g = 2$,
+logistic regression models are an alternative.}
+have the character of regression models where
+the outcome is categorical, one of $g$ classes.  The
 \texttt{fgl} (forensic glass) dataset that will be used as an example
 has measurements of each on nine physical properties, for 214 samples
-of glass that are classified into $g=6$ different glass types.  For
-the special case $g = 2$, logistic regression models are an
-option. The approaches described here are more general in that they
-are able to handle $g > 2$ classes.
+of glass that are classified into $g=6$ different glass types.  
 
 This section will describe a very limited range of available
 approaches.  For details
@@ -12571,10 +12479,7 @@ Results from use of \txtt{lda()} lead very
   the plots may hint at what type of alternative method
   may be preferable.  They may identify subgroups of
   the orginal $g$ groups, and/or identify points that seem
-  misclassified.   For $g = 2$ groups the logistic
-regression model, fitted using R's \txtt{glm()} function, is closely
-analagous to the linear discriminant model that is fitted using
-\txtt{lda()}.  The difference can however be important.
+  misclassified.   
 
 An attractive feature of \txtt{lda()} is that the discriminant rule
 that is obtained has a natural representation $r$-dimensional space.
@@ -12589,7 +12494,7 @@ from the overall mean.
   representation of what the analysis has achieved.}
 The $r$ sets of scores can be examined using a
 pairs plot.  With larger numbers of groups, it will often happen that
-a two or at most three dimensions will account for most of the
+two or at most three dimensions will account for most of the
 variation.
 
 \subsection*{Use of \txtt{lda()} to analyse the forensic glass data}
@@ -12644,32 +12549,19 @@ Proportion of trace:
 0.815 0.117 0.041 0.016 0.011
 \end{Soutput}
 \end{Schunk}
-The numbers show the successive proportions of a measure of the
+The numbers \marginnote{Observe that most of the
+discriminatory power is in the first two dimensions.}
+show the successive proportions of a measure of the
 variation that are accounted for by projections onto spaces with
-successively larger numbers of dimensions.  Observe that most of the
-discriminatory power is in the first two dimensions.
+successively larger numbers of dimensions.  
 
 % $
-
-Figure \ref{fig:fgl} shows the two-dimensional
-representation.  Code is:
-\begin{Schunk}
-\begin{Sinput}
-scores <- predict(fgl.lda)$x
-xyplot(scores[,2] ~ scores[,1], groups=fgl$type,
-       xlab="Discriminant 1",
-       ylab="Discriminant 2",
-       aspect=1, scales=list(tck=0.4),
-       auto.key=list(space="right"),
-       par.settings=simpleTheme(alpha=0.6, pch=1:6))
-\end{Sinput}
-\end{Schunk}
 
 \begin{figure}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.85\textwidth]{figs/12-fgl-scores2D-1} }
+\centerline{\includegraphics[width=0.9\textwidth]{figs/9-fgl-scores2D-1} }
 
 \end{Schunk}
 \caption{Visual representation of scores from a
@@ -12679,46 +12571,61 @@ xyplot(scores[,2] ~ scores[,1], groups=fgl$type,
 be better distinguished than is evident from this figure.\label{fig:fgl}}
 \end{figure}
 
+Figure \ref{fig:fgl} shows the two-dimensional
+representation.
+\begin{Schunk}
+\begin{Sinput}
+library(lattice)
+scores <- predict(fgl.lda)$x
+xyplot(scores[,2] ~ scores[,1], groups=fgl$type,
+       xlab="Discriminant 1",
+       ylab="Discriminant 2",
+       aspect=1, scales=list(tck=0.4),
+       auto.key=list(space="right"),
+\end{Sinput}
+\end{Schunk}
+
+\marginnote{See Figure \ref{fig:rfbronchit} in Subsection \ref{ss:rf},
+for an example of the type of low-dimensional representation that is
+possible for results from a randdom forest classification.}
 Additionally, it may be useful to examine the plot of the third
 versus the second discriminant.  Better still, use the abilites of the
 \textit{rgl} package to examine a 3-dimensional dynamic representation.
-
 With most other methods, a low-dimensional representation does not
-arise so directly from the analysis. An approach that will be
-demonstrated with random forests can be adapted for use with
-other methods.
+arise so directly from the analysis.
 
 \subsection*{Two groups -- comparison with logistic regression}
 
-The approach is to model the probabability of class membership given
-the covariates, using the same logistic model as for linear and
-quadratic discriminant analysis.  With $\pi$ equal to the probability
-of membership in the second class, the model assumes that
-\[ \log(\pi/(1-\pi) = \beta' \mathbf{x}\]
-where $\beta$ is a vector of  coefficients that are to be estimated,
-and $\mathbf{x}$ is a vector of covariate values.
-
-The following comments on logistic regression
-\marginnote{Technicalities of logistic regression, using, e.g.,
-  R's function \txtt{glm()}:
+\marginnote{More technical points, as they apply to the use of
+  R's function \txtt{glm()} for logistic regression, are:
   \begin{itemizz}
 \item[-] The fitting procedure minimizes the {\em deviance}. This
-  equals 2 ( {\em loglikelihood} for fitted model - loglikelihood for
-  `saturated' model). The `saturated model has predicted values
-equal to observed values.
+  equals 2 ( {\em loglikelihood} for fitted model, minus the
+  loglikelihood for the `saturated' model). The `saturated model
+  has predicted values equal to observed values.
 \item[-] Standard errors and Wald statistics (roughly comparable to
   $t$-statistics) are given for parameter estimates.  These
   depend on approximations that may fail if predicted proportions are
   close to 0 or 1 and/or the sample size is small.
-\item[-] Logistic regression is a special case of a Generalized Linear
-  Model (GLM).
 \end{itemizz}
 }
-highlight points of difference from linear discriminant analysis:
+
+The approach is to model the probability of class membership given
+the covariates, using the same logistic fixed part of the model as
+for linear and quadratic discriminant analysis.  With $\pi$ equal
+to the probability of membership in the second class, the model
+assumes that
+\[ \log(\pi/(1-\pi) = \beta' \mathbf{x}\]
+where $\beta$ is a vector of  coefficients that are to be estimated,
+and $\mathbf{x}$ is a vector of covariate values.
+
+A logistic regression model is a special case of a Generalized
+Linear Model (GLM), as implemented by R's function \txtt{glm()}. 
+There is no provision to adjust predictions to take account of
+prior probabilities, though this can be done as an add-on to the analysis.
+Other points of difference from linear discriminant analysis are:
 
 \begin{itemize}
-\item There is no provision to adjust predictions to take account of
-prior probabilities, though this can be done as an add-on to the analysis.
 \item Inference is conditional on the observed covariate values. A model
   for the probability of covariate values $\mathbf{x}$ given the class
   $c$, as for linear discriminant analysis, is not required.
@@ -12753,6 +12660,8 @@ library(rpart)
 found in the {\em SMIR} package.}
 For the calculations that follow, data are columns in the data frame
 \texttt{bronchit}, in the {\em DAAGviz} package.
+\marginnote[12pt]{Here \margtt{r=1} denotes bronchitis,  while \txtt{r=0}
+indicates that bronchitis is absent.}
 \begin{Schunk}
 \begin{Sinput}
 head(bronchit, 3)
@@ -12764,11 +12673,9 @@ head(bronchit, 3)
 3 0 0.00 65.9
 \end{Soutput}
 \end{Schunk}
-Here \txtt{r=1} denotes bronchitis,  while \txtt{r=0}
-indicates that bronchitis is absent.
 In place of the variable \txtt{r} with values 0 and 1, we use a
-factor with levels \txtt{abs} and \txtt{pres} that will be used
-to give more meaningful labels in the output.
+factor with levels \txtt{abs} and \txtt{pres}. Labels that appear
+in the output are then more meaningful.
 \begin{Schunk}
 \begin{Sinput}
 ## Now make the outcome variable a factor
@@ -12779,7 +12686,11 @@ bronchit <-
 \end{Schunk}
 
 \marginnote[12pt]{With a factor (\txtt{rfac}) as outcome,
-\txtt{method="class"} is the default.}
+\margtt{method="class"} is the default. Setting
+\margtt{method="class"}, to make it quite clear that
+we are using a splitting rule that is appropriate to
+a categorical (rather than continuous) outcome, is good
+practice.}
 The following fits a tree-based model:
 \begin{Schunk}
 \begin{Sinput}
@@ -12788,10 +12699,6 @@ b.rpart <- rpart(rfac ~ cig+poll, data=bronchit,
                  method="class")
 \end{Sinput}
 \end{Schunk}
-\noindent
-Note the desirability of using a splitting rule, here \txtt{"class"}
-that is appropriate to a categorical outcome, rather than one that
-is appropriate for a continuous outcome.
 
 The ``complexity'' paremeter \txtt{cp}, by default set to 0.01,
 controls how far splitting continues.  In practice, it is usual to
@@ -12804,18 +12711,6 @@ random forests, the depth of the splits in individual trees is not
 of great consequence --- it is not important for individual trees
 to be optimal.
 
-\begin{marginfigure}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-treefig-1} }
-
-\end{Schunk}
-\caption{Decision tree for predicting whether a miner has
-    bronchitis.
-}\label{fig:tree}
-\end{marginfigure}
-
 Figure \ref{fig:tree} is a visual summary of results from the
 tree-based classification, designed to predict the probability that a
 miner will have bronchitis.  Where the condition at a node is
@@ -12823,6 +12718,18 @@ satisfied, the left branch is taken. Thus, at the initial node,
 \txtt{cig$<$4.385} takes the branch to the left.  In general (no
 random number seed), the tree may be different for each
 different run of the calculations.
+
+\begin{marginfigure}
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-treefig-1} }
+
+\end{Schunk}
+\caption{Decision tree for predicting whether a miner has
+    bronchitis.
+}\label{fig:tree}
+\end{marginfigure} 
 
 Tree-based classification proceeds by constructing a sequence of
 decision steps. At each node, the split is used that best separates
@@ -12845,7 +12752,7 @@ How is `best' defined? Splits are chosen so that the Gini index of
 ``impurity'' is minimized.  Other criteria are possible, but this is
 how \txtt{randomForest()} constructs its trees.
 
-\subsection{Random forests}
+\subsection{Random forests}\label{ss:rf}
 
 \begin{Schunk}
 \begin{Sinput}
@@ -12863,7 +12770,7 @@ the data, there is no overfitting overall.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/12-rf-x-bronchit-1} }
+\centerline{\includegraphics[width=0.85\textwidth]{figs/9-rf-x-bronchit-1} }
 
 \end{Schunk}
 \caption{Each tree is for a different bootstrap sample of
@@ -12909,7 +12816,7 @@ dramatically, on tree-based classification.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-proximity-plot-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-proximity-plot-1} }
 
 \end{Schunk}
 \caption{The plot is designed to represent, in two dimensions, the random
@@ -13108,7 +13015,7 @@ other choices, see the help page for the function
 \vspace{12pt}
 }
 
-\subsection*{From distance values to a representation in Euclidean space}
+\subsection*{From distances to a representation in Euclidean space}
 
 Irrespective of the method of calculation of the distance measure,
 ordination methods yield a representation in Euclidean space.  It is
@@ -13159,11 +13066,21 @@ The distance matrix that will be used is in the matrix \txtt{audists},
 from the \txtt{DAAG} package.  Figure \ref{fig:audists} is from the
 use of classical multi-dimensional scaling, as implemented in the
 function \txtt{cmdscale()}:
+
+\noindent
+An alternative way to add names of cities or other labels is to use
+\txtt{identify()} to add labels interactively, thus:
+\begin{Schunk}
+\begin{Sinput}
+identify(weight ~ volume, labels=description)
+\end{Sinput}
+\end{Schunk}
+
 \begin{marginfigure}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-aupoints-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-aupoints-1} }
 
 \end{Schunk}
 \caption{Relative locations of Australian cities, derived from road
@@ -13185,14 +13102,6 @@ par(xpd=FALSE)
 \end{Sinput}
 \end{Schunk}
 
-\noindent
-An alternative way to add names of cities or other labels is to use
-\txtt{identify()} to add labels interactively, thus:
-\begin{Schunk}
-\begin{Sinput}
-identify(weight ~ volume, labels=description)
-\end{Sinput}
-\end{Schunk}
 
 Classical multi-dimensional scaling, as implemented by
  \txtt{cmdscale()}, gives long distances the same weight as short
@@ -13208,7 +13117,7 @@ Classical multi-dimensional scaling, as implemented by
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/12-au-both-1} \includegraphics[width=0.47\textwidth]{figs/12-au-both-2} }
+\centerline{\includegraphics[width=0.47\textwidth]{figs/9-au-both-1} \includegraphics[width=0.47\textwidth]{figs/9-au-both-2} }
 
 \end{Schunk}
       \caption{In Panel A, Figure \ref{fig:audists} has been linearly
@@ -13265,7 +13174,6 @@ Hyndman, R.~J.; Koehler, A.~B.; Od, J.~K.; and Snyder, R.~D. 2008.
   about the over-interpretation of phenomena in which randomness is
   likely to have a large role.]
 \end{itemizz}
-% \input{12further}
 \cleartooddpage
 
 \chapter{Map Overlays  and Spatial Modeling}\label{ch:spatial}
@@ -13315,10 +13223,10 @@ state boundaries.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/13-oz-sites-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/10-oz-sites-1} }
 
 \end{Schunk}
-\vspace*{-21pt}
+\vspace*{3pt}
 
 \caption{Sites at which possums were collected.\label{fig:possumsites}}
 \end{marginfigure}
@@ -13359,8 +13267,6 @@ access and download Google map data.
 \begin{Schunk}
 \begin{Sinput}
 library(dismo, quietly=TRUE)
-\end{Sinput}
-\begin{Sinput}
   ## The raster and sp packages are dependencies
 \end{Sinput}
 \end{Schunk}
@@ -13509,8 +13415,6 @@ R package \txtt{rgdal}:
 \begin{Schunk}
 \begin{Sinput}
 library(rgdal)
-\end{Sinput}
-\begin{Sinput}
 logofile <- system.file("pictures/Rlogo.jpg",
                         package = "rgdal")[1]
 rlogo <- readGDAL(logofile, silent=TRUE)
@@ -13564,7 +13468,7 @@ Another possibility is to use the function \texttt{spplot()}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/13-spplot-col3-1} }
+\centerline{\includegraphics[width=0.8\textwidth]{figs/10-spplot-col3-1} }
 
 \end{Schunk}
 \caption{Red, green and blue layers from the R logo image.\label{fig:rlogo3}}
@@ -13630,10 +13534,10 @@ spplot(SP27GTIF)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/13-meuse-bubble-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/10-meuse-bubble-1} }
 
 \end{Schunk}
-\vspace*{-15pt}
+\vspace*{3pt}
  \caption{Bubble plot for \margtt{zinc},
 with area of bubbles proportional to concentration.
 River Meuse boundaries are in gray.\label{fig:ZnRiv}}
@@ -13816,7 +13720,8 @@ url <- paste0("http://www.abs.gov.au/ausstats/subscriber.nsf/",
   "log?openagent&1259030001_sr11aaust_shape.zip&1259.0.30.001",
   "&Data%20Cubes&B8003880BC09FA5BCA2578CC00124E25&0",
   "&July%202011&14.07.2011&Latest")
-download.file(url, destfile="../downloads/1259030001_sr11aaust_shape.zip")
+downloadTo <- "../downloads/1259030001_sr11aaust_shape.zip"
+download.file(url, destfile=downloadTo)
 \end{Sinput}
 \end{Schunk}
 \noindent
@@ -13967,7 +13872,6 @@ very incomplete.]
 \end{itemize}
 See also the vignettes that accompany the package {\em sp}, describing
 classes and methods for spatial data, and overlay and aggregation.
-% \input{13maps}
 \cleartooddpage
 
 \chapter{Brief Notes on Text Mining}\label{ch:tm}
@@ -13978,8 +13882,8 @@ classes and methods for spatial data, and overlay and aggregation.
 
 
 A first step is to load the \textit{tm} package.  This is designed for
-working with collections of documents, where a collection has the name
-\texttt{Corpus}.
+working with a \textit{corpus} --- \textit{corpus} is the name for a
+collection of documents.
 \begin{Schunk}
 \begin{Sinput}
 library(tm)
@@ -13995,7 +13899,8 @@ library(tm)
 
 The data used is from three text files, stored in the {\em DAAGviz}
 directory tree.  They hold text from the respective chapter ranges 1 -
-5, 6 - 7, and 8 - 9 of this present document.  We show two ways to use
+5, 6 - 7, and 8 - 9 of an older version of this present document.
+We show two ways to use
 it to form a corpus.  The first breaks the process down into detailed
 steps, while the second uses a much terser and summary approach.  The
 resultant corpus is {\em volatile}, so described because stored in the
@@ -14008,7 +13913,8 @@ First create paths to the files, and check that they seem correct:
 \begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
-## Create paths to the files
+## Create paths to the text files, stored in the
+## subdirectory "texts" of the DAAGviz package.
 txdir <- system.file("texts", package="DAAGviz")
 dir(txdir, pattern=".txt$")
 \end{Sinput}
@@ -14144,12 +14050,11 @@ second (6-7) and third (8-9) documents in the corpus.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.92\textwidth]{figs/14-wordcloud1-3-1} }
+\centerline{\includegraphics[width=0.92\textwidth]{figs/11-wordcloud1-3-1} }
 
 \end{Schunk}
 \caption[][-12pt]{Wordcloud plots are A: for the words in Chapters 1 - 5; B: 6 -
-  7; and C: 8 - 9. For a color version of Panel A, see Figure 
-  \ref{fig:cloudfun}.\label{fig:wc}}
+  7; and C: 8 - 9.\label{fig:wc}}
 \setfloatalignment{b}
 \end{figure*}
 
@@ -14163,15 +14068,15 @@ Code for the plots is:
 pal <- brewer.pal(6, "Dark2")
 fnam1 <- as.matrix(tx.tdm)[,1]
 wordcloud(names(fnam1), fnam1, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(6.5,.5))
+          random.order=FALSE, scale=c(8.5,.5))
 mtext(side=3, line=3.5, "A: Chapters 1 - 5", adj=0, cex=1.8)
 fnam2 <- as.matrix(tx.tdm)[,2]
 wordcloud(names(fnam2), fnam2, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(10,.5))
+          random.order=FALSE, scale=c(4.5,.5))
 mtext(side=3, line=3.5, "B: Chapters 6 - 7", adj=0, cex=1.8)
 fnam3 <- as.matrix(tx.tdm)[,3]
 wordcloud(names(fnam3), fnam3, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(5,.5))
+          random.order=FALSE, scale=c(6.0,.5))
 mtext(side=3, line=3.5, "C: Chapters 8 - 9", adj=0, cex=1.8)
 \end{Sinput}
 \end{Schunk}
@@ -14189,10 +14094,9 @@ in which one item (`data') is a marked outlier.
 The {\em tm} package has functions that can be used to create readers
 for several different types of files.  Type \txtt{getReaders()} to get
 a list.  Note in particular \txtt{readPDF()} that can be used with pdf
-files.  For use of this command, both the tools pdfinfo and pdftotext
-must be installed and accessible.  These are available as command line
-utilities in the Poppler PDF rendering library (see
-\url{http://poppler.freedesktop.org/}).
+files.  See \txtt{?tm::readPDF} for details of PDF extraction
+engines that may be used.  The default is to use the Poppler PDF
+rendering library as provided in the {\bf pdftools} package.
 
 The following reads in the text from the file {\bf ch1-5prelims.pdf}.
 The result is equivalent to using \txtt{readLines()} as above to
@@ -14277,7 +14181,6 @@ Content:  documents: 5
 \end{Soutput}
 \end{Schunk}
 
-% \input{14tm}
 \cleartooddpage
 
 \chapter{$^*$Leveraging R Language Abilities }
@@ -14317,9 +14220,10 @@ form <- as.formula(paste(yvar, "~", xvar))
 plot(form, data=mtcars)
 \end{Sinput}
 \end{Schunk}
-The usefulness of this second way to do the plot is that \txtt{yvar}
-and \txtt{xvar} can be arguments to a function.  Then, \txtt{xvar} and
-\txtt{yvar} can be any pair of columns.  Here is the function:
+With this second approach, \txtt{yvar} and \txtt{xvar}
+can be arguments to a function, and \txtt{xvar} and
+\txtt{yvar} can be any pair of columns.  A suitable
+functionis:
 \begin{Schunk}
 \begin{Sinput}
 plot.mtcars <- function(xvar="disp", yvar="mpg"){
@@ -14329,17 +14233,25 @@ plot.mtcars <- function(xvar="disp", yvar="mpg"){
 \end{Sinput}
 \end{Schunk}
 
-The data frame \txtt{mtcars} has 11 columns from which we might want
-to choose the two axes for a scatterplot:
+\begin{marginfigure}
+The data frame \txtt{mtcars} has 11 columns from which
+the two axes for a scatterplot might be chosen:
+
 \begin{Schunk}
 \begin{Sinput}
 names(mtcars)
 \end{Sinput}
 \begin{Soutput}
- [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec"
- [8] "vs"   "am"   "gear" "carb"
+ [1] "mpg"  "cyl" 
+ [3] "disp" "hp"  
+ [5] "drat" "wt"  
+ [7] "qsec" "vs"  
+ [9] "am"   "gear"
+[11] "carb"
 \end{Soutput}
 \end{Schunk}
+
+\end{marginfigure}
 
 The following calls the function with \txtt{xvar="hp"} and
 \txtt{yvar="mpg"}:
@@ -14476,10 +14388,10 @@ mean(x = c(0.722661806870587, -1.69914843090301, -1.90255704914938,
 Every call to a function creates a frame that contains the local
 variables created in the function. This combines with the environment
 in which the function was defined to create a new environment.
-
-The global environment, \txtt{.Globalenv}, is the workspace.  This is
-frame 0. The frame number increases by 1 with each new function
-call.\sidenote[][-2cm]{Additionally, frames may be referred to by name. Use
+The global environment, \txtt{.Globalenv}, is the workspace.  This
+is frame 0. The frame number increases by 1 with each new function
+call.\sidenote[][-2cm]{Additionally, frames may be referred to by
+name. Use
 \begin{list}{}{
 \setlength{\itemsep}{1pt}
 \setlength{\parsep}{1pt}}
@@ -14493,27 +14405,37 @@ name
 \end{list}
 }
 
-
-Here is code that determines, from within a function,
-the function name:
 \begin{Schunk}
-\begin{Sinput}
-test <- function(){
- fname <- as(sys.call(sys.parent())[[1]],
-              "character")
-  fname
-}
-test()
-\end{Sinput}
 \begin{Soutput}
 [1] "test"
 \end{Soutput}
+\end{Schunk}
+
+\begin{marginfigure}
+Now change the function name to \margtt{newtest()}:
+\begin{Schunk}
 \begin{Sinput}
 newtest <- test
 newtest()
 \end{Sinput}
 \begin{Soutput}
 [1] "newtest"
+\end{Soutput}
+\end{Schunk}
+\end{marginfigure}
+Here is code that determines, from within a function,
+the function name:
+\begin{Schunk}
+\begin{Sinput}
+test <- function(){
+ fname <- as(sys.call(sys.parent())[[1]],
+             "character")
+  fname
+}
+test()
+\end{Sinput}
+\begin{Soutput}
+[1] "test"
 \end{Soutput}
 \end{Schunk}
 
@@ -14561,8 +14483,8 @@ frame, and so on. If they are not found in any of the frames, then
 they are sought in the search list.
 
 \section{Creation of R Packages}
-\marginnote{The RStudio documentation includes a large amount of
-information on package preparation, testing, and submission to
+\marginnote[10pt]{The RStudio documentation includes a large amount
+of information on package preparation, testing, and submission to
 CRAN or other repositories.  Click on\\
 \underline{Help} | \underline{RStudio Docs}\\
 \noindent and look under\\
@@ -14582,110 +14504,14 @@ to return to the project at some later time, and/or to pass the project
 across to someone else.
 \item Attaching the packages give immediate access to functions, data
   and associated documentation.
-\marginnote[12pt]{CRAN checks include checks for consistency between
-    code and documentation, e.g., in names of arguments.  Code must
-    conform to CRAN standards.}
 \item Where a package is submitted to CRAN (Comprehensive R Archive
   Network) and used by others, this extends opportunities for testing
   and/or getting contributions from other workers. Checks that are
   required by CRAN ensure that the package (code and documentation)
-  meets certain formal standards.
+  meets certain formal standards.  CRAN checks include checks for
+  consistency between code and documentation, e.g., in names of
+  arguments.  Code must conform to CRAN standards.
 \end{itemize}
-
-It is relatively straightforward to create packages that make no calls
-to externally compiled C or Fortran code. A good starting point is a
-very simple example package that can be created from within RStudio,
-and can be used as a starting point for further development.
-Click on\\
-\underline{File} | \underline{New Project \ldots} |
-\underline{New Directory} | \underline{R Package} \\
-\noindent and fill in the spaces as appropriate.  Thus, as an example,
-create the project as a subdirectory of \textbf{$~$/pkgs}, with the
-name {\em testpkg}.  The effect will be to create the subdirectory
-\textbf{$~$/pkgs/testpkg/} as the project directory, which is also
-the package directory.  The package directory contains the following
-files:
-\begin{itemize}
-  \marginnote[15pt]{Note also several files whose name starts with
-    '\textbf{.}', plus \textbf{testpkg.Rproj} which is used by RStudio.
-    These can be left as they are. All package directories have this
-    same basic structure, though usually with some further
-    subdirectories.  In particular, most packages will have a
-    subdirectory \textbf{data} that holds data files.}
-
-\item \textbf{DESCRIPTION}, with enough details entered to allow
-creation of the package to proceed.
-\item \textbf{NAMESPACE}, with details entered that will allow
-creation of a package to proceed.
-\item The sub-directory \textbf{R}, containing only the R script file
- \textbf{hello.R}
-\item The sub-directory \textbf{man}, containing only the help file
- \textbf{hello.Rd}
-\end{itemize}
-The code for the function \txtt{hello()} will appear in the ``Files''
-panel, which in an off-the-shelf RStudio installation will appear
-in the lower left panel.
-
-The package, although missing some features, can be loaded into the
-session as it stands.  Click on \underline{Build} (in the top right
-panel, for the default panel layout), then on \underline{Build \&
-  Reload}.  The package will be built and loaded into the session.
-Unless the relevant {\em Rtools} have been installed on the
-system,\sidenote{This has to be done from the operating system, not
-  from R.} the attached version of the package will lack some standard
-features, and a warning will accordingly appear.  For
-building a \txtt{.tar.gz} package file, click on
-\underline{Build}, then on \underline{More} | \underline{Build Source
-  Package}.
-
-This may be a good point at which to try adding your own further
-function and/or dataset.  Click on\\
-\qquad \underline{File} | \underline{New File} | \underline{R
-  Script}\\
-\noindent and type in, e.g., the following function:
-\begin{fullwidth}
-
-\begin{Schunk}
-\begin{Sinput}
-breakIntoWords <- function(sentence="The quick brown fox"){
-  words <- strsplit(sentence, split=' ', fixed=TRUE)
-  unlist(words)
-}
-\end{Sinput}
-\end{Schunk}
-
-\end{fullwidth}
-
-Select the function code and click \underline{Run} to load
-the function into your session.  Then type, for example:
-\begin{fullwidth}
-
-\begin{Schunk}
-\begin{Sinput}
-sentence <- 'The quick brown fox jumps over the lazy dog.'
-breakIntoWords(sentence)
-\end{Sinput}
-\begin{Soutput}
-[1] "The"   "quick" "brown" "fox"   "jumps" "over"  "the"   "lazy"  "dog." 
-\end{Soutput}
-\end{Schunk}
-\end{fullwidth}
-
-\marginnote[12pt]{The function can be improved!  The fullstop
-should be dropped from the final word.}
-Now type
-\begin{Schunk}
-\begin{Sinput}
-prompt(breakIntoWords, file='man/breakIntoWords.Rd')
-\end{Sinput}
-\end{Schunk}
-In the help file thus created, replace
-\verb!%%  ~~function to do ... ~~! \\
-\noindent by a title, e.g.,\\
-\verb!Break sentence into words!.\\
-\noindent Other entries should
-in due course also get attention, but this is enough to
-allow \underline{Build \& Reload} to run.
 
 \subsection*{Namespaces}
 Packages can have their own namespaces, with private functions and
@@ -14714,14 +14540,13 @@ replace a slot.  For example:
 \begin{Sinput}
 library(DAAG)
 library(lme4)
-\end{Sinput}
-\begin{Sinput}
 hp.lmList <- lmList(o2 ~ wattsPerKg | id,
                     data=humanpower1)
 slotNames(hp.lmList)
 \end{Sinput}
 \begin{Soutput}
-[1] ".Data"     "call"      "pool"      "groups"    "origOrder"
+[1] ".Data"     "call"      "pool"      "groups"   
+[5] "origOrder"
 \end{Soutput}
 \end{Schunk}
 
@@ -14829,11 +14654,10 @@ writing and testing of functions.
   standards of documentation.
 
 \item[] Many of R's more recent packages use S4 classes and methods.
-Extractor functions are in most cases available that can provide
-imformation that is required.
+Extractor functions are available that will extract the most 
+commonly required types of information.
 
 \end{itemize}
-% \input{15lever}
 \cleartooddpage
 
 \appendix
@@ -15148,7 +14972,6 @@ options(continue="  ")            # Blank continuation
 .libPaths("C:/my_R_library")      # Add library to path.
 \end{Sinput}
 \end{Schunk}
-% \input{16rsystem}
 \cleartooddpage
 
 \chapter{The R Commander Graphical User Interface}
@@ -15237,7 +15060,6 @@ is a powerful and sophisticated system.  It has a number of features
 that make it attractive for use in standard data mining applications.
 Note also \textit{JGR} (Java Graphics for R) and \textit{pmg} (Poor
 Man's GUI).
-% \input{17rgui}
 \cleartooddpage
 
 \chapter{Color Versions of Selected Graphs}\label{app:C}
@@ -15247,79 +15069,81 @@ Man's GUI).
 
 
 
-\subsection*{Australian and New Zealand alcohol consumption}
-
-\begin{SaveVerbatim}{grogcode}
-## Simplified version of plot
-form <-
-  Beer+Spirit+Wine ~ Year|Country
-grogplot <- xyplot(form, data=grog,
-                   outer=FALSE)
-## Enhance, and print enhanced code
-parset <- simpleTheme(pch=c(1,3,4))
-update(grogplot, ylim=c(0,5.5),
-       xlab="",
-       ylab="Amount (per person)",
-       auto.key=list(columns=3)
-       par.settings=parset)
-\end{SaveVerbatim}
-
-\setkeys{Gin}{width=0.98\textwidth}
-\begin{figure}
-\includegraphics[trim=9 18 0 15]{colorArt/allgrog}%
-  \caption{Australian and New Zealand apparent per person annual
-  consumption (in liters) of the pure alcohol content of liquor products, for
-  1998 to 2006.  This is a color version of Figure \ref{fig:allgrog}.
-version of this graph.
-\protect\UseVerbatim[fontsize=\relsize{-1}]{grogcode}
-\label{col:fig31}}
-\vspace*{18pt}
-\end{figure}
-
-\subsection*{Height versus weight of Australian athletes}
-\begin{SaveVerbatim}{qplot}
-quickplot(wt, ht, data=aisRS,
-     geom="point", size=I(2),
-     color=sex, shape=sport)
-\end{SaveVerbatim}
-
-\begin{figure}
-\begin{center}
-\begin{minipage}[c]{0.85\textwidth}
-\includegraphics[trim=0 18 0 12]{colorArt/colshape.pdf}
-\end{minipage}
-\end{center}
-  \caption{Here, \texttt{color}s distinguish \texttt{sex}es,
-while \texttt{shape}s distinguish \texttt{sport}s.}\label{col:colshape}
-\setfloatalignment{b}
-\end{figure}
-\marginnote{Code that uses \txtt{quickplot()} is:
-\vspace*{-7pt}
-
-\UseVerbatim[fontsize=\relsize{-1}]{qplot}
-}
-
-\newpage
-
-\subsection*{A color density plot}
-
-\begin{figure}[h]
-\vspace*{-30pt}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.44\textwidth]{figs/18-smoothScatter-1} }
-
-\end{Schunk}
-\caption{The function \txtt{smoothScatter()} has been used to give
-  a color density representation of the plot of \txtt{re75} versus
-  \txtt{re74}, for a sample of 3000 rows from the dataset \txtt{cps1}
-({\em DAAG}).  (Color version of Figure
-\ref{fig:alpha}C).\label{col:alphaC}}
-\vspace*{-12pt}
-\end{figure}
-
-\enlargethispage{60pt}
+% \subsection*{Australian and New Zealand alcohol consumption}
+% 
+% \begin{SaveVerbatim}{grogcode}
+% ## Simplified version of plot
+% form <-
+%   Beer+Spirit+Wine ~ Year|Country
+% grogplot <- xyplot(form, data=grog,
+%                    outer=FALSE)
+% ## Enhance, and print enhanced code
+% parset <- simpleTheme(pch=c(1,3,4))
+% update(grogplot, ylim=c(0,5.5),
+%        xlab="",
+%        ylab="Amount (per person)",
+%        auto.key=list(columns=3)
+%        par.settings=parset)
+% \end{SaveVerbatim}
+% 
+% \setkeys{Gin}{width=0.98\textwidth}
+% \begin{figure}
+% \includegraphics[trim=9 18 0 15]{colorArt/allgrog}%
+%   \caption{Australian and New Zealand apparent per person annual
+%   consumption (in liters) of the pure alcohol content of liquor products, for
+%   1998 to 2006.  This is a color version of Figure \ref{fig:allgrog}.
+% version of this graph.
+% \protect\UseVerbatim[fontsize=\relsize{-1}]{grogcode}
+% \label{col:fig31}}
+% \vspace*{18pt}
+% \end{figure}
+% 
+% \subsection*{Height versus weight of Australian athletes}
+% \begin{SaveVerbatim}{qplot}
+% quickplot(wt, ht, data=aisRS,
+%      geom="point", size=I(2),
+%      color=sex, shape=sport)
+% \end{SaveVerbatim}
+% 
+% \begin{figure}
+% \begin{center}
+% \begin{minipage}[c]{0.85\textwidth}
+% \includegraphics[trim=0 18 0 12]{colorArt/colshape.pdf}
+% \end{minipage}
+% \end{center}
+%   \caption{Here, \texttt{color}s distinguish \texttt{sex}es,
+% while \texttt{shape}s distinguish \texttt{sport}s.}\label{col:colshape}
+% \setfloatalignment{b}
+% \end{figure}
+% \marginnote{Code that uses \txtt{quickplot()} is:
+% \vspace*{-7pt}
+% 
+% \UseVerbatim[fontsize=\relsize{-1}]{qplot}
+% }
+% 
+% \newpage
+% 
+% \subsection*{A color density plot}
+% 
+% \begin{figure}[h]
+% \vspace*{-30pt}
+% <<smoothScatter, w=2.75, h=2.85, top=2, echo=FALSE, out.width="0.44\\textwidth">>=
+% library(DAAG)
+% dfsamp <- cps1[sample(nrow(cps1), 3000), ]
+% blueRamp <- colorRampPalette(c("white", blues9))
+% with(dfsamp, smoothScatter(re75~re74,
+%                            colramp=blueRamp))
+% mtext(side=3, line=0.5, "Color density plot", adj=0)
+% @ %
+% \caption{The function \txtt{smoothScatter()} has been used to give
+%   a color density representation of the plot of \txtt{re75} versus
+%   \txtt{re74}, for a sample of 3000 rows from the dataset \txtt{cps1}
+% ({\em DAAG}).  (Color version of Figure
+% \ref{fig:alpha}C).\label{col:alphaC}}
+% \vspace*{-12pt}
+% \end{figure}
+% 
+% \enlargethispage{60pt}
 
 \subsection*{Annotated Motion Chart}
 
@@ -15347,32 +15171,32 @@ while \texttt{shape}s distinguish \texttt{sport}s.}\label{col:colshape}
 of \ref{fig:playwith}.\label{col:playwith}}
 \end{figure*}
 
-\newpage
-\subsection*{Heatmap version of contour plot, from GAM smooth}
-
-\begin{fullwidth}
-\begin{figure*}
-\begin{Schunk}
-\centerline{\includegraphics[width=0.97\textwidth]{colorArt/18i-further-plotVIS} }
-\end{Schunk}
-\caption[][-6pt]{Estimated contours of left eye responses to visual stimulae,
-projected onto the plane.  This repeats Figure \ref{fig:visAmp},
-now in color.\label{col:visAmp}}
-\vspace*{12pt}
-\end{figure*}
-\end{fullwidth}
-
-\subsection*{A wordcloud}
-\begin{figure}
-\vspace*{-0.75cm}
-\includegraphics[width=0.92\textwidth]{colorArt/cloudfunR}
-\caption{The size of a
-  name is proportional to frequency in this document.  For details
-  on how to create such a plot, see the the code in Section
-  \ref{sec:volatile} that leads up to Figure \ref{fig:wc}.
-  \label{fig:cloudfun}}.
-\setfloatalignment{b}
-\end{figure}
+% \newpage
+% \subsection*{Heatmap version of contour plot, from GAM smooth}
+% 
+% \begin{fullwidth}
+% \begin{figure*}
+% \begin{Schunk}
+% \centerline{\includegraphics[width=0.97\textwidth]{colorArt/18i-further-plotVIS} }
+% \end{Schunk}
+% \caption[][-6pt]{Estimated contours of left eye responses to visual stimulae,
+% projected onto the plane.  This repeats Figure \ref{fig:visAmp},
+% now in color.\label{col:visAmp}}
+% \vspace*{12pt}
+% \end{figure*}
+% \end{fullwidth}
+% 
+% \subsection*{A wordcloud}
+% \begin{figure}
+% \vspace*{-0.75cm}
+% \includegraphics[width=0.92\textwidth]{colorArt/cloudfunR}
+% \caption{The size of a
+%   name is proportional to frequency in this document.  For details
+%   on how to create such a plot, see the the code in Section
+%   \ref{sec:volatile} that leads up to Figure \ref{fig:wc}.
+%   \label{fig:cloudfun}}.
+% \setfloatalignment{b}
+% \end{figure}
 
 \newpage
 \subsection*{Florence Nightingale's Wedge Plot}\label{sec:wedge}
@@ -15429,7 +15253,6 @@ Note that the function \texttt{paste()}, used in line 5 of Panel A, turns the
   strings with elements \texttt{"0", "1", ..., "12"}.  An alternative to
 \texttt{paste(0:12)} is \texttt{as.character(0:12)}.
 \vfill
-% \input{18color}
 
 \renewcommand{\indexname}{Index of Functions}
 

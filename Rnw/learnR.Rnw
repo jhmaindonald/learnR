@@ -49,7 +49,7 @@
 
 %%
 % Book metadata
-\title{Learning R: Open Source (Free) System for Statistics and Much Else}
+\title{Learning and Exploring R}
 \author[]{J H Maindonald}
 \publisher{}
 
@@ -339,109 +339,86 @@ science.
 % Start the main matter (normal chapters)
 \mainmatter
 \setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
 
-\chapter{Preliminaries}
+\chapter{Getting started with R}\label{ch:getStart}
 <<mprelim, child='1gettingStarted.Rnw'>>=
 @
 
-\chapter{An Overview of R}\label{ch:oview}
-<<moverview, child='2overview.Rnw'>>=
-@
 \cleartooddpage
-
-\chapter{Enhancing the R Experience -- RStudio}\label{ch:rstudio}
-<<mrstudio, child='3rstudio.Rnw'>>=
-@
 
 \chapter{The R Working Environment}\label{ch:workenv}
-<<mrworking, child='4rworking.Rnw'>>=
+<<mrworking, child='2rworking.Rnw'>>=
 @
 \cleartooddpage
 
-\chapter{Practical Data Analysis -- Examples}\label{ch:worked}
-<<mrexamples, child='5examples.Rnw'>>=
+\chapter{Examples --- Data analysis with R}\label{ch:worked}
+<<mrexamples, child='3examples.Rnw'>>=
 @
 \cleartooddpage
 
 \chapter{Data Objects and Functions}
-<<mdata, child='6data.Rnw'>>=
+<<mdata, child='4data.Rnw'>>=
 @
 
 \cleartooddpage
 
 \chapter{Data Input and Storage}\label{ch:input}
-<<minput, child='7input.Rnw'>>=
+<<minput, child='5input.Rnw'>>=
 @
-% \input{7input}
 \cleartooddpage
 
 \chapter{Data Manipulation and Management}\label{ch:manip}
-<<mmanip, child='8manip.Rnw'>>=
+<<mmanip, child='6manip.Rnw'>>=
 @
-% \input{8manip}
 \cleartooddpage
 
-\chapter{Graphics -- Base, Lattice, Ggplot, \ldots}\label{ch:plots}
-<<mgraphics, child='9graphics.Rnw'>>=
+\chapter{Graphics -- base, lattice, ggplot2, rgl, googleVis\ldots}\label{ch:plots}
+<<mgraphics, child='7graphics.Rnw'>>=
 @
-% \input{9graphics}
 
-\cleartooddpage
-
-\chapter{Dynamic Interaction with Graphs}\label{ch:dynamic}
-<<m10dynamic, child='10dynamic.Rnw'>>=
-@
-% \input{10dynamic}
 \cleartooddpage
 
 \chapter{Regression with Linear Terms and Factors}
-<<m11reg, child='11reg.Rnw'>>=
+<<m8reg, child='8reg.Rnw'>>=
 @
-% \input{11reg}
 \cleartooddpage
 
 \chapter[A Miscellany of Models \& Methods]{$^*$A Miscellany of Models \& Methods}
-<<m12further, child='12further.Rnw'>>=
+<<m9further, child='9further.Rnw'>>=
 @
-% \input{12further}
 \cleartooddpage
 
 \chapter{Map Overlays  and Spatial Modeling}\label{ch:spatial}
-<<m13maps, child='13maps.Rnw'>>=
+<<m10maps, child='10maps.Rnw'>>=
 @
-% \input{13maps}
 \cleartooddpage
 
 \chapter{Brief Notes on Text Mining}\label{ch:tm}
-<<m14tm, child='14tm.Rnw'>>=
+<<m11tm, child='11tm.Rnw'>>=
 @
-% \input{14tm}
 \cleartooddpage
 
 \chapter{$^*$Leveraging R Language Abilities }
-<<m15lever, child='15lever.Rnw'>>=
+<<m12lever, child='12lever.Rnw'>>=
 @
-% \input{15lever}
 \cleartooddpage
 
 \appendix
 
 \chapter{$^*$R System Configuration}\label{ch:sys}
-<<m16rsystem, child='16rsystem.Rnw'>>=
+<<A-rsystem, child='Arsystem.Rnw'>>=
 @
-% \input{16rsystem}
 \cleartooddpage
 
 \chapter{The R Commander Graphical User Interface}
-<<m17rgui, child='17rgui.Rnw'>>=
+<<B-rgui, child='Brgui.Rnw'>>=
 @
-% \input{17rgui}
 \cleartooddpage
 
 \chapter{Color Versions of Selected Graphs}\label{app:C}
-<<m18color, child='18color.Rnw'>>=
+<<Ccolor, child='Ccolor.Rnw'>>=
 @
-% \input{18color}
 
 \renewcommand{\indexname}{Index of Functions}
 

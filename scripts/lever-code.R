@@ -4,9 +4,9 @@ options(width=78)
 ## ---- opt54 ----
 options(width=54)
 
-## ---- sec-15.1 ----
+## ---- sec-12.1 ----
 
-## ---- ss-15.1.1 ----
+## ---- ss-12.1.1 ----
 
 ## ---- mgpVSdisp ----
 plot(mpg ~ disp, data=mtcars)
@@ -29,7 +29,7 @@ names(mtcars)
 ## ---- mtcars-gph ----
 plot.mtcars(xvar="hp", yvar="mpg", data=mtcars)
 
-## ---- ss-15.1.2 ----
+## ---- ss-12.1.2 ----
 
 ## ---- all-vars ----
 all.vars(mpg ~ disp)
@@ -52,9 +52,9 @@ plot.mtcars <- function(form = mpg ~ disp){
    plot(form, xlab=xlab, ylab=ylab)
 }
 
-## ---- sec-15.2 ----
+## ---- sec-12.2 ----
 
-## ---- ss-15.2.1 ----
+## ---- ss-12.2.1 ----
 
 ## ---- mtcars-subs ----
 plot.mtcars` <-
@@ -65,7 +65,7 @@ plot.mtcars` <-
     plot(form, xlab=xvar, ylab=yvar, data=mtcars)
   }
 
-## ---- ss-15.2.2 ----
+## ---- ss-12.2.2 ----
 
 ## ---- do-call ----
 mean(rnorm(20))
@@ -93,15 +93,17 @@ eval(mean.call)
 ## ---- mean-call ----
 mean.call
 
-## ---- ss-15.2.3 ----
+## ---- ss-12.2.3 ----
 
 ## ---- fun-name ----
 test <- function(){
  fname <- as(sys.call(sys.parent())[[1]],
-              "character")
+             "character")
   fname
 }
 test()
+
+## ---- fun-newname ----
 newtest <- test
 newtest()
 
@@ -124,7 +126,7 @@ fig1 <- function(){
 }
 fig1()
 
-## ---- sec-15.3 ----
+## ---- sec-12.3 ----
 
 ## ---- breakIntoWords ----
 breakIntoWords <- function(sentence="The quick brown fox"){
@@ -139,7 +141,7 @@ breakIntoWords(sentence)
 ## ---- BIWhelp ----
 prompt(breakIntoWords, file='man/breakIntoWords.Rd')
 
-## ---- sec-15.4 ----
+## ---- sec-12.4 ----
 
 ## ---- S4 ----
 library(DAAG)

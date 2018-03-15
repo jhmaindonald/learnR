@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\begin{document}
+
+<<>>=
+read_chunk("../scripts/lever-code.R")
+@ %
+
+## ---- load-tm ----
+library(tm)
+
+## By default, it will use xpdf, available at http://www.xpdfreader.com/download.html
+
+% You have to:
+% 
+%     Download the archive from the website (under the Xpdf tools section).
+%     Unzip it.
+%     Make sure it is in the PATH of your computer.
+
+## ---- make-path ----
+## Create paths to the text files, stored in the
+## subdirectory "texts" of the DAAGviz package.
+## txdir <- system.file("texts", package="DAAGviz")
+pdfFiles <- dir("~/pkgs/DAAGviz/inst/pdf/")
+
+## Set up read function
+library(tm)
+read <- readPDF(control = list(text = "-layout"))
+
+## Input ch1.pdf
+pdfFiles <- dir("~/pkgs/DAAGviz/inst/pdf/", full.names=TRUE)
+doc <- Corpus(URISource(pdfFiles), readerControl = list(reader = read))
+tx.tdm <- TermDocumentMatrix(doc, control=ctl)
+ch1thru5 <- strsplit(content(doc[["ch1-5.pdf"]]), "\n")
+ch6thru8 <- strsplit(content(doc[["ch6-8.pdf"]]), "\n")
+## Join the separate text strings end to end
+ch1thru5 <- paste(ch1thru5, collapse=" ")
+ch6thru8 <- paste(ch6thru8, collapse=" ")
+
+## ---- readLines2-3 ----
+tx2 <- readLines(txfiles[2], encoding="UTF-8", warn=FALSE)
+tx2 <- paste(tx2, collapse=" ")
+tx3 <- readLines(txfiles[3], encoding="UTF-8", warn=FALSE)
+tx3 <- paste(tx3, collapse=" ")
+
+## ---- VectorSource ----
+txcorp <- Corpus(VectorSource(c(ch1thru5, ch6thru8)))
+
+## ---- DirSource ----
+dirSource <- DirSource(directory=txdir,
+                       pattern=".txt$")
+
+## ---- dirTOcorpus ----
+toUTF8 <- function(x) iconv(x, to="UTF-8",
+                            sub = "byte")
+txcorp <- Corpus(dirSource)
+txcorp <- tm_map(txcorp,
+    content_transformer(toUTF8))
+
+## ---- make-tdm ----
+ctl <- list(stopwords = c(stopwords(), "[1]"),
+            removePunctuation = list(preserve_intra_word_dashes = FALSE),
+            removeNumbers = TRUE, stopwords=c(stopwords(), "[1]"),
+            minDocFreq = 2)
+tx.tdm <- TermDocumentMatrix(txcorp, control=ctl)
+
+## ---- findFreq100 ----
+findFreqTerms(tx.tdm, 100)
+
+## ---- load-wordcloud ----
+library(wordcloud)
+
+## ---- wordcloud1-3 ----
+pal <- brewer.pal(6, "Dark2")
+fnam1 <- as.matrix(tx.tdm)[,1]
+wordcloud(names(fnam1), fnam1, max.words=80, colors=pal[-1],
+          random.order=FALSE, scale=c(8.5,.5))
+mtext(side=3, line=3.5, "A: Chapters 1 - 5", adj=0, cex=1.8)
+fnam2 <- as.matrix(tx.tdm)[,2]
+wordcloud(names(fnam2), fnam2, max.words=80, colors=pal[-1],
+          random.order=FALSE, scale=c(2,.25))
+mtext(side=3, line=3.5, "B: Chapters 6 - 7", adj=0, cex=1.8)
+fnam3 <- as.matrix(tx.tdm)[,3]
+wordcloud(names(fnam3), fnam3, max.words=80, colors=pal[-1],
+          random.order=FALSE, scale=c(6.0,.5))
+mtext(side=3, line=3.5, "C: Chapters 8 - 9", adj=0, cex=1.8)
+
+
+\end{document}

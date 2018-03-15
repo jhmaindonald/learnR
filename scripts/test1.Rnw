@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\begin{document}
+\begin{figure}
+<<A, fig.width=6, fig.height=3.25>>=
+layout(matrix(c(1,3,0,0,2,4), 2, 3), respect = TRUE,
+widths=c(7.5,1,7.5), heights=c(7.5, 1.5))
+xlim <- range(DAAG::nihills$time)+c(-0.1,0.1)
+par(mar=c(0.2,2.5,0,0), bty="o")
+plot(timef~time, data=DAAG::nihills, xlim=xlim, xaxt='n', fg="gray")
+mtext(side=2,line=2,"Female times")
+mtext(side=3,line=0.5,"A: Untransformed scales", adj=0)
+plot(timef~time, data=DAAG::nihills, xlim=xlim, xaxt='n',
+     log='xy', fg="gray")
+mtext(side=2,line=2,"Female times (log scale)")
+mtext(side=3,line=0.5,"B: Logarithmic scales", adj=0)
+par(mar=c(2,2.5,0,0), bty="n")
+pars = list(boxwex = 4.0, staplewex = 0.5, outwex = 0.5)
+boxplot(DAAG::nihills$time, horizontal=T, xlim=xlim,
+        pars=pars, at=2, axes=0)
+axis(1, lwd = 0, lwd.ticks = 1)
+mtext(side=1,line=2,"Male times")
+boxplot(DAAG::nihills$time, horizontal=T, xlim=xlim, 
+        log='x', pars=pars, at=2, axes=0)
+axis(1, lwd = 0, lwd.ticks = 1)
+mtext(side=1,line=2,"Male times (log scale)")
+@
+\end{figure}
+\end{document}

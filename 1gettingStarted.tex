@@ -3,6 +3,9 @@
 
 
 
+% !Rnw root = learnR.Rnw
+
+
 \section{Installation of R}
 
 Click as indicated in the successive panels to download R for
@@ -382,7 +385,771 @@ Additional packages can be installed thus:
 \end{knitrout}
 See further \url{http://www.bioconductor.org/install/}.
 
-\section{Summary}
+\section{Practice with R commands}
+
+\marginnote{Read \margtt{c} as ``\underline{c}oncatenate'',
+or perhaps as ``column''.\\[6pt]
+\noindent Lists are widely used in R.  A data frame is a
+special type of list,
+used to collect together column objects under one name.}
+\noindent
+\fbox{\parbox{\textwidth}{\vspace*{-3pt}
+\begin{tabular}{l}
+{\bf Column Objects}\\
+\qquad \txtt{width = c(11.3, 13.1, 20, 21.1, 25.8, 13.1)}\\[3pt]
+\qquad \txtt{height = c(23.9, 18.7, 27.6, 28.5, 36, 23.4)}\\[4pt]
+{\bf Data frame}\\
+A data frame is a list of column objects, all of the same length.\\
+\qquad \txtt{widheight <- data.frame( }\\
+\qquad \qquad \txtt{width = c(11.3, 13.1, 20, 21.1, 25.8, 13.1),}\\
+\qquad \qquad \txtt{height = c(23.9, 18.7, 27.6, 28.5, 36, 23.4)}\\
+\qquad \txtt{ )}\\[4pt]
+{\bf Also:} Arithmetic operations; simple plots; input of data.\\
+\end{tabular}
+\vspace*{-3pt}}}
+\vspace*{3pt}
+
+\marginnote{The R language has the standard abilities for evaluating
+arithmetic and logical expressions.  There are numerous functions
+that extend these basic arithmetic and logical abilities.}
+Try the following
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlnum{2}\hlopt{+}\hlnum{3}        \hlcom{# Simple arithmetic}
+\end{alltt}
+\begin{verbatim}
+[1] 5
+\end{verbatim}
+\begin{alltt}
+\hlnum{1}\hlopt{:}\hlnum{5}        \hlcom{# The numbers 1, 2, 3, 4, 5}
+\end{alltt}
+\begin{verbatim}
+[1] 1 2 3 4 5
+\end{verbatim}
+\begin{alltt}
+\hlkwd{mean}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{)}  \hlcom{# Average of 1, 2, 3, 4, 5}
+\end{alltt}
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+\begin{alltt}
+\hlkwd{sum}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{)}   \hlcom{# Sum of 1, 2, 3, 4, 5}
+\end{alltt}
+\begin{verbatim}
+[1] 15
+\end{verbatim}
+\begin{alltt}
+\hlstd{(}\hlnum{8}\hlopt{:}\hlnum{10}\hlstd{)}\hlopt{^}\hlnum{2}   \hlcom{# 8^2 (8 to the power of 2), 9^2, 10^2}
+\end{alltt}
+\begin{verbatim}
+[1]  64  81 100
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+In addition to \txtt{log()}, note \txtt{log2()} and \txtt{log10()}:
+\marginnote{A change by a factor of 2 is a one unit change
+  on a log2 scale. A change by a factor of 10 is a one unit change
+  on a log10 scale.}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{log2}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{0.5}\hlstd{,} \hlnum{1}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{4}\hlstd{,} \hlnum{8}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+[1] -1  0  1  2  3
+\end{verbatim}
+\begin{alltt}
+\hlkwd{log10}\hlstd{(}\hlkwd{c}\hlstd{(}\hlnum{0.1}\hlstd{,} \hlnum{1}\hlstd{,} \hlnum{10}\hlstd{,} \hlnum{100}\hlstd{,} \hlnum{1000}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+[1] -1  0  1  2  3
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\noindent
+It turns out, surprisingly often, that logarithmic scales are
+appropriate for one or other type of graph.  Logarithmic scales focus
+on relative change --- by what factor has the value changed?
+
+The following uses the relational operator \txtt{$>$}:
+\marginnote{
+Other relational operators are\\
+\margtt{$<\quad >=\quad <\quad <=\quad ==\quad !=$}
+}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{5}\hlstd{)} \hlopt{>} \hlnum{2}  \hlcom{# Returns FALSE FALSE  TRUE  TRUE  TRUE}
+\end{alltt}
+\begin{verbatim}
+[1] FALSE FALSE  TRUE  TRUE  TRUE
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Demonstrations}
+
+Demonstrations can be highly helpful in learning to use R's functions.
+The following are some of demonstrations that are available for
+graphics functions:
+\begin{marginfigure}
+Images and perspective plots:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{demo}\hlstd{(image)}
+\hlkwd{demo}\hlstd{(persp)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{marginfigure}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{demo}\hlstd{(graphics)}   \hlcom{# Type <Enter> for each new graph}
+\hlkwd{library}\hlstd{(lattice)}
+\hlkwd{demo}\hlstd{(lattice)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{marginfigure}For the following, the {\em vcd} package must be installed:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(vcd)}
+\hlkwd{demo}\hlstd{(mosaic)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{marginfigure}
+
+Especially for \txtt{demo(lattice)}, it pays to stretch the graphics
+window to cover a substantial part of the screen.  Place the cursor on
+the lower right corner of the graphics window, hold down the left
+mouse button, and pull.
+
+The following lists available demonstrations:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## List demonstrations in attached packages}
+\hlkwd{demo}\hlstd{()}
+\hlcom{## List demonstrations in all installed packages}
+\hlkwd{demo}\hlstd{(}\hlkwc{package} \hlstd{=} \hlkwd{.packages}\hlstd{(}\hlkwc{all.available} \hlstd{=} \hlnum{TRUE}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\section{A Short R Session}\label{ss:shortR}
+We will work with the data set shown in Table
+\ref{tab:travel}:
+
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sat Jul 20 10:40:12 2013
+\begin{table*}[ht]
+\centering
+\begin{tabular}{rrrrrrl}
+  \hline
+ & thickness & width & height & weight & volume & type \\
+  \hline
+Aird's Guide to Sydney & 1.30 & 11.30 & 23.90 & 250 & 351 & Guide \\
+  Moon's Australia handbook & 3.90 & 13.10 & 18.70 & 840 & 955 & Guide \\
+  Explore Australia Road Atlas & 1.20 & 20.00 & 27.60 & 550 & 662 & Roadmaps \\
+  Australian Motoring Guide & 2.00 & 21.10 & 28.50 & 1360 & 1203 & Roadmaps \\
+  Penguin Touring Atlas & 0.60 & 25.80 & 36.00 & 640 & 557 & Roadmaps \\
+  Canberra - The Guide & 1.50 & 13.10 & 23.40 & 420 & 460 & Guide \\
+   \hline
+\end{tabular}
+\vspace*{15pt}
+
+\caption{Weights and volumes, for six Australian travel
+books.}\label{tab:travel}
+\end{table*}
+
+\subsection*{Entry of columns of data from the command line}
+The following enters data as numeric vectors:
+\marginnote{Read \margtt{c} as
+  ``\underline{c}oncatenate'', or perhaps as
+  ``column''.  It joins elements together into a vector, here
+  numeric vectors.}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{volume} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{351}\hlstd{,} \hlnum{955}\hlstd{,} \hlnum{662}\hlstd{,} \hlnum{1203}\hlstd{,} \hlnum{557}\hlstd{,} \hlnum{460}\hlstd{)}
+\hlstd{weight} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{250}\hlstd{,} \hlnum{840}\hlstd{,} \hlnum{550}\hlstd{,} \hlnum{1360}\hlstd{,} \hlnum{640}\hlstd{,} \hlnum{420}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+Now store details of the books in the character vector \txtt{description}:
+\marginnote{The end result is that objects \margtt{volume}, \margtt{weight}
+and \margtt{description} are stored in the workspace.}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{description} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Aird's Guide to Sydney"}\hlstd{,}
+ \hlstr{"Moon's Australia handbook"}\hlstd{,}
+ \hlstr{"Explore Australia Road Atlas"}\hlstd{,}
+ \hlstr{"Australian Motoring Guide"}\hlstd{,}
+ \hlstr{"Penguin Touring Atlas"}\hlstd{,} \hlstr{"Canberra - The Guide"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Listing the workspace contents}
+
+Use \txtt{ls()} to examine the current contents
+of the workspace.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ls}\hlstd{()}
+\end{alltt}
+\begin{verbatim}
+[1] "description" "result"      "volume"      "weight"     
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Use the argument \txtt{pattern} to specify a search pattern:
+\begin{marginfigure}[40pt]
+Note also:\\[-5pt]
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ls}\hlstd{(}\hlkwc{pattern}\hlstd{=}\hlstr{"^des"}\hlstd{)}
+  \hlcom{## begins with 'des'}
+\hlkwd{ls}\hlstd{(}\hlkwc{pattern}\hlstd{=}\hlstr{"ion$"}\hlstd{)}
+  \hlcom{## ends with 'ion'}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{marginfigure}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ls}\hlstd{(}\hlkwc{pattern}\hlstd{=}\hlstr{"ume"}\hlstd{)}   \hlcom{# Names that include "ume"}
+\end{alltt}
+\begin{verbatim}
+[1] "volume"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Operations with numeric \txtt{vectors}}
+Here are the values of \txtt{volume}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{volume}
+\end{alltt}
+\begin{verbatim}
+[1]  351  955  662 1203  557  460
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+To extract the final element of \txtt{volume}, do:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{volume[}\hlnum{6}\hlstd{]}
+\end{alltt}
+\begin{verbatim}
+[1] 460
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+For the ratio of weight to volume, i.e., the density, we can do:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{weight}\hlopt{/}\hlstd{volume}
+\end{alltt}
+\begin{verbatim}
+[1] 0.7123 0.8796 0.8308 1.1305 1.1490 0.9130
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{A note on functions}
+
+For the \txtt{weight/volume} calculation, two decimal places in the output
+is more than adequate accuracy. The following uses the function
+\txtt{round()} to round to two decimal places:
+\begin{marginfigure}[24pt]
+More simply, type:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{round}\hlstd{(weight}\hlopt{/}\hlstd{volume,} \hlnum{2}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Providing the arguments are in the defined
+order, they can as here be omitted from
+the function call.
+\end{marginfigure}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{round}\hlstd{(}\hlkwc{x}\hlstd{=weight}\hlopt{/}\hlstd{volume,} \hlkwc{digits}\hlstd{=}\hlnum{2}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+[1] 0.71 0.88 0.83 1.13 1.15 0.91
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\marginnote[11pt]{Many functions, among them \margtt{plot()} that is used
+  for Figure \ref{fig:denplot}, accept unnamed as well as named
+  arguments. The symbol `\margtt{\ldots}' is used to denote the possibility of
+  unnamed arguments.}  Functions take {\em arguments} --- these supply
+data on which they operate.  For \txtt{round()} the arguments are
+`\txtt{x}' which is the quantity that is to be rounded, and
+`\txtt{digits}' which is the number of decimal places that should
+remain after rounding.
+
+\marginnote[12pts]{If a `\txtt{\ldots}' appears, indicating that there can
+be unnamed arguments, check the help page for details.}
+Use the function \txtt{args()} to get details of the named
+arguments:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{args}\hlstd{(round)}
+\end{alltt}
+\begin{verbatim}
+function (x, digits = 0) 
+NULL
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Tabulation}
+Use the function \texttt{table()} for simple numeric tabulations,
+thus:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{type} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"Guide"}\hlstd{,}\hlstr{"Guide"}\hlstd{,}\hlstr{"Roadmaps"}\hlstd{,}\hlstr{"Roadmaps"}\hlstd{,}
+          \hlstr{"Roadmaps"}\hlstd{,}\hlstr{"Guide"}\hlstd{)}
+\hlkwd{table}\hlstd{(type)}
+\end{alltt}
+\begin{verbatim}
+type
+   Guide Roadmaps 
+       3        3 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{A simple plot}
+Figure \ref{fig:denplot} plots \txtt{weight} against \txtt{volume},
+for the six Australian travel books.  Note the use of the graphics
+formula \verb!weight ~ volume! to specify the $x-$ and
+$y-$variables. It takes a similar from to the ``formulae'' that are
+used in specifying models, and in the functions \txtt{xtabs()} and
+\txtt{unstack()}.
+\begin{marginfigure}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=0.98\textwidth]{figs/01-denplot-1} 
+
+}
+
+
+
+\end{knitrout}
+ \caption{Weight versus volume, for six Australian travel
+books.}\label{fig:denplot}
+\end{marginfigure}
+
+Code for Figure \ref{fig:denplot} is:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Code}
+\hlkwd{plot}\hlstd{(weight} \hlopt{~} \hlstd{volume,} \hlkwc{pch}\hlstd{=}\hlnum{16}\hlstd{,} \hlkwc{cex}\hlstd{=}\hlnum{1.5}\hlstd{)}
+  \hlcom{# pch=16: use solid blob as plot symbol}
+  \hlcom{# cex=1.5: point size is 1.5 times default}
+\hlcom{## Alternative}
+\hlkwd{plot}\hlstd{(volume, weight,} \hlkwc{pch}\hlstd{=}\hlnum{16}\hlstd{,} \hlkwc{cex}\hlstd{=}\hlnum{1.5}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+% To plot \txtt{(weight} against \txtt{volume} (Figure
+% \ref{fig:denplot}), type one of the following:
+
+The axes can be labeled:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{plot}\hlstd{(weight} \hlopt{~} \hlstd{volume,} \hlkwc{pch}\hlstd{=}\hlnum{16}\hlstd{,} \hlkwc{cex}\hlstd{=}\hlnum{1.5}\hlstd{,}
+     \hlkwc{xlab}\hlstd{=}\hlstr{"Volume (cubic mm)"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Weight (g)"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+Interactive labeling of points \marginnote{Use \margtt{text()} for
+  non-interactive labeling of points.}  (e.g., with species names) can
+be done interactively, using \txtt{identify()}:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{identify}\hlstd{(weight} \hlopt{~} \hlstd{volume,} \hlkwc{labels}\hlstd{=description)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Then click the left mouse button above or below a point, or on the
+left or right, depending on where you wish the label to appear.
+Repeat for as many points as required.
+
+On most systems, the labeling can be terminated by clicking the right
+mouse button.  On the Windows GUI, an alternative is to click on the
+word ``Stop'' that appears at the top left
+of the screen, just under ``Rgui'' on the left of the blue panel
+header of the R window. Then click on ``Stop locator''.
+
+\subsection*{Formatting and layout of plots}
+There are extensive abilities that may be used to control
+the formatting and layout of plots, and to add features such as
+special symbols, fitted lines and curves, annotation (including
+mathematical annotation), colors, \ldots
+
+\section{Data frames -- Grouping columns of data}\label{sec:df}
+
+\marginnote{Data frames are pervasive in R. Most datasets that are
+  included with R packages are supplied as data frames.}
+\fbox{\parbox{\textwidth}{
+\begin{tabular}{ll}
+  Data frames & Store data that have a cases by
+columns layout.\\[6pt]
+  Creating & Enter from the command line (small datasets)\\
+  data frames & Or: Use \txtt{read.table()} to input from a file.\\[6pt]
+Columns of & \txtt{travelbooks\$weight} or \txtt{travelbooks[, 4]}\\
+data frames & or \txtt{travelbooks[, "weight"]}\\
+\end{tabular}
+}}
+\vspace*{8pt}
+
+The following code groups the several columns of Table
+\ref{tab:travel} together, under the name \txtt{travelbooks}.  It is
+tidier to have matched columns of data grouped together into a data
+frame, rather than separate objects in the workspace.
+\marginnote[9pt]{The vectors \margtt{weight}, \margtt{volume}
+  and \margtt{description} were entered earlier, and (unless subsequently
+  removed) can be copied directly into the data frame.\\[6pt]
+It is a matter of convenience whether the description
+information is used to label the rows, or alternatively placed in a
+column of the data frame.}
+{\small
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Group columns together into a data frame}
+\hlstd{travelbooks} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}
+   \hlkwc{thickness} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{1.3}\hlstd{,} \hlnum{3.9}\hlstd{,} \hlnum{1.2}\hlstd{,} \hlnum{2}\hlstd{,} \hlnum{0.6}\hlstd{,} \hlnum{1.5}\hlstd{),}
+   \hlkwc{width} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{11.3}\hlstd{,} \hlnum{13.1}\hlstd{,} \hlnum{20}\hlstd{,} \hlnum{21.1}\hlstd{,} \hlnum{25.8}\hlstd{,} \hlnum{13.1}\hlstd{),}
+   \hlkwc{height} \hlstd{=} \hlkwd{c}\hlstd{(}\hlnum{23.9}\hlstd{,} \hlnum{18.7}\hlstd{,} \hlnum{27.6}\hlstd{,} \hlnum{28.5}\hlstd{,} \hlnum{36}\hlstd{,} \hlnum{23.4}\hlstd{),}
+   \hlkwc{weight} \hlstd{= weight,}  \hlcom{# Use values entered earlier}
+   \hlkwc{volume} \hlstd{= volume,}  \hlcom{# Use values entered earlier}
+   \hlkwc{type} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"Guide"}\hlstd{,} \hlstr{"Guide"}\hlstd{,} \hlstr{"Roadmaps"}\hlstd{,} \hlstr{"Roadmaps"}\hlstd{,}
+            \hlstr{"Roadmaps"}\hlstd{,} \hlstr{"Guide"}\hlstd{),}
+   \hlkwc{row.names} \hlstd{= description}
+\hlstd{)}
+\hlcom{## Remove objects that are not now needed.}
+\hlkwd{rm}\hlstd{(volume, weight, description)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+}
+
+\subsection*{The storage of character data as factors}
+\marginnote{While in most contexts factors and character vectors are
+  interchangeable, there are important exceptions.}
+Vectors of character, such as \txtt{type}, are by default stored in
+the data frame as {\em factors}.  In the data as stored,
+\txtt{"Guide"} is 1 and \txtt{"Roadmaps"} is 2. Stored with the factor
+is an attribute table that interprets 1 as \txtt{"Guide"} and 2 as
+\txtt{"Roadmaps"}.
+
+\subsection*{Accessing the columns of data frames}
+
+\marginnote[12pt]{For a matrix or array, users are restricted to
+the first and second of these alternatives.  With a matrix
+\margtt{travelmat} use, e.g., \margtt{travelmat[,4]} or
+\margtt{travelmat[,"weight"]}.}
+The following are alternative ways to extract the column
+\txtt{weight} from the data frame:
+{\small
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{travelbooks[,} \hlnum{4}\hlstd{]}
+\hlstd{travelbooks[,} \hlstr{"weight"}\hlstd{]}
+\hlstd{travelbooks}\hlopt{$}\hlstd{weight}
+\hlstd{travelbooks[[}\hlstr{"weight"}\hlstd{]]}   \hlcom{# Reference as a list.}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+}
+%$
+
+There are several mechanisms that avoid repeated
+reference to the name of the data frame.
+The following are alternative ways to plot \txtt{weight} against \txtt{volume}:
+\begin{itemizz}
+\item[]{\em 1. Use the parameter \txtt{data},
+\marginnote{Most modeling functions and many plotting functions accept a
+\margtt{data} argument.}
+where available, in
+the function call}\\[-2pt]
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{plot}\hlstd{( weight} \hlopt{~} \hlstd{volume,} \hlkwc{data}\hlstd{=travelbooks)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\item[]{\em 2. Use \txtt{with()}: Take columns from specified
+data frame}\\[-2pt]
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Take columns from the specified data frame}
+\hlkwd{with}\hlstd{(travelbooks,} \hlkwd{plot}\hlstd{(weight} \hlopt{~} \hlstd{volume))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\vspace*{-3pt}
+
+\noindent
+\end{itemizz}
+Both these mechanisms look first for a data frame column with a needed
+name. The workspace is searched only if this fails.
+
+\begin{marginfigure}[84pt]
+Attachment of a data frame:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{attach}\hlstd{(travelbooks)}
+\hlkwd{plot}\hlstd{( weight} \hlopt{~} \hlstd{volume)}
+\hlkwd{detach}\hlstd{(travelbooks)}
+ \hlcom{## Detach when no longer}
+ \hlcom{## required.}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{marginfigure}
+A third option, usually best avoided,
+is to use \txtt{attach()} to add the data frame to the search list. In
+this case, names in the workspace take precedence over column names in
+the attached data frame -- not usually what is wanted if there are
+names in common.
+
+Subsection \ref{ss:moreattach} will discuss the attaching of packages
+and image files.
+
+\section{Input of Data from a File}\label{sec:input}
+
+The function \txtt{read.table()} is designed for input from a
+rectangular file into a data frame. There are several variants on this
+function --- notably \txtt{read.csv()} and \txtt{read.delim()}.
+
+\marginnote[12pt]{This use of \margtt{datafile()}, avoiding
+  use of the mouse to copy the file and the associated need
+  to navigate the file system, is a convenience for teaching
+  purposes.}  First use the function \txtt{datafile()}
+(\textit{DAAG}) to copy from the {\em DAAG} package and into the
+working directory a data file that will be used for demonstration purposes.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Place the file in the working directory}
+\hlcom{## NB: DAAG must be installed}
+\hlstd{DAAG}\hlopt{::}\hlkwd{datafile}\hlstd{(}\hlstr{"travelbooks"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\noindent
+Use \txtt{dir()} to check that the file is indeed in the working directory:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{dir}\hlstd{(}\hlkwc{pattern}\hlstd{=}\hlstr{"travel"}\hlstd{)}
+  \hlcom{# File(s) whose name(s) include 'travel'}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+The first two lines hold the column headings and first row, thus:\vspace*{9pt}
+
+\noindent
+{
+\begin{tabular}{rrrrrrl}
+\hline
+ & thickness & width & height & weight & volume & type \\
+\hline
+Aird's Guide to Sydney & 1.30 & 11.30 & 23.90       & 250 &  351 &    Guide \\
+. . .
+\end{tabular}
+}
+\vspace*{3pt}
+
+\noindent Observe that column 1, which has the row names, has no name.
+
+The following reads the file into an R data frame:
+\marginnote{
+Row 1 has column names.\\
+\noindent
+Column 1 has row names.
+}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Input the file to the data frame travelbooks}
+\hlstd{travelbooks} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlstr{"travelbooks.txt"}\hlstd{,}
+                          \hlkwc{header}\hlstd{=}\hlnum{TRUE}\hlstd{,} \hlkwc{row.names}\hlstd{=}\hlnum{1}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+The assignment places the data frame in the workspace, with the name
+\txtt{travelbooks}.  The first seven columns are numeric.  The
+character data in the final column is by default stored as a factor.
+
+\paragraph{Data input -- points to note:}
+
+\begin{itemizz}
+\item [-] Alternatives to command line input include the
+  R Commmander menu and the RStudio menu.  These make it
+  easy to check that data are being correctly entered.
+\item[-] If the first row of input gives column names, specify
+  \txtt{heading=TRUE}.  If the first row of input is the first row of
+  data, specify \txtt{heading=FALSE}.
+\item[-] See \txtt{help(read.table)} for details of parameter
+  settings that may need changing to match the data format.
+  \marginnote[-0.5cm]{Section \ref{sec:entry} discusses
+    common types of input errors.}
+\item[-] Character vectors that are included as columns in data frames
+  become, by default, factors.  \marginnote[-0.5cm]{Character vectors
+    and factors can often, but by no means always, be treated as
+    equivalent.}
+\end{itemizz}
+
+\section{Sources of Help}\label{sec:workinghelp}
+
+\marginnote[12pt]{Note also:\\
+\margtt{help.search()}\\
+\margtt{apropos()}\\
+\margtt{help.start()}\\
+\margtt{RSiteSearch()}
+}
+\noindent
+\begin{framed}
+\vspace*{-10pt}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{help}\hlstd{()}           \hlcom{# Help for the help function}
+\hlkwd{help}\hlstd{(plot)}       \hlcom{# Show the help page for plot}
+\hlopt{?}\hlstd{plot}            \hlcom{# Shorthand for help(plot)}
+\hlkwd{example}\hlstd{(plot)}    \hlcom{# Run examples from help(plot)}
+\hlkwd{demo}\hlstd{()}           \hlcom{# List available demonstrations}
+\hlkwd{vignette}\hlstd{()}       \hlcom{# Get information on vignettes}
+                 \hlcom{# NB also browseVignettes()}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\vspace*{-10pt}
+\end{framed}
+
+\noindent
+This section enlarges on the very brief details in Subsection \ref{ss:ch1-help}
+
+\subsection*{Access to help resources from a browser screen}
+Type \txtt{help.start()} to display a screen that gives a browser
+\marginnote{Official R manuals include \underline{An Introduction to
+    R}, a manual on \underline{Writing R Extensions}, and so on.}
+interface to R's help resources.  Note especially
+\underline{Frequently Asked Questions} and \underline{Packages}.
+Under \underline{Packages}, click on \underline{base} to get
+information on base R functions. Standard elementary statistics
+functions are likely to be found under \underline{stats}, and base
+graphics functions under \underline{graphics}.
+
+Also available, after clicking on a package name, is a link
+\underline{User guides, package vignettes and other documentation.}
+Click to get details of any documentation that is additional to the
+help pages.
+
+\subsection*{Searching for key words or strings}
+
+Use \txtt{help.search()} to look for functions that include a specific
+word or part of word in their alias or title. Thus,
+functions for operating on character strings are likely to have
+\marginnote{By default, all installed packages are
+searched.  Limiting the search, here to \txtt{package="base"},
+will often give more manageable and useful output.}
+``str'' or ``char'' in their name. Try
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{help.search}\hlstd{(}\hlstr{"str"}\hlstd{,} \hlkwc{package}\hlstd{=}\hlstr{"base"}\hlstd{)}
+\hlkwd{help.search}\hlstd{(}\hlstr{"char"}\hlstd{,} \hlkwc{package}\hlstd{=}\hlstr{"base"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+The function \txtt{RSiteSearch()} searches web-based resources, including
+R mailing lists, for the text that is given as argument.
+
+\subsection*{Examples that are included on help pages}
+
+All functions have help pages.  Most help pages include\marginnote{To
+  work through the code for an example, look on the screen for the
+  code that was used, and copy or type it following the command line
+  prompt. Or get the code from the help page.} examples, which can be
+run using the function \txtt{example()}.  Be warned that, even for
+relatively simple functions, some of the examples may illustrate
+non-trivial technical detail.
+
+\subsection*{Vignettes}
+
+\marginnote[12pt]{Vignettes are created from a Markdown or HTML or
+  LaTeX document in which R code is embedded, surrounded by
+  markup that controls what is to be done with the code and with any
+  output generated.  See Chapter \ref{ch:rstudio}.}  Many packages
+have vignettes; these are typically pdf or (with version $\ge$ 3.0.0
+of R) HTML files that give information on the package or on specific
+aspects of the package. To get details of vignettes that are available
+in a package, call \txtt{browseVignettes()} with the package name (as
+a character string) as argument.  Thus, for the \textit{knitr}
+package, enter \txtt{browseVignettes(package="knitr")}.
+
+The browser window that appears will list the vignettes, with the
+option to click on links that, in most cases, offer a choice of
+one of \underline{PDF} and \underline{HTML}, \underline{source},
+and \underline{R code}.
+
+\subsection*{Searching for Packages}
+
+A good first place to look, for information on packages that relate to
+one or other area of knowledge, is the R Task Views web page, at:
+\url{http://cran.r-project.org/web/views/}. See also the website
+\url{http://crantastic.org/}, which has details on what packages are
+popular, and what users think of them.
+
+
+\section{Summary and Exercises}
+
+\subsection{Summary}
 \begin{itemizz}
 \item[] One use of R is as a calculator, to evaluate arithmetic
 expressions. Calculations can be carried out in parallel, across all
@@ -394,5 +1161,123 @@ elements of a vector at once.
 
 \item[] Use \txtt{q()} to quit from an R session. To retain objects in
   the workspace, accept the offer to save the workspace.
+\item[-] Useful help functions\marginnote{NB also: Use
+\margtt{apropos()} to search for functions that include a
+stated text string as part of their name.}
+are \txtt{help()} (for getting information on a known function)
+and \txtt{help.search()} (for searching for a word that is used
+in the header for the help file).
+
+\item[-] The function \txtt{help.start()} starts a browser window from
+  which R help information can be accessed.
+
+\item[-]
+\marginnote[12pt]{Aliases of \margtt{read.table()} include
+\margtt{read.csv()} and \margtt{read.delim()}}
+Use the GUI interface in RStudio or R Commander to input
+rectangular files.  Or, use \margtt{read.table()} or one
+of its aliases.
+
+\item[-] Data frames collect together under one name columns that all
+  have the same length.  Columns of a data frame can be any mix of,
+  among other possibilities: logical, numeric, character, or factor.
+
+\item[-] The function \txtt{with()} attaches a data frame temporarily,
+\marginnote{Use \margtt{with()} in preference to the
+\margtt{attach()} / \margtt{detach()} combination.}
+  for the duration of the call to \txtt{with()}.
+
+\item[-] For simple forms of scatterplot, use \txtt{plot()} and associated
+functions, or perhaps the {\em lattice} function \txtt{xyplot()}.
+
 \end{itemizz}
+
+\subsection{Exercises}\label{ss:ch2ex}
+
+\begin{enumerate}
+\item Use the following code to to place the file 
+\texttt{bestTimes.txt} in the working directory:
+
+\begin{enumerate}
+\item  Examine the file, perhaps using the function \txtt{file.show()}.
+Read the file into the workspace, with the name \txtt{bestTimes}.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## file.show("bestTimes.txt")}
+\hlstd{bestTimes} \hlkwb{<-} \hlkwd{read.table}\hlstd{(}\hlstr{"bestTimes.txt"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\item The \txtt{bestTimes} file has separate columns that show hours,
+  minutes and seconds.  Use the following to add the new column
+  \txtt{Time}, then omitting the individual columns as redundant
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Exercise 1b}
+\hlstd{bestTimes}\hlopt{$}\hlstd{Time} \hlkwb{<-} \hlkwd{with}\hlstd{(bestTimes,}
+                       \hlstd{h}\hlopt{*}\hlnum{60} \hlopt{+} \hlstd{min} \hlopt{+} \hlstd{sec}\hlopt{/}\hlnum{60}\hlstd{)}
+  \hlcom{# Time in minutes}
+\hlkwd{names}\hlstd{(bestTimes)[}\hlnum{2}\hlopt{:}\hlnum{4}\hlstd{]}   \hlcom{# Check column names}
+\hlstd{bestTimes} \hlkwb{<-} \hlstd{bestTimes[,} \hlopt{-}\hlstd{(}\hlnum{2}\hlopt{:}\hlnum{4}\hlstd{)]}
+                        \hlcom{# omit columns 2:4}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\item Here are alternative ways to plot the data
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{plot}\hlstd{(Time} \hlopt{~} \hlstd{Distance,} \hlkwc{data}\hlstd{=bestTimes)}
+\hlcom{## Now use a log scale}
+\hlkwd{plot}\hlstd{(}\hlkwd{log}\hlstd{(Time)} \hlopt{~} \hlkwd{log}\hlstd{(Distance),} \hlkwc{data}\hlstd{=bestTimes)}
+\hlkwd{plot}\hlstd{(Time} \hlopt{~} \hlstd{Distance,} \hlkwc{data}\hlstd{=bestTimes,} \hlkwc{log}\hlstd{=}\hlstr{"xy"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\item Now save the data into an image file in the working directory
+\marginnote{Subsection \ref{ss:saveobjs} discusses the use of the
+function \txtt{save()}.}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{save}\hlstd{(bestTimes,} \hlkwc{file}\hlstd{=}\hlstr{"bestTimes.RData"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{enumerate}
+\item Re-enter the data frame \txtt{travelbooks}.\sidenote{If
+    necessary, refer back to Section \ref{sec:df} for details.}
+    Add a column that has the density (\txtt{weight/volume}) of each book.
+\item The functions \txtt{summary()} and \txtt{str()} both give summary
+  information on the columns of a data frames Comment on the differences
+  in the information provided, when applied to the following data frames
+  from the {\em DAAG} package:
+  \begin{enumerate}
+    \item \txtt{nihills};
+    \item \txtt{tomato}.
+  \end{enumerate}
+\item Examine the results from entering:
+  \begin{enumerate}
+    \item \txtt{?minimum}
+    \item \txtt{??minimum}
+    \item \txtt{??base::minimum}
+\marginnote[-12pt]{The notation \txtt{base::minimum} tells the help
+function to look in R's base package.}
+    \item \txtt{??base::min}
+  \end{enumerate}
+For finding a function to calculate the minimum of a numeric vector,
+which of the above gives the most useful information?
+\item For each of the following tasks, applied to a numeric vector
+  (numeric column object), find a suitable function.  Test each of
+  the functions that you find on the vector
+  \txtt{volume} in Section \ref{ss:shortR}:\\
+  \begin{enumerate}
+    \item Reverse the order of the elements in a column object;
+    \item Calculate length, mean, median, minimum maximum, range;
+    \item Find the differences between successive values.
+  \end{enumerate}
+\end{enumerate}
+
 

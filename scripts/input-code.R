@@ -1,4 +1,4 @@
-## ---- sec-7.1 ----
+## ---- sec-5.1 ----
 
 ## ---- opt78 ----
 options(width=78)
@@ -27,7 +27,7 @@ airTraffic <- readWorksheet(wbk2, sheet="Top Routes", startRow=11,
                             endCol=21, header=FALSE,
                   colTypes=rep(c('character','numeric'), c(2,19)))
 
-## ---- sec-7.2 ----
+## ---- sec-5.2 ----
 
 ## ---- get-por ----
 library(memisc)
@@ -67,7 +67,7 @@ help(spss.portable.file)
 ## ---- vignette-anes48 ----
 vignette("anes48")
 
-## ---- sec-7.3 ----
+## ---- sec-5.3 ----
 
 ## ---- eaus-rain ----
 webroot <- "http://www.bom.gov.au/web01/ncc/www/cli_chg/timeseries/"
@@ -157,7 +157,7 @@ names(airAccs) <- c("Date", "Location/Operator",
                      "AircraftType/Registration", "Fatalities")
 airAccs$Date <- as.Date(airAccs$Date, format="%d %b %Y")
 
-## ---- sec-7.4 ----
+## ---- sec-5.4 ----
 
 ## ---- DB-create ----
 library(DAAG)
@@ -176,7 +176,7 @@ dbGetQuery(con,
   "select * from nihills limit 5 offset 15")
 dbDisconnect(con)
 
-## ---- sec-7.5 ----
+## ---- sec-5.5 ----
 
 ## ---- gzip ----
 gzip -9 coral55?.spot

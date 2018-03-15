@@ -2,10 +2,10 @@
 
 ## ---- plt-roller ----
 library(DAAG)
-plot(depression ~ weight, data=roller)
+plot(depression ~ weight, data=roller, fg="gray")
 
 ## ---- pltWline ----
-plot(depression ~ weight, data=roller)
+plot(depression ~ weight, data=roller, fg="gray")
 roller.lm <- lm(depression ~ weight, data=roller)
 # For a line through the origin, specify
 # depression ~ 0 + weight
@@ -26,22 +26,36 @@ names(roller.lm)
 
 ## ---- sec-11.2 ----
 
-## ---- fVSmTime ----
-gph <- xyplot(timef~time, data=nihills, aspect=1,
-              type=c("p","r"))
-print(gph)
+## ---- fVSmTimeAB ----
+def.par <- par(no.readonly = TRUE) 
+layout(matrix(c(1,3,0,0,2,4), 2, 3), respect = TRUE,
+       widths=c(7.5,1,7.5), heights=c(7.15,2))
+xlim <- range(DAAG::nihills$time)+c(-0.1,0.1)
+par(mar=c(0.2,3,2,0), bty="o", cex.axis=1.1)
+plot(timef~time, data=DAAG::nihills, xlim=xlim, xaxt='n', 
+     ylab="", fg="gray", main=" ")
+abline(lm(timef~time, data=DAAG::nihills), col=2)
+mtext(side=2,line=2.25,"Female times", las=0)
+mtext(side=3,line=0.5,"A: Untransformed scales", adj=0)
+plot(timef~time, data=DAAG::nihills, xlim=xlim, xaxt='n',
+     log='xy', fg="gray", ylab="", main=" ")
+abline(lm(log10(timef)~log10(time), data=DAAG::nihills), col=2)
+mtext(side=2,line=2.25,"Female times (log scale)", las=0)
+mtext(side=3,line=0.5,"B: Logarithmic scales", adj=0)
+par(mar=c(3,2.75,0,0), bty="n")
+pars = list(boxwex = 4.0, staplewex = 0.5, outwex = 0.5)
+boxplot(DAAG::nihills$time, horizontal=T, xlim=xlim,
+        pars=pars, at=2, axes=0)
+axis(1, lwd = 0, lwd.ticks = 1)
+mtext(side=1,line=2,"Male times")
+boxplot(DAAG::nihills$time, horizontal=T, xlim=xlim, 
+        log='x', pars=pars, at=2, axes=0)
+axis(1, lwd = 0, lwd.ticks = 1)
+mtext(side=1,line=2,"Male times (log scale)")
+par(def.par)
 
 ## ---- mftime-lm ----
 mftime.lm <- lm(timef ~ time, data=nihills)
-
-## ---- mfdensity ----
-## Simplified code
-densityplot(~ time+timef, data=nihills,
-            ylab="Time (h)", auto.key=TRUE)
-
-## ---- skewtime-log ----
-densityplot(~ log(time)+log(timef), data=nihills,
-           ylab="Time (h)", auto.key=TRUE)
 
 ## ---- rec-logmf ----
 xyplot(timef~time, data=nihills,
@@ -134,7 +148,7 @@ tomato.aov <- aov(weight ~ trt, data=tomato)
 termplot(tomato.aov, xlab="Treatment",
          ylab="Partial for treatment",
          partial.resid=TRUE, se=TRUE, pch=16)
-mtext(side=3, line=0.5, "A: weight", adj=0)
+mtext(side=3, line=0.5, "A: weight", adj=0, cex=1.2)
 
 ## ---- termplot-aov-logwt ----
 ## Panel B: Use log(weight) as outcome variable
@@ -142,7 +156,8 @@ logtomato.aov <- aov(log(weight) ~ trt, data=tomato)
 termplot(logtomato.aov, xlab="Treatment",
          ylab="Partial for treatment",
          partial.resid=TRUE, se=TRUE, pch=16)
-mtext(side=3, line=0.5, "B: log(weight)", adj=0)
+mtext(side=3, line=0.5, "B: log(weight)", adj=0,
+      cex=1.2)
 
 ## ---- aov-coef ----
 round(coef(summary.lm(tomato.aov)),3)
@@ -250,7 +265,7 @@ library(DAAG)
 library(quantreg)
 library(splines)
 set.seed(37)   # Use to reproduce graph shown
-bsnVaryNvar(m=100, nvar=3:50, nvmax=3)
+bsnVaryNvar(m=100, nvar=3:50, nvmax=3, fg="gray")
 
 ## ---- sec-11.7 ----
 

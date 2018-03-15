@@ -2,12 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
-test-concordance.tex
-test.log
-test.pdf
-test.synctex.gz
-test.Rnw
-test.tex
+test.*
+*.aux
 learnR.out
 learnR.log
 .DS_Store
+learnR.aux

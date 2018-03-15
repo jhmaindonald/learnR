@@ -176,7 +176,8 @@ url <- paste0("http://www.abs.gov.au/ausstats/subscriber.nsf/",
   "log?openagent&1259030001_sr11aaust_shape.zip&1259.0.30.001",
   "&Data%20Cubes&B8003880BC09FA5BCA2578CC00124E25&0",
   "&July%202011&14.07.2011&Latest")
-download.file(url, destfile="../downloads/1259030001_sr11aaust_shape.zip")
+downloadTo <- "../downloads/1259030001_sr11aaust_shape.zip"
+download.file(url, destfile=downloadTo)
 
 ## ---- unzip-au-shape ----
 unzip("../downloads/1259030001_sr11aaust_shape.zip", exdir="au-srs")
