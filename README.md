@@ -11,4 +11,16 @@ The R package __DAAGviz__ is designed as a companion to these notes.  It gives a
 devtools::install_github("jhmaindonald/DAAGviz")
 
 ```
-(As of March 15, 2018, the code files assume chapter numbers that reglect an older version of the notes.  This should be fixed shortly.)
+(Some code files may still, at this point, show in their comment lines chapter numbers that reglect an older version of the notes.  This should be fixed shortly.)
+
+To check code from individual files enter, from the command line,
+commands of the form:
+```
+require(knitr)
+knit('Rnw/0intro.Rnw')
+```
+
+To `knit` the root file __learnR.Rnw__, enter:
+```
+knit('Rnw/learnR.Rnw')
+```
