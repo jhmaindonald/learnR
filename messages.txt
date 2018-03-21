@@ -179,3 +179,63 @@ Attaching package: 'lme4'
 The following object is masked from 'package:nlme':
 
     lmList
+Warning: Duplicate labels 'NAME NOT KNOWN'
+Warning: Duplicate labels 'HAVE HEARD OF TAFT-HARTLEY ACT'
+Warning: Duplicate labels 'DID NOT CONSIDER ANYONE ELSE' 'CONSIDERED WALLACE' 'CONSIDERED OTHER' 'NA' 'CONSIDERED TRUMAN'
+Warning: Duplicate labels 'DISAGREED WITH PLATFORM OR POLICY - TO'
+ Warning: Duplicate labels 'DISAGREED WITH PLATFORM OR POLICY - TO'
+Warning: Duplicate labels 'RENT CONTROL' 'PRICE CONTROL' 'TAFT-HARTLEY' 'FARM PRICES AND SUPPORT' 'LOWER INCOME TAX' 'CIVIL RIGHTS' 'BALANCE BUDGET' '(GOVERNMENT) HOUSING' 'DEFENSE ACTIVITY' 'GOVERNMENT ATOMIC CONTROL' 'NEW DEAL' 'MARSHALL PLAN' 'FIRM RUSSIAN POLICY' 'HELP ISRAEL (PALESTINE)' 'PROMOTE PEACE'
+ Warning: Duplicate labels 'RENT CONTROL' 'PRICE CONTROL' 'TAFT-HARTLEY' 'FARM PRICES AND SUPPORT' 'LOWER INCOME TAX' 'CIVIL RIGHTS' 'BALANCE BUDGET' '(GOVERNMENT) HOUSING' 'DEFENSE ACTIVITY' 'GOVERNMENT ATOMIC CONTROL' 'NEW DEAL' 'MARSHALL PLAN' 'FIRM RUSSIAN POLICY' 'HELP ISRAEL (PALESTINE)' 'PROMOTE PEACE'
+ Warning: Duplicate labels 'RENT CONTROL' 'PRICE CONTROL' 'TAFT-HARTLEY' 'FARM PRICES AND SUPPORT' 'LOWER INCOME TAX' 'CIVIL RIGHTS' 'BALANCE BUDGET' '(GOVERNMENT) HOUSING' 'DEFENSE ACTIVITY' 'GOVERNMENT ATOMIC CONTROL' 'NEW DEAL' 'MARSHALL PLAN' 'FIRM RUSSIAN POLICY' 'HELP ISRAEL (PALESTINE)' 'PROMOTE PEACE'
+ Warning: Duplicate labels 'RENT CONTROL' 'PRICE CONTROL' 'TAFT-HARTLEY' 'FARM PRICES AND SUPPORT' 'LOWER INCOME TAX' 'CIVIL RIGHTS' 'BALANCE BUDGET' '(GOVERNMENT) HOUSING' 'DEFENSE ACTIVITY' 'GOVERNMENT ATOMIC CONTROL' 'NEW DEAL' 'MARSHALL PLAN' 'FIRM RUSSIAN POLICY' 'HELP ISRAEL (PALESTINE)' 'PROMOTE PEACE'
+----------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+----------------------------------------------------
+----------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+----------------------------------------------------
+
+Attaching package: 'plyr'
+The following object is masked from 'package:memisc':
+
+    rename
+The following object is masked from 'package:DAAG':
+
+    ozone
+
+Attaching package: 'dplyr'
+The following objects are masked from 'package:raster':
+
+    intersect, select, union
+The following object is masked from 'package:randomForest':
+
+    combine
+The following object is masked from 'package:nlme':
+
+    collapse
+The following object is masked from 'package:car':
+
+    recode
+The following objects are masked from 'package:memisc':
+
+    collect, recode, rename
+The following object is masked from 'package:MASS':
+
+    select
+The following objects are masked from 'package:stats':
+
+    filter, lag
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+`geom_smooth()` using method = 'loess'
+Loading required package: plotKML
+Error: package or namespace load failed for 'plotKML':
+ package slot missing from signature for generic 'coerce'
+and classes STFDF, RasterBrick
+cannot use with duplicate class names (the package may need to be re-installed)
+Warning in readGDAL(logofile, silent = TRUE): GeoTransform values not available

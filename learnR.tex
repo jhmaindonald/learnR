@@ -4638,14 +4638,14 @@ mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
     mean       sd 
--0.04961  1.01807 
+-0.09351  1.02880 
 \end{Soutput}
 \begin{Sinput}
 mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
   mean     sd 
-0.3284 1.0190 
+0.1898 1.0809 
 \end{Soutput}
 \end{Schunk}
 
@@ -5759,8 +5759,6 @@ and stores the path to the file in the text string \txtt{path2file}:
 \begin{Schunk}
 \begin{Sinput}
 library(memisc)
-\end{Sinput}
-\begin{Sinput}
 ## Unzip; return path to "NES1948.POR"
 path2file <- unzip(system.file("anes/NES1948.ZIP",package="memisc"),
                      "NES1948.POR",exdir=tempfile())
@@ -5782,7 +5780,7 @@ show(nes1948imp)
 \begin{Schunk}
 \begin{Soutput}
 
-SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//RtmpmuBIU5/file11c172d087496/NES1948.POR' 
+SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//RtmpmuBIU5/file11c173c982d74/NES1948.POR' 
 	with 67 variables and 662 observations
 \end{Soutput}
 \end{Schunk}
@@ -6146,8 +6144,6 @@ given by such a search:
 \begin{Schunk}
 \begin{Sinput}
 library(WDI)
-\end{Sinput}
-\begin{Sinput}
 WDIsearch('co2')[1:4,]
 \end{Sinput}
 \begin{Soutput}
@@ -6440,8 +6436,6 @@ and the total who applied:
 \begin{Schunk}
 \begin{Sinput}
 library(dplyr)
-\end{Sinput}
-\begin{Sinput}
 gpUCBgender <- dplyr::group_by(UCBdf, Gender)
 AdmitRate <- dplyr::summarise(gpUCBgender,
                               Accept=sum(Freq[Admit=="Admitted"]),
@@ -7177,7 +7171,7 @@ system.time(xy+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.155   0.144   0.305 
+  0.158   0.130   0.290 
 \end{Soutput}
 \begin{Sinput}
 xy.df <- data.frame(xy)
@@ -7185,7 +7179,7 @@ system.time(xy.df+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.425   0.145   0.584 
+  0.175   0.132   0.307 
 \end{Soutput}
 \end{Schunk}
 \vspace*{-12pt}
@@ -13273,8 +13267,6 @@ access and download Google map data.
 \begin{Schunk}
 \begin{Sinput}
 library(dismo, quietly=TRUE)
-\end{Sinput}
-\begin{Sinput}
   ## The raster and sp packages are dependencies
 \end{Sinput}
 \end{Schunk}
@@ -13423,8 +13415,6 @@ R package \txtt{rgdal}:
 \begin{Schunk}
 \begin{Sinput}
 library(rgdal)
-\end{Sinput}
-\begin{Sinput}
 logofile <- system.file("pictures/Rlogo.jpg",
                         package = "rgdal")[1]
 rlogo <- readGDAL(logofile, silent=TRUE)
@@ -14596,8 +14586,6 @@ replace a slot.  For example:
 \begin{Sinput}
 library(DAAG)
 library(lme4)
-\end{Sinput}
-\begin{Sinput}
 hp.lmList <- lmList(o2 ~ wattsPerKg | id,
                     data=humanpower1)
 slotNames(hp.lmList)

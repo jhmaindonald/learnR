@@ -1,5 +1,5 @@
 % !Rnw root = learnR.Rnw
-<<echo=FALSE, cache=FALSE, cache=FALSE>>=
+<<echo=FALSE, cache=FALSE>>=
 require(knitr)
 opts_knit$set(root.dir="../", self.contained=FALSE)
 @
