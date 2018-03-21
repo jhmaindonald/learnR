@@ -4637,15 +4637,15 @@ mean.and.sd <- function(x = rnorm(20))
 mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
-   mean      sd 
--0.1563  0.8558 
+    mean       sd 
+-0.04961  1.01807 
 \end{Soutput}
 \begin{Sinput}
 mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
   mean     sd 
-0.1434 0.8270 
+0.3284 1.0190 
 \end{Soutput}
 \end{Schunk}
 
@@ -5759,6 +5759,8 @@ and stores the path to the file in the text string \txtt{path2file}:
 \begin{Schunk}
 \begin{Sinput}
 library(memisc)
+\end{Sinput}
+\begin{Sinput}
 ## Unzip; return path to "NES1948.POR"
 path2file <- unzip(system.file("anes/NES1948.ZIP",package="memisc"),
                      "NES1948.POR",exdir=tempfile())
@@ -5780,7 +5782,7 @@ show(nes1948imp)
 \begin{Schunk}
 \begin{Soutput}
 
-SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmp9uICLO/file4f062bbf1949/NES1948.POR' 
+SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//RtmpmuBIU5/file11c172d087496/NES1948.POR' 
 	with 67 variables and 662 observations
 \end{Soutput}
 \end{Schunk}
@@ -6144,6 +6146,8 @@ given by such a search:
 \begin{Schunk}
 \begin{Sinput}
 library(WDI)
+\end{Sinput}
+\begin{Sinput}
 WDIsearch('co2')[1:4,]
 \end{Sinput}
 \begin{Soutput}
@@ -6436,6 +6440,8 @@ and the total who applied:
 \begin{Schunk}
 \begin{Sinput}
 library(dplyr)
+\end{Sinput}
+\begin{Sinput}
 gpUCBgender <- dplyr::group_by(UCBdf, Gender)
 AdmitRate <- dplyr::summarise(gpUCBgender,
                               Accept=sum(Freq[Admit=="Admitted"]),
@@ -7171,7 +7177,7 @@ system.time(xy+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.167   0.143   0.311 
+  0.155   0.144   0.305 
 \end{Soutput}
 \begin{Sinput}
 xy.df <- data.frame(xy)
@@ -7179,7 +7185,7 @@ system.time(xy.df+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.177   0.139   0.317 
+  0.425   0.145   0.584 
 \end{Soutput}
 \end{Schunk}
 \vspace*{-12pt}
@@ -13267,6 +13273,8 @@ access and download Google map data.
 \begin{Schunk}
 \begin{Sinput}
 library(dismo, quietly=TRUE)
+\end{Sinput}
+\begin{Sinput}
   ## The raster and sp packages are dependencies
 \end{Sinput}
 \end{Schunk}
@@ -13415,6 +13423,8 @@ R package \txtt{rgdal}:
 \begin{Schunk}
 \begin{Sinput}
 library(rgdal)
+\end{Sinput}
+\begin{Sinput}
 logofile <- system.file("pictures/Rlogo.jpg",
                         package = "rgdal")[1]
 rlogo <- readGDAL(logofile, silent=TRUE)
@@ -14002,10 +14012,10 @@ term document matrix, thus:
 \begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
-ctl <- list(stopwords = c(stopwords(), "[1]"),
-            removePunctuation = list(preserve_intra_word_dashes = FALSE),
-            removeNumbers = TRUE, stopwords=c(stopwords(), "[1]"),
-            minDocFreq = 2)
+ctl <- list(removePunctuation = list(preserve_intra_word_dashes = FALSE),
+            removeNumbers = TRUE, 
+            stopwords=c(stopwords("SMART"), "[1]"),
+            wordLengths=c(3,Inf))
 tx.tdm <- TermDocumentMatrix(txcorp, control=ctl)
 \end{Sinput}
 \end{Schunk}
@@ -14018,6 +14028,41 @@ because the default tokenizer\sidenote{See \margtt{help(termFreq)} for
   an example of a user-supplied tokenizer.} is not designed to handle
 R code and output.
 
+Stopwords are words that are likely to be uniformative for purposes
+of comparing text content.  The function \txtt{tm::stopwords()} 
+accepts the arguments \txtt{kind="en"}, which gives a relatively
+restricted list of English stopwords, or \txtt{kind="SMART"} which
+gives a much more extensive list.  See \txtt{?tm::stopwords} for
+details of non-English stopword lists that are immediately available.
+The following will give an idea of the sorts of words that are in
+the two lists:
+\begin{Schunk}
+\begin{Sinput}
+## First few stopwords in the "en" set
+sort(stopwords())[1:5]
+\end{Sinput}
+\begin{Soutput}
+[1] "a"     "about" "above" "after" "again"
+\end{Soutput}
+\begin{Sinput}
+## First few stopwords in the "SMART" set 
+stopwords('SMART')[1:5]
+\end{Sinput}
+\begin{Soutput}
+[1] "a"     "a's"   "able"  "about" "above"
+\end{Soutput}
+\begin{Sinput}
+## Stopwords in "SMART" but not in "en"; first 10
+stopwords("SMART")[!stopwords("SMART")%in%stopwords()][1:10]
+\end{Sinput}
+\begin{Soutput}
+ [1] "a's"         "able"        "according"  
+ [4] "accordingly" "across"      "actually"   
+ [7] "afterwards"  "ain't"       "allow"      
+[10] "allows"     
+\end{Soutput}
+\end{Schunk}
+
 Now list terms that occur 100 or more times:
 \begin{fullwidth}
 \begin{Schunk}
@@ -14025,10 +14070,9 @@ Now list terms that occur 100 or more times:
 findFreqTerms(tx.tdm, 100)
 \end{Sinput}
 \begin{Soutput}
- [1] "can"       "code"      "data"      "figure"   
- [5] "file"      "frame"     "function"  "functions"
- [9] "graphics"  "objects"   "package"   "plot"     
-[13] "use"       "used"      "using"     "will"     
+ [1] "code"      "data"      "figure"    "file"     
+ [5] "frame"     "function"  "functions" "graphics" 
+ [9] "objects"   "package"   "plot"     
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -14098,16 +14142,19 @@ files.  See \txtt{?tm::readPDF} for details of PDF extraction
 engines that may be used.  The default is to use the Poppler PDF
 rendering library as provided in the {\bf pdftools} package.
 
-The following reads in the text from the file {\bf ch1-5prelims.pdf}.
-The result is equivalent to using \txtt{readLines()} as above to
-input lines from the text file {\bf ch1-5prelims.txt}:
+The following sets the path to the directory {\bf pdf} in the 
+package {\bf DAAGviz} that holds the pdf files for (possibly,
+an older version) of the four ranges of chapters of the present
+text:
 \begin{Schunk}
 \begin{Sinput}
-uri <- "doc/ch1-5prelims.pdf"
-pdfReadFun <- readPDF(PdftotextOptions = "-layout")
-txx1 <- pdfReadFun(elem = list(uri = uri),
-                   language = "en", id = "prelims")
+uri <- system.file("pdf", package="DAAGviz")
+## Check names of files in directory
+dir(uri)
 \end{Sinput}
+\begin{Soutput}
+[1] "ch1-3.pdf" "ch4-6.pdf" "ch7.pdf"   "ch8-9.pdf"
+\end{Soutput}
 \end{Schunk}
 
 The corpus that has all three documents is, starting with the
@@ -14115,12 +14162,21 @@ pdf files, most easily created thus:
 \begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
-txXpdf <- Corpus(DirSource(directory="doc", pattern=".pdf$"),
+fromPDF <- Corpus(DirSource(directory=uri, pattern=".pdf$"),
                  readerControl=list(reader=readPDF,
                  PdftotextOptions = "-layout"))
+makeChar <- function(x)gsub("[^[:alnum:][:blank:]]","" , x, ignore.case = TRUE)
+fromPDF <- tm_map(fromPDF, content_transformer(makeChar))
 \end{Sinput}
 \end{Schunk}
 \end{fullwidth}
+
+Create the term-document matrix thus:
+\begin{Schunk}
+\begin{Sinput}
+txx.tdm <- TermDocumentMatrix(fromPDF, control=ctl)
+\end{Sinput}
+\end{Schunk}
 
 \section{Document Collections Supplied With {\em tm}}
 Several document collections are supplied with the package,
@@ -14357,13 +14413,13 @@ mean.call <- call("mean", x=rnorm(5))
 eval(mean.call)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.3855
+[1] 0.1472
 \end{Soutput}
 \begin{Sinput}
 eval(mean.call)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.3855
+[1] 0.1472
 \end{Soutput}
 \end{Schunk}
 Notice that the argument \txtt{x} was evaluated when \txtt{call()}
@@ -14377,8 +14433,8 @@ expression:
 mean.call
 \end{Sinput}
 \begin{Soutput}
-mean(x = c(0.722661806870587, -1.69914843090301, -1.90255704914938, 
-1.86179071101273, -0.910309807776628))
+mean(x = c(-1.6525945681225, -0.00828593746666305, 1.78534257077903, 
+-0.157454671640352, 0.76915223549876))
 \end{Soutput}
 \end{Schunk}
 
@@ -14540,6 +14596,8 @@ replace a slot.  For example:
 \begin{Sinput}
 library(DAAG)
 library(lme4)
+\end{Sinput}
+\begin{Sinput}
 hp.lmList <- lmList(o2 ~ wattsPerKg | id,
                     data=humanpower1)
 slotNames(hp.lmList)

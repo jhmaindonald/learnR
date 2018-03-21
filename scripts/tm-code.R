@@ -37,11 +37,19 @@ txcorp <- tm_map(txcorp,
     content_transformer(toUTF8))
 
 ## ---- make-tdm ----
-ctl <- list(stopwords = c(stopwords(), "[1]"),
-            removePunctuation = list(preserve_intra_word_dashes = FALSE),
-            removeNumbers = TRUE, stopwords=c(stopwords(), "[1]"),
-            minDocFreq = 2)
+ctl <- list(removePunctuation = list(preserve_intra_word_dashes = FALSE),
+            removeNumbers = TRUE, 
+            stopwords=c(stopwords("SMART"), "[1]"),
+            wordLengths=c(3,Inf))
 tx.tdm <- TermDocumentMatrix(txcorp, control=ctl)
+
+## ---- english-stopwords ----
+## First few stopwords in the "en" set
+sort(stopwords())[1:5]
+## First few stopwords in the "SMART" set 
+stopwords('SMART')[1:5]
+## Stopwords in "SMART" but not in "en"; first 10
+stopwords("SMART")[!stopwords("SMART")%in%stopwords()][1:10]
 
 ## ---- findFreq100 ----
 findFreqTerms(tx.tdm, 100)
@@ -66,16 +74,20 @@ mtext(side=3, line=3.5, "C: Chapters 8 - 9", adj=0, cex=1.8)
 
 ## ---- sec-11.2 ----
 
-## ---- from-pdf ----
-uri <- "doc/ch1-5prelims.pdf"
-pdfReadFun <- readPDF(PdftotextOptions = "-layout")
-txx1 <- pdfReadFun(elem = list(uri = uri),
-                   language = "en", id = "prelims")
+## ---- get-path ----
+uri <- system.file("pdf", package="DAAGviz")
+## Check names of files in directory
+dir(uri)
 
 ## ---- ex-pdf-Corpus ----
-txXpdf <- Corpus(DirSource(directory="doc", pattern=".pdf$"),
+fromPDF <- Corpus(DirSource(directory=uri, pattern=".pdf$"),
                  readerControl=list(reader=readPDF,
                  PdftotextOptions = "-layout"))
+makeChar <- function(x)gsub("[^[:alnum:][:blank:]]","" , x, ignore.case = TRUE)
+fromPDF <- tm_map(fromPDF, content_transformer(makeChar))
+
+## ---- make-xPDF ----
+txx.tdm <- TermDocumentMatrix(fromPDF, control=ctl)
 
 ## ---- sec-11.3 ----
 

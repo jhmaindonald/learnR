@@ -226,35 +226,35 @@
 \contentsline {section}{\numberline {10.5}References}{190}{section.10.5}
 \contentsline {chapter}{\numberline {11}Brief Notes on Text Mining}{193}{chapter.11}
 \contentsline {section}{\numberline {11.1}Creation of a Volatile Corpus}{193}{section.11.1}
-\contentsline {section}{\numberline {11.2}Creation of a Corpus from PDF Files}{195}{section.11.2}
+\contentsline {section}{\numberline {11.2}Creation of a Corpus from PDF Files}{196}{section.11.2}
 \contentsline {section}{\numberline {11.3}Document Collections Supplied With {\em tm}}{196}{section.11.3}
-\contentsline {chapter}{\numberline {12}$^*$Leveraging R Language Abilities }{197}{chapter.12}
-\contentsline {section}{\numberline {12.1}Manipulation of Language Constructs}{197}{section.12.1}
-\contentsline {subsection}{\numberline {12.1.1}Manipulation of Formulae}{197}{subsection.12.1.1}
-\contentsline {subsection}{\numberline {12.1.2}Extraction of names from a formula}{198}{subsection.12.1.2}
-\contentsline {section}{\numberline {12.2}Function Arguments and Environments}{198}{section.12.2}
-\contentsline {subsection}{\numberline {12.2.1}Extraction of arguments to functions}{198}{subsection.12.2.1}
-\contentsline {subsection}{\numberline {12.2.2}Use of a list to pass parameter values}{198}{subsection.12.2.2}
-\contentsline {subsection}{\numberline {12.2.3}Function environments}{199}{subsection.12.2.3}
-\contentsline {section}{\numberline {12.3}Creation of R Packages}{200}{section.12.3}
-\contentsline {section}{\numberline {12.4}S4 Classes and Methods}{201}{section.12.4}
-\contentsline {section}{\numberline {12.5}Summary}{202}{section.12.5}
-\contentsline {chapter}{\numberline {A}$^*$R System Configuration}{205}{appendix.A}
-\contentsline {section}{\numberline {A.1}Fine tuning the installation}{205}{section.A.1}
-\contentsline {paragraph}{The working directory:}{205}{paragraph*.45}
-\contentsline {paragraph}{Multiple (MDI) or Single (SDI) display interface for Windows:}{205}{paragraph*.46}
-\contentsline {section}{\numberline {A.2}Setting the Default CRAN Mirror}{205}{section.A.2}
-\contentsline {section}{\numberline {A.3}R system information}{206}{section.A.3}
-\contentsline {section}{\numberline {A.4}Repositories additional to CRAN}{207}{section.A.4}
-\contentsline {section}{\numberline {A.5}Running R in Batch Mode}{207}{section.A.5}
-\contentsline {section}{\numberline {A.6}The R Windows installation directory tree}{207}{section.A.6}
-\contentsline {section}{\numberline {A.7}Library directories}{208}{section.A.7}
-\contentsline {section}{\numberline {A.8}The Startup mechanism}{209}{section.A.8}
-\contentsline {chapter}{\numberline {B}The R Commander Graphical User Interface}{211}{appendix.B}
-\contentsline {paragraph}{From GUI to writing code:}{211}{paragraph*.47}
-\contentsline {paragraph}{The active data set:}{211}{paragraph*.48}
-\contentsline {paragraph}{Creating graphs:}{211}{paragraph*.49}
-\contentsline {paragraph}{Statistics (\& fitting models):}{212}{paragraph*.50}
-\contentsline {paragraph}{*Models:}{212}{paragraph*.51}
-\contentsline {chapter}{\numberline {C}Color Versions of Selected Graphs}{213}{appendix.C}
+\contentsline {chapter}{\numberline {12}$^*$Leveraging R Language Abilities }{199}{chapter.12}
+\contentsline {section}{\numberline {12.1}Manipulation of Language Constructs}{199}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}Manipulation of Formulae}{199}{subsection.12.1.1}
+\contentsline {subsection}{\numberline {12.1.2}Extraction of names from a formula}{200}{subsection.12.1.2}
+\contentsline {section}{\numberline {12.2}Function Arguments and Environments}{200}{section.12.2}
+\contentsline {subsection}{\numberline {12.2.1}Extraction of arguments to functions}{200}{subsection.12.2.1}
+\contentsline {subsection}{\numberline {12.2.2}Use of a list to pass parameter values}{200}{subsection.12.2.2}
+\contentsline {subsection}{\numberline {12.2.3}Function environments}{201}{subsection.12.2.3}
+\contentsline {section}{\numberline {12.3}Creation of R Packages}{202}{section.12.3}
+\contentsline {section}{\numberline {12.4}S4 Classes and Methods}{203}{section.12.4}
+\contentsline {section}{\numberline {12.5}Summary}{204}{section.12.5}
+\contentsline {chapter}{\numberline {A}$^*$R System Configuration}{207}{appendix.A}
+\contentsline {section}{\numberline {A.1}Fine tuning the installation}{207}{section.A.1}
+\contentsline {paragraph}{The working directory:}{207}{paragraph*.45}
+\contentsline {paragraph}{Multiple (MDI) or Single (SDI) display interface for Windows:}{207}{paragraph*.46}
+\contentsline {section}{\numberline {A.2}Setting the Default CRAN Mirror}{207}{section.A.2}
+\contentsline {section}{\numberline {A.3}R system information}{208}{section.A.3}
+\contentsline {section}{\numberline {A.4}Repositories additional to CRAN}{209}{section.A.4}
+\contentsline {section}{\numberline {A.5}Running R in Batch Mode}{209}{section.A.5}
+\contentsline {section}{\numberline {A.6}The R Windows installation directory tree}{209}{section.A.6}
+\contentsline {section}{\numberline {A.7}Library directories}{210}{section.A.7}
+\contentsline {section}{\numberline {A.8}The Startup mechanism}{211}{section.A.8}
+\contentsline {chapter}{\numberline {B}The R Commander Graphical User Interface}{213}{appendix.B}
+\contentsline {paragraph}{From GUI to writing code:}{213}{paragraph*.47}
+\contentsline {paragraph}{The active data set:}{213}{paragraph*.48}
+\contentsline {paragraph}{Creating graphs:}{213}{paragraph*.49}
+\contentsline {paragraph}{Statistics (\& fitting models):}{214}{paragraph*.50}
+\contentsline {paragraph}{*Models:}{214}{paragraph*.51}
+\contentsline {chapter}{\numberline {C}Color Versions of Selected Graphs}{215}{appendix.C}
 \contentsfinish 
