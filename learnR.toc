@@ -1,260 +1,261 @@
-\contentsline {paragraph}{R podcasts:}{8}{paragraph*.3}
-\contentsline {paragraph}{Official Documentation:}{8}{paragraph*.4}
-\contentsline {paragraph}{Web-based Documentation:}{8}{paragraph*.5}
-\contentsline {paragraph}{The R Journal (formerly R News):}{8}{paragraph*.6}
-\contentsline {paragraph}{Books:}{8}{paragraph*.7}
-\contentsline {chapter}{\numberline {1}Getting started with R}{11}{chapter.1}
-\contentsline {section}{\numberline {1.1}Installation of R}{11}{section.1.1}
-\contentsline {section}{\numberline {1.2}First steps}{12}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Points to note}{13}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Some further comments on functions in R}{14}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Help information}{14}{subsection.1.2.3}
-\contentsline {subsection}{\numberline {1.2.4}The working directory}{15}{subsection.1.2.4}
-\contentsline {section}{\numberline {1.3}Installation of R Packages}{15}{section.1.3}
-\contentsline {section}{\numberline {1.4}Practice with R commands}{16}{section.1.4}
-\contentsline {section}{\numberline {1.5}A Short R Session}{17}{section.1.5}
-\contentsline {section}{\numberline {1.6}Data frames -- Grouping columns of data}{20}{section.1.6}
-\contentsline {section}{\numberline {1.7}Input of Data from a File}{21}{section.1.7}
-\contentsline {paragraph}{Data input -- points to note:}{22}{paragraph*.8}
-\contentsline {section}{\numberline {1.8}Sources of Help}{22}{section.1.8}
-\contentsline {section}{\numberline {1.9}Summary and Exercises}{23}{section.1.9}
-\contentsline {subsection}{\numberline {1.9.1}Summary}{23}{subsection.1.9.1}
-\contentsline {subsection}{\numberline {1.9.2}Exercises}{24}{subsection.1.9.2}
-\contentsline {chapter}{\numberline {2}The R Working Environment}{27}{chapter.2}
-\contentsline {section}{\numberline {2.1}The Working Directory and the Workspace}{27}{section.2.1}
-\contentsline {section}{\numberline {2.2}Code, data, and project Maintenance}{28}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Maintenance of R scripts}{28}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Saving and retrieving R objects}{28}{subsection.2.2.2}
-\contentsline {section}{\numberline {2.3}Packages and System Setup}{29}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Installation of R packages}{29}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}The search path: library() and attach()}{30}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}$^*$Where does the R system keep its files?}{30}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Option Settings}{31}{subsection.2.3.4}
-\contentsline {section}{\numberline {2.4}Enhancing the R experience --- RStudio}{32}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}The RStudio file menu}{33}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Compile a code notebook}{34}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Abilities for reproducible reporting}{35}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}R Markdown}{35}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}$^*$Other markup types -- HTML, LaTeX, \ldots }{37}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}RStudio documentation -- markup and other}{37}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}A strategy for RStudio project management}{37}{subsection.2.5.4}
-\contentsline {section}{\numberline {2.6}Summary and Exercises}{37}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Summary}{37}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Exercises}{38}{subsection.2.6.2}
-\contentsline {chapter}{\numberline {3}Examples --- Data analysis with R}{41}{chapter.3}
-\contentsline {section}{\numberline {3.1}The Uses of Scatterplots}{42}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Transformation to an appropriate scale}{42}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}The Uses of Scatterplot Matrices}{43}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}World record times for track and field events}{43}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Summary information from model objects}{45}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}The model object}{46}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}The \texttt {lm} model object is a list}{47}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Regression with two explanatory variables}{47}{section.3.3}
-\contentsline {section}{\numberline {3.4}One-way Comparisons}{49}{section.3.4}
-\contentsline {section}{\numberline {3.5}Time series -- Australian annual climate data}{51}{section.3.5}
-\contentsline {section}{\numberline {3.6}Exercises}{52}{section.3.6}
-\contentsline {chapter}{\numberline {4}Data Objects and Functions}{53}{chapter.4}
-\contentsline {section}{\numberline {4.1}Column Data Objects -- Vectors and Factors}{53}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Vectors}{53}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Factors}{55}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Missing Values, Infinite Values and NaNs}{57}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Data Frames, Matrices, Arrays and Lists}{57}{section.4.2}
-\contentsline {paragraph}{Data frames:}{57}{paragraph*.9}
-\contentsline {paragraph}{Matrices -- vectors with a Dimension:}{57}{paragraph*.10}
-\contentsline {paragraph}{Arrays and tables:}{58}{paragraph*.11}
-\contentsline {subsection}{\numberline {4.2.1}Data frames versus matrices and tables}{58}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Inclusion of character vectors in data frames}{59}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Factor columns in data frame subsets}{59}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Handlng rows that include missing values}{60}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Arrays --- some further details}{60}{subsection.4.2.5}
-\contentsline {subsection}{\numberline {4.2.6}Lists}{61}{subsection.4.2.6}
-\contentsline {section}{\numberline {4.3}Functions}{62}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Built-In Functions}{62}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Functions for data summary and/or manipulation}{63}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Functions for creating and working with tables}{63}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Tables of Counts}{63}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Utility functions}{65}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}User-defined functions}{65}{subsection.4.3.6}
-\contentsline {subsection}{\numberline {4.3.7}The \texttt {apply} family of functions}{66}{subsection.4.3.7}
-\contentsline {paragraph}{\texttt {apply()}:}{66}{paragraph*.12}
-\contentsline {paragraph}{\texttt {sapply()} and \texttt {lapply()}:}{66}{paragraph*.13}
-\contentsline {subsection}{\numberline {4.3.8}Functions for working with text strings}{67}{subsection.4.3.8}
-\contentsline {subsection}{\numberline {4.3.9}Functions for Working with Dates (and Times)}{68}{subsection.4.3.9}
-\contentsline {paragraph}{Formatting dates for printing:}{68}{paragraph*.14}
-\contentsline {paragraph}{Conversion of dates to and from integer number of days:}{69}{paragraph*.15}
-\contentsline {paragraph}{Regular sequences of dates:}{69}{paragraph*.16}
-\contentsline {paragraph}{Further useful functions for working with dates:}{70}{paragraph*.17}
-\contentsline {subsection}{\numberline {4.3.10}Summaries of Information in Data Frames}{70}{subsection.4.3.10}
-\contentsline {section}{\numberline {4.4}*Classes and Methods (Generic Functions)}{71}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}$^*$S4 methods}{71}{subsection.4.4.1}
-\contentsline {section}{\numberline {4.5}Common Sources of Surprise or Difficulty}{72}{section.4.5}
-\contentsline {section}{\numberline {4.6}Summary}{73}{section.4.6}
-\contentsline {section}{\numberline {4.7}Exercises}{73}{section.4.7}
-\contentsline {chapter}{\numberline {5}Data Input and Storage}{77}{chapter.5}
-\contentsline {section}{\numberline {5.1}$^*$Data Input from a File}{77}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Managing input is from the RStudio menu}{77}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Input using the \texttt {read.table()} family of functions}{77}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}$^*$The use of scan() for flexible data input}{78}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}The \texttt {memisc} package: input from SPSS and Stata}{79}{subsection.5.1.4}
-\contentsline {section}{\numberline {5.2}$^*$Input of Data from a web page}{81}{section.5.2}
-\contentsline {paragraph}{A browser interface to World Bank data:}{81}{paragraph*.18}
-\contentsline {paragraph}{Australian Bureau of Meteorology data:}{81}{paragraph*.19}
-\contentsline {paragraph}{A function to download multiple data series:}{82}{paragraph*.20}
-\contentsline {paragraph}{Historical air crash datra:}{82}{paragraph*.21}
-\contentsline {subsection}{\numberline {5.2.1}$^*$Embedded markup --- XML and alternetives}{83}{subsection.5.2.1}
-\contentsline {paragraph}{Download of NZ earthquake data:}{83}{paragraph*.22}
-\contentsline {paragraph}{World Bank data --- using the {\em WDI} package}{84}{paragraph*.23}
-\contentsline {section}{\numberline {5.3}Creating and Using Databases}{85}{section.5.3}
-\contentsline {section}{\numberline {5.4}$^*$File compression:}{85}{section.5.4}
-\contentsline {section}{\numberline {5.5}Summary}{86}{section.5.5}
-\contentsline {chapter}{\numberline {6}Data Manipulation and Management}{87}{chapter.6}
-\contentsline {section}{\numberline {6.1}Manipulations with Lists, Data Frames and Arrays}{88}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Tables and arrays}{88}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Conversion between data frames and tables}{88}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Table margins}{90}{subsection.6.1.3}
-\contentsline {subsection}{\numberline {6.1.4}Categorization of continuous data}{90}{subsection.6.1.4}
-\contentsline {subsection}{\numberline {6.1.5}$^*$Matrix Computations}{91}{subsection.6.1.5}
-\contentsline {section}{\numberline {6.2}{\em plyr}, {\em dplyr} \& {\em reshape2} Data Manipulation}{91}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}{\em plyr} }{91}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Use of {\em dplyr} with Word War 1 cricketer data}{93}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}{\em reshape2}: \texttt {melt()}, \texttt {acast()} \& \texttt {dcast()} }{95}{subsection.6.2.3}
-\contentsline {section}{\numberline {6.3}Session and Workspace Management}{96}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Keep a record of your work}{96}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Workspace management}{96}{subsection.6.3.2}
-\contentsline {paragraph}{The removal of clutter:}{97}{paragraph*.24}
-\contentsline {paragraph}{Movement of files between computers:}{97}{paragraph*.25}
-\contentsline {paragraph}{Further possibilities -- saving objects in text form:}{97}{paragraph*.26}
-\contentsline {section}{\numberline {6.4}Computer Intensive Computations}{97}{section.6.4}
-\contentsline {paragraph}{Use matrices, where possible, in preference to data frames:}{98}{paragraph*.27}
-\contentsline {paragraph}{Use efficient coding:}{98}{paragraph*.28}
-\contentsline {paragraph}{The bigmemory project:}{98}{paragraph*.29}
-\contentsline {paragraph}{The \textit {data.table} package:}{99}{paragraph*.30}
-\contentsline {section}{\numberline {6.5}Summary}{99}{section.6.5}
-\contentsline {chapter}{\numberline {7}Graphics -- base, lattice, ggplot2, rgl, googleVis\ldots }{101}{chapter.7}
-\contentsline {section}{\numberline {7.1}Base Graphics}{101}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}\texttt {plot()} and allied base graphics functions}{101}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Fine control -- Parameter settings}{102}{subsection.7.1.2}
-\contentsline {subsection}{\numberline {7.1.3}Color and Opacity}{103}{subsection.7.1.3}
-\contentsline {subsection}{\numberline {7.1.4}The shape of the graph sheet}{105}{subsection.7.1.4}
-\contentsline {subsection}{\numberline {7.1.5}Multiple plots on the one page}{106}{subsection.7.1.5}
-\contentsline {subsection}{\numberline {7.1.6}Plots that show the distribution of data values}{106}{subsection.7.1.6}
-\contentsline {subsection}{\numberline {7.1.7}$^*$Plotting Text that Includes Technical Symbols}{108}{subsection.7.1.7}
-\contentsline {section}{\numberline {7.2}Lattice Graphics}{109}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Lattice graphics -- basic ideas}{110}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Panels of scatterplots}{111}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Setting stylistic features}{112}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Groups within data, and/or columns in parallel}{112}{subsection.7.2.4}
-\contentsline {subsection}{\numberline {7.2.5}Keys -- \texttt {auto.key}, \texttt {key} and \texttt {legend}}{113}{subsection.7.2.5}
-\contentsline {subsection}{\numberline {7.2.6}Lattice settings -- further notes}{114}{subsection.7.2.6}
-\contentsline {subsection}{\numberline {7.2.7}Lattice plots that show distributions}{116}{subsection.7.2.7}
-\contentsline {subsection}{\numberline {7.2.8}Panel functions}{117}{subsection.7.2.8}
-\contentsline {subsection}{\numberline {7.2.9}The addition of new layers}{118}{subsection.7.2.9}
-\contentsline {subsection}{\numberline {7.2.10}Interaction with plots -- \textit {latticist} and \textit {playwith}}{118}{subsection.7.2.10}
-\contentsline {paragraph}{\texttt {latticist()}:}{118}{paragraph*.31}
-\contentsline {paragraph}{\texttt {playwith()}:}{118}{paragraph*.32}
-\contentsline {section}{\numberline {7.3}\textit {ggplot2} -- A \textit {Grammar of Graphics}}{119}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Examples that demonstrate ggplot2 abilities}{120}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}An overview of {\em ggplot2} technicalities}{121}{subsection.7.3.2}
-\contentsline {section}{\numberline {7.4}Static graphics -- additional notes}{125}{section.7.4}
-\contentsline {subsection}{\numberline {7.4.1}Multiple graphs on a single graphics page}{125}{subsection.7.4.1}
-\contentsline {section}{\numberline {7.5}Dynamic Graphics -- \textit {rgl}}{126}{section.7.5}
-\contentsline {subsection}{\numberline {7.5.1}The {\em googleVis} Package}{128}{subsection.7.5.1}
-\contentsline {section}{\numberline {7.6}Summary}{129}{section.7.6}
-\contentsline {section}{\numberline {7.7}Exercises}{130}{section.7.7}
-\contentsline {chapter}{\numberline {8}Regression with Linear Terms and Factors}{133}{chapter.8}
-\contentsline {section}{\numberline {8.1}Linear Models in R -- Basic Ideas}{133}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Straight line regression -- algebraic details}{134}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Syntax -- model, graphics and table formulae:}{135}{subsection.8.1.2}
-\contentsline {subsection}{\numberline {8.1.3}Matrix algebra -- straight line regression example}{136}{subsection.8.1.3}
-\contentsline {subsection}{\numberline {8.1.4}A note on the least squares methodology}{136}{subsection.8.1.4}
-\contentsline {section}{\numberline {8.2}Checks --- Before and After Fitting a Line}{137}{section.8.2}
-\contentsline {paragraph}{Untransformed vs transformed scales:}{137}{paragraph*.33}
-\contentsline {paragraph}{The common benefits of a logarithmic transformation:}{138}{paragraph*.34}
-\contentsline {subsection}{\numberline {8.2.1}$^*$Diagnostics -- checks on the fitted model}{139}{subsection.8.2.1}
-\contentsline {paragraph}{Panel 2 --- A check for normality:}{141}{paragraph*.35}
-\contentsline {paragraph}{Panel 3 --- Is the variance constant?:}{141}{paragraph*.36}
-\contentsline {paragraph}{Panel 4 --- a check for high leverage points:}{141}{paragraph*.37}
-\contentsline {subsection}{\numberline {8.2.2}The independence assumption is crucial}{142}{subsection.8.2.2}
-\contentsline {section}{\numberline {8.3}$^*$Simulation Based Checks}{142}{section.8.3}
-\contentsline {section}{\numberline {8.4}Key questions for the use of models}{143}{section.8.4}
-\contentsline {paragraph}{The choice of method:}{144}{paragraph*.38}
-\contentsline {paragraph}{Which are the important variables?}{144}{paragraph*.39}
-\contentsline {section}{\numberline {8.5}Factor Terms -- Contrasts}{144}{section.8.5}
-\contentsline {subsection}{\numberline {8.5.1}Example -- tomato root weight}{145}{subsection.8.5.1}
-\contentsline {subsection}{\numberline {8.5.2}Factor terms -- different choices of model matrix}{147}{subsection.8.5.2}
-\contentsline {section}{\numberline {8.6}Regression with two explanatory variables}{149}{section.8.6}
-\contentsline {subsection}{\numberline {8.6.1}The regression fit}{150}{subsection.8.6.1}
-\contentsline {section}{\numberline {8.7}Variable Selection -- Stepwise and Other}{151}{section.8.7}
-\contentsline {subsection}{\numberline {8.7.1}Use of simulation to check out selection effects:}{152}{subsection.8.7.1}
-\contentsline {paragraph}{The extent of selection effects -- a detailed simulation:}{153}{paragraph*.40}
-\contentsline {paragraph}{Examples from the literature}{153}{paragraph*.41}
-\contentsline {subsection}{\numberline {8.7.2}Variable and model selection -- strategies}{153}{subsection.8.7.2}
-\contentsline {section}{\numberline {8.8}1970 cost for US electricity producers}{154}{section.8.8}
-\contentsline {subsection}{\numberline {8.8.1}Model fitting strategy}{154}{subsection.8.8.1}
-\contentsline {section}{\numberline {8.9}An introduction to logistic regression}{158}{section.8.9}
-\contentsline {section}{\numberline {8.10}Exercises}{160}{section.8.10}
-\contentsline {chapter}{\numberline {9}A Miscellany of Models \& Methods}{161}{chapter.9}
-\contentsline {section}{\numberline {9.1}Regression with Fitted Smooth Curves}{161}{section.9.1}
-\contentsline {subsection}{\numberline {9.1.1}Locally weighted scatterplot smoothers}{162}{subsection.9.1.1}
-\contentsline {subsection}{\numberline {9.1.2}Contours from 2-dimensional Smooths}{162}{subsection.9.1.2}
-\contentsline {section}{\numberline {9.2}Hierarchical Multi-level Models}{163}{section.9.2}
-\contentsline {section}{\numberline {9.3}Regular Time Series in R}{164}{section.9.3}
-\contentsline {subsection}{\numberline {9.3.1}Example -- the Lake Erie data}{164}{subsection.9.3.1}
-\contentsline {subsection}{\numberline {9.3.2}Patterns that are repeatable}{166}{subsection.9.3.2}
-\contentsline {subsection}{\numberline {9.3.3}Fitting and use of an autoregressive model}{167}{subsection.9.3.3}
-\contentsline {subsection}{\numberline {9.3.4}Regression with time series errors}{168}{subsection.9.3.4}
-\contentsline {subsection}{\numberline {9.3.5}$^*$Box-Jenkins ARIMA Time Series Modeling}{170}{subsection.9.3.5}
-\contentsline {subsection}{\numberline {9.3.6}Count Data with Poisson Errors}{170}{subsection.9.3.6}
-\contentsline {section}{\numberline {9.4}Classification}{171}{section.9.4}
-\contentsline {section}{\numberline {9.5}Tree-based methods and random forests}{174}{section.9.5}
-\contentsline {subsection}{\numberline {9.5.1}Random forests}{175}{subsection.9.5.1}
-\contentsline {section}{\numberline {9.6}$^*$Ordination}{177}{section.9.6}
-\contentsline {subsection}{\numberline {9.6.1}Distance measures}{178}{subsection.9.6.1}
-\contentsline {chapter}{\numberline {10}Map Overlays and Spatial Modeling}{183}{chapter.10}
-\contentsline {section}{\numberline {10.1}Static Overlay onto Maps}{183}{section.10.1}
-\contentsline {subsection}{\numberline {10.1.1}Overlay onto country and regional outlines}{183}{subsection.10.1.1}
-\contentsline {subsection}{\numberline {10.1.2}The {\em dismo} package's Interface to Google maps}{184}{subsection.10.1.2}
-\contentsline {paragraph}{Basic syntax, accepting defaults:}{184}{paragraph*.42}
-\contentsline {paragraph}{Specify map longitude/latitude extent; overlay onto map:}{184}{paragraph*.43}
-\contentsline {paragraph}{Interactive selection of a map extent from a screen display:}{184}{paragraph*.44}
-\contentsline {subsection}{\numberline {10.1.3}The {\em plotKML} package}{185}{subsection.10.1.3}
-\contentsline {subsection}{\numberline {10.1.4}Specifying projections}{185}{subsection.10.1.4}
-\contentsline {section}{\numberline {10.2}Working with Raster (Image) Files}{185}{section.10.2}
-\contentsline {subsection}{\numberline {10.2.1}Overlaying onto a bubble plot}{187}{subsection.10.2.1}
-\contentsline {section}{\numberline {10.3}$^*$Reading and Processing Shapefiles}{187}{section.10.3}
-\contentsline {section}{\numberline {10.4}Other software -- QGIS}{190}{section.10.4}
-\contentsline {section}{\numberline {10.5}References}{190}{section.10.5}
-\contentsline {chapter}{\numberline {11}Brief Notes on Text Mining}{193}{chapter.11}
-\contentsline {section}{\numberline {11.1}Creation of a Volatile Corpus}{193}{section.11.1}
-\contentsline {section}{\numberline {11.2}Creation of a Corpus from PDF Files}{196}{section.11.2}
-\contentsline {section}{\numberline {11.3}Document Collections Supplied With {\em tm}}{196}{section.11.3}
-\contentsline {chapter}{\numberline {12}$^*$Leveraging R Language Abilities }{199}{chapter.12}
-\contentsline {section}{\numberline {12.1}Manipulation of Language Constructs}{199}{section.12.1}
-\contentsline {subsection}{\numberline {12.1.1}Manipulation of Formulae}{199}{subsection.12.1.1}
-\contentsline {subsection}{\numberline {12.1.2}Extraction of names from a formula}{200}{subsection.12.1.2}
-\contentsline {section}{\numberline {12.2}Function Arguments and Environments}{200}{section.12.2}
-\contentsline {subsection}{\numberline {12.2.1}Extraction of arguments to functions}{200}{subsection.12.2.1}
-\contentsline {subsection}{\numberline {12.2.2}Use of a list to pass parameter values}{200}{subsection.12.2.2}
-\contentsline {subsection}{\numberline {12.2.3}Function environments}{201}{subsection.12.2.3}
-\contentsline {section}{\numberline {12.3}Creation of R Packages}{202}{section.12.3}
-\contentsline {section}{\numberline {12.4}S4 Classes and Methods}{203}{section.12.4}
-\contentsline {section}{\numberline {12.5}Summary}{204}{section.12.5}
-\contentsline {chapter}{\numberline {A}$^*$R System Configuration}{207}{appendix.A}
-\contentsline {section}{\numberline {A.1}Fine tuning the installation}{207}{section.A.1}
-\contentsline {paragraph}{The working directory:}{207}{paragraph*.45}
-\contentsline {paragraph}{Multiple (MDI) or Single (SDI) display interface for Windows:}{207}{paragraph*.46}
-\contentsline {section}{\numberline {A.2}Setting the Default CRAN Mirror}{207}{section.A.2}
-\contentsline {section}{\numberline {A.3}R system information}{208}{section.A.3}
-\contentsline {section}{\numberline {A.4}Repositories additional to CRAN}{209}{section.A.4}
-\contentsline {section}{\numberline {A.5}Running R in Batch Mode}{209}{section.A.5}
-\contentsline {section}{\numberline {A.6}The R Windows installation directory tree}{209}{section.A.6}
-\contentsline {section}{\numberline {A.7}Library directories}{210}{section.A.7}
-\contentsline {section}{\numberline {A.8}The Startup mechanism}{211}{section.A.8}
-\contentsline {chapter}{\numberline {B}The R Commander Graphical User Interface}{213}{appendix.B}
-\contentsline {paragraph}{From GUI to writing code:}{213}{paragraph*.47}
-\contentsline {paragraph}{The active data set:}{213}{paragraph*.48}
-\contentsline {paragraph}{Creating graphs:}{213}{paragraph*.49}
-\contentsline {paragraph}{Statistics (\& fitting models):}{214}{paragraph*.50}
-\contentsline {paragraph}{*Models:}{214}{paragraph*.51}
-\contentsline {chapter}{\numberline {C}Color Versions of Selected Graphs}{215}{appendix.C}
+\contentsline {chapter}{\numberline {1}Getting started with R}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Installation of R}{8}{section.1.1}
+\contentsline {section}{\numberline {1.2}First steps}{8}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Points to note}{10}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Some further comments on functions in R}{11}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Help information}{11}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}The working directory}{11}{subsection.1.2.4}
+\contentsline {section}{\numberline {1.3}Installation of R Packages}{12}{section.1.3}
+\contentsline {section}{\numberline {1.4}Practice with R commands}{13}{section.1.4}
+\contentsline {section}{\numberline {1.5}A Short R Session}{14}{section.1.5}
+\contentsline {section}{\numberline {1.6}Data frames -- Grouping columns of data}{16}{section.1.6}
+\contentsline {section}{\numberline {1.7}Input of Data from a File}{18}{section.1.7}
+\contentsline {paragraph}{Data input -- points to note:}{18}{paragraph*.3}
+\contentsline {section}{\numberline {1.8}Sources of Help}{18}{section.1.8}
+\contentsline {section}{\numberline {1.9}Summary and Exercises}{20}{section.1.9}
+\contentsline {subsection}{\numberline {1.9.1}Summary}{20}{subsection.1.9.1}
+\contentsline {subsection}{\numberline {1.9.2}Exercises}{20}{subsection.1.9.2}
+\contentsline {chapter}{\numberline {2}The R Working Environment}{23}{chapter.2}
+\contentsline {section}{\numberline {2.1}The Working Directory and the Workspace}{24}{section.2.1}
+\contentsline {section}{\numberline {2.2}Code, data, and project Maintenance}{25}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Maintenance of R scripts}{25}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Saving and retrieving R objects}{25}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Packages and System Setup}{26}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Installation of R packages}{26}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}The search path: library() and attach()}{26}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}$^*$Where does the R system keep its files?}{27}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Option Settings}{28}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}Enhancing the R experience --- RStudio}{29}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}The RStudio file menu}{30}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Compile a code notebook}{31}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Abilities for reproducible reporting}{32}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}R Markdown}{32}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}$^*$Other markup types -- HTML, LaTeX, \ldots }{34}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}RStudio documentation -- markup and other}{34}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}A strategy for RStudio project management}{34}{subsection.2.5.4}
+\contentsline {section}{\numberline {2.6}Summary and Exercises}{34}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Summary}{34}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Exercises}{35}{subsection.2.6.2}
+\contentsline {chapter}{\numberline {3}Examples --- Data analysis with R}{37}{chapter.3}
+\contentsline {section}{\numberline {3.1}Science, statistics, and R}{39}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}What does R add to the mix?}{41}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Generalization beyond the available data}{41}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Models for the random component}{42}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}The Uses of Scatterplots}{43}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Transformation to an appropriate scale}{43}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}The Uses of Scatterplot Matrices}{44}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}World record times for track and field events}{45}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Summary information from model objects}{46}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}The model object}{47}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}The \texttt {lm} model object is a list}{48}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Regression with two explanatory variables}{48}{section.3.5}
+\contentsline {section}{\numberline {3.6}One-way Comparisons}{50}{section.3.6}
+\contentsline {section}{\numberline {3.7}Time series -- Australian annual climate data}{51}{section.3.7}
+\contentsline {section}{\numberline {3.8}Exercises}{53}{section.3.8}
+\contentsline {chapter}{\numberline {4}Data Objects and Functions}{55}{chapter.4}
+\contentsline {section}{\numberline {4.1}Column Data Objects -- Vectors and Factors}{56}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Vectors}{56}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Factors}{57}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Missing Values, Infinite Values and NaNs}{59}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Data Frames, Matrices, Arrays and Lists}{60}{section.4.2}
+\contentsline {paragraph}{Data frames:}{60}{paragraph*.4}
+\contentsline {paragraph}{Matrices -- vectors with a Dimension:}{60}{paragraph*.5}
+\contentsline {paragraph}{Arrays and tables:}{60}{paragraph*.6}
+\contentsline {subsection}{\numberline {4.2.1}Data frames versus matrices and tables}{61}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Inclusion of character vectors in data frames}{62}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Factor columns in data frame subsets}{62}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Handlng rows that include missing values}{63}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Arrays --- some further details}{63}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.6}Lists}{64}{subsection.4.2.6}
+\contentsline {section}{\numberline {4.3}Functions}{65}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Built-In Functions}{65}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Functions for data summary and/or manipulation}{66}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Functions for creating and working with tables}{66}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Tables of Counts}{66}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Utility functions}{68}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}User-defined functions}{68}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}The \texttt {apply} family of functions}{69}{subsection.4.3.7}
+\contentsline {paragraph}{\texttt {apply()}:}{69}{paragraph*.7}
+\contentsline {paragraph}{\texttt {sapply()} and \texttt {lapply()}:}{69}{paragraph*.8}
+\contentsline {subsection}{\numberline {4.3.8}Functions for working with text strings}{70}{subsection.4.3.8}
+\contentsline {subsection}{\numberline {4.3.9}Functions for Working with Dates (and Times)}{71}{subsection.4.3.9}
+\contentsline {paragraph}{Formatting dates for printing:}{71}{paragraph*.9}
+\contentsline {paragraph}{Conversion of dates to and from integer number of days:}{72}{paragraph*.10}
+\contentsline {paragraph}{Regular sequences of dates:}{72}{paragraph*.11}
+\contentsline {paragraph}{Further useful functions for working with dates:}{73}{paragraph*.12}
+\contentsline {subsection}{\numberline {4.3.10}Summaries of Information in Data Frames}{73}{subsection.4.3.10}
+\contentsline {section}{\numberline {4.4}*Classes and Methods (Generic Functions)}{74}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}$^*$S4 methods}{74}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.5}Common Sources of Surprise or Difficulty}{75}{section.4.5}
+\contentsline {section}{\numberline {4.6}Summary}{76}{section.4.6}
+\contentsline {section}{\numberline {4.7}Exercises}{76}{section.4.7}
+\contentsline {chapter}{\numberline {5}Data Input and Storage}{81}{chapter.5}
+\contentsline {section}{\numberline {5.1}$^*$Data Input from a File}{82}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Managing input is from the RStudio menu}{82}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Input using the \texttt {read.table()} family of functions}{82}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}$^*$The use of scan() for flexible data input}{83}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}The \texttt {memisc} package: input from SPSS and Stata}{83}{subsection.5.1.4}
+\contentsline {section}{\numberline {5.2}$^*$Input of Data from a web page}{86}{section.5.2}
+\contentsline {paragraph}{A browser interface to World Bank data:}{86}{paragraph*.13}
+\contentsline {paragraph}{Australian Bureau of Meteorology data:}{86}{paragraph*.14}
+\contentsline {paragraph}{A function to download multiple data series:}{87}{paragraph*.15}
+\contentsline {paragraph}{Historical air crash datra:}{87}{paragraph*.16}
+\contentsline {subsection}{\numberline {5.2.1}$^*$Embedded markup --- XML and alternetives}{88}{subsection.5.2.1}
+\contentsline {paragraph}{Download of NZ earthquake data:}{88}{paragraph*.17}
+\contentsline {paragraph}{World Bank data --- using the {\em WDI} package}{89}{paragraph*.18}
+\contentsline {section}{\numberline {5.3}Creating and Using Databases}{89}{section.5.3}
+\contentsline {section}{\numberline {5.4}$^*$File compression:}{90}{section.5.4}
+\contentsline {section}{\numberline {5.5}Summary}{91}{section.5.5}
+\contentsline {chapter}{\numberline {6}Data Manipulation and Management}{93}{chapter.6}
+\contentsline {section}{\numberline {6.1}Manipulations with Lists, Data Frames and Arrays}{94}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Tables and arrays}{94}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Conversion between data frames and tables}{95}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Table margins}{96}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Categorization of continuous data}{97}{subsection.6.1.4}
+\contentsline {subsection}{\numberline {6.1.5}$^*$Matrix Computations}{97}{subsection.6.1.5}
+\contentsline {section}{\numberline {6.2}{\em plyr}, {\em dplyr} \& {\em reshape2} Data Manipulation}{98}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}{\em plyr} }{98}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Use of {\em dplyr} with Word War 1 cricketer data}{100}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}{\em reshape2}: \texttt {melt()}, \texttt {acast()} \& \texttt {dcast()} }{101}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}Session and Workspace Management}{103}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Keep a record of your work}{103}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Workspace management}{103}{subsection.6.3.2}
+\contentsline {paragraph}{The removal of clutter:}{104}{paragraph*.19}
+\contentsline {paragraph}{Movement of files between computers:}{104}{paragraph*.20}
+\contentsline {paragraph}{Further possibilities -- saving objects in text form:}{104}{paragraph*.21}
+\contentsline {section}{\numberline {6.4}Computer Intensive Computations}{104}{section.6.4}
+\contentsline {paragraph}{Use matrices, where possible, in preference to data frames:}{105}{paragraph*.22}
+\contentsline {paragraph}{Use efficient coding:}{105}{paragraph*.23}
+\contentsline {paragraph}{The bigmemory project:}{105}{paragraph*.24}
+\contentsline {paragraph}{The \textit {data.table} package:}{105}{paragraph*.25}
+\contentsline {section}{\numberline {6.5}Summary}{105}{section.6.5}
+\contentsline {chapter}{\numberline {7}Graphics -- base, lattice, ggplot2, rgl, googleVis\ldots }{107}{chapter.7}
+\contentsline {section}{\numberline {7.1}Base Graphics}{108}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}\texttt {plot()} and allied base graphics functions}{108}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Fine control -- Parameter settings}{109}{subsection.7.1.2}
+\contentsline {subsection}{\numberline {7.1.3}Color and Opacity}{110}{subsection.7.1.3}
+\contentsline {subsection}{\numberline {7.1.4}The shape of the graph sheet}{112}{subsection.7.1.4}
+\contentsline {subsection}{\numberline {7.1.5}Multiple plots on the one page}{112}{subsection.7.1.5}
+\contentsline {subsection}{\numberline {7.1.6}Plots that show the distribution of data values}{113}{subsection.7.1.6}
+\contentsline {subsection}{\numberline {7.1.7}$^*$Plotting Text that Includes Technical Symbols}{115}{subsection.7.1.7}
+\contentsline {section}{\numberline {7.2}Lattice Graphics}{116}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Lattice graphics -- basic ideas}{116}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Panels of scatterplots}{117}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Setting stylistic features}{118}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Groups within data, and/or columns in parallel}{119}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.5}Keys -- \texttt {auto.key}, \texttt {key} and \texttt {legend}}{120}{subsection.7.2.5}
+\contentsline {subsection}{\numberline {7.2.6}Lattice settings -- further notes}{121}{subsection.7.2.6}
+\contentsline {subsection}{\numberline {7.2.7}Lattice plots that show distributions}{122}{subsection.7.2.7}
+\contentsline {subsection}{\numberline {7.2.8}Panel functions}{123}{subsection.7.2.8}
+\contentsline {subsection}{\numberline {7.2.9}The addition of new layers}{124}{subsection.7.2.9}
+\contentsline {section}{\numberline {7.3}\textit {ggplot2} -- A \textit {Grammar of Graphics}}{125}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Examples that demonstrate ggplot2 abilities}{125}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}An overview of {\em ggplot2} technicalities}{127}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}Static graphics -- additional notes}{131}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Multiple graphs on a single graphics page}{131}{subsection.7.4.1}
+\contentsline {section}{\numberline {7.5}Dynamic Graphics -- \textit {rgl}}{132}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}The {\em googleVis} Package}{133}{subsection.7.5.1}
+\contentsline {section}{\numberline {7.6}Summary}{135}{section.7.6}
+\contentsline {section}{\numberline {7.7}Exercises}{135}{section.7.7}
+\contentsline {chapter}{\numberline {8}Regression with Linear Terms and Factors}{139}{chapter.8}
+\contentsline {section}{\numberline {8.1}Linear Models in R -- Basic Ideas}{140}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Straight line regression -- algebraic details}{141}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Syntax -- model, graphics and table formulae:}{142}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Matrix algebra -- straight line regression example}{142}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}A note on the least squares methodology}{143}{subsection.8.1.4}
+\contentsline {section}{\numberline {8.2}Checks --- Before and After Fitting a Line}{144}{section.8.2}
+\contentsline {paragraph}{Untransformed vs transformed scales:}{144}{paragraph*.26}
+\contentsline {paragraph}{The common benefits of a logarithmic transformation:}{145}{paragraph*.27}
+\contentsline {subsection}{\numberline {8.2.1}$^*$Diagnostics -- checks on the fitted model}{146}{subsection.8.2.1}
+\contentsline {paragraph}{Panel 2 --- A check for normality:}{147}{paragraph*.28}
+\contentsline {paragraph}{Panel 3 --- Is the variance constant?:}{148}{paragraph*.29}
+\contentsline {paragraph}{Panel 4 --- a check for high leverage points:}{148}{paragraph*.30}
+\contentsline {subsection}{\numberline {8.2.2}The independence assumption is crucial}{148}{subsection.8.2.2}
+\contentsline {section}{\numberline {8.3}$^*$Simulation Based Checks}{149}{section.8.3}
+\contentsline {section}{\numberline {8.4}Key questions for the use of models}{150}{section.8.4}
+\contentsline {paragraph}{The choice of method:}{151}{paragraph*.31}
+\contentsline {paragraph}{Which are the important variables?}{151}{paragraph*.32}
+\contentsline {section}{\numberline {8.5}Factor Terms -- Contrasts}{151}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}Example -- tomato root weight}{152}{subsection.8.5.1}
+\contentsline {subsection}{\numberline {8.5.2}Factor terms -- different choices of model matrix}{153}{subsection.8.5.2}
+\contentsline {section}{\numberline {8.6}Regression with two explanatory variables}{156}{section.8.6}
+\contentsline {subsection}{\numberline {8.6.1}The regression fit}{157}{subsection.8.6.1}
+\contentsline {section}{\numberline {8.7}Variable Selection -- Stepwise and Other}{158}{section.8.7}
+\contentsline {subsection}{\numberline {8.7.1}Use of simulation to check out selection effects:}{159}{subsection.8.7.1}
+\contentsline {paragraph}{The extent of selection effects -- a detailed simulation:}{160}{paragraph*.33}
+\contentsline {paragraph}{Examples from the literature}{160}{paragraph*.34}
+\contentsline {subsection}{\numberline {8.7.2}Variable and model selection -- strategies}{160}{subsection.8.7.2}
+\contentsline {section}{\numberline {8.8}1970 cost for US electricity producers}{161}{section.8.8}
+\contentsline {subsection}{\numberline {8.8.1}Model fitting strategy}{162}{subsection.8.8.1}
+\contentsline {section}{\numberline {8.9}An introduction to logistic regression}{165}{section.8.9}
+\contentsline {section}{\numberline {8.10}Regression with Fitted Smooth Curves}{166}{section.8.10}
+\contentsline {subsection}{\numberline {8.10.1}Locally weighted scatterplot smoothers}{167}{subsection.8.10.1}
+\contentsline {subsection}{\numberline {8.10.2}Contours from 2-dimensional Smooths}{168}{subsection.8.10.2}
+\contentsline {section}{\numberline {8.11}Other important models and issues}{169}{section.8.11}
+\contentsline {subsection}{\numberline {8.11.1}Errors in $x$}{169}{subsection.8.11.1}
+\contentsline {section}{\numberline {8.12}Exercises}{169}{section.8.12}
+\contentsline {chapter}{\numberline {9}A Miscellany of Models \& Methods}{171}{chapter.9}
+\contentsline {section}{\numberline {9.1}Hierarchical Multilevel Models}{172}{section.9.1}
+\contentsline {section}{\numberline {9.2}Regular Time Series in R}{173}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Example -- the Lake Erie data}{173}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Patterns that are repeatable}{174}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}Fitting and use of an autoregressive model}{176}{subsection.9.2.3}
+\contentsline {subsection}{\numberline {9.2.4}Regression with time series errors}{177}{subsection.9.2.4}
+\contentsline {subsection}{\numberline {9.2.5}$^*$Box-Jenkins ARIMA Time Series Modeling}{179}{subsection.9.2.5}
+\contentsline {subsection}{\numberline {9.2.6}Count Data with Poisson Errors}{179}{subsection.9.2.6}
+\contentsline {section}{\numberline {9.3}Classification}{180}{section.9.3}
+\contentsline {section}{\numberline {9.4}Tree-based methods and random forests}{183}{section.9.4}
+\contentsline {subsection}{\numberline {9.4.1}Random forests}{184}{subsection.9.4.1}
+\contentsline {section}{\numberline {9.5}$^*$Ordination}{186}{section.9.5}
+\contentsline {subsection}{\numberline {9.5.1}Distance measures}{187}{subsection.9.5.1}
+\contentsline {chapter}{\numberline {10}Map Overlays and Spatial Modeling}{191}{chapter.10}
+\contentsline {section}{\numberline {10.1}Static Overlay onto Maps}{192}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Overlay onto country and regional outlines}{192}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}The {\em dismo} package's Interface to Google maps}{192}{subsection.10.1.2}
+\contentsline {paragraph}{Basic syntax, accepting defaults:}{193}{paragraph*.35}
+\contentsline {paragraph}{Specify map longitude/latitude extent; overlay onto map:}{193}{paragraph*.36}
+\contentsline {paragraph}{Interactive selection of a map extent from a screen display:}{193}{paragraph*.37}
+\contentsline {subsection}{\numberline {10.1.3}The {\em plotKML} package}{193}{subsection.10.1.3}
+\contentsline {subsection}{\numberline {10.1.4}Specifying projections}{194}{subsection.10.1.4}
+\contentsline {section}{\numberline {10.2}Working with Raster (Image) Files}{194}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}Overlaying onto a bubble plot}{196}{subsection.10.2.1}
+\contentsline {section}{\numberline {10.3}$^*$Reading and Processing Shapefiles}{196}{section.10.3}
+\contentsline {section}{\numberline {10.4}Other software -- QGIS}{199}{section.10.4}
+\contentsline {section}{\numberline {10.5}References}{199}{section.10.5}
+\contentsline {chapter}{\numberline {11}Brief Notes on Text Mining}{201}{chapter.11}
+\contentsline {section}{\numberline {11.1}Creation of a Volatile Corpus}{202}{section.11.1}
+\contentsline {section}{\numberline {11.2}Creation of a Corpus from PDF Files}{205}{section.11.2}
+\contentsline {section}{\numberline {11.3}Document Collections Supplied With {\em tm}}{205}{section.11.3}
+\contentsline {chapter}{\numberline {12}$^*$Leveraging R Language Abilities }{207}{chapter.12}
+\contentsline {section}{\numberline {12.1}Manipulation of Language Constructs}{208}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}Manipulation of Formulae}{208}{subsection.12.1.1}
+\contentsline {subsection}{\numberline {12.1.2}Extraction of names from a formula}{208}{subsection.12.1.2}
+\contentsline {section}{\numberline {12.2}Function Arguments and Environments}{209}{section.12.2}
+\contentsline {subsection}{\numberline {12.2.1}Extraction of arguments to functions}{209}{subsection.12.2.1}
+\contentsline {subsection}{\numberline {12.2.2}Use of a list to pass parameter values}{209}{subsection.12.2.2}
+\contentsline {subsection}{\numberline {12.2.3}Function environments}{210}{subsection.12.2.3}
+\contentsline {section}{\numberline {12.3}Creation of R Packages}{211}{section.12.3}
+\contentsline {section}{\numberline {12.4}S4 Classes and Methods}{212}{section.12.4}
+\contentsline {section}{\numberline {12.5}Summary}{213}{section.12.5}
+\contentsline {chapter}{\numberline {A}$^*$R System Configuration}{215}{appendix.A}
+\contentsline {section}{\numberline {A.1}Fine tuning the installation}{216}{section.A.1}
+\contentsline {paragraph}{The working directory:}{216}{paragraph*.38}
+\contentsline {paragraph}{Multiple (MDI) or Single (SDI) display interface for Windows:}{216}{paragraph*.39}
+\contentsline {section}{\numberline {A.2}Setting the Default CRAN Mirror}{216}{section.A.2}
+\contentsline {section}{\numberline {A.3}R system information}{216}{section.A.3}
+\contentsline {section}{\numberline {A.4}Repositories additional to CRAN}{217}{section.A.4}
+\contentsline {section}{\numberline {A.5}Running R in Batch Mode}{218}{section.A.5}
+\contentsline {section}{\numberline {A.6}The R Windows installation directory tree}{218}{section.A.6}
+\contentsline {section}{\numberline {A.7}Library directories}{218}{section.A.7}
+\contentsline {section}{\numberline {A.8}The Startup mechanism}{219}{section.A.8}
+\contentsline {chapter}{\numberline {B}The R Commander Graphical User Interface}{221}{appendix.B}
+\contentsline {paragraph}{From GUI to writing code:}{222}{paragraph*.40}
+\contentsline {paragraph}{The active data set:}{222}{paragraph*.41}
+\contentsline {paragraph}{Creating graphs:}{222}{paragraph*.42}
+\contentsline {paragraph}{Statistics (\& fitting models):}{222}{paragraph*.43}
+\contentsline {paragraph}{*Models:}{222}{paragraph*.44}
+\contentsline {chapter}{\numberline {C}Color Versions of Selected Graphs}{225}{appendix.C}
+\contentsline {chapter}{\numberline {D}Bibliography}{229}{appendix.D}
+\contentsline {chapter}{Index of Functions}{231}{appendix*.45}
+\contentsline {chapter}{Index of Functions}{237}{appendix*.46}
 \contentsfinish 

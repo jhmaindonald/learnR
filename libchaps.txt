@@ -1,0 +1,107 @@
+DAAG        # possum is from DAAG
+DAAG
+DAAG
+DAAG
+MASS
+DAAG; lattice
+sp
+## Below, the dataset MASSmammals will be required
+lattice
+lattice
+ggplot2
+tomato <- within(DAAGtomato, 
+DAAG
+DAAG
+DAAG
+DAAGviz
+mgcv
+mgcv
+forecast
+airAccs <- gamclassairAccs
+dfWeek06 <- gamclasseventCounts(airAccs, dateCol="Date",
+mgcv
+dfDay06 <- gamclasseventCounts(airAccs, dateCol="Date", from= fromDate,
+DAAG
+lattice
+rpart
+??baseArith
+lattice
+vcd
+DAAGdatafile("travelbooks"
+??graphicsbar  # Search graphics package only
+DAAG
+RColorBrewer   # Required for Set1 and Dark2 RColorBrewer palettes
+MASS
+  legend=list(top=list(fun=gridtextGrob,
+gph + latticeExtralayer(panel.text(x,y,
+playwith
+playwith
+ggplot2
+MASS
+DAAG
+ggplot2
+quantreg
+splines
+rglsetupKnitr(
+googleVis
+lattice
+lattice
+XLConnect
+memisc
+WDI
+WDI
+XML
+DAAG
+RSQLite
+DAAG
+lme4
+sp
+plyr
+dplyr
+gpUCBgender <- dplyrgroup_by(UCBdf, Gender
+AdmitRate <- dplyrsummarise(gpUCBgender,
+gpUCBgd <- dplyrgroup_by(UCBdf, Gender, Dept
+rateDept <- dplyrsummarise(gpUCBgd,
+DAAGviz
+plyr
+(dfdream <- plyradply(dreamMoves, 1:2,
+plyrdaply(dfdream, 1:2, function(dfdf[,3]
+plyraaply(UCBAdmissions, 1:2, sum
+plyrdaply(nswdemo, .(trt,
+plyrdaply(nswdemo, .(trt, black,
+plyrddply(nswdemo, .(trt, black,
+DAAG
+dplyr
+lefrt <- dplyrsummarise(gpByYear,
+crickKIAyrs <- dplyrsummarise(gpByYearKIA,
+HistData   # Nightingale is from this package
+reshape2   # Has the function melt(
+reshape2
+WDI
+WDI
+XML
+DAAG
+RSQLite
+oz
+DAAG
+DAAGviz
+rgdal
+sp
+add <- latticeExtralayer(panel.lines(meuse.riv[,1], meuse.riv[,2],
+DAAG
+xlim <- range(DAAGnihills$time+c(-0.1,0.1
+plot(timef~time, data=DAAGnihills, xlim=xlim, xaxt='n', 
+abline(lm(timef~time, data=DAAGnihills, col=2
+plot(timef~time, data=DAAGnihills, xlim=xlim, xaxt='n',
+abline(lm(log10(timef~log10(time, data=DAAGnihills, col=2
+boxplot(DAAGnihills$time, horizontal=T, xlim=xlim,
+boxplot(DAAGnihills$time, horizontal=T, xlim=xlim, 
+lattice
+DAAG
+quantreg
+splines
+car
+Ecdat
+DAAG
+tm
+wordcloud

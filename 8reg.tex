@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -19,7 +22,9 @@ Model & The model matrix shows how coefficients should be\\
 GLMs & Generalized Linear Models are an extension of\\
 & linear models, commonly used for analyzing counts.\\[6pt]
 Modern &  This can use smoothers -- spline and other functions\\
-regession & of explanatory variables that adapt to suit the data.
+regession & of explanatory variables that adapt to suit the data.\\[6pt]
+GAMs & Generalized Additive Models extend linear models to allow\\
+& smoothing curves and surfaces.\\[6pt]
 \end{tabular}
 \vspace*{3pt}
 
@@ -52,14 +57,13 @@ $p$-value information provided by the \txtt{lm()} function assumes
 that the random term is i.i.d.\ (independently and identically
 distributed) normal.  The independence assumption can be crucial.
 
-The standard errors assume, also, a single model that is known from
-the start and on which the analysis is based.\sidenote[][-12pt]{The
+The standard errors assume, also, that the analysis is based on a
+model was chosen in advance.\sidenote[][-12pt]{The
   standard errors become increasingly unrealistic as the number of
   possible choices of model terms (variables, factors and
-  interactions) increases.}  If this assumption is incorrect, it can
+  interactions) increases.}  If this is not the case, it can
 be important to resort to the use of empirical methods for assessing
-model performance -- perhaps some variation of training/test
-methodology, or the bootstrap.
+model performance -- training/test methodology, or cross-validation,or the bootstrap.
 
 The symbolic notation\sidenote{Wilkinson, GN and Rogers, CE, 1973.
   Symbolic description of models in analysis of variance,
@@ -82,7 +86,7 @@ plot(depression ~ weight, data=roller, fg="gray")
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-plt-roller-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-plt-roller-1} }
 
 \end{Schunk}
   \caption{Plot of \txtt{depression} versus \txtt{weight}, using data
@@ -109,7 +113,7 @@ fitted line added.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-pltWline-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-pltWline-1} }
 
 \end{Schunk}
 \caption{This repeats Figure \ref{fig:rollerPlot}, now adding a fitted
@@ -348,7 +352,7 @@ Northern Island hill races.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-fVSmTimeAB-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-fVSmTimeAB-1} }
 
 \end{Schunk}
   \caption{Graphs compare female with male record times,
@@ -411,7 +415,7 @@ clockwise about its mid-point, to the horizontal.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-tohoriz-mf-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-tohoriz-mf-1} }
 
 \end{Schunk}
 \caption{In Panel A, residuals from the line for the unlogged data
@@ -500,7 +504,7 @@ diagnostic plots for the regression with the untransformed data:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-diag-mf-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-diag-mf-1} }
 
 \end{Schunk}
 \caption{Diagnostic plots from the regession of \txtt{timef} on
@@ -539,7 +543,7 @@ par(opar)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-diag-logmf-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-diag-logmf-1} }
 
 \end{Schunk}
 \caption{Diagnostic plots from the regression of \txtt{log(timef)} on
@@ -728,7 +732,7 @@ for Figure \ref{fig:4sim-mftimeres1}.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-simscat-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-simscat-1} }
 
 \end{Schunk}
 \caption{The plots are four simulations of residuals, from the
@@ -942,7 +946,7 @@ appears much larger for the controls than for other treatments.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-termplot-aovAB-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-termplot-aovAB-1} }
 
 \end{Schunk}
  \caption{Termplot summary of the one-way analysis of variance result ---
@@ -1208,11 +1212,12 @@ details of the data:
 str(nihills)
 \end{Sinput}
 \begin{Soutput}
-'data.frame':	23 obs. of  4 variables:
- $ dist : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
- $ climb: int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
- $ time : num  0.858 0.467 0.703 1.039 0.541 ...
- $ timef: num  1.064 0.623 0.887 1.214 0.637 ...
+'data.frame':	23 obs. of  5 variables:
+ $ dist    : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
+ $ climb   : int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
+ $ time    : num  0.858 0.467 0.703 1.039 0.541 ...
+ $ timef   : num  1.064 0.623 0.887 1.214 0.637 ...
+ $ gradient: num  232 264 205 485 240 ...
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -1226,7 +1231,7 @@ right panel shows the logged data:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.48\textwidth]{figs/11-splot2-ni-1} \includegraphics[width=0.48\textwidth]{figs/11-splot2-ni-2} }
+\centerline{\includegraphics[width=0.48\textwidth]{figs/8-splot2-ni-1} \includegraphics[width=0.48\textwidth]{figs/8-splot2-ni-2} }
 
 \end{Schunk}
 \caption{Scatterplot matrices for the Northern Ireland mountain racing
@@ -1326,7 +1331,7 @@ sense.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-tplot-ni-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-tplot-ni-1} }
 
 \end{Schunk}
 \caption{The vertical scales in both ``term plot''  panel
@@ -1466,7 +1471,7 @@ the ``best'' three variables were selected, by exhaustive search.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-bsnVary-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-bsnVary-1} }
 
 \end{Schunk}
 \caption{$p$-values, versus number of variables available for selection,
@@ -1567,7 +1572,7 @@ spm(Electricity, smooth=TRUE, reg.line=NA,
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.775\textwidth]{figs/11-Elec-spm-1} }
+\centerline{\includegraphics[width=0.775\textwidth]{figs/8-Elec-spm-1} }
 
 \end{Schunk}
 }
@@ -1655,11 +1660,11 @@ Figure \ref{fig:elec-dens} examines the scatterplot matrix for the
 logarithms of the variables \txtt{cost} and \txtt{q}.
 \noindent
 Code is:
-\begin{marginfigure}[-2cm]
+\begin{marginfigure}[-3.5cm]
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-spm-cost-q-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-spm-cost-q-1} }
 
 \end{Schunk}
   \caption{Scatterplot matrix for the logarithms of the variables
@@ -1688,7 +1693,7 @@ Now examine the termplot (Figure \ref{fig:elec-log-tplot}):
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-elec-me-tplot-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-elec-me-tplot-1} }
 
 \end{Schunk}
 \caption{Termplot summary for the model that has been fitted to the
@@ -1851,7 +1856,7 @@ case, points are identified as with or without bronchitis.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-bronchitAB-1} }
+\centerline{\includegraphics[width=0.95\textwidth]{figs/8-bronchitAB-1} }
 
 \end{Schunk}
 \caption{Panel A plots \txtt{poll} (pollution level) against
@@ -1945,7 +1950,7 @@ Number of Fisher Scoring iterations: 5
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/11-cig2-tplot-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/8-cig2-tplot-1} }
 
 \end{Schunk}
 \caption{The panels show the contributions that the respective terms
@@ -1962,6 +1967,183 @@ Code is:
 termplot(cig2.glm)
 \end{Sinput}
 \end{Schunk}
+
+\section{Regression with Fitted Smooth Curves}
+
+Load the {\em DAAG} package:
+
+
+\subsection*{Commentary  on Smoothing Methods}
+
+Two types of methods will be described -- those where the user
+controls the choice of smoothing parameter, and statistical learning
+type methods where the amount of smoothing is chosen automatically:
+\begin{itemize}
+\item The first class of methods rely on the user to make a suitable
+  choice of a parameter that controls the smoothness.  The default
+choice is often a good first approximation.  Note here:
+\begin{itemize}
+\item Smoothing using a ``locally weighted regression
+smoother''.\marginnote{Smoothness
+is controlled by the width of the smoothing window. The default is
+  \txtt{f=2/3} for \txtt{lowess()}, or \txtt{span=0.75} for
+  \txtt{loess()}. For other functions that rely on this methodology,
+check the relevant help page.}
+Functions that use this approach include \txtt{lowess()}, \txtt{loess()},
+\txtt{loess.smooth()}, and \txtt{scatter.smooth()}.
+\item Use of a regression spline basis in a linear model.  Here the smoothness
+is usually controlled by the choice of number of spline basis terms.
+\end{itemize}
+\item A second class of methods use a ``statistical learning''
+  approach in which the amount of smoothing is chosen automatically.
+  The approach of the \textit{mgcv} package extends and adapts the
+  regression spline approach.\sidenote{Strong assumptions are
+    required, notably that observations are independent.  Normality
+    assumptions are, often, less critical.}  The methodology
+  generalizes to handle more general types of outcome variables,
+  including proportions and counts.  These extensions will not be
+  further discussed here.
+\end{itemize}
+
+\subsection{Locally weighted scatterplot smoothers}
+
+Locally weighted scatterplot smoothers pass a window across
+the data, centering the window in turn at each of a number points that
+are equally spaced through the data. The smooth at an $x$-value where
+the window has been centred is the predicted value from a line (or
+sometimes a quadratic or other curve) that is fitted to values that
+lie within the window. A weighted fit is used, so that neighbouring
+points get greater weight than points out towards the edge of the
+window.
+
+Figure \ref{fig:fruitohms} shows a smooth that has been fitted using
+the \txtt{lowess} (locally weighted scatterplot smoothing)
+methodology.  The default choice of with of smoothing window (a fraction
+$f = \frac{2}{3}$ of the total range of $x$) gives a result that,
+for these data, looks about right. The curve does however trend
+slightly upwards at the upper end of its range.  A monotonic
+response might seem more appropriate.
+
+\begin{marginfigure}
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.98\textwidth]{figs/8-smooth-ohms-1} }
+
+\end{Schunk}
+  \caption{Resistance in ohms is plotted against apparent juice
+    content.  A smooth curve (in gray) has been added, using the
+    \txtt{lowess} smoother.  The width of the smoothing window was the
+    default fraction $f = \frac{2}{3}$ of the range of values of the
+    $x$-variable.}\label{fig:fruitohms}
+\end{marginfigure}
+
+The code used to plot the graph is:
+\begin{Schunk}
+\begin{Sinput}
+## Plot points
+plot(ohms ~ juice, data=fruitohms, fg="gray")
+## Add smooth curve, using default
+## smoothing window
+with(fruitohms,
+     lines(lowess(ohms ~ juice), col="gray", lwd=2))
+\end{Sinput}
+\end{Schunk}
+
+A more sophisticated approach uses the \txtt{gam()} function
+in the {\em mgcv} package.  This allows automatic determination of the
+amount of smoothing, providing the assumption of independent residuals
+from the curve is reasonable.  We now demonstrate the use of a GAM
+model for a two-dimensional smooth.
+
+\subsection{Contours from 2-dimensional Smooths}
+Data are the amplitudes of responses to a visual stimulus, for each of
+20 individuals, at different regions of the left eye.  We use the
+function \txtt{gam()} to create smooth
+surfaces, for males and females separately. Figure \ref{fig:visAmp}
+then uses the function \txtt{vis.gam()} to plot heatmaps that show the
+contours:
+\begin{fullwidth}
+\begin{figure*}
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.97\textwidth]{figs/8-plotVIS-1} }
+
+\end{Schunk}
+\vspace*{-7pt}
+\caption{Estimated contours of left eye responses to visual stimulae,
+projected onto the plane.\label{fig:visAmp}}
+\vspace*{15pt}
+\end{figure*}
+\end{fullwidth}
+\enlargethispage{12pt}
+
+The GAM fit will as far as possible use the smooth surface
+to account for the pattern of variation across the eye, with
+residuals from the surface treated as random normal noise.
+\vspace*{7pt}
+
+\begin{fullwidth}
+
+\begin{Schunk}
+\begin{Sinput}
+## Code
+library(DAAGviz)
+library(mgcv)
+eyeAmpM.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="m"))
+eyeAmpF.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="f"))
+lims <- range(c(predict(eyeAmpF.gam), predict(eyeAmpM.gam)))
+vis.gam(eyeAmpM.gam, plot.type='contour', color="cm", zlim=lims, main="")
+mtext(side=3, line=0.5, adj=0, "A: Response amplitudes, Males")
+vis.gam(eyeAmpF.gam, plot.type='contour', color="cm", zlim=lims, main="")
+mtext(side=3, line=0.5, adj=0, "B: Response amplitudes, Females")
+\end{Sinput}
+\end{Schunk}
+
+\end{fullwidth}
+
+\section{Other important models and issues}
+
+\subsection{Errors in $x$}
+In the classical "errors in $x$" model, one or more explanatory variables
+are measured with error.  In straight line regression, the effect is to
+attenuate the regression coefficient.  If there is, additionally, a
+grouping factor with different means for the outcome variable for different
+groups, a side effect of the attentuation is to make it appear that the
+lines are different for the different groups.  The same general principles
+apply when curves are fitted.  Where several variables
+are measured with substantial error, there are increased oportunities for
+transferring estimated effects between variables, and the mathematics
+becomes more complicated.
+
+Examples on the help page \txtt{?DAAG::errorsINx} show how to run
+simulations that demonstrate the effects in the simple cases just
+described.  These are useful in giving a sense of the magitutude
+of the attenuation, and any possible
+apparent group difference, that may arise from a given amount of
+measurement error.
+
+Comparison with data from a case where $x$ is measured with minimal 
+error is needed, in order to get a data-based indication of the extent
+of the error in $x$.
+
+An alternative to the classical "errors in $x$" model is the Berkson
+model.  Consider an oven where the strength of pottery fired in the
+oven is a linear function, for some fixed time, of the temperature.  
+
+\begin{itemize}
+\item [-] For the classical "errors in $x$" model, the measured
+temperature varies randomly about the oven temperature.
+\item[-] For the Berkson model, the oven temperature varies randomly
+about a temperature that is determined by setting on the temperature
+control.
+\end{itemize}
+
+In the Berkson  case, the slope is an unbiased estimate of the true
+slope, but has increased standard error.  In common situations, there
+may be a mix of classical errors and Berkson, with some additional
+bias.
 
 \section{Exercises}
 \begin{enumerate}

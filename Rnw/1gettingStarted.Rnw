@@ -1,6 +1,9 @@
-% !Rnw root = learnR.Rnw
+% !Rnw root = Rlearn.Rnw
+\input{preamble}
+
 <<echo=FALSE, cache=FALSE>>=
-opts_knit$set(self.contained=FALSE)
+require(knitr)
+# opts_knit$set(root.dir=normalizePath('..'), self.contained=FALSE)
 @
 
 <<echo=FALSE, cache=FALSE>>=
@@ -15,11 +18,6 @@ pdf.options(pointsize=12)
 options(digits=4)
 read_chunk("../scripts/gettingStarted-code.R")
 @ 
-
-% !Rnw root = learnR.Rnw
-<<echo=FALSE, cache=FALSE>>=
-opts_knit$set(self.contained=FALSE)
-@
 
 \section{Installation of R}
 

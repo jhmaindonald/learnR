@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -215,6 +218,8 @@ and stores the path to the file in the text string \txtt{path2file}:
 \begin{Schunk}
 \begin{Sinput}
 library(memisc)
+\end{Sinput}
+\begin{Sinput}
 ## Unzip; return path to "NES1948.POR"
 path2file <- unzip(system.file("anes/NES1948.ZIP",package="memisc"),
                      "NES1948.POR",exdir=tempfile())
@@ -236,7 +241,7 @@ show(nes1948imp)
 \begin{Schunk}
 \begin{Soutput}
 
-SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmp82iC0Q/file10b9f40f064e5/NES1948.POR' 
+SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//RtmpbgTESJ/file4d0174398e4f/NES1948.POR' 
 	with 67 variables and 662 observations
 \end{Soutput}
 \end{Schunk}
@@ -600,19 +605,21 @@ given by such a search:
 \begin{Schunk}
 \begin{Sinput}
 library(WDI)
+\end{Sinput}
+\begin{Sinput}
 WDIsearch('co2')[1:4,]
 \end{Sinput}
 \begin{Soutput}
      indicator          
 [1,] "EN.ATM.CO2E.CP.KT"
-[2,] "EN.ATM.CO2E.EG.ZS"
-[3,] "EN.ATM.CO2E.FF.KT"
-[4,] "EN.ATM.CO2E.FF.ZS"
-     name                                                           
-[1,] "CO2 emissions from cement production (thousand metric tons)"  
-[2,] "CO2 intensity (kg per kg of oil equivalent energy use)"       
-[3,] "CO2 emissions from fossil-fuels, total (thousand metric tons)"
-[4,] "CO2 emissions from fossil-fuels (% of total)"                 
+[2,] "EN.CO2.TRAN.ZS"   
+[3,] "EN.CO2.TRAN.MT"   
+[4,] "EN.CO2.OTHX.ZS"   
+     name                                                                                                                               
+[1,] "CO2 emissions from cement production (thousand metric tons)"                                                                      
+[2,] "CO2 emissions from transport (% of total fuel combustion)"                                                                        
+[3,] "CO2 emissions from transport (million metric tons)"                                                                               
+[4,] "CO2 emissions from other sectors, excluding residential buildings and commercial and public services (% of total fuel combustion)"
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -664,6 +671,8 @@ Here is an example. First create the database:
 \begin{Schunk}
 \begin{Sinput}
 library(DAAG)
+\end{Sinput}
+\begin{Sinput}
 library(RSQLite)
 driveLite <- dbDriver("SQLite")
 con <- dbConnect(driveLite, dbname="hillracesDB")

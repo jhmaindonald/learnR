@@ -1,6 +1,9 @@
 % !Rnw root = learnR.Rnw
+
+\input{preamble}
+
 <<echo=FALSE, cache=FALSE>>=
-opts_knit$set(self.contained=FALSE)
+## opts_knit$set(root.dir=normalizePath('..'), self.contained=FALSE)
 @
 
 <<echo=FALSE, cache=FALSE>>=
@@ -43,7 +46,7 @@ will disappear at the end of the session.
 First create paths to the files, and check that they seem correct:
 \begin{fullwidth}
 <<make-paths>>=
-@ #
+@ %
 \end{fullwidth}
 
 The following brings the first of these files into the workspace,

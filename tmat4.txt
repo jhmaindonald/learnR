@@ -1,0 +1,627 @@
+"AAll" "entry1" "sub1" "altsearch" "altsub1" "id"
+"1" "Akaike information criterion (AIC)|see {information criteria}" "zzzz" NA NA NA 11
+"2" "analysis issues! analysis of summary data" "data summary" NA NA NA 11
+"3" "analysis issues! analysis styles \& traditions" "EDA" "formal" NA NA 11
+"4" "analysis issues! assumptions" "assumption" NA "assumptions" NA 11
+"5" "analysis issues! changes of plan" "intended plan" NA NA NA 11
+"6" "analysis issues! data snooping" "data snooping" NA NA NA 11
+"7" "analysis issues! deficiencies" "inadequacies" NA NA NA 11
+"8" "analysis issues! independence" "independence assumption" NA NA NA 11
+"9" "analysis issues! nonparametric methods" "non-parametric" NA NA NA 11
+"10" "analysis issues! planning" "planning the formal" NA NA NA 11
+"11" "analysis issues! presentation issues" "report results" NA NA NA 11
+"12" "analysis issues! prior information" "prior information" NA NA NA 11
+"13" "analysis issues! random sampling assumptions" "random sampling assumptions" NA NA NA 11
+"14" "analysis issues! robust \& resistant methods" "resistant" NA "robust" NA 11
+"15" "analysis issues! significance tests" "significance tests" NA NA NA 11
+"16" "analysis issues! strategies" "data analysis" "strategies" NA NA 11
+"16a" "analysis issues! source/target differences" "data analysis" "strategies" "source" "target" 11
+"17" "analysis issues! styles of analysis" "data analysis" "formal" "EDA" NA 11
+"18" "analysis of variance! decomposition (anova)" "aov" "anova" NA NA 11
+"19" "analysis of variance! degrees of freedom" "analysis of variance" "degrees" NA NA 11
+"21" "analysis of variance model (aov)! one-way layout" "analysis of variance" "one-way" NA NA 11
+"22" "analysis of variance model (aov)! categorized data vs linear fit" "analysis of variance" "qualitative" NA NA 11
+"22a" "analysis of variance model (aov)! multi-way" "analysis of variance" "multi-way" NA NA 11
+"23" "argument| see {function}" "zzzz" NA NA NA 11
+"24" "array! dimensions" "array" "dimensions" NA NA 11
+"25" "array! permutation of dimensions" "dimensions" "permutes" NA NA 11
+"26" "assignment" "assignment" NA NA NA 11
+"27" "assignment! subscripted" "subscripted" NA NA NA 11
+"28" "Bayesian Information Criterion (BIC)| see {information criteria}" "zzzz" NA NA NA 11
+"29" "Bayesian methods" "Bayesian" NA NA NA 11
+"30" "Bayesian methods! posterior!density or probability" "posterior" "density" NA "probabiiity" 11
+"31" "Bayesian methods! prior density or probability" "prior" "density" NA "probability" 11
+"32" "bootstrap| see {resampling methods}" "zzzz" NA NA NA 11
+"33" "boxplot| see {graphics, box \& whisker}" "zzzz" NA NA NA 11
+"34" "Cp statistic (Mallows)| see {information criteria}" "Cp" NA NA NA 11
+"35" "censoring| see {survival analysis}" "zzzz" NA NA NA 11
+"37" "classes \& methods" "classes" "methods" NA NA 11
+"38" "classes \& methods!S3" "classes" "s3" NA NA 11
+"39" "classes \& methods!S4" "classes" "s4" NA NA 11
+"40" "commands! comment character" "command" "comment" NA NA 11
+"41" "commands! continuation character" "command" "continuation" NA NA 11
+"42" "concatenation" "concatenation" NA NA NA 11
+"43" "confidence interval (CI)" "confidence interval" NA "ci" NA 11
+"44" "confidence interval (CI)! 1 \& 2-sample means" "confidence interval" "mean" NA NA 11
+"45" "confidence interval (CI)! correlation" "correlation" "confidence interval" NA NA 11
+"46" "confidence interval (CI)! correlation! bootstrap" "bootstrap" "confidence interval" NA NA 11
+"47" "confidence interval (CI)! median" "median" "confidence interval" NA NA 11
+"48" "confidence interval (CI)! median! bootstrap" "median" "bootstrap" NA NA 11
+"49" "confidence interval (CI)! predicted values" "confidence interval" "predicted" "ci" NA 11
+"50" "confidence interval (CI)! proportions" "proportion" "confidence interval" NA NA 11
+"51" "confounding" "confounding" NA NA NA 11
+"52" "contrasts| see {factor}" "zzzz" NA NA NA 11
+"53" "correlation! Kendall" "Kendall" NA NA NA 11
+"54" "correlation! linear (Pearson)" "correlation" "linear" NA NA 11
+"55" "correlation! linear (Pearson)! confidence interval" "correlation" "confidence interval" NA NA 11
+"56" "correlation! rank (Spearman)" "correlation" "rank" NA NA 11
+"57" "cross-validation see {resampling methods}" "zzzz" NA NA NA 11
+"58" "data analysis \& commentary! 800KYr Antarctica ice core records ({\tt edcCO2}, {\tt edcT})" "edcco2" NA NA NA 11
+"59" "data analysis \& commentary! aberrant crypt foci ({\tt ACF1}), rat colons" "ACF1" "crypt" NA NA 11
+"60" "data analysis \& commentary! acupuncture, real vs sham" "acupuncture" NA NA NA 11
+"61" "data analysis \& commentary! admission rates, contrived data" "faculties" "engineering" NA NA 11
+"62" "data analysis \& commentary! AIDS ({\tt Aids2}, {\itshape MASS}), survival" "Aids2" "survival" NA NA 11
+"63" "data analysis \& commentary! alcohol consumed, by year \& country ({\tt grog})" "grog" NA NA NA 11
+"64" "data analysis \& commentary! anesthetic, effect on pain ({\tt anesthetic})" "anesthetic" "move" NA NA 11
+"65" "data analysis \& commentary! animal body \& brain weight ({\tt Animals}, {\itshape MASS})" "Animals" "brain" NA NA 11
+"66" "data analysis \& commentary! Antiguan corn yields ({\tt ant111b})" "ant111b" NA NA NA 11
+"67" "data analysis \& commentary! apple tasting ({\tt appletaste})" "apple" "tasting" NA NA 11
+"68" "data analysis \& commentary! Australian athletes, morphology \& biochemistry ({\tt ais})" "Australian" "athletes" "AIS" NA 11
+"68a" "data analysis \& commentary! Australian historical climate data ({\tt bomregions2015})" "soi" "rainfall" NA NA 11
+"69" "data analysis \& commentary! blood pressure in rabbits ({\tt Rabbit}, {\itshape MASS})" "rabbit" NA NA NA 11
+"70" "data analysis \& commentary! book weight vs dimensions ({\tt allbacks}, {\tt softbacks})" "allbacks" NA "allbacks" NA 11
+"71" "data analysis \& commentary! book weight vs dimensions, biased sample ({\tt oddbooks})" "books" "oddbooks" NA NA 11
+"72" "data analysis \& commentary! brain vs body weight \& litter size ({\tt litters})" "brain" "litters" NA NA 11
+"74" "data analysis \& commentary! Canadian city populations ({\tt cities})" "cities" NA NA NA 11
+"75" "data analysis \& commentary! cancer expression array data ({\tt Golub}, {\tt golubInfo}, {\itshape hddplot})" "Golub" NA NA NA 11
+"76" "data analysis \& commentary! car data! 1993 Consumer reports ({\tt Cars93} {\itshape MASS}; {\tt Cars93.summary})" "cars93" NA NA NA 11
+"77" "data analysis \& commentary! car data! fuel consumption, etc, 1974 data ({\tt mtcar} {\itshape datasets})" "mtcars" NA NA NA 11
+"78" "data analysis \& commentary! car data! mileage vs weight ({\tt car.test.frame}, {\itshape rpart})" "car.test.frame" NA NA NA 11
+"79" "data analysis \& commentary! car data! mileage, etc ({table.b3}, {\itshape MPV}) " "table.b3" NA NA NA 11
+"80" "data analysis \& commentary! car data! speed vs distance to stop ({\tt cars}, {\itshape datasets}) " "cars" NA NA NA 11
+"81" "data analysis \& commentary! carbon emissions vs year ({\tt fossilfuel})" "fossilfuel" NA NA NA 11
+"82" "data analysis \& commentary! CO$_2$ level \& leaf temp ({\tt leaftemp})" "co2level" "leaftemp" NA NA 11
+"83" "data analysis \& commentary! comparison of firing methods ({\tt  Gun}, {\itshape MEMSS}) " "MEMSS" "Gun" NA NA 11
+"84" "data analysis \& commentary! cricketer survival rates ({cricketer})" "cricketer" NA NA NA 11
+"85" "data analysis \& commentary! cuckoo egg sizes ({\tt cuckoos})" "cuckoo" "nests" NA NA 11
+"86" "data analysis \& commentary! dengue projections ({\tt dengue})" "dengue" NA NA NA 11
+"87" "data analysis \& commentary! depression vs lawn roller weight ({\tt roller})" "roller" NA NA NA 11
+"88" "data analysis \& commentary! dewpoint vs min \& max temp ({\tt dewpoint})" "dewpoint" NA NA NA 11
+"89" "data analysis \& commentary! distance, by ramp angle \& starting point ({\tt toycars})" "toycars" NA NA NA 11
+"90" "data analysis \& commentary! drawings of dreams" "drawings" "dreams" NA NA 11
+"91" "data analysis \& commentary! effort vs stool type ({\tt ergoStool}, {\itshape MEMSS}) " "ergoStool" NA NA NA 11
+"92" "data analysis \& commentary! egg dimensions! host eggs vs cuckoo eggs ({\tt cuckoohosts})" "cuckoohosts" "eggs" NA NA 11
+"93" "data analysis \& commentary! elastic bands, distance vs stretch ({\tt elastic1}, {\tt elastic2}, {\tt elasticband})" "elastic" "band" NA NA 11
+"94" "data analysis \& commentary! electrical resistance of kiwifruit ({\tt fruitohms})" "electrical" "kiwifruit" NA NA 11
+"95" "data analysis \& commentary! email spam ({\tt spam7})" "email" "spam" NA NA 11
+"96" "data analysis \& commentary! Fisher's iris data ({\tt iris}, {\itshape MASS}) " "iris" NA NA NA 11
+"97" "data analysis \& commentary! Food Frequency Questionnaire (FFQ)" "ffq" NA NA NA 11
+"98" "data analysis \& commentary! frogs, spatial distribution ({\tt frogs})" "frogs" "example" NA NA 11
+"99" "data analysis \& commentary! grain/head vs seed rate ({\tt seedrates})" "seedrates" NA NA NA 11
+"100" "data analysis \& commentary! head injury, simulated ({\tt head.injury})" "head.injury" NA NA NA 11
+"101" "data analysis \& commentary! heated vs unheated elastic bands, stretch! paired ({\tt pair65})" "pair65" NA NA NA 11
+"102" "data analysis \& commentary! heated vs unheated elastic bands, stretch! unpaired ({\tt two65})" "two65" NA NA NA 11
+"103" "data analysis \& commentary! height \& weight of women ({\tt women}, {\itshape datasets})" "women" NA NA NA 11
+"104" "data analysis \& commentary! hill race times ({\tt nihills}, {\tt hills2000})" "nihills" NA "hills2000" NA 11
+"105" "data analysis \& commentary! house prices ({\tt houseprices})" "house" "prices" NA NA 11
+"106" "data analysis \& commentary! human power vs O$_2$ intake ({\tt humanpower1}, {\tt humanpower2})" "humanpower1" NA "humanpower2" NA 11
+"106a" "data analysis \& commentary! hurricane death data ({\tt hurricNamed})" "hurricanes" "deaths" NA NA 11
+"107" "data analysis \& commentary! insurance policy claims ({\tt  Insurance}, {\itshape MASS}) " "insurance" NA NA NA 11
+"108" "data analysis \& commentary! iron slag, magnetic vs chemical values ({\tt ironslag})" "ironslag" "example" NA NA 11
+"109" "data analysis \& commentary! jobs, by region of Canada ({\tt jobs})" "jobs" NA NA NA 11
+"110" "data analysis \& commentary! kidney stone operations" "stones" "kidney" NA NA 11
+"111" "data analysis \& commentary! kiwifruit shading ({\tt kiwishade})" "kiwifruit" "shading" NA NA 11
+"112" "data analysis \& commentary! labor training program ({\tt nswdemo} \& related datasets)" "labor training" "example" NA NA 11
+"113" "data analysis \& commentary! lake area \& elevation ({\tt Manitoba.lakes})" "manitoba" NA NA NA 11
+"114" "data analysis \& commentary! levels of Lake Huron ({\tt LakeHuron}, {\itshape datasets})" "levels" "LakeHuron" NA NA 11
+"115" "data analysis \& commentary! maths achievement scores ({\tt MathAchieve}, {\itshape MEMSS})" "MathAchieve" NA NA NA 11
+"116" "data analysis \& commentary! measles, deaths in London ({\tt measles})" "measles" NA NA NA 11
+"117" "data analysis \& commentary! milk sweetness by additive ({\tt milk})" "milk" NA NA NA 11
+"118" "data analysis \& commentary! model cars ({\tt modelcars})" "model car" NA NA NA 11
+"119" "data analysis \& commentary! mortality, female heart attacks ({\tt mifem})" "mortality" "mifem" NA NA 11
+"120" "data analysis \& commentary! moths, occurrence ({\tt moths})" "moths" NA NA NA 11
+"121" "data analysis \& commentary! oil platform escape times ({\tt escape}, {\itshape DAAG})" "escape" "oil" NA NA 11
+"122" "data analysis \& commentary! ozone levels (Antarctic), 1956-2000 ({\tt ozone})" "ozone" NA NA NA 11
+"123" "data analysis \& commentary! plant architecture \& leafshape ({\tt leafshape})" "leafshape" NA NA NA 11
+"124" "data analysis \& commentary! population growth! Australian states ({\tt austpop})" "austpop" NA NA NA 11
+"125" "data analysis \& commentary! possums, morphometric data ({\tt possum})" "possum" "morphometric" NA NA 11
+"126" "data analysis \& commentary! pressure of mercury vapour, vs temp ({\tt pressure}, {\itshape datasets})" "pressure" NA NA NA 11
+"127" "data analysis \& commentary! primate body \& brain weights ({\tt primates}) " "primates" NA NA NA 11
+"128" "data analysis \& commentary! rare plants \& habitat type ({\tt rareplants})" "rareplants" "species" NA NA 11
+"129" "data analysis \& commentary! rice variety 2-factor expt ({\tt rice})" "rice" "wild" NA NA 11
+"130" "data analysis \& commentary! road accident mortality in US ({\tt nassCDS})" "airbags" NA NA NA 11
+"131" "data analysis \& commentary! science, school survey ({\tt science})" "science" "survey" NA NA 11
+"132" "data analysis \& commentary! seal growth (cross-sectional data) ({\tt cfseal})" "seals" "trawl" NA NA 11
+"133" "data analysis \& commentary! selfed vs crossed plants ({\tt mignonette}, Darwin's data)" "crossed" "plants" NA NA 11
+"134" "data analysis \& commentary! skull growth in children ({\tt Orthodont}, {\itshape MEMSS})" "Orthodont" NA NA NA 11
+"135" "data analysis \& commentary! social support student survey ({\tt socsupport})" "socsupport" NA NA NA 11
+"137" "data analysis \& commentary! space shuttle damage ({\tt orings})" "orings" "challenger" NA NA 11
+"138" "data analysis \& commentary! sugar weight, wild type vs GM plants ({\tt sugar})" "sugar" "contrasts" NA NA 11
+"139" "data analysis \& commentary! thickness of geological substratum, vs distance ({\tt geophones})" "geophones" NA NA NA 11
+"140" "data analysis \& commentary! tinting of car windows ({\tt tinting})" "tinting" "windows" NA NA 11
+"141" "data analysis \& commentary! tomato yield vs salinity ({tomatoes}, {\itshape DAAG}) " "salinity" "electrical" NA NA 11
+"142" "data analysis \& commentary! track \& road record times ({worldRecords})" "worldRecords" NA NA NA 11
+"143" "data analysis \& commentary! tree dimensions \& biomass ({\tt rainforest})" "rainforest" NA NA NA 11
+"144" "data analysis \& commentary! UCB admissions, by sex \& dept ({\tt UCBAdmissions}, datasets)" "UCBAdmissions" NA NA NA 11
+"145" "data analysis \& commentary! wage comparison, 19th C UK cottonworkers ({\tt cottonworker})" "cottonworkers" NA NA NA 11
+"146" "data analysis \& commentary! wages, UK 19$^{th}$ C cotton workers ({\tt cottonworker}, {\tt wages1833})" "wages" "cotton" "cottonworkers" NA 11
+"147" "data frame" "zzzz" NA NA NA 11
+"148" "data frame! as database" "data frame" "database" NA NA 11
+"149" "data frame! as list" "data frame" "list" NA NA 11
+"150" "data frame! attach \& detach" "data frame" "attach" NA NA 11
+"151" "data frame! column \& row names" "data frame" "dimnames" NA NA 11
+"152" "data frame! convert to/from tables or matrices" "data frame" "as.data.frame.table()" NA NA 11
+"153" "data frame! joining (cbind, rbind)" "data frame" "cbind" NA NA 11
+"154" "data frame! merging" "data frame" "merge" NA NA 11
+"155" "data frame! omit rows with NAs" "data frame" "na.omit" NA NA 11
+"156" "data frame! reshape" "data frame" "reshape" "stack" NA 11
+"157" "data frame! split to list" "data frame" "split" NA NA 11
+"158" "data frame! transpose" "frame" "transposes" NA NA 11
+"159" "data frame! writing" "data frame" "output" NA NA 11
+"160" "data mining" "data mining" NA NA NA 11
+"161" "data! database connection" "database" "connections" NA NA 11
+"162" "data! input" "data input" NA NA NA 11
+"163" "data! input! comment character" "input" "comment" NA NA 11
+"164" "data! input! tracking errors" "data input" "tracking errors" NA NA 11
+"165" "data! management strategies" "data" "management" NA NA 11
+"166" "data! measurement issues" "data" "measurement" NA NA 11
+"167" "data! output" "data output" NA NA NA 11
+"168" "data! summary" "data summary" NA NA NA 11
+"169" "data!patterned" "data" "patterned" NA NA 11
+"170" "dates" "dates" "as.date" NA NA 11
+"171" "degrees of freedom" "degrees" "freedom" NA NA 11
+"172" "density! estimate" "density" "estimate" NA NA 11
+"173" "density! estimate! plot, {\itshape} plot" "zzzz" NA NA NA 11
+"174" "designed experiment" "design" "experiment" NA NA 11
+"175" "deviance| see {model}" "zzzz" NA NA NA 11
+"176" "discriminant analysis! linear" "discriminant" "lda" NA NA 11
+"177" "distance measure" "distance measure" NA NA NA 11
+"178" "distance measure! binary data" "distance measure" "binary data" NA NA 11
+"179" "distribution! $t$-distribution" "distribution" "t-distribution" NA NA 11
+"180" "distribution! $t$-distribution! degrees of freedom" "distribution" "t-distribution" NA NA 11
+"180a" "distribution! betabinomial" "distribution" "betabinomial" NA NA 11
+"181" "distribution! binomial" "distribution" "binomial" NA NA 11
+"182" "distribution! chi-squared" "distribution" "chi-squared" NA NA 11
+"183" "distribution! cumulative probability" "distribution" "cumulative" NA NA 11
+"184" "distribution! density" "distribution" "density" NA NA 11
+"185" "distribution! exponential" "distribution" "exponential" NA NA 11
+"186" "distribution! heavy-tailed" "distribution" "heavy-tailed" NA NA 11
+"187" "distribution! normal" "distribution" "normal" NA NA 11
+"188" "distribution! percentile" "distribution" "percentile" NA NA 11
+"189" "distribution! Poisson" "distribution" "poisson" NA NA 11
+"190" "distribution! quantile" "distribution" "quantile" NA NA 11
+"191" "distribution! sampling distribution" "sampling distribution" NA NA NA 11
+"192" "distribution! sampling distribution! $t$-statistic" "t-distribution" "sampling" NA NA 11
+"193" "distribution! sampling distribution! bootstrap estimate" "sampling distribution" "bootstrap" NA NA 11
+"194" "distribution! sampling distribution! median" "sampling distribution" "median" NA NA 11
+"195" "distribution! simulation" "distribution" "simulation" NA NA 11
+"196" "distribution! skew" "distribution" "skew" NA NA 11
+"197" "distribution! uniform" "distribution" "uniform" NA NA 11
+"198" "document preparation! Sweave" "Sweave" NA NA NA 11
+"199" "exploratory data analysis (EDA)" "exploratory data analysis" NA "eda" NA 11
+"200" "expression! evaluate" "expression" "evaluate" NA NA 11
+"201" "expression! print on graph" "expression" "plotmath" NA NA 11
+"202" "factor" "factor" "levels" NA NA 11
+"203" "factor! coding \& contrasts" "factor" "coding" NA NA 11
+"204" "factor! columns in model matrix" "model.matrix" "column" "model.matrix" "factor" 11
+"205" "factor! contrasts" "factor" "contrasts" NA NA 11
+"206" "factor! in model formula" "factor" "model formula" NA NA 11
+"207" "factor! levels" "factor levels" NA NA NA 11
+"208" "factor! levels! order " "factor levels" "order" NA NA 11
+"209" "factor! ordered" "factor" "ordered()" NA NA 11
+"210" "factor! reordering levels" "factor" "relevel()" NA NA 11
+"211" "factor! splitting by levels" "factor" "splitting" NA NA 11
+"212" "file names" "file" "name" NA NA 11
+"213" "fixed effects| see {multi-level model}" "zzzz" NA NA NA 11
+"214" "function" "function" "create" NA NA 11
+"215" "function! anonymous" "function" "anonymous" NA NA 11
+"216" "function! argument" "function" "function arguments" NA NA 11
+"217" "function! argument! abbreviated" "argument" "abbreviated" NA NA 11
+"218" "function! argument! lazy evaluation" "argument" "lazy evaluation" NA NA 11
+"219" "function! argument! pass via list" "list" "function arguments" NA NA 11
+"220" "function! argument! the \texttt{\ldots} argument" "function" "named arguments" NA NA 11
+"221" "function! common useful functions" "function" "common" NA NA 11
+"222" "function! environment" "function" "environment" NA NA 11
+"223" "function! environment! evaluation frame" "environment" "frame" NA NA 11
+"224" "function! generic" "function" "generic" NA NA 11
+"225" "function! issues for writing \& use" "function" "issues" NA NA 11
+"226" "function! return value" "function" "return" NA NA 11
+"227" "function! utility functions" "function" "utility" NA NA 11
+"424" "generalized additive model" "regression" "generalized additive" NA NA 11
+"227a" "generalized linear model| seealso{regression}" "zzzz" NA NA NA 11
+"440" "generalized linear model! design" "generalized linear" "design" "glm" NA 11
+"441" "generalized linear model! deviance" "generalized linear" "deviance" "glm" NA 11
+"442" "generalized linear model! deviance! deviance residuals" "generalized linear" "deviance" "glm" NA 11
+"443" "generalized linear model! dispersion" "generalized linear" "dispersion" "glm" NA 11
+"444" "generalized linear model! family" "generalized linear" "family" "glm" NA 11
+"445" "generalized linear model! family! betabinomial" "generalized linear" "family" "glm" NA 11
+"445a" "generalized linear model! family! binomial" "generalized linear" "family" "glm" NA 11
+"445b" "generalized linear model! family! negative binomial" "negative binomial" "family" NA NA 11
+"446" "generalized linear model! family! poisson" "generalized linear" "family" "glm" NA 11
+"447" "generalized linear model! family! quasibinomial" "generalized linear" "family" "glm" NA 11
+"448" "generalized linear model! family! quasipoisson" "generalized linear" "family" "glm" NA 11
+"449" "generalized linear model! leverage" "generalized linear" "leverage" "glm" NA 11
+"450" "generalized linear model! linear predictor" "generalized linear" "linear" "glm" NA 11
+"451" "generalized linear model! link function" "generalized linear" "link" "glm" NA 11
+"452" "generalized linear model! logistic regression" "generalized linear" "logistic" "glm" NA 11
+"453" "generalized linear model! predicted values,! linear predictor" "generalized linear" "predicted" "glm" NA 11
+"454" "generalized linear model! predicted values,! response" "generalized linear" "predicted" "glm" NA 11
+"455" "generalized linear model! residuals! deviance" "generalized linear" "residuals" "deviance" NA 11
+"456" "generalized linear model! residuals! Pearson" "generalized linear" "residuals" "Pearson" NA 11
+"457" "generalized linear model! residuals! working" "generalized linear" "residuals" "working" NA 11
+"458" "generalized linear model! SEs \& Wald ($z-$) statistics for coefficients" "generalized linear" "ses" "glm" NA 11
+"459" "generalized linear model! SEs \& Wald ($z-$) statistics for coefficients! Hauck-Donner effect" "generalized linear" "ses" "glm" NA 11
+"228" "generalized linear mixed model" "glmm" NA NA NA 11
+"229" "ggplot2 graphics" "ggplot2" NA NA NA 11
+"230" "ggplot2 graphics! use of quickplot()" "quickplot()" NA NA NA 11
+"231" "graph!{\itshape see} plot" "zzzz" NA NA NA 11
+"370" "graphics! aspect ratio" "plot" "aspect" NA NA 11
+"373" "graphics! box-\&-whisker! outlier criterion" "outlier" "boxplot" NA NA 11
+"375" "graphics! contour" "plot" "contour" NA NA 11
+"376" "graphics! dates as axis labels" "axis" "dates" NA NA 11
+"377" "graphics! expression" "plot" "plotmath" NA NA 11
+"378" "graphics! font family" "font family" NA NA NA 11
+"379" "graphics! font family! face" "font family" "face" NA NA 11
+"380" "graphics! histogram" "plot" "histogram" NA NA 11
+"387" "graphics! quantile-quantile (QQ)" "quantile-quantile" NA NA NA 11
+"389" "graphics! simulated data" "plot" "simulated" NA NA 11
+"393" "graphics! transformation of scales" "plot" "transformation" NA NA 11
+"232" "graphics| seealso{ggplot2, larttice}" "zzzz" NA NA NA 11
+"234" "graphics! devices" "graphics" "device" NA NA 11
+"235" "graphics! good practice" "graphs" "good" NA NA 11
+"371" "graphics (base graphics)! axes" "plot" "axes" NA NA 11
+"381" "graphics (base graphics)! identifying points" "plot" "identifying" NA NA 11
+"382" "graphics (base graphics)! interaction plot" "plot" "interaction" NA NA 11
+"383" "graphics (base graphics)! legend" "plot" "legend" NA NA 11
+"384" "graphics (base graphics)! mosaic plot (multi-way tables)" "plot" "mosaic" NA NA 11
+"385" "graphics (base graphics)! normal probability" "plot" "normal probability" NA NA 11
+"386" "graphics (base graphics)! panel function" "panel function" NA NA NA 11
+"388" "graphics (base graphics)! shaded regions" "plot" "shaded" NA NA 11
+"390" "graphics (base graphics)! size of points \& text" "plot" "cex" NA NA 11
+"391" "graphics (base graphics)! stem-\&-leaf" "plot" "stem-and-leaf" NA NA 11
+"237" "image file| see {R session}" "zzzz" NA NA NA 11
+"238" "inference" "inference" NA NA NA 11
+"239" "inference! 1 \& 2-sample means" "inference" "mean" NA NA 11
+"240" "inference! Bayesian" "inference" "bayesian" NA NA 11
+"241" "inference! Bayesian! MCMC simulation" "Bayesian" "MCMC" NA NA 11
+"242" "inference! bootstrap methods| see {resampling methods}" "zzzz" NA NA NA 11
+"243" "inference! confidence interval| see {confidence interval}" "zzzz" NA NA NA 11
+"244" "inference! confidence intervals vs hypothesis tests" "confidence interval" "hypothesis" NA NA 11
+"245" "inference! degrees of freedom issues" "inference" "degrees of freedom" NA NA 11
+"246" "inference! hypothesis testing" "inference" "hypothesis" NA NA 11
+"247" "inference! likelihood ratio test" "likelihood" "ratio" NA NA 11
+"248" "inference! maximum likelihood" "inference" "maximum likelihood" NA NA 11
+"249" "inference! multiple comparison" "multiple" "comparison" NA NA 11
+"250" "inference! multiple comparison! Tukey's HSD" "HSD" NA NA NA 11
+"251" "information criteria! Akaike Information Criterion (AIC)" "Akaike" NA "AIC" NA 11
+"252" "information criteria! Bayesian Information Criterion (BIC)" "Bayesian Information Criterion" NA "BIC" NA 11
+"253" "information criteria! Cp statistic (Mallows)" "Mallows" NA NA NA 11
+"254" "interaction plot" "interaction.plot" NA NA NA 11
+"255" "lattice graphics" "Lattice" NA "lattice" NA 11
+"256" "lattice graphics! add smooth curve" "lattice" "smooth" NA NA 11
+"257" "lattice graphics! adding to plots" "lattice" "layer" NA NA 11
+"258" "lattice graphics! box plot" "lattice" "bwplot" NA NA 11
+"259" "lattice graphics! built on grid package" "lattice" "grid" NA NA 11
+"260" "lattice graphics! conditioning factor or variable" "lattice" "conditioning" NA NA 11
+"261" "lattice graphics! dotplot" "dotplot()" NA NA NA 11
+"262" "lattice graphics! interaction with plots" "lattice" "interaction" NA NA 11
+"263" "lattice graphics! keys \& legends" "lattice" "key" "lattice" "legend" 11
+"264" "lattice graphics! layout of panels" "lattice" "layout" NA NA 11
+"265" "lattice graphics! panel function" "lattice" "panel function" NA NA 11
+"266" "lattice graphics! par.settings" "lattice" "parameter settings" NA NA 11
+"267" "lattice graphics! point \& text size" "lattice" "point" NA NA 11
+"268" "lattice graphics! printing from user functions" "lattice" "printing" NA NA 11
+"269" "lattice graphics! scaling of axes" "lattice" "scale" NA NA 11
+"270" "lattice graphics! strip plot" "lattice" "stripplot" NA NA 11
+"271" "library" "library" "command" NA NA 11
+"272" "library| seealso{package}" "zzzz" NA NA NA 11
+"460" "linear model (lm)" "linear model" NA NA NA 11
+"461" "linear model (lm)! anova $F$-test" "linear model" "anova" NA NA 11
+"462" "linear model (lm)! anova table" "linear model" "anova" NA NA 11
+"463" "linear model (lm)! assumptions" "linear model" "assumptions" NA NA 11
+"464" "linear model (lm)! bootstrap| see {resampling methods}" "zzzz" NA NA NA 11
+"465" "linear model (lm)! check for linearity" "linear model" "check" NA NA 11
+"471" "linear model (lm)! confusion between $x$ \& $y$" "regression" "confusion" NA NA 11
+"472" "linear model (lm)! Cook's distance" "distance" "cook's" NA NA 11
+"473" "linear model (lm)! cross-validation| see {resampling methods}" "zzzz" NA NA NA 11
+"474" "linear model (lm)! design" "linear model" "design" NA NA 11
+"475" "linear model (lm)! diagnostic plots! residuals vs leverage" "linear model" "diagnostic" NA NA 11
+"476" "linear model (lm)! diagnostics" "linear model" "diagnostics" NA NA 11
+"477" "linear model (lm)! errors in $x$| see {regression}" "zzzz" NA NA NA 11
+"478" "linear model (lm)! explanatory variables! relationships" "linear model" "explanatory" NA NA 11
+"479" "linear model (lm)! fitted values| see {predicted values}" "zzzz" NA NA NA 11
+"480" "linear model (lm)! hat matrix" "linear model" "hat" NA NA 11
+"481" "linear model (lm)! heterogeneity of variance" "heterogeneity" "variance" NA NA 11
+"483" "linear model (lm)! influence \& leverage" "linear model" "leverage" NA NA 11
+"484" "linear model (lm)! model formula" "lm" "model formulae" NA "model formula" 11
+"485" "linear model (lm)! model matrix" "linear model" "model matrix" NA NA 11
+"486" "linear model (lm)! model matrix! one term; several columns" "model matrix" "term" NA NA 11
+"487" "linear model (lm)! modeling non-linear responses" "non-linear" NA NA NA 11
+"488" "linear model (lm)! multicollinearity" "multicollinearity" NA NA NA 11
+"489" "linear model (lm)! multicollinearity! remedies" "remedies" "multicollinearity" NA NA 11
+"490" "linear model (lm)! multicollinearity! variance inflation factor (VIF)" "VIF" NA NA NA 11
+"491" "linear model (lm)! omission of intercept" "intercept" "omission" NA NA 11
+"492" "linear model (lm)! on principal component scores" "regression" "principal components" NA NA 11
+"493" "linear model (lm)! on propensity scores" "propensity scores" NA NA NA 11
+"495" "linear model (lm)! outliers| see {regression, outliers}" "zzzz" NA NA NA 11
+"496" "linear model (lm)! predicted values! confidence intervals" "predicted" "confidence interval" NA NA 11
+"497" "linear model (lm)! predicted values! validity of SE estimates" "linear model" "predicted" NA NA 11
+"498" "linear model (lm)! prediction interval (new $y$-value)" "linear model" "prediction" NA NA 11
+"499" "linear model (lm)! R$^2$ \& adjusted R$^2$" "variance" "explained" NA NA 11
+"500" "linear model (lm)! regression spline| see {regression}" "zzzz" NA NA NA 11
+"501" "linear model (lm)! residual degrees of freedom" "residual degrees" NA NA NA 11
+"502" "linear model (lm)! residual SE! degrees of freedom" "linear model" "residual" NA NA 11
+"503" "linear model (lm)! residuals| see {regression}" "zzzz" NA NA NA 11
+"504" "linear model (lm)! robust \& resistant methods| see {regression}" "zzzz" NA NA NA 11
+"505" "linear model (lm)! shrinkage methods" "regression" "shrinkage" NA NA 11
+"506" "linear model (lm)! straight line model" "linear model" "straight" NA NA 11
+"507" "linear model (lm)! straight line model! fitted values" "linear model" "straight" NA NA 11
+"508" "linear model (lm)! straight line model! residual" "linear model" "straight" NA NA 11
+"510" "linear model (lm)! strategies for fitting models| see {regression}" "zzzz" NA NA NA 11
+"511" "linear model (lm)! term plots" "termplot" NA NA NA 11
+"512" "linear model (lm)! terms" "linear model" "terms" NA NA 11
+"513" "linear model (lm)! variable selection" "variable selection" NA NA NA 11
+"515" "linear model (lm)! variable selection! realistic SEs" "regression" "variable selection" NA NA 11
+"516" "linear model (lm)! variable selection! simulation" "regression" "variable selection" NA NA 11
+"517" "linear model (lm)! variance inflation factor (VIF)" "vif" NA NA NA 11
+"518" "linear model (lm)! vs qualitative comparison" "linear model" "vs" NA NA 11
+"519" "linear model (lm)! x on y vs y on x" "two regression lines" NA NA NA 11
+"523" "linear model (lm)!errors in $x$" "errors in variables" NA NA NA 11
+"273" "list" "list" "recursive" NA NA 11
+"274" "list! data frame as list" "list" "dual identity" NA NA 11
+"275" "list, concatenate (join)" "join lists" NA NA NA 11
+"276" "Markov chain" "markov chain" NA NA NA 11
+"277" "matrix" "matrices" NA NA NA 11
+"278" "matrix! arithmetic" "matrix" "arithmetic" NA NA 11
+"279" "matrix! conversion to/from data frame" "matrix" "conversion" NA NA 11
+"280" "matrix! conversion to/from vector" "matrix" "vector" NA NA 11
+"281" "matrix! extraction of submatrix" "submatrices" NA NA NA 11
+"282" "matrix! formed as outer product" "outer()" NA NA NA 11
+"283" "matrix! joining (cbind, rbind)" "matrix" "cbind" NA NA 11
+"284" "matrix! names of rows \& columns" "matrix" "dimnames()" NA NA 11
+"285" "matrix! number of rows \& columns" "matrix" "dimension" NA NA 11
+"286" "matrix! storage in memory" "matrix" "subscripts" NA NA 11
+"287" "matrix! subscripts" "matrix" "storage" NA NA 11
+"288" "matrix! transpose" "matrix" "transpose" NA NA 11
+"289" "mean! trimmed" "mean" "trimmed" NA NA 11
+"290" "methods \& classes!{\itshape see} classes \& methods" "zzzzzzz" NA NA NA 11
+"291" "missing values" "missing values" NA NA NA 11
+"292" "missing values! count \& identify" "missing values" "count" NA NA 11
+"293" "missing values! remove" "missing values" "remove" NA NA 11
+"294" "model! allometric growth" "model" "allometric" NA NA 11
+"295" "model! classification| see {discriminant analysis}" "zzzz" NA NA NA 11
+"296" "model! discriminant| see {discriminant analysis}" "zzzz" NA NA NA 11
+"297" "model! generalized linear model| see {regression, generalized linear model}" "zzzz" NA NA NA 11
+"298" "model! linear model| see {regression, linear model}" "zzzz" NA NA NA 11
+"299" "model! model formula" "model formulae" NA "model formula" NA 11
+"300" "model! model object" "model object" NA NA NA 11
+"301" "model! model object! extractor function" "model" "extractor" NA NA 11
+"302" "model! multinomial (multinom())" "nnet" "multinom()" NA NA 11
+"303" "model! parameters" "model" "parameters" NA NA 11
+"304" "model! signal \& noise" "signal" "noise" NA NA 11
+"305" "model! statistical vs deterministic" "statistical" "deterministic" NA NA 11
+"306" "model! survival analysis| see {survival analysis}" "zzzz" NA NA NA 11
+"307" "model! time series| see {time series}" "zzzz" NA NA NA 11
+"308" "multi-dimensional scaling (MDS)| see {ordination}" "zzzz" NA NA NA 11
+"309" "multilevel model" "Multilevel" NA "multilevel" NA 11
+"310" "multilevel model! fit by restricted maximum likelihood (REML)" "restricted" "REML" NA NA 10
+"311" "multilevel model! random coefficients" "random coefficients" NA NA NA 10
+"312" "multilevel model! repeated measures" "repeated measures" NA NA NA 10
+"313" "multilevel model! variance components" "multilevel" "variance component" NA NA 11
+"314" "multivariate analysis" "multivariate" "analysis" NA NA 11
+"315" "nonlinear model (nls)" "nls" NA NA NA 11
+"316" "nonsense" "nonsense" NA NA NA 11
+"317" "object! saving" "object" "save" NA NA 11
+"318" "operator" "operator" NA NA NA 11
+"319" "operator! arithmetic" "operator" "functions" "arithmetic operators" NA 11
+"320" "operator! assignment" "operator" "assignment" NA NA 11
+"321" "operator! logical" "logical operators" NA NA NA 11
+"321a" "operator! relational" "relational operators" NA NA NA 11
+"322" "ordination! distance measure| see {distance measure}" "zzzz" NA NA NA 11
+"323" "ordination! multi-dimensional scaling (MDS)" "multi-dimensional scaling" NA "MDS" NA 11
+"324" "ordination! principal components analysis (PCA)" "principal components" NA "PCA" NA 11
+"325" "ordination! principal components analysis (PCA)! loadings" "principal components" "loadings" "PCA" "loadings" 11
+"326" "ordination! principal components analysis (PCA)! PCA scores in regression" "principal components" "scores" "PCA" "scores" 11
+"327" "package! base" "package" "base" "base::" NA 11
+"328" "package! boot" "package" "boot" "boot::" NA 11
+"329" "package! car" "package" "car" "car::" NA 11
+"330" "package! cluster" "package" "cluster" "cluster::" NA 11
+"331" "package! DAAG" "package" "DAAG" "DAAG::" NA 11
+"332" "package! datasets" "package" "datasets" NA NA 11
+"333" "package! Devore6, Devore7" "package" "devore6" NA NA 11
+"334" "package! dichromat" "package" "dichromat" "dichromat::" NA 11
+"335" "package! dr" "package" "dr" NA NA 11
+"336" "package! foreign" "package" "foreign" "foreign::" NA 11
+"337" "package! fseries" "package" "fseries" NA NA 11
+"338" "package! gam" "package" "gam" NA NA 11
+"339" "package! ggplot2" "package" "ggplot2" "ggplot2::" NA 11
+"340" "package! golubEsets" "package" "golubEsets" NA NA 11
+"341" "package! grid" "package" "grid" "grid::" NA 11
+"342" "package! hddplot" "package" "hddplot" NA NA 11
+"343" "package! KernSmooth" "package" "KernSmooth" "KernSmooth::" NA 11
+"344" "package! lars" "package" "lars" NA NA 11
+"345" "package! lazy data mechanism" "package" "lazy data" NA NA 11
+"346" "package! leaps" "package" "leaps" "leaps::" NA 11
+"347" "package! lme4" "package" "lme4" "lme4::" NA 11
+"349" "package! lqs" "package" "lqs" "lqs::" NA 11
+"350" "package! MASS" "package" "MASS" "MASS::" NA 11
+"351" "package! MEMSS" "package" "MEMSS" "MEMSS::" NA 11
+"352" "package! mgcv" "package" "mgcv" "mgcv::" NA 11
+"353" "package! MonoPoly" "package" "MonoPoly" "MonoPoly::" NA 11
+"354" "package! muhaz" "package" "muhaz" "muhaz::" NA 11
+"355" "package! multtest" "package" "multtest" "multtest::" NA 11
+"356" "package! nlme" "package" "nlme" "nlme::" NA 11
+"357" "package! randomForest" "package" "randomForest" "randomForest::" NA 11
+"358" "package! R Commander (Rcmdr)" "Rcmdr" NA NA NA 11
+"359" "package! RColorBrewer" "package" "RColorBrewer" "RColorBrewer::" NA 11
+"360" "package! RSQLite, RMySQL, ROracle, DBI" "RMySQL" NA NA NA 11
+"361" "package! rpart" "package" "rpart" "rpart::" NA 11
+"362" "package! stats" "package" "stats" NA NA 11
+"363" "package! strucchange" "package" "strucchange" NA NA 11
+"364" "package! survival" "package" "survival" "survival::" NA 11
+"365" "package! tseries" "package" "tseries" "tseries::" NA 11
+"366" "package! xtable" "package" "xtable" "xtable::" NA 11
+"368" "plot| see {graphics}" "zzzz" NA NA NA 11
+"394" "posterior density or probability| see {Bayesian methods}" "zzzz" NA NA NA 11
+"395" "predictive accuracy| see {regression, generalized linear model, linear model (lm), model, survival analysis}" "zzzz" NA NA NA 11
+"396" "principal components analysis (PCA)| see {ordination}" "zzzz" NA NA NA 11
+"397" "printing" "printing" NA NA NA 11
+"398" "printing! digits" "print" "digits" "signif(" NA 11
+"399" "prior density or probability| see {Bayesian methods}" "zzzz" NA NA NA 11
+"400" "propensity score" "propensity" NA NA NA 11
+"401" "questionnaires \& surveys" "questionnaires" NA NA NA 11
+"402" "quitting a session" "quitting" NA NA NA 11
+"403" "R session! image file" "image file" NA NA NA 11
+"404" "R session! quitting" "session" "quitting" NA NA 11
+"405" "R session! search list" "session" "search list" NA NA 11
+"406" "R session! search list! database" "search list" NA NA NA 11
+"407" "R session! working directory" "working directory" NA NA NA 11
+"408" "R session! working directory! changing" "working directory" "changing" NA NA 11
+"409" "R session! workspace" "workspace" NA NA NA 11
+"410" "R session! workspace! image" "workspace" "image" NA NA 11
+"411" "R session! workspace! management" "workspace" "management" NA NA 11
+"412" "random! coefficients" "random coefficients" NA NA NA 11
+"413" "random! numbers" "random numbers" NA NA NA 11
+"414" "random! numbers! seed" "random numbers" "seed" NA NA 11
+"415" "random! sample" "random sample" NA NA NA 11
+"416" "random! sample! of permutations" "random" "permutation" NA NA 11
+"417" "regression| seealso{discriminant analysis, generalized additive model, tree-based methods, survival analysis, time series}" "zzzz" NA NA NA 11
+"418" "regression! AIC (Akaike), BIC (Bayesian), Cp (Mallows)| see {information criteria}" "zzzz" "akaike information criterion" NA NA 11
+"419" "regression! bootstrap| see {resampling methods}" "zzzz" NA NA NA 11
+"466" "regression! coefficients! confidence interval| see {confidence interval}" "zzzz" NA NA NA 11
+"467" "regression! coefficients! correlation between" "correlation" "coefficients" NA NA 11
+"468" "regression! coefficients! interpretation" "interpretation" "coefficients" NA NA 11
+"469" "regression! coefficients! multiple testing issue" "multiple testing" "coefficients" NA NA 11
+"470" "regression! coefficients! standard error" "standard error" "coefficients" NA NA 11
+"420" "regression! comparison of models" "model" "comparison" NA NA 11
+"421" "regression! cross-validation| see {resampling methods}" "zzzz" NA NA NA 11
+"422" "regression! extrapolation" "extrapolation" NA NA NA 11
+"423" "regression! functional relationship" "functional relationship" NA NA NA 11
+"423a" "regression! generalized additive model| see {generalized additive model}" "zzzz" NA NA NA 11
+"439" "regression! generalized linear model| see {generalized linear model}" "zzzz" NA NA NA 11
+"426" "regression! linear model| see {linear model}" "zzzz" NA NA NA 11
+"427" "regression! loglinear" "loglinear" NA NA NA 11
+"428" "regression! non-linear model" "regression" "non-linear" NA NA 11
+"429" "regression! observational data" "regression" "observational" NA NA 11
+"429a" "regression! outlier" "regression" "outlier" NA NA 11
+"430" "regression! polynomial" "regression" "polynomial" NA NA 11
+"431" "regression! predictive accuracy! bootstrap" "bootstrap" "predictive accuracy" NA NA 11
+"432" "regression! predictive accuracy! cross-validation" "linear model" "cross-validation" NA NA 11
+"433" "regression! predictive accuracy! validity of bootstrap estimate" "predictive" "bootstrap" NA NA 11
+"435" "regression! residuals! normal probability plots" "linear model" "residuals" NA NA 11
+"435a" "regression! robust" "robust regression" NA NA NA 11
+"436" "regression! spline smoother" "regression spline" NA NA NA 11
+"437" "regression! spline smoother| seealso{Generalized Additive Model}" "zzzz" NA NA NA 11
+"509" "regression! strategies for fitting models" "regression" "strategy for fitting" NA NA 11
+"525" "regression, linear model (lm)!missing $x$s" "regression" "missing values" NA NA 11
+"525a" "regression, quantile" "quantile" "regression" NA NA 11
+"526" "regression, resistant" "regression" "resistant" NA NA 11
+"528" "replication" "replication" NA NA NA 11
+"529" "resampling methods! bootstrap" "bootstrap" NA NA NA 11
+"530" "resampling methods! cross-validation" "cross-validation" NA NA NA 11
+"532" "resampling methods! permutation" "permutation" "distribution" NA NA 11
+"533" "resampling methods! simulation| see {simulation}" "zzzzzzz" NA NA NA 11
+"534" "rounding" "rounding" NA NA NA 11
+"535" "sampling! cluster sampling" "sampling" "cluster" NA NA 11
+"536" "sampling! with/without replacement" "sampling" "replacement" NA NA 11
+"537" "search list| see {R session}" "zzzz" NA NA NA 11
+"538" "selection bias" "selection bias" NA NA NA 11
+"540" "simulation" "simulation" NA NA NA 11
+"541" "smoother" "smoother" NA "smooth term" NA 11
+"542" "smoother! lowess" "smoother" "lowess" NA NA 11
+"543" "smoother!Generalized Additive Model" "smoother" "gam" "smooth term" NA 11
+"544" "spline" "spline" NA NA NA 11
+"545" "spline! knots" "spline" "knots" NA NA 11
+"546" "standard deviation" "standard deviation" NA NA NA 11
+"547" "standard deviation! {\itshape vs} inter-quartile range" "standard deviation" "inter-quartile" NA NA 11
+"548" "standard deviation! degrees of freedom" "standard deviation" "degrees" NA NA 11
+"549" "standard deviation! maximum likelihood estimate" "standard deviation" "likelihood" NA NA 11
+"550" "standard deviation! pooled" "standard deviation" "pooled" NA NA 11
+"551" "standard error (SE)" "standard error" NA "SE" NA 11
+"552" "standard error (SE)! binomial disrtribution! proportions" "standard error" "binomial" "SE" "binomial" 11
+"553" "standard error (SE)! difference of means (SED)" "standard deviation" "difference" "SED" NA 11
+"554" "standard error (SE)! of mean (SEM)" "standard error" "mean" "SEM" NA 11
+"555" "standard error (SE)! of median" "standard error" "median" NA NA 11
+"557" "standard error (SE)! of residual" "standard error" "residual" NA NA 11
+"558" "survival analysis" "survival analysis" NA NA NA 11
+"559" "survival analysis! censoring! non-informative" "informative" "censor" "" NA 11
+"560" "survival analysis! censoring! right" "survival" "censor" "" NA 11
+"561" "survival analysis! Cox proportional hazard" "survival" "Cox" NA NA 11
+"562" "survival analysis! data collection" "survival" "collection" NA NA 11
+"563" "survival analysis! frailty model" "survival" "frailty" NA NA 11
+"564" "survival analysis! hazard rate" "survival" "hazard" NA NA 11
+"566" "survival analysis! residuals! martingale" "residuals" "martingale" NA NA 11
+"567" "survival analysis! residuals! Schoenfeld" "residuals" "Schoenfeld" NA NA 11
+"568" "survival analysis! survival estimate" "survival" "estimate" NA NA 11
+"569" "survival analysis! tree-based" "survival" "tree-based" NA NA 11
+"570" "table! of frequencies" "table" "frequency" NA NA 11
+"571" "table! of frequencies! adding across tables (Simpson's paradox)" "table" "Simpson" NA "Yule" 11
+"572" "table! of frequencies! table formula" "table" "formula" NA NA 11
+"573" "test! 2-way table! chi-square statistic" "chi-squared" "two-way" NA NA 11
+"575" "test! 2-way table! Fisher exact" "exact" "Fisher" NA NA 11
+"576" "test! 2-way table! residuals from row/column independence model" "chi-squared" "two-way" NA NA 11
+"577" "test! 3-way table! Mantel-Haenzel" "Mantel" "Haenszel" NA NA 11
+"578" "test! 3-way table! Woolf" "woolf()" NA NA NA 11
+"579" "test! correlation" "test" "correlation" NA NA 11
+"580" "test! F-statistic" "test" "F-statistic" NA NA 11
+"581" "test! homogeneity of variance" "variance" "homogeneity" NA NA 11
+"582" "test! homogeneity of variance! Fligner-Killeen" "Fligner" "Killeen" NA NA 11
+"583" "test! likelihood ratio" "test" "likelihood ratio" NA NA 11
+"584" "test! logrank" "test" "log-rank" NA NA 11
+"585" "test! non-parametric" "test" "non-parametric" NA NA 11
+"586" "test! permutation! one- and two-sample" "test" "permutation" NA NA 11
+"587" "test! proportion(s)" "test" "proportion" NA NA 11
+"588" "test! sequential correlation" "test" "sequential" NA NA 11
+"589" "test! t-statistic! one-sample" "one-sample" "t-statistic" NA NA 11
+"590" "test! t-statistic! two-sample" "two-sample" "t-statistic" NA NA 11
+"591" "test! t-statistic! two-sample, unequal variances" "Welch" "t-statistic" NA NA 11
+"592" "test! type III" "main effects" "interactions" NA NA 11
+"593" "test! Wald" "test" "Wald" NA NA 11
+"594" "test! white noise (Ljung-Box)" "test" "Ljung" NA NA 11
+"595" "time series" "time series" NA NA NA 11
+"596" "time series! ARCH or GARCH model" "ARCH" "GARCH" NA NA 11
+"597" "time series! ARMA or ARIMA model" "ARMA" "ARIMA" NA NA 11
+"598" "time series! ARMA or ARIMA model! automated selection" "auto.arima" NA NA NA 11
+"599" "time series! autocorrelation" "time" "autocorrelation" NA NA 11
+"600" "time series! autoregressive (AR) model" "autoregressive" NA "ar" NA 11
+"601" "time series! Ljung-Box test (white noise)" "Ljung" NA NA NA 11
+"602" "time series! moving average (MA) model" "moving average" NA NA NA 11
+"603" "time series! partial autocorrelation function" "partial autocorrelation" NA NA NA 11
+"604" "time series! residuals" "time series" "residuals," NA NA 11
+"606" "transformation! count data! angular" "transformation" "angular" NA NA 11
+"607" "transformation! count data! complementary log-log" "transformation" "cloglog" NA NA 11
+"608" "transformation! count data! logit" "transformation" "logit" NA NA 11
+"609" "transformation! count data! probit" "transformation" "probit" NA NA 11
+"610" "transformation! count data! square root" "transformation" "square root" NA NA 11
+"611" "transformation! cube root" "transformation" "cube root" NA NA 11
+"612" "transformation! logarithmic" "transformation" "logarithmic" NA NA 11
+"613" "transformation! logit" "transformation" "logit" NA NA 11
+"614" "transformation! power! Box-Cox" "Box-Cox" NA NA NA 11
+"614a" "transformation! power! Yeo-Johnson" "Yeo-Johnson" NA NA NA 11
+"615" "transformation! use of" "transformation" "use" NA NA 11
+"616" "tree-based methods! random forests (randomForest)" "random" "forest" NA NA 11
+"617" "tree-based methods! rpart! classification" "tree" "classification" NA NA 11
+"618" "tree-based methods! rpart! cost-complexity (CP)" "tree" "cost-complexity" NA NA 11
+"619" "tree-based methods! rpart! error or impurity measures" "classification" "entropy" "gini" "deviance" 11
+"620" "tree-based methods! rpart! information on each split" "rpart" "output" NA NA 11
+"621" "tree-based methods! rpart! output" "rpart" "output" NA NA 11
+"622" "tree-based methods! rpart! predictive accuracy" "tree" "predictive accuracy" NA NA 11
+"623" "tree-based methods! rpart! pruning" "tree" "pruning" NA NA 11
+"624" "tree-based methods! rpart! regression" "tree" "regression" NA NA 11
+"625" "tree-based methods! rpart! splitting criterion" "criterion" "splitting" NA NA 11
+"626" "tree-based methods! rpart! splitting criterion, 1 SE rule" "SE" "splitting" NA NA 11
+"627" "tree-based methods! rpart! table of accuracies" "rpart" "printcp" NA NA 11
+"628" "tree-based methods! rpart! tree diagram" "rpart" "plot" NA NA 11
+"629" "variability! heterogeneity| see {model, homogeneity of variance}" "zzzz" NA NA NA 11
+"630" "vector! atomic" "vector" "atomic" NA NA 11
+"631" "vector! character" "vector" "character" NA NA 11
+"632" "vector! character! number of characters" "vector" "nchar" NA NA 11
+"633" "vector! character! splitting" "strsplit()" NA NA NA 11
+"634" "vector! complex" "vector" "complex" NA NA 11
+"635" "vector! concatenation" "vector" "concatenation" NA NA 11
+"636" "vector! logical" "vector" "logical" NA NA 11
+"637" "vector! numeric" "vector" "numeric" NA NA 11
+"638" "vector! recursive (list)" "vector" "list" NA NA 11
+"639" "vector! subset" "vector" "subset" NA NA 11
+"640" "working directory| see {R session}" "zzzz" NA NA NA 11
+"641" "workspace| see {R session}" "zzzz" NA NA NA 11

@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 \marginnote{For an overview of what is available under the R
@@ -43,10 +46,10 @@ state boundaries.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/13-oz-sites-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/10-oz-sites-1} }
 
 \end{Schunk}
-\vspace*{-21pt}
+\vspace*{3pt}
 
 \caption{Sites at which possums were collected.\label{fig:possumsites}}
 \end{marginfigure}
@@ -87,6 +90,8 @@ access and download Google map data.
 \begin{Schunk}
 \begin{Sinput}
 library(dismo, quietly=TRUE)
+\end{Sinput}
+\begin{Sinput}
   ## The raster and sp packages are dependencies
 \end{Sinput}
 \end{Schunk}
@@ -235,6 +240,8 @@ R package \txtt{rgdal}:
 \begin{Schunk}
 \begin{Sinput}
 library(rgdal)
+\end{Sinput}
+\begin{Sinput}
 logofile <- system.file("pictures/Rlogo.jpg",
                         package = "rgdal")[1]
 rlogo <- readGDAL(logofile, silent=TRUE)
@@ -288,7 +295,7 @@ Another possibility is to use the function \texttt{spplot()}
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/13-spplot-col3-1} }
+\centerline{\includegraphics[width=0.8\textwidth]{figs/10-spplot-col3-1} }
 
 \end{Schunk}
 \caption{Red, green and blue layers from the R logo image.\label{fig:rlogo3}}
@@ -354,10 +361,10 @@ spplot(SP27GTIF)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/13-meuse-bubble-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/10-meuse-bubble-1} }
 
 \end{Schunk}
-\vspace*{-15pt}
+\vspace*{3pt}
  \caption{Bubble plot for \margtt{zinc},
 with area of bubbles proportional to concentration.
 River Meuse boundaries are in gray.\label{fig:ZnRiv}}
@@ -530,7 +537,8 @@ url <- paste0("http://www.abs.gov.au/ausstats/subscriber.nsf/",
   "log?openagent&1259030001_sr11aaust_shape.zip&1259.0.30.001",
   "&Data%20Cubes&B8003880BC09FA5BCA2578CC00124E25&0",
   "&July%202011&14.07.2011&Latest")
-download.file(url, destfile="../downloads/1259030001_sr11aaust_shape.zip")
+downloadTo <- "../downloads/1259030001_sr11aaust_shape.zip"
+download.file(url, destfile=downloadTo)
 \end{Sinput}
 \end{Schunk}
 \noindent
@@ -572,7 +580,7 @@ auSRS <- readOGR("../downloads/au-srs", layer="SR11aAust")
 \end{Sinput}
 \begin{Soutput}
 OGR data source with driver: ESRI Shapefile 
-Source: "../downloads/au-srs", layer: "SR11aAust"
+Source: "/Users/johnm1/_notes/learnR/downloads/au-srs", layer: "SR11aAust"
 with 66 features
 It has 3 fields
 \end{Soutput}

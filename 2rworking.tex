@@ -1,7 +1,5 @@
-% !Rnw root = learnR.Rnw
+\input{preamble}
 
-
-% !Rnw root = learnR.Rnw
 
 
 
@@ -76,7 +74,7 @@ menu (if available) or from the command line.  Changing the working
 directory from within a session requires a clear head; it is usually
 best to save one's work, quit, and start a new session.
 
-\section{Work and Data Maintenance}
+\section{Code, data, and project Maintenance}
 
 \subsection{Maintenance of R scripts}
 
@@ -351,7 +349,7 @@ base package.  For other packages, type, e.g.
 \hlkwd{system.file}\hlstd{(}\hlkwc{package}\hlstd{=}\hlstr{"DAAG"}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-[1] "/Users/johnm1/Library/R/3.4/library/DAAG"
+[1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/DAAG"
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -452,7 +450,7 @@ For example:
 \end{kframe}
 \end{knitrout}
 
-\section{Enhancing the R experience --- RStudio}
+\section{Enhancing the R experience --- RStudio}\label{sec:RStudio}
 
 \marginnote{The screenshots here are for version 0.98.501 of RStudio.}
 The url for RStudio is \url{http://www.rstudio.com/}.  Click on the
@@ -799,10 +797,6 @@ for the column \texttt{root} of the data frame \texttt{DAAG::rainforest}:
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(DAAG)}
-\end{alltt}
-
-
-{\ttfamily\noindent\itshape\color{messagecolor}{Loading required package: lattice}}\begin{alltt}
 \hlkwd{with}\hlstd{(rainforest,} \hlkwd{table}\hlstd{(}\hlkwd{complete.cases}\hlstd{(root), species))}
 \end{alltt}
 \end{kframe}

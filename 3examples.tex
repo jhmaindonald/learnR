@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -34,7 +37,7 @@ List objects & An \txtt{lm} model object is a list object. Lists are\\
   extractor functions to extract information from model objects.}
 This chapter will use examples to illustrate common issues in the
 exploration of data and the fitting of regression models.  It will
-round out the discussion of Chapters 1 to \ref{ch:oview} and
+round out the discussion of Chapters \ref{ch:getStart} and
 \ref{ch:workenv} by adding some further important technical details.
 
 \subsection*{Notation, when referring to datasets}
@@ -46,7 +49,147 @@ as in the textual description, makes it clear that the dataset
 Should another attached package happen to have a dataset
 \txtt{mammals}, there is no risk of confusion.
 
-\section{The Uses of Scatterplot Matrices}
+\section{Science, statistics, and R}
+
+How does statistical analysis fit into the wider scientific
+enterprise? While not a central focus of the present notes, 
+the issues that will now be noted are too important to be
+ignored.
+
+The R system is an enabler that allows users to do effective
+data analysis, and much else besides.  These notes hint at
+its scope, primarily for data manipulation, for data analysis,
+and for graphics.  Note, however, the chapters on map overlays
+and on text mining --- these extend into areas that would not
+ordinarily be described as "data analysis".
+
+For the purposes of this next, the terms "data science" and
+"statistics" are different names for an endeavour whose concern
+is to extract meaning from data, leading for example to results
+that might be reported in a scientific paper, or that might form
+the basis for a business or government policy.  Statistical
+issues and ideas are fundamental to any use of data to make
+generalizations that extend beyond the particular data that
+have been collected, or that are otherwise available.  They are
+fundamental, in that sense, to any scientific use of data.
+It is, at the same time, important to acknowledge that there
+are strict limits on what statistical analysis can achieve.
+Statistical analysis is a partner to, and not a substitute
+for, robust scientific processes.  The use of experimental data
+provides the simplest context in which to explore this point
+further.
+
+For experimental work, over and above what may emerge from a
+statistical analsysis, the demand is that results be replicable.
+Laboratory studies have repeatedly shown shown that drinking
+regular caffeinated coffee increases blood pressure, though
+with minimal long term effects.\footnote{\citet{green_kirby_suls_1996}
+}  It is accepted that there is
+this effect, not from the statistical analysis of results from
+any individual trial, but because the effect has been demonstrated
+in repeated trials.  The role of statistical analysis has been:
+\begin{enumerate}
+\tightlist
+\item to demonstrate that, collating the evidence from repeated
+trials, the effect does appear real; 
+\item to assess the magnitude of the effect.
+\end{enumerate}
+
+Worldwide, hundreds of thousands of randomised trials are
+conducted annually.  What do they tell us?  In clinical medicine,
+follow-up trials are common, and clear conclusions will often
+emerge from the careful collation of evidence that, in important
+cases, is likely to follow.  In many other areas follow-up trials
+have until recently been uncommon. This is now changing, and for
+good reason.  Independent replication of the experimental process
+provides checks on the total experimental process, including the
+statistical analysis.  It is unlikely that the same mistakes in
+experimental procedure and/or statistical analysis will be repeated.
+
+Papers that had a key role in getting attention to reproducibility
+concerns have been \citet{prinz2011believe} and 
+\citep{begley2012drug}, the first (6 out of 53 "landmark" studies
+reproduced)  relating to drug trials, and the second (19 out of 65 
+"seminal" studies) to cancer drug trials.  Since those studies
+appeared, results have appeared from systematic attempts to
+reproduce  published work in psychology (around 40\%), in
+laboratory economics (11 of 18), and in social science (12 of 18).
+These replication rates are so low, in these areas, that they make
+nonsense of citations to published individual trial results as
+evidence that a claimed effect has been scientifically demonstrated.
+
+Many of the problems that these studies identify extend, also,
+into research and associated analyses that works with observational
+data.  In any attempt to draw hard conclusions from observational
+data, in a case where the aim is to compare two groups, there are
+certain to be many more differences than the difference that is
+of interest.  One application of regression methods is to do
+"covariate adjustments".  The limitations of such an approach are
+not as widely understood as they should be. There has
+to be confidence that all relevant covariates are accounted for,
+that they are measured with adequate accuracy, and that the form
+of the adjustment (e.g., $x$, or $\log(x)$, or $x^2$) is close
+to correct.
+
+In a hard-hitting paper titled "Cargo-cult statistics and
+scientific crisis", \citet{stark_saltelli_2018} comment,
+quoting also from \citet{edwards_roy_2017}:
+\begin{quote}
+While some argue that there is no crisis (or at least not a systemic problem), bad incentives, bad scientific practices, outdated methods of vetting and disseminating results, and techno-science appear to be producing misleading and incorrect results. This might produce crisis of biblical proportions: as Edwards and Roy write: ``If a critical mass of scientists become untrustworthy, a tipping point is possible in which the scientific enterprise itself becomes inherently corrupt and public trust is lost, risking a new dark age with devastating consequences to humanity.''
+\end{quote}
+Statistical issues are then front and central in what many are identifying
+as a crisis, but are not the whole story. The crisis is one that
+scientists and statisticians need to tackle in partnership.
+
+In a paper that deserves much more attention than it has received,
+\citep{tukey_1997}, John W Tukey
+argued that, as part of the process of fitting a model and forming a
+conclusion, there should be  incisive and informed critique of the data
+used, of the model, and of the inferences made. It is important that
+analysts search out available information about the processes that
+generated the data, and consider critically how this may affect the
+reliance placed on it. Other specific types of challenge (this list is
+longer than Tukey's) may include:
+\begin{itemize}
+\tightlist
+\item For experiments, is the design open to criticism?
+\item Look for biases in processes that generated the data.
+\item Look for inadequacies in laboratory procedure.
+\item Use all relevant graphical or other summary checks to
+critique the model that underpins the analysis.
+\item Where possible, check the performance of the model on
+test data that reflects the manner of use of results.
+(If for example predictions are made that will be applied a
+year into the future, check how predictions made a year
+ahead panned out for historical data.)
+\item For experimental data, have the work replicated
+independently by another research group, from generation of
+data through to analysis.
+\end{itemize}
+Exposure to diverse challenges will build (or destroy!) confidence
+in model-based inferences. We should trust those results that have
+withstood thorough and informed challenge. 
+
+\subsection*{Where does R fit in?}
+
+R clearly has a huge range of abilities for manipulating data, fitting
+and checking statistical models, and for using graphs and tables to
+present results.  More than this, it has extensive reproducible
+reporting abilities that can be used to allow others to repeat the
+data manipulation, analysis, and steps in the processing of output
+that have led to an eventual paper or report.  A file is provided
+that mixes code with the text for the eventual document, and that
+is then processed ("woven" or "knitted") to provide the final
+document, complete with analysis output, tables, graphs, and code
+(if any) that is to be included in the final document.  This makes
+it straightforward for referees, or for anyone with an interest in 
+the work, to check the analysis and/or try modifications.
+The publication of data and code is an important step on the way
+to making results more open and transparent, and encouraging 
+informed critique.
+
+
+\section{The Uses of Scatterplots}
 
 \begin{Schunk}
 \begin{Sinput}
@@ -96,7 +239,7 @@ mtext(side=3, line=0.5, adj=0,
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/05-bbAB-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/03-bbAB-1} }
 
 \end{Schunk}
 \caption{Brain weight (g) versus Body weight (kg), for 62 species of mammal.
@@ -167,7 +310,7 @@ plot(trees, cex.labels=1.5)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/05-plot-trees-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/03-plot-trees-1} }
 
 \end{Schunk}
 \vspace*{-15pt}
@@ -253,7 +396,7 @@ xyplot(Time ~ Distance, scales=list(tck=0.5),
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/05-trackVSroad-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/03-trackVSroad-1} }
 
 \end{Schunk}
 \caption{World record times versus distance, for field and road
@@ -275,7 +418,7 @@ orginal units.  Notice the use of
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/05-wrTimesAB-1} \includegraphics[width=0.47\textwidth]{figs/05-wrTimesAB-2} }
+\centerline{\includegraphics[width=0.47\textwidth]{figs/03-wrTimesAB-1} \includegraphics[width=0.47\textwidth]{figs/03-wrTimesAB-2} }
 
 \end{Schunk}
 \caption{World record times versus distance, for field and road
@@ -379,7 +522,7 @@ plot(worldrec.lm, which=c(1,5),
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/05-diag12-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/03-diag12-1} }
 
 \end{Schunk}
       \caption{First and last of the default diagnostic plots, from the
@@ -536,12 +679,11 @@ data are:
 str(nihills)
 \end{Sinput}
 \begin{Soutput}
-'data.frame':	23 obs. of  5 variables:
- $ dist    : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
- $ climb   : int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
- $ time    : num  0.858 0.467 0.703 1.039 0.541 ...
- $ timef   : num  1.064 0.623 0.887 1.214 0.637 ...
- $ gradient: num  232 264 205 485 240 ...
+'data.frame':	23 obs. of  4 variables:
+ $ dist : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
+ $ climb: int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
+ $ time : num  0.858 0.467 0.703 1.039 0.541 ...
+ $ timef: num  1.064 0.623 0.887 1.214 0.637 ...
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -560,7 +702,7 @@ shows the logged data:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.48\textwidth]{figs/05-nihills-spmAB-1} \includegraphics[width=0.48\textwidth]{figs/05-nihills-spmAB-2} }
+\centerline{\includegraphics[width=0.48\textwidth]{figs/03-nihills-spmAB-1} \includegraphics[width=0.48\textwidth]{figs/03-nihills-spmAB-2} }
 
 \end{Schunk}
 \caption{Scatterplot matrices for the Northern Ireland mountain racing
@@ -663,15 +805,15 @@ treatments large enough that they can be distinguished statistically?
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/05-gg-tomato-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/03-gg-tomato-1} }
 
 \end{Schunk}
 \caption{Weights (g) of tomato plants grown under four different
   treatments.\label{fig:Tomato}}
 \end{figure}
 
-\marginnote{Notice that ``water only'' is made the referrence level.
-This choice of reference level makes best sense for the analysis of
+\marginnote{Notice that ``water only'' is made the reference level.
+This choice makes best sense for the analysis of
 variance calculations that appear below.}
 \begin{Schunk}
 \begin{Sinput}
@@ -710,19 +852,20 @@ trtconc nutrient            0.067      0.264   0.253    0.803
 \end{fullwidth}
 Because we made ``\txtt{water only}'' the reference level,
 ``\txtt{(Intercept)}'' is the mean for \txtt{water only}, and the
-other coefficients are for differences from \txtt{water only}.  None
-of the treatments can be distinguished statistically from \txtt{water
-  only}.
+other coefficients are for differences from \txtt{water only}.
 
-Growing conditions in a laboratory or glasshouse or growth chamber ---
+\subsection*{A randomized block comparison}
+
+Growing conditions in a glasshouse or growth chamber ---
 temperature, humidity and air movement --- will not be totally
-uniform. This makes it necessary to do several repeats of the
-comparison between treatments.  \sidenote{In language used
+uniform. This makes it desirable to do several repeats of the
+comparison between treatments\sidenote{In language used
 originally in connection with agricultural field trials,
 where the comparison was repeated on different blocks of land,
-each different location  is a {\em block}.} 
-Conditions will vary between repeats, but each repeat maintains
-relatively uniform conditions across all treatments.
+each different location  is a "block".}, with conditions
+within each repeat  ("block") kept as uniform as possible.
+Each different "block" may for example be a different part of
+the glasshouse or growth chamber.
 
 The dataset \txtt{DAAG::rice} is from an experiment
 where there were six treatment combinations ---
@@ -733,7 +876,7 @@ of rice plant.  There were two repeats, i.e., two blocks.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.65\textwidth]{figs/05-do-interact-1} }
+\centerline{\includegraphics[width=0.65\textwidth]{figs/03-do-interact-1} }
 
 \end{Schunk}
     \caption{Interaction plot for the terms \txtt{fert} and
@@ -753,11 +896,16 @@ with(rice, interaction.plot(x.factor=fert,
 \end{Schunk}
 \end{figure}
 
-For these data, Figure \ref{fig:rice-interact} gives a clear picture
-of the result. For fertilizers \txtt{NH4Cl} and \txtt{NH4NO3}, any difference
-between the varieties is inconsequential.   There is strong ``interaction''
-between \txtt{fert} and \txtt{variety}.  A formal analysis will confirm
-what is already rather clear.
+For these data, 
+\marginnote{The effect of an appropriate choice of clocks, then
+carrying out an analysis that accounts for block effects, is to
+allow a more precise comparison between treatments.}
+Figure \ref{fig:rice-interact} gives a clear picture
+of the result. For fertilizers \txtt{NH4Cl} and \txtt{NH4NO3}, any
+difference between the varieties is inconsequential.   There is
+strong ``interaction'' between \txtt{fert} and \txtt{variety}.  A
+formal analysis, accounting for block differences, will confirm what
+seems already rather clear. 
 
 \section{Time series -- Australian annual climate data}
 \marginnote{Data
@@ -774,7 +922,7 @@ basin, plotted against year.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/05-MDBrainfall-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/03-MDBrainfall-1} }
 
 \end{Schunk}
 \caption{Annual rainfall in the Australian Murray-Darling Basin.

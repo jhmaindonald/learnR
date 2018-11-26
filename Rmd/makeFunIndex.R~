@@ -1,0 +1,21 @@
+makeFunIndex <-
+function (sourceFile = "~/_notes/dm/modreg.txt", fileout = NULL,
+          notfun = c("", "al", "Pr", "T", "F", "n", "P", "p", ".2szSD", ".4szSD",
+                          "y", "A", "\\n", "transformation", "left", "f", "site.",
+                          "a", "b", "II", "ARCH", "ARMA", "MA", "AR", "R_", "xf"))
+{
+    len <- nchar(sourceFile)
+    if (is.null(fileout)) {
+        if (substring(sourceFile, len - 3, len - 3) == ".")
+            fnam <- substring(sourceFile, 1, len - 4)
+        else fnam <- sourceFile
+        fileout <- paste(fnam, ".idx", sep = "")
+        print(c(`Output will be written to ` = fileout))
+    }
+    tx <- readLines(sourceFile, warn = FALSE, encoding='UTF-8')
+    entrymat <- locatefun(tx, notfun)
+    funentries <- paste("\\indexentry  ", "{", entrymat[, 1],
+        "}{", entrymat[, 2], "}", sep = "")
+    write(funentries, file = fileout)
+    invisible(entrymat)
+}

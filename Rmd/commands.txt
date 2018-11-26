@@ -1,0 +1,44 @@
+
+knitr::write_bib(names(pkg),file='packages.bib')
+paste(names(pkg),collapse='|')
+## 
+
+egrep -h '{chapter}|akima|ape|bbmle|boot|car|DAAG|DAAGbio|DHARMa|forecast|gamlss|ggplot2|glmmTMB|hddplot|kableExtra|knitr|lattice|latticeExtra|limma|lme4|magrittr|maps|MASS|MatrixModels|MCMCpack|mgcv|oz|plotrix|quantreg|randomForest|Rcmdr|RColorBrewer|rpart|splines|survival|tripack|tseries|VGAM' Rnw/*Rnw > libchaps2.txt
+egrep -o 'library\([[:alpha:]]+[[:digit:]]?)|[[:alpha:]]+[[:digit:]]?::|\{chapter}\{[[:digit:]]+}' libchaps2.txt | sed 's/library(//g' | sed 's/)//g' |  sed 's/:://g' > libchaps.txt
+
+pkgs <- scan('libchaps.txt', what='')
+newchap <- match(substring(pkgs, 1,nchar('{chapter}')),'{chapter}',nomatch=0)
+n <- (1:length(newchap))[newchap==1]
+nam <- gsub('{chapter}{','',pkgs[n],fixed=TRUE)
+nam <- gsub('}','',nam,fixed=TRUE)
+Pkg <- vector('list',length=length(n))
+n2 <- c(n, length(pkgs)+1)
+for (i in 1:length(n)){
+  ran <- (n2[i]+1):(n2[i+1]-1)
+  Pkg[[i]]<-sort(unique(pkgs[ran]))
+  }
+  names(Pkg) <- nam
+  ord <- order(as.numeric(nam))
+  Pkg <- Pkg[ord]
+  
+print(as.vector(sapply(Pkg, function(x)paste(x, collapse=' '))),quote=F)
+ [1] DAAG ggplot2 Hmisc knitr lattice latticeExtra MASS
+ [2] boot car DAAG Hmisc lattice latticeExtra lme4 MASS MCMCpack nlme 
+ [3] car DAAG Hmisc lattice MASS splines 
+ [4] car DAAG ggplot2 Hmisc lattice mgcv quantreg splines 
+ [5] car DAAG gamlss ggplot2 glmmTMB Hmisc knitr lme4 MASS mgcv survival VGAM 
+ [6] DAAG forecast lattice tseries  
+ [7] bbmle DAAG DHARMa gamlss glmmTMB Hmisc kableExtra knitr lattice
+ latticeExtra lme4 magrittr plotrix quantreg splines
+ [8] DAAG Hmisc MASS plot randomForest rpart
+ [9] ape DAAG DAAGbio ggplot2 hddplot Hmisc lattice limma MASS oz randomForest 
+[10] DAAG Hmisc MASS randomForest splines 
+[11] DAAG Hmisc Rcmdr RColorBrewer tibble                                 
+
+pkg <- names(table(pkgs[-n]))
+knitr::write_bib(pkg,file='packages.bib')
+
+pkgChap <- vector('list', length(pkg))
+for(i in (1:length(pkg))){
+ pkgChap[[i]]<-sapply(Pkg, function(x)pkg[i]%in%x)
+}

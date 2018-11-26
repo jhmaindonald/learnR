@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -12,157 +15,18 @@ of statistical sophistication than their training and experience
 has given them.
 
 In each case, comments with be introductory and brief.  Firstly, there
-are brief comments on the fitting of smooth curves.  The second and
-third topics highlight specific types of departure from the iid
+are brief comments on the fitting of smooth curves.  The first and
+second topics highlight specific types of departure from the iid
 (independently and identically distributed) assumption.
 
-\section{Regression with Fitted Smooth Curves}
-
-Load the {\em DAAG} package:
-\begin{Schunk}
-\begin{Sinput}
-library(DAAG)
-\end{Sinput}
-\end{Schunk}
-
-\subsection*{Commentary  on Smoothing Methods}
-
-Two types of methods will be described -- those where the user
-controls the choice of smoothing parameter, and statistical learning
-type methods where the amount of smoothing is chosen automatically:
-\begin{itemize}
-\item The first class of methods rely on the user to make a suitable
-  choice of a parameter that controls the smoothness.  The default
-choice is often a good first approximation.  Note here:
-\begin{itemize}
-\item Smoothing using a ``locally weighted regression
-smoother''.\marginnote{Smoothness
-is controlled by the width of the smoothing window. The default is
-  \txtt{f=2/3} for \txtt{lowess()}, or \txtt{span=0.75} for
-  \txtt{loess()}. For other functions that rely on this methodology,
-check the relevant help page.}
-Functions that use this approach include \txtt{lowess()}, \txtt{loess()},
-\txtt{loess.smooth()}, and \txtt{scatter.smooth()}.
-\item Use of a regression spline basis in a linear model.  Here the smoothness
-is usually controlled by the choice of number of spline basis terms.
-\end{itemize}
-\item A second class of methods use a ``statistical learning''
-  approach in which the amount of smoothing is chosen automatically.
-  The approach of the \textit{mgcv} package extends and adapts the
-  regression spline approach.\sidenote{Strong assumptions are
-    required, notably that observations are independent.  Normality
-    assumptions are, often, less critical.}  The methodology
-  generalizes to handle more general types of outcome variables,
-  including proportions and counts.  These extensions will not be
-  further discussed here.
-\end{itemize}
-
-\subsection{Locally weighted scatterplot smoothers}
-
-Locally weighted scatterplot smoothers pass a window across
-the data, centering the window in turn at each of a number points that
-are equally spaced through the data. The smooth at an $x$-value where
-the window has been centred is the predicted value from a line (or
-sometimes a quadratic or other curve) that is fitted to values that
-lie within the window. A weighted fit is used, so that neighbouring
-points get greater weight than points out towards the edge of the
-window.
-
-Figure \ref{fig:fruitohms} shows a smooth that has been fitted using
-the \txtt{lowess} (locally weighted scatterplot smoothing)
-methodology.  The default choice of with of smoothing window (a fraction
-$f = \frac{2}{3}$ of the total range of $x$) gives a result that,
-for these data, looks about right. The curve does however trend
-slightly upwards at the upper end of its range.  A monotonic
-response might seem more appropriate.
-
-\begin{marginfigure}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-smooth-ohms-1} }
-
-\end{Schunk}
-  \caption{Resistance in ohms is plotted against apparent juice
-    content.  A smooth curve (in gray) has been added, using the
-    \txtt{lowess} smoother.  The width of the smoothing window was the
-    default fraction $f = \frac{2}{3}$ of the range of values of the
-    $x$-variable.}\label{fig:fruitohms}
-\end{marginfigure}
-
-The code used to plot the graph is:
-\begin{Schunk}
-\begin{Sinput}
-## Plot points
-plot(ohms ~ juice, data=fruitohms, fg="gray")
-## Add smooth curve, using default
-## smoothing window
-with(fruitohms,
-     lines(lowess(ohms ~ juice), col="gray", lwd=2))
-\end{Sinput}
-\end{Schunk}
-
-A more sophisticated approach uses the \txtt{gam()} function
-in the {\em mgcv} package.  This allows automatic determination of the
-amount of smoothing, providing the assumption of independent residuals
-from the curve is reasonable.  We now demonstrate the use of a GAM
-model for a two-dimensional smooth.
-
-\subsection{Contours from 2-dimensional Smooths}
-Data are the amplitudes of responses to a visual stimulus, for each of
-20 individuals, at different regions of the left eye.  We use the
-function \txtt{gam()} to create smooth
-surfaces, for males and females separately. Figure \ref{fig:visAmp}
-then uses the function \txtt{vis.gam()} to plot heatmaps that show the
-contours:
-\begin{fullwidth}
-\begin{figure*}
-\begin{Schunk}
-
-
-\centerline{\includegraphics[width=0.97\textwidth]{figs/12-plotVIS-1} }
-
-\end{Schunk}
-\vspace*{-7pt}
-\caption{Estimated contours of left eye responses to visual stimulae,
-projected onto the plane.\label{fig:visAmp}}
-\vspace*{15pt}
-\end{figure*}
-\end{fullwidth}
-\enlargethispage{12pt}
-
-The GAM fit will as far as possible use the smooth surface
-to account for the pattern of variation across the eye, with
-residuals from the surface treated as random normal noise.
-\vspace*{7pt}
-
-\begin{fullwidth}
-
-\begin{Schunk}
-\begin{Sinput}
-## Code
-library(DAAGviz)
-library(mgcv)
-eyeAmpM.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="m"))
-eyeAmpF.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="f"))
-lims <- range(c(predict(eyeAmpF.gam), predict(eyeAmpM.gam)))
-vis.gam(eyeAmpM.gam, plot.type='contour', color="cm", zlim=lims, main="")
-mtext(side=3, line=0.5, adj=0, "A: Response amplitudes, Males")
-vis.gam(eyeAmpF.gam, plot.type='contour', color="cm", zlim=lims, main="")
-mtext(side=3, line=0.5, adj=0, "B: Response amplitudes, Females")
-\end{Sinput}
-\end{Schunk}
-
-\end{fullwidth}
-
-\section{Hierarchical Multi-level Models}\label{sec:hmlm}
+\section{Hierarchical Multilevel Models}\label{sec:hmlm}
 
 \noindent
 \fbox{
-\parbox{\textwidth}{{\bf Models with Non-iid Errors -- Multi-level models}:\\[4pt]
+\parbox{\textwidth}{{\bf Models with Non-iid Errors -- Multilevel models}:\\[4pt]
 \begin{tabular}{ll}
 Error Term & Errors do not have to be (and often are not) iid\\[6pt]
-Multi-level & Multi-level models are a (relatively) simple type of
+Multilevel & Multilevel models are a (relatively) simple type of
 \\ models & non-iid model, implemented using \txtt{lme()}
 (\textit{nlme}) or \\ & \txtt{lmer()}\ (\textit{lme4} package).\\ & Such
 models allow different errors of prediction,\\ & depending on the
@@ -173,7 +37,7 @@ intended prediction.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-ant111b-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-ant111b-1} }
 
 \end{Schunk}
 \caption{Yields from 4 packages of land on each of eight sites on the
@@ -240,14 +104,13 @@ likely to be more accurate than a prediction for a totally new
 location.
 
 \marginnote[10pt]{Because of the balance the corn yield data, an
-  analysis of variance that specifies a formal \txtt{Error} term is an
-  alternative to the fitting of a multi-level model.}  Multi-level
+analysis of variance that specifies a formal \txtt{Error} term is
+an alternative to the fitting of a multilevel model.}  Multilevel
 models are able to account for such differences in predictive
 accuracy.  For the Antiguan corn yield data, it is necessary to
 account both for variation within sites and for variation between
 sites.  The R packages \txtt{nlme} and \txtt{lme4} are both able to
 handle such data.
-
 
 \section{Regular Time Series in R}\label{sec:ts}
 \noindent
@@ -277,7 +140,7 @@ analysis.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-Erie1-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-Erie1-1} }
 
 \end{Schunk}
 \caption{Lake Erie levels (m).
@@ -309,7 +172,7 @@ Figure \ref{fig:erie} shows a plot of the series.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-lagErie-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-lagErie-1} }
 
 \end{Schunk}
 \vspace*{-3pt}
@@ -317,7 +180,7 @@ Figure \ref{fig:erie} shows a plot of the series.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.7\textwidth]{figs/12-acfErie-1} }
+\centerline{\includegraphics[width=0.7\textwidth]{figs/9-acfErie-1} }
 
 \end{Schunk}
 \caption{Panel A plots Lake Erie levels vs levels at lags 1, 2 and 3
@@ -409,7 +272,7 @@ year to year change.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-gamErie-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-gamErie-1} }
 
 \end{Schunk}
 \caption{GAM smoothing term, fitted to the Lake Erie Data.
@@ -491,7 +354,7 @@ equalling 0.851.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/12-arima-sim-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/9-arima-sim-1} }
 
 \end{Schunk}
 \caption{The plots are from repeated simulations of an AR1 process
@@ -540,7 +403,7 @@ model with order 1.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-Erie-fcast-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-Erie-fcast-1} }
 
 \end{Schunk}
 \caption{Predictions, 15 years into the future, of lake levels
@@ -593,7 +456,7 @@ mtext(side=3, line=0.75, "B: Effect of SOI", adj=0)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/12-mdb-gam-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/9-mdb-gam-1} }
 
 \end{Schunk}
   \caption{Estimated contributions of model terms to
@@ -633,7 +496,7 @@ numbers.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/12-ar1sims-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/9-ar1sims-1} }
 
 \end{Schunk}
 \caption{The top left panel shows the autocorrelations of the
@@ -693,7 +556,7 @@ counts.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-plotGAM-byWk-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-plotGAM-byWk-1} }
 
 \end{Schunk}
 \vspace*{-6pt}
@@ -736,7 +599,7 @@ at6 <- julian(seq(from=fromDate, to=max(dfWeek06$Date), by="6 months"), origin=f
 atyear <- julian(year, origin=fromDate)
 dfWeek06.gam <- gam(num~s(day, k=200), data=dfWeek06, family=quasipoisson)
 avWk <- mean(predict(dfWeek06.gam))
-plot(dfWeek06.gam, xaxt="n", shift=avWk, trans=exp, rug=FALSE, 
+plot(dfWeek06.gam, xaxt="n", shift=avWk, trans=exp, rug=FALSE,
      xlab="", ylab="Estimated rate per week", fg="gray")
 axis(1, at=atyear, labels=format(year, "%Y"), lwd=0, lwd.ticks=1)
 abline(h=0.5+(1:4)*0.5, v=at6, col="gray", lty=3, lwd=0.5)
@@ -885,7 +748,7 @@ successively larger numbers of dimensions.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.9\textwidth]{figs/12-fgl-scores2D-1} }
+\centerline{\includegraphics[width=0.9\textwidth]{figs/9-fgl-scores2D-1} }
 
 \end{Schunk}
 \caption{Visual representation of scores from a
@@ -991,10 +854,10 @@ indicates that bronchitis is absent.}
 head(bronchit, 3)
 \end{Sinput}
 \begin{Soutput}
-  r  cig poll rfac
-1 0 5.15 67.1  abs
-2 0 6.75 64.4  abs
-3 0 0.00 65.9  abs
+  r  cig poll
+1 0 5.15 67.1
+2 0 6.75 64.4
+3 0 0.00 65.9
 \end{Soutput}
 \end{Schunk}
 In place of the variable \txtt{r} with values 0 and 1, we use a
@@ -1047,7 +910,7 @@ different run of the calculations.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-treefig-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-treefig-1} }
 
 \end{Schunk}
 \caption{Decision tree for predicting whether a miner has
@@ -1094,7 +957,7 @@ the data, there is no overfitting overall.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.85\textwidth]{figs/12-rf-x-bronchit-1} }
+\centerline{\includegraphics[width=0.85\textwidth]{figs/9-rf-x-bronchit-1} }
 
 \end{Schunk}
 \caption{Each tree is for a different bootstrap sample of
@@ -1125,11 +988,11 @@ Call:
                      Number of trees: 500
 No. of variables tried at each split: 1
 
-        OOB estimate of  error rate: 22.64%
+        OOB estimate of  error rate: 23.58%
 Confusion matrix:
      abs pres class.error
-abs  146   20      0.1205
-pres  28   18      0.6087
+abs  145   21      0.1265
+pres  29   17      0.6304
 \end{Soutput}
 \end{Schunk}
 The accuracy is much better than the \texttt{rpart()} accuracy.  The
@@ -1140,7 +1003,7 @@ dramatically, on tree-based classification.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-proximity-plot-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-proximity-plot-1} }
 
 \end{Schunk}
 \caption{The plot is designed to represent, in two dimensions, the random
@@ -1199,12 +1062,12 @@ Call:
                      Number of trees: 500
 No. of variables tried at each split: 3
 
-        OOB estimate of  error rate: 20.09%
+        OOB estimate of  error rate: 20.56%
 Confusion matrix:
       WinF WinNF Veh Con Tabl Head class.error
 WinF    63     6   1   0    0    0      0.1000
-WinNF    9    59   1   4    2    1      0.2237
-Veh      7     3   7   0    0    0      0.5882
+WinNF   10    59   1   3    2    1      0.2237
+Veh      8     3   6   0    0    0      0.6471
 Con      0     3   0   9    0    1      0.3077
 Tabl     0     2   0   0    7    0      0.2222
 Head     1     2   0   0    0   26      0.1034
@@ -1400,7 +1263,7 @@ An alternative way to add names of cities or other labels is to use
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/12-aupoints-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/9-aupoints-1} }
 
 \end{Schunk}
 \caption{Relative locations of Australian cities, derived from road
@@ -1437,7 +1300,7 @@ Classical multi-dimensional scaling, as implemented by
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/12-au-both-1} \includegraphics[width=0.47\textwidth]{figs/12-au-both-2} }
+\centerline{\includegraphics[width=0.47\textwidth]{figs/9-au-both-1} \includegraphics[width=0.47\textwidth]{figs/9-au-both-2} }
 
 \end{Schunk}
       \caption{In Panel A, Figure \ref{fig:audists} has been linearly
@@ -1452,8 +1315,6 @@ Classical multi-dimensional scaling, as implemented by
  multi-dimensional scaling.  Panel B does the same, now for the result
  from Sammon scaling.  Notice how Brisbane, Sydney, Canberra and
  Melbourne now maintain their relative positions better.
-
-
 
 To see the code for Figure \ref{fig:aufit}, source the file that has the
 code for the figures of this chapter, and type:

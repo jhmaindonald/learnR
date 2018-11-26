@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -80,7 +83,7 @@ Note the margins of the table:
 str(UCBAdmissions)
 \end{Sinput}
 \begin{Soutput}
- table [1:2, 1:2, 1:6] 512 313 89 19 353 207 17 8 120 205 ...
+ 'table' num [1:2, 1:2, 1:6] 512 313 89 19 353 207 17 8 120 205 ...
  - attr(*, "dimnames")=List of 3
   ..$ Admit : chr [1:2] "Admitted" "Rejected"
   ..$ Gender: chr [1:2] "Male" "Female"
@@ -143,6 +146,8 @@ and the total who applied:
 \begin{Schunk}
 \begin{Sinput}
 library(dplyr)
+\end{Sinput}
+\begin{Sinput}
 gpUCBgender <- dplyr::group_by(UCBdf, Gender)
 AdmitRate <- dplyr::summarise(gpUCBgender,
                               Accept=sum(Freq[Admit=="Admitted"]),
@@ -153,9 +158,9 @@ AdmitRate
 \begin{Soutput}
 # A tibble: 2 x 4
   Gender Accept Total pcAccept
-  <fctr>  <dbl> <dbl>    <dbl>
-1   Male   1198  2691    44.52
-2 Female    557  1835    30.35
+  <fct>   <dbl> <dbl>    <dbl>
+1 Male     1198  2691     44.5
+2 Female    557  1835     30.4
 \end{Soutput}
 \end{Schunk}
 
@@ -580,7 +585,7 @@ crickKIAyrs[1:4, ]
 1  1869     1    37 0.0270
 2  1870     2    36 0.0556
 3  1871     1    45 0.0222
-4  1872     0    39 0.0000
+4  1872     0    39 0     
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -660,8 +665,6 @@ columns, and years to be rows.  The \txtt{melt()} and
   an array or a matrix.}  functions from the {\em reshape2}
   package can be used to achieve the desired result.  First, create a
   single column of data, indexed by classifying factors:
-\begin{fullwidth}
-
 \begin{Schunk}
 \begin{Sinput}
 library(reshape2)
@@ -683,8 +686,6 @@ wdiLong
 8          CHN  Population, total    X2010 1.34e+09
 \end{Soutput}
 \end{Schunk}
-
-\end{fullwidth}
 
 Now\marginnote{If a matrix or array is required, use \margtt{acast()}
 in place of \margtt{dcast()}.}
@@ -882,7 +883,7 @@ system.time(xy+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.162   0.149   0.313 
+  0.138   0.122   0.261 
 \end{Soutput}
 \begin{Sinput}
 xy.df <- data.frame(xy)
@@ -890,7 +891,7 @@ system.time(xy.df+1)
 \end{Sinput}
 \begin{Soutput}
    user  system elapsed 
-  0.166   0.137   0.306 
+  0.436   0.159   0.814 
 \end{Soutput}
 \end{Schunk}
 \vspace*{-12pt}

@@ -5,7 +5,9 @@
 test*
 *.aux
 learnR.out
-learnR.log
+learnR.ilg
+*.log
 .DS_Store
 learnR.aux
 messages.txt
+archive

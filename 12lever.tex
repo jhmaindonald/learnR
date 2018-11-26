@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -33,9 +36,10 @@ form <- as.formula(paste(yvar, "~", xvar))
 plot(form, data=mtcars)
 \end{Sinput}
 \end{Schunk}
-The usefulness of this second way to do the plot is that \txtt{yvar}
-and \txtt{xvar} can be arguments to a function.  Then, \txtt{xvar} and
-\txtt{yvar} can be any pair of columns.  Here is the function:
+With this second approach, \txtt{yvar} and \txtt{xvar}
+can be arguments to a function, and \txtt{xvar} and
+\txtt{yvar} can be any pair of columns.  A suitable
+functionis:
 \begin{Schunk}
 \begin{Sinput}
 plot.mtcars <- function(xvar="disp", yvar="mpg"){
@@ -45,17 +49,25 @@ plot.mtcars <- function(xvar="disp", yvar="mpg"){
 \end{Sinput}
 \end{Schunk}
 
-The data frame \txtt{mtcars} has 11 columns from which we might want
-to choose the two axes for a scatterplot:
+\begin{marginfigure}
+The data frame \txtt{mtcars} has 11 columns from which
+the two axes for a scatterplot might be chosen:
+
 \begin{Schunk}
 \begin{Sinput}
 names(mtcars)
 \end{Sinput}
 \begin{Soutput}
- [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+ [1] "mpg"  "cyl" 
+ [3] "disp" "hp"  
+ [5] "drat" "wt"  
+ [7] "qsec" "vs"  
+ [9] "am"   "gear"
 [11] "carb"
 \end{Soutput}
 \end{Schunk}
+
+\end{marginfigure}
 
 The following calls the function with \txtt{xvar="hp"} and
 \txtt{yvar="mpg"}:
@@ -161,13 +173,13 @@ mean.call <- call("mean", x=rnorm(5))
 eval(mean.call)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.3855
+[1] 0.06572
 \end{Soutput}
 \begin{Sinput}
 eval(mean.call)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.3855
+[1] 0.06572
 \end{Soutput}
 \end{Schunk}
 Notice that the argument \txtt{x} was evaluated when \txtt{call()}
@@ -181,8 +193,8 @@ expression:
 mean.call
 \end{Sinput}
 \begin{Soutput}
-mean(x = c(0.722661806870587, -1.69914843090301, -1.90255704914938, 
-1.86179071101273, -0.910309807776628))
+mean(x = c(-0.654951646429221, -0.679896362331012, 0.979408998110931, 
+1.01194857431004, -0.327894174927872))
 \end{Soutput}
 \end{Schunk}
 
@@ -192,10 +204,10 @@ mean(x = c(0.722661806870587, -1.69914843090301, -1.90255704914938,
 Every call to a function creates a frame that contains the local
 variables created in the function. This combines with the environment
 in which the function was defined to create a new environment.
-
-The global environment, \txtt{.Globalenv}, is the workspace.  This is
-frame 0. The frame number increases by 1 with each new function
-call.\sidenote[][-2cm]{Additionally, frames may be referred to by name. Use
+The global environment, \txtt{.Globalenv}, is the workspace.  This
+is frame 0. The frame number increases by 1 with each new function
+call.\sidenote[][-2cm]{Additionally, frames may be referred to by
+name. Use
 \begin{list}{}{
 \setlength{\itemsep}{1pt}
 \setlength{\parsep}{1pt}}
@@ -209,27 +221,37 @@ name
 \end{list}
 }
 
-
-Here is code that determines, from within a function,
-the function name:
 \begin{Schunk}
-\begin{Sinput}
-test <- function(){
- fname <- as(sys.call(sys.parent())[[1]],
-              "character")
-  fname
-}
-test()
-\end{Sinput}
 \begin{Soutput}
 [1] "test"
 \end{Soutput}
+\end{Schunk}
+
+\begin{marginfigure}
+Now change the function name to \margtt{newtest()}:
+\begin{Schunk}
 \begin{Sinput}
 newtest <- test
 newtest()
 \end{Sinput}
 \begin{Soutput}
 [1] "newtest"
+\end{Soutput}
+\end{Schunk}
+\end{marginfigure}
+Here is code that determines, from within a function,
+the function name:
+\begin{Schunk}
+\begin{Sinput}
+test <- function(){
+ fname <- as(sys.call(sys.parent())[[1]],
+             "character")
+  fname
+}
+test()
+\end{Sinput}
+\begin{Soutput}
+[1] "test"
 \end{Soutput}
 \end{Schunk}
 
@@ -277,8 +299,8 @@ frame, and so on. If they are not found in any of the frames, then
 they are sought in the search list.
 
 \section{Creation of R Packages}
-\marginnote{The RStudio documentation includes a large amount of
-information on package preparation, testing, and submission to
+\marginnote[10pt]{The RStudio documentation includes a large amount
+of information on package preparation, testing, and submission to
 CRAN or other repositories.  Click on\\
 \underline{Help} | \underline{RStudio Docs}\\
 \noindent and look under\\
@@ -298,110 +320,14 @@ to return to the project at some later time, and/or to pass the project
 across to someone else.
 \item Attaching the packages give immediate access to functions, data
   and associated documentation.
-\marginnote[12pt]{CRAN checks include checks for consistency between
-    code and documentation, e.g., in names of arguments.  Code must
-    conform to CRAN standards.}
 \item Where a package is submitted to CRAN (Comprehensive R Archive
   Network) and used by others, this extends opportunities for testing
   and/or getting contributions from other workers. Checks that are
   required by CRAN ensure that the package (code and documentation)
-  meets certain formal standards.
+  meets certain formal standards.  CRAN checks include checks for
+  consistency between code and documentation, e.g., in names of
+  arguments.  Code must conform to CRAN standards.
 \end{itemize}
-
-It is relatively straightforward to create packages that make no calls
-to externally compiled C or Fortran code. A good starting point is a
-very simple example package that can be created from within RStudio,
-and can be used as a starting point for further development.
-Click on\\
-\underline{File} | \underline{New Project \ldots} |
-\underline{New Directory} | \underline{R Package} \\
-\noindent and fill in the spaces as appropriate.  Thus, as an example,
-create the project as a subdirectory of \textbf{$~$/pkgs}, with the
-name {\em testpkg}.  The effect will be to create the subdirectory
-\textbf{$~$/pkgs/testpkg/} as the project directory, which is also
-the package directory.  The package directory contains the following
-files:
-\begin{itemize}
-  \marginnote[15pt]{Note also several files whose name starts with
-    '\textbf{.}', plus \textbf{testpkg.Rproj} which is used by RStudio.
-    These can be left as they are. All package directories have this
-    same basic structure, though usually with some further
-    subdirectories.  In particular, most packages will have a
-    subdirectory \textbf{data} that holds data files.}
-
-\item \textbf{DESCRIPTION}, with enough details entered to allow
-creation of the package to proceed.
-\item \textbf{NAMESPACE}, with details entered that will allow
-creation of a package to proceed.
-\item The sub-directory \textbf{R}, containing only the R script file
- \textbf{hello.R}
-\item The sub-directory \textbf{man}, containing only the help file
- \textbf{hello.Rd}
-\end{itemize}
-The code for the function \txtt{hello()} will appear in the ``Files''
-panel, which in an off-the-shelf RStudio installation will appear
-in the lower left panel.
-
-The package, although missing some features, can be loaded into the
-session as it stands.  Click on \underline{Build} (in the top right
-panel, for the default panel layout), then on \underline{Build \&
-  Reload}.  The package will be built and loaded into the session.
-Unless the relevant {\em Rtools} have been installed on the
-system,\sidenote{This has to be done from the operating system, not
-  from R.} the attached version of the package will lack some standard
-features, and a warning will accordingly appear.  For
-building a \txtt{.tar.gz} package file, click on
-\underline{Build}, then on \underline{More} | \underline{Build Source
-  Package}.
-
-This may be a good point at which to try adding your own further
-function and/or dataset.  Click on\\
-\qquad \underline{File} | \underline{New File} | \underline{R
-  Script}\\
-\noindent and type in, e.g., the following function:
-\begin{fullwidth}
-
-\begin{Schunk}
-\begin{Sinput}
-breakIntoWords <- function(sentence="The quick brown fox"){
-  words <- strsplit(sentence, split=' ', fixed=TRUE)
-  unlist(words)
-}
-\end{Sinput}
-\end{Schunk}
-
-\end{fullwidth}
-
-Select the function code and click \underline{Run} to load
-the function into your session.  Then type, for example:
-\begin{fullwidth}
-
-\begin{Schunk}
-\begin{Sinput}
-sentence <- 'The quick brown fox jumps over the lazy dog.'
-breakIntoWords(sentence)
-\end{Sinput}
-\begin{Soutput}
-[1] "The"   "quick" "brown" "fox"   "jumps" "over"  "the"   "lazy"  "dog." 
-\end{Soutput}
-\end{Schunk}
-\end{fullwidth}
-
-\marginnote[12pt]{The function can be improved!  The fullstop
-should be dropped from the final word.}
-Now type
-\begin{Schunk}
-\begin{Sinput}
-prompt(breakIntoWords, file='man/breakIntoWords.Rd')
-\end{Sinput}
-\end{Schunk}
-In the help file thus created, replace
-\verb!%%  ~~function to do ... ~~! \\
-\noindent by a title, e.g.,\\
-\verb!Break sentence into words!.\\
-\noindent Other entries should
-in due course also get attention, but this is enough to
-allow \underline{Build \& Reload} to run.
 
 \subsection*{Namespaces}
 Packages can have their own namespaces, with private functions and
@@ -430,12 +356,15 @@ replace a slot.  For example:
 \begin{Sinput}
 library(DAAG)
 library(lme4)
+\end{Sinput}
+\begin{Sinput}
 hp.lmList <- lmList(o2 ~ wattsPerKg | id,
                     data=humanpower1)
 slotNames(hp.lmList)
 \end{Sinput}
 \begin{Soutput}
-[1] ".Data"     "call"      "pool"      "groups"    "origOrder"
+[1] ".Data"     "call"      "pool"      "groups"   
+[5] "origOrder"
 \end{Soutput}
 \end{Schunk}
 
@@ -492,6 +421,7 @@ Method Definition:
 
 function (obj, ...) 
 spplot.grid(as(obj, "SpatialPixelsDataFrame"), ...)
+<bytecode: 0x1166d7098>
 <environment: namespace:sp>
 
 Signatures:
@@ -543,7 +473,7 @@ writing and testing of functions.
   standards of documentation.
 
 \item[] Many of R's more recent packages use S4 classes and methods.
-Extractor functions are in most cases available that can provide
-imformation that is required.
+Extractor functions are available that will extract the most 
+commonly required types of information.
 
 \end{itemize}

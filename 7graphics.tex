@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -148,7 +151,7 @@ Gorilla         207     406
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-brain-body-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-brain-body-1} }
 
 \end{Schunk}
 \caption{Plot of brain weight against body weight, for selected
@@ -318,14 +321,13 @@ plot(1:7, pch=16, cex=2, col=Set1)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-alpha-ex-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-alpha-ex-1} }
 
 \end{Schunk}
 \caption{In Panel A, points are plotted with the 100\% opacity, i.e.,
   no transparency. In Panel B, \txtt{alpha=0.4}, i.e., 40\% opacity.
   Panel C uses the function \txtt{smoothScatter()} to show a smoothed
-  color density representation of the data.  Figure \ref{col:alphaC}
-  is a color version of Panel C.\label{fig:alpha}}
+  color density representation of the data.\label{fig:alpha}}
 \end{figure}
 
 \marginnote[2pt]{An opacity of 0.4 has the effect that, for an
@@ -336,14 +338,14 @@ plot(1:7, pch=16, cex=2, col=Set1)
 ## Sample from the 15992 rows
 dfsamp <- cps1[sample(nrow(cps1), 3000), ]
 plot(re78 ~ re75, data=dfsamp, pch=20, cex=0.5,
-     col="black", fg="gray")
+     col="black", las=0, fg="gray")
 mtext(side=3, line=0.5, "A: 100% opacity", adj=0)
-plot(re78 ~ re75, data=dfsamp, pch=20, cex=0.5,
+plot(re78 ~ re75, data=dfsamp, pch=20, cex=0.5, las=0,
      col=adjustcolor("black", alpha=0.4), fg="gray")
 mtext(side=3, line=0.5, "B: 40% opacity", adj=0)
 blueRamp <- colorRampPalette(c("white", blues9))
 with(dfsamp, smoothScatter(re75~re74, , fg="gray",
-                           colramp=blueRamp))
+                           las=0, colramp=blueRamp))
 mtext(side=3, line=0.5, "C: Color density plot",
       adj=0)
 \end{Sinput}
@@ -371,7 +373,7 @@ large say in what is visually obvious.  Figures \ref{fig:aspect}A and
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-fig8_3e-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-fig8_3e-1} }
 
 \end{Schunk}
 \caption[][-15pt]{Figures A and B show the same data, but with widely different
@@ -440,7 +442,7 @@ then the lower 38\%.
   38\% of the page.}
 \begin{Schunk}
 \begin{Sinput}
-par(fig = c(0, 1, 0.38, 1))
+par(fig = c(0, 1, 0.38, 1), mgp=c(3,0.5,0))
           # xleft, xright, ybottom, ytop
 ## Panel A
 par(fig = c(0, 1, 0, 0.38), new=TRUE)
@@ -464,7 +466,7 @@ density plot.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-poss-hist-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-poss-hist-1} }
 
 \end{Schunk}
  \caption{The two panels show the same data, but with a different
@@ -482,6 +484,7 @@ plots the histograms and superimposes the density plots.
   onto the histogram.}
 \begin{Schunk}
 \begin{Sinput}
+par(mgp=c(3,0.5,0))
 ftotlen <- subset(possum, sex=="f")[, "totlngth"]
 ## Left panel: breaks at 72.5, 77.5,..
 hist(ftotlen, breaks = 72.5 + (0:5)*5, freq=FALSE,
@@ -539,14 +542,14 @@ Figure \ref{fig:boxrugs} is an example.  Code for the plot is:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-boxplot-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-boxplot-1} }
 
 \end{Schunk}
 \vspace*{-12pt}
 
-\caption{Distribution of lengths of female possums.  The bars
-  (together making up a 'rug') show actual data
-  values.\label{fig:boxrugs}}
+\caption{Distribution of lengths of female possums.  The 
+ vertical bars along the $x$-axis (together making up a 'rug')
+ show actual data values.\label{fig:boxrugs}}
 \end{marginfigure}
 
 \begin{Schunk}
@@ -557,10 +560,6 @@ with(subset(possum, sex=="f"),
       rug(totlngth)} )
 \end{Sinput}
 \end{Schunk}
-
-The function \txtt{rug()} can be used to add, to any plot that shows a
-distribution of data values, stubby vertical lines that show the
-locations of the individual values.
 
 \subsection*{Normal probability plots}
 
@@ -578,7 +577,7 @@ is an example.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-possum-qqn-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-possum-qqn-1} }
 
 \end{Schunk}
  \caption[][7pt]{Normal probability plots. The top left panel
@@ -644,7 +643,7 @@ provide $y$-axis labeling.  The code is:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-plot-expr-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-plot-expr-1} }
 
 \end{Schunk}
 \caption{A mathematical expression is included as part of the
@@ -685,26 +684,28 @@ syntax & For lattice, graphics formulae are mandatory.
 }}
 \vspace*{9pt}
 
-\begin{marginfigure}[56pt]
+Lattice (trellis) graphics functions allow
+\begin{marginfigure}
 To see some of the possibilities that lattice graphics offers, enter
 \begin{Schunk}
 \begin{Sinput}
 demo(lattice)
 \end{Sinput}
 \end{Schunk}
+Functions that give styles of graph that are additional to
+those described here include \margtt{contourplot()},
+\margtt{levelplot()}, \margtt{cloud()}, \margtt{wireframe()},
+\margtt{parallel()}, \margtt{qqmath()} and
+\margtt{tmd()}.  
 \end{marginfigure}
-Lattice (trellis) graphics functions allow the use of the layout on
-the page to reflect meaningful aspects of data structure.  Groups can
+ the use of the layout on the page to reflect meaningful aspects
+ of data structure.  Groups can
 be readily distinguished within data, either using different colors
 and/or symbols and/or line types within panels or using different
 panels.  Multiple columns of data can be plotted, either
 distinguished within panels or using different panels.
 
-Functions that give other styles of lattice graph, in addition to
-those described here, include \txtt{contourplot()},
-\txtt{levelplot()}, \txtt{cloud()}, \txtt{wireframe()},
-\txtt{parallel()}, \txtt{qqmath()} and
-\txtt{tmd()}.  Functions in the {\em latticeExtra} package
+Functions in the {\em latticeExtra} package
 further extend what is available.
 
 \marginnote[12pt]{These abilities, due to Felix Andrews, make it
@@ -725,7 +726,7 @@ library(latticeExtra, quietly=TRUE)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/09-cline-gph-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/07-cline-gph-1} }
 
 \end{Schunk}
 \caption{Use of lattice function \txtt{xyplot()} to give a graph.
@@ -733,9 +734,8 @@ library(latticeExtra, quietly=TRUE)
 \end{marginfigure}
 
 Figure \ref{fig:lat-gph} was obtained using the lattice function
-\txtt{xyplot()}. Superficially, this looks very like the way that
-the base graphics function \txtt{plot()} achieves the same end.
-Code is:
+\txtt{xyplot()}. In this simple case, the syntax closely matches
+that of the base graphics function \txtt{plot()}. Code is:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -811,14 +811,13 @@ different subsets of the data.  Additionally, points can be
 distinguished, within panels, according to some further grouping
 within the data.
 
-The \txtt{ais} dataset (\textit{DAAG}) has data on elite Australian
-athletes who trained at the Australian Institute of Sport. Data were
-collected with a view to studying possible differences in blood
-characteristics, between athletes in endurance-related events and
-those in power-related events.  The help page for \txtt{ais} has
-details of the measurements, including a variety of blood cell counts.
-
-A breakdown of the total of 202 athletes by sex and sport gives:
+The \txtt{ais} dataset (\textit{DAAG}) has data
+\marginnote{See the help page for \txtt{ais} for details.}
+from elite Australian athletes who trained at the Australian
+Institute of Sport. These included height, weight, and other
+morphometric measurements, as well as several types of blood
+cell counts.  A breakdown of the total of 202 athletes by sex
+and sport gives:
 \begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
@@ -843,7 +842,7 @@ from males.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-rowSwim-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-rowSwim-1} }
 
 \end{Schunk}
       \caption{Height (\texttt{ht}) versus Weight (\texttt{wt}), for
@@ -869,16 +868,15 @@ xyplot(ht ~ wt | sport, groups=sex, data=ais,
 \end{Schunk}
 %$
 
-In the graphics formula \verb!ht ~ wt | sport!, the vertical bar
-indicates that what follows, in this case \txtt{sport}, is a
-conditioning variable or factor.  The graphical information is broken
-down by levels of the factor \txtt{sport}.  The parameter
-\txtt{aspect} controls the ratio of dimensions in the $y$ and $x$
-directions.
-
-The use of the argument \txtt{par.settings}, with its call to
-\txtt{simpleTheme} requires explanation, as in the subsection
-that now follows.
+In the graphics formula \verb!ht ~ wt | sport!, 
+\marginnote{Subsection \ref{ss:style}, which now follows,
+explains the use of the argument \margtt{par.settings}, and its
+call to \margtt{simpleTheme()}.}
+the vertical bar indicates that what follows, in this case
+\txtt{sport}, is a conditioning variable or factor.  The
+graphical information is broken down by levels of the factor
+\txtt{sport}.  The parameter \txtt{aspect} controls the ratio
+of dimensions in the $y$ and $x$ directions.
 
 \subsection{Setting stylistic features}\label{ss:style}
 
@@ -958,13 +956,12 @@ grogplot <- xyplot(
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-grog-all-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-grog-all-1} }
 
 \end{Schunk}
 \caption{Australian and New Zealand apparent per person annual
   consumption (in liters) of the pure alcohol content of liquor products, for
-  1998 to 2006.  Appendix \ref{app:C} (Figure \ref{col:fig31}) has a color
-version of this graph.\label{fig:allgrog}}
+  1998 to 2006.\label{fig:allgrog}}
 \end{figure}
 
 Observe that:
@@ -1027,7 +1024,6 @@ factor \texttt{Country}:}\\[3pt]
 & \texttt{outer=FALSE} & & \texttt{outer=TRUE}\\
 \end{tabular}
 \end{fullwidth}
-\pagebreak
 
 \subsection{Keys -- \texttt{auto.key}, \texttt{key} and \texttt{legend}}\label{sec:keys}
 
@@ -1065,7 +1061,7 @@ required.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-strip-grob-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-strip-grob-1} }
 
 \end{Schunk}
 \caption{The argument \margtt{legend} has been used to add text,
@@ -1139,7 +1135,7 @@ provides an example.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/09-jobsplot-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/07-jobsplot-1} }
 
 \end{Schunk}
 \caption[][-18pt]{Jobs growth in Canadian provinces, between January 1995
@@ -1213,7 +1209,7 @@ dataset \txtt{cuckoos} from \textit{DAAG}:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/09-strip-bw-1} \includegraphics[width=0.47\textwidth]{figs/09-strip-bw-2} }
+\centerline{\includegraphics[width=0.47\textwidth]{figs/07-strip-bw-1} \includegraphics[width=0.47\textwidth]{figs/07-strip-bw-2} }
 
 \end{Schunk}
 \caption{A stripplot and a dotplot appear side by side.\label{fig:strip-bw}}
@@ -1250,7 +1246,7 @@ and \txtt{Vic}/\txtt{other} populations.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-lattice-density-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-lattice-density-1} }
 
 \end{Schunk}
 \end{center}
@@ -1341,7 +1337,7 @@ now follows, to use this panel function:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.98\textwidth]{figs/09-my-panel-1} }
+\centerline{\includegraphics[width=0.98\textwidth]{figs/07-my-panel-1} }
 
 \end{Schunk}
 \end{center}
@@ -1422,72 +1418,6 @@ Additionally, named column objects can be passed through an optional
 The function \txtt{as.layer()} creates a layer from a trellis graphics
 object.  This can then be ``added'' in the usual way.
 
-\subsection{Interaction with plots -- \textit{latticist} and
-  \textit{playwith}}\label{ssec:playwith}
-
-\marginnote[-24pt]{For using \textit{playwith}, the GTK+ toolkit must
-  be installed. For details, go to the website {\scriptsize
-    \url{http://playwith.googlecode.com/}.}}  Here will be noted the
-abilities in the \textit{latticist} and \textit{playwith} packages,
-for interaction with lattice plots.\sidenote{More limited abilities
-  are available to interact with other plots.}
-
-\paragraph{\texttt{latticist()}:}
-When called with a data frame as argument, the function
-\txtt{latticist()} (in the \textit{latticist} package) opens a
-window that has graphical summary information on the columns of the
-data frame.  Additionally, it opens a GUI interface to the
-\textit{lattice} and \textit{vcd} packages, allowing rapid creation of
-plots that may be useful in their own right, or may be a first step in
-creating more carefully crafted plots.  Various annotation features
-are available from the GUI.
-
-\paragraph{\texttt{playwith()}:}
-The \texttt{playwith()}  function (from the \textit{playwith}
-package) was used for Figure \ref{fig:playwith}.  The menu that
-appears to the left of the graph can be used to initiate single
-click identification, to add annotation or arrows, or to mark
-out a rectangle on the graph for zooming in or out.  If labels
-are not specified, row names are used.
-\vspace*{6pt}
-
-\begin{figure}[h]
-\includegraphics[scale=0.65]{colorArt/playwith}%
-\caption{This playwith GUI window was generated by wrapping the call
-  to \texttt{xyplot()} in the function \texttt{playwith()}, then
-  clicking on \underline{Identify}. Click near to a point to see its
-  label. A second click adds the label to the graph.  A color version
-appears as \ref{col:playwith}.\label{fig:playwith}}
-\end{figure}
-\vspace*{6pt}
-
-\begin{Schunk}
-\begin{Sinput}
-## Code that initiates interactive display
-library(playwith)
-playwith(xyplot(age ~ distance, data=hotspots),
-         labels=hotspots$name)
-\end{Sinput}
-\end{Schunk}
-\begin{marginfigure}[-24pt]
-Alternative code for Figure \ref{fig:playwith}:\\[-3pt]
-\begin{Schunk}
-\begin{Sinput}
-gph <-
-    xyplot(age ~ distance,
-            data=hotspots)
-library(playwith)
-playwith(update(gph),
-    labels=hotspots$name)
-\end{Sinput}
-\end{Schunk}
-\end{marginfigure}
-
-Note that \txtt{playwith()} can be used, also, for more limited
-interaction with plots created using base graphics, or
-using \textit{ggplot2}.
-
-
 \section{\textit{ggplot2} -- A \textit{Grammar of  Graphics}}\label{sec:ggplot}
 
 \marginnote{The \textit{ggplot2} syntax is a variant of
@@ -1519,7 +1449,7 @@ Figure \ref{fig:ggplot2-brain} repeats Figure \ref{fig:Animals}B from Chapter
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.7\linewidth]{figs/09-ggplot2-brain-1} }
+\centerline{\includegraphics[width=0.7\linewidth]{figs/07-ggplot2-brain-1} }
 
 \end{Schunk}
 \caption{Plot of brain weight (gm) versus body weight (kg).
@@ -1698,8 +1628,9 @@ available:\\[-9pt]
 
 \begin{fullwidth}
 \begin{table}%
-\caption{Control of ggplot2 graphics features. Note that functions
-  such as \txtt{xlab()} and \txtt{scale\_x\_continuous()} all have
+\caption{Control of ggplot2 graphics features. Functions such as
+  \txtt{xlab()} and \txtt{scale\_x\_continuous()} that relate to
+  the $x$-axis all have
   counterparts with \txtt{y} in place of \txtt{x}.
   \label{tab:cmpts}.}
 \vspace*{60pt}
@@ -1770,7 +1701,7 @@ The graph is a tad crowded.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-overlay-dens-frills-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-overlay-dens-frills-1} }
 
 \end{Schunk}
 \caption{Height versus weight, by sex, for Australian athletes in the
@@ -1824,13 +1755,11 @@ aisRS$sport <- droplevels(aisRS$sport)
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-quick-rs1-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-quick-rs1-1} }
 
 \end{Schunk}
 \caption{Use \texttt{color} for distinguishing \texttt{sex}es,
-\texttt{shape}s for \texttt{sport}s.
-Figure \ref{col:colshape} in Appendix \ref{app:C}
-shows the graph in color.}\label{fig:colshape}
+\texttt{shape}s for \texttt{sport}s.}\label{fig:colshape}
 
 \end{marginfigure}
 
@@ -1917,7 +1846,7 @@ quickplot(Year, mdbRain, data=bomregions2015,
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=\textwidth]{figs/09-qplot-smooth-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/07-qplot-smooth-1} }
 
 \end{Schunk}
 \caption{Annual rainfall, from 1901 to 2012, for the Murray-Darling
@@ -1929,7 +1858,16 @@ quickplot(Year, mdbRain, data=bomregions2015,
 \end{figure}
 
 Code that shows the detailed syntactic steps is:
-
+\begin{Schunk}
+\begin{Sinput}
+ggplot(bomregions2015, aes(x=Year, y=mdbRain)) +
+  geom_point() +                      # Scatterplot
+  geom_smooth(span=0.5, se=TRUE) +    # Add smooth
+  xlab("") +             # Blank out x-axis label
+  ylab("Av. rainfall, M-D basin")
+## NB: aes() has supplied x- and y-axis variables
+\end{Sinput}
+\end{Schunk}
 As before, the successive ``\txtt{+}'' operators combine output from
 function calls to create a single graphics object.
 
@@ -1965,7 +1903,7 @@ areas to convey numerical information is however not ideal, especially
 when as here the areas overlap.
 
 
-\section{Graphics -- Additional Points}
+\section{Static graphics -- additional notes}
 \subsection{Multiple graphs on a single graphics page}\label{ssec:xgph}
 
 For \textit{base} graphics, refer back to Subsection \ref{ss:xplots}.
@@ -2021,6 +1959,254 @@ Macintosh under OS X.  On Windows systems, an effective option is to
 use \txtt{win.metafile()} to write graphics output to a Windows
 metafile format that should import without problem into a Word or
 Power Point document.
+
+
+\section{Dynamic Graphics -- \textit{rgl}}\label{sec:dynamicg}
+
+This section will describe a range of abilities that create displays
+which the user can then manipulate dynamically.  Note in particular
+the {\em rgl} and {\em googleVis} packages, designed for interactive
+exploration of dynamic changes in relationships with time.  The 
+{\em googleVis} package reproduces most of the abilities of Google's
+Public Data Explorer, which can be accessed at
+\url{http://www.google.com/publicdata/home}
+
+
+
+\begin{figure}
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.625\textwidth]{figs/07-rgl-demo-1} }
+
+\end{Schunk}
+\caption{Snapshot of a 3-D dynamic display, for the \txtt{nihills}
+data from the {\em DAAG} package.  The display has been dragged to a
+position where points very nearly fall on a line.}\label{fig:rgl-ex}
+\end{figure}
+
+The \textit{rgl} package provides three-dimensional dynamic graphics.
+Use of the functions \txtt{scatter3d()} and \txtt{identify3d()} from
+the \emph{car} package may be more convenient for novices than the
+\emph{rgl} functions that they call.
+Figure \ref{fig:rgl-ex} shows a snapshot of the plot obtained for the
+\txtt{nihills} data from the {\em DAAG} package.
+
+\noindent
+The following loads the needed packages:
+\begin{Schunk}
+\begin{Sinput}
+## The car and rgl packages must be installed
+library(rgl, quietly=TRUE)
+library(car, quietly=TRUE)
+rgl::setupKnitr()
+knit_hooks$set(rgl=hook_rgl)
+\end{Sinput}
+\end{Schunk}
+
+Code for the figure is:
+\begin{Schunk}
+\begin{Sinput}
+library(DAAG, quietly=TRUE)
+open3d()            # Precedes the call to par3d()
+par3d(cex=0.75)     # Optional
+                    # Other params: see help(par3d)
+with(nihills, scatter3d(x=log(dist), y=log(climb),
+                        z=log(time),
+                        grid=FALSE,
+                        surface=FALSE,
+                        point.col="black",
+                        axis.scales=FALSE))
+## NB: Use middle or right mouse button to drag a
+## rectangle around a point that is to be labeled.
+\end{Sinput}
+\end{Schunk}
+\marginnote[11pt]{Use \txtt{rgl.snapshot()} to save the current plot
+  into a file.}
+
+Use the function \txtt{identify3d()} to start the identification of
+points.  Following the call to \txtt{identify3d()}, use the middle (or
+maybe right) mouse button to drag a rectangle around any point that is
+to be labeled.  To cease identifying points, make a middle (or right)
+click on an empty region of the plot.  The labels may appear only at
+this point.  Here, for identification of points shown in Figure
+\ref{fig:rgl-ex}, is suitable code:
+\begin{Schunk}
+\begin{Sinput}
+with(nihills, identify3d(x=log(dist), y=log(climb),
+                         z=log(time),
+                         labels=row.names(nihills),
+                         col="gray"))
+\end{Sinput}
+\end{Schunk}
+
+Such a plot can be helpful in identifying high leverage points,
+e.g., in the regression of \txtt{log(time)} on \txtt{log(dist)}
+and \txtt{log(climb)}.  The plot needs to be rotated to give a view
+in which the leverage is apparent.
+
+\subsection*{The  \texttt{rggobi} package}
+
+The \textit{rggobi} package offers a wider range of features, via an
+interface to the GGobi system.  For installation details go to
+\url{http://www.ggobi.org/}.  Windows users can use the following to
+install all the required files from an R session that has access to a
+live internet connection:
+\begin{Schunk}
+\begin{Sinput}
+source("http://www.ggobi.org/downloads/install.r")
+\end{Sinput}
+\end{Schunk}
+
+\subsection{The {\em googleVis} Package}\label{sec:gvis}
+
+This provides an interface to the abilities of Google's Public Data
+Explorer.  While these abilities can be accessed from the web page
+noted below, there are obvious advantages in setting up the display
+from one's own computer.\sidenote{An internet connection is needed to
+  access Google's API (Application Program Interface) when the chart
+  is displayed.}
+
+\subsection*{Google's Public Data Explorer}
+
+Upon accessing Google's web page
+\url{http://www.google.com/publicdata/home}, the display will cycle
+through examples of the use of Motion Charts, and other related
+charts.  Click on \underline{Explore Data} to go to the interactive
+version of the relevant display.\sidenote{Various controls are placed
+  in the margins of the graph.  Move the pointer over one or other
+  control feature to get information on its purpose, or over a point
+  to display information about that point. For changing the $x$-
+  and/or $y$- variables, or for changing the variable that determines
+  point size, click on the relevant downward pointing selector arrow.
+  Scales, separately for the two axes, can be either linear or
+  logarithmic.}  These charts, which are interesting in themselves,
+show the abilities that {\em googleVis} is designed to emulate.  See
+the annotations in Figure \ref{col:mchart} below for details that
+should be enough to get started.
+
+A slider below the graph can be moved to show how the relationships
+that are plotted change over the available timespan, commonly 1960
+through to 2010 (but note that not all data will be available for all
+years).  Click on the solid right-pointing triangle on the left of
+the slider scale to see the graph changing dynamically in moving from the
+currently shown year through to 2010.
+
+\subsection*{Use of {\em googleVis} to create motion charts}\label{ss:gvis}
+
+\begin{SaveVerbatim}{gvis}
+vignette("googleVis")
+\end{SaveVerbatim}
+
+The details given here should be supplemented with examination
+of the vignette\marginnote{To display the vignette, type:
+\vspace*{-7pt}
+
+\UseVerbatim[fontsize=\relsize{0}]{gvis} } that accompanies the {\em
+googleVis} package.  Note especially Figure 1 on page 5 of the
+vignette.
+
+Creation of a motion chart, once the data is in place, is remarkably
+straightforward. The starting point is a data frame in that has a
+column (e.g.\ Countries) that can be used as an \txtt{id} variable, a
+column (e.g.\ Year) that has a \txtt{timevar} variable, and columns
+that can be used to supply $x$- and $y$- variables.  Optionally,
+columns may be identified for use as a \txtt{colorvar} and/or a
+\txtt{sizevar}.
+
+The dataset \txtt{grog} from the {\em DAAG} package has a suitable
+structure.  One can create a motion chart thus:
+\begin{minipage}[t]{1.075\textwidth}
+\begin{Schunk}
+\begin{Sinput}
+library(googleVis)
+M <- gvisMotionChart(grog, id="Country", timevar="Year")
+## This next line requires a live internet connection,
+## and Adobe Flash must be installed.
+plot(M)
+\end{Sinput}
+\end{Schunk}
+\end{minipage}
+If the browser window that appears displays 'Flash' in gray in the
+middle of the screen, click there to proceed.  A browser window with a
+gray display region should appear.
+
+For the \txtt{grog} dataset, the Motion Chart does a less satisfactory
+job than Figure \ref{fig:allgrog} in Section \ref{ss:grog}.  Motion
+charts come into their own for the examination of steady changes over
+time in a bivariate relationship, with different patterns of
+relationship for different subgroups of the data.
+
+A plot that allows the display of various World Bank development
+indicators can be obtained by typing:\marginnote{The code used to
+  download the data and display the motion chart will appear on your
+  screen.}
+\begin{Schunk}
+\begin{Sinput}
+demo(WorldBank)
+\end{Sinput}
+\end{Schunk}
+This can take a while to start up -- data has to be downloaded from
+the World Bank web site. Hover the mouse pointer over features that
+appear in the margins of the display to see annotation that indicates
+how you can change or manipulate various aspects of the display.
+
+The data from the World Bank site is stored into a data frame
+\txtt{WorldBank}.  The command that creates a gvis object M
+is:\sidenote{Both \txtt{WorldBank} and \txtt{M} should be in your
+  workspace after running \txtt{demo(WorldBank)}.  The data are
+  also alternatively available from the image file
+\txtt{WorldBank.RData} at the url noted
+on the reverse of the title page.}
+\begin{Schunk}
+\begin{Sinput}
+M <- gvisMotionChart(WorldBank, idvar="country",
+          timevar="year",
+          xvar="life.expectancy",
+          yvar="fertility.rate",
+          colorvar="region", sizevar="population",
+          options=list(width=700, height=600))
+## Now display the motion chart
+plot(M)
+\end{Sinput}
+\end{Schunk}
+Change \txtt{width} and \txtt{height} as needed to make better
+use of the screen display.
+
+If arguments are supplied, security setting issues on the user
+computer can result in an initial assignment of columns that does not
+accord with the supplied arguments.\sidenote{The
+  {\em gvis} object M comprises Javascript code that can be
+  included on a web page.  This should display correctly when the web
+  page is accessed.}  The drop-down menus should however function
+correctly, and can be used to obtain a display that accords with any
+choice of arguments that the user may want.
+
+For a further example, load the image file {\bf wdiSel.RData},
+available from the url noted on the reverse of the title page. This
+will make available the data frame \txtt{wdiSel}. This has a larger
+number of indicators, but for 26 countries only.  Figure
+\ref{col:mchart} (with the figures that are shown in color) shows an
+annotated version of a motion chart that was created from this
+dataset.
+
+The following code generated the initial chart.  The change
+to a log scale on the vertical axis was made interactively:
+\begin{fullwidth}
+\begin{Schunk}
+\begin{Sinput}
+xnam <- "Electric power consumption (kWh per capita)"
+ynam <- "Mobile cellular subscriptions (per 100 people)"
+M <- gvisMotionChart(wdiSel, idvar="Country.Name", timevar="Year",
+                     xvar=xnam, yvar=ynam,
+                     colorvar="region", sizevar="Population, total",
+                     options=list(width=600, height=500),
+                     chartid="wbMotionChartSel")
+plot(M)
+\end{Sinput}
+\end{Schunk}
+\end{fullwidth}
+
 
 \section{Summary}
 \begin{itemize}

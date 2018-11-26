@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -47,6 +50,13 @@ dir(txdir, pattern=".txt$")
 txfiles <- dir(txdir, pattern=".txt$", full.names=TRUE)
 \end{Sinput}
 \end{Schunk}
+\end{fullwidth}
+
+The following brings the first of these files into the workspace,
+with one text string per line. The separate text strings are then
+collapsed into a single character vector, with spaces at the end
+of each line:
+\begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
 ## Input first file, with one text string per line
@@ -167,9 +177,8 @@ stopwords('SMART')[1:5]
 stopwords("SMART")[!stopwords("SMART")%in%stopwords()][1:10]
 \end{Sinput}
 \begin{Soutput}
- [1] "a's"         "able"        "according"   "accordingly"
- [5] "across"      "actually"    "afterwards"  "ain't"      
- [9] "allow"       "allows"     
+ [1] "a's"         "able"        "according"   "accordingly" "across"     
+ [6] "actually"    "afterwards"  "ain't"       "allow"       "allows"     
 \end{Soutput}
 \end{Schunk}
 
@@ -180,9 +189,9 @@ Now list terms that occur 100 or more times:
 findFreqTerms(tx.tdm, 100)
 \end{Sinput}
 \begin{Soutput}
- [1] "code"      "data"      "figure"    "file"     
- [5] "frame"     "function"  "functions" "graphics" 
- [9] "objects"   "package"   "plot"     
+ [1] "code"      "data"      "figure"    "file"      "frame"    
+ [6] "function"  "functions" "graphics"  "objects"   "package"  
+[11] "plot"     
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -299,7 +308,7 @@ directories where these document collections are stored, type
 (pathto <- system.file("texts", package="tm"))
 \end{Sinput}
 \begin{Soutput}
-[1] "/Users/johnm1/Library/R/3.4/library/tm/texts"
+[1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/tm/texts"
 \end{Soutput}
 \begin{Sinput}
 dir(pathto)

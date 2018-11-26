@@ -1,0 +1,419 @@
+---
+title: "Functions for Index generation"
+author: "John Maindonald"
+date: "11/9/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r indexFuns}
+showpkg <-
+function (pkgs = c("DAAG", "boot", "lattice", "latticeExtra", "cluster", "afex",
+                   "MASS", "grid", "reshape", "forecast", "dichromat", "foreign", 
+                   "ggplot2", "leaps", "lme4", "MCMCpack", "ggplot2",
+                   "mgcv", "nlme", "oz", "ape", "plyr", "rgl", "RSQLite",
+                   "randomForest", "RColorBrewer", "rpart", "rpart.plot","survival", 
+                   "reshape2", "quantreg", "muhaz", "car", "stats", "gmodels",
+                   "tseries", "xtable", "oz", "WDI", "Rcmdr")) 
+{
+  for (pkg in pkgs) library(pkg, warn.conflicts = FALSE, character.only = TRUE)
+  where <- search()
+  if (length(where) < 1L) 
+    stop("argument 'where' of length 0")
+  ispkg <- substring(where, 1, 8) == "package:"
+  where <- where[ispkg]
+  z <- vector(length(where), mode = "list")
+  newnam <- sapply(strsplit(where, ":", fixed = TRUE), function(x) x[2])
+  names(z) <- newnam
+  for (i in seq_along(where)) z[[i]] <- ls.str(pos = where[i], mode='function')
+  z <- sapply(names(z), function(x) {
+    funs <- z[[x]]
+    paste(rep(x, length(funs)), funs, sep = ":")
+  })
+  all <- unlist(z, use.names = FALSE)
+  zz <- strsplit(all, ":")
+  funtab <- cbind(sapply(zz, function(x) x[1]), sapply(zz, 
+                                                       function(x) x[2]))
+  funtab
+}
+locatefun <-
+function (txlines = DAAGURtx) 
+{
+  idtxt <- "\\.?[a-zA-Z][a-zA-Z0-9]*(\\.[a-zA-Z]+)*\\("
+  z <- regexpr("\\f", txlines)
+  z[z > 0] <- 1
+  z[z <= 0] <- 0
+  page <- cumsum(z) + 1
+  k <- 0
+  findfun <- function(tx) {
+    mn <- t(sapply(tx, function(x) {
+      m <- regexpr(idtxt, x)
+      c(m, attr(m, "match.length"))
+    }))
+    mn[, 2] <- mn[, 1] + mn[, 2]
+    rownames(mn) <- paste(1:dim(mn)[1])
+    mn
+  }
+  for (i in 1:100) {
+    mn <- findfun(txlines)
+    if (all(mn[, 1] == -1)) 
+      break
+    here <- mn[, 1] > 0
+    page <- page[here]
+    txlines <- txlines[here]
+    mn <- mn[here, , drop = FALSE]
+    m1 <- regexpr("\\(", txlines) - 1
+    tx1 <- substring(txlines, mn[, 1], m1)
+    if (i == 1) 
+      xy <- data.frame(nam = I(tx1), page = page)
+    else xy <- rbind(xy, data.frame(nam = I(tx1), page = page))
+    txlines <- substring(txlines, mn[, 2])
+    here2 <- nchar(txlines) > 0
+    txlines <- txlines[here2]
+    page <- page[here2]
+    if (length(txlines) == 0) 
+      break
+  }
+  zz <- !xy[, 1] %in% c("", "al", "Pr", "T", "F", "n", "P", 
+                        "y", "A", "transformation", "left", "f", "site.", "a", 
+                        "b", "II", "ARCH", "ARMA", "MA")
+  xy <- xy[zz, ]
+  nam <- xy$nam
+  ch <- substring(nam, 1, 1)
+  nam[ch %in% c("=", " ", ",")] <- substring(nam[ch %in% c("=", 
+                                                           " ", ",")], 2)
+  xy$nam <- nam
+  ord <- order(xy[, 2])
+  xy[ord, ]
+}
+
+tmat4 <- read.table('tmat4.txt')
+
+makeFunIndex <-
+function (sourceFile = "draft.txt", frompath = "~/_dbeta", 
+          topath = NULL, fileout = NULL, availfun = funpack, 
+          offset = 14) 
+{
+  len <- nchar(sourceFile)
+  lfrom <- nchar(frompath)
+  if (substring(frompath, lfrom, lfrom) == "/") 
+    frompath <- substring(frompath, 1, lfrom - 1)
+  if (is.null(fileout)) {
+    if (substring(sourceFile, len - 3, len - 3) == ".") 
+      fnam <- substring(sourceFile, 1, len - 4)
+    else fnam <- sourceFile
+    fileout <- paste(fnam, ".fdx", sep = "")
+    fdxfile <- paste(fileout, sep = "/")
+    fndfile <- paste(fnam, ".fnd", sep = "")
+  }
+  if (is.null(topath)) 
+    topath <- frompath
+  else {
+    lto <- nchar(topath)
+    if (substring(topath, lto, lto) == "/") 
+      topath <- substring(topath, 1, lto - 1)
+  }
+  sourceFile <- paste(frompath, sourceFile, sep = "/")
+  print(paste("Send output to", fndfile))
+  tx <- readLines(sourceFile, warn = FALSE)
+  entrymat <- locatefun(tx)
+  backn <- regexpr("\\n", entrymat[, 1], fixed = TRUE)
+  entrymat <- entrymat[backn < 0, ]
+  entrymat[, 2] <- entrymat[, 2] - offset
+  entrymat[, 1] <- gsub("_", "\\_", entrymat[, 1], fixed = TRUE)
+  nmatch <- match(entrymat[, 1], availfun[, 2], nomatch = 0)
+  use <- nmatch > 0
+  print("Unmatched functions:")
+  print(unique(entrymat[!use, 1]))
+  entrymat[use, 1] <- paste(entrymat[use, 1], " ({\\em ", availfun[nmatch, 
+                                                                     1], "})", sep = "")
+  funentries <- paste("\\indexentry  ", "{", entrymat[, 1], 
+                      "}{", entrymat[, 2], "}", sep = "")
+  write(funentries, fdxfile)
+  system(paste("makeindex -o", fndfile, fdxfile))
+## system(paste("mv", fndfile, topath))
+}
+
+pkgNam <- unique(scan('libchapsAll.txt', what=''))
+funpack <- showpkg(pkgs<- pkgNam)
+```
+#######################################################################
+
+```{r termFuns}
+## offset=14 because the pdf had 14 pages prior to the main page numbers
+## makeTermIndex() calls locateTerm()
+
+makeTermIndex <-
+function (sourceFile = "draft.txt", offset = 14,
+    fileout = "draft.idx", termMat=tm4, ignore.case=TRUE, limto=555)
+{
+    len <- nchar(sourceFile)
+    if (is.null(fileout)) {
+        if (substring(sourceFile, len - 3, len - 3) == ".")
+            fnam <- substring(sourceFile, 1, len - 4)
+        else fnam <- sourceFile
+        fileout <- paste(fnam, ".idx", sep = "")
+    }
+    tx <- readLines(sourceFile, warn = FALSE)
+    tx <- gsub('–','-',tx)
+    indentry <- locateTerm(tx, termMat, offset = offset, ignore.case=ignore.case, limto=limto)
+    nopage <- sapply(indentry, function(x)x[1]==999)
+    indIN <- indentry[!nopage]
+    indOUT <- indentry[nopage]
+    namIN <- names(indIN)
+    namOUT <- names(indOUT)
+    termentriesIN <- unlist(sapply(1:length(namIN), function(k) paste("{",
+        namIN[k], "}{", indIN[[k]], "}", sep = "")))
+    termentriesIN <- paste("\\indexentry", termentriesIN, sep = "")
+    termcon <- file(fileout)
+    write(termentriesIN, file = fileout)
+    close(termcon)
+    system(paste("makeindex -c", fileout))
+if(any(nopage)){
+    noEntry <- unlist(sapply(1:length(indOUT), function(k) paste(
+        namOUT[k], indOUT[[k]], sep = "")))
+    noEntry <- gsub('\\tt','',noEntry,fixed=TRUE)
+    noEntry <- gsub('999','',noEntry,fixed=TRUE)
+    noEntry <- gsub('\\itshape','',noEntry,fixed=TRUE)    
+    noEntry <- gsub('\\texttt','',noEntry,fixed=TRUE)
+    noEntry <- gsub('\\','',noEntry,fixed=TRUE)}
+    else(noEntry<-NULL)
+    invisible(noEntry)
+}
+
+locateTerm <-
+function (txlines = DAAGURtx, tmat = termMat, offset = 0, ignore.case,
+    limto = NA)
+{
+    idtxt <- "[a-zA-Z][a-zA-Z0-9\\.\\_]*?\\("
+    txlines <- gsub("[[\\]]", " ", txlines)
+    txlines <- gsub(". ", " ", txlines, fixed = TRUE)
+    txlines <- gsub("\\([^\\)]|[^\\(]\\)", " ", txlines)
+    txlines <- gsub("[^0-9a-zA-Z)(\f _.-]", "", txlines)
+#    txlines <- tolower(txlines)
+#    for(j in 2:5)tmat[,j]  <- tolower(tmat[,j])
+    word1 <- tmat[, 2]
+    word2 <- tmat[, 3]
+    altwd1 <- tmat[, 4]
+    altwd2 <- tmat[, 5]
+    nterm <- length(word1)
+    count <- numeric(nterm)
+    eol <- regexpr("\f", txlines)
+    eol[eol > 0] <- 1
+    eol[eol <= 0] <- 0
+    page <- cumsum(eol) + 1
+    cat("\nPage range is:", min(page), "to", max(page), "\n")
+    txpg <- sapply(split(txlines, page), function(x) paste(x, collapse = " "))
+    if (offset >= 1)
+        txpg <- txpg[-(1:offset)]
+    if (!is.na(limto) & limto < length(txpg))
+        txpg <- txpg[1:limto]
+    k <- 0
+    n1 <- 1:length(txpg)
+    indentry <- vector("list", length(terms))
+    for (k in 1:nterm) {
+        tm1 <- word1[k]
+#        tm1 <- paste("[[:space:][:punct:]]?", word1[k], "[[:space:][:punct:]]?", sep = "")
+        # tm1a <- paste(" ", word1[k], ",", sep = "")
+        # tm1b <- paste(" ", word1[k], ".", sep = "")
+        tm2 <- word2[k]
+        alt1 <- altwd1[k]
+        alt2 <- altwd2[k]
+        regr1 <- regexpr(tm1, txpg, fixed=TRUE)
+        # regr1a <- regexpr(tm1a, txpg, fixed = TRUE)
+        # regr1b <- regexpr(tm1b, txpg, fixed = TRUE)
+        here <- regr1 > 0      
+        # here <- regr1 > 0 | regr1a > 0 |regr1b > 0
+        if (!is.na(alt1)) {
+#            alt1 <- paste("[[:space:][:punct:]]?", alt1, "[[:space:][:punct:]]?", sep = "")
+            altregr1 <- regexpr(alt1, txpg,fixed=TRUE)
+            here <- here | altregr1 > 0
+        }
+        if (!is.na(tm2)) {
+#            tm2 <- paste("[[:space:][:punct:]]?", tm2, "[[:space:][:punct:]]?", sep = "")
+            regr2 <- regexpr(tm2, txpg, fixed=TRUE)
+            here2 <- regr2 > 0
+            if (!is.na(alt2)) {
+#                alt2 <- paste("[[:space:][:punct:]]?", alt2, "[[:space:][:punct:]]?", sep = "")
+                altregr2 <- regexpr(alt2, txpg,fixed=TRUE)
+                here2 <- here2 | altregr2 > 0
+            }
+            here <- here & here2
+        }
+        pg <- n1[here]
+        if (length(pg) == 0) {
+            indentry[k] <- list(999)
+            if(tm1 %in% c("zzzz", "zzzzzzz"))
+              indentry[k] <- list(1111)
+        }
+        else indentry[k] <- list(pg)
+        count[k] <- sum(here)
+    }
+    names(indentry) <- tmat[, 1]
+    indentry
+}
+
+# locateTerm <-
+# function (txlines = DAAGURtx, tmat = termMat, offset = 0,
+#     limto = NA)
+# {
+#     idtxt <- "[a-zA-Z][a-zA-Z0-9\\.\\_]*?\\("
+#     txlines <- gsub("[[\\]]", " ", txlines)
+#     txlines <- gsub(". ", " ", txlines, fixed = TRUE)
+#     txlines <- gsub("\\([^\\)]|[^\\(]\\)", " ", txlines)
+#     txlines <- gsub("[^0-9a-zA-Z)(\f _.-]", "", txlines)
+#     txlines <- tolower(txlines)
+#     for(j in 2:5)tmat[,j]  <- tolower(tmat[,j])
+#     word1 <- tmat[, 2]
+#     word2 <- tmat[, 3]
+#     altwd1 <- tmat[, 4]
+#     altwd2 <- tmat[, 5]
+#     nterm <- length(word1)
+#     count <- numeric(nterm)
+#     eol <- regexpr("\f", txlines)
+#     eol[eol > 0] <- 1
+#     eol[eol <= 0] <- 0
+#     page <- cumsum(eol) + 1
+#     cat("\nPage range is:", min(page), "to", max(page), "\n")
+#     tx <- sapply(split(txlines, page), function(x) paste(x, collapse = " "))
+#     if (offset >= 1)
+#         tx <- tx[-(1:offset)]
+#     if (!is.na(limto) & limto < length(tx))
+#         tx <- tx[1:limto]
+#     k <- 0
+#     n1 <- 1:length(tx)
+#     indentry <- vector("list", length(terms))
+#     for (k in 1:nterm) {
+#         tm1 <- paste(" ", word1[k], " ", sep = "")
+#         tm1a <- paste(" ", word1[k], ",", sep = "")
+#         tm1b <- paste(" ", word1[k], ".", sep = "")
+#         tm2 <- word2[k]
+#         alt1 <- altwd1[k]
+#         alt2 <- altwd2[k]
+#         regr1 <- regexpr(tm1, tx, fixed = TRUE)
+#         regr1a <- regexpr(tm1a, tx, fixed = TRUE)
+#         regr1b <- regexpr(tm1b, tx, fixed = TRUE)
+#         here <- regr1 > 0 | regr1a > 0 |regr1b > 0
+#         if (!is.na(alt1)) {
+#             alt1 <- paste(" ", alt1, " ", sep = "")
+#             altregr1 <- regexpr(alt1, tx, fixed = TRUE)
+#             here <- here | altregr1 > 0
+#         }
+#         if (!is.na(tm2)) {
+#             tm2 <- paste(" ", tm2, " ", sep = "")
+#             regr2 <- regexpr(tm2, tx, fixed = TRUE)
+#             here2 <- regr2 > 0
+#             if (!is.na(alt2)) {
+#                 alt2 <- paste(" ", alt2, " ", sep = "")
+#                 altregr2 <- regexpr(alt2, tx, fixed = TRUE)
+#                 here2 <- here2 | altregr2 > 0
+#             }
+#             here <- here & here2
+#         }
+#         pg <- n1[here]
+#         if (length(pg) == 0) {
+#             indentry[k] <- list(999)
+#             if(!(tm1 %in% c(" zzzz ", " zzzzzzz ")))
+#               indentry[k] <- list(1111)
+#         }
+#         else indentry[k] <- list(pg)
+#         count[k] <- sum(here)
+#     }
+#     names(indentry) <- tmat[, 1]
+#     indentry
+# }
+
+
+showTermPage <-
+function (sourceFile = "~/r3/proofs/r-mono.txt", tmat = termMat,
+    offset = 0, fileout = "~/r3/proofs/bypage.txt", indentry = NULL)
+{
+    if (is.null(indentry)) {
+        len <- nchar(sourceFile)
+        tx <- readLines(sourceFile, warn = FALSE)
+        indentry <- locateTerm(tx, termMat, offset = offset)
+    }
+    tnam <- names(indentry)
+    len <- length(tnam)
+    itemlen <- sapply(indentry, length)
+    tlist <- sapply(1:len, function(k) cbind(indentry[[k]], rep(k,
+        itemlen[k])))
+    t1 <- unlist(lapply(tlist, function(x) x[, 1]))
+    t2 <- unlist(lapply(tlist, function(x) x[, 2]))
+    termlist <- split(t2, t1)
+    pnam <- names(termlist)
+    write("Page List", file = fileout)
+    for (i in 1:length(termlist)) {
+        ntms <- unique(termlist[[i]])
+        ntms <- ntms[ntms != 999]
+        if (length(ntms) > 0) {
+            tms <- sort(tnam[ntms])
+            tms <- sub("!", "!! ", tms, fixed = TRUE)
+            tmsplit <- strsplit(tms, "!!", fixed = T)
+            tx1 <- sapply(tmsplit, function(x) x[1])
+            tx2 <- sapply(tmsplit, function(x) if (length(x) >
+                1)
+                x[2]
+            else "")
+            z <- split(tx2, tx1)
+            nam <- names(z)
+            chvec <- unlist(as.vector(sapply(1:length(z), function(i) c(nam[i],
+                z[[i]]))))
+            write(pnam[i], file = fileout, append = TRUE)
+            write(chvec, file = fileout, append = TRUE)
+            write(" ", file = fileout, append = TRUE)
+        }
+    }
+    unlink(fileout)
+}
+```
+
+#######################################################################
+
+To get a pdf and hence text file in which the listings (in color)
+code can be searched for names, remove the `%` fromm the start of
+the line `% columns=fullflexible,` in Sweavel.sty, before running
+`pdflatex draft`
+
+```{bash makeTxt}
+## Start looking on page 9; first 6 pages are preface
+## Change 416 to the # pages, to be used for creation of index 
+pdftotext -f 9 -l 416 -layout -eol unix ~/_dbeta/draft.pdf draft.txt
+```
+
+```{r mkfnd}
+## Set offset to # of preamble pages
+## Create fdx, then fnd file
+makeFunIndex(offset=6)
+```
+
+```{r mkind}
+## Create idx, then ind file
+notIn <- makeTermIndex(termMat=tmat4, offset=6)
+```
+
+<!-- ```{bash idxTOind} -->
+<!-- makeindex -c draft.idx -->
+<!-- ``` -->
+
+```{r tokens}
+tmat4 <- read.table('tmat4.txt', as.is=TRUE)
+tx <- readLines('draft.txt')
+eol <- regexpr('\f',tx)
+pg <- cumsum(eol==1)+1
+txword <-  tokenizers:: tokenize_words(txx, stopwords=tm::stopwords('SMART')[-c(147, 275, 288, 491, 504)],lowercase=FALSE)
+z2 <- sapply(tmat4[,2],
+            function(x)sapply(txword,function(w)match(x,w,nomatch=0),
+                              USE.NAMES=TRUE),USE.NAMES=TRUE)
+z3 <- sapply(tmat4[,3],
+            function(x)sapply(txword,function(w)match(x,w,nomatch=0),
+                              USE.NAMES=TRUE),USE.NAMES=TRUE)
+u2 <- apply(z2,2,sum)
+nam2 <- unique(names(u2))
+tag2 <- gsub(' ', '-',nam2,fixed=TRUE) 
+u3 <- apply(z3,2,sum)
+nam3 <- names(u3)
+```

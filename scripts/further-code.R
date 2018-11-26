@@ -4,32 +4,10 @@ options(width=78)
 ## ---- opt54 ----
 options(width=54)
 
-## ---- ss-12.1.1 ----
-
 ## ---- loadDAAG ----
 library(DAAG)
 
-## ---- smooth-ohms ----
-## Plot points
-plot(ohms ~ juice, data=fruitohms, fg="gray")
-## Add smooth curve, using default
-## smoothing window
-with(fruitohms,
-     lines(lowess(ohms ~ juice), col="gray", lwd=2))
-
-## ---- plotVIS ----
-## Code
-library(DAAGviz)
-library(mgcv)
-eyeAmpM.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="m"))
-eyeAmpF.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="f"))
-lims <- range(c(predict(eyeAmpF.gam), predict(eyeAmpM.gam)))
-vis.gam(eyeAmpM.gam, plot.type='contour', color="cm", zlim=lims, main="")
-mtext(side=3, line=0.5, adj=0, "A: Response amplitudes, Males")
-vis.gam(eyeAmpF.gam, plot.type='contour', color="cm", zlim=lims, main="")
-mtext(side=3, line=0.5, adj=0, "B: Response amplitudes, Females")
-
-## ---- sec-12.2 ----
+## ---- sec-9.1 ----
 
 ## ---- ant111b ----
 # ant111b is in DAAG
@@ -39,9 +17,9 @@ stripplot(Site ~ harvwt, data=ant111b, fg="gray",
           scales=list(tck=0.5),
           xlab="Harvest weight of corn")
 
-## ---- sec-12.3 ----
+## ---- sec-9.2 ----
 
-## ---- ss-12.3.1 ----
+## ---- ss-9.2.1 ----
 
 ## ---- getErie ----
 Erie <- greatLakes[,"Erie"]
@@ -85,7 +63,7 @@ plot(obj, fg="gray",
      xlab="",
      ylab="Height of lake")
 
-## ---- ss-12.3.2 ----
+## ---- ss-9.3.2 ----
 
 ## ---- arima-sim ----
 for (i in 1:6){
@@ -111,7 +89,7 @@ plot(fc, main="", fg="gray",
      ylab="Lake level (m)")
   # 15 time points ahead
 
-## ---- ss-12.3.3 ----
+## ---- ss-9.3.3 ----
 
 ## ---- mdb-gam ----
 ## Code
@@ -151,7 +129,7 @@ at6 <- julian(seq(from=fromDate, to=max(dfWeek06$Date), by="6 months"), origin=f
 atyear <- julian(year, origin=fromDate)
 dfWeek06.gam <- gam(num~s(day, k=200), data=dfWeek06, family=quasipoisson)
 avWk <- mean(predict(dfWeek06.gam))
-plot(dfWeek06.gam, xaxt="n", shift=avWk, trans=exp, rug=FALSE, 
+plot(dfWeek06.gam, xaxt="n", shift=avWk, trans=exp, rug=FALSE,
      xlab="", ylab="Estimated rate per week", fg="gray")
 axis(1, at=atyear, labels=format(year, "%Y"), lwd=0, lwd.ticks=1)
 abline(h=0.5+(1:4)*0.5, v=at6, col="gray", lty=3, lwd=0.5)
@@ -165,12 +143,12 @@ year <- seq(from=fromDate, to=max(dfDay06$Date), by="1 year")
 dfDay06.gam <- gam(formula = num ~ s(day, k=200), family = quasipoisson,
                    data = dfDay06)
 avDay <- mean(predict(dfDay06.gam))
-plot(dfDay06.gam, xaxt="n", shift=avDay, trans=exp, rug=FALSE, 
+plot(dfDay06.gam, xaxt="n", shift=avDay, trans=exp, rug=FALSE,
      fg="gray", xlab="", ylab="Estimated rate per day")
 axis(1, at=atyear, labels=format(year, "%Y"))
 # mtext(side=3, line=0.75, "B: Events per day, vs date", adj=0)
 
-## ---- sec-12.4 ----
+## ---- sec-9.4 ----
 
 ## ---- loadMASS ----
 library(MASS, quietly=TRUE)
@@ -200,7 +178,7 @@ xyplot(scores[,2] ~ scores[,1], groups=fgl$type,
        auto.key=list(space="right"),
        par.settings=simpleTheme(alpha=0.6, pch=1:6))
 
-## ---- sec-12.5 ----
+## ---- sec-9.5 ----
 
 ## ---- load-rpart ----
 library(rpart)
@@ -225,7 +203,7 @@ plot(b.rpart)
 text(b.rpart, xpd=TRUE)
 par(opar)
 
-## ---- ss-12.5.1 ----
+## ---- ss-9.5.1 ----
 
 ## ---- rf-x-bronchit ----
 opar <- par(mar=rep(2.1,4))
@@ -263,9 +241,9 @@ xyplot(points[,2] ~ points[,1],
 ## ---- fgl-rf ----
 (fgl.rf <- randomForest(type ~ ., data=fgl))
 
-## ---- sec-12.6 ----
+## ---- sec-9.6 ----
 
-## ---- ss-12.7.1 ----
+## ---- ss-9.7.1 ----
 
 ## ---- aupoints ----
 aupts <- cmdscale(audists)

@@ -1,6 +1,9 @@
 % !Rnw root = learnR.Rnw
+
+\input{preamble}
+
 <<echo=FALSE, cache=FALSE>>=
-opts_knit$set(self.contained=FALSE)
+## opts_knit$set(root.dir=normalizePath('..'),self.contained=FALSE)
 @
 
 <<echo=FALSE>>=
@@ -21,6 +24,8 @@ read_chunk("../scripts/examples-code.R")
 \vspace*{-2pt}
 
 \begin{tabular}{ll}
+Science,        & Notes on the role of statistics and statistical\\
+statistics \& R & analysis in the wider scientific enterprise\\[6pt]
 Scatterplot & Scatterplot matrices can give useful insights on\\
 matrices    & data that will be used for regression or related\\
  &  calculations.\\[6pt]
@@ -50,6 +55,28 @@ exploration of data and the fitting of regression models.  It will
 round out the discussion of Chapters \ref{ch:getStart} and
 \ref{ch:workenv} by adding some further important technical details.
 
+The notes that follow assume a knowledge of basic statistical
+ideas and methods, to the extent that readers will be comfortable
+with output that includes details of standard errors, $t$-statistics,
+and $p$-values. At one point, there is a mention of Bayesian
+prior probability.  
+
+There is use, in several places, of
+cross-validation for assessing predictive accuracy.  For this, data
+is split up into several subsets (10 is a common choice).  Each
+subset is then left out in turn for use to check predictive accuracy
+when the model is fitted to the remaining data.  Once the process is
+complete, predictions made independently of the observed values are
+available for all observations.  Differences between observed values
+and predictions made independently of those values can then be used
+to assess predictive accuracy.
+
+In bootstrap resampling, repeated with replacement samples are taken
+from the data.  The model can then be refitted to each such resample,
+generating multiple estimates of each coefficient or other statistic
+of interest.  Standard error estimates can then be based on variation
+between the multiple estimates.
+
 \subsection*{Notation, when referring to datasets}
 
 Data will be used that is taken from several different R packages.
@@ -58,6 +85,243 @@ as in the textual description, makes it clear that the dataset
 \txtt{mammals} that is required is from the {\em MASS} package.
 Should another attached package happen to have a dataset
 \txtt{mammals}, there is no risk of confusion.
+
+\section{Science, statistics, and R}
+
+How does statistical analysis fit into the wider scientific
+enterprise? While not a central focus of the present notes, 
+the issues that will now be noted are too important to be
+ignored.
+
+\marginnote[12pt]{Note, however, the chapters on map overlays
+and on text mining --- these extend into areas that would not
+ordinarily be described as "data analysis".}
+The R system is an enabler that allows users to do effective
+data analysis, and much else besides.  These notes hint at
+its scope, primarily for data manipulation, for data analysis,
+and for graphics. 
+
+For the purposes of this next, the terms "data science" and
+"statistics" are different names for an endeavour whose concern
+is to extract meaning from data, leading for example to results
+that might be reported in a scientific paper, or that might form
+the basis for a business or government policy.  Statistical
+issues and ideas are fundamental to any use of data to make
+generalizations that extend beyond the particular data that
+have been collected, or that are otherwise available.  They are
+fundamental, in that sense, to any scientific use of data.
+It is, at the same time, important to acknowledge that there
+are strict limits on what statistical analysis can achieve.
+Statistical analysis is a partner to, and not a substitute
+for, robust scientific processes.  The use of experimental data
+provides the simplest context in which to explore this point
+further.
+
+For experimental work, over and above what may emerge from a
+statistical analsysis, the demand is that results be replicable.
+Laboratory studies have repeatedly shown shown that drinking
+regular caffeinated coffee increases blood pressure, though
+with minimal long term effects.\footnote{\citet{green_kirby_suls_1996}
+}  It is accepted that there is
+this effect, not from the statistical analysis of results from
+any individual trial, but because the effect has been demonstrated
+in repeated trials.  The role of statistical analysis has been:
+\begin{enumerate}
+\tightlist
+\item to demonstrate that, collating the evidence from repeated
+trials, the effect does appear real; 
+\item to assess the magnitude of the effect.
+\end{enumerate}
+
+Worldwide, hundreds of thousands of randomised trials are
+conducted annually.  What do they tell us?  In clinical medicine,
+follow-up trials are common, and clear conclusions will often
+emerge from the careful collation of evidence that, in important
+cases, is likely to follow.  In many other areas follow-up trials
+have until recently been uncommon. This is now changing, and for
+good reason.  Independent replication of the experimental process
+provides checks on the total experimental process, including the
+statistical analysis.  It is unlikely that the same mistakes in
+experimental procedure and/or statistical analysis will be repeated.
+
+\marginnote[12pt]{These replication rates are so low, in the areas
+to which these papers relate, that they make nonsense of citations
+to published individual trial results as evidence
+that a claimed effect has been scientifically demonstrated.}
+Papers that had a key role in getting attention to reproducibility
+concerns have been \citet{prinz2011believe} and 
+\citep{begley2012drug}, the first (6 out of 53 "landmark" studies
+reproduced)  relating to drug trials, and the second (19 out of 65 
+"seminal" studies) to cancer drug trials.  Since those studies
+appeared, results have appeared from systematic attempts to
+reproduce  published work in psychology (around 40\%), in
+laboratory economics (11 of 18), and in social science (12 of 18).
+
+Many of the problems that these studies identify extend, also,
+into research and associated analyses that works with observational
+data.  In any attempt to draw hard conclusions from observational
+data, in a case where the aim is to compare two groups, there are
+certain to be many more differences than the difference that is
+of interest.  One application of regression methods is to do
+"covariate adjustments".  The limitations of such an approach are
+not as widely understood as they should be. There has
+to be confidence that all relevant covariates are accounted for,
+that they are measured with adequate accuracy, and that the form
+of the adjustment (e.g., $x$, or $\log(x)$, or $x^2$) is close
+to correct.
+
+In a hard-hitting paper titled "Cargo-cult statistics and
+scientific crisis", \citet{stark_saltelli_2018} comment,
+quoting also from \citet{edwards_roy_2017}:
+\begin{quote}
+While some argue that there is no crisis (or at least not a systemic problem), bad incentives, bad scientific practices, outdated methods of vetting and disseminating results, and techno-science appear to be producing misleading and incorrect results. This might produce crisis of biblical proportions: as Edwards and Roy write: ``If a critical mass of scientists become untrustworthy, a tipping point is possible in which the scientific enterprise itself becomes inherently corrupt and public trust is lost, risking a new dark age with devastating consequences to humanity.''
+\end{quote}
+Statistical issues are then front and central in what many are identifying
+as a crisis, but are not the whole story. The crisis is one that
+scientists and statisticians need to tackle in partnership.
+
+In a paper that deserves much more attention than it has received,
+\citep{tukey_1997}, John W Tukey
+argued that, as part of the process of fitting a model and forming a
+conclusion, there should be  incisive and informed critique of the data
+used, of the model, and of the inferences made. It is important that
+analysts search out available information about the processes that
+generated the data, and consider critically how this may affect the
+reliance placed on it. Other specific types of challenge (this list is
+longer than Tukey's) may include:
+\begin{itemize}
+\tightlist
+\item For experiments, is the design open to criticism?
+\item Look for biases in processes that generated the data.
+\item Look for inadequacies in laboratory procedure.
+\item Use all relevant graphical or other summary checks to
+critique the model that underpins the analysis.
+\item Where possible, check the performance of the model on
+test data that reflects the manner of use of results.
+(If for example predictions are made that will be applied a
+year into the future, check how predictions made a year
+ahead panned out for historical data.)
+\item For experimental data, have the work replicated
+independently by another research group, from generation of
+data through to analysis.
+\item Have analysis results been correctly interpreted,
+in the light of subject area knowledge.
+\end{itemize}
+Exposure to diverse challenges will build (or destroy!) confidence
+in model-based inferences. We should trust those results that have
+withstood thorough and informed challenge. 
+
+Data do not stand on their own. An understanding of the processes
+that generated the data is crucial to judging how data can and connot
+reasonably be used.  So also is application area insight. Numerous
+studies found that women taking combined hormone replacement therapy
+(HRT) also had a lower incidence of coronary heart disease (CHD),
+relative to women no taking HRT.  Randomized trials showed a small
+but clear increase in risk.  The risk was lower in the population
+as a whole because, for reasons associated with socio-economic status,
+women taking HRT were on the whole eating healthier food and getting
+more exercise.  In analyses of the population data, account had not
+been taken of lifestyle effects.
+
+\subsection{What does R add to the mix?}
+
+R clearly has a huge range of abilities for manipulating data, fitting
+and checking statistical models, and for using graphs and tables to
+present results.  More than this, it has extensive reproducible
+reporting abilities that can be used to allow others to repeat the
+data manipulation, analysis, and steps in the processing of output
+that have led to an eventual paper or report.  A file is provided
+that mixes code with the text for the eventual document, and that
+is then processed ("woven" or "knitted") to provide the final
+document, complete with analysis output, tables, graphs, and code
+(if any) that is to be included in the final document.  This makes
+it straightforward for referees, or for anyone with an interest in 
+the work, to check the analysis and/or try modifications.
+The publication of data and code is an important step on the way
+to making results more open and transparent, and to encouraging 
+informed post-publication critique.
+
+
+\section{Generalization beyond the available data}
+
+A common statistical analysis aim is to assess the extent to which
+available data supports conclusions that extend beyond the
+circumstances that generated the data. The hope is that available
+data -- the sample values -- can be used as a window into a wider
+population.
+
+Introductory statistics
+courses are likely to focus on models that assume that \textit{error}
+terms are independently and identically normally distributed ---
+they make the \textit{iid normal assumption}.  This involves the 
+separate assumptions of independence, assumptions of homogeneity
+of variance (i.e., the standard deviations of all measurements
+are the same), and normality. Strict normality is commonly, depending
+on the use that will be made of model results, unnecessary.  Much of
+the art of applied statistics lies in recognizing those
+assumptions that are important and need careful checking. Models
+are said to be \textit{robust} against those assumptions that are
+of relatively minor consequence.
+
+Most of the
+standard elementary methods assume that all population values are
+chosen with equal probability, independently between sample values.
+In designed experiments and in sample surveys, randomization
+mechanisms are used to ensure this independence.
+and why random sampling is so important in designed .
+
+Where there has not been explicit use of a randomization mechanism,
+it is necessary to consider carefully how this may have affected the
+data. Is some form of dependence structure likely? Temporal and
+spatial dependence arise because values that are close together in
+time or space are relatively more similar. Is there clustering that
+arises because all individuals within chosen streets or within chosen
+families have been included? Two individuals in the same family or in
+the same street may be more similar than two individuals chosen at
+random from the same city suburb.  Model choice and model fitting
+then needs to account for such effects.  
+
+Models account for both
+\textit{fixed} and \textit{random} effects.  In a straight line
+model, the fixed effect is the line, while the random effect
+accounts for variation about the line.  The random part of the
+model can matter a great deal.
+
+\subsection{Models for the random component}
+
+For each distribution, there are four functions, with names
+whose first letter is, respectively, \texttt{d} (probability or
+probability \textbf{d}ensity),
+\texttt{p} (cumulative \textbf{p}robability),
+\texttt{q} (\textbf{q}uantile), and \texttt{r} (generate a
+\textbf{r}andom sample).  Functions that have \texttt{d} as
+their first letter are probabilities for distributions that are
+discrete, or \textbf{d}ensities) for continuoua distributions.
+
+Common discrete distributions are the binomial and the Poisson.
+The betabinomial is often used to model binomial type data that
+have a larger than binomial variance.  The negative binomial
+is widely used to model count data that have a larger than
+Poisson variance.  Flexible implementations of the betabinomial,
+including the ability to model the scale parameter that controls
+the variance, have appeared only recently.  Alternatives to the
+betabinomial have been little explored.  By constrast, for count
+data, there has been extensive investigation of the negative
+binomial, as well as of other alternatives to the Poisson.
+
+Easily the most widely used distribution for continuous data is
+the normal, also known as the Gaussian distribution.  Data
+where the error term is not normal will often come close to
+normal after transformation.  The most widely used transformation
+for this purpose is the logarithmic.
+
+The Central Limit Theorem will, in 
+
+Other continuous distributions are common in the context of
+special types of model, e.g., the exponential distribution, or
+the Weibull of which it is a special case, in waiting time models.
+
+
 
 \section{The Uses of Scatterplots}
 

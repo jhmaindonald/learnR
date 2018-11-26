@@ -1,4 +1,4 @@
-## ---- sec-11.1 ----
+## ---- sec-8.1 ----
 
 ## ---- plt-roller ----
 library(DAAG)
@@ -11,9 +11,9 @@ roller.lm <- lm(depression ~ weight, data=roller)
 # depression ~ 0 + weight
 abline(roller.lm)
 
-## ---- ss-11.1.1 ----
+## ---- ss-8.1.1 ----
 
-## ---- ss-11.1.2 ----
+## ---- ss-8.1.2 ----
 
 ## ---- lm-obj ----
 lm(depression ~ weight, data=roller)
@@ -22,17 +22,17 @@ lm(depression ~ weight, data=roller)
 roller.lm <- lm(depression ~ weight, data=roller)
 names(roller.lm)
 
-## ---- ss-11.1.3 ----
+## ---- ss-8.1.3 ----
 
-## ---- sec-11.2 ----
+## ---- sec-8.2 ----
 
 ## ---- fVSmTimeAB ----
-def.par <- par(no.readonly = TRUE) 
+def.par <- par(no.readonly = TRUE)
 layout(matrix(c(1,3,0,0,2,4), 2, 3), respect = TRUE,
        widths=c(7.5,1,7.5), heights=c(7.15,2))
 xlim <- range(DAAG::nihills$time)+c(-0.1,0.1)
 par(mar=c(0.2,3,2,0), bty="o", cex.axis=1.1)
-plot(timef~time, data=DAAG::nihills, xlim=xlim, xaxt='n', 
+plot(timef~time, data=DAAG::nihills, xlim=xlim, xaxt='n',
      ylab="", fg="gray", main=" ")
 abline(lm(timef~time, data=DAAG::nihills), col=2)
 mtext(side=2,line=2.25,"Female times", las=0)
@@ -48,7 +48,7 @@ boxplot(DAAG::nihills$time, horizontal=T, xlim=xlim,
         pars=pars, at=2, axes=0)
 axis(1, lwd = 0, lwd.ticks = 1)
 mtext(side=1,line=2,"Male times")
-boxplot(DAAG::nihills$time, horizontal=T, xlim=xlim, 
+boxplot(DAAG::nihills$time, horizontal=T, xlim=xlim,
         log='x', pars=pars, at=2, axes=0)
 axis(1, lwd = 0, lwd.ticks = 1)
 mtext(side=1,line=2,"Male times (log scale)")
@@ -91,7 +91,7 @@ round(coef(mflogtime.lm), 4)
 omitrow <- rownames(nihills)!="Seven Sevens"
 update(mflogtime.lm, data=subset(nihills, omitrow))
 
-## ---- sec-11.3 ----
+## ---- sec-8.3 ----
 
 ## ---- plt-mftime ----
 plot(mftime.lm, which=1)
@@ -122,21 +122,21 @@ plot(mftime.lm, which=5)
 ## ---- simdiag5 ----
 plotSimDiags(obj=mftime.lm, which=5, layout=c(4,1))
 
-## ---- ss-11.2.2 ----
+## ---- ss-8.3.2 ----
 
 ## ---- mftime-sims ----
 gph <- plotSimScat(mftime.lm, layout=c(4,1))
 update(gph, xlab="Male record times (h)",
        ylab="Female record times (h)")
 
-## ---- sec-11.4 ----
+## ---- sec-8.5 ----
 
 ## ---- lev-tomato ----
 lev <- c("Water", "A", "B", "C")
 tomato[, "trt"] <- factor(rep(lev, rep(6,4)),
                           levels=lev)
 
-## ---- ss-11.3.1 ----
+## ---- ss-8.5.1 ----
 
 ## ---- tomato-aov ----
 ## Analysis of variance: tomato data (from DAAG)
@@ -171,7 +171,7 @@ options(width=54)
 ## ---- modmat ----
 model.matrix(tomato.aov)
 
-## ---- ss-11.3.2 ----
+## ---- ss-8.5.2 ----
 
 ## ---- noConst ----
 ## Omit constant term from fit;
@@ -209,7 +209,7 @@ anova(cuckoos.lm, cuckoosI.lm, test="Cp")
 cuckoosI.lm <- lm(breadth ~ species + length +
                   species:length, data=cuckoos)
 
-## ---- sec-11.5 ----
+## ---- sec-11.6 ----
 
 ## ---- str-nihills ----
 str(nihills)
@@ -227,7 +227,7 @@ names(lognihills) <- paste0("l", names(nihills))
 ## Scatterplot matrix; log scales
 splom(~ lognihills)
 
-## ---- ss-11.4.1 ----
+## ---- ss-8.6.1 ----
 
 ## ---- nireg-climb ----
 lognihills <- log(nihills)
@@ -251,9 +251,9 @@ round(coef(lognigrad.lm),3)
 termplot(lognigrad.lm, col.term="gray", partial=TRUE,
          col.res="black", smooth=panel.smooth)
 
-## ---- sec-11.6 ----
+## ---- sec-8.7 ----
 
-## ---- ss-11.5.1 ----
+## ---- ss-8.7.1 ----
 
 ## ---- varselect-sim ----
 bestsetNoise(m=100, n=40, nvmax=3)
@@ -267,7 +267,7 @@ library(splines)
 set.seed(37)   # Use to reproduce graph shown
 bsnVaryNvar(m=100, nvar=3:50, nvmax=3, fg="gray")
 
-## ---- sec-11.7 ----
+## ---- sec-8.8 ----
 
 ## ---- Elec-spm ----
 library(car)
@@ -276,7 +276,7 @@ data(Electricity)
 spm(Electricity, smooth=TRUE, reg.line=NA,
     col=adjustcolor(rep("black",3), alpha.f=0.3))
 
-## ---- ss-11.6.1 ----
+## ---- ss-8.8.1 ----
 
 ## ---- spm-cost-q ----
 varlabs <- c("log(cost)", "log(q)")
@@ -317,7 +317,7 @@ round(coef(summary(elec2xx.lm)),5)
 ## ---- add1-2xx ----
 add1(elec2xx.lm, scope=~(log(q)+pl+sl+pk+sk+pf+sf)^2, test="F")
 
-## ---- sec-11.8 ----
+## ---- sec-8.9 ----
 
 ## ---- load-DAAGviz-KernSmooth ----
 library(DAAGviz, quietly=TRUE)
@@ -362,7 +362,7 @@ summary(cig2.glm)
 ## ---- cig2-tplot ----
 termplot(cig2.glm)
 
-## ---- sec-11.9 ----
+## ---- sec-8.10 ----
 
 ## ---- oddbooks ----
 volume <- apply(oddbooks[, 1:3], 1, prod)
@@ -371,3 +371,25 @@ lob1.lm <- lm(log(weight) ~ log(volume), data=oddbooks)
 lob2.lm <- lm(log(weight) ~ log(thick)+log(area), data=oddbooks)
 lob3.lm <- lm(log(weight) ~ log(thick)+log(breadth)+log(height),
               data=oddbooks)
+
+## ---- sec-8.11 ----
+
+## ---- smooth-ohms ----
+## Plot points
+plot(ohms ~ juice, data=fruitohms, fg="gray")
+## Add smooth curve, using default
+## smoothing window
+with(fruitohms,
+     lines(lowess(ohms ~ juice), col="gray", lwd=2))
+
+## ---- plotVIS ----
+## Code
+library(DAAGviz)
+library(mgcv)
+eyeAmpM.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="m"))
+eyeAmpF.gam <- gam(amp ~ s(x,y), data=subset(eyeAmp, Sex=="f"))
+lims <- range(c(predict(eyeAmpF.gam), predict(eyeAmpM.gam)))
+vis.gam(eyeAmpM.gam, plot.type='contour', color="cm", zlim=lims, main="")
+mtext(side=3, line=0.5, adj=0, "A: Response amplitudes, Males")
+vis.gam(eyeAmpF.gam, plot.type='contour', color="cm", zlim=lims, main="")
+mtext(side=3, line=0.5, adj=0, "B: Response amplitudes, Females")

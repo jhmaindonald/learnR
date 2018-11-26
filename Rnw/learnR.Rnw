@@ -8,6 +8,8 @@
 \usepackage{nextpage}
 \usepackage{listings}
 \usepackage{framed}
+\usepackage{alltt}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \usepackage{float}
 \usepackage{colortbl}
 \usepackage{cprotect}
@@ -16,9 +18,12 @@
 \makeindex
 \usepackage{index}
 \usepackage{multicol}
+\usepackage{natbib}
 \newindex{fun}{fdx}{fnd}{Index of R Symbols and Functions}
-
-% \newenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
+\newindex{default}{idx}{ind}{Index of Terms}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
 % \newcommand{\flexicol}{fullflexible}
 \newcommand{\flexicol}{fixed}
 
@@ -208,6 +213,35 @@
 \definecolor{gray80}{gray}{.8}
 \definecolor{gray90}{gray}{.9}
 
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+
 \newcommand{\txtt}[1]{\texttt{#1}}
 \newcommand{\margtt}[1]{{\footnotesize \texttt{#1}}}
 
@@ -224,7 +258,10 @@
     \setlength{\parskip}{2pt}} %
   {\end{itemize}}
 
+%% \includeonly{0intro,1gettingStarted}
+
 \begin{document}
+\include{preamble}
 % Front matter
 \frontmatter
 
@@ -330,11 +367,13 @@ science.
 % \vfill
 % \vfill
 
+
 % r.9 introduction
 \cleardoublepage
 \chapter*{Introduction}
-<<mintro, child='0intro.Rnw'>>=
-@
+\include{0intro}
+% <<mintro, child='0intro.Rnw'>>=
+% @
 
 % Start the main matter (normal chapters)
 \mainmatter
@@ -342,88 +381,107 @@ science.
 \setcounter{tocdepth}{2}
 
 \chapter{Getting started with R}\label{ch:getStart}
-<<mprelim, child='1gettingStarted.Rnw'>>=
-@
+\include{1gettingStarted}
+% <<mprelim, child='1gettingStarted.Rnw'>>=
+% @
 
 \cleartooddpage
 
 \chapter{The R Working Environment}\label{ch:workenv}
-<<mrworking, child='2rworking.Rnw'>>=
-@
+\include{2rworking}
+% <<mrworking, child='2rworking.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{Examples --- Data analysis with R}\label{ch:worked}
-<<mrexamples, child='3examples.Rnw'>>=
-@
+\include{3statsExs}
+% <<mrexamples, child='3examples.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{Data Objects and Functions}
-<<mdata, child='4data.Rnw'>>=
-@
+\include{4data}
+% <<mdata, child='4data.Rnw'>>=
+% @
 
 \cleartooddpage
 
 \chapter{Data Input and Storage}\label{ch:input}
-<<minput, child='5input.Rnw'>>=
-@
+\include{5input}
+% <<minput, child='5input.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{Data Manipulation and Management}\label{ch:manip}
-<<mmanip, child='6manip.Rnw'>>=
-@
+\include{6manip}
+% <<mmanip, child='6manip.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{Graphics -- base, lattice, ggplot2, rgl, googleVis\ldots}\label{ch:plots}
-<<mgraphics, child='7graphics.Rnw'>>=
-@
+\include{7graphics}
+% <<mgraphics, child='7graphics.Rnw'>>=
+% @
 
 \cleartooddpage
 
 \chapter{Regression with Linear Terms and Factors}
-<<m8reg, child='8reg.Rnw'>>=
-@
+\include{8reg}
+% <<m8reg, child='8reg.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter[A Miscellany of Models \& Methods]{$^*$A Miscellany of Models \& Methods}
-<<m9further, child='9further.Rnw'>>=
-@
+\include{9further}
+% <<m9further, child='9further.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{Map Overlays  and Spatial Modeling}\label{ch:spatial}
-<<m10maps, child='10maps.Rnw'>>=
-@
+\include{10maps}
+% <<m10maps, child='10maps.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{Brief Notes on Text Mining}\label{ch:tm}
-<<m11tm, child='11tm.Rnw'>>=
-@
+\include{11tm}
+% <<m11tm, child='11tm.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{$^*$Leveraging R Language Abilities }
-<<m12lever, child='12lever.Rnw'>>=
-@
+\include{12lever}
+% <<m12lever, child='12lever.Rnw'>>=
+% @
 \cleartooddpage
 
 \appendix
 
 \chapter{$^*$R System Configuration}\label{ch:sys}
-<<A-rsystem, child='Arsystem.Rnw'>>=
-@
+\include{Arsystem}
+% <<A-rsystem, child='Arsystem.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{The R Commander Graphical User Interface}
-<<B-rgui, child='Brgui.Rnw'>>=
-@
+\include{Brgui}
+% <<B-rgui, child='Brgui.Rnw'>>=
+% @
 \cleartooddpage
 
 \chapter{Color Versions of Selected Graphs}\label{app:C}
-<<Ccolor, child='Ccolor.Rnw'>>=
-@
+\include{Ccolor}
+% <<Ccolor, child='Ccolor.Rnw'>>=
+% @
+
+\bibliographystyle{daag}
+\bibliography{scistatR}
 
 \renewcommand{\indexname}{Index of Functions}
 
 \begin{fullwidth}
 \printindex[fun]
+\printindex[default]
 \end{fullwidth}
 %%
 

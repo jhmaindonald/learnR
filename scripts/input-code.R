@@ -20,13 +20,6 @@ url <- paste0(webdir,
               "domestic_airline_activity_TopRoutesJuly2004July2015.xls")
 download.file(url, destfile="auAirTraffic.xls", mode="wb")
 
-## ---- read-xls ----
-library(XLConnect)
-wbk2 <- loadWorkbook('auAirTraffic.xls')
-airTraffic <- readWorksheet(wbk2, sheet="Top Routes", startRow=11,
-                            endCol=21, header=FALSE,
-                  colTypes=rep(c('character','numeric'), c(2,19)))
-
 ## ---- sec-5.2 ----
 
 ## ---- get-por ----

@@ -373,22 +373,6 @@ gph + latticeExtra::layer(panel.text(x,y,
                        labels=rownames(primates),
                        pos=4))
 
-## ---- ss-7.2.10 ----
-
-## ---- playwith ----
-## Code that initiates interactive display
-library(playwith)
-playwith(xyplot(age ~ distance, data=hotspots),
-         labels=hotspots$name)
-
-## ---- playwith-alt ----
-gph <-
-    xyplot(age ~ distance,
-            data=hotspots)
-library(playwith)
-playwith(update(gph),
-    labels=hotspots$name)
-
 ## ---- sec-7.3 ----
 
 ## ---- load-ggplot2 ----

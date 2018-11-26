@@ -1,5 +1,8 @@
 % !Rnw root = learnR.Rnw
 
+\input{preamble}
+
+
 
 
 
@@ -82,8 +85,15 @@ x[c(2,4)]              # Extract elements 2 and 4
 \noindent
 Negative numbers may be used to omit elements:\sidenote{Mixing of
   positive and negative subscripts is not allowed.}
-<<negative-subs>>-
-@
+\begin{Schunk}
+\begin{Sinput}
+x <- c(3,11,8,15,12)
+x[-c(2,3)]
+\end{Sinput}
+\begin{Soutput}
+[1]  3 15 12
+\end{Soutput}
+\end{Schunk}
 
 2. Specify a vector of logical values.  \marginnote{Arithmetic
   relations that may be used for extraction of subsets are
@@ -1051,14 +1061,14 @@ mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
    mean      sd 
--0.2714  1.1378 
+-0.1610  0.9986 
 \end{Soutput}
 \begin{Sinput}
 mean.and.sd()
 \end{Sinput}
 \begin{Soutput}
-    mean       sd 
-0.008098 0.765059 
+   mean      sd 
+0.08901 0.85100 
 \end{Soutput}
 \end{Schunk}
 
@@ -1399,7 +1409,7 @@ Figure \ref{fig:simplatparam} provides an example:
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.97\textwidth]{figs/06-date-labs-1} }
+\centerline{\includegraphics[width=0.97\textwidth]{figs/04-date-labs-1} }
 
 \end{Schunk}
  \caption{Canadian worker force numbers, with dates used to label the
@@ -1692,7 +1702,7 @@ This has created an object of the class \txtt{SpatialPointsDataFrame}.
 \begin{Schunk}
 
 
-\centerline{\includegraphics[width=0.47\textwidth]{figs/06-bubble-1} }
+\centerline{\includegraphics[width=\textwidth]{figs/04-bubble-1} }
 
 \end{Schunk}
 \caption{Bubble plot for \txtt{zinc} concentrations.  Areas of

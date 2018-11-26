@@ -1,6 +1,9 @@
 % !Rnw root = learnR.Rnw
+
+\input{preamble}
+
 <<echo=FALSE, cache=FALSE>>=
-opts_knit$set(self.contained=FALSE)
+## opts_knit$set(root.dir=normalizePath('..'), self.contained=FALSE)
 @
 
 <<echo=FALSE, cache=FALSE>>=
@@ -24,128 +27,18 @@ of statistical sophistication than their training and experience
 has given them.
 
 In each case, comments with be introductory and brief.  Firstly, there
-are brief comments on the fitting of smooth curves.  The second and
-third topics highlight specific types of departure from the iid
+are brief comments on the fitting of smooth curves.  The first and
+second topics highlight specific types of departure from the iid
 (independently and identically distributed) assumption.
 
-\section{Regression with Fitted Smooth Curves}
-
-Load the {\em DAAG} package:
-<<loadDAAG>>=
-@ %
-
-\subsection*{Commentary  on Smoothing Methods}
-
-Two types of methods will be described -- those where the user
-controls the choice of smoothing parameter, and statistical learning
-type methods where the amount of smoothing is chosen automatically:
-\begin{itemize}
-\item The first class of methods rely on the user to make a suitable
-  choice of a parameter that controls the smoothness.  The default
-choice is often a good first approximation.  Note here:
-\begin{itemize}
-\item Smoothing using a ``locally weighted regression
-smoother''.\marginnote{Smoothness
-is controlled by the width of the smoothing window. The default is
-  \txtt{f=2/3} for \txtt{lowess()}, or \txtt{span=0.75} for
-  \txtt{loess()}. For other functions that rely on this methodology,
-check the relevant help page.}
-Functions that use this approach include \txtt{lowess()}, \txtt{loess()},
-\txtt{loess.smooth()}, and \txtt{scatter.smooth()}.
-\item Use of a regression spline basis in a linear model.  Here the smoothness
-is usually controlled by the choice of number of spline basis terms.
-\end{itemize}
-\item A second class of methods use a ``statistical learning''
-  approach in which the amount of smoothing is chosen automatically.
-  The approach of the \textit{mgcv} package extends and adapts the
-  regression spline approach.\sidenote{Strong assumptions are
-    required, notably that observations are independent.  Normality
-    assumptions are, often, less critical.}  The methodology
-  generalizes to handle more general types of outcome variables,
-  including proportions and counts.  These extensions will not be
-  further discussed here.
-\end{itemize}
-
-\subsection{Locally weighted scatterplot smoothers}
-
-Locally weighted scatterplot smoothers pass a window across
-the data, centering the window in turn at each of a number points that
-are equally spaced through the data. The smooth at an $x$-value where
-the window has been centred is the predicted value from a line (or
-sometimes a quadratic or other curve) that is fitted to values that
-lie within the window. A weighted fit is used, so that neighbouring
-points get greater weight than points out towards the edge of the
-window.
-
-Figure \ref{fig:fruitohms} shows a smooth that has been fitted using
-the \txtt{lowess} (locally weighted scatterplot smoothing)
-methodology.  The default choice of with of smoothing window (a fraction
-$f = \frac{2}{3}$ of the total range of $x$) gives a result that,
-for these data, looks about right. The curve does however trend
-slightly upwards at the upper end of its range.  A monotonic
-response might seem more appropriate.
-
-\begin{marginfigure}
-<<smooth-ohms, echo=FALSE, w=3.25, h=3, ps=11, crop=TRUE, out.width="0.98\\textwidth">>=
-@ %
-  \caption{Resistance in ohms is plotted against apparent juice
-    content.  A smooth curve (in gray) has been added, using the
-    \txtt{lowess} smoother.  The width of the smoothing window was the
-    default fraction $f = \frac{2}{3}$ of the range of values of the
-    $x$-variable.}\label{fig:fruitohms}
-\end{marginfigure}
-
-The code used to plot the graph is:
-<<smooth-ohms, eval=FALSE>>=
-@ %
-
-A more sophisticated approach uses the \txtt{gam()} function
-in the {\em mgcv} package.  This allows automatic determination of the
-amount of smoothing, providing the assumption of independent residuals
-from the curve is reasonable.  We now demonstrate the use of a GAM
-model for a two-dimensional smooth.
-
-\subsection{Contours from 2-dimensional Smooths}
-Data are the amplitudes of responses to a visual stimulus, for each of
-20 individuals, at different regions of the left eye.  We use the
-function \txtt{gam()} to create smooth
-surfaces, for males and females separately. Figure \ref{fig:visAmp}
-then uses the function \txtt{vis.gam()} to plot heatmaps that show the
-contours:
-\begin{fullwidth}
-\begin{figure*}
-<<plotVIS, w=8.5, h=3.5, mfrow=c(1,2), top=2, ps=11, out.width="0.97\\textwidth", echo=FALSE>>=
-@ %
-\vspace*{-7pt}
-\caption{Estimated contours of left eye responses to visual stimulae,
-projected onto the plane.\label{fig:visAmp}}
-\vspace*{15pt}
-\end{figure*}
-\end{fullwidth}
-\enlargethispage{12pt}
-
-The GAM fit will as far as possible use the smooth surface
-to account for the pattern of variation across the eye, with
-residuals from the surface treated as random normal noise.
-\vspace*{7pt}
-
-\begin{fullwidth}
-<<opt78, echo=FALSE>>=
-@ %
-<<plotVIS, eval=FALSE, echo=TRUE>>=
-@ %
-<<opt54, echo=FALSE>>=
-@ %
-\end{fullwidth}
-
-\section{Hierarchical Multi-level Models}\label{sec:hmlm}
+\section{Hierarchical Multilevel Models}\label{sec:hmlm}
 
 \noindent
 \fbox{
-\parbox{\textwidth}{{\bf Models with Non-iid Errors -- Multi-level models}:\\[4pt]
+\parbox{\textwidth}{{\bf Models with Non-iid Errors -- Multilevel models}:\\[4pt]
 \begin{tabular}{ll}
 Error Term & Errors do not have to be (and often are not) iid\\[6pt]
-Multi-level & Multi-level models are a (relatively) simple type of
+Multilevel & Multilevel models are a (relatively) simple type of
 \\ models & non-iid model, implemented using \txtt{lme()}
 (\textit{nlme}) or \\ & \txtt{lmer()}\ (\textit{lme4} package).\\ & Such
 models allow different errors of prediction,\\ & depending on the
@@ -211,14 +104,13 @@ likely to be more accurate than a prediction for a totally new
 location.
 
 \marginnote[10pt]{Because of the balance the corn yield data, an
-  analysis of variance that specifies a formal \txtt{Error} term is an
-  alternative to the fitting of a multi-level model.}  Multi-level
+analysis of variance that specifies a formal \txtt{Error} term is
+an alternative to the fitting of a multilevel model.}  Multilevel
 models are able to account for such differences in predictive
 accuracy.  For the Antiguan corn yield data, it is necessary to
 account both for variation within sites and for variation between
 sites.  The R packages \txtt{nlme} and \txtt{lme4} are both able to
 handle such data.
-
 
 \section{Regular Time Series in R}\label{sec:ts}
 \noindent
@@ -1139,8 +1031,6 @@ mtext(side=3, line=0.5, adj=0, "B: Using Sammon Scaling", cex=1.5)
  multi-dimensional scaling.  Panel B does the same, now for the result
  from Sammon scaling.  Notice how Brisbane, Sydney, Canberra and
  Melbourne now maintain their relative positions better.
-
-
 
 To see the code for Figure \ref{fig:aufit}, source the file that has the
 code for the figures of this chapter, and type:
