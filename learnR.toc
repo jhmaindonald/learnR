@@ -188,7 +188,7 @@
 \contentsline {section}{\numberline {8.8}1970 cost for US electricity producers}{161}{section.8.8}
 \contentsline {subsection}{\numberline {8.8.1}Model fitting strategy}{162}{subsection.8.8.1}
 \contentsline {section}{\numberline {8.9}An introduction to logistic regression}{165}{section.8.9}
-\contentsline {section}{\numberline {8.10}Regression with Fitted Smooth Curves}{166}{section.8.10}
+\contentsline {section}{\numberline {8.10}Regression with Fitted Smooth Curves}{167}{section.8.10}
 \contentsline {subsection}{\numberline {8.10.1}Locally weighted scatterplot smoothers}{167}{subsection.8.10.1}
 \contentsline {subsection}{\numberline {8.10.2}Contours from 2-dimensional Smooths}{168}{subsection.8.10.2}
 \contentsline {section}{\numberline {8.11}Other important models and issues}{169}{section.8.11}
@@ -199,7 +199,7 @@
 \contentsline {section}{\numberline {9.2}Regular Time Series in R}{173}{section.9.2}
 \contentsline {subsection}{\numberline {9.2.1}Example -- the Lake Erie data}{173}{subsection.9.2.1}
 \contentsline {subsection}{\numberline {9.2.2}Patterns that are repeatable}{174}{subsection.9.2.2}
-\contentsline {subsection}{\numberline {9.2.3}Fitting and use of an autoregressive model}{176}{subsection.9.2.3}
+\contentsline {subsection}{\numberline {9.2.3}Fitting and use of an autoregressive model}{175}{subsection.9.2.3}
 \contentsline {subsection}{\numberline {9.2.4}Regression with time series errors}{177}{subsection.9.2.4}
 \contentsline {subsection}{\numberline {9.2.5}$^*$Box-Jenkins ARIMA Time Series Modeling}{179}{subsection.9.2.5}
 \contentsline {subsection}{\numberline {9.2.6}Count Data with Poisson Errors}{179}{subsection.9.2.6}

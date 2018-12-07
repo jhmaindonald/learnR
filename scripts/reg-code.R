@@ -273,7 +273,7 @@ bsnVaryNvar(m=100, nvar=3:50, nvmax=3, fg="gray")
 library(car)
 library(Ecdat)
 data(Electricity)
-spm(Electricity, smooth=TRUE, reg.line=NA,
+spm(Electricity, smooth=TRUE, regLine=FALSE,
     col=adjustcolor(rep("black",3), alpha.f=0.3))
 
 ## ---- ss-8.8.1 ----
@@ -281,7 +281,7 @@ spm(Electricity, smooth=TRUE, reg.line=NA,
 ## ---- spm-cost-q ----
 varlabs <- c("log(cost)", "log(q)")
 spm(log(Electricity[,1:2]), var.labels=varlabs,
-    smooth=TRUE, reg.line=NA,
+    smooth=TRUE, regLine=FALSE,
     col=adjustcolor(rep("black",3), alpha.f=0.5))
 
 ## ---- elec-me ----

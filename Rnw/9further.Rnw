@@ -183,6 +183,11 @@ Figure \ref{fig:erie} shows a plot of the series.
 @ %
 \end{marginfigure}
 
+\marginnote{Where values of covariates are available that largely
+or partly explain the dependence, it may make sense to account for
+these in the model. THe details of how this should be done will
+depend on the intended use of the model.}
+
 The plots in Figure \ref{erie-lagplot} are a good starting point for
 investigation of the correlation structure.  Panel A shows lag plots,
 up to a lag of 3.  Panel B shows estimates of the successive
@@ -193,11 +198,6 @@ correlation at lag 2, and a noticeable correlation at lag 3.  Such
 a correlation pattern is typical of an autoregressive process where
 most of the sequential dependence can be explained as a flow-on
 effect from a dependence at lag 1.
-
-If possible, the analyst will want to find covariates
-that largely or partly explain that dependence.  At best, such
-covariates will commonly explain part only of the dependence,
-and there will remain dependence that requires to be modeled.
 
 In an autoregressive time series, an\marginnote{An autoregressive
   model is a special case of an Autoregressive Moving Average (ARMA)
