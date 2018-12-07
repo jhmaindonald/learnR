@@ -4,7 +4,7 @@
 .Ruserdata
 test*
 *.aux
-learnR.out
+*.out
 learnR.ilg
 *.log
 .DS_Store

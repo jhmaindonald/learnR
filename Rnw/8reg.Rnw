@@ -35,8 +35,8 @@ GLMs & Generalized Linear Models are an extension of\\
 & linear models, commonly used for analyzing counts.\\[6pt]
 Modern &  This can use smoothers -- spline and other functions\\
 regession & of explanatory variables that adapt to suit the data.\\[6pt]
-GAMs & Generalized Additive Models extend linear models to allow\\
-& smoothing curves and surfaces.\\[6pt]
+GAMs & Generalized Additive Models extend linear models\\
+& to allow smoothing curves and surfaces.\\[6pt]
 \end{tabular}
 \vspace*{3pt}
 

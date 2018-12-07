@@ -63,7 +63,7 @@ plot(obj, fg="gray",
      xlab="",
      ylab="Height of lake")
 
-## ---- ss-9.3.2 ----
+## ---- ss-9.2.3 ----
 
 ## ---- arima-sim ----
 for (i in 1:6){
@@ -89,7 +89,7 @@ plot(fc, main="", fg="gray",
      ylab="Lake level (m)")
   # 15 time points ahead
 
-## ---- ss-9.3.3 ----
+## ---- ss-9.2.4 ----
 
 ## ---- mdb-gam ----
 ## Code
@@ -111,6 +111,8 @@ acf(resid(mdbRain.gam), ylab="MDB series")
 for(i in 1:5)acf(rnorm(n), ylab=paste("Sim",i),
                  fg="gray", col="gray40")
 par(opar)
+
+## ---- ss-9.2.6 ----
 
 ## ---- use-eventCounts ----
 ## Code
@@ -148,7 +150,7 @@ plot(dfDay06.gam, xaxt="n", shift=avDay, trans=exp, rug=FALSE,
 axis(1, at=atyear, labels=format(year, "%Y"))
 # mtext(side=3, line=0.75, "B: Events per day, vs date", adj=0)
 
-## ---- sec-9.4 ----
+## ---- sec-9.3 ----
 
 ## ---- loadMASS ----
 library(MASS, quietly=TRUE)
@@ -178,7 +180,7 @@ xyplot(scores[,2] ~ scores[,1], groups=fgl$type,
        auto.key=list(space="right"),
        par.settings=simpleTheme(alpha=0.6, pch=1:6))
 
-## ---- sec-9.5 ----
+## ---- sec-9.4 ----
 
 ## ---- load-rpart ----
 library(rpart)
@@ -203,7 +205,7 @@ plot(b.rpart)
 text(b.rpart, xpd=TRUE)
 par(opar)
 
-## ---- ss-9.5.1 ----
+## ---- ss-9.4.1 ----
 
 ## ---- rf-x-bronchit ----
 opar <- par(mar=rep(2.1,4))
@@ -241,9 +243,9 @@ xyplot(points[,2] ~ points[,1],
 ## ---- fgl-rf ----
 (fgl.rf <- randomForest(type ~ ., data=fgl))
 
-## ---- sec-9.6 ----
+## ---- sec-9.5 ----
 
-## ---- ss-9.7.1 ----
+## ---- ss-9.5.1 ----
 
 ## ---- aupoints ----
 aupts <- cmdscale(audists)

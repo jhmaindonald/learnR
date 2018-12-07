@@ -207,6 +207,11 @@ acf(Erie, main="", fg="gray")
 \end{Schunk}
 \end{marginfigure}
 
+\marginnote{Where values of covariates are available that largely
+or partly explain the dependence, it may make sense to account for
+these in the model. The details of how this should be done will
+depend on the intended use of the model.}
+
 The plots in Figure \ref{erie-lagplot} are a good starting point for
 investigation of the correlation structure.  Panel A shows lag plots,
 up to a lag of 3.  Panel B shows estimates of the successive
@@ -217,11 +222,6 @@ correlation at lag 2, and a noticeable correlation at lag 3.  Such
 a correlation pattern is typical of an autoregressive process where
 most of the sequential dependence can be explained as a flow-on
 effect from a dependence at lag 1.
-
-If possible, the analyst will want to find covariates
-that largely or partly explain that dependence.  At best, such
-covariates will commonly explain part only of the dependence,
-and there will remain dependence that requires to be modeled.
 
 In an autoregressive time series, an\marginnote{An autoregressive
   model is a special case of an Autoregressive Moving Average (ARMA)
@@ -536,14 +536,15 @@ The simulations in Figure \ref{fig:ar1fits} show a pattern of
 
 \subsection{Count Data with Poisson Errors}
 
+\marginnote{Data are a time series.  Serious accidents are however
+sufficiently uncommon that occasions where events occur together,
+or where one event changes the probability of the next event,
+seem likely to be uncommon.}
+
 Data is for aircraft accidents, from the website
 \url{http://www.planecrashinfo.com/}.  The 1920 file has
 accidents starting from 1908. The full data are in the
 dataset \txtt{gamclass::airAccs}.
-\marginnote{Data are a time series.  Serious accidents are however
-sufficently uncommon that occasions where events occur together,
-or where one event changes the probability of the next event,
-seem likely to be uncommon.}
 Such issues as there are with sequential correlation
 can be ameliorated by working with weekly, rather than daily,
 counts. 
@@ -854,10 +855,10 @@ indicates that bronchitis is absent.}
 head(bronchit, 3)
 \end{Sinput}
 \begin{Soutput}
-  r  cig poll
-1 0 5.15 67.1
-2 0 6.75 64.4
-3 0 0.00 65.9
+  r  cig poll rfac
+1 0 5.15 67.1  abs
+2 0 6.75 64.4  abs
+3 0 0.00 65.9  abs
 \end{Soutput}
 \end{Schunk}
 In place of the variable \txtt{r} with values 0 and 1, we use a
