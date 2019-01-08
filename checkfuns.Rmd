@@ -1,0 +1,154 @@
+```{r fun}
+showpkg <-
+function (pkgs = c("DAAG", "boot", "lattice", "latticeExtra", "cluster", "afex",
+"MASS", "grid", "reshape", "forecast", "dichromat", "foreign",
+"ggplot2", "leaps", "lme4", "MCMCpack", "ggplot2",
+"mgcv", "nlme", "oz", "ape", "plyr", "rgl", "RSQLite",
+"randomForest", "RColorBrewer", "rpart", "rpart.plot","survival",
+"reshape2", "quantreg", "muhaz", "car", "stats", "gmodels",
+"tseries", "xtable", "oz", "WDI", "Rcmdr"))
+{
+for (i in 1:length(pkgs)) require(pkgs[i], warn.conflicts = FALSE, character.only = TRUE,quietly=TRUE)
+where <- search()
+if (length(where) < 1L)
+stop("argument 'where' of length 0")
+ispkg <- substring(where, 1, 8) == "package:"
+where <- where[ispkg]
+z <- vector(length(where), mode = "list")
+newnam <- sapply(strsplit(where, ":", fixed = TRUE), function(x) x[2])
+names(z) <- newnam
+for (i in seq_along(where)) z[[i]] <- ls.str(pos = where[i], mode='function')
+z <- sapply(names(z), function(x) {
+funs <- z[[x]]
+paste(rep(x, length(funs)), funs, sep = ":")
+})
+all <- unlist(z, use.names = FALSE)
+zz <- strsplit(all, ":")
+funtab <- cbind(sapply(zz, function(x) x[1]), sapply(zz,
+function(x) x[2]))
+funtab
+}
+locatefun <-
+function (txpg, notfun)
+{
+idtxt <- "\\.?[a-zA-Z][a-zA-Z0-9]*(\\.[a-zA-Z]+)*\\("
+page <- 1:length(txpg)
+k <- 0
+findfun <- function(tx) {
+mn <- t(sapply(tx, function(x) {
+m <- regexpr(idtxt, x)
+c(m, attr(m, "match.length"))
+}))
+mn[, 2] <- mn[, 1] + mn[, 2]
+rownames(mn) <- paste(1:dim(mn)[1])
+mn
+}
+for (i in 1:100) {
+mn <- findfun(txpg)
+if (all(mn[, 1] == -1))
+break
+here <- mn[, 1] > 0
+page <- page[here]
+txpg <- txpg[here]
+mn <- mn[here, , drop = FALSE]
+m1 <- regexpr("\\(", txpg) - 1
+tx1 <- substring(txpg, mn[, 1], m1)
+if (i == 1)
+xy <- data.frame(nam = I(tx1), page = page)
+else xy <- rbind(xy, data.frame(nam = I(tx1), page = page))
+txpg <- substring(txpg, mn[, 2])
+here2 <- nchar(txpg) > 0
+txpg <- txpg[here2]
+page <- page[here2]
+if (length(txpg) == 0)
+break
+}
+browser()
+zz <- !xy[, 1] %in% notfun
+xy <- xy[zz, ]
+nam <- xy$nam
+ch <- substring(nam, 1, 1)
+nam[ch %in% c("=", " ", ",")] <- substring(nam[ch %in% c("=",
+" ", ",")], 2)
+xy$nam <- nam
+ord <- order(xy[, 2])
+xy[ord, ]
+}
+makeFunIndex <-
+function (sourceFile = "learnR.pdf", frompath = "~/_notes/learnR",
+topath = NULL, fileout = NULL, availfun = funpack,
+offset = 0, notfun=c("", "al", "Pr", "T", "F", "n", "P",
+"y", "A", "\\n", "transformation", "left", "f", "site.",
+"a", "b", "II", "ARCH", "ARMA", "MA", "AR", "R_"))
+{
+len <- nchar(sourceFile)
+lfrom <- nchar(frompath)
+if (substring(frompath, lfrom, lfrom) == "/")
+frompath <- substring(frompath, 1, lfrom - 1)
+if (is.null(fileout)) {
+if (substring(sourceFile, len - 3, len - 3) == ".")
+fnam <- substring(sourceFile, 1, len - 4)
+else fnam <- sourceFile
+fileout <- paste(fnam, ".fdx", sep = "")
+fdxfile <- paste(fileout, sep = "/")
+fndfile <- paste(fnam, ".fnd", sep = "")
+}
+if (is.null(topath))
+topath <- frompath
+else {
+lto <- nchar(topath)
+if (substring(topath, lto, lto) == "/")
+topath <- substring(topath, 1, lto - 1)
+}
+sourceFile <- paste(frompath, sourceFile, sep = "/")
+print(paste("Send output to", fndfile))
+tx <- pdftools::pdf_text('learnR.pdf')
+nlast <- grep('^Index\ of\ Functions',tx) - 1
+tx <- tx[1:(nlast-1)]
+entrymat <- locatefun(tx, notfun=notfun)
+backn <- regexpr("\\n", entrymat[, 1], fixed = TRUE)
+entrymat <- entrymat[backn < 0, ]
+entrymat[, 2] <- entrymat[, 2] - offset
+entrymat[, 1] <- gsub("_", "\\_", entrymat[, 1], fixed = TRUE)
+nmatch <- match(entrymat[, 1], availfun[, 2], nomatch = 0)
+use <- nmatch > 0
+print("Unmatched functions:")
+print(unique(entrymat[!use, 1]))
+entrymat[use, 1] <- paste(entrymat[use, 1], " ({\\em ", availfun[nmatch,
+1], "})", sep = "")
+funentries <- paste("\\indexentry  ", "{", entrymat[, 1],
+"}{", entrymat[, 2], "}", sep = "")
+write(funentries, fdxfile)
+system(paste("makeindex -c -o", fndfile, fdxfile))
+## system(paste("mv", fndfile, topath))
+}
+```
+
+```{r locatefun}
+locatefun <-
+function (txpg, notfun)
+{
+idtxt <- "\\.?[a-zA-Z][a-zA-Z0-9]*(\\.[a-zA-Z]+)*\\("
+page <- 1:length(txpg)
+byPage <- gregexpr(idtxt, txpg)
+mn <- lapply(byPage,function(x)cbind(x,x+attr(x, "match.length")-2))
+namlist <- lapply(1:length(mn),function(k)substring(txpg[[k]],mn[[k]][,1],mn[[k]][,2]))
+num <- sapply(namlist,length)
+xy <- data.frame(nam=unlist(namlist), page=rep(1:length(namlist),num))
+here <- !(xy[, 1] %in% c("",notfun))
+xy[here,]
+}
+```
+
+```{r mkFnIdx}
+## Set offset to # of preamble pages
+## Create fdx, then fnd file
+pkgNam <- unique(c(scan('scriptPkg.txt', what=''),scan('txtPkg.txt', what='')))
+pkgNam <- pkgNam[-match("Rcmdr",pkgNam)]
+funpack <- showpkg(pkgs<- pkgNam)
+makeFunIndex(offset=0, availfun=funpack)
+```
+
+m <- gregexpr(idtxt, tx)
+mn <- lapply(m,function(x)cbind(x,x+attr(x, "match.length")-2))
+lapply(1:length(mn),function(k)substring(tx[[k]],mn[[k]][,1],mn[[k]][,2]))

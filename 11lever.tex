@@ -2,21 +2,9 @@
 
 \input{preamble}
 
-<<echo=FALSE, cache=FALSE>>=
-## opts_knit$set(root.dir=normalizePath('..'), self.contained=FALSE)
-@
 
-<<echo=FALSE, cache=FALSE>>=
-Hmisc::knitrSet()
-Hmisc::knitrSet(w=3, h=3.15)
-opts_chunk$set(fig.path='figs/12-', cache.path='cache/12-',
-               fig.align='center', dev='pdf',  
-               fig.show='hold', out.width="0.47\\textwidth", 
-               tidy=FALSE, comment=NA)
-pdf.options(pointsize=12)
-oldopt <- options(digits=4)
-read_chunk("../scripts/lever-code.R")
-@ %
+
+
 
 \section{Manipulation of Language Constructs}
 
@@ -34,47 +22,97 @@ models and tables. Details will be given below.
 We demonstrate the construction of model or graphics formulae from
 text strings. The following plots the column \txtt{mpg}, from the data
 frame \txtt{mtcars} (\textit{MASS}), against \txtt{disp}:
-<<mgpVSdisp, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+plot(mpg ~ disp, data=mtcars)
+\end{Sinput}
+\end{Schunk}
 The following gives the same result:
-<<mgpVSdisp-equiv, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+yvar <- "mpg"
+xvar <- "disp"
+form <- as.formula(paste(yvar, "~", xvar))
+plot(form, data=mtcars)
+\end{Sinput}
+\end{Schunk}
 With this second approach, \txtt{yvar} and \txtt{xvar}
 can be arguments to a function, and \txtt{xvar} and
 \txtt{yvar} can be any pair of columns.  A suitable
 functionis:
-<<fun-args, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+plot.mtcars <- function(xvar="disp", yvar="mpg"){
+    form <- as.formula(paste(yvar, "~", xvar))
+    plot(form, data=mtcars)
+}
+\end{Sinput}
+\end{Schunk}
 
 \begin{marginfigure}
 The data frame \txtt{mtcars} has 11 columns from which
 the two axes for a scatterplot might be chosen:
-<<echo=FALSE>>=
-options(width=22)
-@ %
-<<mtcars-nam>>=
-@ %
-<<opt54, echo=FALSE>>=
-@ %
+
+\begin{Schunk}
+\begin{Sinput}
+names(mtcars)
+\end{Sinput}
+\begin{Soutput}
+ [1] "mpg"  "cyl" 
+ [3] "disp" "hp"  
+ [5] "drat" "wt"  
+ [7] "qsec" "vs"  
+ [9] "am"   "gear"
+[11] "carb"
+\end{Soutput}
+\end{Schunk}
+
 \end{marginfigure}
 
 The following calls the function with \txtt{xvar="hp"} and
 \txtt{yvar="mpg"}:
-<<mtcars-gph, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+plot.mtcars(xvar="hp", yvar="mpg", data=mtcars)
+\end{Sinput}
+\end{Schunk}
 
 \subsection{Extraction of names from a formula}
 
 Use the function \txtt{all.vars()} to extract the variable names from
 a formula, thus:
-<<all-vars>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+all.vars(mpg ~ disp)
+\end{Sinput}
+\begin{Soutput}
+[1] "mpg"  "disp"
+\end{Soutput}
+\end{Schunk}
 
 As well as using a formula to specify the graph, the following gives
 more informative $x$- and $y$-labels:
 \begin{fullwidth}
-<<mtcars-gph-plus, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+plot.mtcars <- function(form = mpg ~ disp){
+   yvar <- all.vars(form)[1]
+   xvar <- all.vars(form)[2]
+   ## Include information that allows a meaningful label
+   mtcars.info <-
+     c(mpg= "Miles/(US) gallon",        cyl= "Number of cylinders",
+       disp= "Displacement (cu.in.)",   hp= "Gross horsepower",
+       drat= "Rear axle ratio",         wt= "Weight (lb/1000)",
+       qsec= "1/4 mile time",           vs= "V/S",
+       gear= "Number of forward gears",
+       carb= "Number of carburettors",
+       am= "Transmission (0 = automatic, 1 = manual)")
+   xlab <- mtcars.info[xvar]
+   ylab <- mtcars.info[yvar]
+   plot(form, xlab=xlab, ylab=ylab)
+}
+\end{Sinput}
+\end{Schunk}
 \end{fullwidth}
 
 \section{Function Arguments and Environments}
@@ -83,43 +121,83 @@ more informative $x$- and $y$-labels:
 
 A simple use of \txtt{substitute()} is to extract a text string
 representation of a function argument:
-<<mtcars-subs, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+plot.mtcars` <-
+  function(x = disp, y = mpg){
+    xvar <- deparse(substitute(x))
+    yvar <- deparse(substitute(y))
+    form <- formula(paste(yvar, "~", xvar))
+    plot(form, xlab=xvar, ylab=yvar, data=mtcars)
+  }
+\end{Sinput}
+\end{Schunk}
 
 \subsection{Use of a list to pass parameter values}
 The following are equivalent:
-<<do.call, eval=FALSE>>=
-@ %
+
 
 Use of \txtt{do.call()} allows the parameter list to be set up in
 advance of the call. The following shows the use of \txtt{do.call()}
 to achieve the same effect as \verb!mean(possum$totlngth)!:
-<<do-possum, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+do.call("mean", list(x=possum$totlngth))
+\end{Sinput}
+\end{Schunk}
 This makes more sense in a function, thus:
-<<av-fun, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+`average` <-
+  function(x=possum$chest, FUN=function(x)mean(x)){
+    fun <- deparse(substitute(FUN))
+    do.call(fun, list(x=x))
+  }
+\end{Sinput}
+\end{Schunk}
 
 This allows, e.g., the following:
-<<av-exec, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+average()
+average(FUN=median)
+\end{Sinput}
+\end{Schunk}
 
 Note also \txtt{call()}, which sets up an unevaluated expression.
 The expression can be evaluated at some later time, using \txtt{eval()}.
 Here is an example:
-<<later-eval>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+mean.call <- call("mean", x=rnorm(5))
+eval(mean.call)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.06572
+\end{Soutput}
+\begin{Sinput}
+eval(mean.call)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.06572
+\end{Soutput}
+\end{Schunk}
 Notice that the argument \txtt{x} was evaluated when \txtt{call()}
 was evoked. The result is therefore unchanged upon repeating the
 call \txtt{eval(mean.call)}. This can be verified by printing out the
 expression:
 \begin{fullwidth}
-<<opt78, echo=FALSE>>=
-@ %
-<<mean-call>>=
-@ %
-<<opt54, echo=FALSE>>=
-@ %
+
+\begin{Schunk}
+\begin{Sinput}
+mean.call
+\end{Sinput}
+\begin{Soutput}
+mean(x = c(-0.654951646429221, -0.679896362331012, 0.979408998110931, 
+1.01194857431004, -0.327894174927872))
+\end{Soutput}
+\end{Schunk}
+
 \end{fullwidth}
 
 \subsection{Function environments}
@@ -143,18 +221,39 @@ name
 \end{list}
 }
 
-<<fun-name, echo=FALSE, eval=-6>>=
-@ %
+\begin{Schunk}
+\begin{Soutput}
+[1] "test"
+\end{Soutput}
+\end{Schunk}
 
 \begin{marginfigure}
 Now change the function name to \margtt{newtest()}:
-<<fun-newname>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+newtest <- test
+newtest()
+\end{Sinput}
+\begin{Soutput}
+[1] "newtest"
+\end{Soutput}
+\end{Schunk}
 \end{marginfigure}
 Here is code that determines, from within a function,
 the function name:
-<<fun-name>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+test <- function(){
+ fname <- as(sys.call(sys.parent())[[1]],
+             "character")
+  fname
+}
+test()
+\end{Sinput}
+\begin{Soutput}
+[1] "test"
+\end{Soutput}
+\end{Schunk}
 
 When a number of graphs are required, all for the one dociment, a
 sequential naming system, e.g., \txtt{fig1()}, \txtt{fig2()}, \ldots,
@@ -162,12 +261,31 @@ may be convenient, with matching names \textbf{fig1.pdf},
 \textbf{fig2.pdf}, \ldots for the respective graphics files.  The
 following function \txtt{gf()} generates the file name automatically,
 for passing to the graphics device that is opened.
-<<auto-name, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+gf <-
+    function(width=2.25, height=2.25, pointsize=8){
+        funtxt <- sys.call(1)
+        fnam <- paste0(funtxt, ".pdf")
+        print(paste0("Output is to the file '",
+                     fnam, "'"))
+        pdf(file=fnam, width=width, height=height,
+            pointsize=pointsize)
+    }
+\end{Sinput}
+\end{Schunk}
 
 Now create a function that calls \txtt{gf()}:
-<<fig1, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+fig1 <- function(){
+    gf()             # Call with default parameters
+    curve(sin, -pi, 2*pi)
+    dev.off()
+}
+fig1()
+\end{Sinput}
+\end{Schunk}
 \noindent
 Output goes to the file \textbf{fig1.pdf}.  For a function
 \txtt{fig2()} that calls \txtt{gf()}, output goes to the file
@@ -234,20 +352,58 @@ contents. If this is not possible, use the function
 \txtt{slotNames()} to obtain the names of the slots, and either the
 function \txtt{slot()} or the operator \verb!@! to extract or
 replace a slot.  For example:
-<<S4>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+library(DAAG)
+\end{Sinput}
+\begin{Sinput}
+library(lme4)
+\end{Sinput}
+\begin{Sinput}
+hp.lmList <- lmList(o2 ~ wattsPerKg | id,
+                    data=humanpower1)
+slotNames(hp.lmList)
+\end{Sinput}
+\begin{Soutput}
+[1] ".Data"     "call"      "pool"      "groups"   
+[5] "origOrder"
+\end{Soutput}
+\end{Schunk}
 
 The following are alternative ways to display the contents of the
 \txtt{"call"} slot:
 \begin{fullwidth}
-<<slot-call>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+hp.lmList@call
+\end{Sinput}
+\begin{Soutput}
+lmList(formula = o2 ~ wattsPerKg | id, data = humanpower1)
+\end{Soutput}
+\begin{Sinput}
+slot(hp.lmList, "call")
+\end{Sinput}
+\begin{Soutput}
+lmList(formula = o2 ~ wattsPerKg | id, data = humanpower1)
+\end{Soutput}
+\end{Schunk}
 \end{fullwidth}
 
 Where available, use an extractor function to extract some relevant
 part of the output, thus:
-<<coef-lmList>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+coef(hp.lmList)
+\end{Sinput}
+\begin{Soutput}
+  (Intercept) wattsPerKg
+1      -1.155      15.35
+2       1.916      13.65
+3     -12.008      18.81
+4       8.029      11.83
+5      11.553      10.36
+\end{Soutput}
+\end{Schunk}
 
 For moderately simple examples of the definition and use of S4 classes
 and methods, see \txtt{help(setClass)} and \txtt{help(setMethod)}.
@@ -256,22 +412,46 @@ How is it possible to identify, for a particular S4 class, the
 function that implements a method.  To identify the function
 in the \txtt{sp} package that implements the \txtt{spplot} method
 for \txtt{SpatialGridDataFrame} objects, type:
-<<selectMethod>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+library(sp)
+selectMethod("spplot",
+             signature="SpatialGridDataFrame")
+\end{Sinput}
+\begin{Soutput}
+Method Definition:
+
+function (obj, ...) 
+spplot.grid(as(obj, "SpatialPixelsDataFrame"), ...)
+<bytecode: 0x103380db0>
+<environment: namespace:sp>
+
+Signatures:
+        obj                   
+target  "SpatialGridDataFrame"
+defined "SpatialGridDataFrame"
+\end{Soutput}
+\end{Schunk}
 This makes it clear that the \txtt{spplot} method for
 \txtt{SpatialGridDataFrame} objects calls the function
 \txtt{spplot.grid()}. To display the function \txtt{spplot.grid()},
 type:
-<<fromNS, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+getFromNamespace("spplot.grid", ns="sp")
+\end{Sinput}
+\end{Schunk}
 \noindent
 Alternatively, use the less targeted
 \txtt{getAnywhere("spplot.grid")}.
 
 Use \txtt{showMethods()} to show all the methods for one or more
 classes of object.  For example:
-<<showMethods, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+showMethods(classes='SpatialGridDataFrame')
+\end{Sinput}
+\end{Schunk}
 
 \section{Summary}
 \begin{itemize}

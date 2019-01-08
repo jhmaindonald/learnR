@@ -14,14 +14,27 @@ code can be searched for names, remove the `%` fromm the start of
 the line `% columns=fullflexible,` in Sweavel.sty, before running
 `pdflatex learnR`
 
-```{bash makeTxt}
+```{r makeTxt}
 ## In this document, numbering, starts at page 1.
-## Change 234 to # pages to be used for creation of index 
-pdftotext -f 1 -l 234 -layout -eol unix ~/_notes/learnR/learnR.pdf learnR.txt
+txpages <- pdftools::pdf_text('learnR.pdf')
+nlast <- grep('^Index\ of\ Functions',txpages) - 1 
+txpages <- txpages[1:nlast]
+contpg <- grep('^[[:blank:]]*Contents',txpages)
+conts <- paste(c(txpages[contpg],sub('^[[:blank:]]*[[:digit:]]+\n','',txpages[contpg+1])), collapse="")
+conts <- strsplit(sub('^[[:blank:]]*Contents\n','',conts), '\n')[[1]]
+newchaps <- gsub('[^[:digit:]]+[[:digit:]]?[^[:digit:]]+',':', conts)
+chapinfo <- t(sapply(x,function(x)as.numeric(x)))
+writeLines(txpages[chapinfo[1,2]:(chapinfo[2,2]-1)], '~/pkgs/DAAGviz/inst/texts/1getStarted.txt')
+writeLines(txpages[chapinfo[2,2]:(chapinfo[3,2]-1)], '~/pkgs/DAAGviz/inst/texts/2workenv.txt')
+writeLines(txpages[chapinfo[3,2]:(chapinfo[4,2]-1)], '~/pkgs/DAAGviz/inst/texts/3exs.txt')
+writeLines(txpages[chapinfo[4,2]:(chapinfo[7,2]-1)], '~/pkgs/DAAGviz/inst/texts/456data.txt')
 ```
 
 ```{bash look4funs}
 egrep -ho 'library\([[:alpha:]]+[[:digit:]]?)|[[:alpha:]]+[[:digit:]]?::|\{chapter}\{[[:digit:]]+}' scripts/*R | sed 's/library(//g' | sed 's/)//g' |  sed 's/:://g' > scriptPkg.txt
+```
+
+```{bash look4pkg}
 egrep -ho 'library\([[:alpha:]]+[[:digit:]]?)|[[:alpha:]]+[[:digit:]]?::|\{chapter}\{[[:digit:]]+}' learnR.txt | sed 's/library(//g' | sed 's/)//g' |  sed 's/:://g' > txtPkg.txt
 ```
 
@@ -30,13 +43,13 @@ egrep -ho 'library\([[:alpha:]]+[[:digit:]]?)|[[:alpha:]]+[[:digit:]]?::|\{chapt
 showpkg <-
 function (pkgs = c("DAAG", "boot", "lattice", "latticeExtra", "cluster", "afex",
                    "MASS", "grid", "reshape", "forecast", "dichromat", "foreign", 
-                   "ggplot2", "leaps", "lme4", "MCMCpack", "ggplot2",
+                   "ggplot2", "leaps", "lme4", "MCMCpack", "ggplot2", "remotes",
                    "mgcv", "nlme", "oz", "ape", "plyr", "rgl", "RSQLite",
                    "randomForest", "RColorBrewer", "rpart", "rpart.plot","survival", 
                    "reshape2", "quantreg", "muhaz", "car", "stats", "gmodels",
                    "tseries", "xtable", "oz", "WDI", "Rcmdr")) 
 {
-  for (i in 1:length(pkgs)) require(pkgs[i], warn.conflicts = FALSE, character.only = TRUE,quietly=TRUE)
+for (i in 1:length(pkgs)) require(pkgs[i], warn.conflicts = FALSE, character.only = TRUE,quietly=TRUE)
   where <- search()
   if (length(where) < 1L) 
     stop("argument 'where' of length 0")
@@ -45,7 +58,7 @@ function (pkgs = c("DAAG", "boot", "lattice", "latticeExtra", "cluster", "afex",
   z <- vector(length(where), mode = "list")
   newnam <- sapply(strsplit(where, ":", fixed = TRUE), function(x) x[2])
   names(z) <- newnam
-  for (i in seq_along(where)) z[[i]] <- ls.str(pos = where[i], mode='function')
+  for (i in seq_along(where)) z[[i]] <- lsf.str(pos = where[i], all.names=TRUE)
   z <- sapply(names(z), function(x) {
     funs <- z[[x]]
     paste(rep(x, length(funs)), funs, sep = ":")
@@ -54,105 +67,79 @@ function (pkgs = c("DAAG", "boot", "lattice", "latticeExtra", "cluster", "afex",
   zz <- strsplit(all, ":")
   funtab <- cbind(sapply(zz, function(x) x[1]), sapply(zz, 
                                                        function(x) x[2]))
+  funtab <- rbind(funtab, c('base','.First'), c('base','.Last'))
   funtab
 }
+```
 
+```{r locatefun}
 locatefun <-
-function (txlines, notfun) 
+function (txpg, notfun)
 {
-  idtxt <- "\\.?[a-zA-Z][a-zA-Z0-9]*(\\.[a-zA-Z]+)*\\("
-  z <- regexpr("\\f", txlines)
-  z[z > 0] <- 1
-  z[z <= 0] <- 0
-  page <- cumsum(z) + 1
-  k <- 0
-  findfun <- function(tx) {
-    mn <- t(sapply(tx, function(x) {
-      m <- regexpr(idtxt, x)
-      c(m, attr(m, "match.length"))
-    }))
-    mn[, 2] <- mn[, 1] + mn[, 2]
-    rownames(mn) <- paste(1:dim(mn)[1])
-    mn
-  }
-  for (i in 1:100) {
-    mn <- findfun(txlines)
-    if (all(mn[, 1] == -1)) 
-      break
-    here <- mn[, 1] > 0
-    page <- page[here]
-    txlines <- txlines[here]
-    mn <- mn[here, , drop = FALSE]
-    m1 <- regexpr("\\(", txlines) - 1
-    tx1 <- substring(txlines, mn[, 1], m1)
-    if (i == 1) 
-      xy <- data.frame(nam = I(tx1), page = page)
-    else xy <- rbind(xy, data.frame(nam = I(tx1), page = page))
-    txlines <- substring(txlines, mn[, 2])
-    here2 <- nchar(txlines) > 0
-    txlines <- txlines[here2]
-    page <- page[here2]
-    if (length(txlines) == 0) 
-      break
-  }
-  zz <- !xy[, 1] %in% notfun
-  xy <- xy[zz, ]
-  nam <- xy$nam
-  ch <- substring(nam, 1, 1)
-  nam[ch %in% c("=", " ", ",")] <- substring(nam[ch %in% c("=", 
-                                                           " ", ",")], 2)
-  xy$nam <- nam
-  ord <- order(xy[, 2])
-  xy[ord, ]
+idtxt <- "\\.?[a-zA-Z][a-zA-Z0-9]*([._][a-zA-Z]+)*\\("
+page <- 1:length(txpg)
+byPage <- gregexpr(idtxt, txpg)
+mn <- lapply(byPage,function(x)cbind(x,x+attr(x, "match.length")-2))
+namlist <- lapply(1:length(mn),function(k)substring(txpg[[k]],mn[[k]][,1],mn[[k]][,2]))
+num <- sapply(namlist,length)
+xy <- data.frame(nam=unlist(namlist), page=rep(1:length(namlist),num))
+here <- !(xy[, 1] %in% c("",notfun))
+xy[here,]
 }
+```
 
+```{r mfi}
 makeFunIndex <-
-function (sourceFile = "learnR.txt", frompath = "~/_notes/learnR", 
-          topath = NULL, fileout = NULL, availfun = funpack, 
-          offset = 0, notfun=c("", "al", "Pr", "T", "F", "n", "P",
-                          "y", "A", "\\n", "transformation", "left", "f", "site.",
-                          "a", "b", "II", "ARCH", "ARMA", "MA", "AR", "R_"))
+function (sourceFile = "learnR.pdf", frompath = "~/_notes/learnR",
+topath = NULL, fileout = NULL, availfun = funpack,
+offset = 0, notfun=c("", "al", "Pr", "T", "F", "n", "P",
+"y", "A", "\\n", "transformation", "left", "f", "site.",
+"a", "b", "II", "ARCH", "ARMA", "MA", "AR", "R_"))
 {
-  len <- nchar(sourceFile)
-  lfrom <- nchar(frompath)
-  if (substring(frompath, lfrom, lfrom) == "/") 
-    frompath <- substring(frompath, 1, lfrom - 1)
-  if (is.null(fileout)) {
-    if (substring(sourceFile, len - 3, len - 3) == ".") 
-      fnam <- substring(sourceFile, 1, len - 4)
-    else fnam <- sourceFile
-    fileout <- paste(fnam, ".fdx", sep = "")
-    fdxfile <- paste(fileout, sep = "/")
-    fndfile <- paste(fnam, ".fnd", sep = "")
-  }
-  if (is.null(topath)) 
-    topath <- frompath
-  else {
-    lto <- nchar(topath)
-    if (substring(topath, lto, lto) == "/") 
-      topath <- substring(topath, 1, lto - 1)
-  }
-  sourceFile <- paste(frompath, sourceFile, sep = "/")
-  print(paste("Send output to", fndfile))
-  tx <- readLines(sourceFile, warn = FALSE)
-  entrymat <- locatefun(tx, notfun=notfun)
-  backn <- regexpr("\\n", entrymat[, 1], fixed = TRUE)
-  entrymat <- entrymat[backn < 0, ]
-  entrymat[, 2] <- entrymat[, 2] - offset
-  entrymat[, 1] <- gsub("_", "\\_", entrymat[, 1], fixed = TRUE)
-  nmatch <- match(entrymat[, 1], availfun[, 2], nomatch = 0)
-  use <- nmatch > 0
-  print("Unmatched functions:")
-  print(unique(entrymat[!use, 1]))
-  entrymat[use, 1] <- paste(entrymat[use, 1], " ({\\em ", availfun[nmatch, 
-                                                                     1], "})", sep = "")
-  funentries <- paste("\\indexentry  ", "{", entrymat[, 1], 
-                      "}{", entrymat[, 2], "}", sep = "")
-  write(funentries, fdxfile)
-  system(paste("makeindex -o", fndfile, fdxfile))
+len <- nchar(sourceFile)
+lfrom <- nchar(frompath)
+if (substring(frompath, lfrom, lfrom) == "/")
+frompath <- substring(frompath, 1, lfrom - 1)
+if (is.null(fileout)) {
+if (substring(sourceFile, len - 3, len - 3) == ".")
+fnam <- substring(sourceFile, 1, len - 4)
+else fnam <- sourceFile
+fileout <- paste(fnam, ".fdx", sep = "")
+fdxfile <- paste(fileout, sep = "/")
+fndfile <- paste(fnam, ".fnd", sep = "")
+}
+if (is.null(topath))
+topath <- frompath
+else {
+lto <- nchar(topath)
+if (substring(topath, lto, lto) == "/")
+topath <- substring(topath, 1, lto - 1)
+}
+sourceFile <- paste(frompath, sourceFile, sep = "/")
+print(paste("Send output to", fndfile))
+tx <- pdftools::pdf_text('learnR.pdf')
+nlast <- grep('^Index\ of\ Functions',tx) - 1
+tx <- tx[1:(nlast-1)]
+tx <- gsub(' (', '(', tx, fixed=TRUE)
+entrymat <- locatefun(tx, notfun=notfun)
+backn <- regexpr("\\n", entrymat[, 1], fixed = TRUE)
+entrymat <- entrymat[backn < 0, ]
+entrymat[, 2] <- entrymat[, 2] - offset
+nmatch <- match(entrymat[, 1], availfun[, 2], nomatch = 0)
+use <- nmatch > 0
+print("Unmatched functions:")
+print(unique(entrymat[!use, 1]))
+entrymat <- entrymat[use,]
+entrymat[, 1] <- gsub("_", "\\_", entrymat[, 1], fixed = TRUE)
+nmatch <- nmatch[use]
+entrymat[, 1] <- paste(entrymat[, 1], " ({\\em ", availfun[nmatch,
+1], "})", sep = "")
+funentries <- paste("\\indexentry  ", "{", entrymat[, 1],
+"}{", entrymat[, 2], "}", sep = "")
+write(funentries, fdxfile)
+system(paste("makeindex -c -o", fndfile, fdxfile))
 ## system(paste("mv", fndfile, topath))
 }
-
 ```
 
 ```{r mkFnIdx}
@@ -160,7 +147,7 @@ function (sourceFile = "learnR.txt", frompath = "~/_notes/learnR",
 ## Create fdx, then fnd file
 pkgNam <- unique(c(scan('scriptPkg.txt', what=''),scan('txtPkg.txt', what='')))
 pkgNam <- pkgNam[-match("Rcmdr",pkgNam)]
-funpack <- showpkg(pkgs<- pkgNam)
+funpack <- showpkg(pkgs=pkgNam)
 makeFunIndex(offset=0, availfun=funpack)
 ```
 
@@ -175,17 +162,19 @@ tmat4 <- read.table('~/_notes/learnR/tmat4.txt', as.is=TRUE)
 ## makeTermIndex() calls locateTerm()
 
 makeTermIndex <-
-function (sourceFile = "learnR.txt", offset = 0,
-    fileout = "learnR.idx", termMat=tmat4, ignore.case=TRUE, limto=555)
+function (sourceFile = "learnR.pdf", offset = 0, idxFile = "learnR.idx",
+    indFile = "learnR.ind", termMat=tmat4, ignore.case=TRUE, limto=555)
 {
     len <- nchar(sourceFile)
-    if (is.null(fileout)) {
-        if (substring(sourceFile, len - 3, len - 3) == ".")
+    if (substring(sourceFile, len - 3, len - 3) == ".")
             fnam <- substring(sourceFile, 1, len - 4)
         else fnam <- sourceFile
-        fileout <- paste(fnam, ".idx", sep = "")
-    }
-    tx <- readLines(sourceFile, warn = FALSE)
+    tmpFile <- paste0(fnam, ".tmp")
+    if (is.null(idxFile)) idxFile <- paste0(fnam, ".idx")
+    if (is.null(indFile)) indFile <- paste0(fnam, ".ind")
+    tx <- pdftools::pdf_text(sourceFile)
+    nlast <- grep('^Index\ of\ Functions',tx) - 1
+    tx <- tx[1:(nlast-1)]
     tx <- gsub('–','-',tx)
     indentry <- locateTerm(tx, termMat, offset = offset, ignore.case=ignore.case, limto=limto)
     nopage <- sapply(indentry, function(x)x[1]==999)
@@ -196,10 +185,12 @@ function (sourceFile = "learnR.txt", offset = 0,
     termentriesIN <- unlist(sapply(1:length(namIN), function(k) paste("{",
         namIN[k], "}{", indIN[[k]], "}", sep = "")))
     termentriesIN <- paste("\\indexentry", termentriesIN, sep = "")
-    termcon <- file(fileout)
-    write(termentriesIN, file = fileout)
+    termcon <- file(idxFile)
+    write(termentriesIN, file = idxFile)
     close(termcon)
-    system(paste("makeindex -c", fileout))
+#    system(paste("makeindex -c", idxFile))
+    system(paste("makeindex -c -o", tmpFile, idxFile))
+    system(paste("sed 's/{1}/{}/g'", tmpFile, ">", indFile))
 if(any(nopage)){
     noEntry <- unlist(sapply(1:length(indOUT), function(k) paste(
         namOUT[k], indOUT[[k]], sep = "")))
@@ -213,15 +204,15 @@ if(any(nopage)){
 }
 
 locateTerm <-
-function (txlines = DAAGURtx, tmat = termMat, offset = 0, ignore.case,
+function (txpg = DAAGURtx, tmat = termMat, offset = 0, ignore.case,
     limto = NA)
 {
     idtxt <- "[a-zA-Z][a-zA-Z0-9\\.\\_]*?\\("
-    txlines <- gsub("[[\\]]", " ", txlines)
-    txlines <- gsub(". ", " ", txlines, fixed = TRUE)
-    txlines <- gsub("\\([^\\)]|[^\\(]\\)", " ", txlines)
-    txlines <- gsub("[^0-9a-zA-Z)(\f _.-]", "", txlines)
-#    txlines <- tolower(txlines)
+    txpg <- gsub("[[\\]]", " ", txpg)
+    txpg <- gsub(". ", " ", txpg, fixed = TRUE)
+    txpg <- gsub("\\([^\\)]|[^\\(]\\)", " ", txpg)
+    txpg <- gsub("[^0-9a-zA-Z)(\f _.-]", "", txpg)
+#    txpg <- tolower(txpg)
 #    for(j in 2:5)tmat[,j]  <- tolower(tmat[,j])
     word1 <- tmat[, 2]
     word2 <- tmat[, 3]
@@ -229,12 +220,8 @@ function (txlines = DAAGURtx, tmat = termMat, offset = 0, ignore.case,
     altwd2 <- tmat[, 5]
     nterm <- length(word1)
     count <- numeric(nterm)
-    eol <- regexpr("\f", txlines)
-    eol[eol > 0] <- 1
-    eol[eol <= 0] <- 0
-    page <- cumsum(eol) + 1
+    page <- 1:length(txpg)
     cat("\nPage range is:", min(page), "to", max(page), "\n")
-    txpg <- sapply(split(txlines, page), function(x) paste(x, collapse = " "))
     if (offset >= 1)
         txpg <- txpg[-(1:offset)]
     if (!is.na(limto) & limto < length(txpg))
@@ -328,7 +315,6 @@ function (sourceFile = "~/r3/proofs/r-mono.txt", tmat = termMat,
 ```
 
 #######################################################################
-
 
 ```{r mkind}
 ## Create idx, then ind file

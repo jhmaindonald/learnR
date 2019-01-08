@@ -437,23 +437,22 @@ science.
 % @
 \cleartooddpage
 
-\chapter{Map Overlays  and Spatial Modeling}\label{ch:spatial}
-\include{10maps}
-% <<m10maps, child='10maps.Rnw'>>=
-% @
-\cleartooddpage
+% \chapter{Map Overlays  and Spatial Modeling}\label{ch:spatial}
+% \include{10maps}
+% % <<m10maps, child='10maps.Rnw'>>=
+% % @
+% \cleartooddpage
 
 \chapter{Brief Notes on Text Mining}\label{ch:tm}
-\include{11tm}
-% <<m11tm, child='11tm.Rnw'>>=
+\include{10tm}
+% <<m10tm, child='10tm.Rnw'>>=
 % @
 \cleartooddpage
 
 \chapter{$^*$Leveraging R Language Abilities }
-\include{12lever}
-% <<m12lever, child='12lever.Rnw'>>=
+\include{11lever}
+% <<m11lever, child='11lever.Rnw'>>=
 % @
-\cleartooddpage
 
 \appendix
 
@@ -470,8 +469,8 @@ science.
 \cleartooddpage
 
 \chapter{Color Versions of Selected Graphs}\label{app:C}
-\include{Ccolor}
-% <<Ccolor, child='Ccolor.Rnw'>>=
+\include{Dcolor}
+% <<Dcolor, child='Ccolor.Rnw'>>=
 % @
 
 \bibliographystyle{daag}
@@ -481,6 +480,7 @@ science.
 
 \begin{fullwidth}
 \printindex[fun]
+\renewcommand{\indexname}{Index of Terms}
 \printindex[default]
 \end{fullwidth}
 %%

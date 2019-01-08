@@ -61,9 +61,9 @@ with output that includes details of standard errors, $t$-statistics,
 and $p$-values. At one point, there is a mention of Bayesian
 prior probability.  
 
-There is use, in several places, of
-cross-validation for assessing predictive accuracy.  For this, data
-is split up into several subsets (10 is a common choice).  Each
+Cross-validation is used, in several places, to assess predictive
+accuracy.  For this, data is split into several subsets (10 is a
+common choice).  Each
 subset is then left out in turn for use to check predictive accuracy
 when the model is fitted to the remaining data.  Once the process is
 complete, predictions made independently of the observed values are

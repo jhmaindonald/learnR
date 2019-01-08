@@ -553,7 +553,8 @@ Most\marginnote{Biological expression array
   components of a more complex data structure.}
 of R's modeling functions (regression, smoothing, discriminant
 analysis, etc.) are designed to work with data frames. Where an
-alternative available that works with matrices, this will be faster.
+alternative is available that works with matrices, this is in
+general faster.
 
 Matrix operations can be more efficient even for such a simple
 operation as adding a constant quantity to each element of the array,

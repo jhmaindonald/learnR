@@ -7,13 +7,16 @@ options(width=54)
 ## ---- loadDAAG ----
 library(DAAG)
 
+## ---- loadlattice ----
+library(lattice)
+
 ## ---- sec-9.1 ----
 
 ## ---- ant111b ----
-# ant111b is in DAAG
+ant111b <- DAAG::ant111b
 Site <- with(ant111b, reorder(site, harvwt,
                               FUN=mean))
-stripplot(Site ~ harvwt, data=ant111b, fg="gray",
+lattice::stripplot(Site ~ harvwt, data=ant111b,
           scales=list(tck=0.5),
           xlab="Harvest weight of corn")
 
@@ -22,7 +25,7 @@ stripplot(Site ~ harvwt, data=ant111b, fg="gray",
 ## ---- ss-9.2.1 ----
 
 ## ---- getErie ----
-Erie <- greatLakes[,"Erie"]
+Erie <- DAAG::greatLakes[,"Erie"]
 
 ## ---- Erie1 ----
 plot(Erie, xlab="", fg="gray",
@@ -93,6 +96,7 @@ plot(fc, main="", fg="gray",
 
 ## ---- mdb-gam ----
 ## Code
+bomregions <- DAAG::bomregions2015
 mdbRain.gam <- gam(mdbRain ~ s(Year) + s(SOI),
                    data=bomregions)
 plot(mdbRain.gam, residuals=TRUE, se=2, fg="gray",
@@ -186,6 +190,7 @@ xyplot(scores[,2] ~ scores[,1], groups=fgl$type,
 library(rpart)
 
 ## ---- bronchit-first3 ----
+bronchit <- DAAGviz::bronchit
 head(bronchit, 3)
 
 ## ---- bronchit-rfac ----
@@ -248,6 +253,7 @@ xyplot(points[,2] ~ points[,1],
 ## ---- ss-9.5.1 ----
 
 ## ---- aupoints ----
+audists <- DAAG::audists
 aupts <- cmdscale(audists)
 plot(aupts, axes=FALSE, ann=FALSE, fg="gray",
      frame.plot=TRUE)
@@ -258,9 +264,6 @@ pos[city=="Canberra"] <- 4
 par(xpd=TRUE)
 text(aupts, labels=city, pos=pos)
 par(xpd=FALSE)
-
-## ---- load-oz ----
-library(oz, quietly=TRUE)
 
 ## ---- cfPhysical ----
 align2D <- function(lat=aulatlong$latitude,
@@ -275,7 +278,8 @@ align2D <- function(lat=aulatlong$latitude,
 }
 
 ## ---- au-overlay ----
-oz()
+oz::oz()
+aulatlong <- DAAG::aulatlong
 fitcoords <- align2D(lat=aulatlong$latitude,
                       long=aulatlong$longitude,
                       x1=aupts[,1], x2 = aupts[,2],
@@ -288,7 +292,7 @@ points(aulatlong, col="red", pch=16, cex=1.5)
 lines(x, y, col="gray40", lwd=3)
 
 ## ---- au-sammon ----
-oz()
+oz::oz()
 aupts.sam <- sammon(audists, trace=FALSE)$points
 wt <- apply(as.matrix(audists), 1,function(x)sum(1/x[x>0]))
 fitcoords <- align2D(lat=aulatlong$latitude,
@@ -303,7 +307,7 @@ points(aulatlong, col="red", pch=16, cex=1.5)
 lines(x, y, col="gray40", lwd=3)
 
 ## ---- au-mds ----
-oz()
+oz::oz()
 points(aulatlong, col="red", pch=16, cex=1.5)
 wt <- apply(as.matrix(audists), 1,function(x)sum(1/x[x>0]^2))
 aupoints.mds <- isoMDS(audists, as.matrix(aulatlong))

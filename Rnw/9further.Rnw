@@ -185,7 +185,11 @@ Figure \ref{fig:erie} shows a plot of the series.
 
 \marginnote{Where values of covariates are available that largely
 or partly explain the dependence, it may make sense to account for
+<<<<<<< HEAD
 these in the model. The details of how this should be done will
+=======
+these in the model. THe details of how this should be done will
+>>>>>>> 5245dac2bad38cd7565fda39666c5c0ff90565f8
 depend on the intended use of the model.}
 
 The plots in Figure \ref{erie-lagplot} are a good starting point for
@@ -1007,14 +1011,12 @@ Classical multi-dimensional scaling, as implemented by
  to Melbourne and Sydney, as to move Perth.  It makes more sense to
  give reduced weight to long distances, as is done by \txtt{sammon()}
  (\textit{MASS}).
-<<load-oz, eval=TRUE, echo=FALSE>>=
-@ %
 
 <<cfPhysical,  eval=TRUE, echo=FALSE>>=
 @ %
 
 \begin{figure*}[h]
-<<au-both, echo=FALSE, left=-1, top=2, bot=-1, w=5.5, h=4.5, out.width="0.47\\textwidth">>=
+<<au-both, echo=FALSE, left=-1, top=3, bot=-1, w=5.5, h=4.5, out.width="0.47\\textwidth">>=
 <<au-overlay>>
 mtext(side=3, line=0.5, adj=0, "A: Using Classical MDS", cex=1.5)
 <<au-sammon>>
@@ -1029,42 +1031,69 @@ mtext(side=3, line=0.5, adj=0, "B: Using Sammon Scaling", cex=1.5)
  Figure \ref{fig:aufit} shows side by side the overlays of the
  ``maps'' that result from the different ordinations, onto a physical
  map of Australia.  Panel A shows the result for classical
- multi-dimensional scaling.  Panel B does the same, now for the result
- from Sammon scaling.  Notice how Brisbane, Sydney, Canberra and
- Melbourne now maintain their relative positions better.
+ multi-dimensional scaling.  Panel B does the same, now for the
+ result from Sammon scaling.  Notice how Brisbane, Sydney, Canberra
+ and Melbourne now maintain their relative positions better.
 
-To see the code for Figure \ref{fig:aufit}, source the file that has the
-code for the figures of this chapter, and type:
-<<type-11_x, eval=FALSE>>=
-fig12.15A
-fig12.15B
+The function \txtt{oz::oz()}, with default arguments, draws an
+outline of the coast of Australia, with state boundaries shown.
+Arguments are available that can be used to limit what is shown 
+(e.g. the NSW and Victorian states only).
+To see the code for the overlays onto the map of the Australian
+coast, source the file that has the code for the figures of this
+chapter, and type:
+<<type-9_x, eval=FALSE>>=
+fig9.15A
+fig9.15B
 @ %
 
 The exercise can be repeated for multidimensional scaling (MDS). MDS
 preserves only, as far as possible, the relative distances.  A
 starting configuration of points is required.  This might come from
 the configuration given by \txtt{cmdscale()}.  For the supplementary
-figure \txtt{supp12.1()} that shows the MDS configuration, however, we
+figure \txtt{supp9.1()} that shows the MDS configuration, however, we
 use the physical latitudes and longitudes.
 
 To show this figure, source the file, if this has not been done
 previously, that has the code for the figures of this chapter. Then
 type:
-<<supp-12_1, eval=FALSE>>=
-supp12.1()
+<<supp-9_1, eval=FALSE>>=
+supp9.1()
 @ %
+
+\section{Maps, map overlays, and spatial analysis}
+
+Extensive information is available both in vignettes included
+with R package, and on online.  Code that is provided with
+the vignettes can be used to recreate the maps.
+
+\begin{itemizz}
+\item[] Lovelace et al.(2014) is a tutorial overview.
+\item[] The {\em mapmisc} vignette "Overview of mapping with mapmisc"
+shows a number of maps that illustrate some of the possibilities.
+\item[] Helpful sources of information on the relevant R data structures
+are the {\em sf} vignette "Simple Features for R" and the {\em tmap} 
+vignette "tmap in a nutshell."
+\item[] Detailed information on relevant R packages and abilities
+is available under \underline{Spatial} on the R Task Views web page
+  (\url{http://cran.ms.unimelb.edu.au/web/views/Spatial.html}).
+  \item[] See articles in the {\em Journal of Statistical Software}
+  special volume {\em https://www.jstatsoft.org/issue/view/v063}
+  (Volume 6e3, 2015.)
+\end{itemizz}
 
 \section*{References}
 \begin{itemizz}
-\item[] Cowpertwait P.~S.~P.\ and Metcalfe A.~V.\ 2009.
+\item[] \Citealt{CowpertwaitMet}.
 \newblock {\em Introductory Time Series with R.} Springer.
-\item[]
-Hyndman, R.~J.; Koehler, A.~B.; Od, J.~K.; and Snyder, R.~D. 2008.
+\item[] \Citealt{Hyndman-exp}.
 \newblock {\em Forecasting with Exponential Smoothing: The State Space
-  Approach\/}, 2$^{nd}$ edn, Springer.
-\item[] Taleb, Naseem. 2004.  \newblock {\em
+  Approach.\/} 2$^{nd}$ edn.
+\item[] \Citealt{lovelave_cheshire_2014}. \newblock Introduction to visualising spatial data in R. National Centre for Research
+Methods Working Papers, 14(03). Retrieved from \url{https://github.com/Robinlovelace/Creating-maps-in-R}.
+\item[] \Citealt{taleb_2004}.  \newblock {\em
     Fooled By Randomness: The Hidden Role Of Chance In Life And In The
     Markets.} Random House, 2ed.\newline [Has insightful comments
-  about the over-interpretation of phenomena in which randomness is
+  on the over-interpretation of phenomena in which randomness is
   likely to have a large role.]
 \end{itemizz}

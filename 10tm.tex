@@ -2,27 +2,18 @@
 
 \input{preamble}
 
-<<echo=FALSE, cache=FALSE>>=
-## opts_knit$set(root.dir=normalizePath('..'), self.contained=FALSE)
-@
 
-<<echo=FALSE, cache=FALSE>>=
-Hmisc::knitrSet()
-Hmisc::knitrSet(w=3, h=3.15)
-opts_chunk$set(fig.path='figs/11-', cache.path='cache/11-',
-               fig.align='center', dev='pdf',  
-               fig.show='hold', out.width="0.47\\textwidth", 
-               tidy=FALSE, comment=NA)
-pdf.options(pointsize=12)
-oldopt <- options(digits=4)
-read_chunk("../scripts/tm-code.R")
-@ %
+
+
 
 A first step is to load the \textit{tm} package.  This is designed for
 working with a \textit{corpus} --- \textit{corpus} is the name for a
 collection of documents.
-<<load-tm>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+library(tm)
+\end{Sinput}
+\end{Schunk}
 
 \section{Creation of a Volatile Corpus}\label{sec:volatile}
 
@@ -45,8 +36,20 @@ will disappear at the end of the session.
 
 First create paths to the files, and check that they seem correct:
 \begin{fullwidth}
-<<make-paths>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+## Create paths to the text files, stored in the
+## subdirectory "texts" of the DAAGviz package.
+txdir <- system.file("texts", package="DAAGviz")
+dir(txdir, pattern=".txt$")
+\end{Sinput}
+\begin{Soutput}
+[1] "data6-7.txt"     "graphics8-9.txt" "prelims1-5.txt" 
+\end{Soutput}
+\begin{Sinput}
+txfiles <- dir(txdir, pattern=".txt$", full.names=TRUE)
+\end{Sinput}
+\end{Schunk}
 \end{fullwidth}
 
 The following brings the first of these files into the workspace,
@@ -54,19 +57,34 @@ with one text string per line. The separate text strings are then
 collapsed into a single character vector, with spaces at the end
 of each line:
 \begin{fullwidth}
-<<readLines-1>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+## Input first file, with one text string per line
+tx1 <- readLines(txfiles[1], encoding="UTF-8", warn=FALSE)
+## Join the separate text strings end to end
+tx1 <- paste(tx1, collapse=" ")
+\end{Sinput}
+\end{Schunk}
 \end{fullwidth}
 
 Repeat this process for files 2 and 3:
 \begin{fullwidth}
-<<readLines2-3>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+tx2 <- readLines(txfiles[2], encoding="UTF-8", warn=FALSE)
+tx2 <- paste(tx2, collapse=" ")
+tx3 <- readLines(txfiles[3], encoding="UTF-8", warn=FALSE)
+tx3 <- paste(tx3, collapse=" ")
+\end{Sinput}
+\end{Schunk}
 \end{fullwidth}
 
 Now bring the three text strings together into a corpus:
-<<VectorSource>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+txcorp <- Corpus(VectorSource(c(tx1, tx2, tx3)))
+\end{Sinput}
+\end{Schunk}
 
 \subsection*{Creation of a corpus using \txtt{DirSource()}}
 
@@ -77,13 +95,24 @@ Now bring the three text strings together into a corpus:
   UTF-8, as required for use of \margtt{termDocumentMatrix()} or
   \txtt{termFreq()}.}
 The following creates a directory source:
-<<DirSource>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+dirSource <- DirSource(directory=txdir,
+                       pattern=".txt$")
+\end{Sinput}
+\end{Schunk}
 
 Now create the corpus.  The text will be input from the files that
 were identified, within the specified directory {\bf doc}:
-<<dirTOcorpus, cache=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+toUTF8 <- function(x) iconv(x, to="UTF-8",
+                            sub = "byte")
+txcorp <- Corpus(dirSource)
+txcorp <- tm_map(txcorp,
+    content_transformer(toUTF8))
+\end{Sinput}
+\end{Schunk}
 
 \subsection*{Next steps}
 
@@ -102,8 +131,15 @@ stripping away stopwords, elimination of white space, and conversion
 to lower case.  These can be performed in the process of creating a
 term document matrix, thus:
 \begin{fullwidth}
-<<make-tdm>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+ctl <- list(removePunctuation = list(preserve_intra_word_dashes = FALSE),
+            removeNumbers = TRUE, 
+            stopwords=c(stopwords("SMART"), "[1]"),
+            wordLengths=c(3,Inf))
+tx.tdm <- TermDocumentMatrix(txcorp, control=ctl)
+\end{Sinput}
+\end{Schunk}
 \end{fullwidth}
 \noindent
 Notice the identification of \txtt{[1]}, which appears quite
@@ -121,28 +157,65 @@ gives a much more extensive list.  See \txtt{?tm::stopwords} for
 details of non-English stopword lists that are immediately available.
 The following will give an idea of the sorts of words that are in
 the two lists:
-<<english-stopwords>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+## First few stopwords in the "en" set
+sort(stopwords())[1:5]
+\end{Sinput}
+\begin{Soutput}
+[1] "a"     "about" "above" "after" "again"
+\end{Soutput}
+\begin{Sinput}
+## First few stopwords in the "SMART" set 
+stopwords('SMART')[1:5]
+\end{Sinput}
+\begin{Soutput}
+[1] "a"     "a's"   "able"  "about" "above"
+\end{Soutput}
+\begin{Sinput}
+## Stopwords in "SMART" but not in "en"; first 10
+stopwords("SMART")[!stopwords("SMART")%in%stopwords()][1:10]
+\end{Sinput}
+\begin{Soutput}
+ [1] "a's"         "able"        "according"   "accordingly" "across"     
+ [6] "actually"    "afterwards"  "ain't"       "allow"       "allows"     
+\end{Soutput}
+\end{Schunk}
 
 Now list terms that occur 100 or more times:
 \begin{fullwidth}
-<<findFreq100>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+findFreqTerms(tx.tdm, 100)
+\end{Sinput}
+\begin{Soutput}
+ [1] "code"      "data"      "figure"    "file"      "frame"    
+ [6] "function"  "functions" "graphics"  "objects"   "package"  
+[11] "plot"     
+\end{Soutput}
+\end{Schunk}
 \end{fullwidth}
 
 \subsection*{Wordclouds}
 
 First load the {\em wordcloud} package:
-<<load-wordcloud>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+library(wordcloud)
+\end{Sinput}
+\end{Schunk}
 
 Figure \ref{fig:wc} shows wordcloud plots for the first (chapters 1-5),
 second (6-7) and third (8-9) documents in the corpus.
 \vspace*{15pt}
 
 \begin{figure*}
-<<wordcloud1-3, mfrow=c(1,3), w=15, h=5.25, echo=FALSE, out.width="0.92\\textwidth", top=5>>=
-@ %
+\begin{Schunk}
+
+
+\centerline{\includegraphics[width=0.92\textwidth]{figs/10-wordcloud1-3-1} }
+
+\end{Schunk}
 \caption[][-12pt]{Wordcloud plots are A: for the words in Chapters 1 - 5; B: 6 -
   7; and C: 8 - 9.\label{fig:wc}}
 \setfloatalignment{b}
@@ -153,8 +226,23 @@ second (6-7) and third (8-9) documents in the corpus.
 \noindent
 Code for the plots is:
 \begin{fullwidth}
-<<wordcloud1-3, eval=FALSE>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+pal <- brewer.pal(6, "Dark2")
+fnam1 <- as.matrix(tx.tdm)[,1]
+wordcloud(names(fnam1), fnam1, max.words=80, colors=pal[-1],
+          random.order=FALSE, scale=c(8.5,.5))
+mtext(side=3, line=3.5, "A: Chapters 1 - 5", adj=0, cex=1.8)
+fnam2 <- as.matrix(tx.tdm)[,2]
+wordcloud(names(fnam2), fnam2, max.words=80, colors=pal[-1],
+          random.order=FALSE, scale=c(4.5,.5))
+mtext(side=3, line=3.5, "B: Chapters 6 - 7", adj=0, cex=1.8)
+fnam3 <- as.matrix(tx.tdm)[,3]
+wordcloud(names(fnam3), fnam3, max.words=80, colors=pal[-1],
+          random.order=FALSE, scale=c(6.0,.5))
+mtext(side=3, line=3.5, "C: Chapters 8 - 9", adj=0, cex=1.8)
+\end{Sinput}
+\end{Schunk}
 \end{fullwidth}
 \marginnote[12pt]{All three panels used a 5in by 5in graphics page,
   with a pdf pointsize of 12.} Less frequent words will be lost off the
@@ -177,33 +265,61 @@ The following sets the path to the directory {\bf pdf} in the
 package {\bf DAAGviz} that holds the pdf files for (possibly,
 an older version) of the four ranges of chapters of the present
 text:
-<<get-path>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+uri <- system.file("pdf", package="DAAGviz")
+## Check names of files in directory
+dir(uri)
+\end{Sinput}
+\begin{Soutput}
+[1] "ch1-3.pdf" "ch4-6.pdf" "ch7.pdf"   "ch8-9.pdf"
+\end{Soutput}
+\end{Schunk}
 
 The corpus that has all three documents is, starting with the
 pdf files, most easily created thus:
 \begin{fullwidth}
-<<ex-pdf-Corpus>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+fromPDF <- Corpus(DirSource(directory=uri, pattern=".pdf$"),
+                 readerControl=list(reader=readPDF,
+                 PdftotextOptions = "-layout"))
+makeChar <- function(x)gsub("[^[:alnum:][:blank:]]","" , x, ignore.case = TRUE)
+fromPDF <- tm_map(fromPDF, content_transformer(makeChar))
+\end{Sinput}
+\end{Schunk}
 \end{fullwidth}
 
 Create the term-document matrix thus:
-<<make-xPDF>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+txx.tdm <- TermDocumentMatrix(fromPDF, control=ctl)
+\end{Sinput}
+\end{Schunk}
 
 \section{Document Collections Supplied With {\em tm}}
 Several document collections are supplied with the package,
 as text files or as XML files.  To get the path to the
 directories where these document collections are stored, type
 \begin{fullwidth}
-<<wid-80, echo=FALSE>>=
-options(width=80)
-@ %
-<<pathto, eval=TRUE, echo=TRUE>>=
-@ %
-<<wid-54, echo=FALSE>>=
-options(width=54)
-@ %
+
+\begin{Schunk}
+\begin{Sinput}
+(pathto <- system.file("texts", package="tm"))
+\end{Sinput}
+\begin{Soutput}
+[1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/tm/texts"
+\end{Soutput}
+\begin{Sinput}
+dir(pathto)
+\end{Sinput}
+\begin{Soutput}
+[1] "acq"               "crude"             "custom.xml"       
+[4] "loremipsum.txt"    "rcv1_2330.xml"     "reuters-21578.xml"
+[7] "txt"              
+\end{Soutput}
+\end{Schunk}
+
 \end{fullwidth}
 The subdirectory \textbf{acq} has 50 Reuters documents in XML format,
 \textbf{crude} has the first 23 of these, and \textbf{txt} has a
@@ -213,16 +329,30 @@ provided in {\em tm}, as required.
 
 The following are the names of the five Ovid documents:
 \begin{fullwidth}
-<<wid-80, echo=FALSE>>=
-@ %
-<<docnames-Ovid, eval=TRUE, echo=TRUE>>=
-@ %
-<<wid-54, echo=FALSE>>=
-@ %
+
+\begin{Schunk}
+\begin{Sinput}
+dir(paste(pathto, "txt",sep="/"))
+\end{Sinput}
+\begin{Soutput}
+[1] "ovid_1.txt" "ovid_2.txt" "ovid_3.txt" "ovid_4.txt" "ovid_5.txt"
+\end{Soutput}
+\end{Schunk}
+
 \end{fullwidth}
 
 The following brings these documents into a volatile corpus, i.e.,
 a corpus that is stored in memory:
-<<ovid>>=
-@ %
+\begin{Schunk}
+\begin{Sinput}
+(ovid <-
+   Corpus(DirSource(paste(pathto, "txt", sep="/")),
+          readerControl=list(language="lat")))
+\end{Sinput}
+\begin{Soutput}
+<<SimpleCorpus>>
+Metadata:  corpus specific: 1, document level (indexed): 0
+Content:  documents: 5
+\end{Soutput}
+\end{Schunk}
 

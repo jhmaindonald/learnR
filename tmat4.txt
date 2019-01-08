@@ -266,7 +266,7 @@
 "387" "graphics! quantile-quantile (QQ)" "quantile-quantile" NA NA NA 11
 "389" "graphics! simulated data" "plot" "simulated" NA NA 11
 "393" "graphics! transformation of scales" "plot" "transformation" NA NA 11
-"232" "graphics| seealso{ggplot2, larttice}" "zzzz" NA NA NA 11
+"232" "graphics| seealso{ggplot2, lattice}" "zzzz" NA NA NA 11
 "234" "graphics! devices" "graphics" "device" NA NA 11
 "235" "graphics! good practice" "graphs" "good" NA NA 11
 "371" "graphics (base graphics)! axes" "plot" "axes" NA NA 11

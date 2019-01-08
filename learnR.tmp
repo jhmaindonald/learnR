@@ -1,7 +1,7 @@
 \begin{theindex}
 
   \item Akaike information criterion (AIC), 
-		\see {information criteria}{}
+		\see {information criteria}{1}
   \item analysis issues
     \subitem analysis of summary data, 72, 100
     \subitem assumptions, 48, 146, 149, 152--155, 164, 173, 174, 178, 
@@ -17,7 +17,7 @@
   \item analysis of variance model (aov)
     \subitem categorized data vs linear fit, 146
     \subitem one-way layout, 158
-  \item argument, \see {function}{}
+  \item argument, \see {function}{1}
   \item array
     \subitem dimensions, 66, 69, 75, 82, 100, 101, 104
   \item assignment, 24, 42, 140, 191
@@ -25,15 +25,15 @@
   \indexspace
 
   \item Bayesian Information Criterion (BIC), 
-		\see {information criteria}{}
+		\see {information criteria}{1}
   \item Bayesian methods, 44
     \subitem prior density or probability, 188, 189
-  \item bootstrap, \see {resampling methods}{}
-  \item boxplot, \see {graphics, box \& whisker}{}
+  \item bootstrap, \see {resampling methods}{1}
+  \item boxplot, \see {graphics, box \& whisker}{1}
 
   \indexspace
 
-  \item censoring, \see {survival analysis}{}
+  \item censoring, \see {survival analysis}{1}
   \item classes \& methods, 79--81, 186, 193, 210--212
   \item commands
     \subitem comment character, 16--18, 37, 89, 92
@@ -49,7 +49,7 @@
     \subitem median
       \subsubitem bootstrap, 166
     \subitem predicted values, 52, 147, 153, 173, 188
-  \item contrasts, \see {factor}{}
+  \item contrasts, \see {factor}{1}
   \item correlation
     \subitem linear (Pearson), 50, 56, 155, 162, 180
   \item Cp statistic (Mallows), \see {information criteria}{39}, 
@@ -122,7 +122,7 @@
     \subitem estimate, 50, 119, 120, 133
       \subsubitem plot, {\itshape} plot, 1
   \item designed experiment, 8, 46, 48
-  \item deviance, \see {model}{}
+  \item deviance, \see {model}{1}
   \item discriminant analysis
     \subitem linear, 67, 186--188, 192
   \item distance measure, 192--194
@@ -163,7 +163,7 @@
   \item file names, 16--18, 22--27, 30--33, 37--39, 41, 68, 74, 75, 
 		88, 89, 92, 94, 96, 108, 109, 139, 141, 200, 202, 203, 
 		208, 209, 215, 217
-  \item fixed effects, \see {multi-level model}{}
+  \item fixed effects, \see {multi-level model}{1}
   \item function, 25, 30, 41, 55, 56, 62--65, 68, 72, 81, 82, 89, 90, 
 		95, 96, 106, 108, 114, 121, 123, 124, 126, 129--133, 
 		136, 138, 141, 174, 185, 194, 196, 201--203, 208, 209, 
@@ -187,7 +187,7 @@
 
   \indexspace
 
-  \item generalized linear model, \seealso{regression}{}
+  \item generalized linear model, \seealso{regression}{1}
     \subitem deviance, 172, 188
       \subsubitem deviance residuals, 172, 188
     \subitem family, 172
@@ -211,7 +211,7 @@
     \subitem use of quickplot(), 56, 132--136
   \item graph
     \subitem {\itshape see} plot, 1
-  \item graphics, \seealso{ggplot2, lattice}{}
+  \item graphics, \seealso{ggplot2, lattice}{1}
     \subitem aspect ratio, 8, 25, 51, 118, 122, 124, 129, 140, 154, 188, 
 		191
     \subitem box-\&-whisker
@@ -236,10 +236,10 @@
 
   \indexspace
 
-  \item image file, \see {R session}{}
+  \item image file, \see {R session}{1}
   \item inference, 46, 47, 100
-    \subitem bootstrap methods, \see {resampling methods}{}
-    \subitem confidence interval, \see {confidence interval}{}
+    \subitem bootstrap methods, \see {resampling methods}{1}
+    \subitem confidence interval, \see {confidence interval}{1}
     \subitem likelihood ratio test, 188
   \item information criteria
     \subitem Akaike Information Criterion (AIC), 170, 172
@@ -267,36 +267,36 @@
     \subitem scaling of axes, 51, 78, 81, 119, 124, 127, 130, 131, 139, 
 		141--143, 163, 178, 188, 202
     \subitem strip plot, 127, 137, 142, 178
-  \item library, \seealso{package}{}, 19, 20, 30, 32, 34, 93, 96, 101, 
+  \item library, \seealso{package}{1}, 19, 20, 30, 32, 34, 93, 96, 101, 
 		122, 140, 187, 202, 216, 220
   \item linear model (lm), 71, 146, 165, 173
     \subitem assumptions, 173
-    \subitem bootstrap, \see {resampling methods}{}
+    \subitem bootstrap, \see {resampling methods}{1}
     \subitem check for linearity, 165, 173
-    \subitem cross-validation, \see {resampling methods}{}
+    \subitem cross-validation, \see {resampling methods}{1}
     \subitem diagnostic plots
       \subsubitem residuals vs leverage, 146
-    \subitem errors in $x$, \see {regression}{}
+    \subitem errors in $x$, \see {regression}{1}
     \subitem explanatory variables
       \subsubitem relationships, 146, 165
-    \subitem fitted values, \see {predicted values}{}
+    \subitem fitted values, \see {predicted values}{1}
     \subitem hat matrix, 71, 146, 165, 173
     \subitem model formula, 146, 147
     \subitem model matrix, 146
       \subsubitem one term; several columns, 146, 149, 158--161
     \subitem modeling non-linear responses, 50, 146, 192
-    \subitem outliers, \see {regression, outliers}{}
+    \subitem outliers, \see {regression, outliers}{1}
     \subitem predicted values
       \subsubitem validity of SE estimates, 173
     \subitem prediction interval (new $y$-value), 146
     \subitem R$^2$ \& adjusted R$^2$, 154
-    \subitem regression spline, \see {regression}{}
-    \subitem residuals, \see {regression}{}
-    \subitem robust \& resistant methods, \see {regression}{}
+    \subitem regression spline, \see {regression}{1}
+    \subitem residuals, \see {regression}{1}
+    \subitem robust \& resistant methods, \see {regression}{1}
     \subitem straight line model, 146
       \subsubitem fitted values, 146
       \subsubitem residual, 146
-    \subitem strategies for fitting models, \see {regression}{}
+    \subitem strategies for fitting models, \see {regression}{1}
     \subitem term plots, 146, 159, 160, 163, 164, 169, 173
     \subitem terms, 146, 165, 173
     \subitem variable selection, 164, 165
@@ -319,19 +319,19 @@
     \subitem count \& identify, 41, 64, 82
     \subitem remove, 66
   \item model
-    \subitem classification, \see {discriminant analysis}{}
-    \subitem discriminant, \see {discriminant analysis}{}
+    \subitem classification, \see {discriminant analysis}{1}
+    \subitem discriminant, \see {discriminant analysis}{1}
     \subitem generalized linear model, 
-		\see {regression, generalized linear model}{}
-    \subitem linear model, \see {regression, linear model}{}
+		\see {regression, generalized linear model}{1}
+    \subitem linear model, \see {regression, linear model}{1}
     \subitem model formula, 146, 147
     \subitem model object, 44, 52--54, 62, 70, 71, 82, 100, 146, 148, 
 		220
       \subsubitem extractor function, 44, 54, 148
     \subitem parameters, 146, 156, 157, 160, 168
-    \subitem survival analysis, \see {survival analysis}{}
-    \subitem time series, \see {time series}{}
-  \item multi-dimensional scaling (MDS), \see {ordination}{}
+    \subitem survival analysis, \see {survival analysis}{1}
+    \subitem time series, \see {time series}{1}
+  \item multi-dimensional scaling (MDS), \see {ordination}{1}
   \item multilevel model, 178, 179
   \item multivariate analysis, 179, 189
 
@@ -348,7 +348,7 @@
     \subitem arithmetic, 19, 129, 132, 210
     \subitem relational, 19
   \item ordination
-    \subitem distance measure, \see {distance measure}{}
+    \subitem distance measure, \see {distance measure}{1}
     \subitem multi-dimensional scaling (MDS), 195, 196
     \subitem principal components analysis (PCA), 67, 95, 194
       \subsubitem PCA scores in regression, 67
@@ -383,14 +383,14 @@
     \subitem rpart, 50, 189
     \subitem RSQLite, RMySQL, ROracle, DBI, 95
     \subitem stats, 25, 33, 186, 196
-  \item plot, \see {graphics}{}
-  \item posterior density or probability, \see {Bayesian methods}{}
+  \item plot, \see {graphics}{1}
+  \item posterior density or probability, \see {Bayesian methods}{1}
   \item predictive accuracy, 
-		\see {regression, generalized linear model, linear model (lm), model, survival analysis}{}
-  \item principal components analysis (PCA), \see {ordination}{}
+		\see {regression, generalized linear model, linear model (lm), model, survival analysis}{1}
+  \item principal components analysis (PCA), \see {ordination}{1}
   \item printing, 16, 38, 77, 121, 123, 208
     \subitem digits, 34, 77, 161, 187
-  \item prior density or probability, \see {Bayesian methods}{}
+  \item prior density or probability, \see {Bayesian methods}{1}
 
   \indexspace
 
@@ -415,23 +415,23 @@
     \subitem numbers, 42
     \subitem sample, 121, 142, 190
   \item regression, 
-		\seealso{discriminant analysis, generalized additive model, tree-based methods, survival analysis, time series}{}
+		\seealso{discriminant analysis, generalized additive model, tree-based methods, survival analysis, time series}{1}
     \subitem AIC (Akaike), BIC (Bayesian), Cp (Mallows), 
-		\see {information criteria}{}
-    \subitem bootstrap, \see {resampling methods}{}
+		\see {information criteria}{1}
+    \subitem bootstrap, \see {resampling methods}{1}
     \subitem coefficients
-      \subsubitem confidence interval, \see {confidence interval}{}
+      \subsubitem confidence interval, \see {confidence interval}{1}
       \subsubitem correlation between, 155
       \subsubitem interpretation, 52, 157
       \subsubitem standard error, 54, 146, 164, 166, 167
     \subitem comparison of models, 7, 162, 178, 188
-    \subitem cross-validation, \see {resampling methods}{}
+    \subitem cross-validation, \see {resampling methods}{1}
     \subitem extrapolation, 154, 180, 184
     \subitem generalized additive model, 
-		\see {generalized additive model}{}
+		\see {generalized additive model}{1}
     \subitem generalized linear model, 
-		\see {generalized linear model}{}
-    \subitem linear model, \see {linear model}{}
+		\see {generalized linear model}{1}
+    \subitem linear model, \see {linear model}{1}
     \subitem non-linear model, 50
     \subitem observational data, 46, 157
     \subitem outlier, 50, 153, 164, 176
@@ -439,7 +439,7 @@
       \subsubitem bootstrap, 44
       \subsubitem cross-validation, 146
       \subsubitem validity of bootstrap estimate, 44
-    \subitem spline smoother, \seealso{Generalized Additive Model}{}, 
+    \subitem spline smoother, \seealso{Generalized Additive Model}{1}, 
 		173
   \item replication, 46
   \item resampling methods
@@ -452,7 +452,7 @@
   \item sampling
     \subitem cluster sampling, 48
     \subitem with/without replacement, 44
-  \item search list, \see {R session}{}
+  \item search list, \see {R session}{1}
   \item selection bias, 167
   \item simulation, 152, 155, 156, 165, 166, 175, 182, 185
   \item smoother, 136, 146, 173, 174, 183
@@ -506,7 +506,7 @@
   \indexspace
 
   \item variability
-    \subitem heterogeneity, \see {model, homogeneity of variance}{}
+    \subitem heterogeneity, \see {model, homogeneity of variance}{1}
   \item vector
     \subitem atomic, 62, 71, 82, 100
     \subitem character, 20, 23, 24, 26, 62, 63, 66, 68, 72, 76, 77, 82, 
@@ -524,7 +524,7 @@
 
   \indexspace
 
-  \item working directory, \see {R session}{}
-  \item workspace, \see {R session}{}
+  \item working directory, \see {R session}{1}
+  \item workspace, \see {R session}{1}
 
 \end{theindex}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -8,6 +8,11 @@
 Begley, C.~G. and Ellis, L.~M., 2012.
 \newblock Drug development: Raise standards for preclinical cancer research.
 \newblock {\em Nature\/}, 483(7391):531--533.
+
+\bibitem[{Cowpertwait and Metcalfe(2009)}]{CowpertwaitMet}
+Cowpertwait, P. S.~P. and Metcalfe, A.~V., 2009.
+\newblock {\em Introductory Time Series with R\/}.
+\newblock Springer New York.
 
 \bibitem[{Edwards and Roy(2017)}]{edwards_roy_2017}
 Edwards, M.~A. and Roy, S., 2017.
@@ -20,6 +25,17 @@ Green, P.~J.; Kirby, R.; and Suls, J., 1996.
 \newblock The effects of caffeine on blood pressure and heart rate: A review.
 \newblock {\em Annals of Behavioral Medicine\/}, 18(3):201--216.
 
+\bibitem[{Hyndman et~al.(2008)Hyndman, Koehler, Ord, and Snyder}]{Hyndman-exp}
+Hyndman, R.~J.; Koehler, A.~B.; Ord, J.~K.; and Snyder, R.~D., 2008.
+\newblock {\em Forecasting with Exponential Smoothing: The State Space
+  Approach\/}.
+\newblock Springer.
+
+\bibitem[{Lovelave and Cheshire(2014)}]{lovelave_cheshire_2014}
+Lovelave, R. and Cheshire, J., 2014.
+\newblock Introduction to visualising spatial data in r.
+\newline\url{https://github.com/Robinlovelace/Creating-maps-in-R}
+
 \bibitem[{Prinz et~al.(2011)Prinz, Schlange, and Asadullah}]{prinz2011believe}
 Prinz, F.; Schlange, T.; and Asadullah, K., 2011.
 \newblock Believe it or not: how much can we rely on published data on
@@ -30,6 +46,12 @@ Prinz, F.; Schlange, T.; and Asadullah, K., 2011.
 Stark, P.~B. and Saltelli, A., 2018.
 \newblock Cargo-cult statistics and scientific crisis.
 \newblock {\em Significance\/}, 15(4):40--43.
+
+\bibitem[{Taleb(2004)}]{taleb_2004}
+Taleb, N.~N., 2004.
+\newblock {\em Fooled By Randomness: The Hidden Role Of Chance In Life And In
+  The Markets.\/}.
+\newblock Penguin books, 2 edition.
 
 \bibitem[{Tukey(1997)}]{tukey_1997}
 Tukey, J.~W., 1997.

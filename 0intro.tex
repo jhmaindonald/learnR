@@ -1,0 +1,363 @@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in knitrSet(): could not find function "{}knitrSet"{}}}
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in knitrSet(w = 3, h = 3.15): could not find function "{}knitrSet"{}}}\end{kframe}
+\end{knitrout}
+
+\marginnote{CRAN is the primary R `repository'.  Several additional
+  package repositories supplement what is available from CRAN.  Note
+  in particular the Bioconductor repository
+  (\url{http://www.bioconductor.org}), with packages that cater for
+  high throughput genomic data.}
+\noindent
+\fbox{\parbox{\textwidth}{
+{\bf Note the following web sites:}\\[4pt]
+CRAN (Comprehensive R Archive Network):\newline
+\url{http://cran.r-project.org}\\[3pt]
+Obtain R and R packages from a CRAN mirror in the local region.
+An Australian mirror (one of two) is: \url{http://cran.csiro.au/}\\[3pt]
+% For Sweden, use \url{http://ftp.sunet.se/pub/lang/CRAN/}\\
+% For Denmark, use \url{http://cran.dk.r-project.org/}\\[3pt]
+R homepage: \url{http://www.r-project.org/}\\[3pt]
+
+For various useful links click, from an R session that uses the
+GUI, on the menu item \underline{R help}. Then, on the browser window
+that pops up, look under \underline{Resources}}}
+
+%
+%
+\section*{Commentary on R}
+
+\subsection*{General}
+R has extensive \marginnote{R is free to download from a CRAN site
+  (see above).  It runs on all common types of system -- Windows, Mac,
+  Unix and Linux.}  graphical abilities that are tightly linked with
+its analytic abilities. A new release of base R, on which everything
+else is built appears every few months.
+
+The major part of R's abilities for statistical analysis
+and for specialist graphics comes from the extensive enhancements that
+the packages build on top of the base system.  Its abilities are
+further extended by an extensive range of interfaces into
+other systems\sidenote{These include Python, SQL and other
+  databases, parallel computing using MPI, and Excel.}
+
+The main part of the R system -- base R plus the recommended packages
+-- is under continuing development.
+\subsection*{The R user base}
+
+Statistical and allied professionals\marginnote{ The R Task Views web
+  page (\url{http://cran.csiro.au/web/views/}) notes, for application
+  areas where R is widely used, relevant packages.  } who wish to
+develop or require access to cutting edge tools find R especially
+attractive.  It is finding use, also, as an environment in which to
+embed applications whose primary focus is not data analysis or
+graphics.
+
+\subsection*{Getting help}
+
+\begin{fullwidth}
+\fbox{\parbox{1.15\textwidth}{
+{\bf Note the web sites:}\\[4pt]
+Wikipedia:\newline
+\url{http://en.wikipedia.org/wiki/R_(programming_language)}\\[3pt]
+R-downunder (low traffic, friendly):\newline
+\url{http://www.stat.auckland.ac.nz/mailman/listinfo/r-downunder}\\[3pt]
+Stackoverflow\newline
+\url{http://stackoverflow.com/questions/tagged/r}.
+}}
+\end{fullwidth}
+\vspace*{8pt}
+
+The r-help mailing list\marginnote{Details of this and other lists can
+  be found at: \url{http://www.r-project.org}. Be sure to check the
+  available documentation before posting to r-help. List archives can
+  be searched for previous questions and answers.}  serves, especially
+for users with a technical bent, as an informal support network.  The
+R community expects users to be serious about data analysis, to want
+more than a quick cook-book fix, and to show a willingness to work at
+improving statistical knowledge.
+
+Novices will find the low traffic R-downunder list more friendly and
+helpful than the main R mailing list. It has among its subscribers
+some highly expert individuals.
+
+\subsection*{The origins and future of R}
+
+The R system implements a dialect of the S language \marginnote{Open
+  source systems that might have been the basis for an R-like project
+  include Scilab, Octave, Gauss, Python, Lisp-Stat and now Julia.
+  None of these can match the range and depth of R's packages,
+  with new packages building on what is already there.  Julia's
+potential has still to be tested.}
+that was developed at AT\&T Bell Laboratories for use as
+a general purpose scientific language, but with especial strengths in
+data manipulation, graphical presentation and statistical
+analysis. The commercial S-PLUS implementation of S popularized the S
+language, giving it a large user base of statistical professionals and
+skilled scientific users into which R could tap.
+
+Ross Ihaka and Robert Gentleman, both at that time from the University
+of Auckland, developed the initial version of R, for use in teaching.
+Since mid-1997, development has been overseen by a `core team'
+of about a dozen people, drawn from different institutions worldwide.
+
+\marginnote[12pt]{More than 6000 packages are now available through
+  the CRAN sites.}
+With the release of version 1.0 in early 2000, R became a serious tool
+for professional use.  Since that time, the pace of development has
+been frenetic, with a new package appearing every week or two.
+
+\marginnote[12pt]{R code looks at first glance like C code. The R
+interpreter is modeled on the Scheme LISP dialect.}
+The R system uses a language model that dates from the
+1980s.  Any change to a more modern language model is likely to be
+evolutionary.  Details of the underlying computer implementation will
+inevitably change, perhaps at some point radically. Among
+more recent language systems \marginnote{Julia strongly
+  outperforms R in execution time comparisons that appear on the Julia
+  website.}  that have the potential to provide R-like functionality,
+Julia (\url{http://julialang.org}) seems particularly interesting.
+
+  \subsection*{Interactive development environments -- editors and more}
+  \marginnote{Note also Emacs, with the ESS (Emacs Speaks Statistics)
+    addon. is This is a feature-rich environment that can be daunting
+    for novices.  It runs on Windows as well as Linux/Unix and Mac.
+    Note also, for Windows, the Tinn-R editor
+    (\url{http://www.sciviews.org/Tinn-R/}).}  RStudio
+  (\url{http://rstudio.org/}) is a very attractive run-time
+  environment for R, available for Windows, Mac and Linux/Unix
+  systems.  This has extensive abilities for managing projects, and
+  for working with code.  It is a highly recommended alternative to
+  the GUIs that come with the Windows and Mac OS X binaries that are
+  available from CRAN sites.
+
+\subsection*{Pervasive unifying ideas}
+Ideas that pervade R include:\\[-8pt]
+\marginnote{Expressions can be:\\
+\vspace*{-8pt}
+\begin{list}{}{\setlength{\itemsep}{2pt} \setlength{\parsep}{0pt}}
+\item[] evaluated (of course)
+
+\item[] printed on a graph (come to think of it, why not?)
+\end{list}
+
+\noindent There are many unifying computational features.  Thus
+any `linear' model (lm, lme, etc) can use spline basis
+  functions to fit spline terms.
+}
+\begin{list}{}{\setlength{\itemsep}{1pt} \setlength{\parsep}{1pt}}
+\item[] Generic functions for common tasks -- print, summary, plot, etc.
+(the Object-oriented idea; do what that ``class'' of object requires)
+
+\item[] Formulae, for specifying graphs, models and tables.
+
+\item[] Language structures can be manipulated, just like any
+data object (Manipulate formulae, expressions, function argument
+lists, \dots)
+
+\item[] Lattice (trellis) and ggplot graphics offer innovative
+  features that are widely used in R packages.  They aid the provision
+  of graphs that reflect important aspects of data structure.
+
+\end{list}
+Note however that these are not uniformly implemented through R.
+This reflects the incremental manner in which R has developed.
+
+\subsection*{Data set size}
+R's evolving technical design has allowed it,\marginnote{An important
+  step was the move, with the release of version 1.2, to a dynamic
+  memory model.} taking advantage of advances in computing hardware,
+to steadily improve its handling of large data sets. The flexibility
+of R's memory model does however have a cost\sidenote{The difference
+  in cost may be small or non-existent for systems that have a 64-bit
+  address space.} for some large computations, relative to systems
+that process data from file to file.
+
+\subsection*{Good planning,  informed analysis and reliable software}
+
+While the R system
+\marginnote{Take particular care with
+  newer or little-used abilities in contributed packages.  These may
+  not have been much tested, unless by their developers.  The
+greatest risks arise from inadequate understanding of the statistical
+issues.}
+is unique in the extent of close scrutiny that it
+receives from highly expert users, the same warnings apply as to any
+statistical system.  The base system and the recommended
+  packages get unusually careful scrutiny.
+
+  The scientific context, has crucial implications for the experiments
+  that it is useful to do, and for the analyses that are meaningful.
+  Available statistical methodology, and statistical and computing
+  software and hardware, bring their own constraints and opportunities.
+
+\textit{Statistics of data collection}\marginnote{The same general
+  issues arise in field, industrial, medical, biological and
+  laboratory experimentation. The aim is, always, is to get maximum
+  value from resources used.}  encompasses statistical
+\textit{experimental design}, sampling design, and more besides.
+Planning will be most effective if based on sound knowledge of the
+materials and procedures available to experimenters.
+
+Once the data have been collected, the challenges are then those of
+data analysis and of interpretation and presentation of results. For
+this, software that is of high quality must be complemented with the
+critical resources of well-trained and well-informed minds.
+
+\section*{Documentation and Learning Aids}
+\paragraph{R podcasts:} See for example
+\url{http://www.r-podcast.org/}
+
+\paragraph{Official Documentation:}
+Users who are working through these notes on their own should
+have available for reference the document
+``An Introduction to R'', written by the R Development Core Team.
+To download an up-to-date copy, go to CRAN.
+
+\paragraph{Web-based Documentation:}
+
+* See Computerworld's list (July 11 2018) of "Top R language
+resources to improve your data skills":  
+\url{https://bit.ly/2SPN0gq}
+* Go to \url{http://www.r-project.org}\marginnote{Also
+  \url{http://wiki.r-project.org/rwiki/doku.php}}
+and look under \underline{Documentation}.
+There are further useful links under \underline{Other}.
+
+\paragraph{The R Journal (formerly R News):}
+Successive issues are a mine of useful information.
+These can be copied down from a CRAN site.
+
+\paragraph{Books:}
+See \url{http://www.R-project.org/doc/bib/R.bib} for a list of
+R-related books that is updated regularly. Here, note
+especially:\\[3pt]
+\noindent
+Maindonald, J. H. \& Braun, J. H. 2010. Data Analysis \&
+  Graphics Using R. An Example-Based Approach. 3$^{rd}$ edn, Cambridge
+  University Press,
+  Cambridge, UK, 2010.\\
+\noindent
+\url{http://www.maths.anu.edu.au/~johnm/r-book.html}
+
+\cleardoublepage
+\section*{Notes for Readers of this Text}
+
+\subsection*{Asterisked Sections or Subsections}
+
+Asterisks are used to identify material that is more technical or
+specialized, and that might be omitted at a first reading.
+
+\subsection*{The {\em DAAGviz} package}
+\marginnote{Note that {\em DAAGviz} is not available on CRAN.
+It collects scripts and datasets together in a way that may be
+useful to course participants.  Those materials are also
+available separately.}
+This package is an optional companion to these notes. 
+You can install it, assuming a live internet connection,
+by typing:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{'jhmaindonald/DAAGviz'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{marginfigure}Assuming that the {\em DAAGviz} package has been installed, it can be attached thus:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(DAAGviz)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{marginfigure}
+Once attached, this package gives access to:
+\begin{itemizz}
+\item[-]
+\begin{marginfigure}[78pt]
+More succinctly, use the function \margtt{getScript()}:\\[-3pt]
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Place Ch 5 script in}
+\hlcom{## working directory}
+\hlkwd{getScript}\hlstd{(}\hlnum{5}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{marginfigure}
+Scripts that include all the code. To access these scripts do, e.g.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Check available scripts}
+\hlkwd{dir}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{'scripts'}\hlstd{,} \hlkwc{package}\hlstd{=}\hlstr{'DAAGviz'}\hlstd{))}
+\hlcom{## Show chapter 5 script}
+\hlstd{script5} \hlkwb{<-} \hlkwd{system.file}\hlstd{(}\hlstr{'scripts/5examples-code.R'}\hlstd{,}
+                        \hlkwc{package}\hlstd{=}\hlstr{'DAAGviz'}\hlstd{)}
+\hlkwd{file.show}\hlstd{(script5)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\item[-]
+\begin{marginfigure}[24pt]
+More succinctly, use the function \margtt{sourceFigFuns()}:\\[-3pt]
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{## Load Ch 5 functions}
+\hlcom{## into workspace}
+\hlkwd{sourceFigFuns}\hlstd{(}\hlnum{5}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{marginfigure}
+Source files (also scripts) for functions that can be used to
+  reproduce the graphs. These are available for Chapters 5 to 15
+only.  To load the Chapter 5 functions into the workspace,
+use the command:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{path2figs5} \hlkwb{<-} \hlkwd{system.file}\hlstd{(}\hlstr{'doc/figs5.R'}\hlstd{,}
+                          \hlkwc{package}\hlstd{=}\hlstr{'DAAGviz'}\hlstd{)}
+\hlkwd{source}\hlstd{(path2figs5)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\item[-] The datasets \txtt{bronchit}, \txtt{eyeAmp}, and
+  \txtt{Crimean}, which feature later in these notes.
+\end{itemizz}
+At courses where these notes are used, the script files,
+the function source files, and some data files, will
+be provided on a memory stick.
+\newpage
+
+\subsection*{Alternative sources for some datasets}
+\marginnote{At courses where these notes are used, these will
+be provided on a memory stick.}
+{\color{gray40}
+The web page \url{http://maths-people.anu.edu.au/~johnm/} may in a few cases
+be a convenient source for datasets that are referred to in this text:
+\begin{itemizz}
+\item[-] 
+Look in \url{http://maths-people.anu.edu.au/~johnm/r/rda} for
+  various image ({\bf .RData}) files.\sidenote{{\em Image} files hold 
+  copies of one or more R objects, in a format that facilitates rapid 
+  access from R.}  Use the function \txtt{load()} to bring any of these 
+  into R.
+\item[-] Look in \url{http://maths-people.anu.edu.au/~johnm/datasets/text}
+  for the files {\bf bestTimes.txt}, {\bf molclock.txt}, and other such
+  text files.
+\item[=] Look in \url{http://maths-people.anu.edu.au/~johnm/datasets/csv}
+  for several {\bf .csv} files.
+\end{itemizz}
+\vspace*{-9pt}
+}
+

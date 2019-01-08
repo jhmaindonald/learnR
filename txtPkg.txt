@@ -77,8 +77,6 @@ RColorBrewer
 MASS
 grid
 latticeExtra
-playwith
-playwith
 ggplot2
 MASS
 DAAG
@@ -96,11 +94,15 @@ quantreg
 splines
 car
 Ecdat
-DAAG
 DAAGviz
 mgcv
+DAAG
+DAAG
+lattice
+DAAG
 mgcv
 forecast
+DAAG
 gamclass
 gamclass
 gamclass
@@ -109,6 +111,9 @@ mgcv
 DAAG
 lattice
 rpart
+DAAGviz
+DAAG
+oz
 oz
 DAAG
 DAAGviz

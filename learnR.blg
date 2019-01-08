@@ -5,59 +5,58 @@ A level-1 auxiliary file: preamble.aux
 A level-1 auxiliary file: 0intro.aux
 A level-1 auxiliary file: 1gettingStarted.aux
 A level-1 auxiliary file: 2rworking.aux
-A level-1 auxiliary file: 3examples.aux
+A level-1 auxiliary file: 3statsExs.aux
 A level-1 auxiliary file: 4data.aux
 A level-1 auxiliary file: 5input.aux
 A level-1 auxiliary file: 6manip.aux
 A level-1 auxiliary file: 7graphics.aux
 A level-1 auxiliary file: 8reg.aux
 A level-1 auxiliary file: 9further.aux
-A level-1 auxiliary file: 10maps.aux
-A level-1 auxiliary file: 11tm.aux
-A level-1 auxiliary file: 12lever.aux
+A level-1 auxiliary file: 10tm.aux
+A level-1 auxiliary file: 11lever.aux
 A level-1 auxiliary file: Arsystem.aux
 A level-1 auxiliary file: Brgui.aux
-A level-1 auxiliary file: Ccolor.aux
+A level-1 auxiliary file: Dcolor.aux
 The style file: daag.bst
 Database file #1: scistatR.bib
-You've used 6 entries,
+You've used 10 entries,
             2806 wiz_defined-function locations,
-            643 strings with 5817 characters,
-and the built_in function-call counts, 3434 in all, are:
-= -- 271
-> -- 126
-< -- 4
-+ -- 47
-- -- 39
-* -- 262
-:= -- 523
-add.period$ -- 18
-call.type$ -- 6
-change.case$ -- 43
-chr.to.int$ -- 6
-cite$ -- 6
-duplicate$ -- 258
-empty$ -- 266
-format.name$ -- 61
-if$ -- 665
+            665 strings with 6377 characters,
+and the built_in function-call counts, 5271 in all, are:
+= -- 409
+> -- 212
+< -- 7
++ -- 78
+- -- 66
+* -- 391
+:= -- 829
+add.period$ -- 29
+call.type$ -- 10
+change.case$ -- 70
+chr.to.int$ -- 10
+cite$ -- 10
+duplicate$ -- 387
+empty$ -- 407
+format.name$ -- 102
+if$ -- 1022
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 55
-newline$ -- 37
-num.names$ -- 24
-pop$ -- 90
+missing$ -- 83
+newline$ -- 57
+num.names$ -- 40
+pop$ -- 155
 preamble$ -- 1
-purify$ -- 37
+purify$ -- 62
 quote$ -- 0
-skip$ -- 92
+skip$ -- 152
 stack$ -- 0
-substring$ -- 184
-swap$ -- 147
+substring$ -- 228
+swap$ -- 201
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
+type$ -- 81
 warning$ -- 0
-while$ -- 26
+while$ -- 38
 width$ -- 0
-write$ -- 84
+write$ -- 132
