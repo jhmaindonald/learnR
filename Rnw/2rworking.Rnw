@@ -661,7 +661,7 @@ place in the working directory any of the files: {\bf fuel.txt}
 Specify, e.g.\\
 \margtt{datafile(file="fuel")}}
 Data files used in these exercises are available from the web
-page  \url{http://www.maths.anu.edu.au/~johnm/datasets/text/}.
+page  \url{http://www.maths-people.anu.edu.au/~johnm/datasets/text/}.
 
 \begin{enumerate}
 \item

@@ -133,7 +133,7 @@ that is clearly better.
 \subsection*{ Code for the wedge plot}
 
 The url
-\url{http://maths.anu.edu.au/~johnm/r/functions/wedgeORbubble.R}.\sidenote[][-1cm]{Data
+\url{http://maths-people.anu.edu.au/~johnm/r/functions/wedgeORbubble.R}.\sidenote[][-1cm]{Data
   are from the data frame \txtt{Nightingale} in the {\em HistData}
   package. Subsection \ref{col:wedgeplot} showed how to create a
   dataset \txtt{Crimean} that is in a convenient form for creating

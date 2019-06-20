@@ -58,19 +58,6 @@ graphics.
 
 \subsection*{Getting help}
 
-\begin{fullwidth}
-\fbox{\parbox{1.15\textwidth}{
-{\bf Note the web sites:}\\[4pt]
-Wikipedia:\newline
-\url{http://en.wikipedia.org/wiki/R_(programming_language)}\\[3pt]
-R-downunder (low traffic, friendly):\newline
-\url{http://www.stat.auckland.ac.nz/mailman/listinfo/r-downunder}\\[3pt]
-Stackoverflow\newline
-\url{http://stackoverflow.com/questions/tagged/r}.
-}}
-\end{fullwidth}
-\vspace*{8pt}
-
 The r-help mailing list\marginnote{Details of this and other lists can
   be found at: \url{http://www.r-project.org}. Be sure to check the
   available documentation before posting to r-help. List archives can
@@ -80,9 +67,22 @@ R community expects users to be serious about data analysis, to want
 more than a quick cook-book fix, and to show a willingness to work at
 improving statistical knowledge.
 
-Novices will find the low traffic R-downunder list more friendly and
-helpful than the main R mailing list. It has among its subscribers
-some highly expert individuals.
+Novices will find the low traffic R-downunder list more friendly
+than the main R mailing list.   Subscribers include some who are
+highly expert.
+\vspace*{8pt}
+
+\begin{fullwidth}
+\fbox{\parbox{1.15\textwidth}{
+{\bf Note the web sites:}\\[4pt]
+Wikipedia:\newline
+\url{http://en.wikipedia.org/wiki/R_(programming_language)}\\[3pt]
+R-downunder (low traffic, friendly):\newline
+\url{https://list.science.auckland.ac.nz/sympa/info/stat-rdownunder}\\[3pt]
+Stackoverflow\newline
+\url{http://stackoverflow.com/questions/tagged/r}.
+}}
+\end{fullwidth}
 
 \subsection*{The origins and future of R}
 
@@ -241,7 +241,7 @@ Maindonald, J. H. \& Braun, J. H. 2010. Data Analysis \&
   University Press,
   Cambridge, UK, 2010.\\
 \noindent
-\url{http://www.maths.anu.edu.au/~johnm/r-book.html}
+\url{http://www.maths-people.anu.edu.au/~johnm/r-book.html}
 
 \cleardoublepage
 \section*{Notes for Readers of this Text}
@@ -260,7 +260,8 @@ This package is an optional companion to these notes.
 You can install it, assuming a live internet connection,
 by typing:
 <<install-DAAGviz, eval=FALSE>>=
-devtools::install_github('jhmaindonald/DAAGviz')
+remotes::install_github('jhmaindonald/DAAGviz',
+                        build_opts = c("--no-resave-data", "--no-manual")
 @ %
 
 \begin{marginfigure}Assuming that the {\em DAAGviz} package has been installed, it can be attached thus:

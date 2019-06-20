@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 
-\ProvidesClass{tufte-book}[2009/12/11 v3.5.0 Tufte-book class]
+\ProvidesClass{tufte-book}[2015/06/30 v3.5.3 Tufte-book class]
 
 %%
 % Declare we're tufte-book
@@ -21,7 +21,11 @@
 % contain only the (arabic) page number in the outside corner.
 %\newif\if@mainmatter \@mainmattertrue
 \renewcommand\frontmatter{%
-  \cleardoublepage%
+  \if@openright%
+    \cleardoublepage%
+  \else%
+    \clearpage%
+  \fi%
   \@mainmatterfalse%
   \pagenumbering{arabic}%
   %\pagestyle{plain}%
@@ -36,7 +40,11 @@
 % The main matter in Tufte's /Beautiful Evidence/ doesn't restart the page
 % numbering---it continues where it left off in the front matter.
 \renewcommand\mainmatter{%
-  \cleardoublepage%
+  \if@openright%
+    \cleardoublepage%
+  \else%
+    \clearpage%
+  \fi%
   \@mainmattertrue%
   \fancyhf{}%
   \ifthenelse{\boolean{@tufte@twoside}}%
@@ -70,10 +78,10 @@
 %%
 % If there is a `tufte-book-local.sty' file, load it.
 
-\IfFileExists{tufte-book-local.tex}
-  {\input{tufte-book-local}
-   \TufteInfoNL{Loading tufte-book-local.tex}}
-  {}
+\IfFileExists{tufte-book-local.tex}{%
+  \@tufte@info@noline{Loading tufte-book-local.tex}%
+  \input{tufte-book-local}%
+}{}
 
 %%
 % End of file

@@ -1,11 +1,4 @@
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in knitrSet(): could not find function "{}knitrSet"{}}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in knitrSet(w = 3, h = 3.15): could not find function "{}knitrSet"{}}}\end{kframe}
-\end{knitrout}
 
 \marginnote{CRAN is the primary R `repository'.  Several additional
   package repositories supplement what is available from CRAN.  Note
@@ -59,19 +52,6 @@ graphics.
 
 \subsection*{Getting help}
 
-\begin{fullwidth}
-\fbox{\parbox{1.15\textwidth}{
-{\bf Note the web sites:}\\[4pt]
-Wikipedia:\newline
-\url{http://en.wikipedia.org/wiki/R_(programming_language)}\\[3pt]
-R-downunder (low traffic, friendly):\newline
-\url{http://www.stat.auckland.ac.nz/mailman/listinfo/r-downunder}\\[3pt]
-Stackoverflow\newline
-\url{http://stackoverflow.com/questions/tagged/r}.
-}}
-\end{fullwidth}
-\vspace*{8pt}
-
 The r-help mailing list\marginnote{Details of this and other lists can
   be found at: \url{http://www.r-project.org}. Be sure to check the
   available documentation before posting to r-help. List archives can
@@ -84,6 +64,19 @@ improving statistical knowledge.
 Novices will find the low traffic R-downunder list more friendly and
 helpful than the main R mailing list. It has among its subscribers
 some highly expert individuals.
+\vspace*{8pt}
+
+\begin{fullwidth}
+\fbox{\parbox{1.15\textwidth}{
+{\bf Note the web sites:}\\[4pt]
+Wikipedia:\newline
+\url{http://en.wikipedia.org/wiki/R_(programming_language)}\\[3pt]
+R-downunder (low traffic, friendly):\newline
+\url{https://list.science.auckland.ac.nz/sympa/info/stat-rdownunder}\\[3pt]
+Stackoverflow\newline
+\url{http://stackoverflow.com/questions/tagged/r}.
+}}
+\end{fullwidth}
 
 \subsection*{The origins and future of R}
 
@@ -242,7 +235,7 @@ Maindonald, J. H. \& Braun, J. H. 2010. Data Analysis \&
   University Press,
   Cambridge, UK, 2010.\\
 \noindent
-\url{http://www.maths.anu.edu.au/~johnm/r-book.html}
+\url{http://www.maths-people.anu.edu.au/~johnm/r-book.html}
 
 \cleardoublepage
 \section*{Notes for Readers of this Text}
@@ -260,77 +253,65 @@ available separately.}
 This package is an optional companion to these notes. 
 You can install it, assuming a live internet connection,
 by typing:
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{'jhmaindonald/DAAGviz'}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+\begin{Schunk}
+\begin{Sinput}
+remotes::install_github('jhmaindonald/DAAGviz')
+\end{Sinput}
+\end{Schunk}
 
 \begin{marginfigure}Assuming that the {\em DAAGviz} package has been installed, it can be attached thus:
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{library}\hlstd{(DAAGviz)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+\begin{Schunk}
+\begin{Sinput}
+library(DAAGviz)
+\end{Sinput}
+\end{Schunk}
 \end{marginfigure}
 Once attached, this package gives access to:
 \begin{itemizz}
 \item[-]
 \begin{marginfigure}[78pt]
 More succinctly, use the function \margtt{getScript()}:\\[-3pt]
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## Place Ch 5 script in}
-\hlcom{## working directory}
-\hlkwd{getScript}\hlstd{(}\hlnum{5}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+\begin{Schunk}
+\begin{Sinput}
+## Place Ch 5 script in
+## working directory
+getScript(5)
+\end{Sinput}
+\end{Schunk}
 \end{marginfigure}
 Scripts that include all the code. To access these scripts do, e.g.
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## Check available scripts}
-\hlkwd{dir}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{'scripts'}\hlstd{,} \hlkwc{package}\hlstd{=}\hlstr{'DAAGviz'}\hlstd{))}
-\hlcom{## Show chapter 5 script}
-\hlstd{script5} \hlkwb{<-} \hlkwd{system.file}\hlstd{(}\hlstr{'scripts/5examples-code.R'}\hlstd{,}
-                        \hlkwc{package}\hlstd{=}\hlstr{'DAAGviz'}\hlstd{)}
-\hlkwd{file.show}\hlstd{(script5)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+\begin{Schunk}
+\begin{Sinput}
+## Check available scripts
+dir(system.file('scripts', package='DAAGviz'))
+## Show chapter 5 script
+script5 <- system.file('scripts/5examples-code.R',
+                        package='DAAGviz')
+file.show(script5)
+\end{Sinput}
+\end{Schunk}
 \item[-]
 \begin{marginfigure}[24pt]
 More succinctly, use the function \margtt{sourceFigFuns()}:\\[-3pt]
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlcom{## Load Ch 5 functions}
-\hlcom{## into workspace}
-\hlkwd{sourceFigFuns}\hlstd{(}\hlnum{5}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+\begin{Schunk}
+\begin{Sinput}
+## Load Ch 5 functions
+## into workspace
+sourceFigFuns(5)
+\end{Sinput}
+\end{Schunk}
 \end{marginfigure}
 Source files (also scripts) for functions that can be used to
   reproduce the graphs. These are available for Chapters 5 to 15
 only.  To load the Chapter 5 functions into the workspace,
 use the command:
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{path2figs5} \hlkwb{<-} \hlkwd{system.file}\hlstd{(}\hlstr{'doc/figs5.R'}\hlstd{,}
-                          \hlkwc{package}\hlstd{=}\hlstr{'DAAGviz'}\hlstd{)}
-\hlkwd{source}\hlstd{(path2figs5)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+\begin{Schunk}
+\begin{Sinput}
+path2figs5 <- system.file('doc/figs5.R',
+                          package='DAAGviz')
+source(path2figs5)
+\end{Sinput}
+\end{Schunk}
 \item[-] The datasets \txtt{bronchit}, \txtt{eyeAmp}, and
   \txtt{Crimean}, which feature later in these notes.
 \end{itemizz}
