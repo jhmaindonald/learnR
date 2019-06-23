@@ -354,7 +354,9 @@ density plot.
 
 \subsection*{Histograms and density plots}
 \begin{figure}[htbp]
-<<poss-hist, echo=FALSE, w=7, h=3.25, ps=11, left=1, rt=1, bot=2, top=2, mfrow=c(1,2)>>=
+\vspace*{-18pt}
+
+<<poss-hist, echo=FALSE, w=7, h=3.25, ps=11, left=0.5, rt=0.5, bot=2, top=1.5, mfrow=c(1,2), mgp=c(2.5,0.5,0)>>=
 @ %
  \caption{The two panels show the same data, but with a different
 choice of breakpoints.\label{fig:densitybreaks}}
@@ -372,8 +374,8 @@ plots the histograms and superimposes the density plots.
 <<poss-hist, eval=FALSE>>=
 @ %
 
-The height of each rectangle of a histogram provides a crude density
-estimate. These estimates change in jumps, at breakpoints that are
+The height of each rectangle of a histogram is a crude density
+estimate that changes in jumps, at breakpoints that are
 inevitably chosen somewhat arbitrarily.
 A smoothly changing density estimate, such as given by the
 superimposed density curves in the panels of Figure
@@ -447,6 +449,9 @@ random samples of size 43.\label{fig:np-plots}}
 \noindent There is one unusually small value.  Otherwise the points
 for the female possum lengths are as close to a straight line as in
 many of the plots for random normal data.
+
+Plots of this type ought to be a standard part of statistical
+practice.  
 
 \subsection{$^*$Plotting Text that Includes Technical  Symbols}\label{sec:mathvec}
 
@@ -741,8 +746,8 @@ It has been created by updating the following simplified code:
   1998 to 2006.\label{fig:allgrog}}
 \end{figure}
 
-Observe that:
-\nopagebreak
+\pagebreak
+\noindent Observe that:
 \begin{itemizz}
 \item[-] Use of \txtt{Beer+Spirit+Wine} gives plots for each of
   \txtt{Beer}, \txtt{Spirit} and \txtt{Wine}.  The effect of
@@ -951,7 +956,7 @@ the \txtt{possum} data set (\textit{DAAG}), that compares \txtt{sex}es
 and \txtt{Vic}/\txtt{other} populations.
 \begin{figure}
 \begin{center}
-<<lattice-density, echo=FALSE, w=5.75, h=2.5>>=
+<<lattice-density, echo=FALSE, w=5.75, h=2.74>>=
 @ %
 \end{center}
   \caption{Lattice style density plot comparing possum earconch
@@ -1019,6 +1024,7 @@ Now create a panel function that both plots the points and adds
 labels. The graphics object can then be updated, as in the code that
 now follows, to use this panel function:
 
+\pagebreak
 \begin{marginfigure}[-24pt]
 \begin{center}
 <<my-panel, echo=FALSE, out.width="0.98\\textwidth">>=
@@ -1416,7 +1422,7 @@ Here are further possibilities:
 \end{figure}
 
 Code that shows the detailed syntactic steps is:
-<<bom2015, eval=FALSE>>=
+<<bom2018, eval=FALSE>>=
 @ %
 As before, the successive ``\txtt{+}'' operators combine output from
 function calls to create a single graphics object.
@@ -1504,6 +1510,11 @@ data from the {\em DAAG} package.  The display has been dragged to a
 position where points very nearly fall on a line.}\label{fig:rgl-ex}
 \end{figure}
 
+\marginnote{The \textit{rggobi} package offers a wider range of features
+than \textit{rgl}, via an
+interface to the GGobi system.  For installation details go to
+\url{http://www.ggobi.org/}
+}
 The \textit{rgl} package provides three-dimensional dynamic graphics.
 Use of the functions \txtt{scatter3d()} and \txtt{identify3d()} from
 the \emph{car} package may be more convenient for novices than the
@@ -1516,7 +1527,7 @@ The following loads the needed packages:
 <<load-carANDrgl>>=
 @ 
 
-Code for the figure is:
+\noindent Code for the figure is:
 <<rgl-demo, eval=FALSE>>=
 @ 
 \marginnote[11pt]{Use \txtt{rgl.snapshot()} to save the current plot
@@ -1537,16 +1548,6 @@ e.g., in the regression of \txtt{log(time)} on \txtt{log(dist)}
 and \txtt{log(climb)}.  The plot needs to be rotated to give a view
 in which the leverage is apparent.
 
-\subsection*{The  \texttt{rggobi} package}
-
-The \textit{rggobi} package offers a wider range of features, via an
-interface to the GGobi system.  For installation details go to
-\url{http://www.ggobi.org/}.  Windows users can use the following to
-install all the required files from an R session that has access to a
-live internet connection:
-<<source-rggobi, eval=FALSE>>=
-@
-
 \subsection{The {\em googleVis} Package}\label{sec:gvis}
 
 This provides an interface to the abilities of Google's Public Data
@@ -1562,14 +1563,14 @@ Upon accessing Google's web page
 \url{http://www.google.com/publicdata/home}, the display will cycle
 through examples of the use of Motion Charts, and other related
 charts.  Click on \underline{Explore Data} to go to the interactive
-version of the relevant display.\sidenote{Various controls are placed
+version of the relevant display.Various controls are placed
   in the margins of the graph.  Move the pointer over one or other
   control feature to get information on its purpose, or over a point
   to display information about that point. For changing the $x$-
   and/or $y$- variables, or for changing the variable that determines
   point size, click on the relevant downward pointing selector arrow.
   Scales, separately for the two axes, can be either linear or
-  logarithmic.}  These charts, which are interesting in themselves,
+  logarithmic.  These charts, which are interesting in themselves,
 show the abilities that {\em googleVis} is designed to emulate.  See
 the annotations in Figure \ref{col:mchart} below for details that
 should be enough to get started.

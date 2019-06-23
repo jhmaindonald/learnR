@@ -141,7 +141,6 @@ par(fig = c(0, 1, 0, 1))    # Restore settings
 ## ---- ss-7.1.6 ----
 
 ## ---- poss-hist ----
-par(mgp=c(3,0.5,0))
 ftotlen <- subset(possum, sex=="f")[, "totlngth"]
 ## Left panel: breaks at 72.5, 77.5,..
 hist(ftotlen, breaks = 72.5 + (0:5)*5, freq=FALSE,
@@ -254,7 +253,7 @@ trellis.device()     # Start new device,
 grogplot <- xyplot(
               Beer+Spirit+Wine ~ Year | Country,
               data=grog, outer=FALSE,
-              auto.key=list(space="right"))
+              auto.key=list(columns=3))
 
 ## ---- grog-update ----
 ## Update trellis object, then print
@@ -336,7 +335,7 @@ colset <- c("gray","black")
 densityplot(~ earconch | sex, groups=Pop,
             data=possum,
             par.settings=simpleTheme(col=colset),
-            auto.key=list(space="right"))
+            auto.key=list(columns=2))
 
 ## ---- ss-7.2.8 ----
 
@@ -398,12 +397,12 @@ ggplot(mammals, aes(body, brain)) +
 library(DAAG)
 library(ggplot2)
 ## Default loess smooth, with SE bands added.
-quickplot(Year, mdbRain, data=bomregions2015,
+quickplot(Year, mdbRain, data=bomregions2018,
           geom=c("point","smooth"), xlab="",
           ylab="Av. rainfall, M-D basin")
 
-## ---- bom2015 ----
-ggplot(bomregions2015, aes(x=Year, y=mdbRain)) +
+## ---- bom2018 ----
+ggplot(bomregions2018, aes(x=Year, y=mdbRain)) +
   geom_point() +                      # Scatterplot
   geom_smooth(span=0.5, se=TRUE) +    # Add smooth
   xlab("") +             # Blank out x-axis label
@@ -411,7 +410,7 @@ ggplot(bomregions2015, aes(x=Year, y=mdbRain)) +
 ## NB: aes() has supplied x- and y-axis variables
 
 ## ---- qplotADDgg ----
-qplot(Year, mdbRain, data=bomregions2015,
+qplot(Year, mdbRain, data=bomregions2018,
       geom="point",
       xlab="", ylab="Av. rainfall, M-D basin") +
   geom_smooth(span=0.5, se=TRUE)
@@ -424,7 +423,7 @@ library(splines)
 
 ## ---- twenty5080 ----
 ## Supplementary figure 4
-quickplot(Year, mdbRain, data=bomregions2015) +
+quickplot(Year, mdbRain, data=bomregions2018) +
           geom_quantile(formula = y ~ ns(x,5),
           quantiles=c(0.2,0.5,0.8) )
 

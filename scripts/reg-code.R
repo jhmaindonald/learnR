@@ -327,7 +327,7 @@ library(KernSmooth, quietly=TRUE)
 ylim <- range(bronchit$poll)+c(0,2.5)
 
 ## ---- bronchitA ----
-## Panel A
+## Code for Panel A
 colr <- adjustcolor(c("red","blue"), alpha=0.5)
 plot(poll ~ cig,
      xlab="# cigarettes per day", ylab="Pollution",
@@ -340,7 +340,7 @@ mtext(side=3, line=1.0,
       expression("A: Untransformed "*italic(x)*"-scale"), adj=0)
 
 ## ---- bronchitB ----
-## Panel B
+## Code for Panel B
 plot(poll ~ log(cig+1), col=c(2,4)[r+1], pch=(3:2)[r+1],
      xlab="log(# cigarettes per day + 1)", ylab="", data=bronchit, ylim=ylim)
 xy1 <- with(subset(bronchit, r==0), cbind(x=log(cig+1), y=poll))

@@ -185,11 +185,7 @@ Figure \ref{fig:erie} shows a plot of the series.
 
 \marginnote{Where values of covariates are available that largely
 or partly explain the dependence, it may make sense to account for
-<<<<<<< HEAD
 these in the model. The details of how this should be done will
-=======
-these in the model. THe details of how this should be done will
->>>>>>> 5245dac2bad38cd7565fda39666c5c0ff90565f8
 depend on the intended use of the model.}
 
 The plots in Figure \ref{erie-lagplot} are a good starting point for
@@ -215,13 +211,13 @@ correlation structure.)
 
 \subsection{Patterns that are repeatable}
 
-\marginnote{Smoothing terms can be fitted to the pattern apparent in
+Smoothing terms can be fitted to the pattern apparent in
   serially correlated data, leaving {\em errors} that are pretty much
   uncorrelated.  Such a pattern is in general, however, unrepeatable.
   It gives little clue of what may happen the future.  A re-run of
   the process (a new {\em realization}) will produce a different
   series, albeit one that shows the same general tendency to move up
-  and down.}
+  and down.
 
 What sorts of patterns may then be repeatable?  Indications that a
 pattern may be repeatable include:
@@ -408,8 +404,8 @@ Code is:
 
 \subsection{$^*$Box-Jenkins ARIMA Time Series Modeling}
 
-\marginnote{Models that are closely analagous to ARIMA models had been
-  used earlier in control theory.  ARIMA models are feedback systems!}
+\marginnote{Models that are closely analagous to ARIMA models had
+ been used earlier in control theory.  ARIMA models are feedback systems!}
 From the perspective of the Box-Jenkins ARIMA (Autoregressive
 Integrated Moving Average) approach to time series models,
 autoregressive models are a special case.  Many standard types of time
@@ -425,9 +421,9 @@ The simulations in Figure \ref{fig:ar1fits} show a pattern of
 
 \subsection{Count Data with Poisson Errors}
 
-\marginnote{Data are a time series.  Serious accidents are however
-sufficiently uncommon that occasions where events occur together,
-or where one event changes the probability of the next event,
+\marginnote{Data are a time series.  Serious accidents are
+sufficiently uncommon that joint occurrences, or cases
+where one event changes the probability of the next,
 seem likely to be uncommon.}
 
 Data is for aircraft accidents, from the website
@@ -457,13 +453,12 @@ Figure \ref{fig:planeCrash} shows a fitted smooth curve, with
 pointwise confidence bounds, from a GAM smoothing model that
 was fitted to the weekly counts. 
 
-\marginnote{See Section \ref{ss:dates} for further details
+\marginnote[9pt]{See Section \ref{ss:dates} for further details
 on the function \txtt{eventCounts()}.}
-The function \txtt{gamclass::eventCounts()} was used to create
-weekly counts of accidents from January 1, 2006:
-
 <<use-eventCounts, eval=FALSE>>=
 @ %
+The function \txtt{gamclass::eventCounts()} was used to create
+weekly counts of accidents from January 1, 2006:
 
 Code for Figure \ref{fig:planeCrash} is then.
 \begin{fullwidth}
@@ -821,30 +816,32 @@ assist in findind=g the optimum choice of \txtt{mtry}.
 
 \section{$^*$Ordination}
 
+Ordination is a generic name for methods for providing a low-dimensional
+view of points in multi-dimensional space, such that ``similar'' objects
+are near each other and dissimilar objects are separated.  The plot(s)
+from an ordination in 2 or 3 dimensions may provide useful visual clues
+on clusters in the data and/or on outliers.
+
+The ordination methods described here are all versions of
+multi-dimensional scaling (MDS).  If distances are not already given,
+a first task is to calculate `distances' between points.  Or if
+similarities are given, they must be first be transformed into 
+`distances'.
+
+From Australian road travel distances 
 \marginnote{An ordination might alternatively be based on road travel
   times, or on air travel times.}
-From Australian road travel distances between cities and larger towns,
+between cities and larger towns,
 can we derive a plausible ``map'', or ``ordination'', showing the relative
 locations?  The resulting ``map'' would give a better indication
 than a geographical map of the road travel effort involved in getting
 from one place to another.
-
-\marginnote{The ordination methods described here are all versions of
-multi-dimensional scaling (MDS).  If distances are not already given,
-a first tasl is to calculate `distances' between points.  Or if
-similarities are given, they must be first be transformed into `distances'.}
 
 Genomic data provides another example. Various methods are available
 for calculating genomic ``distances '' between, e.g., different insect
 species. The distance measures are based on evolutionary models that
 aim to give distances between pairs of species that are a monotone
 function of the time since the two species separated.
-
-Ordination is a generic name for methods for providing a low-dimensional
-view of points in multi-dimensional space, such that ``similar'' objects
-are near each other and dissimilar objects are separated.  The plot(s)
-from an ordination in 2 or 3 dimensions may provide useful visual clues
-on clusters in the data and/or on outliers.
 
 One standard type of problem starts from a matrix $\bX$ of $n$
 observations by $p$ variables, then seeking a low-dimensional
@@ -1076,7 +1073,7 @@ are the {\em sf} vignette "Simple Features for R" and the {\em tmap}
 vignette "tmap in a nutshell."
 \item[] Detailed information on relevant R packages and abilities
 is available under \underline{Spatial} on the R Task Views web page
-  (\url{http://cran.ms.unimelb.edu.au/web/views/Spatial.html}).
+  (\url{https://cran.r-project.org/web/views/Spatial.html}).
   \item[] See articles in the {\em Journal of Statistical Software}
   special volume {\em https://www.jstatsoft.org/issue/view/v063}
   (Volume 6e3, 2015.)

@@ -96,7 +96,7 @@ plot(fc, main="", fg="gray",
 
 ## ---- mdb-gam ----
 ## Code
-bomregions <- DAAG::bomregions2015
+bomregions <- DAAG::bomregions2018
 mdbRain.gam <- gam(mdbRain ~ s(Year) + s(SOI),
                    data=bomregions)
 plot(mdbRain.gam, residuals=TRUE, se=2, fg="gray",

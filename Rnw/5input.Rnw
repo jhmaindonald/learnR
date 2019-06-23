@@ -20,11 +20,14 @@ read_chunk("../scripts/input-code.R")
 
 \section{$^*$Data Input from a File}\label{sec:entry}
 
-\marginnote{Most data input functions allow import from a file that is
+\marginnote[12pt]{Most data input functions allow import from a file that is
 on the web --- give the URL when specifying the file.  Another possibility
 is to copy the file, or a relevant part of it, to the clipboard.  For
 reading from and writing to the clipboard under Windows, see
 \url{http://bit.ly/2sxyOhG}.  For MacOS, see \url{http://bit.ly/2t1nX0I}}.
+In base R, and in R packages, there is a wide variety of functions that
+can be used for data input.  This includes data entry abilities that are
+aimed at specific specialized types of data.
 
 Use of the RStudio menu is recommended.  This is fast, and allows
 a visual check of the data layout before input proceeds.  If input
@@ -32,40 +35,22 @@ options are incorrectly set, these can be changed as necessary
 before proceeding. The code used for input is shown. In those rare
 cases where input options are required for which the menu does not 
 make provision, the command line code can be edited as needed,
-before proceeding.
-
-\marginnote[12pt]{It is important to check, when data have been entered,
-that data values appear sensible.  Do minimal checks on: ranges
-  of variable values, the mode of the input columns (numeric or
-  factor, or \ldots). Scatterplot matrices are helpful both for
-  checking variable ranges and for identifying impossible or
-  unusual combinations of variable values.}
-
-\subsection{Managing input is from the RStudio menu}
-
-Data input that is initiated from the RStudio menu uses functions
-from the package \texttt{readr} for input of tabular data.
-The function \texttt{readr::read\_table()} replaces
-\texttt{read.table()}, \texttt{readr::read\_csv()} replaces
-\texttt{read.csv()}, and similarly for other \texttt{read.table()}
-aliases.
-
-It uses the function \texttt{readxl::readxl()} for Excel
-spreadsheet data. There is provision, also, using functions from
-the package \texttt{haven}, to import data from SPSS (POR and
-SAV files), from SAS (XPT and SAS files), and from Stata (DTA
-files).  
-\marginnote{See \texttt{vignette("semantics", package="haven")}
-for details of the way that labelled data and missing values
-are handled, for input from SPSS, SAS, and Stata.}
-
-Output is in all cases to a tibble, which is a specialized form
-of data frame. 
+before proceeding.  Refer back to Subsection \ref{ss:readEtc} for 
+further details.  Note that input is in all cases to a tibble, 
+which is a specialized form of data frame. 
 Character columns are not automatically converted to factors,
 column names are not converted into valid R identifiers, and row
 names are not set.  For subsequent processing, there are
 important differences between tibbles and data frames that users
 need to note.
+
+\marginnote[12pt]{Scatterplot matrices are helpful both for
+  checking variable ranges and for identifying impossible or
+  unusual combinations of variable values.}
+It is important to check, when data have been entered,
+that data values appear sensible.  Do minimal checks on: ranges
+  of variable values, the mode of the input columns (numeric or
+  factor, or \ldots). 
 
 \subsection{Input using the \texttt{read.table()} family of functions}
 
@@ -169,24 +154,22 @@ Systat and Octave.  There are abilities for reading and writing some
 dBase files.  For further information, see the R Data Import/Export
 manual.}
 
-The {\em memisc} package has highly effective abilities for
-examining and inputting data from various SPSS formats. These
-include {\bf .sav}, {\bf .por}, and Stata {\bf .dta} data types. 
-Note in particular the ability to check the contents of the
+The {\em memisc} package has effective abilities for
+examining and inputting data from various SPSS and Stata formats,
+including {\bf .sav}, {\bf .por}, and Stata {\bf .dta} data types. 
+It allows users to check the contents of the
 columns of the dataset before importing part or all of the file.
 
 An initial step is to use an importer function to create an {\em
   importer} object.  As of now, {\em importer} functions are:
 \txtt{spss.fixed.file()}, \txtt{spss.portable.file()} ( {\bf .por}
 files), \txtt{spss.system.file()} ({\bf .sav} files), and
-\txtt{Stata.file()} ({\bf .dta} files).  The importer object has
+\txtt{Stata.file()} ({\bf .dta} files). The importer object has
 information about the variables: including variable labels, value
 labels, missing values, and for an SPSS `fixed' file the columns that
-they occupy, etc. 
-
-\marginnote{Additionally, it has also information from further
+they occupy, etc. Additionally, it has information from further
 processing of the file header and/or the file proper that is
-needed in preparation for importing the file.}
+needed in preparation for importing the file.
 
 Functions that can be used with an importer object include:
 \begin{itemizz}

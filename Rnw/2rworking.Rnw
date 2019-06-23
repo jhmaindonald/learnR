@@ -247,14 +247,14 @@ where a function or other object is to be found.  This avoids any
 risk of ambiguity when two or more objects with the same name can
 be found in the search path.
 
-In Subsection \ref{ss:layer} the notation \txtt{latticeExtra::layer()}
-will be used to indicate that the function \txtt{layer()} from
-the {\em latticeExtra} package is required, distinguishing it
-from the function \txtt{layer()} in the {\em ggplot2} package.
+The notation \txtt{latticeExtra::layer()} 
+makes it clear (as in Subsection \ref{ss:layer}) that the function
+\txtt{layer()} from the {\em latticeExtra} package is required, 
+and not the function \txtt{layer()} in the {\em ggplot2} package.
 \marginnote{It is necessary that the {\em latticeExtra} package
 has been installed!}
-Use of the notation \txtt{latticeExtra::layer()} makes unnecessary
-prior use of \txtt{library(latticeExtra)} or its equivalent.
+Prior use of \txtt{library(latticeExtra)} or its equivalent is
+unnecessary.
 
 \subsection*{Attachment of image files}
 \marginnote{Objects that are attached, whether workspaces or
@@ -306,9 +306,14 @@ base package.  For other packages, type, e.g.
 To get the path to a file {\bf viewtemps.RData} that is stored with
 the {\em DAAG} package in the {\bf misc} subdirectory, type:
 \begin{fullwidth}
+<<opt78, echo=FALSE>>=
+@ %
 <<sysfile2, eval=FALSE>>=
 @ %
+<<opt54, echo=FALSE>>=
+@ %
 \end{fullwidth}
+\vspace*{-7pt}
 
 \subsection{Option Settings}
 
@@ -337,8 +342,8 @@ NB also the function \margtt{round()}.
 }
 <<opts-digits>>=
 @ %
-Note that \txtt{options(digits=2)} expresses a wish, which
-R will not always obey!
+\marginnote[-24pt]{Note that \txtt{options(digits=2)} expresses 
+a wish, which R will not always grant!}
 
 \subsection*{Rounding will sometimes introduce small inconsistencies!}
 
@@ -348,7 +353,13 @@ For example:
 
 \section{Enhancing the R experience --- RStudio}\label{sec:RStudio}
 
-\marginnote{The screenshots here are for version 0.98.501 of RStudio.}
+\marginnote[12pt]{The screenshots here are for version 0.98.501 of RStudio.}
+\begin{figure*}
+\includegraphics{figs-inc/03i-all4.png}
+\caption{Here is shown the RStudio interface, after starting up and
+  entering \txtt{1+1}.}\label{fig:rstudio}
+\end{figure*}
+
 The url for RStudio is \url{http://www.rstudio.com/}.  Click on the
 icon for the downloaded installation file to install it. An RStudio
 icon will appear.  Click on the icon to start RStudio.  RStudio should
@@ -356,14 +367,7 @@ find any installed version of R, and if necessary start R.  Figure
 \ref{fig:rstudio} shows an RStudio display, immediately after starting
 up and entering, very unimaginatively, \txtt{1+1}.
 
-\begin{figure*}
-\includegraphics{figs-inc/03i-all4.png}
-\caption{Here is shown the RStudio interface, after starting up and
-  entering \txtt{1+1}.}\label{fig:rstudio}
-\end{figure*}
-\pagebreak
-
-Techncally, \marginnote{Extensive and careful RStudio documentation
+Technically, \marginnote{Extensive and careful RStudio documentation
   can be accessed, assuming an internet connection, from the
   \underline{Help} drop-down menu.  The notes included here are
   designed to draw attention to some of the more important RStudio
@@ -437,6 +441,32 @@ will include the output from \txtt{summary(cars)} and the graph from
   \txtt{plot(cars)}.}  An alternative to clicking on the icon is to
 click on the \underline{File} drop-down menu, and then on
 \underline{Compile Notebook... }.
+
+\subsection{Managing input from the RStudio menu}\label{ss:readEtc}
+
+Data input that is initiated from the RStudio menu uses functions
+from the package \texttt{readr} for input of tabular data.
+The function \texttt{readr::read\_table()} replaces
+\texttt{read.table()}, \texttt{readr::read\_csv()} replaces
+\texttt{read.csv()}, and similarly for other \texttt{read.table()}
+aliases.
+
+It uses the function \texttt{readxl::readxl()} for Excel
+spreadsheet data. There is provision, also, using functions from
+the package \texttt{haven}, to import data from SPSS (POR and
+SAV files), from SAS (XPT and SAS files), and from Stata (DTA
+files).  
+\marginnote{See \texttt{vignette("semantics", package="haven")}
+for details of the way that labelled data and missing values
+are handled, for input from SPSS, SAS, and Stata.}
+
+Output is in all cases to a tibble, which is a specialized form
+of data frame. 
+Character columns are not automatically converted to factors,
+column names are not converted into valid R identifiers, and row
+names are not set.  For subsequent processing, there are
+important differences between tibbles and data frames that users
+need to note.
 
 \section{Abilities for reproducible reporting}
 Markdown editors use simple markup conventions to control how text and

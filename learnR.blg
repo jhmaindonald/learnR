@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2017)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: learnR.aux
 A level-1 auxiliary file: preamble.aux
@@ -19,44 +19,44 @@ A level-1 auxiliary file: Brgui.aux
 A level-1 auxiliary file: Dcolor.aux
 The style file: daag.bst
 Database file #1: scistatR.bib
-You've used 10 entries,
+You've used 12 entries,
             2806 wiz_defined-function locations,
-            665 strings with 6377 characters,
-and the built_in function-call counts, 5271 in all, are:
-= -- 409
-> -- 212
-< -- 7
-+ -- 78
-- -- 66
-* -- 391
-:= -- 829
-add.period$ -- 29
-call.type$ -- 10
-change.case$ -- 70
-chr.to.int$ -- 10
-cite$ -- 10
-duplicate$ -- 387
-empty$ -- 407
-format.name$ -- 102
-if$ -- 1022
+            681 strings with 6706 characters,
+and the built_in function-call counts, 6508 in all, are:
+= -- 502
+> -- 268
+< -- 8
++ -- 100
+- -- 84
+* -- 493
+:= -- 1016
+add.period$ -- 35
+call.type$ -- 12
+change.case$ -- 86
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 477
+empty$ -- 498
+format.name$ -- 128
+if$ -- 1260
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 83
-newline$ -- 57
-num.names$ -- 40
-pop$ -- 155
+missing$ -- 103
+newline$ -- 68
+num.names$ -- 48
+pop$ -- 189
 preamble$ -- 1
-purify$ -- 62
+purify$ -- 76
 quote$ -- 0
-skip$ -- 152
+skip$ -- 181
 stack$ -- 0
-substring$ -- 228
-swap$ -- 201
+substring$ -- 291
+swap$ -- 254
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 81
+type$ -- 99
 warning$ -- 0
-while$ -- 38
+while$ -- 46
 width$ -- 0
-write$ -- 132
+write$ -- 159

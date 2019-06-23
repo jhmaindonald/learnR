@@ -221,9 +221,9 @@ names(roller.lm)
 \end{Schunk}
 
 \subsection{Matrix algebra -- straight line regression example}
-In order to write the quantity
+The quantity that is to be minimized is:
 \[\sum_{i=1}^{10} (y_i - a - b x_i)^2\]
-that is to be minimized in matrix form, set:
+The martrices and vectors required for the matrix calculations are:
 \begin{fullwidth}
 \begin{minipage}[c]{0.25\textwidth}
 \[
@@ -290,7 +290,7 @@ b
 \end{minipage}\vspace*{0.025\textwidth}
 \end{fullwidth}
 
-Here $a$ and $b$ are chosen to minimize the sum of squares of elements
+\noindent Here $a$ and $b$ are chosen to minimize the sum of squares of elements
 of $  \mathbf{e} = \mathbf{y} - \mathbf{X} \mathbf{b}$, i.e., to
 minimize
 \[ \mathbf{e}'\mathbf{e} = (\mathbf{y} - \mathbf{X} \mathbf{b})'
@@ -318,15 +318,15 @@ principle.  If the ``error'' terms are independently and identically
 normally distributed, then least squares and maximum likelihood are
 equivalent.
 
-Least squares will not in general yield maximum likelihood estimates,
-and the SEs returned by \texttt{lm()} or by \texttt{predict()} from
+Least squares will not in general yield maximum likelihood estimates.
+The SEs returned by \texttt{lm()} or by \texttt{predict()} from
 an \texttt{lm} model will be problematic or wrong if:
 \begin{itemize}
+\item Observations are not independent;
 \item Variances are not homogeneous\sidenote{Weighted least squares is
     however justified by maximum likelihood if it is known how the
     variances change with $x_i$, or if the pattern of change can be
     inferred with some reasonable confidence.};
-    \item Observations are not independent;
     \item The sampling distributions of parameter estimates are
       noticeably non-normal.
     \item Model terms 
@@ -432,7 +432,7 @@ and the model.  The picture in Figure \ref{fig:to-horiz}B is much
 improved, though there still is an issue with the point for the
 longest time.
 
-\marginnote[12pt]{A residual of -0.1 denotes a
+\marginnote{A residual of -0.1 denotes a
 time that is about 10\% (more accurately 9.5\%) less than the fitted
 value on the line.  A residual of 0.1 denotes a time that is about
 10\% (more accurately 10.5\%) more than the fitted value.}
@@ -440,7 +440,6 @@ Residuals on the vertical scale of Figure \ref{fig:to-horiz}B are on a
 scale of natural logarithms (logarithms to base $e$).  As the range is
 small (roughly between -0.1 and 0.1), the values can be interpreted as relative
 differences on the scale of times.
-
 
 \paragraph{The common benefits of a logarithmic transformation:}
 
@@ -640,28 +639,31 @@ the main body of points, and are at the high or (less commonly) low
 end of the range of $x$-values.
 
 The combined
-\marginnote{For working within the main range of the data values, we
-  might prefer to use the regression line that is obtained when `Seven
-  Sevens' is omitted. If `Seven Sevens' is omitted in estimating the
-  regression line, this should be made clear in any report, and the
-  reason explained.  The large residual for this point does hint that
-  extrapolation much beyond the upper range of data values is
-  hazardous.}
 effect of leverage and magnitude of residual determines
 what {\em influence} a point has.  Large leverage translates into
 large influence, as shown by a large Cook's distance, when the
 residual is also large.  Points that lie within the region marked out
 by the 0.5 or (especially) the 1.0 contour for Cook's distance have a
-noticeable influence on the fitted regression equation.  Even with the
-logged data, the point for the largest time (`Seven Sevens') is
-skewing the regression line noticeably.
+noticeable influence on the fitted regression equation.  
 
+Even with the logged data, the point for the largest time (`Seven Sevens') is
+skewing the regression line noticeably.
 Note that there is no reason to suspect any error in this value.  Possibly
 the point is taking us into a part of the range where the relationship
 is no longer quite linear.  Or this race may be untypical for more
 reasons than that it is an unusually long race.
 
+\marginnote{If `Seven Sevens' is omitted in estimating the
+  regression line, this should be made clear in any report, and the
+  reason explained.  The large residual for this point does hint that
+  extrapolation much beyond the upper range of data values is
+  hazardous.}
+For working within the main range of the data values, we
+  might prefer to use the regression line that is obtained when `Seven
+  Sevens' is omitted. 
 The following shows the change when `Seven Sevens' is omitted:
+\begin{fullwidth}
+
 \begin{Schunk}
 \begin{Sinput}
 round(coef(mflogtime.lm), 4)
@@ -684,6 +686,8 @@ Coefficients:
       0.239        0.991  
 \end{Soutput}
 \end{Schunk}
+
+\end{fullwidth}
 
  \subsection{The independence assumption is crucial}
 
@@ -1212,11 +1216,12 @@ details of the data:
 str(nihills)
 \end{Sinput}
 \begin{Soutput}
-'data.frame':	23 obs. of  4 variables:
- $ dist : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
- $ climb: int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
- $ time : num  0.858 0.467 0.703 1.039 0.541 ...
- $ timef: num  1.064 0.623 0.887 1.214 0.637 ...
+'data.frame':	23 obs. of  5 variables:
+ $ dist    : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
+ $ climb   : int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
+ $ time    : num  0.858 0.467 0.703 1.039 0.541 ...
+ $ timef   : num  1.064 0.623 0.887 1.214 0.637 ...
+ $ gradient: num  232 264 205 485 240 ...
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -1444,10 +1449,8 @@ too large to be substantially inflated by selection effects.
 The function \txtt{bestsetNoise()} ({\em DAAG}) can be used to
 experiment with the behaviour of various variable selection techniques
 with data that is purely noise.  For example, try:\sidenote{See also
-Section 6.5, pp.~197-198, in:
-  Maindonald, JH and Braun, WJ, 2010. \textit{Data Analysis
-    and Graphics Using R -- An Example-Based Approach\/}, 3$^{rd}$
-  edition. Cambridge University Press.}
+Section 6.5, pp.~197-198, in
+  Maindonald and Braun (2010).}
 \begin{Schunk}
 \begin{Sinput}
 bestsetNoise(m=100, n=40, nvmax=3)
@@ -1466,7 +1469,7 @@ observations and with the number of variables varying between 3 and
 50.  For three variables, there was no selection, while in other cases
 the ``best'' three variables were selected, by exhaustive search.
 
-\begin{marginfigure}
+\begin{marginfigure}[-84pt]
 \begin{Schunk}
 
 
@@ -1474,7 +1477,7 @@ the ``best'' three variables were selected, by exhaustive search.
 
 \end{Schunk}
 \caption{$p$-values, versus number of variables available for selection,
-  when the ``best'' 3 variables were selected by exhaustive search.
+  when the `best' 3 variables were selected by exhaustive search.
   The fitted line estimates the median $p$-value.\label{fig:exhaust}}
 \end{marginfigure}
 \noindent
@@ -1833,20 +1836,11 @@ sl:pf      1    0.0016 2.83 -620    0.09   0.77
 \end{fullwidth}
 
 \section{An introduction to logistic regression}\label{sec:logistic}
-\marginnote[11pt]{The dataset \margtt{bronchit} may alternatively be found
-  in the {\em SMIR} package.}
+\marginnote[11pt]{The dataset \margtt{bronchit} may alternatively be 
+ found in the {\em SMIR} package.}
 The data that will be used for illustration are from the data frame
-\txtt{bronchit} in the {\em DAAGviz} package.  The following loads
-packages that will be needed:
-
-\begin{Schunk}
-\begin{Sinput}
-library(DAAGviz, quietly=TRUE)
-library(KernSmooth, quietly=TRUE)
-\end{Sinput}
-\end{Schunk}
-
-Figure \ref{fig:cig-poll} shows two plots -- one of \texttt{poll}
+\txtt{bronchit} in the {\em DAAGviz} package.  Figure \ref{fig:cig-poll} 
+shows two plots -- one of \texttt{poll}
 (pollution level) against \texttt{cig} (number of cigarettes per day),
 and the other of \texttt{poll} against \texttt{log(poll)}.  In each
 case, points are identified as with or without bronchitis.
@@ -1865,9 +1859,19 @@ case, points are identified as with or without bronchitis.
 \vspace*{12pt}
 \end{figure*}
 
+
+The following loads packages that will be needed:
+
 \begin{Schunk}
 \begin{Sinput}
-## Panel A
+library(DAAGviz, quietly=TRUE)
+library(KernSmooth, quietly=TRUE)
+\end{Sinput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+## Code for Panel A
 colr <- adjustcolor(c("red","blue"), alpha=0.5)
 plot(poll ~ cig,
      xlab="# cigarettes per day", ylab="Pollution",
@@ -1884,7 +1888,7 @@ legend(x="topright",
 \begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
-## Panel B
+## Code for Panel B
 plot(poll ~ log(cig+1), col=c(2,4)[r+1], pch=(3:2)[r+1],
      xlab="log(# cigarettes per day + 1)", ylab="", data=bronchit, ylim=ylim)
 xy1 <- with(subset(bronchit, r==0), cbind(x=log(cig+1), y=poll))
@@ -1983,13 +1987,13 @@ type methods where the amount of smoothing is chosen automatically:
 choice is often a good first approximation.  Note here:
 \begin{itemize}
 \item Smoothing using a ``locally weighted regression
-smoother''.\marginnote{Smoothness
-is controlled by the width of the smoothing window. The default is
-  \txtt{f=2/3} for \txtt{lowess()}, or \txtt{span=0.75} for
-  \txtt{loess()}. For other functions that rely on this methodology,
+smoother''. Functions that use this approach include 
+\txtt{lowess()}, \txtt{loess()}, \txtt{loess.smooth()}, 
+and \txtt{scatter.smooth()}.  Smoothness
+is controlled by the width of the smoothing window.\sidenote{The 
+default is \txtt{f=2/3} for \txtt{lowess()}, or \txtt{span=0.75} 
+for \txtt{loess()}. For other functions that use this approach,
 check the relevant help page.}
-Functions that use this approach include \txtt{lowess()}, \txtt{loess()},
-\txtt{loess.smooth()}, and \txtt{scatter.smooth()}.
 \item Use of a regression spline basis in a linear model.  Here the smoothness
 is usually controlled by the choice of number of spline basis terms.
 \end{itemize}
@@ -2143,6 +2147,79 @@ In the Berkson  case, the slope is an unbiased estimate of the true
 slope, but has increased standard error.  In common situations, there
 may be a mix of classical errors and Berkson, with some additional
 bias.
+
+\section{More covariates may add more scope for confusion}
+
+A huge variety of methods are now available for handling what
+are basically regression calculations.  These include tree-based
+methods, support vector machines, wavelet regression, deep
+learning methods that are based on artificial neural networks, 
+and more.  What has been described in this chapter is just a
+start.  There are important warnings that have general relevance.
+
+Warnings were given earlier about the difficulty, when there
+are multiple variables and factors, of attaching meaning to
+individual coefficients.  The best chance for attaching
+such meaning arises when one variable or factor has a
+dominating effect that seems largely independent of other
+terms that have been checked for inclusion as predictors.
+
+Where the interest is in prediction, without too much 
+regard to understanding the drivers, rather different
+issues arise for the choice of predictors.  These are
+well illustrated by the story of Google Flu Trends.
+
+Google Flu Trends was launched in 2008 and updated in 2009,
+with the aim of using Google search queries to make accurate
+and timely prediction of flu outbreaks.  The account that now
+follows is based on the \citet{lazerEtAl_GFT_2014} article
+``The Parable of Google Flu: Traps in Big Data Analysis.''
+
+In early 2010 the algorithm predicted an outbreak
+in the mid-Atlantic region of the United States two weeks in
+advance of official sources.  Thereafter, until the publication
+of estimates ceased in 2013, the system consistently
+overestimated flu prevalence.  In February 2013, the system
+made headlines by over-predicting doctor visits for
+influenza-like illness by a factor of more than two.
+The methodology had large ad hoc elements, and was not
+taking advantage of time series structure in the data,
+resulting in a performance that was inferior to that of
+forward projection methods that used Center for Disease
+Control data.  \Citet{lazerEtAl_GFT_2014} warn against what
+they term ``Big data hubris'':
+\vspace*{-9pt}
+
+\begin{quote}
+Big data hubris is the often implicit assumption that big data are
+a substitute for, rather than a supplement to, traditional data
+collection and analysis. \ldots quantity of data does not mean
+that one can ignore foundational issues of measurement, construct
+validity and reliability, and dependencies among data.
+\end{quote}
+
+Irrespective of the methodology used, potential for the sorts of
+effects that fooled Google Flu Trends is present whenever there
+are multiple explanatory terms.  The calculations make use of
+whatever is found in the data that, in the training data,
+distinguishes between groups that are of interest.  As methods
+are used that are ever more sensitive to the nuances of the
+particular training data, the risk increases that they will
+latch onto features of the data that are specific to the
+particular training data that have been used.  These may be
+features are time specific, or location specific, or otherwise
+specific to the particular choice of training data.  
+
+Issues with image recognition software illustrate some of the
+subtleties.  There have been a number of papers pointing out the extent to which
+convolutional neural networks (CNNs) can be fooled by adversarial
+images, e.g., minor doctoring of an image of an orange leads to its
+recognition as a power drill.  See \citet{Zhou2019} for a detailed
+discussion.
+
+Such examples indicate that the software involved is focusing on
+features of the data that have scant connection with the robust
+mechanisms that the human brain uses.
 
 \section{Exercises}
 \begin{enumerate}
