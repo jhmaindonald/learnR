@@ -82,6 +82,8 @@ abline(worldrec.lm)
 ## ---- diag12 ----
 ## Code
 plot(worldrec.lm, which=c(1,5),
+     caption = list("A: Residuals vs Fitted", "", "", 
+                    "", "B: Residuals vs Leverage"),
      sub.caption=rep("",2))
 
 ## ---- row40 ----
@@ -167,11 +169,11 @@ with(rice, interaction.plot(x.factor=fert,
 ## ---- MDBrainfall ----
 ## Code
 library(DAAG)
-plot(mdbRain ~ Year, data=bomregions2012)
+plot(mdbRain ~ Year, data=bomregions2018)
 ## Calculate and plot curve showing long-term trend
-with(bomregions2012, lines(lowess(mdbRain ~ Year, f=2/3), lty=2))
+with(bomregions2018, lines(lowess(mdbRain ~ Year, f=2/3), lty=2))
 ## Calculate and plot curve of short-term trends
-with(bomregions2012, lines(lowess(mdbRain ~ Year, f=0.1),
+with(bomregions2018, lines(lowess(mdbRain ~ Year, f=0.1),
                            lty=1, col="gray45"))
 
 ## ---- sec-5.6 ----

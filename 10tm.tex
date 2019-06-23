@@ -44,7 +44,7 @@ txdir <- system.file("texts", package="DAAGviz")
 dir(txdir, pattern=".txt$")
 \end{Sinput}
 \begin{Soutput}
-[1] "data6-7.txt"     "graphics8-9.txt" "prelims1-5.txt" 
+[1] "1getStarted.txt" "2workenv.txt"    "ch4-5.txt"      
 \end{Soutput}
 \begin{Sinput}
 txfiles <- dir(txdir, pattern=".txt$", full.names=TRUE)
@@ -60,9 +60,10 @@ of each line:
 \begin{Schunk}
 \begin{Sinput}
 ## Input first file, with one text string per line
-tx1 <- readLines(txfiles[1], encoding="UTF-8", warn=FALSE)
+tx1 <- readLines(txfiles[1], encoding="latin1", warn=FALSE, 
+                 skipNul = TRUE)
 ## Join the separate text strings end to end
-tx1 <- paste(tx1, collapse=" ")
+tx1 <- textclean::replace_non_ascii(paste(tx1, collapse=" "))
 \end{Sinput}
 \end{Schunk}
 \end{fullwidth}
@@ -71,10 +72,12 @@ Repeat this process for files 2 and 3:
 \begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
-tx2 <- readLines(txfiles[2], encoding="UTF-8", warn=FALSE)
-tx2 <- paste(tx2, collapse=" ")
-tx3 <- readLines(txfiles[3], encoding="UTF-8", warn=FALSE)
-tx3 <- paste(tx3, collapse=" ")
+tx2 <- readLines(txfiles[2], encoding="latin1", warn=FALSE, 
+                 skipNul = TRUE)
+tx2 <- textclean::replace_non_ascii(paste(tx2, collapse=" "))
+tx3 <- readLines(txfiles[3], encoding="latin1", warn=FALSE, 
+                 skipNul = TRUE)
+tx3 <- textclean::replace_non_ascii(paste(tx3, collapse=" "))
 \end{Sinput}
 \end{Schunk}
 \end{fullwidth}
@@ -106,11 +109,11 @@ Now create the corpus.  The text will be input from the files that
 were identified, within the specified directory {\bf doc}:
 \begin{Schunk}
 \begin{Sinput}
-toUTF8 <- function(x) iconv(x, to="UTF-8",
+toUTF8 <- function(x) iconv(x, to="ASCII",
                             sub = "byte")
 txcorp <- Corpus(dirSource)
 txcorp <- tm_map(txcorp,
-    content_transformer(toUTF8))
+     content_transformer(toUTF8))
 \end{Sinput}
 \end{Schunk}
 
@@ -184,16 +187,7 @@ stopwords("SMART")[!stopwords("SMART")%in%stopwords()][1:10]
 
 Now list terms that occur 100 or more times:
 \begin{fullwidth}
-\begin{Schunk}
-\begin{Sinput}
-findFreqTerms(tx.tdm, 100)
-\end{Sinput}
-\begin{Soutput}
- [1] "code"      "data"      "figure"    "file"      "frame"    
- [6] "function"  "functions" "graphics"  "objects"   "package"  
-[11] "plot"     
-\end{Soutput}
-\end{Schunk}
+
 \end{fullwidth}
 
 \subsection*{Wordclouds}
@@ -205,8 +199,8 @@ library(wordcloud)
 \end{Sinput}
 \end{Schunk}
 
-Figure \ref{fig:wc} shows wordcloud plots for the first (chapters 1-5),
-second (6-7) and third (8-9) documents in the corpus.
+Figure \ref{fig:wc} shows wordcloud plots for the first (chapter 1),
+second (2) and third (4 - 6) documents in the corpus.
 \vspace*{15pt}
 
 \begin{figure*}
@@ -216,8 +210,7 @@ second (6-7) and third (8-9) documents in the corpus.
 \centerline{\includegraphics[width=0.92\textwidth]{figs/10-wordcloud1-3-1} }
 
 \end{Schunk}
-\caption[][-12pt]{Wordcloud plots are A: for the words in Chapters 1 - 5; B: 6 -
-  7; and C: 8 - 9.\label{fig:wc}}
+\caption[][-12pt]{Wordcloud plots are A: for the words in Chapter 1; B: 2; and C: 4 - 6.\label{fig:wc}}
 \setfloatalignment{b}
 \end{figure*}
 
@@ -231,16 +224,16 @@ Code for the plots is:
 pal <- brewer.pal(6, "Dark2")
 fnam1 <- as.matrix(tx.tdm)[,1]
 wordcloud(names(fnam1), fnam1, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(8.5,.5))
-mtext(side=3, line=3.5, "A: Chapters 1 - 5", adj=0, cex=1.8)
+          random.order=FALSE, scale=c(7.5,.5))
+mtext(side=3, line=3.5, "Ch 1: Basics of R", adj=0, cex=1.8)
 fnam2 <- as.matrix(tx.tdm)[,2]
 wordcloud(names(fnam2), fnam2, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(4.5,.5))
-mtext(side=3, line=3.5, "B: Chapters 6 - 7", adj=0, cex=1.8)
+          random.order=FALSE, scale=c(5.5,.5))
+mtext(side=3, line=3.5, "Ch 2: R Environment", adj=0, cex=1.8)
 fnam3 <- as.matrix(tx.tdm)[,3]
 wordcloud(names(fnam3), fnam3, max.words=80, colors=pal[-1],
-          random.order=FALSE, scale=c(6.0,.5))
-mtext(side=3, line=3.5, "C: Chapters 8 - 9", adj=0, cex=1.8)
+          random.order=FALSE, scale=c(9,.8))
+mtext(side=3, line=3.5, "Chs 4,5: Data . . .", adj=0, cex=1.8)
 \end{Sinput}
 \end{Schunk}
 \end{fullwidth}
@@ -248,8 +241,8 @@ mtext(side=3, line=3.5, "C: Chapters 8 - 9", adj=0, cex=1.8)
   with a pdf pointsize of 12.} Less frequent words will be lost off the
 edge of the plot if the size of the graphics page is too small
 relative to the pointsize.  Note the different scaling ranges used in
-the three cases, with the large scaling range for Panel B
-(\txtt{scale=c(10,.5)}) used to accommmodate a frequency distribution
+the three cases, with the large scaling range for Panel C
+(\txtt{scale=c(9,.8)}) used to accommmodate a frequency distribution
 in which one item (`data') is a marked outlier.
 
 \section{Creation of a Corpus from PDF Files}
@@ -272,7 +265,7 @@ uri <- system.file("pdf", package="DAAGviz")
 dir(uri)
 \end{Sinput}
 \begin{Soutput}
-[1] "ch1-3.pdf" "ch4-6.pdf" "ch7.pdf"   "ch8-9.pdf"
+[1] "3models.pdf" "ch1.pdf"     "ch4-5.pdf"   "ch6.pdf"    
 \end{Soutput}
 \end{Schunk}
 

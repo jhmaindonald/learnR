@@ -184,11 +184,13 @@ element) of a vector:
 <<props>>=
 @ %
 Now use the function \txtt{cut()} to classify the data into four
-\marginnote{The argument \txtt{breaks} can be either the number of
+categories, and form tables:
+\pagebreak
+\marginnote[12pt]{The argument \txtt{breaks} can be either the number of
   intervals, or it can be a vector of break points such that all data
   values lie within the range of the breaks. If the smallest of the
   break points equals the smallest data value, supply the argument
-  \txtt{include.lowest=TRUE}.}  categories, and form tables:
+  \txtt{include.lowest=TRUE}.}  
 <<cut-bronchit>>=
 @ %
 \noindent
@@ -473,10 +475,10 @@ in the one working directory.  The image file, if any, that is called
 beginning of a new session in the directory.
 
 \paragraph{The removal of clutter:}
-
-Use a command of the form\marginnote{As noted in Section
+\marginnote[9pt]{As noted in Section
   \ref{ss:saveobjs}, a good precaution can be to make an archive of
-  the workspace before such removal.}  \txtt{rm(x, y, tmp)} to remove
+  the workspace before such removal.}
+Use a command of the form \txtt{rm(x, y, tmp)} to remove
 objects (here \txtt{x}, \txtt{y}, \txtt{tmp}) that are no longer
 required.
 
@@ -511,22 +513,14 @@ file line by line to find what is wrong.
 
 \section{Computer Intensive Computations}\label{sec:large-dset}
 Computations may be computer intensive because of the size of
-datasets.  Or the computations may themselves be demanding, even for
-data sets that are of modest size.
+datasets.  Or the computations may themselves be time-consuming, 
+even for data sets that are of modest size.
 
 Note that using all of the data for an analysis or for a plot is not
 always the optimal strategy.  Running calculations separately on
 different subsets may afford insights that are not otherwise
 available. The subsets may be randomly chosen, or they may be chosen
 to reflect, e.g., differences in time or place.
-
-\marginnote[12pt]{The computationally intensive parts
-of regression calculations with \txtt{lm()} work with
-matrices, making these relatively efficient.}
-Computation will be slow where computationally intensive calculations
-are implemented directly in R code, rather than passed to efficient
-compiled code that is called from R.  Matrix calculations are passed
-to highly efficient compiled code.
 
 Where
 \marginnote{The relatively new Julia language appears to offer
@@ -545,22 +539,29 @@ available in R for handling a calculation. Some broad guidelines will
 now be provided, with examples of how differences in the handling of
 calculations can affect timings.
 
-\paragraph{Use matrices, where possible, in preference to data frames:}
+\subsection{Considerations for computations with large datasets}
 
-Most\marginnote{Biological expression array
+\paragraph{Consider supplying, matrices in preference to data frames:}
+
+Most of R's modeling functions (regression, smoothing, discriminant
+analysis, etc.) are designed to accept data frames as input. The
+computational and associated memory requirements of the steps
+needed to form the matrices used for the numerical computations
+can. for large datasets, generate large overheads.  The matrix 
+computations that follow use highly optimized compiled code, 
+and are much more efficient than if directly implemented in R code.
+\marginnote{Biological expression array
   applications are among those that are commonly designed to work with
   data that is in a matrix format.  The matrix or matrices may be
   components of a more complex data structure.}
-of R's modeling functions (regression, smoothing, discriminant
-analysis, etc.) are designed to work with data frames. Where an
-alternative is available that works with matrices, this is in
-general faster.
+Where it is possible to directly input the matrices that will be
+required for the calculations, this can greatly reduce the time
+and memory requirements.
 
-Matrix operations can be more efficient even for such a simple
-operation as adding a constant quantity to each element of the array,
-or taking logarithms of all elements.  Here is an
-example:
-<<big-mat>>=
+Matrix arithmetic can be faster than the equivalent computations
+that use \txtt{apply()}. Here are timings for alternatives that
+find the sums of rows of the matrix \txtt{xy} that was generated thus:
+<<big-mat, eval=FALSE>>=
 @ %
 \marginnote{Timings are on a mid 2012 1.8 Ghz Intel i5 Macbook Air
   laptop with 8 gigabytes of random access memory.}

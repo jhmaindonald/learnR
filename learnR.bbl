@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{12}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -31,6 +31,12 @@ Hyndman, R.~J.; Koehler, A.~B.; Ord, J.~K.; and Snyder, R.~D., 2008.
   Approach\/}.
 \newblock Springer.
 
+\bibitem[{Lazer et~al.(2014)Lazer, Kennedy, King, and
+  Vespignani}]{lazerEtAl_GFT_2014}
+Lazer, D.; Kennedy, R.; King, G.; and Vespignani, A., 2014.
+\newblock The parable of google flu: Traps in big data analysis.
+\newblock {\em Science\/}, 343(6176):1203--1205.
+
 \bibitem[{Lovelave and Cheshire(2014)}]{lovelave_cheshire_2014}
 Lovelave, R. and Cheshire, J., 2014.
 \newblock Introduction to visualising spatial data in r.
@@ -57,5 +63,11 @@ Taleb, N.~N., 2004.
 Tukey, J.~W., 1997.
 \newblock More honest foundations for data analysis.
 \newblock {\em Journal of Statistical Planning and Inference\/}, 57(1):21--28.
+
+\bibitem[{Zhou and Firestone(2019)}]{Zhou2019}
+Zhou, Z. and Firestone, C., 2019.
+\newblock Humans can decipher adversarial images.
+\newblock {\em Nature Communications\/}, 10(1):1334.
+\newline\url{https://doi.org/10.1038/s41467-019-08931-6}
 
 \end{thebibliography}

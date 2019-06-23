@@ -463,6 +463,8 @@ density plot.
 
 \subsection*{Histograms and density plots}
 \begin{figure}[htbp]
+\vspace*{-18pt}
+
 \begin{Schunk}
 
 
@@ -484,7 +486,6 @@ plots the histograms and superimposes the density plots.
   onto the histogram.}
 \begin{Schunk}
 \begin{Sinput}
-par(mgp=c(3,0.5,0))
 ftotlen <- subset(possum, sex=="f")[, "totlngth"]
 ## Left panel: breaks at 72.5, 77.5,..
 hist(ftotlen, breaks = 72.5 + (0:5)*5, freq=FALSE,
@@ -500,8 +501,8 @@ hist(ftotlen, breaks = 75 + (0:5)*5, freq=FALSE,
 \end{Sinput}
 \end{Schunk}
 
-The height of each rectangle of a histogram provides a crude density
-estimate. These estimates change in jumps, at breakpoints that are
+The height of each rectangle of a histogram is a crude density
+estimate that changes in jumps, at breakpoints that are
 inevitably chosen somewhat arbitrarily.
 A smoothly changing density estimate, such as given by the
 superimposed density curves in the panels of Figure
@@ -602,6 +603,9 @@ qqnorm(rnorm(43), xlab="", ylab="Simulated")
 \noindent There is one unusually small value.  Otherwise the points
 for the female possum lengths are as close to a straight line as in
 many of the plots for random normal data.
+
+Plots of this type ought to be a standard part of statistical
+practice.  
 
 \subsection{$^*$Plotting Text that Includes Technical  Symbols}\label{sec:mathvec}
 
@@ -947,7 +951,7 @@ It has been created by updating the following simplified code:
 grogplot <- xyplot(
               Beer+Spirit+Wine ~ Year | Country,
               data=grog, outer=FALSE,
-              auto.key=list(space="right"))
+              auto.key=list(columns=3))
 \end{Sinput}
 \end{Schunk}
 
@@ -964,8 +968,8 @@ grogplot <- xyplot(
   1998 to 2006.\label{fig:allgrog}}
 \end{figure}
 
-Observe that:
-\nopagebreak
+\pagebreak
+\noindent Observe that:
 \begin{itemizz}
 \item[-] Use of \txtt{Beer+Spirit+Wine} gives plots for each of
   \txtt{Beer}, \txtt{Spirit} and \txtt{Wine}.  The effect of
@@ -1264,7 +1268,7 @@ colset <- c("gray","black")
 densityplot(~ earconch | sex, groups=Pop,
             data=possum,
             par.settings=simpleTheme(col=colset),
-            auto.key=list(space="right"))
+            auto.key=list(columns=2))
 \end{Sinput}
 \end{Schunk}
 The functions \txtt{densityplot()} and \txtt{histogram()} do not
@@ -1332,6 +1336,7 @@ Now create a panel function that both plots the points and adds
 labels. The graphics object can then be updated, as in the code that
 now follows, to use this panel function:
 
+\pagebreak
 \begin{marginfigure}[-24pt]
 \begin{center}
 \begin{Schunk}
@@ -1558,7 +1563,7 @@ to create an initial graphics object, then adding to this object. The
 following code uses this approach to create Figure \ref{fig:ggrain}:
 \begin{Schunk}
 \begin{Sinput}
-qplot(Year, mdbRain, data=bomregions2015,
+qplot(Year, mdbRain, data=bomregions2018,
       geom="point",
       xlab="", ylab="Av. rainfall, M-D basin") +
   geom_smooth(span=0.5, se=TRUE)
@@ -1832,7 +1837,7 @@ quickplot(wt, ht, data=aisRS, geom="point",
 library(DAAG)
 library(ggplot2)
 ## Default loess smooth, with SE bands added.
-quickplot(Year, mdbRain, data=bomregions2015,
+quickplot(Year, mdbRain, data=bomregions2018,
           geom=c("point","smooth"), xlab="",
           ylab="Av. rainfall, M-D basin")
 \end{Sinput}
@@ -1860,7 +1865,7 @@ quickplot(Year, mdbRain, data=bomregions2015,
 Code that shows the detailed syntactic steps is:
 \begin{Schunk}
 \begin{Sinput}
-ggplot(bomregions2015, aes(x=Year, y=mdbRain)) +
+ggplot(bomregions2018, aes(x=Year, y=mdbRain)) +
   geom_point() +                      # Scatterplot
   geom_smooth(span=0.5, se=TRUE) +    # Add smooth
   xlab("") +             # Blank out x-axis label
@@ -1881,7 +1886,7 @@ curves are fitted at the 20\%, 50\% and 80\% quantiles.}
 library(quantreg)
 library(splines)
 ## Supplementary figure 4
-quickplot(Year, mdbRain, data=bomregions2015) +
+quickplot(Year, mdbRain, data=bomregions2018) +
           geom_quantile(formula = y ~ ns(x,5),
           quantiles=c(0.2,0.5,0.8) )
 \end{Sinput}
@@ -1985,6 +1990,11 @@ data from the {\em DAAG} package.  The display has been dragged to a
 position where points very nearly fall on a line.}\label{fig:rgl-ex}
 \end{figure}
 
+\marginnote{The \textit{rggobi} package offers a wider range of features
+than \textit{rgl}, via an
+interface to the GGobi system.  For installation details go to
+\url{http://www.ggobi.org/}
+}
 The \textit{rgl} package provides three-dimensional dynamic graphics.
 Use of the functions \txtt{scatter3d()} and \txtt{identify3d()} from
 the \emph{car} package may be more convenient for novices than the
@@ -2004,7 +2014,7 @@ knit_hooks$set(rgl=hook_rgl)
 \end{Sinput}
 \end{Schunk}
 
-Code for the figure is:
+\noindent Code for the figure is:
 \begin{Schunk}
 \begin{Sinput}
 library(DAAG, quietly=TRUE)
@@ -2045,19 +2055,6 @@ e.g., in the regression of \txtt{log(time)} on \txtt{log(dist)}
 and \txtt{log(climb)}.  The plot needs to be rotated to give a view
 in which the leverage is apparent.
 
-\subsection*{The  \texttt{rggobi} package}
-
-The \textit{rggobi} package offers a wider range of features, via an
-interface to the GGobi system.  For installation details go to
-\url{http://www.ggobi.org/}.  Windows users can use the following to
-install all the required files from an R session that has access to a
-live internet connection:
-\begin{Schunk}
-\begin{Sinput}
-source("http://www.ggobi.org/downloads/install.r")
-\end{Sinput}
-\end{Schunk}
-
 \subsection{The {\em googleVis} Package}\label{sec:gvis}
 
 This provides an interface to the abilities of Google's Public Data
@@ -2073,14 +2070,14 @@ Upon accessing Google's web page
 \url{http://www.google.com/publicdata/home}, the display will cycle
 through examples of the use of Motion Charts, and other related
 charts.  Click on \underline{Explore Data} to go to the interactive
-version of the relevant display.\sidenote{Various controls are placed
+version of the relevant display.Various controls are placed
   in the margins of the graph.  Move the pointer over one or other
   control feature to get information on its purpose, or over a point
   to display information about that point. For changing the $x$-
   and/or $y$- variables, or for changing the variable that determines
   point size, click on the relevant downward pointing selector arrow.
   Scales, separately for the two axes, can be either linear or
-  logarithmic.}  These charts, which are interesting in themselves,
+  logarithmic.  These charts, which are interesting in themselves,
 show the abilities that {\em googleVis} is designed to emulate.  See
 the annotations in Figure \ref{col:mchart} below for details that
 should be enough to get started.

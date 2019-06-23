@@ -323,16 +323,16 @@ add1(elec2xx.lm, scope=~(log(q)+pl+sl+pk+sk+pf+sf)^2, test="F")
 library(DAAGviz, quietly=TRUE)
 library(KernSmooth, quietly=TRUE)
 
-## ---- bronchit-ylim ----
-ylim <- range(bronchit$poll)+c(0,2.5)
+## ---- get-bronchit ----
+bronchit<-DAAGviz::bronchit
 
 ## ---- bronchitA ----
-## Panel A
+## Code for Panel A
 colr <- adjustcolor(c("red","blue"), alpha=0.5)
 plot(poll ~ cig,
      xlab="# cigarettes per day", ylab="Pollution",
      col=colr[r+1], pch=(3:2)[r+1], data=bronchit,
-     ylim=ylim)
+     ylim=range(bronchit$poll)+c(0,2.5))
 legend(x="topright",
        legend=c("Non-sufferer","Sufferer"),
        ncol=2, pch=c(3,2), col=c(2,4), cex=0.8)
@@ -340,9 +340,10 @@ mtext(side=3, line=1.0,
       expression("A: Untransformed "*italic(x)*"-scale"), adj=0)
 
 ## ---- bronchitB ----
-## Panel B
+## Code for Panel B
 plot(poll ~ log(cig+1), col=c(2,4)[r+1], pch=(3:2)[r+1],
-     xlab="log(# cigarettes per day + 1)", ylab="", data=bronchit, ylim=ylim)
+     xlab="log(# cigarettes per day + 1)", ylab="", data=bronchit, 
+     ylim=range(bronchit$poll)+c(0,2.5))
 xy1 <- with(subset(bronchit, r==0), cbind(x=log(cig+1), y=poll))
 xy2 <- with(subset(bronchit, r==1), cbind(x=log(cig+1), y=poll))
 est1 <- bkde2D(xy1, bandwidth=c(0.7, 3))

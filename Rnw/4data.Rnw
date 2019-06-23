@@ -18,7 +18,7 @@ oldopt <- options(digits=4)
 read_chunk("../scripts/data-code.R")
 @ 
 
-\marginnote{Data objects and functions are two of several types
+\marginnote[8pt]{Data objects and functions are two of several types
 of objects (others include model objects, formulae, and expressions)
 that are available in R.  Users can create and work with such
 objects in a user workspace.  All can, if the occasion demands,
@@ -265,7 +265,7 @@ column classes --- commonly numeric or character or factor or logical
 or date.
 
 \paragraph{Matrices -- vectors with a Dimension:}
-\marginnote{Internally, matrices are stored as one long vector
+\marginnote[8pt]{Internally, matrices are stored as one long vector
   in which the columns are stacked one above the other.  The first
   element in the dimension attribute gives the number of rows in each
   column.}
@@ -417,7 +417,7 @@ such rows. Thus:
 @ %
 
 \subsection{Arrays --- some further details}
-\marginnote{Tables, which will be the subject of the next subsection, have
+\marginnote[12pt]{Tables, which will be the subject of the next subsection, have
 a very similar structure to arrays.}
 
 A matrix is a two-dimensional array.  More generally, arrays can
@@ -648,7 +648,7 @@ R.home()          # Path to R home directory
 Section \ref{ch:sys} has further details.
 
 \subsection{User-defined functions}
-\marginnote{Note also that functions can be defined at the point of
+\marginnote[8pt]{Note also that functions can be defined at the point of
   use.  Such functions do not need a name, and are called anonymous
   functions.  Section \ref{ss:table} has an example.}
 The function \txtt{mean()} calculates means, The function \txtt{sd()}
@@ -683,7 +683,7 @@ line, the curly braces are not needed.
 
 \subsection{The \texttt{apply} family of functions}\label{ss:apply}
 
-\marginnote[0.25cm]{For the \margtt{apply} family of functions, specify
+\marginnote[8pt]{For the \margtt{apply} family of functions, specify
   as the \margtt{FUN} argument any function that will not generate an
   error.  Obviously, \margtt{log("Hobart")} is not allowed!}
 \marginnote[6pt]{Note also the function \margtt{tapply()}, which will
@@ -852,7 +852,7 @@ available in base R.
 
 \subsection{Functions for Working with Dates (and Times)}\label{ss:dates}
 
-\marginnote{Good starting points for learning about dates in R are the
+\marginnote[8pt]{Good starting points for learning about dates in R are the
   help pages \margtt{help(Dates)}, \margtt{help(as.Date)} and
   \txtt{help(format.Date)}.}
 
@@ -1001,9 +1001,8 @@ function \txtt{sapply()}, one nested within the other, thus:
 \begin{tabular}{ll}
 Classes & Classes make generic functions (methods) possible.\\[6pt]
 Methods & Examples are \txtt{print()}, \txtt{plot()}, \txtt{summary()},
-etc.\\[6pt]
+etc.\\[4pt]
 \end{tabular}
-\vspace*{-9pt}
 }
 }
 \vspace*{6pt}
@@ -1017,14 +1016,16 @@ implementation.
 All objects have a class. Use the function \txtt{class()} to get this
 information.
 
-\marginnote[12pt]{Thus \margtt{print()} calls a method
-  thus: factor: \margtt{print.factor()};\\ data frame:
-  \margtt{print.data.frame()}; and so on. Ordered factors ``inherit''
-  the print method for factors.  For objects without an explicit print
-  method, \margtt{print.default()} is called.}
 For many common tasks there are generic functions --
-\txtt{print()}, \txtt{summary()}, \txtt{plot()}, etc., whose action
+\txtt{print()}, \txtt{summary()}, \txtt{plot()}, etc.\ -- whose action
 varies according to the class of object to which they are applied.
+Thus for a data frame, \txtt{print()} calls the method
+\txtt{print.data.frame()}. 
+\marginnote[-24pt]{For a factor, \margtt{print()} it calls
+  \txtt{print.factor()}, and so on. Ordered factors `inherit'
+  the print method for factors.  For objects with no explicit print
+  method, \margtt{print.default()} is called.}
+
 
 To get details of the S3 methods that are available for a generic
 function such as \txtt{plot()}, type, e.g.,

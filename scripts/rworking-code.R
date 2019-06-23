@@ -79,8 +79,7 @@ sqrt(10)
 options(opt)             # Return to earlier setting
 
 ## ---- round ----
-round(sqrt(85/7), 2)
-round(c(sqrt(85/7)*9,  3.48*9), 2)
+c(round(9*sqrt(85/7), 2),  9*round(sqrt(85/7), 2))
 
 ## ---- 4.4.2-Exercises
 

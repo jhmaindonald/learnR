@@ -6,25 +6,27 @@ pdf.options(pointsize=12)
 oldopt <- options(digits=4)
 @ %
 
-\marginnote{CRAN is the primary R `repository'.  Several additional
-  package repositories supplement what is available from CRAN.  Note
-  in particular the Bioconductor repository
-  (\url{http://www.bioconductor.org}), with packages that cater for
-  high throughput genomic data.}
+\marginnote[12pt]{CRAN is the primary R `repository'.  For preference,
+obtain R and R packages from a CRAN mirror in the local region, e.g.,\\
+  Australia: \url{cran.csiro.au/}\\
+  NZ: \url{cran.stat.auckland.ac.nz/}}
+
 \noindent
 \fbox{\parbox{\textwidth}{
 {\bf Note the following web sites:}\\[4pt]
 CRAN (Comprehensive R Archive Network):\newline
 \url{http://cran.r-project.org}\\[3pt]
-Obtain R and R packages from a CRAN mirror in the local region.
-An Australian mirror (one of two) is: \url{http://cran.csiro.au/}\\[3pt]
 % For Sweden, use \url{http://ftp.sunet.se/pub/lang/CRAN/}\\
-% For Denmark, use \url{http://cran.dk.r-project.org/}\\[3pt]
+% For Denmark, use \url{http://cran.dk.r-project.org/}
+The Bioconductor repository 
+  (\url{http://www.bioconductor.org}), with packages that cater for
+  high throughput genomic data, is one of several
+  repositories that supplement CRAN.\\[3pt]
 R homepage: \url{http://www.r-project.org/}\\[3pt]
-
-For various useful links click, from an R session that uses the
-GUI, on the menu item \underline{R help}. Then, on the browser window
-that pops up, look under \underline{Resources}}}
+Links to useful web pages: From an R session that uses the
+GUI, click on \underline{Help}, then on \underline{R Help}. On the 
+window that pops up, click on \underline{Resources}
+}}
 
 %
 %
@@ -58,20 +60,6 @@ graphics.
 
 \subsection*{Getting help}
 
-The r-help mailing list\marginnote{Details of this and other lists can
-  be found at: \url{http://www.r-project.org}. Be sure to check the
-  available documentation before posting to r-help. List archives can
-  be searched for previous questions and answers.}  serves, especially
-for users with a technical bent, as an informal support network.  The
-R community expects users to be serious about data analysis, to want
-more than a quick cook-book fix, and to show a willingness to work at
-improving statistical knowledge.
-
-Novices will find the low traffic R-downunder list more friendly
-than the main R mailing list.   Subscribers include some who are
-highly expert.
-\vspace*{8pt}
-
 \begin{fullwidth}
 \fbox{\parbox{1.15\textwidth}{
 {\bf Note the web sites:}\\[4pt]
@@ -83,6 +71,19 @@ Stackoverflow\newline
 \url{http://stackoverflow.com/questions/tagged/r}.
 }}
 \end{fullwidth}
+
+The r-help mailing list\marginnote{Details of this and other lists can
+  be found at: \url{http://www.r-project.org}. Be sure to check the
+  available documentation before posting to r-help. List archives can
+  be searched for previous questions and answers.}  serves, especially
+for users with a technical bent, as an informal support network.  The
+R community expects users to be serious about data analysis, to want
+more than a quick cook-book fix, and to show a willingness to work at
+improving statistical knowledge.
+
+Novices may find the low traffic R-downunder list more accessible
+than the main R mailing list. Subscribers include some highly 
+expert users.
 
 \subsection*{The origins and future of R}
 
@@ -236,7 +237,7 @@ See \url{http://www.R-project.org/doc/bib/R.bib} for a list of
 R-related books that is updated regularly. Here, note
 especially:\\[3pt]
 \noindent
-Maindonald, J. H. \& Braun, J. H. 2010. Data Analysis \&
+Maindonald, J. H. \& Braun, J. H. Data Analysis \&
   Graphics Using R. An Example-Based Approach. 3$^{rd}$ edn, Cambridge
   University Press,
   Cambridge, UK, 2010.\\
@@ -252,27 +253,37 @@ Asterisks are used to identify material that is more technical or
 specialized, and that might be omitted at a first reading.
 
 \subsection*{The {\em DAAGviz} package}
-\marginnote{Note that {\em DAAGviz} is not available on CRAN.
-It collects scripts and datasets together in a way that may be
-useful to course participants.  Those materials are also
-available separately.}
+\marginnote[8pt]{Note that {\em DAAGviz} is not, currently at least, 
+available on CRAN.}
 This package is an optional companion to these notes. 
+It collects scripts and datasets together in a way that may be
+useful to users of this text.  
 You can install it, assuming a live internet connection,
 by typing:
+
+\begin{fullwidth}
+<<opt78, echo=FALSE>>=
+options(width=78)
+@
 <<install-DAAGviz, eval=FALSE>>=
 remotes::install_github('jhmaindonald/DAAGviz',
-                        build_opts = c("--no-resave-data", "--no-manual")
+                        build_opts=c("--no-resave-data", "--no-manual"))
 @ %
+<<opt54, echo=FALSE>>=
+options(width=54)
+@
+\end{fullwidth}
 
-\begin{marginfigure}Assuming that the {\em DAAGviz} package has been installed, it can be attached thus:
+Assuming that the {\em DAAGviz} package has been installed, it can be attached thus:
 <<attach-DAAGviz, eval=FALSE>>=
 library(DAAGviz)
 @ %
-\end{marginfigure}
+
 Once attached, this package gives access to:
 \begin{itemizz}
 \item[-]
-\begin{marginfigure}[78pt]
+Scripts that include all the code. To access these scripts do, e.g.
+\begin{marginfigure}[66pt]
 More succinctly, use the function \margtt{getScript()}:\\[-3pt]
 <<getScript-5, eval=FALSE>>=
 ## Place Ch 5 script in
@@ -280,17 +291,20 @@ More succinctly, use the function \margtt{getScript()}:\\[-3pt]
 getScript(5)
 @ %
 \end{marginfigure}
-Scripts that include all the code. To access these scripts do, e.g.
 <<display-script5, eval=FALSE>>=
 ## Check available scripts
 dir(system.file('scripts', package='DAAGviz'))
 ## Show chapter 5 script
 script5 <- system.file('scripts/5examples-code.R',
-                        package='DAAGviz')
+                       package='DAAGviz')
 file.show(script5)
 @ %
 \item[-]
-\begin{marginfigure}[24pt]
+Source files (also scripts) for functions that can be used to
+  reproduce the graphs. These are available for Chapters 5 to 15
+only.  To load the Chapter 5 functions into the workspace,
+use the command:
+\begin{marginfigure}[54pt]
 More succinctly, use the function \margtt{sourceFigFuns()}:\\[-3pt]
 <<getFuns-5, eval=FALSE>>=
 ## Load Ch 5 functions
@@ -298,10 +312,6 @@ More succinctly, use the function \margtt{sourceFigFuns()}:\\[-3pt]
 sourceFigFuns(5)
 @ %
 \end{marginfigure}
-Source files (also scripts) for functions that can be used to
-  reproduce the graphs. These are available for Chapters 5 to 15
-only.  To load the Chapter 5 functions into the workspace,
-use the command:
 <<source-figs, eval=FALSE>>=
 path2figs5 <- system.file('doc/figs5.R',
                           package='DAAGviz')
@@ -310,9 +320,6 @@ source(path2figs5)
 \item[-] The datasets \txtt{bronchit}, \txtt{eyeAmp}, and
   \txtt{Crimean}, which feature later in these notes.
 \end{itemizz}
-At courses where these notes are used, the script files,
-the function source files, and some data files, will
-be provided on a memory stick.
 \newpage
 
 \subsection*{Alternative sources for some datasets}

@@ -24,8 +24,8 @@ read_chunk("../scripts/statsExs-code.R")
 \vspace*{-2pt}
 
 \begin{tabular}{ll}
-Science,        & Notes on the role of statistics and statistical\\
-statistics \& R & analysis in the wider scientific enterprise\\[6pt]
+Science,        & What is the role of statistics and statistical\\
+statistics \& R & analysis in the wider scientific enterprise?\\[6pt]
 Scatterplot & Scatterplot matrices can give useful insights on\\
 matrices    & data that will be used for regression or related\\
  &  calculations.\\[6pt]
@@ -77,6 +77,10 @@ generating multiple estimates of each coefficient or other statistic
 of interest.  Standard error estimates can then be based on variation
 between the multiple estimates.
 
+All the approaches that have been noted assume that data can be treated
+as a random sample from the population to which results will be applied.
+That may be a heroic assumption.
+
 \subsection*{Notation, when referring to datasets}
 
 Data will be used that is taken from several different R packages.
@@ -111,7 +115,7 @@ generalizations that extend beyond the particular data that
 have been collected, or that are otherwise available.  They are
 fundamental, in that sense, to any scientific use of data.
 It is, at the same time, important to acknowledge that there
-are strict limits on what statistical analysis can achieve.
+are strict limits to what statistical analysis can achieve.
 Statistical analysis is a partner to, and not a substitute
 for, robust scientific processes.  The use of experimental data
 provides the simplest context in which to explore this point
@@ -150,33 +154,35 @@ to published individual trial results as evidence
 that a claimed effect has been scientifically demonstrated.}
 Papers that had a key role in getting attention to reproducibility
 concerns have been \citet{prinz2011believe} and 
-\citep{begley2012drug}, the first (6 out of 53 "landmark" studies
-reproduced)  relating to drug trials, and the second (19 out of 65 
+\citep{begley2012drug}.  The first (6 out of 53 "landmark" studies
+reproduced)  related to drug trials, and the second (19 out of 65 
 "seminal" studies) to cancer drug trials.  Since those studies
 appeared, results have appeared from systematic attempts to
 reproduce  published work in psychology (around 40\%), in
 laboratory economics (11 of 18), and in social science (12 of 18).
 
-Many of the problems that these studies identify extend, also,
-into research and associated analyses that works with observational
-data.  In any attempt to draw hard conclusions from observational
-data, in a case where the aim is to compare two groups, there are
-certain to be many more differences than the difference that is
-of interest.  One application of regression methods is to do
-"covariate adjustments".  The limitations of such an approach are
-not as widely understood as they should be. There has
-to be confidence that all relevant covariates are accounted for,
-that they are measured with adequate accuracy, and that the form
-of the adjustment (e.g., $x$, or $\log(x)$, or $x^2$) is close
-to correct.
+For research and associated analyses with observational data,
+the absence of experimental control offers serious challenges.
+In a case where the aim is to compare two or more groups, there 
+are certain to be more differences than the difference that is
+of interest.  Commonly, regression methods are used to apply
+"covariate adjustments".  It is then crucial that all relevant 
+covariates and covariate interactions are accounted for, and that 
+covariates are measured with adequate accuracy.  Do covariates
+require transformation (e.g., $x$, or $\log(x)$, or $x^2$) for
+purposes of use in the regression model?
 
 In a hard-hitting paper titled "Cargo-cult statistics and
 scientific crisis", \citet{stark_saltelli_2018} comment,
 quoting also from \citet{edwards_roy_2017}:
 \begin{quote}
-While some argue that there is no crisis (or at least not a systemic problem), bad incentives, bad scientific practices, outdated methods of vetting and disseminating results, and techno-science appear to be producing misleading and incorrect results. This might produce crisis of biblical proportions: as Edwards and Roy write: ``If a critical mass of scientists become untrustworthy, a tipping point is possible in which the scientific enterprise itself becomes inherently corrupt and public trust is lost, risking a new dark age with devastating consequences to humanity.''
+While some argue that there is no crisis (or at least not a systemic problem), bad incentives, bad scientific practices, outdated methods of vetting and disseminating results, and techno-science appear to be producing misleading and incorrect results. This might produce a crisis 
+of biblical proportions: as Edwards and Roy write: ``If a critical mass 
+of scientists become untrustworthy, a tipping point is possible in 
+which the scientific enterprise itself becomes inherently corrupt and public trust is lost, risking a new dark age with devastating 
+consequences to humanity.''
 \end{quote}
-Statistical issues are then front and central in what many are identifying
+Statistical issues are then front and centre in what many are identifying
 as a crisis, but are not the whole story. The crisis is one that
 scientists and statisticians need to tackle in partnership.
 
@@ -250,25 +256,38 @@ circumstances that generated the data. The hope is that available
 data -- the sample values -- can be used as a window into a wider
 population.
 
+\subsection{Models for the random component}
+
 Introductory statistics
 courses are likely to focus on models that assume that \textit{error}
 terms are independently and identically normally distributed ---
 they make the \textit{iid normal assumption}.  This involves the 
 separate assumptions of independence, assumptions of homogeneity
 of variance (i.e., the standard deviations of all measurements
-are the same), and normality. Strict normality is commonly, depending
-on the use that will be made of model results, unnecessary.  Much of
-the art of applied statistics lies in recognizing those
-assumptions that are important and need careful checking. Models
-are said to be \textit{robust} against those assumptions that are
-of relatively minor consequence.
+are the same), and normality. 
 
-Most of the
-standard elementary methods assume that all population values are
-chosen with equal probability, independently between sample values.
-In designed experiments and in sample surveys, randomization
-mechanisms are used to ensure this independence.
-and why random sampling is so important in designed .
+Strict normality is commonly, depending
+on the use that will be made of model results, unnecessary. 
+Commonly, the interest is in parameter estimates and/or in model 
+predictions.  Standard forms of statistical inference then rely
+on the normality of the the relevant sampling distributions.
+Central Limit Theorem type effects will then, given enough data, 
+often work to bring these distributions close enough to normality 
+for purposes of the required inferences.  
+
+Much of the art of applied statistics lies in recognizing those
+assumptions that, in any given context, are important and need 
+careful checking. Models are said to be \textit{robust} against 
+those assumptions that are of relatively minor consequence.
+
+Most of the standard elementary methods assume that all population 
+values are chosen with equal probability, independently between 
+sample values.  Or, if this is not strictly the case, departures
+from this assumption will not be serious enough to compromise
+results.  In designed experiments and in sample surveys, 
+randomization mechanisms are used to ensure the required 
+independence.  Failures in the randomization process will 
+compromise results.
 
 Where there has not been explicit use of a randomization mechanism,
 it is necessary to consider carefully how this may have affected the
@@ -287,7 +306,7 @@ model, the fixed effect is the line, while the random effect
 accounts for variation about the line.  The random part of the
 model can matter a great deal.
 
-\subsection{Models for the random component}
+\subsection{R functions for working with distributions}
 
 For each distribution, there are four functions, with names
 whose first letter is, respectively, \texttt{d} (probability or
@@ -309,13 +328,13 @@ betabinomial have been little explored.  By constrast, for count
 data, there has been extensive investigation of the negative
 binomial, as well as of other alternatives to the Poisson.
 
+\marginnote[12pt]{Another name for the normal distribution is
+the Gaussian distribution.}
 Easily the most widely used distribution for continuous data is
-the normal, also known as the Gaussian distribution.  Data
+the normal.  Data
 where the error term is not normal will often come close to
 normal after transformation.  The most widely used transformation
 for this purpose is the logarithmic.
-
-The Central Limit Theorem will, in 
 
 Other continuous distributions are common in the context of
 special types of model, e.g., the exponential distribution, or
@@ -330,8 +349,8 @@ the Weibull of which it is a special case, in waiting time models.
 
 \subsection{Transformation to an appropriate scale}
 
-\marginnote{Among other issues, is there a wide enough spread
-of distinct values that data can be treated as continuous.}
+\marginnote[12pt]{Among other issues, is there a wide enough 
+spread of distinct values that data can be treated as continuous.}
 A first step is to elicit basic information on the columns in the
 data, including information on relationships between explanatory
 variables.  Is it desirable to transform one or more variables?
@@ -466,8 +485,11 @@ First, use \txtt{str()} to get information on the data frame columns:
 <<load-DAAG>>=
 @ %
 
+<<str, eval=FALSE>>=
+@ %
+
 \begin{fullwidth}
-<<str>>=
+<<str, echo=FALSE>>=
 @ %
 \end{fullwidth}
 %$
@@ -562,15 +584,6 @@ Note that the function \txtt{abline()} can be used
   \txtt{log(Time)} against \txtt{log(Distance)}.
 
 \subsection*{Diagnostic plots}
-
-Insight into the adequacy of the line 
-\marginnote{By default, there are four ``diagnostic'' plots.}
-can be obtained by examining the
-``diagnostic'' plots, obtained by ``plotting'' the model object.
-Figure \ref{fig:wr-diag} following shows the first and last of the default
-plots:
-<<diag12, eval=FALSE>>=
-@ %
 
 \begin{figure}
 <<diag12, echo=FALSE, w=8, h=3.5, top=2, rt=1.6, mfrow=c(1,2), out.width="\\textwidth", crop=TRUE>>=
@@ -904,10 +917,10 @@ fitting models.
 \begin{enumerate}
 \item Plot \txtt{mean.height} against year.
 
-\marginnote[12pt]{This plots the level in each year against the
-level in the previous year.}
 \item To see how each year's mean level is related
 to the previous year's mean level, use
+\marginnote[12pt]{This plots the level in each year against the
+level in the previous year.}
 <<lag1, eval=FALSE>>=
 @
 %$
