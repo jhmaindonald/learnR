@@ -238,7 +238,7 @@ See \url{http://www.R-project.org/doc/bib/R.bib} for a list of
 R-related books that is updated regularly. Here, note
 especially:\\[3pt]
 \noindent
-Maindonald, J. H. \& Braun, J. H. 2010. Data Analysis \&
+Maindonald, J. H. \& Braun, J. H. Data Analysis \&
   Graphics Using R. An Example-Based Approach. 3$^{rd}$ edn, Cambridge
   University Press,
   Cambridge, UK, 2010.\\
@@ -254,20 +254,33 @@ Asterisks are used to identify material that is more technical or
 specialized, and that might be omitted at a first reading.
 
 \subsection*{The {\em DAAGviz} package}
+<<<<<<< HEAD
 \marginnote[8pt]{Note that {\em DAAGviz} is not, currently at least, 
 available on CRAN.}
+=======
+\marginnote[6pt]{Note that {\em DAAGviz} is not available on CRAN.
+It collects scripts and datasets together in a way that may be
+useful to course participants.  Those materials are also
+available separately.}
+>>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
 This package is an optional companion to these notes. 
 It collects scripts and datasets together in a way that may be
 useful to users of this text.  
 You can install it, assuming a live internet connection,
 by typing:
+
 \begin{fullwidth}
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{remotes}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{'jhmaindonald/DAAGviz'}\hlstd{,}
-                        \hlkwc{build_opts}\hlstd{=}\hlkwd{c}\hlstd{(}\hlstr{"--no-resave-data"}\hlstd{,} \hlstr{"--no-manual"}\hlstd{))}
+remotes::\hlkwd{install_github}(\hlstr{'jhmaindonald/DAAGviz'},
+<<<<<<< HEAD
+                        build_opts=\hlkwd{c}(\hlstr{"--no-resave-data"}, \hlstr{"--no-manual"}))
+=======
+                        build_opts=\hlkwd{c}(\hlstr{"--no-resave-data"}, 
+                                     \hlstr{"--no-manual"})
+>>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
 \end{alltt}
 \end{kframe}
 \end{knitrout}

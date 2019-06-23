@@ -42,7 +42,11 @@
 \contentsline {section}{\numberline {2.6}Summary and Exercises}{43}{section.2.6}
 \contentsline {subsection}{\numberline {2.6.1}Summary}{43}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}Exercises}{43}{subsection.2.6.2}
+<<<<<<< HEAD
 \contentsline {chapter}{\numberline {3}Data Analysis -- Models and Examples}{47}{chapter.3}
+=======
+\contentsline {chapter}{\numberline {3}Examples --- Data analysis with R}{47}{chapter.3}
+>>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
 \contentsline {section}{\numberline {3.1}Science, statistics, and R}{49}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}What does R add to the mix?}{51}{subsection.3.1.1}
 \contentsline {section}{\numberline {3.2}Generalization beyond the available data}{52}{section.3.2}

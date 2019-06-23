@@ -253,8 +253,15 @@ Asterisks are used to identify material that is more technical or
 specialized, and that might be omitted at a first reading.
 
 \subsection*{The {\em DAAGviz} package}
+<<<<<<< HEAD
 \marginnote[8pt]{Note that {\em DAAGviz} is not, currently at least, 
 available on CRAN.}
+=======
+\marginnote[6pt]{Note that {\em DAAGviz} is not available on CRAN.
+It collects scripts and datasets together in a way that may be
+useful to course participants.  Those materials are also
+available separately.}
+>>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
 This package is an optional companion to these notes. 
 It collects scripts and datasets together in a way that may be
 useful to users of this text.  
@@ -267,7 +274,12 @@ options(width=78)
 @
 <<install-DAAGviz, eval=FALSE>>=
 remotes::install_github('jhmaindonald/DAAGviz',
+<<<<<<< HEAD
                         build_opts=c("--no-resave-data", "--no-manual"))
+=======
+                        build_opts=c("--no-resave-data", 
+                                     "--no-manual")
+>>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
 @ %
 <<opt54, echo=FALSE>>=
 options(width=54)
