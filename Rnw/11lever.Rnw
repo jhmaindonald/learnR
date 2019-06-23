@@ -100,7 +100,7 @@ This makes more sense in a function, thus:
 <<av-fun, eval=FALSE>>=
 @ %
 
-This allows, e.g., the following:
+\noindent This allows, e.g., the following:
 <<av-exec, eval=FALSE>>=
 @ %
 

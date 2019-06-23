@@ -1,12 +1,16 @@
 ```{r fun}
 showpkg <-
-function (pkgs = c("DAAG", "boot", "lattice", "latticeExtra", "cluster", "afex",
-"MASS", "grid", "reshape", "forecast", "dichromat", "foreign",
-"ggplot2", "leaps", "lme4", "MCMCpack", "ggplot2",
-"mgcv", "nlme", "oz", "ape", "plyr", "rgl", "RSQLite",
-"randomForest", "RColorBrewer", "rpart", "rpart.plot","survival",
-"reshape2", "quantreg", "muhaz", "car", "stats", "gmodels",
-"tseries", "xtable", "oz", "WDI", "Rcmdr"))
+function (pkgs = c('afex','ape','boot','car','cluster','DAAG',
+                   'DAAGviz','dichromat','dplyr','forecast',
+                   'foreign','gamclass','ggplot2','gmodels','grid',
+                   'HistData','Hmisc','lattice',
+                   'leaps','lme4','MASS','latticeExtra',
+                   'MCMCpack','memisc','mgcv','muhaz','nlme','oz',
+                   'plyr','quantreg','randomForest','Rcmdr',
+                   'RColorBrewer','reshape','reshape2','rgdal','rgl',
+                   'rpart','rpart.plot','RSQLite','sp','stats',
+                   'survival','tseries','vcd','WDI','wordcloud',
+                   'XML','xtable'))
 {
 for (i in 1:length(pkgs)) require(pkgs[i], warn.conflicts = FALSE, character.only = TRUE,quietly=TRUE)
 where <- search()
