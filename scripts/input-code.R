@@ -1,10 +1,13 @@
 ## ---- sec-5.1 ----
 
+## ---- opt54 ----
+options(width=54)
+
 ## ---- opt78 ----
 options(width=78)
 
-## ---- opt54 ----
-options(width=54)
+## ---- opt90 ----
+options(width=90)
 
 ## ---- scan-twice ----
 colnam <- scan("molclock1.txt", nlines=1, what="")
@@ -87,7 +90,9 @@ bomRain <- as.data.frame(z)
 
 ## ---- WDI-pkg ----
 library(WDI)
-WDIsearch('co2')[1:4,]
+co2Inds <- WDIsearch('co2')[1:6,]
+print(cbind(co2Inds[,1], substring(co2Inds[,2],1,64)),
+      quote=FALSE)
 
 ## ---- WDI-fun ----
 library(WDI)
@@ -107,10 +112,8 @@ WorldBank <- droplevels(subset(wdiData, !region %in% "Aggregates"))
 from <-
   paste(c("http://wfs-beta.geonet.org.nz/",
           "geoserver/geonet/ows?service=WFS",
-          "&version=1.0.0",
-          "&request=GetFeature",
-          "&typeName=geonet:quake",
-          "&outputFormat=csv",
+          "&version=1.0.0", "&request=GetFeature",
+          "&typeName=geonet:quake", "&outputFormat=csv",
           "&cql_filter=origintime>='2009-08-01'",
           "+AND+magnitude>4.5"),
         collapse="")
