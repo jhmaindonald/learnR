@@ -1,13 +1,14 @@
 <<echo=FALSE>>=
 rm(list=ls(all=TRUE))
-knitrSet()
-knitrSet(w=3, h=3.15)
+Hmisc::knitrSet()
+Hmisc::knitrSet(w=3, h=3.15)
 pdf.options(pointsize=12)
 oldopt <- options(digits=4)
 @ %
 
-\marginnote[12pt]{CRAN is the primary R `repository'.  For preference,
-obtain R and R packages from a CRAN mirror in the local region, e.g.,\\
+\marginnote[12pt]{CRAN is the primary R `repository'.  For 
+preference, obtain R and R packages from a CRAN mirror in 
+the local region, e.g.,\\
   Australia: \url{cran.csiro.au/}\\
   NZ: \url{cran.stat.auckland.ac.nz/}}
 
@@ -253,10 +254,9 @@ Asterisks are used to identify material that is more technical or
 specialized, and that might be omitted at a first reading.
 
 \subsection*{The {\em DAAGviz} package}
-<<<<<<< HEAD
-\marginnote[8pt]{Note that {\em DAAGviz} is not, currently at least, 
+
+\marginnote[8pt]{Note that {\em DAAGviz} is not, currently at least,
 available on CRAN.}
-=======
 \marginnote[6pt]{Note that {\em DAAGviz} is not available on CRAN.
 It collects scripts and datasets together in a way that may be
 useful to course participants.  Those materials are also
@@ -274,12 +274,8 @@ options(width=78)
 @
 <<install-DAAGviz, eval=FALSE>>=
 remotes::install_github('jhmaindonald/DAAGviz',
-<<<<<<< HEAD
-                        build_opts=c("--no-resave-data", "--no-manual"))
-=======
                         build_opts=c("--no-resave-data", 
-                                     "--no-manual")
->>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
+                                     "--no-manual"))
 @ %
 <<opt54, echo=FALSE>>=
 options(width=54)
@@ -329,8 +325,8 @@ path2figs5 <- system.file('doc/figs5.R',
                           package='DAAGviz')
 source(path2figs5)
 @ %
-\item[-] The datasets \txtt{bronchit}, \txtt{eyeAmp}, and
-  \txtt{Crimean}, which feature later in these notes.
+\item[-] The datasets \code{bronchit}, \code{eyeAmp}, and
+  \code{Crimean}, which feature later in these notes.
 \end{itemizz}
 \newpage
 
@@ -345,7 +341,7 @@ be a convenient source for datasets that are referred to in this text:
 Look in \url{http://maths-people.anu.edu.au/~johnm/r/rda} for
   various image ({\bf .RData}) files.\sidenote{{\em Image} files hold 
   copies of one or more R objects, in a format that facilitates rapid 
-  access from R.}  Use the function \txtt{load()} to bring any of these 
+  access from R.}  Use the function \code{load()} to bring any of these 
   into R.
 \item[-] Look in \url{http://maths-people.anu.edu.au/~johnm/datasets/text}
   for the files {\bf bestTimes.txt}, {\bf molclock.txt}, and other such
