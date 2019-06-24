@@ -244,6 +244,8 @@
 
 
 \newcommand{\txtt}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\pkg}[1]{\texttt{#1}}
 \newcommand{\margtt}[1]{{\footnotesize \texttt{#1}}}
 
  \lstnewenvironment{verbcode}

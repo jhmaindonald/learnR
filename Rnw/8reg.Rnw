@@ -1165,12 +1165,8 @@ too large to be substantially inflated by selection effects.
 The function \txtt{bestsetNoise()} ({\em DAAG}) can be used to
 experiment with the behaviour of various variable selection techniques
 with data that is purely noise.  For example, try:\sidenote{See also
-<<<<<<< HEAD
 Section 6.5, pp.~197-198, in \citet{daagur_2011}.}
-=======
-Section 6.5, pp.~197-198, in
-  Maindonald and Braun (2010).}
->>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
+
 <<varselect-sim, eval=FALSE>>=
 @ %
 The analyses will typically yield a model that appears to
@@ -1417,7 +1413,6 @@ individual terms:
 \section{An introduction to logistic regression}\label{sec:logistic}
 \marginnote[11pt]{The dataset \margtt{bronchit} may alternatively be 
  found in the {\em SMIR} package.}
-<<<<<<< HEAD
 
 <<load-DAAGviz-KernSmooth, echo=FALSE>>=
 @ %
@@ -1425,8 +1420,6 @@ individual terms:
 <<get-bronchit, echo=FALSE>>=
 @
 
-=======
->>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
 The data that will be used for illustration are from the data frame
 \txtt{bronchit} in the {\em DAAGviz} package.  Figure \ref{fig:cig-poll} 
 shows two plots -- one of \texttt{poll}
