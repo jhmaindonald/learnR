@@ -762,7 +762,7 @@ be adapted to fit terms involving factors.
 \hline
     Mean $=$ 1.683 & 0.983 & 1.75 & 0.983 \\
 \end{tabular}
-\caption{Root weights ({\code{weight}) (g) of tomato
+\caption{Root weights (\code{weight}) (g) of tomato
   plants, grown with water only and grown wth three different
   treatments. Data are in the data frame \code{DAAG::tomato}.\label{tab:tomatowt}}
 \end{table}
@@ -1271,22 +1271,22 @@ variables. Code is:
 \small
 \begin{list}{}{\leftmargin=2em \setlength{\itemsep}{5pt} \setlength{\parsep}{1pt}}
 \setlength{\labelwidth}{3em}
-\item[\code{cost{:]
+\item[\code{cost}:]
  total cost
-\item[\code{q{:]
+\item[\code{q}:]
  total output
-\item[\code{pl{:]
+\item[\code{pl}:]
  wage rate
-\item[\code{sl{:]
+\item[\code{sl}:]
  cost share, labor
-\item[\code{pk{:]
+\item[\code{pk}:]
  capital price index
-\item[\code{sk{:]
+\item[\code{sk}:]
  cost share,
  capital
-\item[\code{pf{:]
+\item[\code{pf}:]
  fuel price
-\item[\code{sf{:]
+\item[\code{sf}:]
  cost share, fuel
 \end{list}
 }

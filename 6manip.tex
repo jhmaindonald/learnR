@@ -28,7 +28,7 @@ factors, and dates.
 manipulations of date objects will be described below.
 \item[{\bf Data Frames:}] These are rectangular structures.
   \marginnote{A data frame is a list of column objects, all of
-    the same length.}  Columns may be ``atomic'' vectors, or
+    the same length.}  Columns may be `atomic' vectors, or
   factors, or other objects (such as dates) that are one-dimensional.
 \item[{\bf Matrices and arrays:}] Matrices\footnote{Internally,
     matrices are one long vector in which the columns follow one after
@@ -44,7 +44,7 @@ an arbitrary number of dimensions.
 \item[{\bf S4 objects:}] These are specialized data structures with
   tight control on the structure. Unlike S3 objects, they cannot be
   manipulated as lists.  Modeling functions in certain of the newer
-  packages\sidenote{These include {\em lme4}, the Bioconductor
+  packages\sidenote{These include \pkg{lme4}, the Bioconductor
     packages, and the spatial analysis packages.} return S4 objects.
 \end{trivlist}
 
@@ -56,7 +56,7 @@ are two-dimensional arrays.  Tables are in essence arrays that
 hold numeric values.
 
 \subsection{Tables and arrays}
-The dataset \txtt{UCBAdmissions} is stored as a 3-dimensional
+The dataset \code{UCBAdmissions} is stored as a 3-dimensional
 table.  If we convert it to an array, very little changes:
 
 It changes from a table object to a numeric object, which
@@ -66,10 +66,10 @@ either case, what we have is a numeric vector of length 24
 dimensions 2 by 2 by 6.
 
 \subsection{Conversion between data frames and tables}
-The three-way table \txtt{UCBAdmissions} are admission frequencies,
+The three-way table \code{UCBAdmissions} are admission frequencies,
 by Gender, for the six largest departments at the University of
 California at Berkeley in 1973. For a reference to a web page that
-has the details; see the belp page for \txtt{UCBAdmissions}.  Type
+has the details; see the \code{help(UCBAdmissions)}.  Type
 \begin{Schunk}
 \begin{Sinput}
 help(UCBAdmissions)     # Get details of the data
@@ -96,16 +96,16 @@ str(UCBAdmissions)
 In general, operations with a table or array are easiest to
 conceptualise if the table is first converted to a data frame
 in which the separate dimensions of the table become columns.
-Thus, the \txtt{UCBAdmissions} table will be converted to
-a data frame that has columns \txtt{Admit}, \txtt{Gender} and
-\txtt{Dept}. Either use the \txtt{as.data.frame.table()}
-command from base R, or use the \txtt{adply()} function from
-the {\em plyr} package.
+Thus, the \code{UCBAdmissions} table will be converted to
+a data frame that has columns \code{Admit}, \code{Gender} and
+\code{Dept}. Either use the \code{as.data.frame.table()}
+command from base R, or use the \code{adply()} function from
+the \pkg{plyr} package.
 
-\marginnote[12pt]{As \txtt{UCBAdmissions} is a table (not an array),
-\txtt{as.data.frame(UCBAdmissions)} will give the same result.}
-The following uses the function \txtt{as.data.frame.table()} to convert
-the 3-way table \txtt{UCBAdmissions} into a data frame in which the
+\marginnote[12pt]{As \code{UCBAdmissions} is a table (not an array),
+\code{as.data.frame(UCBAdmissions)} will give the same result.}
+The following uses the function \code{as.data.frame.table()} to convert
+the 3-way table \code{UCBAdmissions} into a data frame in which the
 margins are columns:
 \begin{Schunk}
 \begin{Sinput}
@@ -123,9 +123,9 @@ head(UCBdf, 5)
 \end{Schunk}
 \begin{quote}
 {\small
-Alternatively, use the function \txtt{adply()}
-  from the {\em plyr} package that is described in Section
-  \ref{sec:plyr}. Here the \txtt{identity()} function does the
+Alternatively, use the function \code{adply()}
+  from the \pkg{plyr} package that is described in Section
+  \ref{sec:plyr}. Here the \code{identity()} function does the
 manipulation, working with all three dimensions of the array:
 \begin{Schunk}
 \begin{Sinput}
@@ -213,9 +213,9 @@ Note however that relatively many males applied to A and B, where admission
 
 \subsection{Table margins}
 
-For working directly on tables, note the function \txtt{margin.table()}.
-The following retains margin 1 (\txtt{Admit}) and margin 2 (\txtt{Gender}),
-adding over \txtt{Dept} (the remaining margin):
+For working directly on tables, note the function \code{margin.table()}.
+The following retains margin 1 (\code{Admit}) and margin 2 (\code{Gender}),
+adding over \code{Dept} (the remaining margin):
 \marginnote[12pt]{Take margin 2, first, then margin 1, gving a
   table where rows correspond to levels of \margtt{Gender}.}
 \begin{Schunk}
@@ -232,7 +232,7 @@ Gender   Admitted Rejected
 \end{Soutput}
 \end{Schunk}
 
-Use the function \txtt{margin.table()} to turn this into a table
+Use the function \code{margin.table()} to turn this into a table
 that has the proportions in each row:
 \begin{Schunk}
 \begin{Sinput}
@@ -247,16 +247,15 @@ Gender   Admitted Rejected
 \end{Schunk}
 
 \subsection{Categorization of continuous data}\label{ss:cat-cig}
-\marginnote[11pt]{The dataset \margtt{bronchit} may alternatively be found
-  in the {\em SMIR} package.}
-The data frame \txtt{bronchit}, in the \textit{DAAGviz} package,
+\marginnote[11pt]{The dataset \margtt{bronchit} may alternatively be found in the \pkg{SMIR} package.}
+The data frame \code{DAAGviz::bronchit}
 has observations on 212 men in a sample of Cardiff (Wales, UK)
-enumeration districts. Variables are \txtt{r} (1 if respondent
-suffered from chronic bronchitis and 0 otherwise), \txtt{cig} (number
-of cigarettes smoked per day) and \txtt{poll} (the smoke level in the
+enumeration districts. Variables are \code{r} (1 if respondent
+suffered from chronic bronchitis and 0 otherwise), \code{cig} (number
+of cigarettes smoked per day) and \code{poll} (the smoke level in the
 locality).
 
-It will be convenient to define a function \txtt{props} that
+It will be convenient to define a function \code{props} that
 calculates the proportion of the total in the first (or other nominated
 element) of a vector:
 \begin{Schunk}
@@ -264,14 +263,14 @@ element) of a vector:
 props <- function(x, elem=1)sum(x[elem])/sum(x)
 \end{Sinput}
 \end{Schunk}
-Now use the function \txtt{cut()} to classify the data into four
+Now use the function \code{cut()} to classify the data into four
 categories, and form tables:
 \pagebreak
-\marginnote[12pt]{The argument \txtt{breaks} can be either the number of
+\marginnote[12pt]{The argument \code{breaks} can be either the number of
   intervals, or it can be a vector of break points such that all data
   values lie within the range of the breaks. If the smallest of the
   break points equals the smallest data value, supply the argument
-  \txtt{include.lowest=TRUE}.}  
+  \code{include.lowest=TRUE}.}  
 \begin{Schunk}
 \begin{Sinput}
 library(DAAGviz)
@@ -300,7 +299,7 @@ undesirable. Tables that are based on categorization can nevertheless
 be useful in data exploration.
 
 \subsection{$^*$Matrix Computations}
-Let \txtt{X} ($n$ by $p$), \txtt{Y} ($n$ by $p$) and B ($p$ by $k$) be
+Let \code{X} ($n$ by $p$), \code{Y} ($n$ by $p$) and B ($p$ by $k$) be
 numeric matrices. Some of the possibilities are:
 \marginnote{Note that if \margtt{t()} is used with a data
   frame, a matrix is returned.  If necessary, all values are coerced
@@ -329,9 +328,9 @@ formulating the calculations is likely to be more important than
 calculation efficiency.
 
 
-\section{{\em plyr},  {\em dplyr} \& {\em reshape2}  Data Manipulation}\label{sec:plyr}
+\section{\pkg{plyr},  \pkg{dplyr} \& \pkg{reshape2}  Data Manipulation}\label{sec:plyr}
 
-The {\em plyr} package has functions that together:
+The \pkg{plyr} package has functions that together:
 \begin{itemize}
 \item provide a systematic approach to computations that perform a
   desired operation across one or more dimensions of an array, or
@@ -340,16 +339,16 @@ The {\em plyr} package has functions that together:
 array, or as a data frame, or as a list.
 \end{itemize}
 
-The {\em dplyr} package has functions for performing various summary
+The \pkg{dplyr} package has functions for performing various summary
 and other operations on data frames. For many purposes, it supersedes
-the {\em plyr} package.
+the \pkg{plyr} package.
 
-The {\em reshape2} package is, as its name suggests, designed for
+The \pkg{reshape2} package is, as its name suggests, designed for
 moving between alternative data layouts.
 
-\subsection{{\em plyr} }
+\subsection{\pkg{plyr} }
 
-The {\em plyr} package has a separate function for each of the nine
+The \pkg{plyr} package has a separate function for each of the nine
 possible mappings.  The first letter of the function name (one of
 \txtt{a} = array, \txtt{d} = data frame, \txtt{l} = list) denotes the
 class of the input object, while the second letter (the same choice of
@@ -372,7 +371,7 @@ a (array) & aa{\color{gray40} ply} & ad{\color{gray40} ply} & al{\color{gray40} 
 \end{tabular}
 \end{center}
 
-First observe how the function \txtt{adply} can be used to change from
+First observe how the function \code{adply} can be used to change from
 a tabular form of representation to a data frame.  The dimension names
 will become columns in the data frame.
 
@@ -415,9 +414,9 @@ Dreamer Yes No
 \end{Schunk}
 
 The following calculates sums over the first two dimensions of the
-table \txtt{UCBAdmissions}:
+table \code{UCBAdmissions}:
 
-\marginnote[12pt]{Here, \txtt{aaply()} behaves exactly like \txtt{apply()}.}
+\marginnote[12pt]{Here, \code{aaply()} behaves exactly like \code{apply()}.}
 \begin{Schunk}
 \begin{Sinput}
 plyr::aaply(UCBAdmissions, 1:2, sum)
@@ -430,8 +429,8 @@ Admit      Male Female
 \end{Soutput}
 \end{Schunk}
 
-The following calculates, for each level of the column \txtt{trt}
-in the data frame \txtt{nswdemo}, the number of values of \txtt{re74}
+The following calculates, for each level of the column \code{trt}
+in the data frame \code{nswdemo}, the number of values of \code{re74}
 that are zero:
 \begin{Schunk}
 \begin{Sinput}
@@ -445,9 +444,9 @@ plyr::daply(nswdemo, .(trt),
 \end{Soutput}
 \end{Schunk}
 To calculate the proportion that are zero, \marginnote{Notice the use
-  of the syntax \txtt{.(trt, black)} to identify the columns
-  \txtt{trt} and \txtt{black}.  This is an alternative to
-  \txtt{c("trt", "black")}.}  for each of control and treatment and
+  of the syntax \code{.(trt, black)} to identify the columns
+  \code{trt} and \code{black}.  This is an alternative to
+  \code{c("trt", "black")}.}  for each of control and treatment and
 for each of non-black and black, do:
 \begin{Schunk}
 \begin{Sinput}
@@ -463,11 +462,11 @@ trt     0     1
 \end{Soutput}
 \end{Schunk}
 
-The function \txtt{colwise()} takes as argument a function that operates
+The function \code{colwise()} takes as argument a function that operates
 on a column of data, returning a function that operates on all
 nominated columns of a data frame.
 To get information on the proportion of zeros for both of the columns
-\txtt{re75} and \txtt{re78}, and for each of non-black and black, do:
+\code{re75} and \code{re78}, and for each of non-black and black, do:
 \marginnote{Here, \margtt{colwise()} operates on the objects that are returned
 by splitting up the data frame \margtt{nswdemo} according to levels of
 \margtt{trt} and \margtt{black}.  Note the use of \margtt{ddply()}, not
@@ -488,9 +487,9 @@ plyr::ddply(nswdemo, .(trt, black),
 \end{Soutput}
 \end{Schunk}
 
-\subsection{Use of {\em dplyr} with Word War 1 cricketer data}
+\subsection{Use of \pkg{dplyr} with Word War 1 cricketer data}
 
-Data in the data frame \txtt{cricketer}, extracted by John Aggleton
+Data in the data frame \code{cricketer}, extracted by John Aggleton
 (now at Univ of Cardiff), are from records of UK first class
 cricketers born 1840 -- 1960.  Variables are
 \begin{list}{}{
@@ -505,8 +504,8 @@ cricketers born 1840 -- 1960.  Variables are
 The following creates a data frame in which the first column has the
 year, the second the number of right-handers born in that year, and
 the third the number of left-handers born in that year.
-\marginnote[12pt]{Both {\em plyr} and {\em dplyr} have functions
-  \margtt{summarise()}.  As in the code shown, detach {\em plyr}
+\marginnote[12pt]{Both \pkg{plyr} and \pkg{dplyr} have functions
+  \margtt{summarise()}.  As in the code shown, detach \pkg{plyr}
   before     proceeding. Alternatively, or additionally,
   specify \margtt{dplyr::summarise()} rather than \margtt{summarise()}}.
 \begin{Schunk}
@@ -534,12 +533,12 @@ lefrt[1:4, ]
 4  1843     3    25
 \end{Soutput}
 \end{Schunk}
-The data frame is split by values of \txtt{year}.  Numbers of left
+The data frame is split by values of \code{year}.  Numbers of left
 and right handers are then tabulated.
 
 \marginnote[12pt]{Note that a cricketer who was born in 1869 would be
 45 in 1914, while a cricketer who was born in 1896 would be 18 in 1914.}
-From the data frame \txtt{cricketer}, we determine the range of birth
+From the data frame \code{cricketer}, we determine the range of birth
 years for players who died in World War 1.  We then extract data for
 all cricketers, whether dying or surviving until at least the final
 year of Workd War 1, whose birth year was within this range of years.
@@ -556,7 +555,7 @@ range(ww1kia$year)
 \end{Soutput}
 \end{Schunk}
 
-Alternatively, use \txtt{filter()} from {\em dplyr}:
+Alternatively, use \code{filter()} from \pkg{dplyr}:
 \begin{Schunk}
 \begin{Sinput}
 ww1kia <- filter(cricketer,
@@ -590,23 +589,23 @@ crickKIAyrs[1:4, ]
 \end{Schunk}
 \end{fullwidth}
 
-For an introduction to {\em dplyr}, enter:
+For an introduction to \pkg{dplyr}, enter:
 \begin{Schunk}
 \begin{Sinput}
 vignette("introduction", package="dplyr")
 \end{Sinput}
 \end{Schunk}
 
-\subsection{{\em reshape2}: \txtt{melt()}, \txtt{acast()} \& \txtt{dcast()}
+\subsection{\pkg{reshape2}: \code{melt()}, \code{acast()} \& \code{dcast()}
 }\label{ss:reshape2}
 
-The {\em reshape2} package has functions that move between a
+The \pkg{reshape2} package has functions that move between a
 dataframe layout where selected columns are unstacked, and a layout
 where they are stacked.  In moving from an unstacked to a stacked
 layout, column names become levels of a factor.  In the move back from
 stacked to unstacked, factor levels become column names.
 
-Here is an example of the use of \txtt{melt()}:
+Here is an example of the use of \code{melt()}:
 \begin{fullwidth}
 \begin{Schunk}
 \begin{Sinput}
@@ -625,14 +624,14 @@ Crimean$Date <- ordered(format.Date(Crimean$Date,
 \end{Schunk}
 \end{fullwidth}
 \marginnote[12pt]{The dataset \margtt{Crimean} has been included in the
-  {\em DAAGviz} package.}
+  \pkg{DAAGviz} package.}
 The dataset is now in a suitable form for creating a Florence
 Nightingale style wedge plot, in Figure \ref{col:wedgeplot}.
 
 \subsection*{Reshaping data for Motion Chart display -- an example}
 
 The following inputs and displays World Bank Development Indicator
-data that has been included with the package {\em DAAGviz}:
+data that has been included with the package \pkg{DAAGviz}:
 \begin{fullwidth}
 \small
 \begin{Schunk}
@@ -652,7 +651,7 @@ print(wdiEx, row.names=FALSE)
 \end{Schunk}
 \end{fullwidth}
 
-A {\em googleVis} Motion Chart does not make much sense for this
+A \pkg{googleVis} Motion Chart does not make much sense for this
 dataset as it stands, with data for just two countries and two years.
 Motion charts are designed for showing how scatterplot relationships,
 here between forest area and population, have changed over a number of
@@ -660,9 +659,9 @@ years.  The dataset will however serve for demonstrating the reshaping
 that is needed.
 
 For input to Motion Charts, we want indicators to be
-columns, and years to be rows.  The \txtt{melt()} and
-\txtt{dcast()}\sidenote{Note also \txtt{acast()}, which outputs
-  an array or a matrix.}  functions from the {\em reshape2}
+columns, and years to be rows.  The \code{melt()} and
+\code{dcast()}\sidenote{Note also \code{acast()}, which outputs
+  an array or a matrix.}  functions from the \pkg{reshape2}
   package can be used to achieve the desired result.  First, create a
   single column of data, indexed by classifying factors:
 \begin{Schunk}
@@ -689,7 +688,7 @@ wdiLong
 
 Now\marginnote{If a matrix or array is required, use \margtt{acast()}
 in place of \margtt{dcast()}.}
- use \txtt{dcast()} to ``cast'' the data frame into a form where the
+ use \code{dcast()} to `cast' the data frame into a form where the
 indicator variables are columns:
 \begin{fullwidth}
 
@@ -712,7 +711,7 @@ wdiData
 
 \end{fullwidth}
 
-A final step is to replace the factor \txtt{Year} by a variable that
+A final step is to replace the factor \code{Year} by a variable that
 has the values 2000 and 2010.
 \begin{fullwidth}
 
@@ -755,18 +754,18 @@ no longer needed. There are two complementary strategies:
 \begin{itemizz}
 \item[-] Objects that cannot easily be reconstructed or copied from elsewhere,
 but are not for the time being required, are conveniently saved
-to an image file, using the \txtt{save()} function.
+to an image file, using the \code{save()} function.
 
 \item[-] Use a separate working directory for each major project.
 \end{itemizz}
 
-Note the utility function \txtt{dir()}\marginnote{Use \margtt{getwd()}
+Note the utility function \code{dir()}\marginnote{Use \margtt{getwd()}
   to check the name and path of the current working directory.  Use
   \margtt{setwd()} to change to a new working directory, while leaving
   the workspace contents unchanged.}  (get the names of files, by
 default in the current working directory).
 
-Several image files (``workspaces'') that have distinct names can live
+Several image files (`workspaces') that have distinct names can live
 in the one working directory.  The image file, if any, that is called
 \textbf{.RData} is the file whose contents will be loaded at the
 beginning of a new session in the directory.
@@ -775,8 +774,8 @@ beginning of a new session in the directory.
 \marginnote[9pt]{As noted in Section
   \ref{ss:saveobjs}, a good precaution can be to make an archive of
   the workspace before such removal.}
-Use a command of the form \txtt{rm(x, y, tmp)} to remove
-objects (here \txtt{x}, \txtt{y}, \txtt{tmp}) that are no longer
+Use a command of the form \code{rm(x, y, tmp)} to remove
+objects (here \code{x}, \code{y}, \code{tmp}) that are no longer
 required.
 
 \paragraph{Movement of files between computers:}\label{ss:dump}
@@ -801,9 +800,9 @@ entered at the command line. These can slow down entry of the data or
 other object.  Checks on dependencies can be a problem.  These can
 usually be resolved by editing the R source file to change or remove
 offending code.}
- from this ``dump'' file by inputting the
+ from this `dump' file by inputting the
 lines of \textbf{books.R} one by one at the command line. This is what,
-effectively, the command \txtt{source()} does.
+effectively, the command \code{source()} does.
 \begin{Schunk}
 \begin{Sinput}
 source("books.R")
@@ -864,62 +863,43 @@ required for the calculations, this can greatly reduce the time
 and memory requirements.
 
 Matrix arithmetic can be faster than the equivalent computations
-that use \txtt{apply()}. Here are timings for alternatives that
-find the sums of rows of the matrix \txtt{xy} that was generated thus:
+that use \code{apply()}. Here are timings for alternatives that
+find the sums of rows of the matrix \code{xy} that was generated thus:
 \begin{Schunk}
 \begin{Sinput}
 xy <- matrix(rnorm(5*10^7), ncol=100)
 dim(xy)
 \end{Sinput}
 \end{Schunk}
-\marginnote{Timings are on a mid 2012 1.8 Ghz Intel i5 Macbook Air
-  laptop with 8 gigabytes of random access memory.}
-\begin{Schunk}
-\begin{Sinput}
-system.time(xy+1)
-\end{Sinput}
-\begin{Soutput}
-   user  system elapsed 
-  0.155   0.242   0.396 
-\end{Soutput}
-\begin{Sinput}
-xy.df <- data.frame(xy)
-system.time(xy.df+1)
-\end{Sinput}
-\begin{Soutput}
-   user  system elapsed 
-  0.151   0.117   0.268 
-\end{Soutput}
-\end{Schunk}
-\vspace*{-12pt}
 
 \paragraph{Use efficient coding:}
 Matrix arithmetic can be faster than the equivalent computations
-that use \txtt{apply()}. Here are timings for some alternatives that
-find the sums of rows of the matrix \txtt{xy} above:\\[-4pt]
+that use \code{apply()}. Here are timings for some alternatives that
+find the sums of rows of the matrix \code{xy} above:\\[-4pt]
 % latex table generated in R 2.5.1 by xtable 1.4-6 package
 % Tue Aug 21 18:37:55 2007
-
+\marginnote{Timings are on a mid 2012 1.8 Ghz Intel i5 Macbook Air
+  laptop with 8 gigabytes of random access memory.}
 \begin{center}
 \begin{tabular}{rrrr}
   \hline
  & user & system & elapsed \\
   \hline
-\txtt{apply(xy,1,sum)}      & 0.528 & 0.087 & 0.617 \\
- \txtt{xy \%*\% rep(1,100)} & 0.019 & 0.001 & 0.019 \\
- \txtt{rowSums(xy)}         & 0.034 & 0.001 & 0.035 \\
+\code{apply(xy,1,sum)}      & 0.528 & 0.087 & 0.617 \\
+ \code{xy \%*\% rep(1,100)} & 0.019 & 0.001 & 0.019 \\
+ \code{rowSums(xy)}         & 0.034 & 0.001 & 0.035 \\
    \hline
 \end{tabular}
 \end{center}
 \vspace*{-9pt}
 
 \paragraph{The bigmemory project:} For details, go to
-\url{http://www.bigmemory.org/}. The {\em bigmemory} package for R
+\url{http://www.bigmemory.org/}. The \pkg{bigmemory} package for R
 ``supports the creation, storage, access, and manipulation of massive
-matrices''. Note also the associated packages {\em biganalytics}, {\em bigtabulate},
-{\em synchronicity}, and {\em bigalgebra}.
+matrices''. Note also the associated packages \pkg{biganalytics}, \pkg{bigtabulate},
+\pkg{synchronicity}, and \pkg{bigalgebra}.
 
-\paragraph{The \textit{data.table} package:}
+\paragraph{The \pkg{data.table} package:}
 This allows the creation
 \marginnote{On 64-bit systems, massive
   data sets, e.g., with tens or hundreds of millions of rows, are
@@ -937,10 +917,10 @@ vignette("datatable-intro", package="data.table")
 
 \section{Summary}
 \begin{itemize}
-\item[] \txtt{apply(),} and \txtt{sapply()} can be useful for
+\item[] \code{apply(),} and \code{sapply()} can be useful for
   manipulations with data frames and matrices.  Note also the
-  functions \txtt{melt()}, \txtt{dcast()} and \txtt{acast()} from the
-  \textit{reshape2} package.
+  functions \code{melt()}, \code{dcast()} and \code{acast()} from the
+  \pkg{reshape2} package.
 
 \item[] Careful workspace management is important when files
 are large.  It pays to use separate working directories for each

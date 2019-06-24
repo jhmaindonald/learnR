@@ -6,15 +6,15 @@
 
 
 
-\fbox{\parbox{\textwidth}{{\bf Linear Models, in the style of \txtt{lm()}:}\\[4pt]
+\fbox{\parbox{\textwidth}{{\bf Linear Models, in the style of \code{lm()}:}\\[4pt]
 \begin{tabular}{ll}
-Linear model & Any model that \txtt{lm()} will fit
-is a ``linear'' model.\\
-& \txtt{lm()} can fit highly non-linear forms of response!\\[6pt]
-Diagnostic  & Use \txtt{plot()} with the model object as argument,\\
+Linear model & Any model that \code{lm()} will fit
+is a `linear' model.\\
+& \code{lm()} can fit highly non-linear forms of response!\\[6pt]
+Diagnostic  & Use \code{plot()} with the model object as argument,\\
 plots & to get a basic set of diagnostic plots.\\[6pt]
-\txtt{termplot()} & If there are no interaction terms,
-use \txtt{termplot()}\\
+\code{termplot()} & If there are no interaction terms,
+use \code{termplot()}\\
 & to visualize the contributions of the different terms.\\[6pt]
 Factors & In model formulae, factors model qualitative effects.\\[6pt]
 Model & The model matrix shows how coefficients should be\\
@@ -28,14 +28,14 @@ GAMs & Generalized Additive Models extend linear models\\
 \end{tabular}
 \vspace*{3pt}
 
-[NB: \txtt{lm()} assumes independently \& identically distributed (iid)\\
+[NB: \code{lm()} assumes independently \& identically distributed (iid)\\
 errors, perhaps after applying a weighting function.]
 }}
 \vspace{12pt}
 
-In this chapter, the chief focus will be on the \txtt{lm()}
+In this chapter, the chief focus will be on the \code{lm()}
 (\textit{linear model}) function, discussed earlier in Section
-\ref{sec:wr}.  The \txtt{lm()} function is the most widely used of a
+\ref{sec:wr}.  The \code{lm()} function is the most widely used of a
 huge range of model fitting abilities, available in the various R
 packages.
 
@@ -43,17 +43,17 @@ packages.
   kitset of curves.}
 Linear models are linear in the model parameters, not necessarily in
 the variables. A linear model can perfectly well fit a combination of
-{\em basis} curves.
+\textit{basis} curves.
 
 \section{Linear Models in R -- Basic Ideas}
 
 Here, we fit a straight line, which is very obviously a linear model!
 This simple starting point gives little hint of the range of models
-that can be fitted using R's linear model \texttt{lm()} function.
+that can be fitted using R's linear model \code{lm()} function.
 
-The \texttt{lm()} function returns, as well as estimates, standard
+The \code{lm()} function returns, as well as estimates, standard
 errors for parameters and for predictions. The standard error and
-$p$-value information provided by the \txtt{lm()} function assumes
+$p$-value information provided by the \code{lm()} function assumes
 that the random term is i.i.d.\ (independently and identically
 distributed) normal.  The independence assumption can be crucial.
 
@@ -73,8 +73,8 @@ elaborate and intricate models.
 
 \subsection*{Scatterplot with fitted line -- an example}
 
-The following plots data from the data frame \texttt{roller} (as in
-Figure \ref{fig:rollerPlot}) from the \textit{DAAG} package.
+The following plots data from the data frame \code{DAAG::roller} 
+(as in Figure \ref{fig:rollerPlot}).
 \begin{Schunk}
 \begin{Sinput}
 library(DAAG)
@@ -89,9 +89,8 @@ plot(depression ~ weight, data=roller, fg="gray")
 \centerline{\includegraphics[width=\textwidth]{figs/8-plt-roller-1} }
 
 \end{Schunk}
-  \caption{Plot of \txtt{depression} versus \txtt{weight}, using data
-from the data frame \txtt{roller} in the {\em DAAG}
-package.}\label{fig:rollerPlot}
+  \caption{Plot of \code{depression} versus \code{weight}, using data
+from the data frame \code{DAAG::roller}.}\label{fig:rollerPlot}
 \end{marginfigure}
 
 The formula \verb!depression ~ weight! can be used either as a
@@ -121,8 +120,8 @@ fitted line added.
 \end{marginfigure}
 
 The different explanatory variables in the model are called
-\texttt{terms}.  In the above, there is one explicit term only on the
-right, i.e., \texttt{weight}. This is in addition to the intercept,
+`terms'.  In the above, there is one explicit term only on the
+right, i.e., \code{weight}. This is in addition to the intercept,
 which is included by default.
 
 \subsection{Straight line regression -- algebraic details}\label{ss:briefls}
@@ -130,13 +129,13 @@ The standard form of simple straight line model can be written\vspace*{-1pt}
 \[ \mbox{depression } = \alpha + \beta \times \mbox{ weight } + \mbox{ noise}.
 \vspace*{-4pt}
 \]
-Now write $y$ in place of \texttt{depression} and $x$ in place of
-\texttt{weight}, and add subscripts, so that the observations are:
+Now write $y$ in place of \code{depression} and $x$ in place of
+\code{weight}, and add subscripts, so that the observations are:
 ($x_{1}$, $y_{1}$), ($x_{2}$, $y_{2}),\ldots{,} (x_{n}$, $y_{n}$).  Then
 the model can be written:
  \[ y_{i} = \alpha + \beta x_{i} + \varepsilon_{i}.\]
 The $\alpha +
-\beta x_{i}$ term is the ``fixed'' component of the model, and
+\beta x_{i}$ term is the `fixed' component of the model, and
 $\varepsilon_{i}$ is the random noise.
 
 The line is chosen so that the sum of squares of residuals is as small
@@ -165,7 +164,7 @@ e_1 = y_1 - \widehat{y}_1, \ e_2 = y_2 - \widehat{y}_2,\ldots{\,.}
 \end{equation}
 
 \subsection{Syntax -- model, graphics and table formulae:}
-The syntax for \texttt{lm()} models that will be demonstrated here is
+The syntax for \code{lm()} models that will be demonstrated here is
 used, with modification, throughout the modeling functions in R.  A
 very similar syntax can be used for specifying graphs and for certain
 types of tables.
@@ -175,11 +174,11 @@ types of tables.
 
 \marginnote{Components of model objects can be accessed directly, as
   list objects.  But it is usually better to use an extractor
-  function. Note in particular \texttt{residuals()} (can be
-  abbreviated to \txtt{resid()}), \txtt{coefficients()}
-  (\txtt{coef()}), and
-  \txtt{fitted.values()} (\txtt{fitted()}).  For example:\\
-  \txtt{coef(roller.lm)} }
+  function. Note in particular \code{residuals()} (can be
+  abbreviated to \code{resid()}), \code{coefficients()}
+  (\code{coef()}), and
+  \code{fitted.values()} (\code{fitted()}).  For example:\\
+  \code{coef(roller.lm)} }
 
 The following code returns a model object to the command line.
 \begin{Schunk}
@@ -314,13 +313,13 @@ possibilities that model matrices open up.
 distribution (iid) are crucial. The role of normality is commonly
 over-stated.}
 More fundamental than least squares is the maximum likelihood
-principle.  If the ``error'' terms are independently and identically
+principle.  If the `error' terms are independently and identically
 normally distributed, then least squares and maximum likelihood are
 equivalent.
 
 Least squares will not in general yield maximum likelihood estimates.
-The SEs returned by \texttt{lm()} or by \texttt{predict()} from
-an \texttt{lm} model will be problematic or wrong if:
+The SEs returned by \code{lm()} or by \code{predict()} from
+an \code{lm} model will be problematic or wrong if:
 \begin{itemize}
 \item Observations are not independent;
 \item Variances are not homogeneous\sidenote{Weighted least squares is
@@ -400,7 +399,7 @@ round(coef(mflogtime.lm), 3)
       0.267       1.042 
 \end{Soutput}
 \end{Schunk}
-The coefficient of 1.042 for \txtt{log(time)} implies that the
+The coefficient of 1.042 for \code{log(time)} implies that the
 relative rate of increase of female times is 4.2\% greater than the
 relative rate of increase of male times.
 
@@ -456,7 +455,7 @@ scale has several useful consequences:
     10 to 20 is equivalent to a change from 20 to 40, or from 40 to 80.
     On a logarithmic scale, these are all changes by an amount of
     $\log(2)$.
-  \item[-] By default, the function \txtt{log()}) returns natural
+  \item[-] By default, the function \code{log()}) returns natural
     logarithms, i.e., logarithms to base $e$.  On this scale, a change
     of 0.05 is very close to a change of 5\%.  A change of 0.15 is
     very roughly a change of 15\%.  [A decrease of 0.15 is a decrease
@@ -506,8 +505,8 @@ diagnostic plots for the regression with the untransformed data:
 \centerline{\includegraphics[width=\textwidth]{figs/8-diag-mf-1} }
 
 \end{Schunk}
-\caption{Diagnostic plots from the regession of \txtt{timef} on
-  \txtt{time}.}\label{fig:diag-mftime}
+\caption{Diagnostic plots from the regession of \code{timef} on
+  \code{time}.}\label{fig:diag-mftime}
 \end{figure*}
 \noindent
 Simplified code is:
@@ -545,8 +544,8 @@ par(opar)
 \centerline{\includegraphics[width=\textwidth]{figs/8-diag-logmf-1} }
 
 \end{Schunk}
-\caption{Diagnostic plots from the regression of \txtt{log(timef)} on
-  \txtt{log(time)}.}\label{fig:diag-mftime-log}
+\caption{Diagnostic plots from the regression of \code{log(timef)} on
+  \code{log(time)}.}\label{fig:diag-mftime-log}
 \end{figure*}
 \noindent
 The point for the largest
@@ -763,20 +762,20 @@ the actual data is not matched in any of the simulations.
 
 This type of check can be repeated for the other diagnostic plots:
 \begin{itemize}
-  \item [-] A check for normality (Panel 2: \txtt{which=2}.  Type:
+  \item [-] A check for normality (Panel 2: \code{which=2}.  Type:
 \begin{Schunk}
 \begin{Sinput}
 plotSimDiags(obj=mftime.lm, which=2, layout=c(4,1))
 \end{Sinput}
 \end{Schunk}
-\item[-] Is the variance constant? (Panel 3: \txtt{which=3}.  Type:
+\item[-] Is the variance constant? (Panel 3: \code{which=3}.  Type:
 \begin{Schunk}
 \begin{Sinput}
 plotSimDiags(obj=mftime.lm, which=3, layout=c(4,1))
 \end{Sinput}
 \end{Schunk}
 \item[-]  Are there issues of leverage and influence? (Panel 4:
-  \txtt{which=5}.  Type:
+  \code{which=5}.  Type:
 \begin{Schunk}
 \begin{Sinput}
 plotSimDiags(obj=mftime.lm, which=5, layout=c(4,1))
@@ -787,7 +786,7 @@ plotSimDiags(obj=mftime.lm, which=5, layout=c(4,1))
 \subsection*{Scatterplots that are derived from the simulation process}
 
 To see scatterplots that are derived from the simulation process,
-use the function \txtt{plotsimscat()}, from the {\em DAAG} package.
+use the function \code{plotsimscat()}, from the \pkg{DAAG} package.
 For example, try, working with the untransformed data:
 \begin{Schunk}
 \begin{Sinput}
@@ -827,10 +826,10 @@ interpretation of model parameters.
 
 More detailed comments will now follow on some of the issues raised above.
 
-\paragraph{The choice of  method:} Note the use of the word ``method'',
+\paragraph{The choice of  method:} Note the use of the word `method',
 not algorithm. Algorithms specify a sequence of computational steps.
-Something more than an algorithm is needed, if results are to have
-some use that generalizes beyond the specific data used.
+An algorithm is not on its own enough, if results are to have
+a relevance that generalizes beyond the specific data used.
 
 There are many different methods. How should the analyst
 choose between them?  What are good ways to assess the performance of
@@ -856,10 +855,10 @@ order of approximation, independently.
 
 In some cases, a different but equivalent choice of parameters will be
 more meaningful.  For working with the Northern Ireland hillrace data
-in Subsection \ref{sec:nihills-reg}, the parameters \texttt{dist} and
-\texttt{climb} clearly do not exercise their effects independently,
+in Subsection \ref{sec:nihills-reg}, the parameters \code{dist} and
+\code{climb} clearly do not exercise their effects independently,
 making their coefficients difficult to interpret. It is better to work
-with \texttt{log(dist)} and \texttt{log(dist/climb)}, which are very
+with \code{log(dist)} and \code{log(dist/climb)}, which are very
 nearly independent.
 
 See Rosenbaum's {\em Observational Studies}\sidenote{{Rosenbaum, P.R},
@@ -891,16 +890,15 @@ be adapted to fit terms involving factors.
 \hline
     Mean $=$ 1.683 & 0.983 & 1.75 & 0.983 \\
 \end{tabular}
-\caption{Root weights ({\em \txtt{weight}}) (g) of tomato
+\caption{Root weights (\code{weight}) (g) of tomato
   plants, grown with water only and grown wth three different
-  treatments. Data are in the data frame \txtt{tomato} (\txtt{DAAG}
-  1.17 or later).\label{tab:tomatowt}}
+  treatments. Data are in the data frame \code{DAAG::tomato}.\label{tab:tomatowt}}
 \end{table}
 \vspace*{9pt}
 
-Additive A is \txtt{conc nutrient}, B is \txtt{3x conc nutrient}, and
-C is \txtt{2-4-D + conc nutrient}.  For convenience, we label the factor levels
-\txtt{Water}, \txtt{A}, \txtt{B}, and \txtt{C}, in that order.
+Additive A is \code{conc nutrient}, B is \code{3x conc nutrient}, and
+C is \code{2-4-D + conc nutrient}.  For convenience, we label the factor levels
+\code{Water}, \code{A}, \code{B}, and \code{C}, in that order.
 \begin{Schunk}
 \begin{Sinput}
 lev <- c("Water", "A", "B", "C")
@@ -908,16 +906,16 @@ tomato[, "trt"] <- factor(rep(lev, rep(6,4)),
                           levels=lev)
 \end{Sinput}
 \end{Schunk}
-Taking \txtt{Water} as the initial level the effect, in the first
+Taking \code{Water} as the initial level the effect, in the first
 analysis that is given below, that it is treated as a reference
 level.
 
 \subsection{Example -- tomato root weight}\label{tomato}
 
-The model can be fitted either using the function \txtt{lm()} or
-using the function \txtt{aov()}.  The two functions give different
+The model can be fitted either using the function \code{lm()} or
+using the function \code{aov()}.  The two functions give different
 default output.  The main part of the calculations is the same
-whether \txtt{lm()} or \txtt{aov()} is used.
+whether \code{lm()} or \code{aov()} is used.
 
 For model terms that involve factor(s), there are several different
 ways to set up the relevant columns of the model matrix.  The default,
@@ -932,7 +930,7 @@ Table \ref{tab:tomatoXmatrixfit} shows the model matrix when
 included, in the column headers, is information from the least squares
 fit.
 
-The following uses \txtt{aov()} for the calculations:
+The following uses \code{aov()} for the calculations:
 \begin{Schunk}
 \begin{Sinput}
 ## Analysis of variance: tomato data (from DAAG)
@@ -955,7 +953,7 @@ appears much larger for the controls than for other treatments.
 \end{Schunk}
  \caption{Termplot summary of the one-way analysis of variance result ---
 A: for the analysis that uses weights as the outcome variable, and
-B: for the analysis that works with \txtt{log(weight)}}
+B: for the analysis that works with \code{log(weight)}}
 \label{fig:tomatoterm}
 \end{figure}
 
@@ -983,7 +981,7 @@ Residuals, if required, can be obtained by subtracting the
 fitted values in Table \ref{tab:tomatoXmatrixfit} from the observed
 values ($y$) in Table \ref{tab:tomatowt}.
 
-Coefficient estimates for the model that uses \txtt{weight} as the
+Coefficient estimates for the model that uses \code{weight} as the
 dependent variable, taken from the output summary from R, are:
 
 \begin{Schunk}
@@ -1024,8 +1022,8 @@ model.matrix(tomato.aov)
 \end{Schunk}
 The multipliers determined by least squares calculations are shown
 above each column. Also shown is the fitted
-value, which can be calculated either as \txtt{fitted(tomato.aov)} or as
-\txtt{predict(tomato.aov)}.
+value, which can be calculated either as \code{fitted(tomato.aov)} or as
+\code{predict(tomato.aov)}.
 \begin{table}
 \tabcolsep9pt
 \begin{tabular}{>{\columncolor{light}}l>{\columncolor{light}}l
@@ -1061,9 +1059,10 @@ Water: 1.683 &  A: $+0.067$  &   B:  $-0.358$ &  C:  $-0.700$ & Fitted\\
 \subsection{Factor terms -- different choices of model matrix}
 
 In the language used in the R help pages, different choices of
-\textit{contrasts} are available, with each different choice leading
+`contrasts' are available, with each different choice leading
 to a different model matrix and to different regression parameters.
-The fitted values remain the same, the termplot in Figure {fig:tomatoterm}A
+The fitted values remain the same, the termplot in Figure 
+{fig:tomatoterm}A
 is unchanged, and the analysis of variance table is unchanged.
 
 Where there is just one factor, the constant term can be omitted,
@@ -1155,10 +1154,10 @@ Thus the difference for C is (rounding up) \vspace*{-2pt}
 -(0.2479+ 0.3146-0.1104) = -0.4521 .\vspace*{-2pt}\]
 
 Yet other choices of contrasts are possible; see
-\txtt{help(contrasts)}.
+\code{help(contrasts)}.
 
 \subsection*{Interaction terms}
-The data frame \txtt{cuckoos} has the lengths and breadths of cuckoo
+The data frame \code{cuckoos} has the lengths and breadths of cuckoo
 eggs that were laid in the nexts of one of six different bird species.
 The following compares a model where the regression line of
 breadth against length is the same for all species, with a
@@ -1182,7 +1181,7 @@ Model 2: breadth ~ species + length + species:length
 \end{Schunk}
 \end{fullwidth}
 
-\noindent Here, the model \txtt{cuckoos.lm}, where the regression lines are
+\noindent Here, the model \code{cuckoos.lm}, where the regression lines are
 parallel (the same slope for each species), appears adequate.
 %' The coefficients are:
 %' <<cuckoos-ests, echo=2>>=
@@ -1198,16 +1197,16 @@ An alternative way to compare the two models is:
 anova(cuckoos.lm, cuckoosI.lm, test="Cp")
 \end{Sinput}
 \end{Schunk}
-The \txtt{Cp} statistic (smaller is better) compares models on the basis
+The `Cp' statistic (smaller is better) compares models on the basis
 of an assessment of their predictive power. Note the use of the
-argument \txtt{test="cp"}, even though this is not a comparison
+argument \code{test="cp"}, even though this is not a comparison
 that is based on a significance text.
 
 \section{Regression with two explanatory variables}\label{sec:nihills-reg}
 
 \subsection*{Data exploration}
 
-The dataset \txtt{nihills} in the {\em DAAG} package has
+The dataset \code{DAAG::nihills} has
 record times for Northern Ireland mountain races.  First, get a few
 details of the data:
 \begin{fullwidth}
@@ -1216,11 +1215,12 @@ details of the data:
 str(nihills)
 \end{Sinput}
 \begin{Soutput}
-'data.frame':	23 obs. of  4 variables:
- $ dist : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
- $ climb: int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
- $ time : num  0.858 0.467 0.703 1.039 0.541 ...
- $ timef: num  1.064 0.623 0.887 1.214 0.637 ...
+'data.frame':	23 obs. of  5 variables:
+ $ dist    : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
+ $ climb   : int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
+ $ time    : num  0.858 0.467 0.703 1.039 0.541 ...
+ $ timef   : num  1.064 0.623 0.887 1.214 0.637 ...
+ $ gradient: num  232 264 205 485 240 ...
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}
@@ -1304,13 +1304,13 @@ round(coef(lognihills.lm),3)
 \end{eqnarray*}
 }
 \noindent
-Thus for constant \txtt{climb}, the prediction is that time per mile
+Thus for constant \code{climb}, the prediction is that time per mile
 will decrease with increasing distance. Shorter races with the same climb
 will involve steeper ascents and descents.
 
 A result that is easier to interpret can be obtained by regressing
-\txtt{log(time)} on \txtt{log(dist)} and \txtt{log(gradient)},
-where \txtt{gradient} is \txtt{dist/climb}.
+\code{log(time)} on \code{log(dist)} and \code{log(gradient)},
+where \code{gradient} is \code{dist/climb}.
 \begin{Schunk}
 \begin{Sinput}
 nihills$gradient <- with(nihills, climb/dist)
@@ -1326,7 +1326,7 @@ round(coef(lognigrad.lm),3)
      -4.961       1.147       0.466 
 \end{Soutput}
 \end{Schunk}
-Thus, with \txtt{gradient} held constant, the prediction is that \txtt{time}
+Thus, with \code{gradient} held constant, the prediction is that \code{time}
 will increase at the rate of $\mbox{dist}^{1.147}$.  This makes good intuitive
 sense.
 
@@ -1339,16 +1339,16 @@ sense.
 \end{Schunk}
 \caption{The vertical scales in both ``term plot''  panel
   show $\log(\rm{time})$, centered to a mean of zero. The partial residuals
-  in the left panel are for $\txtt{ldist}$, while those in the right
-  panel are for $\txtt{lgradient}$, i.e.,
-  \txtt{log(climb/dist)}. Smooth curves (dashes) have been passed
+  in the left panel are for \code{ldist}, while those in the right
+  panel are for \code{lgradient}, i.e.,
+  \code{log(climb/dist)}. Smooth curves (dashes) have been passed
   through the points.\label{fig:lnihills-lin}}
 \vspace*{-5pt}
 \end{figure}
 
 We pause to look more closely at the model that has been fitted.  Does
-\txtt{log(time)} really depend linearly on the terms \txtt{ldist} and
-\txtt{log(lclimb)}?  The function \txtt{termplot()} gives a good
+\code{log(time)} really depend linearly on the terms \code{ldist} and
+\code{log(lclimb)}?  The function \code{termplot()} gives a good
 graphical indication (Figure \ref{fig:lnihills-lin}).
 \begin{Schunk}
 \begin{Sinput}
@@ -1358,15 +1358,15 @@ termplot(lognigrad.lm, col.term="gray", partial=TRUE,
 \end{Sinput}
 \end{Schunk}
 
-The vertical scales show changes in \txtt{ltime}, about the mean of
-\txtt{ltime}.  The lines show the estimated effect of each explanatory
+The vertical scales show changes in \code{ltime}, about the mean of
+\code{ltime}.  The lines show the estimated effect of each explanatory
 variable when the other variable is held at its mean value.  The
 lines, which are the contributions of the individual linear terms
-(``effects'') in this model, are shown in gray so that they do not
+(`effects') in this model, are shown in gray so that they do not
 obtrude unduly. The dashed curves, which are smooth curves that are
 passed through the residuals, are the primary features of interest.
 
-Notice that, in the plot for \txtt{ldist}, the smooth dashed line does
+Notice that, in the plot for \code{ldist}, the smooth dashed line does
 not quite track the fitted line; there is a small but noticeable
 indication of curvature that can be very adequately modeled with a
 quadratic curve.  Note also that until we have modeled effectively the
@@ -1415,7 +1415,7 @@ from a variable selection process:
   coefficients, one has a different model, and the coefficients that
   are common across the two models may be accordingly different.
   (They will be exactly the same only in the unusual case where
-  ``variables'' are uncorrelated.)  There is a risk that variable
+  `variables' are uncorrelated.)  There is a risk that variable
   selection will remove variables on whose values (individually, or in
   total effect) other coefficient estimates should be conditioned.
   This adds uncertainty beyond what arises from sampling variation.
@@ -1445,7 +1445,7 @@ predictive power, and the relevant $t$-statistics are large --
 too large to be substantially inflated by selection effects.
 
 \subsection{Use of simulation to check out selection effects:}
-The function \txtt{bestsetNoise()} ({\em DAAG}) can be used to
+The function \code{bestsetNoise()} (\pkg{DAAG}) can be used to
 experiment with the behaviour of various variable selection techniques
 with data that is purely noise.  For example, try:\sidenote{See also
 Section 6.5, pp.~197-198, in \citet{daagur_2011}.}
@@ -1466,7 +1466,7 @@ significant at a level of around $p$=0.01 or less.
 As above, datasets of random normal data were created, always with 100
 observations and with the number of variables varying between 3 and
 50.  For three variables, there was no selection, while in other cases
-the ``best'' three variables were selected, by exhaustive search.
+the `best' three variables were selected, by exhaustive search.
 
 \begin{marginfigure}[-84pt]
 \begin{Schunk}
@@ -1582,29 +1582,29 @@ spm(Electricity, smooth=TRUE, regLine=FALSE,
 \small
 \begin{list}{}{\leftmargin=2em \setlength{\itemsep}{5pt} \setlength{\parsep}{1pt}}
 \setlength{\labelwidth}{3em}
-\item[\texttt{cost:}]
+\item[\code{cost}:]
  total cost
-\item[\texttt{q:}]
+\item[\code{q}:]
  total output
-\item[\texttt{pl:}]
+\item[\code{pl}:]
  wage rate
-\item[\texttt{sl:}]
+\item[\code{sl}:]
  cost share, labor
-\item[\texttt{pk:}]
+\item[\code{pk}:]
  capital price index
-\item[\texttt{sk:}]
+\item[\code{sk}:]
  cost share,
  capital
-\item[\texttt{pf:}]
+\item[\code{pf}:]
  fuel price
-\item[\texttt{sf:}]
+\item[\code{sf}:]
  cost share, fuel
 \end{list}
 }
 \vspace*{-9pt}
 
 \caption{Scatterplot matrix, for the variables in the data set
-  \texttt{Electricity}, in the {\em Ecdat} package. Density
+  \code{Ecdat::Electricity}. Density
   plots are shown in the diagonal.\label{fig:elec-spm}}
 \end{figure*}
 
@@ -1619,8 +1619,8 @@ is:
    (variables and factors).  Ensure that the model is parameterised in
    a way that makes parameters of interest as far as possible
    interpretable (e.g., in Subsection \ref{sec:nihills} above, work
-   with \texttt{distance} and \texttt{gradient}, not \texttt{distance}
-   and \texttt{climb})
+   with \code{distance} and \code{gradient}, not \code{distance}
+   and \code{climb})
  \item[(ii)]
  \marginnote{Removal of terms with $p > 0.15$ or $p > 0.2$
      rather than $p$ > 0.05 greatly reduces the risk that estimates of
@@ -1641,7 +1641,7 @@ is:
    consequence in terms that remain.
  \item[(iv)] In principle, the process may be repeated for order 3
    interactions.
-\item[(v)] Use the function \txtt{add1()} to check for individual
+\item[(v)] Use the function \code{add1()} to check for individual
 highly significant terms that should be included.  For this purpose,
 we might set $p=0.01$ or perhaps $p=0.001$.
 \end{itemize}
@@ -1653,12 +1653,12 @@ significant.  This limits the scope for selection effects.
 
 \subsection*{Distributions of variables}
 
-The distributions of \texttt{cost} and \texttt{q} are highly skew.
+The distributions of \code{cost} and \code{q} are highly skew.
 The relationship between these two variables is also very close to
 linear.  We might try taking logarithms of both these variables.
 
 Figure \ref{fig:elec-dens} examines the scatterplot matrix for the
-logarithms of the variables \txtt{cost} and \txtt{q}.
+logarithms of the variables \code{cost} and \code{q}.
 \noindent
 Code is:
 \begin{marginfigure}[-3.5cm]
@@ -1669,7 +1669,7 @@ Code is:
 
 \end{Schunk}
   \caption{Scatterplot matrix for the logarithms of the variables
-    \txtt{cost} and \txtt{q}. Density plots are shown in the
+    \code{cost} and \code{q}. Density plots are shown in the
     diagonal.\label{fig:elec-dens}}
 \end{marginfigure}
 \begin{Schunk}
@@ -1698,7 +1698,7 @@ Now examine the termplot (Figure \ref{fig:elec-log-tplot}):
 
 \end{Schunk}
 \caption{Termplot summary for the model that has been fitted to the
-  \texttt{Electricity} dataset.\label{fig:elec-log-tplot}}
+  \code{Electricity} dataset.\label{fig:elec-log-tplot}}
 \end{figure}
 \noindent Code is:
 \begin{Schunk}
@@ -1707,10 +1707,10 @@ termplot(elec.lm, partial=T, smooth=panel.smooth,
          transform.x=TRUE)
 \end{Sinput}
 \end{Schunk}
-Notice that in the partial plot for \txtt{q}, the dashed curve that is
+Notice that in the partial plot for \code{q}, the dashed curve that is
 fitted to the residuals closely tracks the fitted effect (linear on a
-scale of \txtt{log(q)}.  This confirms the use of \txtt{log(q)},
-rather than \txtt{q}, as explanatory variable.
+scale of \code{log(q)}.  This confirms the use of \code{log(q)},
+rather than \code{q}, as explanatory variable.
 
 Now examine the model output:
 \begin{Schunk}
@@ -1730,7 +1730,7 @@ sf          -0.30965    0.69091 -0.4482  0.65467
 \end{Soutput}
 \end{Schunk}
 
-The $p$-values suggest that \texttt{pk}, \texttt{sk}, and \texttt{sf}
+The $p$-values suggest that \code{pk}, \code{sk}, and \code{sf}
 can be dropped from the model. Omission of these terms makes only
 minor differences to the coefficients of terms that remain.
 \begin{Schunk}
@@ -1787,8 +1787,8 @@ pl:pf        0.00000    0.00000  0.1421  0.88722
 sl:pf        0.01680    0.03092  0.5432  0.58780
 \end{Soutput}
 \end{Schunk}
-This suggests omitting the terms \txtt{pf}, and all interactions
-except \txtt{log(q):pl} and \txtt{log(q):sl}.  We check that omission
+This suggests omitting the terms \code{pf}, and all interactions
+except \code{log(q):pl} and \code{log(q):sl}.  We check that omission
 of these terms makes little difference to the terms that remain:
 \begin{Schunk}
 \begin{Sinput}
@@ -1836,17 +1836,17 @@ sl:pf      1    0.0016 2.83 -620    0.09   0.77
 
 \section{An introduction to logistic regression}\label{sec:logistic}
 \marginnote[11pt]{The dataset \margtt{bronchit} may alternatively be 
- found in the {\em SMIR} package.}
+ found in the \pkg{SMIR} package.}
 
 
 
 
 
 The data that will be used for illustration are from the data frame
-\txtt{bronchit} in the {\em DAAGviz} package.  Figure \ref{fig:cig-poll} 
-shows two plots -- one of \texttt{poll}
-(pollution level) against \texttt{cig} (number of cigarettes per day),
-and the other of \texttt{poll} against \texttt{log(poll)}.  In each
+\code{DAAGviz::bronchit}.  Figure \ref{fig:cig-poll} 
+shows two plots -- one of \code{poll}
+(pollution level) against \code{cig} (number of cigarettes per day),
+and the other of \code{poll} against \code{log(poll)}.  In each
 case, points are identified as with or without bronchitis.
 
 \begin{figure*}
@@ -1856,8 +1856,8 @@ case, points are identified as with or without bronchitis.
 \centerline{\includegraphics[width=0.95\textwidth]{figs/8-bronchitAB-1} }
 
 \end{Schunk}
-\caption{Panel A plots \txtt{poll} (pollution level) against
-  \txtt{cig} (number of cigarettes per day).  In panel B, the
+\caption{Panel A plots \code{poll} (pollution level) against
+  \code{cig} (number of cigarettes per day).  In panel B, the
   $x$-scale shows the logarithm of the number of cigarettes per
   day.\label{fig:cig-poll}}
 \vspace*{12pt}
@@ -1977,7 +1977,7 @@ termplot(cig2.glm)
 
 \section{Regression with Fitted Smooth Curves}
 
-Load the {\em DAAG} package:
+Load the \pkg{DAAG} package:
 
 
 \subsection*{Commentary  on Smoothing Methods}
@@ -1992,18 +1992,18 @@ choice is often a good first approximation.  Note here:
 \begin{itemize}
 \item Smoothing using a ``locally weighted regression
 smoother''. Functions that use this approach include 
-\txtt{lowess()}, \txtt{loess()}, \txtt{loess.smooth()}, 
-and \txtt{scatter.smooth()}.  Smoothness
+\code{lowess()}, \code{loess()}, \code{loess.smooth()}, 
+and \code{scatter.smooth()}.  Smoothness
 is controlled by the width of the smoothing window.\sidenote{The 
-default is \txtt{f=2/3} for \txtt{lowess()}, or \txtt{span=0.75} 
-for \txtt{loess()}. For other functions that use this approach,
+default is \code{f=2/3} for \code{lowess()}, or \code{span=0.75} 
+for \code{loess()}. For other functions that use this approach,
 check the relevant help page.}
 \item Use of a regression spline basis in a linear model.  Here the smoothness
 is usually controlled by the choice of number of spline basis terms.
 \end{itemize}
 \item A second class of methods use a ``statistical learning''
   approach in which the amount of smoothing is chosen automatically.
-  The approach of the \textit{mgcv} package extends and adapts the
+  The approach of the \pkg{mgcv} package extends and adapts the
   regression spline approach.\sidenote{Strong assumptions are
     required, notably that observations are independent.  Normality
     assumptions are, often, less critical.}  The methodology
@@ -2057,8 +2057,8 @@ with(fruitohms,
 \end{Sinput}
 \end{Schunk}
 
-A more sophisticated approach uses the \txtt{gam()} function
-in the {\em mgcv} package.  This allows automatic determination of the
+A more sophisticated approach uses the \code{gam()} function
+in the \pkg{mgcv} package.  This allows automatic determination of the
 amount of smoothing, providing the assumption of independent residuals
 from the curve is reasonable.  We now demonstrate the use of a GAM
 model for a two-dimensional smooth.
@@ -2066,9 +2066,9 @@ model for a two-dimensional smooth.
 \subsection{Contours from 2-dimensional Smooths}
 Data are the amplitudes of responses to a visual stimulus, for each of
 20 individuals, at different regions of the left eye.  We use the
-function \txtt{gam()} to create smooth
+function \code{gam()} to create smooth
 surfaces, for males and females separately. Figure \ref{fig:visAmp}
-then uses the function \txtt{vis.gam()} to plot heatmaps that show the
+then uses the function \code{vis.gam()} to plot heatmaps that show the
 contours:
 \begin{fullwidth}
 \begin{figure*}
@@ -2124,7 +2124,7 @@ are measured with substantial error, there are increased oportunities for
 transferring estimated effects between variables, and the mathematics
 becomes more complicated.
 
-Examples on the help page \txtt{?DAAG::errorsINx} show how to run
+Examples on the help page \code{?DAAG::errorsINx} show how to run
 simulations that demonstrate the effects in the simple cases just
 described.  These are useful in giving a sense of the magitutude
 of the attenuation, and any possible
@@ -2228,24 +2228,24 @@ mechanisms that the human brain uses.
 \section{Exercises}
 \begin{enumerate}
 \item Exercise \ref{ex:mol1} in Section \ref{ss:wd} involved reading
-  data into a data frame \txtt{molclock1}.  Plot \txtt{AvRate} against
-  \txtt{Myr}. Fit a regression line (with intercept, or without
+  data into a data frame \code{molclock1}.  Plot \code{AvRate} against
+  \code{Myr}. Fit a regression line (with intercept, or without
   intercept?), and add the regression line to the plot.  What
   interpretation can be placed upon the regression
   slope?\label{ex1:mod}
 
-\item  Attach the \textit{DAAG} package. Type
-\txtt{help(elasticband)} to see the help page for the data frame
-\txtt{elasticband}.  Plot \txtt{distance} against
-\txtt{stretch}. Regress \txtt{distance} against
-\txtt{stretch} and explain how to interpret the coefficient.
+\item  Attach the \pkg{DAAG} package. Type
+\code{help(elasticband)} to see the help page for the data frame
+\code{elasticband}.  Plot \code{distance} against
+\code{stretch}. Regress \code{distance} against
+\code{stretch} and explain how to interpret the coefficient.
 \item Repeat the calculations in Section \ref{sec:nihills-reg}, now
-examining the regression of \txtt{time} on \txtt{dist} and \txtt{climb}.
+examining the regression of \code{time} on \code{dist} and \code{climb}.
 Does this regression adequately model the data. Comment on the results.
 \item
 \begin{enumerate}
 \item Investigate the pairwise relationships between variables in the
-data frame \txtt{oddbooks} ({\em DAAG}).
+data frame \code{DAAG::oddbooks}.
 \item Fit the models
   \begin{fullwidth}
 \begin{Schunk}
@@ -2261,20 +2261,13 @@ lob3.lm <- lm(log(weight) ~ log(thick)+log(breadth)+log(height),
 \end{fullwidth}
 Comment on what you find, i.e., comment both on the estimates and on
 the standard errors.
-\item Can \txtt{weight} be completely explained as a function of
-\txtt{volume}?  Is there another relevant variable?
+\item Can \code{weight} be completely explained as a function of
+\code{volume}?  Is there another relevant variable?
 \end{enumerate}
 \item Repeat the calculations in Section \ref{sec:nihills}, now
-  with the dataset \txtt{hills2000} (\textit{DAAG}).  Do any of
-  the points stand out as outliers?  Use \txtt{predict()},
-  with \txtt{newdata = hills200}, to obtain predictions from the
-  \txtt{hills2000} model for the \txtt{nihills} data.  Compare with
-  the predictions from the \txtt{nihills} model.
-
-  %% \item In the data frame \txtt{molclock} of Exercise \ref{ex1:mod},
-  %% data are estimates of amino acid replacements per 100 million years,
-  %% for the three genes \txtt{GPDH}, \txtt{SOD}, and \txtt{XDH}. The
-  %% column \txtt{Ave} is a weighted average of these three, with weights
-  %% proportional to sequence length.  Use regression to determine the
-  %% weights that were used.
+  with the dataset \code{DAAG::hills2000}.  Do any of
+  the points stand out as outliers?  Use \code{predict()},
+  with \code{newdata = hills200}, to obtain predictions from the
+  \code{hills2000} model for the \code{nihills} data.  Compare with
+  the predictions from the \code{nihills} model.
 \end{enumerate}

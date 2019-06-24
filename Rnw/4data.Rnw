@@ -37,7 +37,7 @@ Data & A list of columns -- same length; modes may differ. \\
 frame & Data frames are a device for organizing data.\\[6pt]
 Lists & Lists group together an arbitrary set of objects \\
 & (Lists are recursive; elements of lists are lists.)\\[6pt]
-\txtt{NA}s & Use \txtt{is.na()} to check for \txtt{NA}s.
+\code{NA}s & Use \code{is.na()} to check for \code{NA}s.
 \end{tabular}
 }}
 \vspace*{8pt}
@@ -61,12 +61,12 @@ vectors that are, in order: numeric, numeric, logical, character.} are
 <<vecs, eval=FALSE>>=
 @ %
 
-Use \txtt{mode()} to show the storage mode of an object, thus:
+Use \code{mode()} to show the storage mode of an object, thus:
 <<mode>>=
 @ %
 
-The missing value symbol is \txtt{NA}.  Subsection \ref{ss:NA} will
-discuss issues that arise when one or more vector elements is an \txtt{NA}.
+The missing value symbol is \code{NA}.  Subsection \ref{ss:NA} will
+discuss issues that arise when one or more vector elements is an \code{NA}.
 
 \subsection*{Subsets of Vectors}
 There are four common ways to extract subsets of vectors.
@@ -86,7 +86,7 @@ Negative numbers may be used to omit elements:\sidenote{Mixing of
     first four compare magnitudes, \margtt{==} tests for equality,
     \margtt{!=} tests for inequality, and \margtt{\%in\%} tests
 whether any element matches.}  The elements that are
-  extracted are those for which the logical value is \txtt{TRUE}.
+  extracted are those for which the logical value is \code{TRUE}.
   Thus suppose we want to extract values of x that are greater than
   10.
 <<logical>>=
@@ -96,7 +96,7 @@ whether any element matches.}  The elements that are
 <<named-els>>=
 @ %
 
-4. Use \txtt{subset()}, with the vector as the first argument,
+4. Use \code{subset()}, with the vector as the first argument,
 and a logical statement that identifies the elements to be
 extracted as the second argument. For example:
 <<subset-fun>>=
@@ -112,7 +112,7 @@ Factors are column objects whose elements are integer values 1, 2,
 distinguished from integer vectors by having the class \txtt{factor}
 and a \txtt{levels} attribute.
 
-For example, create a character vector \txtt{fruit}, thus:
+For example, create a character vector \code{fruit}, thus:
 <<fruit>>=
 @ %
 This might equally well be stored as a factor, thus:
@@ -135,7 +135,7 @@ interpreted according to the attributes table:\\[2mm]
 \noindent
 By default, the levels are taken in alphanumeric order.
 
-The function \txtt{factor()}, with the \txtt{levels} argument
+The function \code{factor()}, with the \code{levels} argument
 specified, can be used both to specify the order of levels when the
 factor is created, or to make a later change to the
 order.\sidenote{Where counts are tabulated by factor level, or
@@ -146,7 +146,7 @@ orders levels according to stated glycemic index:
 @ %
 
 Incorrect spelling of the level names generates missing values, for
-the level that was mis-spelled.  Use the \txtt{labels} argument if you
+the level that was mis-spelled.  Use the \code{labels} argument if you
 wish to change the level names, but be careful to ensure that the
 label names are in the correct order.
 \begin{marginfigure}[-36pt]
@@ -165,14 +165,14 @@ in model formulae.
 
 \subsection*{Ordered factors}
 In addition to factors, note the existence of ordered factors, created
-using the function \txtt{ordered()}.  For ordered factors, the order
+using the function \code{ordered()}.  For ordered factors, the order
 of levels implies a relational ordering.  For example:
 <<ordered>>=
 @ %
 
 \subsection*{Subsetting of factors}
 
-Consider the factor \txtt{fruitfac} that was created earlier:
+Consider the factor \code{fruitfac} that was created earlier:
 <<fruitfac2>>=
 @ %
 We can remove elements with levels \txtt{fig} and \txtt{plum} thus:
@@ -180,7 +180,7 @@ We can remove elements with levels \txtt{fig} and \txtt{plum} thus:
 @ %
 The levels \txtt{fig} and \txtt{plum} remain, but with
 the table showing 0 values for these levels.  Use the function
-\txtt{droplevels()} to remove levels that are not present in
+\code{droplevels()} to remove levels that are not present in
 the data:
 \begin{marginfigure}
 Note also:
@@ -203,51 +203,51 @@ or useful.
 
 \subsection{Missing Values, Infinite Values and NaNs}\label{ss:NA}
 
-Any arithmetic or logical operation with \txtt{NA} generates an
+Any arithmetic or logical operation with \code{NA} generates an
 \marginnote{Failure to understand the rules for calculations with
-  \txtt{NA}s can lead to unwelcome surprises.}
-\txtt{NA}. The consequences are more far-reaching than might be
-immediately obvious.  Use \txtt{is.na()} to test for a missing value:
+  \margtt{NA}s can lead to unwelcome surprises.}
+\code{NA}. The consequences are more far-reaching than might be
+immediately obvious.  Use \code{is.na()} to test for a missing value:
 <<isna>>=
 @ %
 
-An expression such as \txtt{c(1, NA, 3, 0, NA) == NA} returns a vector of
-\txtt{NA}s, and cannot be used to test for missing values.
+An expression such as \code{c(1, NA, 3, 0, NA) == NA} returns a vector of
+\code{NA}s, and cannot be used to test for missing values.
 <<eqna>>=
 @ %
 \noindent
 As the value is unknown, it might or might not be equal to 1, or to another
-\txtt{NA}, or to 3, or to 0.
+\code{NA}, or to 3, or to 0.
 
-Note that different functions handle \txtt{NA}s in\marginnote{The
-  modeling function \txtt{lm()} accepts any of the arguments
-  \txtt{na.action=na.omit} (omit), \txtt{na.action=na.exclude} (omit
-  \txtt{NA}s when fitting; replace by \txtt{NA}s
+Note that different functions handle \code{NA}s in\marginnote{The
+  modeling function \margtt{lm()} accepts any of the arguments
+  \margtt{na.action=na.omit} (omit), \margtt{na.action=na.exclude}
+  (omit \margtt{NA}s when fitting; replace by \margtt{NA}s
    when fitted values and residuals are calculated), and
-  \txtt{na.action=na.fail}.}  different ways.  Functions such as
-\txtt{mean()} and \txtt{median()} accept the argument
-\txtt{na.rm=TRUE}, which causes observations that have \txtt{NA}s to
-be ignored.  The \txtt{plot()} function omits \txtt{NA}s, infinities
-and \txtt{NaN}s. For use of \txtt{lowess()} to put a smooth curve
-through the plot, \txtt{NA}s must first be removed.  By default,
-\txtt{table()} ignores \txtt{NA}s.
+  \margtt{na.action=na.fail}.}  different ways.  Functions such as
+\code{mean()} and \code{median()} accept the argument
+\code{na.rm=TRUE}, which causes observations that have \code{NA}s to
+be ignored.  The \code{plot()} function omits \code{NA}s, infinities
+and \code{NaN}s. For use of \code{lowess()} to put a smooth curve
+through the plot, \code{NA}s must first be removed.  By default,
+\code{table()} ignores \code{NA}s.
 
 Problems with missing values are a common reason why calculations
-fail. Infinite values and \txtt{NaN}s are a further potential source
+fail. Infinite values and \code{NaN}s are a further potential source
 of difficulty.
 
-\subsection*{\texttt{Inf} and \texttt{NaN}}
+\subsection*{\code{Inf} and \code{NaN}}
 
-The expression \txtt{1/0} returns \txtt{Inf}.\marginnote{Note that
-\txtt{sqrt(-1+0i)} returns \txtt{0+1i}. R distinguishes between
-the real number \txtt{-1} and the complex number \txtt{-1+0i}.}
-The expression \txtt{log(0)} returns \txtt{-Inf},
-i.e., smaller than any real number. The expressions \txtt{0/0} and
-\txtt{log(-1)} both return \txtt{NaN}.
+The expression \code{1/0} returns \code{Inf}.\marginnote{Note that
+\margtt{sqrt(-1+0i)} returns \margtt{0+1i}. R distinguishes between
+the real number \margtt{-1} and the complex number \margtt{-1+0i}.}
+The expression \code{log(0)} returns \code{-Inf},
+i.e., smaller than any real number. The expressions \code{0/0} and
+\code{log(-1)} both return \code{NaN}.
 
-\subsection*{\txtt{NA}s in subscripts?}
+\subsection*{\code{NA}s in subscripts?}
 
-It is best to ensure that \txtt{NA}s do not appear, when there
+It is best to ensure that \code{NA}s do not appear, when there
 is an assignment, in subscript expressions on either side of the
 expression.
 
@@ -277,7 +277,7 @@ logical.
 Arrays more generally can have an arbitrary number of dimensions.
 Tables have a structure that is identical to that of arrays.
 
-The data frame \txtt{travelbooks} will feature in the subsequent
+The data frame \code{travelbooks} will feature in the subsequent
 discussion.  Look back to Section \ref{sec:input} to see how it can be
 entered.
 
@@ -292,7 +292,7 @@ entered.
 larger numeric objects as matrices rather than data frames. The
 principal components function \margtt{prcomp()} returns scores as a
 matrix, as does the linear discriminant analysis function
-\margtt{lda()} from the {\em MASS} package.
+\margtt{MASS::lda()}.
 
 Functions are available to convert data frames into matrices, and vice
 versa. For example:
@@ -304,7 +304,7 @@ versa. For example:
 In comparing data frames with matrices, note that:
 \begin{itemizz}
 \item Both for data frames and for matrices or two-way tables,
-the function \txtt{dim()} returns number of rows by number of columns,
+the function \code{dim()} returns number of rows by number of columns,
 thus:
 \begin{marginfigure}
 Alternatively, do:
@@ -314,8 +314,8 @@ Alternatively, do:
 <<matrix-dim>>=
 @ %
 \item \marginnote[12pt]{A data frame is a list of columns.
-   The function \txtt{length()} returns the list length.}
-  For a matrix, \txtt{length()} returns the number of elements.
+   The function \code{length()} returns the list length.}
+  For a matrix, \code{length()} returns the number of elements.
 For a data frame it returns the number of columns.
 <<lgth-tbooks>>=
 @ %
@@ -336,48 +336,48 @@ common mode, in this case numeric.  Thus the final element becomes
 1.0 (the code that is stored), rather than \margtt{Guide} which was
 the first level of the factor \margtt{type}.}
 Extraction of a row from a data frame, for example
-  \txtt{travelbooks["Canberra - The Guide", ]}
-  or \txtt{travelbooks[6, ]}, yields a data frame,
+  \code{travelbooks["Canberra - The Guide", ]}
+  or \code{travelbooks[6, ]}, yields a data frame,
   i.e., a special form of list.
-\item \verb!travelbooks$volume! (equivalent to \txtt{travelbooks[,1]}
-or \txtt{travelbooks[,"volume"]})) is a vector.
+\item \verb!travelbooks$volume! (equivalent to \code{travelbooks[,1]}
+or \code{travelbooks[,"volume"]})) is a vector.
 \end{itemizz}
 \item For either a data frame or a matrix, the function
-\txtt{rownames()} can be used to extract row names, and the
-function \txtt{colnames()} to extract column names.  For
-data frames, \txtt{row.names()} is an alternative to
-\txtt{rownames()}, while \txtt{names()} is an alternative to
-\txtt{colnames()}.
+\code{rownames()} can be used to extract row names, and the
+function \code{colnames()} to extract column names.  For
+data frames, \code{row.names()} is an alternative to
+\code{rownames()}, while \code{names()} is an alternative to
+\code{colnames()}.
 \end{itemizz}
 
 Note also a difference in the mechanisms for adding columns.  The
-following adds new columns \txtt{area} (area of page), and
-\txtt{density} (\txtt{weight} to \txtt{volume} ratio) to the data
-frame \txtt{travelbooks}:
+following adds new columns \code{area} (area of page), and
+\code{density} (\code{weight} to \code{volume} ratio) to the data
+frame \code{travelbooks}:
 <<add2df>>=
 @ %
 Columns are added to the data frame as necessary.
 
-For matrices, use \txtt{cbind()}, which can also be used for data
+For matrices, use \code{cbind()}, which can also be used for data
 frames, to bind in new columns.
 \enlargethispage{12pt}
 
 \subsection{Inclusion of character vectors in data frames}
 When data frames are created, whether by use of
 \txtt{read.table()} or another such function to input data from a
-file, or by use of the function \txtt{data.frame()} to
+file, or by use of the function \code{data.frame()} to
 join columns of data together into a data frame, character vectors are
-converted into factors.  Thus, the final column (\txtt{type}) of
-\txtt{travelbooks} became, by default, a factor.\footnote{This assumes
-that the global option \txtt{stringsAsFactors} is \txtt{FALSE}.
-To check, interrogate {\footnotesize \txtt{options()\$stringsAsFactors}.}}
+converted into factors.  Thus, the final column (\code{type}) of
+\code{travelbooks} became, by default, a factor.\footnote{This assumes
+that the global option \code{stringsAsFactors} is \code{FALSE}.
+To check, interrogate {\footnotesize \code{options()\$stringsAsFactors}.}}
 %$
-To prevent such type conversions, specify \txtt{stringsAsFactors=FALSE}
-in the call to \txtt{read.table()} or \txtt{data.frame()}.
+To prevent such type conversions, specify \code{stringsAsFactors=FALSE}
+in the call to \code{read.table()} or \code{data.frame()}.
 
 \subsection{Factor columns in data frame subsets}
 
-The data frame \txtt{ais} ({\em DAAG}) has physical charateristics
+The data frame \code{DAAG::ais} has physical charateristics
 of athletes, divided up thus between ten different sports:
 \begin{fullwidth}
 \begin{minipage}[t]{\linewidth}
@@ -392,7 +392,7 @@ of athletes, divided up thus between ten different sports:
 
 Figure \ref{ss:lat-gph} in Subsection \ref{fig:lattice-ais} limits the
 data to swimmers and rowers. For this, at the same time removing all
-levels except \txtt{Row} and \txtt{Swim} from the factor \txtt{sport},
+levels except \code{Row} and \code{Swim} from the factor \code{sport},
 do:
 \marginnote[17pt]{If redundant levels were left in place, the graph
 would show empty panels for each such level.}
@@ -409,9 +409,9 @@ Contrast the above with:
 \end{fullwidth}
 
 \subsection{Handlng rows that include missing values}
-The function \txtt{na.omit()} omits rows that contain one
+The function \code{na.omit()} omits rows that contain one
 or more missing values. The argument may be a data frame or a
-matrix. The function \txtt{complete.cases()} identifies
+matrix. The function \code{complete.cases()} identifies
 such rows. Thus:
 <<na-rows>>=
 @ %
@@ -436,7 +436,7 @@ removed, thus:
 @ %
 \end{fullwidth}
 
-Note again that the \txtt{\$} notation, used with data frames
+Note again that the \code{\$} notation, used with data frames
   and other list objects to reference the contents of list elements, is
   not relevant to matrices.
 
@@ -483,12 +483,12 @@ model object, either a list or as an S4 object.
 \textbf{Different Kinds of Functions:}\\[4pt]
 \begin{tabular}{ll}
   Generic & The 'class' of the function argument determines the\\
-          & action taken. E.g., \txtt{print()}, \txtt{plot()}, \txtt{summary()}\\[6pt]
-  Modeling  & For example, \txtt{lm()} fits \textit{linear} models.\\
+          & action taken. E.g., \code{print()}, \code{plot()}, \code{summary()}\\[6pt]
+  Modeling  & For example, \code{lm()} fits \textit{linear} models.\\
             & Output may be stored in a model object.\\[6pt]
   Extractor & These extract information from model objects.\\
-  &  Examples include \txtt{summary()}), \txtt{coef()}),\\
-  & \txtt{resid()}), and \txtt{fitted()}\\[6pt]
+  &  Examples include \code{summary()}), \code{coef()}),\\
+  & \code{resid()}), and \code{fitted()}\\[6pt]
   User & Use, e.g., to automate and document computations\\[6pt]
   Anonymous & These are user functions that are defined at the\\
  & point of use, and do not need a name.
@@ -554,21 +554,21 @@ character()       # Create character vector; c.f. also logical()
 \end{verbcode}
 \end{fullwidth}
 
-The function \txtt{mean()}, and a number of other functions, takes the
-argument \txtt{na.rm=TRUE}; i.e., remove \txtt{NA}s, then proceed with
+The function \code{mean()}, and a number of other functions, take the
+argument \code{na.rm=TRUE}; i.e., remove \code{NA}s, then proceed with
 the calculation. For example
 <<mean-na-rm>>=
 @ %
 
-Note that the function \txtt{as()} has, at present, no method for
+Note that the function \code{as()} has, at present, no method for
 coercing a matrix to a data frame. For this, use
-\txtt{as.data.frame()}.
+\code{as.data.frame()}.
 
 \subsection*{Functions in different packages with the same name}
-For example, as well as {\em lattice} function \txtt{dotplot()}
-the graphics package has a defunct function \txtt{dotplot()}.
-To be sure of getting the {\em lattice} function {\em dotplot()},
-refer to it as \txtt{lattice::dotplot}.
+For example, as well as \pkg{lattice} function \code{dotplot()}
+the graphics package has a defunct function \code{dotplot()}.
+To be sure of getting the \pkg{lattice} function \code{dotplot()},
+refer to it as \code{lattice::dotplot()}.
 
 
 \subsection{Functions for data summary and/or manipulation}
@@ -584,26 +584,26 @@ data manipulation, note:
 
 \subsection{Tables of Counts}
 
-Use either \txtt{table()} or \txtt{xtabs()} to make a table of
-counts. Use \txtt{xtabs()} for cross-tabulation, i.e., to determine
+Use either \code{table()} or \code{xtabs()} to make a table of
+counts. Use \code{xtabs()} for cross-tabulation, i.e., to determine
 totals of numeric values for each table category.
 
-\subsection*{The \texttt{table()} function}\label{ss:table}
-For use of \txtt{table()}, specify one vector of values (often a
+\subsection*{The \code{table()} function}\label{ss:table}
+For use of \code{table()}, specify one vector of values (often a
 factor) for each table margin that is required.  For example:
 <<table>>=
 @ %
 
 \subsection*{NAs in tables}
 
-By default, \txtt{table()} ignores NAs. To show information on
-\txtt{NA}s, specify \txtt{exclude=NULL}, thus:
+By default, \code{table()} ignores NAs. To show information on
+\code{NA}s, specify \code{exclude=NULL}, thus:
 <<tab-na>>=
 @ %
 
 
-\subsection*{The \texttt{xtabs()} function}
-This more flexible alternative to \txtt{table()} uses a table
+\subsection*{The \code{xtabs()} function}
+This more flexible alternative to \code{table()} uses a table
 formula to specify the margins of the table:
 <<xtabs>>=
 @ %
@@ -615,7 +615,7 @@ to first convert the table to a data frame and make that the
 starting point for further calculations.}
 A column of frequencies can be specified on the left hand side of the
 table formula. In order to demonstrate this, the three-way table
-\txtt{UCBAdmissions} ({\em datasets} package) will be converted into
+\code{UCBAdmissions} (\pkg{datasets} package) will be converted into
 its data frame equivalent.  Margins in the table become columns in
 the data frame:
 <<UCBdf>>=
@@ -629,7 +629,7 @@ in each department:
 
 \subsection*{Information on data objects}
 
-The function \txtt{str()} gives basic information on the data object that
+The function \code{str()} gives basic information on the data object that
 is given as argument.
 <<str-again>>=
 @ %
@@ -651,12 +651,12 @@ Section \ref{ch:sys} has further details.
 \marginnote[8pt]{Note also that functions can be defined at the point of
   use.  Such functions do not need a name, and are called anonymous
   functions.  Section \ref{ss:table} has an example.}
-The function \txtt{mean()} calculates means, The function \txtt{sd()}
+The function \code{mean()} calculates means, The function \code{sd()}
 calculates standard deviations. Here is a function that calculates
 mean and standard deviation at the same time:
 <<mean-sd>>=
 @ %
-The parameter \txtt{x} is the argument that the user must supply.
+The parameter \code{x} is the argument that the user must supply.
 The body of the function is enclosed between curly braces. The value
 that the function returns is given on its final line. Here the return
 value is a vector that has two named elements.
@@ -671,7 +671,7 @@ species.\footnote{Data are from Lewontin, R. 1974. \textit{The Genetic
 It is useful to give the function argument a default value, so that it can be
 run without user-supplied parameters, in order to see what it does. A
 possible choice is a set of random normal numbers, perhaps generated
-using the \txtt{rnorm()} function.
+using the \code{rnorm()} function.
 \enlargethispage{24pt}
 Here is a revised function definition.\marginnote{Note that a
   different set of random numbers will be returned, giving a different
@@ -681,28 +681,28 @@ line, the curly braces are not needed.
 <<mean-sd2>>=
 @ %
 
-\subsection{The \texttt{apply} family of functions}\label{ss:apply}
+\subsection{The \code{apply} family of functions}\label{ss:apply}
 
 \marginnote[8pt]{For the \margtt{apply} family of functions, specify
   as the \margtt{FUN} argument any function that will not generate an
   error.  Obviously, \margtt{log("Hobart")} is not allowed!}
 \marginnote[6pt]{Note also the function \margtt{tapply()}, which will
   not be discussed here.}
-\fbox{\parbox{\linewidth}{{\bf \txtt{apply()}, \txtt{sapply()} and friends }\\[4pt]
+\fbox{\parbox{\linewidth}{{\bf \code{apply()}, \code{sapply()} and friends }\\[4pt]
 \begin{tabular}{ll}
-\txtt{apply()} & Use \txtt{apply()} to apply a function across rows\\
+\code{apply()} & Use \code{apply()} to apply a function across rows\\
 & or columns of a matrix (or data frame)\\[6pt]
-\txtt{sapply()} & \txtt{sapply()} and \txtt{lapply()} apply functions
+\code{sapply()} & \code{sapply()} and \code{lapply()} apply functions
 in\\
 \& friends &  parallel across columns of a data frame,  or across\\
 & elements of a list, or across elements of a vector.\\
 \end{tabular}
 }}
 
-\paragraph{\txtt{apply()}:}
+\paragraph{\code{apply()}:}
 \marginnote[12pt]{If used with a data
-frames, the data frame is first coerced to \txtt{matrix}.}
-The function \txtt{apply()} is intended for use with matrices or, more
+frames, the data frame is first coerced to \code{matrix}.}
+The function \code{apply()} is intended for use with matrices or, more
 generally, with arrays.
 It has three mandatory arguments, a matrix or data frame, the dimension
 (1 for rows; 2 for columns) or dimensions, and a function that will be
@@ -719,27 +719,27 @@ Code that will input \margtt{molclock1}:
 @ %
 
 The following tabulates admissions, in the three-way table
-\txtt{UCBAdmissions}, according to \txtt{sex}:
+\code{UCBAdmissions}, according to \code{sex}:
 <<apply-UCBAdmit>>=
 @ %
 
-\paragraph{\txtt{sapply()} and \txtt{lapply()}:}
+\paragraph{\code{sapply()} and \code{lapply()}:}
 \marginnote[12pt]{\noindent
   \textbf{Warning:} Use \margtt{apply()} with \margtt{COLUMN=2}, to apply
   a function to all columns of a matrix.  If \margtt{sapply()} or
   \margtt{lapply()} is given a matrix as argument, the function is
   applied to each element (the matrix is treated as a vector).}
-Use \txtt{sapply()} and \txtt{lapply()} to
-apply a function (e.g., \txtt{mean()}, \txtt{range()}, \txtt{median()}) in
+Use \code{sapply()} and \code{lapply()} to
+apply a function (e.g., \code{mean()}, \code{range()}, \code{median()}) in
 parallel to all columns of a data frame. They take as arguments the
 name of the data frame, and the function that is to be applied.
 
-The function \txtt{sapply()} returns the  same
-information as \txtt{lapply()}. But whereas \txtt{lapply()} returns a
-list, \txtt{sapply()} tries if possible to simplify the result to give
+The function \code{sapply()} returns the  same
+information as \code{lapply()}. But whereas \code{lapply()} returns a
+list, \code{sapply()} tries if possible to simplify the result to give
 a vector or matrix or array.
 
-Here is an example of the use of \txtt{sapply()}:
+Here is an example of the use of \code{sapply()}:
 <<sapply>>=
 @ %
 
@@ -748,17 +748,17 @@ Use of \margtt{na.rm=TRUE}:
 <<sapply-NA>>=
 @
 \end{marginfigure}
-A third argument \txtt{na.rm=TRUE}
-can be supplied to the function \txtt{sapply}.  This argument is then
+A third argument \code{na.rm=TRUE}
+can be supplied to the function \code{sapply}.  This argument is then
 automatically passed to the function that is given in the second
 argument position.
 
-More generally, the first argument to \txtt{sapply()} or
-\txtt{lapply()} can be any vector.
+More generally, the first argument to \code{sapply()} or
+\code{lapply()} can be any vector.
 
-\subsection*{\txtt{sapply()} -- Application of a user function}
-We will demonstrate the use of \txtt{sapply()} to apply a function
-that counts the number of \txtt{NA}s to each column of a data frame.
+\subsection*{\code{sapply()} -- Application of a user function}
+We will demonstrate the use of \code{sapply()} to apply a function
+that counts the number of \code{NA}s to each column of a data frame.
 A suitable function can be defined thus:
 <<countNA>>=
 @ %
@@ -766,7 +766,7 @@ A suitable function can be defined thus:
 
 An alternative is to define a
 function\sidenote{This is called an {\em anonymous} function.}
-in place, without a name, that counts number of \txtt{NA}s. The
+in place, without a name, that counts number of \code{NA}s. The
 alternatives are:\\[6pt]
 \noindent
 \begin{fullwidth}
@@ -787,29 +787,29 @@ alternatives are:\\[6pt]
 
 The functions \marginnote{For \margtt{paste()}, the
   default is to use a space as a separator; \margtt{paste0()} omits
-  the space.} \txtt{paste()} and
-  \txtt{paste0()} join text strings. The function \txtt{sprintf()},
+  the space.} \code{paste()} and
+  \code{paste0()} join text strings. The function \code{sprintf()},
 primarily designed for formatting output for printing,
-usefully extends the abilities of \txtt{paste()} and
-  \txtt{paste0()}.
+usefully extends the abilities of \code{paste()} and
+  \code{paste0()}.
 
-Other simple string operations include \txtt{substring()} and
-\txtt{nchar()} (number of characters).  Both of these,
-and \txtt{strsplit()} noted in the next paragraph, can be
+Other simple string operations include \code{substring()} and
+\code{nchar()} (number of characters).  Both of these,
+and \code{strsplit()} noted in the next paragraph, can be
 applied to character vectors.
 
 \marginnote[12pt]{Other functions that accept an argument
   \margtt{fixed} include the search functions \margtt{grep()} and
   \margtt{regexpr()}, and the search and replace functions
   \margtt{sub()} and \margtt{gsub()}.}
-The function \txtt{strsplit()}, used to split strings, has an argument
-\txtt{fixed} that by default equals \txtt{FALSE}.  The effect is that
-the argument \txtt{split}, which specifies the character(s) on which
+The function \code{strsplit()}, used to split strings, has an argument
+\code{fixed} that by default equals \code{FALSE}.  The effect is that
+the argument \code{split}, which specifies the character(s) on which
 the string will split, is assumed to be a regular expression.  See
-\txtt{help(regexp)} for details. For use of a \txtt{split} character
-argument, call \txtt{strsplit()} with \txtt{fixed=FALSE}.
+\code{help(regexp)} for details. For use of a \code{split} character
+argument, call \code{strsplit()} with \code{fixed=FALSE}.
 
-Bird species in the dataset \txtt{cuckoos} ({\em DAAG}) are:
+Bird species in the dataset \code{DAAG::cuckoos} are:
 <<cuckoos-specs>>=
 @ %
 Now replace the periods in the names by spaces:
@@ -824,12 +824,12 @@ In regular expressions enter a period (\margtt{"."}) as
 <<spec-sub>>=
 @ %
 
-\marginnote[12pt]{See \txtt{help(regex)} for
+\marginnote[12pt]{See \code{help(regex)} for
 information on the use of regular expressions.}
-For string matching, use \txtt{match()}, \txtt{pmatch()} and
-\txtt{charmatch()}.  For matching with regular expressions, note
-\txtt{grep()} and \txtt{regexpr()}.  For string substitution, use
-\txtt{sub()} and \txtt{gsub()}.
+For string matching, use \code{match()}, \code{pmatch()} and
+\code{charmatch()}.  For matching with regular expressions, note
+\code{grep()} and \code{regexpr()}.  For string substitution, use
+\code{sub()} and \code{gsub()}.
 
 Web pages with information on string
 manipulation in R include:\\[3pt]
@@ -845,8 +845,8 @@ manipulation in R include:\\[3pt]
 The first is an overview, with the second more detailed.
 
 \marginnote[11pt]{ For strings representing biological sequences,
-install the well-documented Bioconductor package {\em Biostrings}.}
-The package {\em stringr}, due to Hadley Wickham, provides what may
+install the well-documented Bioconductor package \pkg{Biostrings}.}
+The package \pkg{stringr}, due to Hadley Wickham, provides what may
 be a more consistent set of functions for string handling than are
 available in base R.
 
@@ -854,15 +854,15 @@ available in base R.
 
 \marginnote[8pt]{Good starting points for learning about dates in R are the
   help pages \margtt{help(Dates)}, \margtt{help(as.Date)} and
-  \txtt{help(format.Date)}.}
+  \margtt{help(format.Date)}.}
 
-Use \txtt{as.Date()} to convert character strings into dates.  The
+Use \code{as.Date()} to convert character strings into dates.  The
 default format has year, then month, then day of month, thus:
 \fvset{xleftmargin=0pt}
 <<elec-dates>>=
 @ %
 
-Use \txtt{format()} to set or change the way that a date is
+Use \code{format()} to set or change the way that a date is
 formatted.  The following is a selection of the available symbols:
 \vspace*{6pt}
 
@@ -875,17 +875,17 @@ formatted.  The following is a selection of the available symbols:
 \end{tabular}
 \vspace*{6pt}
 
-The default format is \txtt{"\%Y-\%m-\%d"}.  The character
-\txtt{/} can be used in place of \txtt{-}.  Other separators
+The default format is \code{"\%Y-\%m-\%d"}.  The character
+\code{/} can be used in place of \code{-}.  Other separators
 (e.g., a space) must be explicitly specified, using the
-\txtt{format} argument, as in the examples below.
+\code{format} argument, as in the examples below.
 
 Date objects can be subtracted:\marginnote{Subtraction yields a time
   difference object. If necessary, use \margtt{unclass()} to convert
   this to a numeric vector.}
 <<date-sub>>=
 @ %
-There is a \txtt{diff()} method for date objects:
+There is a \code{diff()} method for date objects:
 \begin{marginfigure}[12pt]
 Use \margtt{unclass()} to turn a time difference object into an
 integer vector:
@@ -896,8 +896,8 @@ integer vector:
 @ %
 
 \paragraph{Formatting dates for printing:}
-Use \txtt{format()} to fine tune the formatting
-\marginnote{See \txtt{help(format.Date)}.}
+Use \code{format()} to fine tune the formatting
+\marginnote{See \margtt{help(format.Date)}.}
 of dates for printing.
 \fvset{xleftmargin=0pt}
 <<format-Date>>=
@@ -919,17 +919,17 @@ Figure \ref{fig:simplatparam} provides an example:
 
 \paragraph{Conversion of dates to and from integer number of days:}
 By default, dates are stored in integer numbers of days.  Use
-\txtt{julian()} to convert a date into its integer value, by default
-using January 1 1970 as origin.  Use the argument \txtt{option}
+\code{julian()} to convert a date into its integer value, by default
+using January 1 1970 as origin.  Use the argument \code{option}
 to specify some different origin:
 <<julian>>=
 @ %
 
-Note also \txtt{weekdays()}, \txtt{months()}, and \txtt{quarters()}:
+Note also \code{weekdays()}, \code{months()}, and \code{quarters()}:
 <<wkdays>>=
 @ %
 
-\paragraph{Regular sequences of dates:}  Use the function \txtt{help(seq.Date)}.
+\paragraph{Regular sequences of dates:}  Use the function \code{seq.Date())}.
 
 Given a vector of `event' times, the following function can be used to
 count the number of events in each of a regular sequence of time
@@ -958,8 +958,8 @@ The following counts the number of events by year:
 Note
 \marginnote{The CRAN Task View for Time Series Analysis has notes on
   classes and methods for times and dates, and on
-  packages that give useful functionality} also \txtt{date()}
-which returns the current date and time, and \txtt{Sys.Date()} which
+  packages that give useful functionality} also \code{date()}
+which returns the current date and time, and \code{Sys.Date()} which
 returns the date.  For information on functions for working with
 times, see \margtt{help(ISOdatetime)}.
 
@@ -968,26 +968,26 @@ times, see \margtt{help(ISOdatetime)}.
 A common demand is to obtain a tabular summary of information in each
 of several columns of a data frame, broken down according to the
 levels of one or more grouping variables.  Consider the data frame
-\txtt{nswdemo} ({\em DAAG}). Treatment groups are control
-(\txtt{trt==0}) and treatment (\txtt{trt==1}) group, with variables
-\txtt{re74} (1974 income), \txtt{re75} (1975) and \txtt{re78} (1978),
+\code{DAAG::nswdemo}. Treatment groups are control
+(\code{trt==0}) and treatment (\code{trt==1}) group, with variables
+\code{re74} (1974 income), \code{re75} (1975) and \code{re78} (1978),
 
 The following calculates the number of zeros for each of the three
 variables, and for rach of the two treatment categories:
 \marginnote[12pt]{The data frame is split according to the grouping elements
-specified in the \txtt{by} argument.  The function is then
+specified in the \code{by} argument.  The function is then
 applied to each of the columns in each of the splits.}
 
 <<countzeros>>=
 @ %
 
-Now find the proportion, excluding \txtt{NA}s, that are zero.
+Now find the proportion, excluding \code{NA}s, that are zero.
 The result will be printed out with improved labeling of the rows:
 <<countprop>>=
 @ %
 
 The calculation can alternatively be handled by two calls to the
-function \txtt{sapply()}, one nested within the other, thus:
+function \code{sapply()}, one nested within the other, thus:
 \marginnote[12pt]{The argument \margtt{z} in the `in place' function
   is a data frame.  The argument \margtt{x} to \margtt{countprop()} is
   a column of a data frame.}
@@ -1000,7 +1000,7 @@ function \txtt{sapply()}, one nested within the other, thus:
 \fbox{\parbox{\linewidth}{{\bf Key language constructs:}\\[4pt]
 \begin{tabular}{ll}
 Classes & Classes make generic functions (methods) possible.\\[6pt]
-Methods & Examples are \txtt{print()}, \txtt{plot()}, \txtt{summary()},
+Methods & Examples are \code{print()}, \code{plot()}, \code{summary()},
 etc.\\[4pt]
 \end{tabular}
 }
@@ -1013,25 +1013,25 @@ implementation, and the newer S4 implementation that is implemented in
 the \textit{methods} package. Here, consider the simpler S3
 implementation.
 
-All objects have a class. Use the function \txtt{class()} to get this
+All objects have a class. Use the function \code{class()} to get this
 information.
 
 For many common tasks there are generic functions --
-\txtt{print()}, \txtt{summary()}, \txtt{plot()}, etc.\ -- whose action
+\code{print()}, \code{summary()}, \code{plot()}, etc.\ -- whose action
 varies according to the class of object to which they are applied.
-Thus for a data frame, \txtt{print()} calls the method
-\txtt{print.data.frame()}. 
+Thus for a data frame, \code{print()} calls the method
+\code{print.data.frame()}. 
 \marginnote[-24pt]{For a factor, \margtt{print()} it calls
-  \txtt{print.factor()}, and so on. Ordered factors `inherit'
+  \code{print.factor()}, and so on. Ordered factors `inherit'
   the print method for factors.  For objects with no explicit print
   method, \margtt{print.default()} is called.}
 
 
 To get details of the S3 methods that are available for a generic
-function such as \txtt{plot()}, type, e.g.,
-\txtt{methods(plot)}. To get a list of the S3 methods that are available for
+function such as \code{plot()}, type, e.g.,
+\code{methods(plot)}. To get a list of the S3 methods that are available for
   objects of class \txtt{lm}, type, e.g.,
-\txtt{methods(class="lm")}
+\code{methods(class="lm")}
 
 \subsection{$^*$S4 methods}\label{ss:S4}
 \marginnote{Packages that use S4 classes and methods include
@@ -1042,25 +1042,25 @@ and are more conducive to good software engineering practice.
 
 \subsection*{Example -- a spatial class}\label{ss:bubble}
 
-\marginnote{Classes defined in the {\em sp} package are widely
+\marginnote{Classes defined in the \pkg{sp} package are widely
 used across R spatial data analysis packages.}
-The {\em sp} package defines, among other possibilities, spatial data
+The \pkg{sp} package defines, among other possibilities, spatial data
 classes \txtt{SpatialPointsDataFrame} and \txtt{SpatialGridDataFrame}.
 
-The {\em sp} function \txtt{bubble()}, for plotting spatial measurement data,
+The \pkg{sp} function \code{bubble()}, for plotting spatial measurement data,
 accepts a spatial data object as argument.\sidenote{Each point (location)
 is shown as a bubble, with area proportional to a value for that point.}
-The function \txtt{coordinates()} can be used, given spatial coordinates,
+The function \code{coordinates()} can be used, given spatial coordinates,
 to turn a data frame or matrix into an object of one of the requisite
 classes.
 
-Data from the data frame \txtt{meuse}\sidenote{Data are from the
+Data from the data frame \code{meuse}\sidenote{Data are from the
 floodplain of the river Meuse, in the Netherlands.  It includes
 concentrations of various metals (\margtt{cadmium}, \margtt{copper},
 \margtt{lead}, \margtt{zinc}), with Netherlands topographical map
 coordinates.}, from the \textit{sp} package, will be used for an
 example.  A first step is to create an object of one of the classes
-that the function \txtt{bubble()} accepts as argument, thus:
+that the function \code{bubble()} accepts as argument, thus:
 <<spatPointsDF>>=
 @ %
 \noindent
@@ -1069,29 +1069,29 @@ This has created an object of the class \txtt{SpatialPointsDataFrame}.
 \vspace*{-9pt}
 <<bubble, echo=FALSE, w=4, h=4, out.width="\\textwidth">>=
 @ %
-\caption{Bubble plot for \txtt{zinc} concentrations.  Areas of
+\caption{Bubble plot for \code{zinc} concentrations.  Areas of
   bubbles are proportional to concentrations.\label{fig:Znbubble}}
 \end{marginfigure}
 Code that creates the plot, shown in Figure \ref{fig:Znbubble}, is:
 <<bubble, eval=FALSE>>=
 @ %
 \noindent
-The function \txtt{bubble()} uses the abilities of the \txtt{lattice}
+The function \code{bubble()} uses the abilities of the \code{lattice}
 package.  It returns a \txtt{trellis} graphics object.
 
-The coordinates can be extracted using \txtt{coordinates(meuse)}.
+The coordinates can be extracted using \code{coordinates(meuse)}.
 Remaining columns from the original data frame are available from the
-data frame \txtt{meuse@data}.
+data frame \code{meuse@data}.
 
-Use \txtt{slotNames()} to examine the structure of the object:
+Use \code{slotNames()} to examine the structure of the object:
 <<slotNames>>=
 @ %
 \marginnote[12pt]{Note that \margtt{meuse@data} is shorthand for
-  \margtt{slot(meuse, "data")}.}  Typing \txtt{names(meuse)} returns
+  \margtt{slot(meuse, "data")}.}  Typing \code{names(meuse)} returns
 the column names for the \txtt{data} slot.  The effect is the
-same as that of typing \txtt{names(meuse@data)}.  To get a list of the
+same as that of typing \code{names(meuse@data)}.  To get a list of the
 S4 methods that are available for a generic function, use
-\txtt{showMethods()}. Section \ref{sec:s4} has further details.
+\code{showMethods()}. Section \ref{sec:s4} has further details.
 
 \section{Common Sources of Surprise or Difficulty}\label{sec:difficult}
 \begin{itemize}
@@ -1102,8 +1102,8 @@ become by default factors.
 values given by the factor levels. Watch however for contexts where
 the integer codes are used instead.
 
-\item[] Use \txtt{is.na()} to check for missing values.  Do not try
-  to test for equality with \txtt{NA}.  Refer back to Section
+\item[] Use \code{is.na()} to check for missing values.  Do not try
+  to test for equality with \code{NA}.  Refer back to Section
   \ref{ss:NA}.
 
 \item[] If there is a good alternative, avoid the attaching of data
@@ -1112,11 +1112,11 @@ the integer codes are used instead.
     local copy remains in the workspace when the data frame is
     detached.} If you do use this mechanism, be aware of the traps.
 
-\item[] The syntax \txtt{elasticband[,2]}, extracts the second
-  column from the data frame \txtt{elasticband}, yielding a numeric
-  vector.  Observe however that \txtt{elasticband[2, ]} yields a
+\item[] The syntax \code{elasticband[,2]}, extracts the second
+  column from the data frame \code{elasticband}, yielding a numeric
+  vector.  Observe however that \code{elasticband[2, ]} yields a
   data frame, rather than the numeric vector that the user may
-  require.  Use the function \txtt{unlist()} to extract the vector
+  require.  Use the function \code{unlist()} to extract the vector
 of numeric values.
 \end{itemize}
 
@@ -1129,11 +1129,11 @@ of numeric values.
   of many of R's modeling functions. Ordered factors are appropriate
 for use with ordered categorical data.
 
-\item[] Use \txtt{table()} for tables of counts, and \txtt{xtabs()}
+\item[] Use \code{table()} for tables of counts, and \code{xtabs()}
 for tables of counts or totals.
 
-\item[] R allows the use of infinite Values (\txtt{Inf} or
-  \txtt{-Inf}) and \txtt{NaN}s (not a number) in calculations.
+\item[] R allows the use of infinite Values (\code{Inf} or
+  \code{-Inf}) and \code{NaN}s (not a number) in calculations.
   Introduce such quantities into your calculations only if you
   understand the implications.
 
@@ -1146,8 +1146,8 @@ for tables of counts or totals.
 Matrices are in some (not all) contexts handled similarly to data
   frames whose elements are all of one type (typically all numeric).
 
-\item[] Lists are ``non-atomic'' vectors. Use the function
-  \txtt{c()} (concatenate) to join lists, just as for ``atomic''
+\item[] Lists are `non-atomic' vectors. Use the function
+  \code{c()} (concatenate) to join lists, just as for `atomic'
   vectors.
 
 \item[] Modeling functions
@@ -1168,13 +1168,13 @@ functions can then extract commonly required forms of output.
 
 \item  Find an R function that will sort a vector. Give an example.
 
-\item  Modify the function \txtt{mean.and.sd()} so that it outputs,
+\item  Modify the function \code{mean.and.sd()} so that it outputs,
 in addition to mean and standard deviation, the number of
 vector elements.
 
 \item $^*$What is the mode of: (i) a factor; (ii) a dataframe?;
 (iii) a list that is not necessarily a dataframe?
-Apply the function \txtt{mode()} to objects of each
+Apply the function \code{mode()} to objects of each
 of these classes.  Explain what you find.
 
 \item The attempt to assign values to an expression whose
@@ -1211,19 +1211,19 @@ rm(gender)                  # Remove gender
 @%
 Explain the numbers that appear.
 
-\item In the data set \texttt{nswpsdi1} (\texttt{DAAGxtras}), do
-the following for each of the two levels of \texttt{trt}:
+\item In the data set \code{DAAG::nswpsdi1}, do
+the following for each of the two levels of \code{trt}:
 \begin{enumerate}
-  \item Determine the numbers for each of the levels of \texttt{black};
-  \item Determine the numbers for each of the levels of \texttt{hispanic};
-  item Determine the numbers for each of the levels of \texttt{marr} (married).
+  \item Determine the numbers for each of the levels of \code{black};
+  \item Determine the numbers for each of the levels of \code{hispanic};
+  item Determine the numbers for each of the levels of \code{marr} (married).
 \end{enumerate}
 
-\item Sort the rows in the data frame \texttt{Acmena} in order
-of increasing values of \texttt{dbh}.\newline
-[Hint: Use the function \texttt{order()}, applied to \texttt{age} to
+\item Sort the rows in the data frame \code{Acmena} in order
+of increasing values of \code{dbh}.\newline
+[Hint: Use the function \code{order()}, applied to \code{age} to
 determine the order of row numbers required to sort rows in
-increasing order of age.  Reorder rows of \texttt{Acmena} to appear
+increasing order of age.  Reorder rows of \code{Acmena} to appear
 in this order.]
 
 <<subset, results='hide'>>=
@@ -1232,20 +1232,20 @@ ord <- order(Acmena$dbh)
 acm <- Acmena[ord, ]
 @  %
 
-Sort the row names of \texttt{possumsites} (\textit{DAAG}) into
-alphanumeric order.  Reorder the rows of \texttt{possumsites} in order
+Sort the row names of \code{DAAG::possumsites} into
+alphanumeric order.  Reorder the rows of \code{possumsites} in order
 of the row names.
 
 \item \begin{enumerate}
 \item Create a \texttt{for} loop that, given a numeric vector,
   prints out one number per line, with its square and cube alongside.
-\item Look up \texttt{help(while)}.  Show how to use a \texttt{while}
+\item Look up \code{help(while)}.  Show how to use a \texttt{while}
   loop to achieve the same result.
 \item Show how to achieve the same result without the use of an explicit
 loop.
 \end{enumerate}
-\item Here are examples that illustrate the use of \txtt{paste()}
-and \txtt{paste0()}:
+\item Here are examples that illustrate the use of \code{paste()}
+and \code{paste0()}:
 <<paste, results='hide'>>=
 paste("Leo", "the", "lion")
 paste("a", "b")
@@ -1254,8 +1254,8 @@ paste("a", "b", sep="")
 paste(1:5)
 paste(1:5, collapse="")
 @ %
-What are the respective effects of the parameters \texttt{sep} and
-\texttt{collapse}?
+What are the respective effects of the parameters \code{sep} and
+\code{collapse}?
 \item The following function calculates the mean and standard deviation of a
 numeric vector.
 <<meanANDsd, results='hide'>>=
@@ -1265,7 +1265,7 @@ meanANDsd <- function(x){
     c(mean=av, sd = sdev) # The function returns this vector
 }
 @ %
-Modify the function so that: (a) the default is to use \texttt{rnorm()} to
+Modify the function so that: (a) the default is to use \code{rnorm()} to
 generate 20 random normal numbers, and return the standard deviation;
 (b) if there are missing values, the mean and standard deviation are
 calculated for the remaining values.
@@ -1276,25 +1276,25 @@ class("a")
 class(cabbages$HeadWt)     # cabbages is in the datasets package
 class(cabbages$Cult)
 @ %
-Now do \texttt{sapply(cabbages, class)}, and note which columns hold
+Now do \code{sapply(cabbages, class)}, and note which columns hold
 numerical data.  Extract those columns into a separate data frame,
-perhaps named \texttt{numtinting}.\newline
-[Hint: \texttt{cabbages[, c(2,3)]} is not the correct answer, but it is,
+perhaps named \code{numtinting}.\newline
+[Hint: \code{cabbages[, c(2,3)]} is not the correct answer, but it is,
 after a manner of speaking, close!]
 \item Functions that may be used to get information about data
-  frames include \texttt{str()}, \texttt{dim()}, \texttt{row.names()}
-and \texttt{names()}. Try each of these functions with the data
-  frames \texttt{allbacks}, \texttt{ant111b} and \texttt{tinting}
+  frames include \code{str()}, \code{dim()}, \code{row.names()}
+and \code{names()}. Try each of these functions with the data
+  frames \code{allbacks}, \code{ant111b} and \code{tinting}
 (all in \textit{DAAG}).
 
 For getting information about each column of a data frame, use
-\texttt{sapply()}.  For example, the following applies the function
-\texttt{class()} to each column of the data frame \texttt{ant111b}.
+\code{sapply()}.  For example, the following applies the function
+\code{class()} to each column of the data frame \code{ant111b}.
 <<sapply-class, eval=FALSE>>=
 library(DAAG)
 sapply(ant111b, class)
 @ %
-For columns in the data frame \texttt{tinting} that are factors, use
-\texttt{table()} to tabulate the number of values for each level.
+For columns in the data frame \code{tinting} that are factors, use
+\code{table()} to tabulate the number of values for each level.
 \end{enumerate}
 %

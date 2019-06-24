@@ -15,16 +15,16 @@
 \begin{tabular}{ll}
   Object & Objects can be data objects, function objects,\\
          & formula objects, expression objects, \ldots\\
- &  Use \txtt{ls()} to list contents of current workspace.\\[6pt]
-Workspace & User's ``database'', where the user can make\\
+ &  Use \code{ls()} to list contents of current workspace.\\[6pt]
+Workspace & User's `database', where the user can make\\
 & additions or changes or deletions.\\[6pt]
  Working  & Default directory for reading or writing files.\\
 directory & Use a new working directories for a new project.\\[6pt]
  Image files & Use to store R objects, e.g., workspace contents.\\
   & (The expected file extension is \textbf{.RData} or \textbf{.rda})\\[6pt]
-Search list & \txtt{search()} lists `databases' that R will
+Search list & \code{search()} lists `databases' that R will
 search.\\
- & \txtt{library()} adds packages to the search list\\
+ & \code{library()} adds packages to the search list\\
 \end{tabular}
 }}
 \marginnote[-69pt]{Use the relevant menu. or enter \margtt{save.image()}
@@ -45,20 +45,20 @@ It holds objects that the user has created or input, or that were
 there at the start of the session and not later removed.
 
 The workspace changes as objects are added or deleted or modified.
-Upon quitting from R (type \txtt{q()}, or use the relevant menu item),
+Upon quitting from R (type \code{q()}, or use the relevant menu item),
 users are asked whether they wish to save the current workspace.
-\marginnote{The file \txtt{.RData} has the name {\em image} file.
+\marginnote{The file \textbf{.RData} has the name {\em image} file.
 From it the workspace can, as and when required, be reconstructed.}
-If saved, it is stored in the file {\bf .RData}, in the current
+If saved, it is stored in the file \textbf{.RData}, in the current
 working directory.  When an R session is next started in that
 working directory, the off-the-shelf action is to look for a file
-named {\bf .RData}, and if found to reload it.
+named \textbf{.RData}, and if found to reload it.
 
 \subsection*{Setting the Working Directory}
 When a session is started by clicking on a Windows icon, the icon's
 Properties specify the \underline{Start In} directory.\footnote{When a
   Unix or Linux command starts a session, the default is to use the
-  current directory.} Type \txtt{getwd()} to identify the current
+  current directory.} Type \code{getwd()} to identify the current
 working directory.
 
 It is good practice to use a separate working directory, and
@@ -87,12 +87,12 @@ started, to get to the point where the previous session left off.
 
 \subsection{Saving and retrieving R objects}\label{ss:saveobjs}
 
-Use \txtt{save()} to save one or more named objects\marginnote{The command \txtt{save.image()}) saves everything in the workspace, by
+Use \code{save()} to save one or more named objects\marginnote{The command \margtt{save.image()}) saves everything in the workspace, by
 default into a file named \textbf{.RData} in the working directory.
 Or, from a GUI interface, click on the relevant menu item.}
-  into an image file.  Use \txtt{load()} to reload the image
+  into an image file.  Use \code{load()} to reload the image
 file contents back into the workspace.  The following demonstrate the
-explicit use of \txtt{save()} and \txtt{load()} commands:
+explicit use of \code{save()} and \code{load()} commands:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -121,11 +121,11 @@ mnemonic name.  For example:
 \end{kframe}
 \end{knitrout}
 \marginnote[-24pt]{Before saving the workspace, consider use of
-\txtt{rm()} to remove objects that are no longer required.}
+\code{rm()} to remove objects that are no longer required.}
 
 Two further possibilities are:
 \begin{itemizz}
-\item[-] Use \txtt{dump()} to save one or more objects in a text
+\item[-] Use \code{dump()} to save one or more objects in a text
 format. For example:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -139,7 +139,7 @@ format. For example:
 \end{kframe}
 \end{knitrout}
 \vspace*{-8pt}
-\item[-] Use \txtt{write.table()} to write a data frame to a text file.
+\item[-] Use \code{write.table()} to write a data frame to a text file.
 \end{itemizz}
 
 
@@ -148,7 +148,7 @@ format. For example:
   for preference a local mirror.  In Australia {\scriptsize
     \url{http://cran.csiro.au}} is a good choice.  The mirror can be
   set from the Windows or Mac GUI. Alternatively (on any system), type
-  \txtt{chooseCRANmirror()} and choose from the list that pops up.}
+  \code{chooseCRANmirror()} and choose from the list that pops up.}
 \noindent \fbox{\parbox{\textwidth}{
 \vspace*{-3pt}
 
@@ -157,9 +157,9 @@ format. For example:
   & functions and/or data and/or other objects.\\[6pt]
 Installation & R Binaries include 'recommended' packages.\\
 of packages & Install other packages, as required,\\[6pt]
-\txtt{library()} & Use to attach a package, e.g., \txtt{library(DAAG)} \\
+\code{library()} & Use to attach a package, e.g., \code{library(DAAG)} \\
  & Once attached, a package is added to the list of \\
- & ``databases'' that R searches for objects.
+ & `databases' that R searches for objects.
 \end{tabular}
 }
 }
@@ -169,7 +169,7 @@ of packages & Install other packages, as required,\\[6pt]
 An R installation is structured as a library of packages.
 \begin{itemizz}
 \item All installations should have the base packages (one of them is
-  called \textit{base}).  These provide the infrastructure for other
+  called \pkg{base}).  These provide the infrastructure for other
   packages.
 \item Binaries that are available from CRAN sites include, also, all
 the recommended packages.
@@ -191,11 +191,11 @@ Use \margtt{sessionInfo()} to get more detailed information.
 \end{marginfigure}
 A number of packages are by default attached
 at the start of a session.  To attach other packages, use
-\txtt{library()} as required.
+\code{library()} as required.
 
 \subsection{Installation of R packages}\label{ss:installpack}
 Section \ref{sec:pkgs} described the installation of packages from the
-internet. Note also the use of \txtt{update.packages()} or its
+internet. Note also the use of \code{update.packages()} or its
 equivalent from the GUI menu.  This identifies packages for which
 updates are available, offering the user the option to proceed with
 the update.
@@ -203,13 +203,13 @@ the update.
 \marginnote[12pt]{Arguments are a vector of package names and a destination
   directory \margtt{destdir} where the latest file versions will be
   saved as {\bf .zip} or (MacOS X) {\bf.tar.gz} files.}
-The function \txtt{download.packages()} allows the downloading of
+The function \code{download.packages()} allows the downloading of
 packages for later installation.  The menu, or
 \margtt{install.packages()}, can then be used to install the packages
 from the local directory.  For command line installation of packages that
-are in a local directory, call \txtt{install.packages()} with
-\txtt{pkgs} giving the files (with path, if necessary), and with the
-argument \txtt{repos=NULL}.
+are in a local directory, call \code{install.packages()} with
+\code{pkgs} giving the files (with path, if necessary), and with the
+argument \code{repos=NULL}.
 
 \marginnote[12pt]{On Unix and Linux systems, gzipped tar files
   can be installed using the shell command:\\[3pt]
@@ -230,7 +230,7 @@ can be installed thus
 On the R command line, be sure to replace the usual Windows backslashes
 by forward slashes.
 
-Use \txtt{.path.package()} to get the path of a currently attached package
+Use \code{.path.package()} to get the path of a currently attached package
 (by default for all attached packages).
 
 \subsection{The search path: library() and attach()}\label{ss:moreattach}
@@ -239,11 +239,11 @@ that determines, unless otherwise specified, where and in what order
 to look for objects.  \marginnote{Database 1, where R looks first, is
   the user workspace, called \margtt{".GlobalEnv"}.}  The search list
 includes the workspace, attached packages, and a so-called
-\txtt{Autoloads} database. It may include other items also.
+\code{Autoloads} database. It may include other items also.
 
 To get a snapshot of the search path,\marginnote{Packages other than
   {\em MASS} were attached at startup.} here taken after starting up
-and entering \txtt{library(MASS)}, type:\marginnote[24pt]{If the
+and entering \code{library(MASS)}, type:\marginnote[24pt]{If the
   process runs from RStudio, \margtt{"tools:rstudio"} will appear in
   place of \margtt{"tools:RGUI"}.}
 \begin{Schunk}
@@ -270,26 +270,26 @@ that are additional to base packages, type:
 \end{kframe}
 \end{knitrout}
 
-\subsection*{The '\txtt{::}' notation}
-Use notation such as \txtt{base::print()} to specify the package
+\subsection*{The '\code{::}' notation}
+Use notation such as \code{base::print()} to specify the package
 where a function or other object is to be found.  This avoids any
 risk of ambiguity when two or more objects with the same name can
 be found in the search path.
 
-The notation \txtt{latticeExtra::layer()} 
+The notation \code{latticeExtra::layer()} 
 makes it clear (as in Subsection \ref{ss:layer}) that the function
-\txtt{layer()} from the {\em latticeExtra} package is required, 
-and not the function \txtt{layer()} in the {\em ggplot2} package.
+\code{layer()} from the {\em latticeExtra} package is required, 
+and not the function \code{layer()} in the {\em ggplot2} package.
 \marginnote{It is necessary that the {\em latticeExtra} package
 has been installed!}
-Prior use of \txtt{library(latticeExtra)} or its equivalent is
+Prior use of \code{library(latticeExtra)} or its equivalent is
 unnecessary.
 
 \subsection*{Attachment of image files}
 \marginnote{Objects that are attached, whether workspaces or
-packages (using \txtt{library()}) or other entities, are added
+packages (using \code{library()}) or other entities, are added
 to the search list.}
-The following adds the image file \txtt{books.RData} to the search list:
+The following adds the image file \textbf{books.RData} to the search list:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -300,13 +300,13 @@ The following adds the image file \txtt{books.RData} to the search list:
 \noindent
 The session then has access to objects in the file
 \textbf{books.RData}.\marginnote{The file becomes a further
-  ``database'' on the search list, separate from the workspace.}
+  `database' on the search list, separate from the workspace.}
   Note that if an object from the image file is modified,
 the modified copy becomes part of the workspace.
 
-In order to detach \txtt{books.RData}, proceed
+In order to detach \textbf{books.RData}, proceed
 thus:\marginnote{Alternatively, supply the numeric position of
-  \txtt{books.RData} on the search list (if in position 2, then 2) as
+  \code{books.RData} on the search list (if in position 2, then 2) as
   an argument to \margtt{detach()}.}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -322,7 +322,7 @@ thus:\marginnote{Alternatively, supply the numeric position of
   forward slash or double backslashes, where Windows would show a
   single backslash.}
 
-Type \txtt{R.home()} to see where the R system has stored its files.
+Type \code{R.home()} to see where the R system has stored its files.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -334,11 +334,11 @@ Type \txtt{R.home()} to see where the R system has stored its files.
 \end{kframe}
 \end{knitrout}
 Notice that the path appears in abbreviated form.  Type
-\txtt{normalizePath(R.home())} to get the more intelligible result\\
-\txtt{[1] "C:\textbackslash\textbackslash Program
+\code{normalizePath(R.home())} to get the more intelligible result\\
+\code{[1] "C:\textbackslash\textbackslash Program
   Files\textbackslash\textbackslash R\textbackslash\textbackslash R-2.15.2"}
 
-By default, the command \txtt{system.file()} gives the path to the
+By default, the command \code{system.file()} gives the path to the
 base package.  For other packages, type, e.g.
 
 \begin{fullwidth}
@@ -403,7 +403,7 @@ The printed result of calculations will, unless the default is changed
 show more significant digits of output than are useful.  The following
 demonstrates a global (until further notice) change:
 
-\marginnote{Use \txtt{signif()} to affect one statement
+\marginnote{Use \margtt{signif()} to affect one statement
   only. For example\\
 \margtt{signif(sqrt(10),2)}\newline
 \noindent
@@ -430,7 +430,7 @@ NB also the function \margtt{round()}.
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\marginnote[-24pt]{Note that \txtt{options(digits=2)} expresses 
+\marginnote[-24pt]{Note that \margtt{options(digits=2)} expresses 
 a wish, which R will not always grant!}
 
 \subsection*{Rounding will sometimes introduce small inconsistencies!}
@@ -453,7 +453,7 @@ For example:
 \begin{figure*}
 \includegraphics{figs-inc/03i-all4.png}
 \caption{Here is shown the RStudio interface, after starting up and
-  entering \txtt{1+1}.}\label{fig:rstudio}
+  entering \code{1+1}.}\label{fig:rstudio}
 \end{figure*}
 
 The url for RStudio is \url{http://www.rstudio.com/}.  Click on the
@@ -461,7 +461,7 @@ icon for the downloaded installation file to install it. An RStudio
 icon will appear.  Click on the icon to start RStudio.  RStudio should
 find any installed version of R, and if necessary start R.  Figure
 \ref{fig:rstudio} shows an RStudio display, immediately after starting
-up and entering, very unimaginatively, \txtt{1+1}.
+up and entering, very unimaginatively, \code{1+1}.
 
 Technically, \marginnote{Extensive and careful RStudio documentation
   can be accessed, assuming an internet connection, from the
@@ -533,26 +533,26 @@ the system will ask for a name for the file.  It will then create an
 HTML file that has, along with the code and comment, the compluter
 output.
 \marginnote{For the code that is shown, the HTML file that results
-will include the output from \txtt{summary(cars)} and the graph from
-  \txtt{plot(cars)}.}  An alternative to clicking on the icon is to
+will include the output from \code{summary(cars)} and the graph from
+  \code{plot(cars)}.}  An alternative to clicking on the icon is to
 click on the \underline{File} drop-down menu, and then on
 \underline{Compile Notebook... }.
 
 \subsection{Managing input from the RStudio menu}\label{ss:readEtc}
 
 Data input that is initiated from the RStudio menu uses functions
-from the package \texttt{readr} for input of tabular data.
-The function \texttt{readr::read\_table()} replaces
-\texttt{read.table()}, \texttt{readr::read\_csv()} replaces
-\texttt{read.csv()}, and similarly for other \texttt{read.table()}
+from the package \pkg{readr} for input of tabular data.
+The function \code{readr::read\_table()} replaces
+\code{read.table()}, \code{readr::read\_csv()} replaces
+\code{read.csv()}, and similarly for other \code{read.table()}
 aliases.
 
-It uses the function \texttt{readxl::readxl()} for Excel
+It uses the function \code{readxl::readxl()} for Excel
 spreadsheet data. There is provision, also, using functions from
-the package \texttt{haven}, to import data from SPSS (POR and
+the package \pkg{haven}, to import data from SPSS (POR and
 SAV files), from SAS (XPT and SAS files), and from Stata (DTA
 files).  
-\marginnote{See \texttt{vignette("semantics", package="haven")}
+\marginnote{See \code{vignette("semantics", package="haven")}
 for details of the way that labelled data and missing values
 are handled, for input from SPSS, SAS, and Stata.}
 
@@ -639,9 +639,9 @@ code be executed, should it be echoed, and what output text and/or
 tables and/or graphs should appear in the final document?
 
 Here is an example of code with surrounding markup, with the
-code chunk options \txtt{fig.width} and \txtt{fig.height}
+code chunk options \code{fig.width} and \code{fig.height}
 giving the width and height of the initial figure, and
-\txtt{out.width} giving the width to which it should be scaled
+\code{out.width} giving the width to which it should be scaled
 in the final document:
 \begin{minipage}[t]{1.05\textwidth}
 \begin{verbatim}
@@ -651,13 +651,13 @@ plot(cars)
 \end{verbatim}
 \end{minipage}
 
-Giving the code chunk a name, here \txtt{plotgph}, is optional.
+Giving the code chunk a name, here \code{plotgph}, is optional.
 \marginnote{Other possible settings include:
   \margtt{echo=FALSE} (do not show code), \&
 \margtt{eval=FALSE} (do not evaluate).}
- The \txtt{fig.width} and \txtt{fig.height} settings
+ The \code{fig.width} and \code{fig.height} settings
   control the size of the output plot, before it is scaled to fit
-  within the available line width.  The \txtt{out.width} setting
+  within the available line width.  The \code{out.width} setting
   controls the width (here given as a percentage of the line
   width) in the final HTML document.  The width may alternatively
   be given in pixels, e.g., `out.width="600px"`.
@@ -676,7 +676,7 @@ knitr::include\_graphics("pic.png")
 \subsection*{$^*$Inclusion of HTML in R Markdown documents}
 Note also that HTML markup can be included in R Markdown documents.
 The following is a less preferred alternative to the
-R code \txtt{knitr::include\_graphics("pic.png")} whose use was
+R code \code{knitr::include\_graphics("pic.png")} whose use was
 demonstrated above:
 \begin{verbatim}
 <IMG SRC="pic.png" alt="Show this, if no image" STYLE="width: 1200px"/>
@@ -762,7 +762,7 @@ as required be expanded into a draft for a paper.
 functions environment, and then if necessary look within the
 search list.}
 User-created R objects are added to the workspace, which is
-at the base of a search list, i.e., a list of ``databases'' that R
+at the base of a search list, i.e., a list of `databases' that R
 will search when it looks for objects.
 \item[] It is good practice to keep a separate workspace and
   associated working directory for each major project.  Use script
@@ -771,9 +771,9 @@ will search when it looks for objects.
     existing workspace under a name (e.g., \margtt{Aug27.RData})
     different from the default \margtt{.RData}.}
 \item[] At the end of a session an image of the workspace will
-  typically (respond ``y'' when asked) be saved into the working
+  typically (respond `\code{y}' when asked) be saved into the working
   directory.
-\item[] Note also the use of \txtt{attach()} to give access to objects
+\item[] Note also the use of \code{attach()} to give access to objects
   in an image (\textbf{.RData} or \textbf{.rda})
   file.\sidenote{Include the name of the file (optionally preceded by
     a path) in quotes.}
@@ -792,11 +792,11 @@ page  \url{http://www.maths-people.anu.edu.au/~johnm/datasets/text/}.
 \begin{enumerate}
 \item
 Place the file \textbf{fuel.txt} to your working directory.
-\item Use \texttt{file.show()} to examine the file, or click on the
+\item Use \code{file.show()} to examine the file, or click on the
   RStudio \underline{Files} menu and then on the file name to display
   it.  Check carefully whether there is a header line.  Use the
-  RStudio menu to input the data into R, with the name \texttt{fuel}.
-  Then, as an alternative, use \texttt{read.table()} directly.  (If
+  RStudio menu to input the data into R, with the name \code{fuel}.
+  Then, as an alternative, use \code{read.table()} directly.  (If
   necessary use the code generated by RStudio as a crib.)  In each
   case, display the data frame and check that data have been input
   correctly.
@@ -807,14 +807,14 @@ Place the file \textbf{fuel.txt} to your working directory.
   \textbf{molclock1.txt} and \textbf{molclock2.txt} in a directory
   from which you can read them into R.  As in Exercise 1, use the
   RStudio menu to input each of these, then using
-  \texttt{read.table()} directly to achieve the same result.  Check,
+  \code{read.table()} directly to achieve the same result.  Check,
   in each case, that data have been input correctly.
 
-  Use the function \txtt{save()} to save \txtt{molclock1}, into an R
-  image file.  Delete the data frame \txtt{molclock1}, and check that
+  Use the function \code{save()} to save \code{molclock1}, into an R
+  image file.  Delete the data frame \code{molclock1}, and check that
   you can recover the data by loading the image file.\label{ex:mol1}
 \item The following counts, for each species, the number of missing values
-for the column \texttt{root} of the data frame \texttt{DAAG::rainforest}:
+for the column \code{root} of the data frame \code{DAAG::rainforest}:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -825,43 +825,43 @@ for the column \texttt{root} of the data frame \texttt{DAAG::rainforest}:
 \end{knitrout}
 For each species, how many rows are ``complete'', i.e., have no values
 that are missing?
-\item For each column of the data frame \texttt{MASS::Pima.tr2},
+\item For each column of the data frame \code{MASS::Pima.tr2},
 determine the number of missing values.
-\item The function \texttt{dim()} returns the dimensions (a vector that
+\item The function \code{dim()} returns the dimensions (a vector that
  has the number of rows, then number of columns) of data frames and
  matrices.  Use this function to find the number of rows in the data
- frames \texttt{tinting}, \texttt{possum} and \texttt{possumsites}
- (all in the \textit{DAAG} package).
-\item Use \texttt{mean()} and \texttt{range()} to find the
+ frames \code{tinting}, \code{possum} and \code{possumsites}
+ (all in the \pkg{DAAG} package).
+\item Use \code{mean()} and \code{range()} to find the
 mean and range of:
 \begin{itemize}
   \item[(a)] the numbers 1, 2, \ldots, 21
   \item[(b)] the sample of 50 random normal values, that can be generated
     from a normaL distribution with mean 0 and variance 1 using the
-    assignment \texttt{y <- rnorm(50)}.
+    assignment \code{y <- rnorm(50)}.
   \item[(c)]
-\marginnote{The \textit{datasets} package
+\marginnote{The \pkg{datasets} package
     that has the data frame \margtt{women} is by default attached when R is
     started.}
-the columns \texttt{height} and \texttt{weight} in the
-    data frame \texttt{women}.
+the columns \code{height} and \code{weight} in the
+    data frame \code{women}.
 \end{itemize}
 Repeat (b) several times, on each occasion generating a nwe set of
 50 random numbers.
-\item Repeat exercise 6, now applying the functions \texttt{median()} and
-\texttt{sum()}.
-\item Extract the following subsets from the data frame \texttt{DAAG::ais}
+\item Repeat exercise 6, now applying the functions \code{median()} and
+\code{sum()}.
+\item Extract the following subsets from the data frame \code{DAAG::ais}
 \begin{itemize}
 \item[(a)] Extract the data for the rowers.
 \item[(b)] Extract the data for the rowers, the netballers and the
 tennis players.
 \item[(c)] Extract the data for the female basketballers and rowers.
 \end{itemize}
-\item Use \texttt{head()} to check the names of the columns, and the first
-few rows of data, in the data frame \texttt{DAAG::rainforest}.
+\item Use \code{head()} to check the names of the columns, and the first
+few rows of data, in the data frame \code{DAAG::rainforest}.
 Use \verb!table(rainforest$species)! to check the names and numbers of
 each species that are present in the data.
-The following extracts the rows for the species \textit{Acmena smithii}
+The following extracts the rows for the species `Acmena smithii'
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -869,8 +869,8 @@ The following extracts the rows for the species \textit{Acmena smithii}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-The following extracts the rows for the species \texttt{Acacia mabellae} and
-\texttt{Acmena smithii}:
+The following extracts the rows for the species `Acacia mabellae' and
+`Acmena smithii':
 \begin{fullwidth}
 
 \begin{knitrout}
@@ -883,6 +883,6 @@ The following extracts the rows for the species \texttt{Acacia mabellae} and
 \end{knitrout}
 
 \end{fullwidth}
-Now extract the rows for all species except \texttt{C. fraseri}.
+Now extract the rows for all species except `C. fraseri'.
 \end{enumerate}
 \cleartooddpage

@@ -52,14 +52,14 @@ that data values appear sensible.  Do minimal checks on: ranges
   of variable values, the mode of the input columns (numeric or
   factor, or \ldots). 
 
-\subsection{Input using the \texttt{read.table()} family of functions}
+\subsection{Input using the \code{read.table()} family of functions}
 
 \marginnote[12pt]{Non-default option settings can however, for very
   large files, severely slow data input.}
-There are several aliases for \txtt{read.table()} that have different
-settings for input defaults. Note in particular \txtt{read.csv()},
+There are several aliases for \code{read.table()} that have different
+settings for input defaults. Note in particular \code{read.csv()},
 for reading in comma delimited {\bf .csv} files such as can be output
-from Excel spreadsheets.  See \txtt{help(read.table)}. Recall that
+from Excel spreadsheets.  See \code{help(read.table)}. Recall that
 
 \marginnote{For factor columns check that the levels are as
   expected.}
@@ -67,63 +67,63 @@ from Excel spreadsheets.  See \txtt{help(read.table)}. Recall that
 \begin{itemizz}
 \item[-] Character vectors are by default converted into factors.  To
   prevent such type conversions, specify
-  \txtt{stringsAsFactors=FALSE}.
+  \code{stringsAsFactors=FALSE}.
 
-\item[-] Specify \txtt{heading=TRUE}\sidenote{By default, if the
+\item[-] Specify \code{heading=TRUE}\sidenote{By default, if the
     first row of the file has one less field than later rows, it is
     taken to be a header row. Otherwise, it is taken as
     the first row of data.} to indicate that the first row
-  of input has column names. Use \txtt{heading=FALSE}
+  of input has column names. Use \code{heading=FALSE}
   to indicate that it holds data.\newline \noindent [If names are not
-  given, columns have default names \txtt{V1}, \txtt{V2}, \ldots.]
+  given, columns have default names \code{V1}, \code{V2}, \ldots.]
 
-\item[-] Use the parameter \txtt{row.names}, then specifying a column
+\item[-] Use the parameter \code{row.names}, then specifying a column
 number, to specify a column for use to provide row names.
 \end{itemizz}
 
 \subsection*{Issues that may complicate input}
 
-\marginnote{NB also that \txtt{count.fields()} counts the number
+\marginnote{NB also that \code{count.fields()} counts the number
   of fields in each record --- albeit watch for differences
   from input fields as detected by the input function.}
-Where data input fails, consider using \txtt{read.table()} with the
-argument \txtt{fill=TRUE}, and carefully check the input data frame.
+Where data input fails, consider using \code{read.table()} with the
+argument \code{fill=TRUE}, and carefully check the input data frame.
 Blank fields will be implicitly added, as needed, so that all records
 have an equal number of identified fields.
 
 Carefully check the parameter settings\sidenote{For
-  text with embedded single quotes, set \txtt{quote = ""}.  For text
-  with \# embedded; change \txtt{comment.char} suitably.} for the
+  text with embedded single quotes, set \code{quote = ""}.  For text
+  with \# embedded; change \code{comment.char} suitably.} for the
 version of the input command that is in use.  It may be necessary to
-change the field separators (specify \txtt{sep}), and/or the missing
-value character(s) (specify \txtt{na.strings}). Embedded quotes and
-comment characters (\txtt{\#}; by default anything that follows
-\txtt{\#} on the same line is ignored.) can be a source of difficulty.
+change the field separators (specify \code{sep}), and/or the missing
+value character(s) (specify \code{na.strings}). Embedded quotes and
+comment characters (\code{\#}; by default anything that follows
+\code{\#} on the same line is ignored.) can be a source of difficulty.
 
 \marginnote{Among other possibilities, there may be a non-default
   missing value symbol (e.g., \margtt{"."}), but without using
-  \txtt{na.strings} to indicate this.}
+  \code{na.strings} to indicate this.}
 Where a column that should be numeric is converted to a factor this is
 an indication that it has one or more fields that, as numbers, would
 be illegal.  For example, a "1" (one) may have been mistyped as an "l"
 (ell), or "0" (zero) as "O" (oh).
 
 Note options that allow the limiting of the number of input rows.
-For \txtt{read.table()}) and aliases, set \txtt{nrows}.  For
-functions from the \txtt{readr} package, set \texttt{n\_max}.
-For \txtt{scan()}, discussed in the next subsection, set
-\txtt{nlines}. All these functions accept the argument \txtt{skip},
+For \code{read.table()}) and aliases, set \code{nrows}.  For
+functions from the \code{readr} package, set \code{n\_max}.
+For \code{scan()}, discussed in the next subsection, set
+\code{nlines}. All these functions accept the argument \code{skip},
 used to set the number of lines to skip before input starts.
 
 \subsection{$^*$The use of scan() for flexible data input}
 
 Data records may for example spread over several rows. There seems no
-way for \txtt{read.table()} to handle this.
+way for \code{read.table()} to handle this.
 
-The following code demonstrates the use of \txtt{scan()} to read in
+The following code demonstrates the use of \code{scan()} to read in
 the file \textbf{molclock1.txt}.  To place this file in your working
 directory, attach the \textit{DAAG} package and type
-\txtt{datafile("molclock1")}.
+\code{datafile("molclock1")}.
 
 \marginnote[12pt]{There are two calls to \margtt{scan()}, each time taking
   information from the file \textbf{molclock1.txt}. The first, with
@@ -136,25 +136,25 @@ directory, attach the \textit{DAAG} package and type
 The 
 \marginnote{
 For repeated use with data files that have a similar format, consider
-putting the code into a function, with the \txtt{what} list as an
+putting the code into a function, with the \code{what} list as an
 argument.}
-\txtt{what} parameter should be a list, with one list element
+\code{what} parameter should be a list, with one list element
 for each field in a record. The "" in the first list element
 indicates that the data is to be input as character. The remaining
 five list elements are set to 1, indicating numeric data.
-Where records extend over several lines, set \txtt{multi.line=TRUE}.
+Where records extend over several lines, set \code{multi.line=TRUE}.
 
-\subsection{The \texttt{memisc} package: input from SPSS and Stata}
+\subsection{The \pkg{memisc} package: input from SPSS and Stata}
 
-\marginnote{Note also the \texttt{haven} package, mentioned above,
-and the {\em foreign} package. The {\em foreign} package has
+\marginnote{Note also the \pkg{haven} package, mentioned above,
+and the \pkg{foreign} package. The \pkg{foreign} package has
 functions that allow input of various
 types of files from Epi Info, Minitab, S-PLUS, SAS, SPSS, Stata,
 Systat and Octave.  There are abilities for reading and writing some
 dBase files.  For further information, see the R Data Import/Export
 manual.}
 
-The {\em memisc} package has effective abilities for
+The \pkg{memisc} package has effective abilities for
 examining and inputting data from various SPSS and Stata formats,
 including {\bf .sav}, {\bf .por}, and Stata {\bf .dta} data types. 
 It allows users to check the contents of the
@@ -162,9 +162,9 @@ columns of the dataset before importing part or all of the file.
 
 An initial step is to use an importer function to create an {\em
   importer} object.  As of now, {\em importer} functions are:
-\txtt{spss.fixed.file()}, \txtt{spss.portable.file()} ( {\bf .por}
-files), \txtt{spss.system.file()} ({\bf .sav} files), and
-\txtt{Stata.file()} ({\bf .dta} files). The importer object has
+\code{spss.fixed.file()}, \code{spss.portable.file()} ( {\bf .por}
+files), \code{spss.system.file()} ({\bf .sav} files), and
+\code{Stata.file()} ({\bf .dta} files). The importer object has
 information about the variables: including variable labels, value
 labels, missing values, and for an SPSS `fixed' file the columns that
 they occupy, etc. Additionally, it has information from further
@@ -173,10 +173,10 @@ needed in preparation for importing the file.
 
 Functions that can be used with an importer object include:
 \begin{itemizz}
-\item[-] \txtt{description()}: column header information;
-\item[-] \txtt{codebook()}: detailed information on each column;
-\item[-] \txtt{as.data.set()}: bring the data into R, as a `data.set' object;
-\item[-] \txtt{subset()}: bring a subset of the data into R, as a `data.set' object
+\item[-] \code{description()}: column header information;
+\item[-] \code{codebook()}: detailed information on each column;
+\item[-] \code{as.data.set()}: bring the data into R, as a `data.set' object;
+\item[-] \code{subset()}: bring a subset of the data into R, as a `data.set' object
 \end{itemizz}
 
 \marginnote{Use \margtt{as.data.frame()} to coerce data.set objects
@@ -184,22 +184,22 @@ Functions that can be used with an importer object include:
   data frame format may be lost in the process.}  
   
 The functions
-\txtt{as.data.set()} and \txtt{subset()} yield `data.set' objects.
+\code{as.data.set()} and \code{subset()} yield `data.set' objects.
 These have structure that is additional to that in data frames.  Most
 functions that are available for use with data frames can be used with
 data.set class objects.
 
-The vignette \txtt{anes48} that comes with the {\em memisc} package
+The vignette \txtt{anes48} that comes with the \pkg{memisc} package
 illustrates the use of the above abilities.
 
 \subsection*{Example}
 
 \marginnote{To substitute your own file, store the path to the
-file in \txtt{path2file.}}
-A compressed version of the file ``NES1948.POR'' (an SPSS `portable' dataset)
-is stored as part of the {\em memisc} installation.  The following
+file in \code{path2file.}}
+A compressed version of the file \textbf{NES1948.POR} (an SPSS `portable' dataset)
+is stored as part of the \pkg{memisc} installation.  The following
 does the unzipping, places the file in a temporary directory,
-and stores the path to the file in the text string \txtt{path2file}:
+and stores the path to the file in the text string \code{path2file}:
 \begin{fullwidth}
 <<opt78, echo=FALSE>>=
 @ %
@@ -241,7 +241,7 @@ As there are in this instance 67 columns, it might make sense to look
 at columns perhaps 10 at a time.
 
 More detailed information is available by using the R function
-\txtt{codebook()}.
+\code{codebook()}.
 The following gives the codebook information for  column 5:
 \marginnote[12pt]{This is more interesting than what appears for columns (1 - 4).}
 <<codebook>>=
@@ -284,8 +284,8 @@ download will be repeated from time to time with updated data, or if
 data are brought together from a number of different files, or if a
 subset is taken from a larger database.}
 
-Note that the functions \txtt{read.table()}, \txtt{read.csv()},
-\txtt{scan()}, and other such functions, are able to read data
+Note that the functions \code{read.table()}, \code{read.csv()},
+\code{scan()}, and other such functions, are able to read data
 directly from a file that is available on the web.  There is a
 limited ability to input part only of a file.
 
@@ -349,7 +349,7 @@ includes the most recent year.
 
 \subsection*{$^*$Extraction of data from tables in web pages}
 
-The function \txtt{readHTMLTable()}, from the {\em XML} package,
+The function \code{readHTMLTable()}, from the \pkg{XML} package,
 will prove very useful for this.  It does not work, currenty at
 least, for pages that use https:.
 
@@ -417,12 +417,12 @@ Markup languages that may be used include XML, GML, JSON and JSONP.
 Queries are built into the web address.
 Alternatives to setting up the query directly may be:
 \begin{itemizz}
-  \item[-] Use a function such as \txtt{fromJSON()} in the {\em RJSONIO}
+  \item[-] Use a function such as \code{fromJSON()} in the \pkg{RJSONIO}
     package to set up the link and download the data;
   \item[-] In a few cases, functions have been provided in R packages
     that assist selection and downloading of data.
-    For the World Bank Development Indicators database, note \txtt{WDI()}
-    and other functions in the {\em WDI} package.
+    For the World Bank Development Indicators database, note \code{WDI()}
+    and other functions in the \pkg{WDI} package.
 \end{itemizz}
 
 \paragraph{Download of NZ earthquake data:}
@@ -442,34 +442,39 @@ current date, for earthquakes of magnitude greater than 4.5.
 <<quakes-data, eval=FALSE>>=
 @ %
 
-\paragraph{World Bank data --- using the {\em WDI} package}
+\paragraph{World Bank data --- using the \pkg{WDI} package}
 
-Use the function \txtt{WDIsearch()} to search for indicators.  Thus,
-to search for indicators with ``CO2'' in their name, enter
-\txtt{WDIsearch('co2')}.  Here are the first 4 (out of 38) that are
-given by such a search:
+Use the function \code{WDIsearch()} to search for indicators. Thus,
+to search for indicators with `co2' or `CO2' in their name, enter
+\code{WDIsearch('co2')}.  The first 6 (out of 38) from
+such a search, the name details in the second column truncated
+to 64 characters, are:
 \begin{fullwidth}
-<<WDI-pkg>>=
+<<opt90, echo=FALSE>>=
+@ %
+<<WDI-pkg, cache=FALSE>>=
+@ %
+<<opt54, echo=FALSE>>=
 @ %
 \end{fullwidth}
 
-Use the function \txtt{WDI()} to input indicator data, thus:
+Use the function \code{WDI()} to input indicator data, thus:
 \begin{fullwidth}
 <<WDI-fun, eval=FALSE>>=
 @ %
 \end{fullwidth}
 \marginnote[12pt]{The function \margtt{WDI()} calls the non-visible function
   \margtt{wdi.dl()}, which in turn calls the function \margtt{fromJSON()}
-  from the {\em RJSONIO} package. To see the code for \margtt{wdi.dl()},
+  from the \pkg{RJSONIO} package. To see the code for \margtt{wdi.dl()},
   type \margtt{getAnywhere("wdi.dl")}.}
-The effect of \txtt{extra=TRUE} is to include the additional variables
-\txtt{iso2c} (2-character country code), \txtt{country}, \txtt{year},
-\txtt{iso3c} (3-character country code), \txtt{region},
-\txtt{capital}, \txtt{longitude}, \txtt{latitude}, \txtt{income} and
-\txtt{lending}.
+The effect of \code{extra=TRUE} is to include the additional variables
+\code{iso2c} (2-character country code), \code{country}, \code{year},
+\code{iso3c} (3-character country code), \code{region},
+\code{capital}, \code{longitude}, \code{latitude}, \code{income} and
+\code{lending}.
 
-The data frame \txtt{Worldbank} that results is in a form where it can
-be used with the {\em googleVIS} function \txtt{gvisMotionChart()},
+The data frame \code{Worldbank} that results is in a form where it can
+be used with the \pkg{googleVIS} function \code{gvisMotionChart()},
 as described in Section \ref{sec:gvis}
 
 \section{Creating and Using Databases}\label{ss:dbase}
@@ -495,8 +500,8 @@ Now input rows 16 to 20 from the newly created database:
 
 \section{$^*$File compression:} The functions for data
 input in versions 2.10.0 and later of R are able to accept certain
-types of compressed files.  This extends to \txtt{scan()} and to
-functions such as \txtt{read.maimages()} in the {\em limma}
+types of compressed files.  This extends to \code{scan()} and to
+functions such as \code{read.maimages()} in the \pkg{limma}
 package, that use the standard R data input functions.
 
 By way of illustration, consider the files \textbf{coral551.spot},
@@ -510,15 +515,15 @@ Unix-like command line: \marginnote{Severer compression:
 @ %
 \noindent
 The {\bf .zip} files thus created were renamed back to
-\textbf{\em *.spot} files.
+\textbf{*.spot} files.
 
-When saving large objects in image format, specify \txtt{compress=TRUE}.
-Alternatives that may lead to more compact files are \txtt{compress="bzip2"}
-and \txtt{compress="xz"}.
+When saving large objects in image format, specify \code{compress=TRUE}.
+Alternatives that may lead to more compact files are \code{compress="bzip2"}
+and \code{compress="xz"}.
 
-Note also the R functions \txtt{gzfile()} and \txtt{xzfile()} that can
+Note also the R functions \code{gzfile()} and \code{xzfile()} that can
 be used to create files in a compressed text format.  This might for
-example be text that has been input using \txtt{readLines()}.
+example be text that has been input using \code{readLines()}.
 
 \section{Summary}
 \begin{itemize}
