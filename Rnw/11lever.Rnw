@@ -32,22 +32,21 @@ models and tables. Details will be given below.
 
 \subsection*{Model, graphics and table formulae}
 We demonstrate the construction of model or graphics formulae from
-text strings. The following plots the column \txtt{mpg}, from the data
-frame \txtt{mtcars} (\textit{MASS}), against \txtt{disp}:
+text strings. The following plots the column \code{mpg}, from the data
+frame \code{MASS::mtcars}, against \code{disp}:
 <<mgpVSdisp, eval=FALSE>>=
 @ %
 The following gives the same result:
 <<mgpVSdisp-equiv, eval=FALSE>>=
 @ %
-With this second approach, \txtt{yvar} and \txtt{xvar}
-can be arguments to a function, and \txtt{xvar} and
-\txtt{yvar} can be any pair of columns.  A suitable
-functionis:
+With this second approach, \code{xvar} and
+\code{yvar} can be any pair of columns that are arguments 
+to a suitable function.  For example:
 <<fun-args, eval=FALSE>>=
 @ %
 
 \begin{marginfigure}
-The data frame \txtt{mtcars} has 11 columns from which
+The data frame \code{mtcars} has 11 columns from which
 the two axes for a scatterplot might be chosen:
 <<echo=FALSE>>=
 options(width=22)
@@ -58,14 +57,14 @@ options(width=22)
 @ %
 \end{marginfigure}
 
-The following calls the function with \txtt{xvar="hp"} and
-\txtt{yvar="mpg"}:
+The following calls the function with \code{xvar="hp"} and
+\code{yvar="mpg"}:
 <<mtcars-gph, eval=FALSE>>=
 @ %
 
 \subsection{Extraction of names from a formula}
 
-Use the function \txtt{all.vars()} to extract the variable names from
+Use the function \code{all.vars()} to extract the variable names from
 a formula, thus:
 <<all-vars>>=
 @ %
@@ -81,7 +80,7 @@ more informative $x$- and $y$-labels:
 
 \subsection{Extraction of arguments to functions}
 
-A simple use of \txtt{substitute()} is to extract a text string
+A simple use of \code{substitute()} is to extract a text string
 representation of a function argument:
 <<mtcars-subs, eval=FALSE>>=
 @ %
@@ -91,8 +90,8 @@ The following are equivalent:
 <<do.call, eval=FALSE>>=
 @ %
 
-Use of \txtt{do.call()} allows the parameter list to be set up in
-advance of the call. The following shows the use of \txtt{do.call()}
+Use of \code{do.call()} allows the parameter list to be set up in
+advance of the call. The following shows the use of \code{do.call()}
 to achieve the same effect as \verb!mean(possum$totlngth)!:
 <<do-possum, eval=FALSE>>=
 @ %
@@ -104,14 +103,14 @@ This makes more sense in a function, thus:
 <<av-exec, eval=FALSE>>=
 @ %
 
-Note also \txtt{call()}, which sets up an unevaluated expression.
-The expression can be evaluated at some later time, using \txtt{eval()}.
+Note also \code{call()}, which sets up an unevaluated expression.
+The expression can be evaluated at some later time, using \code{eval()}.
 Here is an example:
 <<later-eval>>=
 @ %
-Notice that the argument \txtt{x} was evaluated when \txtt{call()}
+Notice that the argument \code{x} was evaluated when \code{call()}
 was evoked. The result is therefore unchanged upon repeating the
-call \txtt{eval(mean.call)}. This can be verified by printing out the
+call \code{eval(mean.call)}. This can be verified by printing out the
 expression:
 \begin{fullwidth}
 <<opt78, echo=FALSE>>=
@@ -126,20 +125,20 @@ expression:
 Every call to a function creates a frame that contains the local
 variables created in the function. This combines with the environment
 in which the function was defined to create a new environment.
-The global environment, \txtt{.Globalenv}, is the workspace.  This
+The global environment, \code{.Globalenv}, is the workspace.  This
 is frame 0. The frame number increases by 1 with each new function
 call.\sidenote[][-2cm]{Additionally, frames may be referred to by
 name. Use
 \begin{list}{}{
 \setlength{\itemsep}{1pt}
 \setlength{\parsep}{1pt}}
-\item[] \txtt{sys.nframe()} to get the number of the
+\item[] \code{sys.nframe()} to get the number of the
 current evaluation frame
 
-\item[] \txtt{sys.frame(sys.nframe())} to identify the frame by
+\item[] \code{sys.frame(sys.nframe())} to identify the frame by
 name
 
-\item[] \txtt{sys.parent()} to get the number of the parent frame.
+\item[] \code{sys.parent()} to get the number of the parent frame.
 \end{list}
 }
 
@@ -157,20 +156,20 @@ the function name:
 @ %
 
 When a number of graphs are required, all for the one dociment, a
-sequential naming system, e.g., \txtt{fig1()}, \txtt{fig2()}, \ldots,
+sequential naming system, e.g., \code{fig1()}, \code{fig2()}, \ldots,
 may be convenient, with matching names \textbf{fig1.pdf},
 \textbf{fig2.pdf}, \ldots for the respective graphics files.  The
-following function \txtt{gf()} generates the file name automatically,
+following function \code{gf()} generates the file name automatically,
 for passing to the graphics device that is opened.
 <<auto-name, eval=FALSE>>=
 @ %
 
-Now create a function that calls \txtt{gf()}:
+Now create a function that calls \code{gf()}:
 <<fig1, eval=FALSE>>=
 @ %
 \noindent
 Output goes to the file \textbf{fig1.pdf}.  For a function
-\txtt{fig2()} that calls \txtt{gf()}, output goes to the file
+\code{fig2()} that calls \code{gf()}, output goes to the file
 \textbf{fig2.pdf}, and so on.
 
 \subsection*{Scoping of object names}
@@ -214,9 +213,9 @@ across to someone else.
 \subsection*{Namespaces}
 Packages can have their own namespaces, with private functions and
 classes that are not ordinarily visible from the command line, or from
-other packages.  For example, the function \txtt{intervals.lme()}
+other packages.  For example, the function \code{intervals.lme()}
 that is part of the \textit{lme} package must be called via the generic
-function \txtt{intervals()}.
+function \code{intervals()}.
 
 \section{S4 Classes and Methods}\label{sec:s4}
 There are two implementations of classes and methods -- those of
@@ -226,19 +225,19 @@ infrastructure for the S4 implementation. This extends the abilities
 available under S3, builds in checks that are not available with S3,
 and are is conducive to good software engineering practice.  The
 Bioconductor bundle of packages makes extensive use of S4 style
-classes and methods. See \txtt{help(Methods)} (note the upper case M)
+classes and methods. See \code{help(Methods)} (note the upper case M)
 for a brief overview of S4 classes and methods.
 
 Where available, extractor functions should be used to extract slot
 contents. If this is not possible, use the function
-\txtt{slotNames()} to obtain the names of the slots, and either the
-function \txtt{slot()} or the operator \verb!@! to extract or
+\code{slotNames()} to obtain the names of the slots, and either the
+function \code{slot()} or the operator \verb!@! to extract or
 replace a slot.  For example:
 <<S4>>=
 @ %
 
 The following are alternative ways to display the contents of the
-\txtt{"call"} slot:
+\code{"call"} slot:
 \begin{fullwidth}
 <<slot-call>>=
 @ %
@@ -250,25 +249,25 @@ part of the output, thus:
 @ %
 
 For moderately simple examples of the definition and use of S4 classes
-and methods, see \txtt{help(setClass)} and \txtt{help(setMethod)}.
+and methods, see \code{help(setClass)} and \code{help(setMethod)}.
 
 How is it possible to identify, for a particular S4 class, the
 function that implements a method.  To identify the function
-in the \txtt{sp} package that implements the \txtt{spplot} method
+in the \pkg{sp} package that implements the \txtt{spplot} method
 for \txtt{SpatialGridDataFrame} objects, type:
 <<selectMethod>>=
 @ %
 This makes it clear that the \txtt{spplot} method for
 \txtt{SpatialGridDataFrame} objects calls the function
-\txtt{spplot.grid()}. To display the function \txtt{spplot.grid()},
+\code{spplot.grid()}. To display the function \code{spplot.grid()},
 type:
 <<fromNS, eval=FALSE>>=
 @ %
 \noindent
 Alternatively, use the less targeted
-\txtt{getAnywhere("spplot.grid")}.
+\code{getAnywhere("spplot.grid")}.
 
-Use \txtt{showMethods()} to show all the methods for one or more
+Use \code{showMethods()} to show all the methods for one or more
 classes of object.  For example:
 <<showMethods, eval=FALSE>>=
 @ %
@@ -278,7 +277,7 @@ classes of object.  For example:
 \item[] Language structures (formulae and expressions) can be manipulated,
 just like any other object.
 
-\item[] R uses formulae to specify models, graphs and (\txtt{xtabs()}
+\item[] R uses formulae to specify models, graphs and (\code{xtabs()}
 only) tables.
 
 \item[] The expression syntax allows the plotting of juxtaposed text

@@ -18,7 +18,7 @@ oldopt <- options(digits=4)
 read_chunk("../scripts/tm-code.R")
 @ %
 
-A first step is to load the \textit{tm} package.  This is designed for
+A first step is to load the \pkg{tm} package.  This is designed for
 working with a \textit{corpus} --- \textit{corpus} is the name for a
 collection of documents.
 <<load-tm>>=
@@ -31,7 +31,7 @@ collection of documents.
   respective files {\bf ch1-5prelims.txt}, {\bf ch6-7data.txt}, and
   {\bf ch8-9graphics.txt}.}
 
-The data used is from three text files, stored in the {\em DAAGviz}
+The data used is from three text files, stored in the \pkg{DAAGviz}
 directory tree.  They hold text from the respective chapter ranges 1 -
 5, 6 - 7, and 8 - 9 of an older version of this present document.
 We show two ways to use
@@ -68,14 +68,14 @@ Now bring the three text strings together into a corpus:
 <<VectorSource>>=
 @ %
 
-\subsection*{Creation of a corpus using \txtt{DirSource()}}
+\subsection*{Creation of a corpus using \code{DirSource()}}
 
 \marginnote{The call to \margtt{tm\_map()} is a mechanism for marking the
   document as UTF-8. The pdf to text converter creates UTF-8
   documents.  The tokenizer \margtt{scan\_takenizer} then calls
   \margtt{scan()}, but without marking the document that results as
   UTF-8, as required for use of \margtt{termDocumentMatrix()} or
-  \txtt{termFreq()}.}
+  \code{termFreq()}.}
 The following creates a directory source:
 <<DirSource>>=
 @ %
@@ -88,8 +88,8 @@ were identified, within the specified directory {\bf doc}:
 \subsection*{Next steps}
 
 A common starting point for further work is a term by document matrix.
-For this, use \txtt{TermDocumentMatrix()}.  Or if a
-document by term matrix is required, use \txtt{DocumentTermMatrix()}
+For this, use \code{TermDocumentMatrix()}.  Or if a
+document by term matrix is required, use \code{DocumentTermMatrix()}
 
 %' \begin{marginfigure}[12pt]
 %'   Alternatively, make repeated use of \margtt{tm\_map()} to
@@ -114,10 +114,10 @@ because the default tokenizer\sidenote{See \margtt{help(termFreq)} for
 R code and output.
 
 Stopwords are words that are likely to be uniformative for purposes
-of comparing text content.  The function \txtt{tm::stopwords()} 
-accepts the arguments \txtt{kind="en"}, which gives a relatively
-restricted list of English stopwords, or \txtt{kind="SMART"} which
-gives a much more extensive list.  See \txtt{?tm::stopwords} for
+of comparing text content.  The function \code{tm::stopwords()} 
+accepts the arguments \code{kind="en"}, which gives a relatively
+restricted list of English stopwords, or \code{kind="SMART"} which
+gives a much more extensive list.  See \code{?tm::stopwords} for
 details of non-English stopword lists that are immediately available.
 The following will give an idea of the sorts of words that are in
 the two lists:
@@ -132,7 +132,7 @@ Now list terms that occur 100 or more times:
 
 \subsection*{Wordclouds}
 
-First load the {\em wordcloud} package:
+First load the \pkg{wordcloud} package:
 <<load-wordcloud>>=
 @ %
 
@@ -160,15 +160,15 @@ Code for the plots is:
 edge of the plot if the size of the graphics page is too small
 relative to the pointsize.  Note the different scaling ranges used in
 the three cases, with the large scaling range for Panel C
-(\txtt{scale=c(9,.8)}) used to accommmodate a frequency distribution
+(\code{scale=c(9,.8)}) used to accommmodate a frequency distribution
 in which one item (`data') is a marked outlier.
 
 \section{Creation of a Corpus from PDF Files}
 
-The {\em tm} package has functions that can be used to create readers
-for several different types of files.  Type \txtt{getReaders()} to get
-a list.  Note in particular \txtt{readPDF()} that can be used with pdf
-files.  See \txtt{?tm::readPDF} for details of PDF extraction
+The \pkg{tm} package has functions that can be used to create readers
+for several different types of files.  Type \code{getReaders()} to get
+a list.  Note in particular \code{readPDF()} that can be used with pdf
+files.  See \code{?tm::readPDF} for details of PDF extraction
 engines that may be used.  The default is to use the Poppler PDF
 rendering library as provided in the {\bf pdftools} package.
 
@@ -190,7 +190,7 @@ Create the term-document matrix thus:
 <<make-xPDF>>=
 @ %
 
-\section{Document Collections Supplied With {\em tm}}
+\section{Document Collections Supplied With \pkg{tm}}
 Several document collections are supplied with the package,
 as text files or as XML files.  To get the path to the
 directories where these document collections are stored, type
@@ -208,7 +208,7 @@ The subdirectory \textbf{acq} has 50 Reuters documents in XML format,
 \textbf{crude} has the first 23 of these, and \textbf{txt} has a
 small collection of 5 text documents from the Roman poet Ovid.
 These can be accessed and used for experimenation with the abilities
-provided in {\em tm}, as required.
+provided in \pkg{tm}, as required.
 
 The following are the names of the five Ovid documents:
 \begin{fullwidth}

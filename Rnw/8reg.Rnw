@@ -1561,6 +1561,8 @@ The code used to plot the graph is:
 @ %
 
 A more sophisticated approach uses the \code{gam()} function
+\marginnote{\Citet{Wood-2017} is a comprehensive account of GAM
+models that documents the abilities of the \pkg{mgcv} package.}
 in the \pkg{mgcv} package.  This allows automatic determination of the
 amount of smoothing, providing the assumption of independent residuals
 from the curve is reasonable.  We now demonstrate the use of a GAM
@@ -1713,6 +1715,12 @@ discussion.
 Such examples indicate that the software involved is focusing on
 features of the data that have scant connection with the robust
 mechanisms that the human brain uses.
+
+\section{References and further reading}
+
+Chapter 1 of \citet{Wood-2017}  is a good brief introduction to
+linear models.  Chapter 6 of \citet{daagur_2011} is a more elementary
+and more extended introduction.
 
 \section{Exercises}
 \begin{enumerate}

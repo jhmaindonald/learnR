@@ -16,47 +16,47 @@ A level-1 auxiliary file: 10tm.aux
 A level-1 auxiliary file: 11lever.aux
 A level-1 auxiliary file: Arsystem.aux
 A level-1 auxiliary file: Brgui.aux
-A level-1 auxiliary file: Dcolor.aux
+A level-1 auxiliary file: Ccolor.aux
 The style file: daag.bst
 Database file #1: scistatR.bib
-You've used 12 entries,
+You've used 14 entries,
             2806 wiz_defined-function locations,
-            681 strings with 6706 characters,
-and the built_in function-call counts, 6508 in all, are:
-= -- 502
-> -- 268
-< -- 8
-+ -- 100
-- -- 84
-* -- 493
-:= -- 1016
-add.period$ -- 35
-call.type$ -- 12
-change.case$ -- 86
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 477
-empty$ -- 498
-format.name$ -- 128
-if$ -- 1260
+            690 strings with 6909 characters,
+and the built_in function-call counts, 7383 in all, are:
+= -- 569
+> -- 298
+< -- 10
++ -- 111
+- -- 93
+* -- 549
+:= -- 1159
+add.period$ -- 41
+call.type$ -- 14
+change.case$ -- 99
+chr.to.int$ -- 14
+cite$ -- 14
+duplicate$ -- 543
+empty$ -- 575
+format.name$ -- 143
+if$ -- 1436
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 103
-newline$ -- 68
-num.names$ -- 48
-pop$ -- 189
+missing$ -- 118
+newline$ -- 78
+num.names$ -- 56
+pop$ -- 219
 preamble$ -- 1
-purify$ -- 76
+purify$ -- 87
 quote$ -- 0
-skip$ -- 181
+skip$ -- 212
 stack$ -- 0
-substring$ -- 291
-swap$ -- 254
+substring$ -- 313
+swap$ -- 281
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 99
+type$ -- 111
 warning$ -- 0
-while$ -- 46
+while$ -- 52
 width$ -- 0
-write$ -- 159
+write$ -- 185

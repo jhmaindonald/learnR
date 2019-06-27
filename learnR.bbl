@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{14}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -42,6 +42,11 @@ Lovelave, R. and Cheshire, J., 2014.
 \newblock Introduction to visualising spatial data in r.
 \newline\url{https://github.com/Robinlovelace/Creating-maps-in-R}
 
+\bibitem[{Maindonald and Braun(2011)}]{daagur_2011}
+Maindonald, J. and Braun, J., 2011.
+\newblock {\em Data analysis and graphics using R\/}.
+\newblock Cambridge University Press, 3 edition.
+
 \bibitem[{Prinz et~al.(2011)Prinz, Schlange, and Asadullah}]{prinz2011believe}
 Prinz, F.; Schlange, T.; and Asadullah, K., 2011.
 \newblock Believe it or not: how much can we rely on published data on
@@ -63,6 +68,11 @@ Taleb, N.~N., 2004.
 Tukey, J.~W., 1997.
 \newblock More honest foundations for data analysis.
 \newblock {\em Journal of Statistical Planning and Inference\/}, 57(1):21--28.
+
+\bibitem[{Wood(2017)}]{Wood-2017}
+Wood, S.~N., 2017.
+\newblock {\em Generalized Additive Models. An Introduction with R\/}.
+\newblock Chapman and Hall/CRC, 2 edition.
 
 \bibitem[{Zhou and Firestone(2019)}]{Zhou2019}
 Zhou, Z. and Firestone, C., 2019.

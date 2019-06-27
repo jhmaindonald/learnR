@@ -39,8 +39,8 @@ second topics highlight specific types of departure from the iid
 \begin{tabular}{ll}
 Error Term & Errors do not have to be (and often are not) iid\\[6pt]
 Multilevel & Multilevel models are a (relatively) simple type of
-\\ models & non-iid model, implemented using \txtt{lme()}
-(\textit{nlme}) or \\ & \txtt{lmer()}\ (\textit{lme4} package).\\ & Such
+\\ models & non-iid model, implemented using \code{lme()}
+(\pkg{nlme}) or \\ & \code{lmer()}\ (\pkg{lme4} package).\\ & Such
 models allow different errors of prediction,\\ & depending on the
 intended prediction.
 \end{tabular}
@@ -56,7 +56,7 @@ intended prediction.
 \vspace*{15pt}
 
 Figure \ref{fig:caribbean} shows corn yield data from the Caribbean island of
-Antigua, as in the second column (``Yields'') of Table \ref{tab:ant111b}.
+Antigua, as in the second column (`Yields') of Table \ref{tab:ant111b}.
 Each value is for one package of land.
 The code for the figure is:
 <<ant111b, eval=FALSE>>=
@@ -82,7 +82,7 @@ WLAN & 2.02, 2.66, 3.16, 3.52 &  \vline& $-$1.45 & $-$0.82, $-$0.18, 0.32, 0.68 
 \hline
 \end{tabular}
 }
-\caption{The leftmost column has harvest weights (\txtt{harvwt}), for
+\caption{The leftmost column has harvest weights (\code{harvwt}), for
   the packages of land in each location, for the Antiguan corn data.  Each of
   these harvest weights can be expressed as the sum of the overall
   mean (= 4.29), location effect (third column), and residual from the
@@ -104,12 +104,12 @@ likely to be more accurate than a prediction for a totally new
 location.
 
 \marginnote[10pt]{Because of the balance the corn yield data, an
-analysis of variance that specifies a formal \txtt{Error} term is
+analysis of variance that specifies a formal \code{Error} term is
 an alternative to the fitting of a multilevel model.}  Multilevel
 models are able to account for such differences in predictive
 accuracy.  For the Antiguan corn yield data, it is necessary to
 account both for variation within sites and for variation between
-sites.  The R packages \txtt{nlme} and \txtt{lme4} are both able to
+sites.  The R packages \pkg{nlme} and \pkg{lme4} are both able to
 handle such data.
 
 \section{Regular Time Series in R}\label{sec:ts}
@@ -118,8 +118,8 @@ handle such data.
 \parbox{\textwidth}{{\bf Models with Non-iid Errors -- Time Series}:\\[4pt]
 \begin{tabular}{ll}
 Time & Points that are close together in time commonly show\\
-sequential & a (usually, +ve) correlation. R's \txtt{acf()} and
-\txtt{arima()}\\ & functions are powerful tools for use with time
+sequential & a (usually, +ve) correlation. R's \code{acf()} and
+\code{arima()}\\ & functions are powerful tools for use with time
 series.
 \end{tabular}
 }}
@@ -151,14 +151,13 @@ analysis.
 @ %
 \end{marginfigure}
 
-The data series \txtt{Erie}, giving levels of Lake Erie
+The data series \code{Erie}, giving levels of Lake Erie
 from 1918 to 2009, will be used as an example from which
 to start the discussion.\sidenote{Data are
   from {\scriptsize
 \url{http://www.lre.usace.army.mil/greatlakes/hh/greatlakeswaterlevels/historicdata/greatlakeshydrographs/}}}
-    The series is available in the
-    \textit{DAAG} package, as the column \txtt{Erie} in the
-    multivariate time series object \txtt{greatLakes}.
+    The series is available as the column \code{Erie} in the
+    multivariate time series object \code{DAAG::greatLakes}.
 
 Figure \ref{fig:erie} shows a plot of the series.
 
@@ -201,7 +200,7 @@ effect from a dependence at lag 1.
 
 In an autoregressive time series, an\marginnote{An autoregressive
   model is a special case of an Autoregressive Moving Average (ARMA)
-  model.}  independent error component, or ``innovation'' is
+  model.}  independent error component, or \textit{innovation} is
 associated with each time point. For an order $p$ autoregressive time
 series, the error for any time point is obtained by taking the
 innovation for that time point, and adding a linear combination of the
@@ -264,7 +263,7 @@ used, as in Figure \ref{lh-smoothplot}, to fit a curve to such
 data, the curve will not be repeatable.  Figure \ref{lh-smoothplot}
 does not separate systematic effects from effects due to processes
 that evolve in time. Figure \ref{lh-smoothplot} uses the
-abilities of the {\em mgcv} package, assuming independently and
+abilities of the \pkg{mgcv} package, assuming independently and
 identically distributed data (hence, no serial correlation!) to
 make an automatic choice of the smoothing parameter.  
 As the curve is conditional on a particular realization of the process
@@ -318,10 +317,10 @@ the particular realization that generated them, they serve no useful
 purpose.
 
 Once an autoregressive model has been fitted, the function
-\txtt{forecast()} in the \textit{forecast} package can be used to
+\code{forecast()} in the \pkg{forecast} package can be used to
 predict future levels, albeit with very wide confidence bounds.
 For this, it is necessary to refit the model using the function
-\txtt{arima()}. An arima model with order (1,0,0) is an autoregressive
+\code{arima()}. An arima model with order (1,0,0) is an autoregressive
 model with order 1.
 \vspace*{10pt}
 
@@ -348,7 +347,7 @@ on time series.
 \subsection{Regression with time series errors}
 
 Figure \ref{fig:mdbRainSM} fits annual rainfall, in the Murray-Darling basin of
-Australia, as a sum of smooth functions of \txtt{Year} and \txtt{SOI}.
+Australia, as a sum of smooth functions of \code{Year} and \code{SOI}.
 Figure \ref{fig:mdbRain} shows the estimated contributions of the two
 model terms.
 <<mdb-gam, eval=FALSE>>=
@@ -357,8 +356,8 @@ model terms.
 <<mdb-gam, echo=FALSE, warning=FALSE, w=7.5, h=3.65, top=2,  mfrow=c(1,2), out.width="\\textwidth">>=
 @ %
   \caption{Estimated contributions of model terms to
-    \txtt{mdbRain}, in a GAM model that adds smooth terms in
-    \txtt{Year} and \txtt{Rain}. The dashed curves show pointwise
+    \code{mdbRain}, in a GAM model that adds smooth terms in
+    \code{Year} and \code{Rain}. The dashed curves show pointwise
     2-SE limits, for the fitted curve.}\label{fig:mdbRainSM}
 \end{figure}
 
@@ -393,7 +392,7 @@ numbers.
 <<ar1sims, echo=FALSE, warning=FALSE, w=6.5, left=1, h=2.75, ps=11, mfrow=c(2,3), out.width="0.97\\textwidth">>=
 @ %
 \caption{The top left panel shows the autocorrelations of the
-  residuals from the model \txtt{mdbRain.gam}.  The five remaining
+  residuals from the model \code{mdbRain.gam}.  The five remaining
   panels are the equivalent plots for sequences of independent random
   normal numbers.}\label{fig:ar1sims}
 \end{figure*}
@@ -416,7 +415,7 @@ The simulations in Figure \ref{fig:ar1fits} show a pattern of
   variation that seems not too different from that in the actual series.
   Modeling of the process as an ARMA or ARIMA process (i.e., allow
   for a moving average term) may do even better.  Use the
-  \txtt{auto.arima()} function in the {\em forecast} package to fit an
+  \code{auto.arima()} function in the \pkg{forecast} package to fit an
   ARIMA process:
 
 \subsection{Count Data with Poisson Errors}
@@ -429,7 +428,7 @@ seem likely to be uncommon.}
 Data is for aircraft accidents, from the website
 \url{http://www.planecrashinfo.com/}.  The 1920 file has
 accidents starting from 1908. The full data are in the
-dataset \txtt{gamclass::airAccs}.
+dataset \code{gamclass::airAccs}.
 Such issues as there are with sequential correlation
 can be ameliorated by working with weekly, rather than daily,
 counts. 
@@ -454,10 +453,10 @@ pointwise confidence bounds, from a GAM smoothing model that
 was fitted to the weekly counts. 
 
 \marginnote[9pt]{See Section \ref{ss:dates} for further details
-on the function \txtt{eventCounts()}.}
+on the function \code{eventCounts()}.}
 <<use-eventCounts, eval=FALSE>>=
 @ %
-The function \txtt{gamclass::eventCounts()} was used to create
+The function \code{gamclass::eventCounts()} was used to create
 weekly counts of accidents from January 1, 2006:
 
 Code for Figure \ref{fig:planeCrash} is then.
@@ -470,10 +469,10 @@ Code for Figure \ref{fig:planeCrash} is then.
 @ %
 \end{fullwidth}
 
-The argument `\txtt{k}' to the function \txtt{s()} that sets up the
-smooth controls the temporal resolution.  A large \txtt{k} allows,
+The argument `\code{k}' to the function \code{s()} that sets up the
+smooth controls the temporal resolution.  A large \code{k} allows,
 if the data seem to justify it, for fine resolution. A penalty is
-applied that discriminates against curves that are overly ``wiggly''.
+applied that discriminates against curves that are overly `wiggly'.
 
 Not all count data is suitable for modeling assuming a Poisson type
 rare event distribution. For example, the dataset
@@ -506,10 +505,10 @@ approaches of tree-based classification and of random forests.
 
 \subsection*{Linear and quadratic discriminant analysis}
 
-The functions that will be used are \txtt{lda()}
-and \txtt{qda()}, from the \textit{MASS} package.  The function
-\txtt{lda()} implements linear discriminant analysis, while
-\txtt{qda()} implements quadratic discriminant analysis.\sidenote{Quadratic
+The functions that will be used are \code{lda()}
+and \code{qda()}, from the \pkg{MASS} package.  The function
+\code{lda()} implements linear discriminant analysis, while
+\code{qda()} implements quadratic discriminant analysis.\sidenote{Quadratic
 discriminant analysis is an adaptation of linear discriminant analysis
 to handle data where the variance-covariance matrices of the different
 classes are markedly different.}
@@ -517,15 +516,15 @@ classes are markedly different.}
 <<loadMASS>>=
 @ %
 
-Results from use of \txtt{lda()} lead very
-  naturally to useful and informative plots.  Where \txtt{lda()}
+Results from use of \code{lda()} lead very
+  naturally to useful and informative plots.  Where \code{lda()}
   gives results that are a sub-optimal fit to the data,
   the plots may hint at what type of alternative method
   may be preferable.  They may identify subgroups of
   the orginal $g$ groups, and/or identify points that seem
   misclassified.   
 
-An attractive feature of \txtt{lda()} is that the discriminant rule
+An attractive feature of \code{lda()} is that the discriminant rule
 that is obtained has a natural representation $r$-dimensional space.
 Providing that there is sufficient independent covariate data, $r$ =
 $g-1$.  The analysis leads\sidenote{This is based on a {\em spectral}
@@ -541,27 +540,27 @@ pairs plot.  With larger numbers of groups, it will often happen that
 two or at most three dimensions will account for most of the
 variation.
 
-\subsection*{Use of \txtt{lda()} to analyse the forensic glass data}
+\subsection*{Use of \code{lda()} to analyse the forensic glass data}
 
-As noted above, the data frame \txtt{fgl} has 10 measured physical
+As noted above, the data frame \code{fgl} has 10 measured physical
 characteristics for each of 214 glass fragments that are classified
 into 6 different types.  First, fit a linear discriminant analysis,
 and use leave-one-out cross-validation to check the accuracy, thus:
 <<fgl-ldaCV, eval=TRUE, echo=TRUE>>=
 @ %
 
-The function \txtt{confusion()} (\textit{DAAG}) makes it easy to
+The function \code{confusion()} (\pkg{DAAG}) makes it easy to
 get all the above output.  Enter:
 <<confusion, eval=FALSE>>=
 @ %
 
 \subsection*{Two-dimensional representation}
 
-Now fit the model with \txtt{CV=FALSE}, which is the default:
+Now fit the model with \code{CV=FALSE}, which is the default:
 <<fgl-lda>>=
 @ %
 The final three lines of the output, obtained by entering
-\txtt{fgl.lda} at the command line, are:
+\code{fgl.lda} at the command line, are:
 \begin{Schunk}
 \begin{Soutput}
 Proportion of trace:
@@ -597,14 +596,14 @@ for an example of the type of low-dimensional representation that is
 possible for results from a randdom forest classification.}
 Additionally, it may be useful to examine the plot of the third
 versus the second discriminant.  Better still, use the abilites of the
-\textit{rgl} package to examine a 3-dimensional dynamic representation.
+\pkg{rgl} package to examine a 3-dimensional dynamic representation.
 With most other methods, a low-dimensional representation does not
 arise so directly from the analysis.
 
 \subsection*{Two groups -- comparison with logistic regression}
 
 \marginnote{More technical points, as they apply to the use of
-  R's function \txtt{glm()} for logistic regression, are:
+  R's function \code{glm()} for logistic regression, are:
   \begin{itemizz}
 \item[-] The fitting procedure minimizes the {\em deviance}. This
   equals 2 ( {\em loglikelihood} for fitted model, minus the
@@ -627,7 +626,7 @@ where $\beta$ is a vector of  coefficients that are to be estimated,
 and $\mathbf{x}$ is a vector of covariate values.
 
 A logistic regression model is a special case of a Generalized
-Linear Model (GLM), as implemented by R's function \txtt{glm()}. 
+Linear Model (GLM), as implemented by R's function \code{glm()}. 
 There is no provision to adjust predictions to take account of
 prior probabilities, though this can be done as an add-on to the analysis.
 Other points of difference from linear discriminant analysis are:
@@ -656,25 +655,25 @@ forests at the non-parametric extreme.  An attraction of tree-based
 methods and random forests is that model choice can be pretty much
 automated.
 
-We begin by loading the {\em rpart} package:
+We begin by loading the \pkg{rpart} package:
 <<load-rpart>>=
 @ %
 
 \marginnote[12pt]{The dataset \margtt{bronchit} may alternatively be
-found in the {\em SMIR} package.}
+found in the \pkg{SMIR} package.}
 For the calculations that follow, data are columns in the data frame
-\texttt{bronchit}, in the {\em DAAGviz} package.
-\marginnote[12pt]{Here \margtt{r=1} denotes bronchitis,  while \txtt{r=0}
+\texttt{bronchit}, in the \pkg{DAAGviz} package.
+\marginnote[12pt]{Here \margtt{r=1} denotes bronchitis,  while \code{r=0}
 indicates that bronchitis is absent.}
 <<bronchit-first3>>=
 @ %
-In place of the variable \txtt{r} with values 0 and 1, we use a
-factor with levels \txtt{abs} and \txtt{pres}. Labels that appear
+In place of the variable \code{r} with values 0 and 1, we use a
+factor with levels \code{abs} and \code{pres}. Labels that appear
 in the output are then more meaningful.
 <<bronchit-rfac>>=
 @ %
 
-\marginnote[12pt]{With a factor (\txtt{rfac}) as outcome,
+\marginnote[12pt]{With a factor (\code{rfac}) as outcome,
 \margtt{method="class"} is the default. Setting
 \margtt{method="class"}, to make it quite clear that
 we are using a splitting rule that is appropriate to
@@ -684,9 +683,9 @@ The following fits a tree-based model:
 <<bronchit-rp>>=
 @ %
 
-The ``complexity'' paremeter \txtt{cp}, by default set to 0.01,
+The `complexity' paremeter \code{cp}, by default set to 0.01,
 controls how far splitting continues.  In practice, it is usual to
-set \txtt{cp} small enough that splitting continues further than
+set \code{cp} small enough that splitting continues further than
 is optimal, then pruning the tree back. Cross-validation based
 accuracies are calculated at each split, and can be used to determine
 the optimal depth of tree.  Details will not be given at this point,
@@ -699,7 +698,7 @@ Figure \ref{fig:tree} is a visual summary of results from the
 tree-based classification, designed to predict the probability that a
 miner will have bronchitis.  Where the condition at a node is
 satisfied, the left branch is taken. Thus, at the initial node,
-\txtt{cig$<$4.385} takes the branch to the left.  In general (no
+\code{cig$<$4.385} takes the branch to the left.  In general (no
 random number seed), the tree may be different for each
 different run of the calculations.
 
@@ -725,8 +724,8 @@ Code for Figure \ref{fig:tree} is:
 \end{marginfigure}
 
 How is `best' defined? Splits are chosen so that the Gini index of
-``impurity'' is minimized.  Other criteria are possible, but this is
-how \txtt{randomForest()} constructs its trees.
+`impurity' is minimized.  Other criteria are possible, but this is
+how \code{randomForest()} constructs its trees.
 
 \subsection{Random forests}\label{ss:rf}
 
@@ -777,12 +776,12 @@ dramatically, on tree-based classification.
 Figure \ref{fig:rfbronchit} is a visual summary of the random forest
 classification result.  The proportion of trees in which any pair of
 points appear together at the same node may be used as a measure of
-the ``proximity'' between that pair of points.  Then, subtracting
+the `proximity' between that pair of points.  Then, subtracting
 proximity from one to obtain a measure of distance, an ordination
 method is used to find an approximates representation of those points in a
 low-dimensional space.
 
-There is a tuning parameter \txtt{mtry} which controls the number of
+There is a tuning parameter \code{mtry} which controls the number of
 randomly chosen variables considered for each tree.  This is not too
 much of an issue for the present data, where there are only two
 explanatory variables.
@@ -795,7 +794,7 @@ Code for Figure \ref{fig:rfbronchit} is:
 
 The algorithm can be used in a highly automatic manner.  Here then is
 the random forest analysis for the forensic glass data, leaving the
-tuning parameter (\txtt{mtry}) at its default\sidenote{The default is
+tuning parameter (\code{mtry}) at its default\sidenote{The default is
   to set \margtt{mtry} to the square root of the total number of
   variables, rounded up to an integral value.}:
 <<fgl-rf>>=
@@ -804,18 +803,18 @@ This improves substantially on the linear discriminant result.
 This may happen because the explanatory variables have effects
 that are non-linear on a logit scale.  The more likely reason
 is that there are interaction effects, perhaps of a relatively
-complicated kind, for which the \txtt{lda()} analysis has not
+complicated kind, for which the \code{lda()} analysis has not
 accounted.
 
 The predictive accuracy might be further improved by varying the
-tuning parameter \txtt{mtry} from its default.  See \txtt{help(tuneRF)}
-for details of the function \txtt{tuneRF()} that is designed to
-assist in findind=g the optimum choice of \txtt{mtry}.
+tuning parameter \code{mtry} from its default.  See \code{help(tuneRF)}
+for details of the function \code{tuneRF()} that is designed to
+assist in finding the optimum choice of \code{mtry}.
 
 \section{$^*$Ordination}
 
 Ordination is a generic name for methods for providing a low-dimensional
-view of points in multi-dimensional space, such that ``similar'' objects
+view of points in multi-dimensional space, such that `similar' objects
 are near each other and dissimilar objects are separated.  The plot(s)
 from an ordination in 2 or 3 dimensions may provide useful visual clues
 on clusters in the data and/or on outliers.
@@ -830,13 +829,13 @@ From Australian road travel distances
 \marginnote{An ordination might alternatively be based on road travel
   times, or on air travel times.}
 between cities and larger towns,
-can we derive a plausible ``map'', or ``ordination'', showing the relative
-locations?  The resulting ``map'' would give a better indication
+can we derive a plausible `map', or `ordination', showing the relative
+locations?  The resulting `map' would give a better indication
 than a geographical map of the road travel effort involved in getting
 from one place to another.
 
 Genomic data provides another example. Various methods are available
-for calculating genomic ``distances '' between, e.g., different insect
+for calculating genomic `distances' between, e.g., different insect
 species. The distance measures are based on evolutionary models that
 aim to give distances between pairs of species that are a monotone
 function of the time since the two species separated.
@@ -865,14 +864,14 @@ standard deviation.
 
 If data can be separated into known classes that should be reflected
 in any ordination, then the scores from classification using
-\txtt{lda()} may be a good basis for an ordination. Plots in 2 or
+\code{lda()} may be a good basis for an ordination. Plots in 2 or
 perhaps 3 dimensions may then reveal additional classes and/or
 identify points that may be misclassified and/or are in some sense
 outliers.  They give an indication of the effectiveness of the
 discrimination method in choosing the boundaries between classes.
 
-Figure \ref{fig:rfbronchit} demonstrated the use of ``proximities''
-that are available from \txtt{randomForest()} as measures of the
+Figure \ref{fig:rfbronchit} demonstrated the use of `proximities'
+that are available from \code{randomForest()} as measures of the
 closeness of any pair of points.  These were then turned into rough
 distance measures that then formed the basis for an ordination.  With
 Support Vector Machines, distance measures can be derived from the
@@ -924,10 +923,10 @@ always proceeds along one of the co-ordinate axes.  In Manhattan in
 New York, streets are laid out in a rectangular grid.  This is then
 (with $k=2$) the walking distance along one or other street.  For
 other choices, see the help page for the function
-\txtt{dist()}.\sidenote{The function \txtt{daisy()} in the
-  \textit{cluster} package offers a wider choice, including
+\code{dist()}.\sidenote{The function \code{daisy()} in the
+  \pkg{cluster} package offers a wider choice, including
   distance measures for factor or ordinal data.  Its
-  argument \txtt{stand} causes prior standardization of data.
+  argument \code{stand} causes prior standardization of data.
 \vspace{12pt}
 }
 
@@ -936,7 +935,7 @@ other choices, see the help page for the function
 Irrespective of the method of calculation of the distance measure,
 ordination methods yield a representation in Euclidean space.  It is
 always possible to find a configuration $\sfX$ in Euclidean space in
-which the ``distances'' are approximated, perhaps rather
+which the `distances' are approximated, perhaps rather
 poorly.\sidenote{This is true whether ot not the triangle inequality
   is satisfied.}  It will become apparent in the course of seeking the
 configuration whether an exact embedding (matrix $\sfX$) is possible,
@@ -954,7 +953,7 @@ Euclidean distances, after any transformations and/or weighting.
 Then metric $p$-dimensional ordination, applied to Euclidean distances
 between the rows of $\bX$, yields a representation in $p$-dimensional
 space that is formally equivalent to that derived from the use of
-principal components.  The function \txtt{cmdscale()} yields, by a
+principal components.  The function \code{cmdscale()} yields, by a
 different set of matrix manipulations, what is essentially a principal
 components decomposition.  Principal components circumvents the
 calculation of distances.
@@ -966,9 +965,9 @@ calculation of distances.
   preserves relative rather than absolute distances can often be more
   appropriate.  Additionally, small distances may be measured more
   accurately than large distances.}
-Semi-metric and non-metric methods all start from ``distances'', but
+Semi-metric and non-metric methods all start from `distances', but
 allow greater flexibility in their use to create an ordination. The
-aim is to represent the ``distances'' in some specified number of
+aim is to represent the `distances' in some specified number of
 dimensions, typically two dimensions.  As described here, a first step
 is to treat the distances as Euclidean, and determine a configuration
 in Euclidean space.  These Euclidean distances are then used as a
@@ -978,14 +977,14 @@ relaxed.  The methods that will be noted here are Sammon scaling and
 Kruskal's non-metric multidimensional scaling.
 
 \subsection*{Example -- Australian road distances}
-The distance matrix that will be used is in the matrix \txtt{audists},
-from the \txtt{DAAG} package.  Figure \ref{fig:audists} is from the
+The distance matrix that will be used is in the matrix 
+\code{DAAG::audists}.  Figure \ref{fig:audists} is from the
 use of classical multi-dimensional scaling, as implemented in the
-function \txtt{cmdscale()}:
+function \code{cmdscale()}:
 
 \noindent
 An alternative way to add names of cities or other labels is to use
-\txtt{identify()} to add labels interactively, thus:
+\code{identify()} to add labels interactively, thus:
 <<identify, eval=FALSE>>=
 @
 
@@ -1001,11 +1000,11 @@ Code is:
 
 
 Classical multi-dimensional scaling, as implemented by
- \txtt{cmdscale()}, gives long distances the same weight as short
+ \code{cmdscale()}, gives long distances the same weight as short
  distances.  It is just as prepared to shift Canberra around relative
  to Melbourne and Sydney, as to move Perth.  It makes more sense to
- give reduced weight to long distances, as is done by \txtt{sammon()}
- (\textit{MASS}).
+ give reduced weight to long distances, as is done by \code{sammon()}
+ (\pkg{MASS}).
 
 <<cfPhysical,  eval=TRUE, echo=FALSE>>=
 @ %
@@ -1024,13 +1023,13 @@ mtext(side=3, line=0.5, adj=0, "B: Using Sammon Scaling", cex=1.5)
 \label{fig:aufit}}
  \end{figure*}
  Figure \ref{fig:aufit} shows side by side the overlays of the
- ``maps'' that result from the different ordinations, onto a physical
+ `maps' that result from the different ordinations, onto a physical
  map of Australia.  Panel A shows the result for classical
  multi-dimensional scaling.  Panel B does the same, now for the
  result from Sammon scaling.  Notice how Brisbane, Sydney, Canberra
  and Melbourne now maintain their relative positions better.
 
-The function \txtt{oz::oz()}, with default arguments, draws an
+The function \code{oz::oz()}, with default arguments, draws an
 outline of the coast of Australia, with state boundaries shown.
 Arguments are available that can be used to limit what is shown 
 (e.g. the NSW and Victorian states only).
@@ -1045,8 +1044,8 @@ fig9.15B
 The exercise can be repeated for multidimensional scaling (MDS). MDS
 preserves only, as far as possible, the relative distances.  A
 starting configuration of points is required.  This might come from
-the configuration given by \txtt{cmdscale()}.  For the supplementary
-figure \txtt{supp9.1()} that shows the MDS configuration, however, we
+the configuration given by \code{cmdscale()}.  For the supplementary
+figure \code{supp9.1()} that shows the MDS configuration, however, we
 use the physical latitudes and longitudes.
 
 To show this figure, source the file, if this has not been done
@@ -1067,7 +1066,7 @@ the vignettes can be used to recreate the maps.
 \item[] The {\em mapmisc} vignette "Overview of mapping with mapmisc"
 shows a number of maps that illustrate some of the possibilities.
 \item[] Helpful sources of information on the relevant R data structures
-are the {\em sf} vignette "Simple Features for R" and the {\em tmap} 
+are the \pkg{sf} vignette "Simple Features for R" and the \pkg{tmap} 
 vignette "tmap in a nutshell."
 \item[] Detailed information on relevant R packages and abilities
 is available under \underline{Spatial} on the R Task Views web page

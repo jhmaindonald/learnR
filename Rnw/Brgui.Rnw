@@ -28,7 +28,7 @@ underneath.  \marginnote[-1.5cm]{At startup, the R Commander checks
   install them. (This requires a live internet connection.)}
 This window can be closed by clicking on the {\large
   \texttt{$\times$}} in the top left corner. If thus closed,
-enter \txtt{Commander()} to reopen it again later in the session.
+enter \code{Commander()} to reopen it again later in the session.
 
 \paragraph{From GUI to writing code:}
 \marginnote[10pt]{The code can be run either from the
@@ -37,7 +37,7 @@ displays the code that it generates.  Users can take this code, modify
 it, and re-run it.
 
 \paragraph{The active data set:} There is, at any one time,
-a single ``active'' data set. Start by clicking on the
+a single `active' data set. Start by clicking on the
 \underline{Data} drop-down menu. To select
 or create or change the active data set, do one of the following:
 \begin{itemize}
@@ -61,14 +61,14 @@ To draw graphs, click on the \underline{Graphs} drop-down menu. Then,
 among other possibilities:
 \begin{itemize}
 \item Click on \underline{Scatterplot \ldots} to obtain a
-  scatterplot.\sidenote[][-24pt]{This uses \margtt{scatterplot()} (\textit{car}
+  scatterplot.\sidenote[][-24pt]{This uses \margtt{scatterplot()} (\pkg{car}
     package), which in turn uses functions from base graphics.}
 \item Click on \underline{X$\;$Y conditioning plot \ldots}
-for {\em lattice} scatterplots and panels of scatterplots.
+for \pkg{lattice} scatterplots and panels of scatterplots.
 \item Click on \underline{3D graph} to obtain a 3D
 scatterplot.\footnote{This uses
   the R Commander function \margtt{scatter3d()} that is an interface
-  to functions in the \textit{rgl} package.}
+  to functions in the \pkg{rgl} package.}
 \end{itemize}
 
 \paragraph{Statistics (\& fitting models):} Click on the
@@ -85,11 +85,10 @@ objects once they have been fitted.  (NB: To fit a model, go to the
 
 \subsection*{Other GUIs for R}
 
-The {\em rattle} GUI, aimed broadly at ``data mining'' (data
+The \pkg{rattle} GUI, aimed broadly at ``data mining'' (data
 manipulation, regression, classification and clustering) applications,
 is a powerful and sophisticated system.  It has a number of features
 that make it attractive for use in standard data mining applications.
-Note also \textit{JGR} (Java Graphics for R) and \textit{pmg} (Poor
-Man's GUI).
+Note also \pkg{JGR} (Java Graphics for R).
 
 

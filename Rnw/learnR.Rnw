@@ -467,11 +467,14 @@ science.
 
 \chapter{The R Commander Graphical User Interface}
 \include{Brgui}
-% <<B-rgui, child='Brgui.Rnw'>>=
+% <<C-rgui, child='Brgui.Rnw'>>=
 % @
 % \cleartooddpage
 
-\chapter{Color Versions of Selected Graphs}\label{app:C}
+\chapter{The R system --- history, and the path ahead}\label{app:C}
+\include{C-aboutR}
+
+\chapter{Color Versions of Selected Graphs}\label{app:D}
 \include{Dcolor}
 % <<Dcolor, child='Ccolor.Rnw'>>=
 % @

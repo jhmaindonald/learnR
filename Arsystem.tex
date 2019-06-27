@@ -94,7 +94,7 @@ R.home()
 \end{Soutput}
 \end{Schunk}
 When using Microsoft Windows systems, a more intelligible result is
-obtained by wrapping the function call in \txtt{normalizePath()},
+obtained by wrapping the function call in \code{normalizePath()},
 thus: \marginnote{If the \margtt{winslash="/"} argument is omitted,
   double backslashes are used to separate names in the directory
   tree.}
@@ -122,7 +122,7 @@ Sys.getenv("R_HOME")
 [1] "C:/PROGRA~1/R/R-32~1.2"
 \end{Soutput}
 \end{Schunk}
-See \txtt{help(Rprofile)} for details on how to set system variables.
+See \code{help(Rprofile)} for details on how to set system variables.
 
 The following can be used to get the path to files that come with an installed
 package:
@@ -158,8 +158,8 @@ installation, and possibly to select one or more, type:
 setRepositories()
 \end{Sinput}
 \end{Schunk}
-Alternatively, use the argument \txtt{ind}, in a call to
-\txtt{setRepositories()}, to specify repositories.  For example:
+Alternatively, use the argument \code{ind}, in a call to
+\code{setRepositories()}, to specify repositories.  For example:
 \begin{Schunk}
 \begin{Sinput}
 setRepositories(ind=1:2)
@@ -178,7 +178,7 @@ On the command line (for Windows, Unix, Linux, \ldots), enter
 R CMD BATCH infile outfile
 \end{verbatim}
 
-Here infile is a file that holds R commands.  See \txtt{help(BATCH)}
+Here infile is a file that holds R commands.  See \code{help(BATCH)}
 for further information. The path to the R executable must be included
 in the system path variable. The R FAQ for Windows has information on
 setting environment variables.
@@ -281,9 +281,9 @@ at a user level, and at a startup directory level.  If started in the
 standard manner, the 'R\_PROFILE' environment variable\footnote{If
   this is unset, R searches for a file {\bf
     R\_HOME/etc/Rprofile.site}.  'Factory-fresh' installations will
-  not have such a file.  Code is sourced into the \textit{base}
+  not have such a file.  Code is sourced into the \pkg{base}
   package, before other packages are loaded.} can be used to give the
-name of a site-wide profile file.  See \txtt{help(Startup)} for
+name of a site-wide profile file.  See \code{help(Startup)} for
 details.
 
 R next searches at startup for a file called \textbf{.Rprofile} in the
@@ -291,7 +291,7 @@ current directory or in the user's home directory (in that
 order).\sidenote{Alternatively, the 'R\_PROFILE\_USER' environment variable
 can be used to set the name of a user profile file.}
 Such a \textbf{.Rprofile} file can for example define a
-\txtt{.First()} and/or a \txtt{.Last()} function.
+\code{.First()} and/or a \code{.Last()} function.
 
 A user (or site-wide) profile file might for example include the
 following statements:

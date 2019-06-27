@@ -91,7 +91,7 @@ bomRain <- as.data.frame(z)
 ## ---- WDI-pkg ----
 library(WDI)
 co2Inds <- WDIsearch('co2')[1:6,]
-print(cbind(co2Inds[,1], substring(co2Inds[,2],1,64)),
+print(cbind(co2Inds[,1], substring(co2Inds[,2],1,66)),
       quote=FALSE)
 
 ## ---- WDI-fun ----

@@ -222,7 +222,7 @@ show(nes1948imp)
 \begin{Schunk}
 \begin{Soutput}
 
-SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmpeq9yKc/fileb8f44085a796/NES1948.POR' 
+SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmpeq9yKc/fileb8f445d12bd7/NES1948.POR' 
 	with 67 variables and 662 observations
 \end{Soutput}
 \end{Schunk}
@@ -587,17 +587,17 @@ to 64 characters, are:
 \begin{Sinput}
 library(WDI)
 co2Inds <- WDIsearch('co2')[1:6,]
-print(cbind(co2Inds[,1], substring(co2Inds[,2],1,64)),
+print(cbind(co2Inds[,1], substring(co2Inds[,2],1,66)),
       quote=FALSE)
 \end{Sinput}
 \begin{Soutput}
-     [,1]              [,2]                                                            
-[1,] EN.CO2.OTHX.ZS    CO2 emissions from other sectors, excluding residential building
-[2,] EN.CO2.MANF.ZS    CO2 emissions from manufacturing industries and construction (% 
-[3,] EN.CO2.ETOT.ZS    CO2 emissions from electricity and heat production, total (% of 
-[4,] EN.CO2.BLDG.ZS    CO2 emissions from residential buildings and commercial and publ
-[5,] EN.CLC.GHGR.MT.CE GHG net emissions/removals by LUCF (Mt of CO2 equivalent)       
-[6,] EN.ATM.SF6G.KT.CE SF6 gas emissions (thousand metric tons of CO2 equivalent)      
+     [,1]              [,2]                                                              
+[1,] EN.CO2.OTHX.ZS    CO2 emissions from other sectors, excluding residential buildings 
+[2,] EN.CO2.MANF.ZS    CO2 emissions from manufacturing industries and construction (% of
+[3,] EN.CO2.ETOT.ZS    CO2 emissions from electricity and heat production, total (% of to
+[4,] EN.CO2.BLDG.ZS    CO2 emissions from residential buildings and commercial and public
+[5,] EN.CLC.GHGR.MT.CE GHG net emissions/removals by LUCF (Mt of CO2 equivalent)         
+[6,] EN.ATM.SF6G.KT.CE SF6 gas emissions (thousand metric tons of CO2 equivalent)        
 \end{Soutput}
 \end{Schunk}
 
@@ -674,12 +674,12 @@ dbGetQuery(con,
   "select * from nihills limit 5 offset 15")
 \end{Sinput}
 \begin{Soutput}
-  dist climb   time  timef
-1  5.5  2790 0.9483 1.2086
-2 11.0  3000 1.4569 2.0344
-3  4.0  2690 0.6878 0.7992
-4 18.9  8775 3.9028 5.9856
-5  4.0  1000 0.4347 0.5756
+  dist climb   time  timef gradient
+1  5.5  2790 0.9483 1.2086    507.3
+2 11.0  3000 1.4569 2.0344    272.7
+3  4.0  2690 0.6878 0.7992    672.5
+4 18.9  8775 3.9028 5.9856    464.3
+5  4.0  1000 0.4347 0.5756    250.0
 \end{Soutput}
 \begin{Sinput}
 dbDisconnect(con)
