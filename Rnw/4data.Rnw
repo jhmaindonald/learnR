@@ -1188,14 +1188,6 @@ Run the following code and explain the error that results:
 <<opt78, echo=FALSE>>=
 @ %
 <<factors, results='hide'>>=
-gender <- factor(c(rep("female", 91), rep("male", 92)))
-table(gender)
-gender <- factor(gender, levels=c("male", "female"))
-table(gender)
-gender <- factor(gender, levels=c("Male", "female")) # Note the mistake
-                            # The level was "male", not "Male"
-table(gender)
-rm(gender)                  # Remove gender
 @ %
 <<opt54, echo=FALSE>>=
 @ %
@@ -1203,11 +1195,6 @@ rm(gender)                  # Remove gender
 The output from the final \verb!table(gender)! is
 
 <<gender, echo=FALSE>>=
-gender <- factor(c(rep("female", 91), rep("male", 92)))
-gender <- factor(gender, levels=c("Male", "female")) # Note the mistake
-                            # The level was "male", not "Male"
-table(gender)
-rm(gender)                  # Remove gender
 @%
 Explain the numbers that appear.
 
@@ -1226,10 +1213,7 @@ determine the order of row numbers required to sort rows in
 increasing order of age.  Reorder rows of \code{Acmena} to appear
 in this order.]
 
-<<subset, results='hide'>>=
-Acmena <- subset(rainforest, species=="Acmena smithii")
-ord <- order(Acmena$dbh)
-acm <- Acmena[ord, ]
+<<Acmena, results='hide'>>=
 @  %
 
 Sort the row names of \code{DAAG::possumsites} into

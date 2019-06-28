@@ -23,14 +23,16 @@ contpg <- grep('^[[:blank:]]*Contents',txpages)
 conts <- paste(c(txpages[contpg],sub('^[[:blank:]]*[[:digit:]]+\n','',txpages[contpg+1])), collapse="")
 conts <- strsplit(sub('^[[:blank:]]*Contents\n','',conts), '\n')[[1]]
 newchaps <- gsub('[^[:digit:]]+[[:digit:]]?[^[:digit:]]+',':', conts)
-chapinfo <- t(sapply(x,function(x)as.numeric(x)))
-writeLines(txpages[chapinfo[1,2]:(chapinfo[2,2]-1)], '~/pkgs/DAAGviz/inst/texts/1getStarted.txt')
-writeLines(txpages[chapinfo[2,2]:(chapinfo[3,2]-1)], '~/pkgs/DAAGviz/inst/texts/2workenv.txt')
-writeLines(txpages[chapinfo[3,2]:(chapinfo[4,2]-1)], '~/pkgs/DAAGviz/inst/texts/3exs.txt')
-writeLines(txpages[chapinfo[4,2]:(chapinfo[7,2]-1)], '~/pkgs/DAAGviz/inst/texts/456data.txt')
+chapinfo <- t(sapply(strsplit(newchaps,':'),function(x)as.numeric(x)))
+# writeLines(txpages[chapinfo[1,2]:(chapinfo[2,2]-1)], '~/pkgs/DAAGviz/inst/texts/1getStarted.txt')
+# writeLines(txpages[chapinfo[2,2]:(chapinfo[3,2]-1)], '~/pkgs/DAAGviz/inst/texts/2workenv.txt')
+# writeLines(txpages[chapinfo[3,2]:(chapinfo[4,2]-1)], '~/pkgs/DAAGviz/inst/texts/3exs.txt')
+# writeLines(txpages[chapinfo[4,2]:(chapinfo[7,2]-1)], '~/pkgs/DAAGviz/inst/texts/456data.txt')
 ```
 
 ```{bash look4funs}
+## Look in the scripts subdirectory for packages
+## Output to scriptPkg.txt
 egrep -ho 'library\([[:alpha:]]+[[:digit:]]?)|[[:alpha:]]+[[:digit:]]?::|\{chapter}\{[[:digit:]]+}' scripts/*R | sed 's/library(//g' | sed 's/)//g' |  sed 's/:://g' > scriptPkg.txt
 ```
 
@@ -41,14 +43,15 @@ egrep -ho 'library\([[:alpha:]]+[[:digit:]]?)|[[:alpha:]]+[[:digit:]]?::|\{chapt
 
 ```{r indexFuns}
 showpkg <-
-function (pkgs = c("DAAG", "boot", "lattice", "latticeExtra", "cluster", "afex",
-                   "MASS", "grid", "reshape", "forecast", "dichromat", "foreign", 
-                   "ggplot2", "leaps", "lme4", "MCMCpack", "ggplot2", "remotes",
-                   "mgcv", "nlme", "oz", "ape", "plyr", "rgl", "RSQLite",
-                   "randomForest", "RColorBrewer", "rpart", "rpart.plot","survival", 
-                   "reshape2", "quantreg", "muhaz", "car", "stats", "gmodels",
-                   "tseries", "xtable", "oz", "WDI", "Rcmdr")) 
+function (pkgs = c("base", "car", "DAAG", "DAAGviz", "datasets", "dplyr", "Ecdat", 
+"forecast", "gamclass", "ggplot2", "googleVis", "graphics", "grid", 
+"HistData", "knitr", "lattice", "latticeExtra", "lme4", "MASS", 
+"memisc", "mgcv", "oz", "plyr", "quantreg", "Rcmdr", "RColorBrewer", 
+"readr", "readxl", "reshape2", "rgdal", "rgl", "rpart", "RSQLite", 
+"sp", "splines", "tm", "vcd", "WDI", "wordcloud", "XML")) 
 {
+# pkgs <- sort(unique(c(sort(read.table('scriptPkg.txt',as.is=TRUE)),
+#              sort(read.table('txtPkg.txt',as.is=TRUE)))))
 for (i in 1:length(pkgs)) require(pkgs[i], warn.conflicts = FALSE, character.only = TRUE,quietly=TRUE)
   where <- search()
   if (length(where) < 1L) 
@@ -152,10 +155,6 @@ makeFunIndex(offset=0, availfun=funpack)
 ```
 
 #######################################################################
-
-```{r tmat4}
-tmat4 <- read.table('~/_notes/learnR/tmat4.txt', as.is=TRUE)
-```
 
 ```{r termInd}
 ## offset=0 because page numbers start at the first page of the pdf
@@ -270,54 +269,56 @@ function (txpg = DAAGURtx, tmat = termMat, offset = 0, ignore.case,
     indentry
 }
 
-showTermPage <-
-function (sourceFile = "~/r3/proofs/r-mono.txt", tmat = termMat,
-    offset = 0, fileout = "~/r3/proofs/bypage.txt", indentry = NULL)
-{
-    if (is.null(indentry)) {
-        len <- nchar(sourceFile)
-        tx <- readLines(sourceFile, warn = FALSE)
-        indentry <- locateTerm(tx, termMat, offset = offset)
-    }
-    tnam <- names(indentry)
-    len <- length(tnam)
-    itemlen <- sapply(indentry, length)
-    tlist <- sapply(1:len, function(k) cbind(indentry[[k]], rep(k,
-        itemlen[k])))
-    t1 <- unlist(lapply(tlist, function(x) x[, 1]))
-    t2 <- unlist(lapply(tlist, function(x) x[, 2]))
-    termlist <- split(t2, t1)
-    pnam <- names(termlist)
-    write("Page List", file = fileout)
-    for (i in 1:length(termlist)) {
-        ntms <- unique(termlist[[i]])
-        ntms <- ntms[ntms != 999]
-        if (length(ntms) > 0) {
-            tms <- sort(tnam[ntms])
-            tms <- sub("!", "!! ", tms, fixed = TRUE)
-            tmsplit <- strsplit(tms, "!!", fixed = T)
-            tx1 <- sapply(tmsplit, function(x) x[1])
-            tx2 <- sapply(tmsplit, function(x) if (length(x) >
-                1)
-                x[2]
-            else "")
-            z <- split(tx2, tx1)
-            nam <- names(z)
-            chvec <- unlist(as.vector(sapply(1:length(z), function(i) c(nam[i],
-                z[[i]]))))
-            write(pnam[i], file = fileout, append = TRUE)
-            write(chvec, file = fileout, append = TRUE)
-            write(" ", file = fileout, append = TRUE)
-        }
-    }
-    unlink(fileout)
-}
+# showTermPage <-
+# function (sourceFile = "~/r3/proofs/r-mono.txt", tmat = termMat,
+#     offset = 0, fileout = "~/r3/proofs/bypage.txt", indentry = NULL)
+# {
+#     if (is.null(indentry)) {
+#         len <- nchar(sourceFile)
+#         tx <- readLines(sourceFile, warn = FALSE)
+#         indentry <- locateTerm(tx, termMat, offset = offset)
+#     }
+#     tnam <- names(indentry)
+#     len <- length(tnam)
+#     itemlen <- sapply(indentry, length)
+#     tlist <- sapply(1:len, function(k) cbind(indentry[[k]], rep(k,
+#         itemlen[k])))
+#     t1 <- unlist(lapply(tlist, function(x) x[, 1]))
+#     t2 <- unlist(lapply(tlist, function(x) x[, 2]))
+#     termlist <- split(t2, t1)
+#     pnam <- names(termlist)
+#     write("Page List", file = fileout)
+#     for (i in 1:length(termlist)) {
+#         ntms <- unique(termlist[[i]])
+#         ntms <- ntms[ntms != 999]
+#         if (length(ntms) > 0) {
+#             tms <- sort(tnam[ntms])
+#             tms <- sub("!", "!! ", tms, fixed = TRUE)
+#             tmsplit <- strsplit(tms, "!!", fixed = T)
+#             tx1 <- sapply(tmsplit, function(x) x[1])
+#             tx2 <- sapply(tmsplit, function(x) if (length(x) >
+#                 1)
+#                 x[2]
+#             else "")
+#             z <- split(tx2, tx1)
+#             nam <- names(z)
+#             chvec <- unlist(as.vector(sapply(1:length(z), function(i) c(nam[i],
+#                 z[[i]]))))
+#             write(pnam[i], file = fileout, append = TRUE)
+#             write(chvec, file = fileout, append = TRUE)
+#             write(" ", file = fileout, append = TRUE)
+#         }
+#     }
+#     unlink(fileout)
+# }
 ```
 
 #######################################################################
 
 ```{r mkind}
 ## Create idx, then ind file
+tmat4 <- read.table('~/_notes/learnR/tmat4.txt', as.is=TRUE)
+tmat4 <- tmat4[-c(1,29,31,35:36,295:297,546:547),]
 notIn <- makeTermIndex(termMat=tmat4, offset=0)
 ```
 

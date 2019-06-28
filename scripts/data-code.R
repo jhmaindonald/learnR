@@ -370,3 +370,24 @@ y <- c(1, NA, 3, 0, NA)
 y[y > 0]
 y[y > 0] <- c(11, 12)
 
+## ---- factors ----
+gender <- factor(c(rep("female", 91), rep("male", 92)))
+table(gender)
+gender <- factor(gender, levels=c("male", "female"))
+table(gender)
+gender <- factor(gender, levels=c("Male", "female")) # Note the mistake
+# The level was "male", not "Male"
+table(gender)
+rm(gender)                  # Remove gender
+
+## ---- gender ----
+gender <- factor(c(rep("female", 91), rep("male", 92)))
+gender <- factor(gender, levels=c("Male", "female")) # Note the mistake
+# The level was "male", not "Male"
+table(gender)
+rm(gender)                  # Remove gender
+
+## ---- Acmena ----
+Acmena <- subset(rainforest, species=="Acmena smithii")
+ord <- order(Acmena$dbh)
+acm <- Acmena[ord, ]
