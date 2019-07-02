@@ -434,7 +434,7 @@ appears in the code history panel on the upper right.
 In Figure \ref{fig:code-history}, take particular note of the icon on
 which you can click to create an R notebook. Upon clicking this icon,
 the system will ask for a name for the file.  It will then create an
-HTML file that has, along with the code and comment, the compluter
+HTML file that has, along with the code and comment, the computer
 output.
 \marginnote{For the code that is shown, the HTML file that results
 will include the output from \code{summary(cars)} and the graph from
