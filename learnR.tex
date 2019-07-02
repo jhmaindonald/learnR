@@ -68,9 +68,55 @@
 
 \hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks (e.g., for onscreen viewing)
 
+\makeatletter
+\newcommand{\subtitle}[1]{
+  \gdef\@subtitle{#1}
+}
+
+\renewcommand{\maketitlepage}[0]{%
+
+  \cleardoublepage%
+  {%
+  \sffamily%
+  \begin{fullwidth}%
+  \fontsize{18}{20}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\thanklessauthor}}%
+  \vspace{11.5pc}%
+  \fontsize{24}{40}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\thanklesstitle}}%
+  \ifdefined\@subtitle
+    {\fontsize{18}{40}\selectfont\par\noindent\textcolor{darkgray}{\allcaps{\@subtitle}}}%
+  \fi
+
+  \vfill%
+  \fontsize{14}{16}\selectfont\par\noindent\allcaps{\thanklesspublisher}%
+  \end{fullwidth}%
+  }
+  \thispagestyle{empty}%
+  \clearpage%
+}
+\makeatother
+
+% \renewcommand{\maketitlepage}[0]{%
+%   \cleardoublepage%
+%   {%
+%   \sffamily%
+%   \begin{fullwidth}%
+%   \fontsize{18}{20}\selectfont\par\noindent\textcolor{darkgray}{{\thanklessauthor}}%
+%   \vspace{11.5pc}%
+% %  \fontsize{27}{30}\selectfont\par\noindent\textcolor{darkgray}{{\thanklesstitle}}%
+%   \fontsize{40}{45}\selectfont\par\noindent\textcolor{darkgray}{{\thanklesstitle}}%
+%   \vfill%
+%   \fontsize{14}{16}\selectfont\par\noindent\allcaps{\thanklesspublisher}%
+%   \end{fullwidth}%
+%   }
+%   \thispagestyle{empty}%
+%   \clearpage%
+% }
+
+
 %%
 % Book metadata
 \title{Learning and Exploring R}
+\subtitle{Data Analysis, and More, by Example}
 \author[]{J H Maindonald}
 \publisher{}
 
@@ -132,24 +178,6 @@
   July\or August\or September\or October\or November\or
   December\fi\space\number\year
 }
-
-\renewcommand{\maketitlepage}[0]{%
-  \cleardoublepage%
-  {%
-  \sffamily%
-  \begin{fullwidth}%
-  \fontsize{18}{20}\selectfont\par\noindent\textcolor{darkgray}{{\thanklessauthor}}%
-  \vspace{11.5pc}%
-%  \fontsize{27}{30}\selectfont\par\noindent\textcolor{darkgray}{{\thanklesstitle}}%
-  \fontsize{40}{45}\selectfont\par\noindent\textcolor{darkgray}{{\thanklesstitle}}%
-  \vfill%
-  \fontsize{14}{16}\selectfont\par\noindent\allcaps{\thanklesspublisher}%
-  \end{fullwidth}%
-  }
-  \thispagestyle{empty}%
-  \clearpage%
-}
-
 
 % Prints an epigraph and speaker in sans serif, all-caps type.
 \newcommand{\openepigraph}[2]{%
@@ -293,13 +321,13 @@
 \setmarginnotefont{\small}
 % \setcitationfont
 
-\SetBgContents{
-\includegraphics{figs-inc/cover-bg.pdf}
-}
-\SetBgScale{3.5}
-\SetBgColor{gray!70}
-\SetBgOpacity{0.2}
-\BgThispage
+% \SetBgContents{
+% \includegraphics{figs-inc/cover-bg.pdf}
+% }
+% \SetBgScale{3.5}
+% \SetBgColor{gray!70}
+% \SetBgOpacity{0.2}
+% \BgThispage
 \bmdefine\bX{\mathbf{X}}
 \bmdefine\bP{\mathbf{P}}
 \bmdefine\sfX{\bm{\textsf{\textmd{X}}}}

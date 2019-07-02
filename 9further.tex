@@ -300,7 +300,7 @@ plot(obj, fg="gray",
 \end{Schunk}
 \end{marginfigure}
 
-While smoothing methods that asssume independent errors can be
+While smoothing methods that assume independent errors can be
 used, as in Figure \ref{lh-smoothplot}, to fit a curve to such
 data, the curve will not be repeatable.  Figure \ref{lh-smoothplot}
 does not separate systematic effects from effects due to processes
@@ -312,14 +312,14 @@ As the curve is conditional on a particular realization of the process
 that generated it, its usefulness is limited.
 
 The pointwise confidence limits are similarly conditioned, relevant
-perhaps for interpolalation given this particular realization.
+perhaps for interpolation given this particular realization.
 All that is repeatable, given another realization, is the
 process that generated the curve, not the curve itself. 
 
 \subsection{Fitting and use of an autoregressive model}
 
-There are several different types of time series models that
-may be used to model the correlatios structure, allowing realistic estimates of the lake level a short time ahead, with realistic
+Several different types of time series models
+may be used to model the correlation structure, allowing realistic estimates of the lake level a short time ahead, with realistic
 confidence bounds around those estimates.  For the Lake Erie
 data, an autoregressive correlation structure does a good job of
 accounting for the pattern of change around a mean that stays
@@ -519,7 +519,7 @@ for(i in 1:5)acf(rnorm(n), ylab=paste("Sim",i),
 
 \subsection{$^*$Box-Jenkins ARIMA Time Series Modeling}
 
-\marginnote{Models that are closely analagous to ARIMA models had
+\marginnote{Models that are closely analogous to ARIMA models had
  been used earlier in control theory.  ARIMA models are feedback systems!}
 From the perspective of the Box-Jenkins ARIMA (Autoregressive
 Integrated Moving Average) approach to time series models,
@@ -639,7 +639,7 @@ Linear discriminant analysis (LDA), and quadratic
 discriminant analysis (QDA) which slightly generalizes LDA,
 both use linear functions of the explanatory variables in the
 modeling of the probabilities of group membership.  These
-methods will be contrasted with the strongly non-parameteric
+methods will be contrasted with the strongly non-parametric
 approaches of tree-based classification and of random forests.
 
 \subsection*{Linear and quadratic discriminant analysis}
@@ -663,7 +663,7 @@ Results from use of \code{lda()} lead very
   gives results that are a sub-optimal fit to the data,
   the plots may hint at what type of alternative method
   may be preferable.  They may identify subgroups of
-  the orginal $g$ groups, and/or identify points that seem
+  the original $g$ groups, and/or identify points that seem
   misclassified.   
 
 An attractive feature of \code{lda()} is that the discriminant rule
@@ -772,9 +772,9 @@ xyplot(scores[,2] ~ scores[,1], groups=fgl$type,
 
 \marginnote{See Figure \ref{fig:rfbronchit} in Subsection \ref{ss:rf},
 for an example of the type of low-dimensional representation that is
-possible for results from a randdom forest classification.}
+possible for results from a random forest classification.}
 Additionally, it may be useful to examine the plot of the third
-versus the second discriminant.  Better still, use the abilites of the
+versus the second discriminant.  Better still, use the abilities of the
 \pkg{rgl} package to examine a 3-dimensional dynamic representation.
 With most other methods, a low-dimensional representation does not
 arise so directly from the analysis.
@@ -886,7 +886,7 @@ b.rpart <- rpart(rfac ~ cig+poll, data=bronchit,
 \end{Sinput}
 \end{Schunk}
 
-The `complexity' paremeter \code{cp}, by default set to 0.01,
+The `complexity' parameter \code{cp}, by default set to 0.01,
 controls how far splitting continues.  In practice, it is usual to
 set \code{cp} small enough that splitting continues further than
 is optimal, then pruning the tree back. Cross-validation based
@@ -1126,9 +1126,9 @@ constructed variables.
 
 There is typically no good model, equivalent
 to the evolutionary models used by molecular biologists, that can be
-used to motivate distance calculations.  There is then a large element
-of arbritariness in the distance measure used.
-Results may depend strongly on the distance measure used.  Unless
+used to motivate distance calculations.  There is then a large 
+arbitrary element in the choice of distance measure, and a risk
+that results will depend strongly on the distance measure.  Unless
 measurements are comparable (e.g., relative growth, as measured
 perhaps on a logarithmic scale, for different body measurements), it
 is usually desirable to calculate distances from standardized variable

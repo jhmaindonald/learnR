@@ -160,7 +160,7 @@ Code for the plots is:
 edge of the plot if the size of the graphics page is too small
 relative to the pointsize.  Note the different scaling ranges used in
 the three cases, with the large scaling range for Panel C
-(\code{scale=c(9,.8)}) used to accommmodate a frequency distribution
+(\code{scale=c(9,.8)}) used to accommodate a frequency distribution
 in which one item (`data') is a marked outlier.
 
 \section{Creation of a Corpus from PDF Files}

@@ -289,7 +289,7 @@ Note that the functions \code{read.table()}, \code{read.csv()},
 directly from a file that is available on the web.  There is a
 limited ability to input part only of a file.
 
-Suppose however that the demand is to downlaod data for several of a
+Suppose however that the demand is to downloqd data for several of a
 large number of variables, for a specified range of years, and for a
 specified geographical area or set of countries.  \marginnote{GML, or
   Geography Markup Language, is based on XML.}  A number of data
@@ -350,7 +350,7 @@ includes the most recent year.
 \subsection*{$^*$Extraction of data from tables in web pages}
 
 The function \code{readHTMLTable()}, from the \pkg{XML} package,
-will prove very useful for this.  It does not work, currenty at
+will prove very useful for this.  It does not work, currently at
 least, for pages that use https:.
 
 \paragraph{Historical air crash datra:}
@@ -402,9 +402,9 @@ Now combine all the tables into one:
 The help page \margtt{help(readHTMLTable)} gives examples that
   demonstrate other possibilities.
 
-\subsection{$^*$Embedded markup --- XML and alternetives}\label{ss:markup}
+\subsection{$^*$Embedded markup --- XML and alternatives}\label{ss:markup}
 
-Data are are now widely available, from a number of differet web
+Data are are now widely available, from a number of different web
 sites, in one or more of several markup formats.  Markup code,
 designed to make the file self-describing, is included with the data.
 The user does not need to supply details of the data structure to the

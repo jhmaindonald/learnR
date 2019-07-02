@@ -63,7 +63,7 @@ an arbitrary number of dimensions.
 \section{Manipulations with Lists, Data Frames and Arrays}
 
 Recall that data frames are lists of columns that all have the
-same length.  They are thus a specialised form of list.  Matrices
+same length.  They are thus a specialized form of list.  Matrices
 are two-dimensional arrays.  Tables are in essence arrays that
 hold numeric values.
 
@@ -487,7 +487,7 @@ can be moved between different computer systems.
 
 \paragraph{Further possibilities -- saving objects in text form:}
 An alternative to saving objects\sidenote{Dumps of S4 objects and
-  environments, amongs others, cannot currently be retrieved using
+  environments, among others, cannot currently be retrieved using
   \margtt{source()}.  See \margtt{help(dump)}.} in an
 image file is to dump them, in a text format, as dump files, e.g.
 <<dump-vol-wt, eval=FALSE>>=

@@ -93,7 +93,7 @@
   \item coord\_fixed ({\em ggplot2}), 138, 139
   \item coordinates ({\em sp}), 84, 85
   \item cor ({\em stats}), 56
-  \item Corpus ({\em tm}), 210, 211, 213, 214
+  \item Corpus ({\em tm}), 211, 213, 214
   \item count.fields ({\em utils}), 90
   \item cumprod ({\em base}), 74
   \item cumsum ({\em base}), 74
@@ -522,6 +522,7 @@
 
   \indexspace
 
+  \item VCorpus ({\em tm}), 210
   \item vector ({\em base}), 25, 96
   \item VectorSource ({\em tm}), 210
   \item vignette ({\em utils}), 22, 36, 94, 110, 114, 147

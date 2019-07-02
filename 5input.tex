@@ -222,7 +222,7 @@ show(nes1948imp)
 \begin{Schunk}
 \begin{Soutput}
 
-SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmpeq9yKc/fileb8f445d12bd7/NES1948.POR' 
+SPSS portable file '/var/folders/00/_kpyywm16hnbs2c0dvlf0mwr0000gq/T//Rtmpx1DzSU/file39656cd5edd1/NES1948.POR' 
 	with 67 variables and 662 observations
 \end{Soutput}
 \end{Schunk}
@@ -358,7 +358,7 @@ Note that the functions \code{read.table()}, \code{read.csv()},
 directly from a file that is available on the web.  There is a
 limited ability to input part only of a file.
 
-Suppose however that the demand is to downlaod data for several of a
+Suppose however that the demand is to downloqd data for several of a
 large number of variables, for a specified range of years, and for a
 specified geographical area or set of countries.  \marginnote{GML, or
   Geography Markup Language, is based on XML.}  A number of data
@@ -442,7 +442,7 @@ includes the most recent year.
 \subsection*{$^*$Extraction of data from tables in web pages}
 
 The function \code{readHTMLTable()}, from the \pkg{XML} package,
-will prove very useful for this.  It does not work, currenty at
+will prove very useful for this.  It does not work, currently at
 least, for pages that use https:.
 
 \paragraph{Historical air crash datra:}
@@ -518,9 +518,9 @@ airAccs$Date <- as.Date(airAccs$Date, format="%d %b %Y")
 The help page \margtt{help(readHTMLTable)} gives examples that
   demonstrate other possibilities.
 
-\subsection{$^*$Embedded markup --- XML and alternetives}\label{ss:markup}
+\subsection{$^*$Embedded markup --- XML and alternatives}\label{ss:markup}
 
-Data are are now widely available, from a number of differet web
+Data are are now widely available, from a number of different web
 sites, in one or more of several markup formats.  Markup code,
 designed to make the file self-describing, is included with the data.
 The user does not need to supply details of the data structure to the
@@ -580,7 +580,7 @@ Use the function \code{WDIsearch()} to search for indicators. Thus,
 to search for indicators with `co2' or `CO2' in their name, enter
 \code{WDIsearch('co2')}.  The first 6 (out of 38) from
 such a search, the name details in the second column truncated
-to 64 characters, are:
+to 66 characters, are:
 \begin{fullwidth}
 
 \begin{Schunk}
@@ -674,12 +674,12 @@ dbGetQuery(con,
   "select * from nihills limit 5 offset 15")
 \end{Sinput}
 \begin{Soutput}
-  dist climb   time  timef gradient
-1  5.5  2790 0.9483 1.2086    507.3
-2 11.0  3000 1.4569 2.0344    272.7
-3  4.0  2690 0.6878 0.7992    672.5
-4 18.9  8775 3.9028 5.9856    464.3
-5  4.0  1000 0.4347 0.5756    250.0
+  dist climb   time  timef
+1  5.5  2790 0.9483 1.2086
+2 11.0  3000 1.4569 2.0344
+3  4.0  2690 0.6878 0.7992
+4 18.9  8775 3.9028 5.9856
+5  4.0  1000 0.4347 0.5756
 \end{Soutput}
 \begin{Sinput}
 dbDisconnect(con)

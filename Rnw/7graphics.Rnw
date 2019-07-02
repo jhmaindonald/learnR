@@ -267,7 +267,7 @@ opacity of 80\%, so that 20\% of the white background shows through.
 Three or more overlapping points appear as completely black.
 
 \marginnote[11pt]{The plots show a sample of 3000 of the
-  points.  Plotting all the points gives an incoveniently large
+  points.  Plotting all the points gives an inconveniently large
   graphics file, while not giving a more informative graph.}  Compare
 three plots shown in Figure \ref{fig:alpha}.  Points overlap to such
 an extent that Panel A, gives very limited information about the
@@ -348,7 +348,7 @@ a new page''.
 \marginnote{Density plots are much preferable, for most purposes, to
   histograms.  Both have limitations.}  We discuss
 histograms, density plots, boxplots and normal probability plots.
-Normal probability plots are a specialised form of cumulative
+Normal probability plots are a specialized form of cumulative
 density plot.
 
 \subsection*{Histograms and density plots}
@@ -548,7 +548,7 @@ further extend what is available.
 
 \marginnote[12pt]{These abilities, due to Felix Andrews, make it
   possible to build up lattice graphics objects layer by layer.}
-In the discusssion that follows, there will be use of the layering
+In the discussion that follows, there will be use of the layering
 abilities provided by functions in \pkg{latticeExtra}.  Note that
 loading \pkg{latticeExtra} will at the same time load \pkg{lattice},
 which \pkg{latticeExtra} has as a dependency.
@@ -706,7 +706,7 @@ its own column. Rows are indexed by the factor \code{Country}.
 % Mon Mar 31 10:08:43 2008
 \begin{table}
 \begin{center}
-\caption{Apparent annual alcohol consumptiom values, obtained by dividing
+\caption{Apparent annual alcohol consumption values, obtained by dividing
     estimates of total available alcohol by number of persons aged 15
     or more. These are based on Australian Bureau of Statistics
     and Statistics New Zealand figures.\label{tab:grog}}

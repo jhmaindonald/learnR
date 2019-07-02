@@ -18,9 +18,8 @@ the line `% columns=fullflexible,` in Sweavel.sty, before running
 ## In this document, numbering, starts at page 1.
 txpages <- pdftools::pdf_text('learnR.pdf')
 nlast <- grep('^Index\ of\ Functions',txpages) - 1 
-txpages <- txpages[1:nlast]
 contpg <- grep('^[[:blank:]]*Contents',txpages)
-conts <- paste(c(txpages[contpg],sub('^[[:blank:]]*[[:digit:]]+\n','',txpages[contpg+1])), collapse="")
+conts <- paste(c(txpages[contpg],sub('^[[:blank:]]*[[:digit:]]+\n',' ',txpages[contpg+1])), collapse="")
 conts <- strsplit(sub('^[[:blank:]]*Contents\n','',conts), '\n')[[1]]
 newchaps <- gsub('[^[:digit:]]+[[:digit:]]?[^[:digit:]]+',':', conts)
 chapinfo <- t(sapply(strsplit(newchaps,':'),function(x)as.numeric(x)))
@@ -318,7 +317,7 @@ function (txpg = DAAGURtx, tmat = termMat, offset = 0, ignore.case,
 ```{r mkind}
 ## Create idx, then ind file
 tmat4 <- read.table('~/_notes/learnR/tmat4.txt', as.is=TRUE)
-tmat4 <- tmat4[-c(1,29,31,35:36,295:297,546:547),]
+tmat4 <- tmat4[-c(1,29,31,35:36,296:298,547:548),]
 notIn <- makeTermIndex(termMat=tmat4, offset=0)
 ```
 

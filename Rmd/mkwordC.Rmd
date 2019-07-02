@@ -1,0 +1,114 @@
+---
+title: "Create cover page"
+author: "John Maindonald"
+date: "29/06/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{dataIn}
+library(tm, quietly=TRUE)
+library("SnowballC")
+library("RColorBrewer") 
+txpages <- pdftools::pdf_text('~/_notes/learnR/learnR.pdf')
+nlast <- grep('^Index\ of\ Functions',txpages) - 1 
+contpg <- grep('^[[:blank:]]*Contents',txpages)
+conts <- paste(c(txpages[contpg],sub('^[[:blank:]]*[[:digit:]]+\n','',txpages[contpg+1])), collapse="")
+conts <- strsplit(sub('^[[:blank:]]*Contents\n','',conts), '\n')[[1]]
+newchaps <- gsub('[^[:digit:]]+[[:digit:]]?[^[:digit:]]+',':', conts)
+chapinfo <- t(sapply(strsplit(newchaps,':'),function(x)as.numeric(x)))
+# writeLines(txpages[chapinfo[1,2]:(chapinfo[3,2]-1)], 'texts/12RandEnv.txt')
+# writeLines(txpages[chapinfo[3,2]:(chapinfo[4,2]-1)], 'texts/3analysis.txt')
+# writeLines(txpages[chapinfo[4,2]:(chapinfo[7,2]-1)], 'texts/456data.txt')
+# writeLines(txpages[chapinfo[7,2]:(chapinfo[8,2]-1)], 'texts/7graphs.txt')
+# writeLines(txpages[chapinfo[8,2]:(chapinfo[9,2]-1)], 'texts/8reg.txt')
+# writeLines(txpages[chapinfo[9,2]:(chapinfo[10,2]-1)], 'texts/9reg.txt')
+@
+
+```{r makeTxt}
+## In this document, numbering, starts at page 1.
+txpages <- textclean::replace_non_ascii(txpages)
+ch12 <- paste(txpages[chapinfo[1,2]:(chapinfo[3,2]-1)], collapse=' ')
+ch34 <- paste(txpages[chapinfo[3,2]:(chapinfo[5,2]-1)], collapse=' ')
+ch56 <- paste(txpages[chapinfo[5,2]:(chapinfo[7,2]-1)], collapse=' ')
+ch7 <- paste(txpages[chapinfo[7,2]:(chapinfo[8,2]-1)], collapse=' ')
+ch8 <- paste(txpages[chapinfo[8,2]:(chapinfo[9,2]-1)], collapse=' ')
+ch9 <- paste(txpages[chapinfo[9,2]:(chapinfo[10,2]-1)], collapse=' ')
+processTxt <- function(txts=c(ch12,ch34,ch56,ch7,ch8,ch9)){
+  docs <- VCorpus(VectorSource(txts))
+  # Convert the text to lower case
+  docs <- tm_map(docs, content_transformer(tolower))
+  # Remove numbers
+  docs <- tm_map(docs, removeNumbers)
+  # Remove stopwords for the language 
+  docs <- tm_map(docs, removeWords, stopwords("SMART"))
+  # Remove punctuations
+  docs <- tm_map(docs, removePunctuation)
+  # Eliminate extra white spaces
+  docs <- tm_map(docs, stripWhitespace)
+  # Create term-document matrix
+  tdm <- TermDocumentMatrix(docs)
+  tdm
+}
+tdm <- processTxt()
+m <- as.matrix(tdm)
+getd <- function(mat=m, col=1, add=NA, minfreq=10){
+  options(stringsAsFactors = FALSE)
+   nam <- rownames(mat)
+   freq <- mat[,col]
+   v <- order(freq,decreasing=TRUE)
+   d <- subset(data.frame(word = nam[v],freq=freq[v]), freq>=10)
+   if(!is.na(add))d<-rbind(data.frame(word=add,freq=d$freq[1]+1),d)
+   d
+}
+d1 <- getd(col=1, add='Ch1:2')
+d2 <- getd(col=2, add='Ch3:4', minfreq=3); d2[1:2,2] <- d2[1:2,2] - 100
+d3 <- getd(col=3, add='ch5:6'); d3[1:3,2] <- d3[1:3,2]-50
+d4 <- getd(col=4, add='Ch7')
+d5 <- getd(col=5, add='Ch8'); d5[1:3,2] <- d5[1:3,2]-60
+d6 <- getd(col=6, add='Ch9')
+```
+
+```{wordC}
+library(wordcloud2)
+pal <- RColorBrewer::brewer.pal(6,'Dark2')[-1]
+wordcloud2(d1, size=1.5, color=rep(pal,length.out=nrow(d1)), shape='diamond')  ## ch1:2
+wordcloud2(d2, size=1.35, color=rep(pal,length.out=nrow(d2)), shape='diamond')  ## ch34
+wordcloud2(d3, size=1.8, color=rep(pal,length.out=nrow(d3)), shape='diamond')  ## ch56
+wordcloud2(d4, size=1.75, color=rep(pal,length.out=nrow(d4)), shape='diamond')  ## ch7
+wordcloud2(d5, size=1.25, color=rep(pal,length.out=nrow(d5)), shape='diamond')  ## ch8
+wordcloud2(d6, size=1.35, color=rep(pal,length.out=nrow(d6)), shape='diamond')  ## ch9
+## NB: Use of 'imagemagick' convert
+## convert +append b11.png b12.png row1.png
+## convert +append b21.png b22.png row2.png
+## convert +append b31.png b32.png row3.png
+## convert -append a1.png a2.png a3.png a123.png
+
+```
+
+
+```{gg}
+png(file='cover.png',width=2550, height=3300)
+library(ggwordcloud)
+pal <- adjustcolor(RColorBrewer::brewer.pal(6,'Dark2')[-1],.8)
+ggwordcloud2(data=d, size = .5, color = rep(pal, length.out=nrow(d)),
+  minRotation = -pi/4, maxRotation = pi/4, shuffle = TRUE,
+  rotateRatio = 0.4, shape = "square", ellipticity = 1.3,
+  figPath = NA)
+ggplot(
+  d,
+  aes(
+    label = word, size = freq,
+    color = rep(pal, length.out=nrow(d))),
+    angle = 15
+  ) +
+  geom_text_wordcloud_area(shape='square') +
+  scale_size_area(max_size = 12) +
+  theme_minimal()
+text(1, 8.5, "J H MAINDONALD", adj=0, cex=3)
+text(1, 7, "LEARNING AND USING R", adj=0, cex=3)
+dev.off()
+```

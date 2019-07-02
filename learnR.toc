@@ -101,7 +101,7 @@
 \contentsline {paragraph}{Australian Bureau of Meteorology data:}{94}{paragraph*.14}
 \contentsline {paragraph}{A function to download multiple data series:}{95}{paragraph*.15}
 \contentsline {paragraph}{Historical air crash datra:}{95}{paragraph*.16}
-\contentsline {subsection}{\numberline {5.2.1}$^*$Embedded markup --- XML and alternetives}{96}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.1}$^*$Embedded markup --- XML and alternatives}{96}{subsection.5.2.1}
 \contentsline {paragraph}{Download of NZ earthquake data:}{97}{paragraph*.17}
 \contentsline {paragraph}{World Bank data --- using the \texttt {WDI} package}{97}{paragraph*.18}
 \contentsline {section}{\numberline {5.3}Creating and Using Databases}{98}{section.5.3}

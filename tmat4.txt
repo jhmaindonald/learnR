@@ -494,7 +494,9 @@
 "469" "regression! coefficients! multiple testing issue" "multiple testing" "coefficients" NA NA 11
 "470" "regression! coefficients! standard error" "standard error" "coefficients" NA NA 11
 "420" "regression! comparison of models" "model" "comparison" NA NA 11
-"421" "regression! cross-validation| see {resampling methods}" "zzzz" NA NA NA 11
+"421" "regression! cross-validation| see {resampling
+methods}" "zzzz" NA NA NA 11
+"421a" "regression! diagnostics" "diagnostics" NA "diagnostic" NA 11
 "422" "regression! extrapolation" "extrapolation" NA NA NA 11
 "423" "regression! functional relationship" "functional relationship" NA NA NA 11
 "423a" "regression! generalized additive model| see {generalized additive model}" "zzzz" NA NA NA 11

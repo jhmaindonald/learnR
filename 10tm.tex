@@ -85,7 +85,7 @@ tx3 <- textclean::replace_non_ascii(paste(tx3, collapse=" "))
 Now bring the three text strings together into a corpus:
 \begin{Schunk}
 \begin{Sinput}
-txcorp <- Corpus(VectorSource(c(tx1, tx2, tx3)))
+txcorp <- VCorpus(VectorSource(c(tx1, tx2, tx3)))
 \end{Sinput}
 \end{Schunk}
 
@@ -222,8 +222,8 @@ Code for the plots is:
 \begin{Schunk}
 \begin{Sinput}
 pal <- brewer.pal(6, "Dark2")
-fnam1 <- as.matrix(tx.tdm)[,1]
-wordcloud(names(fnam1), fnam1, max.words=80, colors=pal[-1],
+fnam <- as.matrix(tx.tdm)[,1]
+wordcloud(names(fnam), fnam, max.words=50, colors=pal[-1],
           random.order=FALSE, scale=c(7.5,.5))
 mtext(side=3, line=3.5, "Ch 1: Basics of R", adj=0, cex=1.8)
 fnam2 <- as.matrix(tx.tdm)[,2]
@@ -242,7 +242,7 @@ mtext(side=3, line=3.5, "Chs 4,5: Data . . .", adj=0, cex=1.8)
 edge of the plot if the size of the graphics page is too small
 relative to the pointsize.  Note the different scaling ranges used in
 the three cases, with the large scaling range for Panel C
-(\code{scale=c(9,.8)}) used to accommmodate a frequency distribution
+(\code{scale=c(9,.8)}) used to accommodate a frequency distribution
 in which one item (`data') is a marked outlier.
 
 \section{Creation of a Corpus from PDF Files}

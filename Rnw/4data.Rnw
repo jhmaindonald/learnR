@@ -377,7 +377,7 @@ in the call to \code{read.table()} or \code{data.frame()}.
 
 \subsection{Factor columns in data frame subsets}
 
-The data frame \code{DAAG::ais} has physical charateristics
+The data frame \code{DAAG::ais} has physical characteristics
 of athletes, divided up thus between ten different sports:
 \begin{fullwidth}
 \begin{minipage}[t]{\linewidth}

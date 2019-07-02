@@ -6,30 +6,6 @@ pdf.options(pointsize=12)
 oldopt <- options(digits=4)
 @ %
 
-
-\marginnote[12pt]{CRAN is the primary R `repository'.  For 
-preference, obtain R and R packages from a CRAN mirror in 
-the local region, e.g.,\\
-  Australia: \url{cran.csiro.au/}\\
-  NZ: \url{cran.stat.auckland.ac.nz/}}
-
-\noindent
-\fbox{\parbox{\textwidth}{
-{\bf Note the following web sites:}\\[4pt]
-CRAN (Comprehensive R Archive Network):\newline
-\url{http://cran.r-project.org}\\[3pt]
-% For Sweden, use \url{http://ftp.sunet.se/pub/lang/CRAN/}\\
-% For Denmark, use \url{http://cran.dk.r-project.org/}
-The Bioconductor repository 
-  (\url{http://www.bioconductor.org}), with packages that cater for
-  high throughput genomic data, is one of several
-  repositories that supplement CRAN.\\[3pt]
-R homepage: \url{http://www.r-project.org/}\\[3pt]
-Links to useful web pages: From an R session that uses the
-GUI, click on \underline{Help}, then on \underline{R Help}. On the 
-window that pops up, click on \underline{Resources}
-}}
-
 %
 %
 \section*{Commentary on R}
@@ -227,11 +203,6 @@ specialized, and that might be omitted at a first reading.
 
 \marginnote[8pt]{Note that {\em DAAGviz} is not, currently at least,
 available on CRAN.}
-\marginnote[6pt]{Note that {\em DAAGviz} is not available on CRAN.
-It collects scripts and datasets together in a way that may be
-useful to course participants.  Those materials are also
-available separately.}
->>>>>>> e5442844fdb783da5761d94f5becf5cd061e2bd0
 This package is an optional companion to these notes. 
 It collects scripts and datasets together in a way that may be
 useful to users of this text.  

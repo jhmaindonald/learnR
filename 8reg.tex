@@ -22,7 +22,7 @@ Model & The model matrix shows how coefficients should be\\
 GLMs & Generalized Linear Models are an extension of\\
 & linear models, commonly used for analyzing counts.\\[6pt]
 Modern &  This can use smoothers -- spline and other functions\\
-regession & of explanatory variables that adapt to suit the data.\\[6pt]
+regression & of explanatory variables that adapt to suit the data.\\[6pt]
 GAMs & Generalized Additive Models extend linear models\\
 & to allow smoothing curves and surfaces.\\[6pt]
 \end{tabular}
@@ -222,7 +222,7 @@ names(roller.lm)
 \subsection{Matrix algebra -- straight line regression example}
 The quantity that is to be minimized is:
 \[\sum_{i=1}^{10} (y_i - a - b x_i)^2\]
-The martrices and vectors required for the matrix calculations are:
+The matrices and vectors required for the matrix calculations are:
 \begin{fullwidth}
 \begin{minipage}[c]{0.25\textwidth}
 \[
@@ -338,7 +338,7 @@ affect coefficients that remain in the model, may be acceptable.}
 
  Normality of the model 'errors' is more than is in practice required.
  Outliers, and skewness in the distribution, do often mean that the
- theory cannot be satisfactorily used as a good approxation.
+ theory cannot be satisfactorily used as a good approximation.
 
 \section{Checks --- Before and After Fitting a Line}
 
@@ -505,7 +505,7 @@ diagnostic plots for the regression with the untransformed data:
 \centerline{\includegraphics[width=\textwidth]{figs/8-diag-mf-1} }
 
 \end{Schunk}
-\caption{Diagnostic plots from the regession of \code{timef} on
+\caption{Diagnostic plots from the regression of \code{timef} on
   \code{time}.}\label{fig:diag-mftime}
 \end{figure*}
 \noindent
@@ -599,7 +599,7 @@ plot(mftime.lm, which=2)
 The second panel in Figure
 \ref{fig:diag-mftime} identifies two large negative residuals and one
 large positive residual.  This seems inconsistent with the assumption
-that residuals have a normal dsitribution.  Again, Figure
+that residuals have a normal distribution.  Again, Figure
 \ref{fig:diag-mftime-log} shows an improvement.
 
 Modest departures from normality are not a problem per
@@ -1615,7 +1615,7 @@ whose parameters are as far as possible interpretable, a strategy
 is:
  \begin{itemize}
  \item[(i)] Start with a model that includes all plausible main effects
-   (variables and factors).  Ensure that the model is parameterised in
+   (variables and factors).  Ensure that the model is parameterized in
    a way that makes parameters of interest as far as possible
    interpretable (e.g., in Subsection \ref{sec:nihills} above, work
    with \code{distance} and \code{gradient}, not \code{distance}
@@ -1634,7 +1634,7 @@ is:
    effect are in general unlikely to show up in interactions.
    Limiting attention to the main effects that were identified in (ii)
    above, we then compare a model which has only main effects with a
-   model that inludes all 2-way interactions. Then, using $p$ $\simeq$
+   model that includes all 2-way interactions. Then, using $p$ $\simeq$
    0.15 or $p$ $\simeq$ 0.2 as the cutoff, remove interaction terms
    that seem unimportant, and check that there are no changes of
    consequence in terms that remain.
@@ -2118,7 +2118,7 @@ In the classical "errors in $x$" model, one or more explanatory variables
 are measured with error.  In straight line regression, the effect is to
 attenuate the regression coefficient.  If there is, additionally, a
 grouping factor with different means for the outcome variable for different
-groups, a side effect of the attentuation is to make it appear that the
+groups, a side effect of the attenuation is to make it appear that the
 lines are different for the different groups.  The same general principles
 apply when curves are fitted.  Where several variables
 are measured with substantial error, there are increased oportunities for
@@ -2127,7 +2127,7 @@ becomes more complicated.
 
 Examples on the help page \code{?DAAG::errorsINx} show how to run
 simulations that demonstrate the effects in the simple cases just
-described.  These are useful in giving a sense of the magitutude
+described.  These are useful in giving a sense of the magnitude
 of the attenuation, and any possible
 apparent group difference, that may arise from a given amount of
 measurement error.

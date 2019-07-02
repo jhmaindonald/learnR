@@ -26,7 +26,7 @@ tx3 <- readLines(txfiles[3], encoding="latin1", warn=FALSE,
 tx3 <- textclean::replace_non_ascii(paste(tx3, collapse=" "))
 
 ## ---- VectorSource ----
-txcorp <- Corpus(VectorSource(c(tx1, tx2, tx3)))
+txcorp <- VCorpus(VectorSource(c(tx1, tx2, tx3)))
 
 ## ---- DirSource ----
 dirSource <- DirSource(directory=txdir,
@@ -62,8 +62,8 @@ library(wordcloud)
 
 ## ---- wordcloud1-3 ----
 pal <- brewer.pal(6, "Dark2")
-fnam1 <- as.matrix(tx.tdm)[,1]
-wordcloud(names(fnam1), fnam1, max.words=80, colors=pal[-1],
+fnam <- as.matrix(tx.tdm)[,1]
+wordcloud(names(fnam), fnam, max.words=50, colors=pal[-1],
           random.order=FALSE, scale=c(7.5,.5))
 mtext(side=3, line=3.5, "Ch 1: Basics of R", adj=0, cex=1.8)
 fnam2 <- as.matrix(tx.tdm)[,2]
