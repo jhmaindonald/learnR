@@ -27,19 +27,21 @@ collection of documents.
 \section{Creation of a Volatile Corpus}\label{sec:volatile}
 
 \marginnote[11pt]{A pdf to text converter has taken the pdf for this
-  document, and extracted the three chapter ranges into the
-  respective files {\bf ch1-5prelims.txt}, {\bf ch6-7data.txt}, and
-  {\bf ch8-9graphics.txt}.}
+  document, and extracted the first three chapters into the
+  respective files \textbf{1getStarted.txt}, \textbf{2workenv.txt},
+  and \textbf{3statsExs.txt}.}
 
 The data used is from three text files, stored in the \pkg{DAAGviz}
-directory tree.  They hold text from the respective chapter ranges 1 -
-5, 6 - 7, and 8 - 9 of an older version of this present document.
-We show two ways to use
-it to form a corpus.  The first breaks the process down into detailed
-steps, while the second uses a much terser and summary approach.  The
-resultant corpus is {\em volatile}, so described because stored in the
-workspace.  Unless saved separately or as part of the workspace, it
-will disappear at the end of the session.
+directory tree.  They hold text from the respective chapters 1, 2, 
+and 3, from a (possibly older) version of this present document. We 
+show two ways to use it to form a volatile corpus, i.e., a corpus that 
+is stored in memory. The first breaks the process down into detailed
+steps, while the second uses a much terser and summary approach.  
+
+Unless a `volatile' corpus is saved separately or as part of the 
+workspace, it will disappear at the end of the session. The \pkg{tm}
+package offers, as an alternative, the creation of a `permanent' 
+corpus; see \code{tm::PCorpus}.
 
 \subsection*{Detailed steps}
 
@@ -176,7 +178,7 @@ The following sets the path to the directory {\bf pdf} in the
 package {\bf DAAGviz} that holds the pdf files for (possibly,
 an older version) of the four ranges of chapters of the present
 text:
-<<get-path>>=
+<<paths2pdfs>>=
 @ %
 
 The corpus that has all three documents is, starting with the
@@ -193,7 +195,8 @@ Create the term-document matrix thus:
 \section{Document Collections Supplied With \pkg{tm}}
 Several document collections are supplied with the package,
 as text files or as XML files.  To get the path to the
-directories where these document collections are stored, type
+subdirectories where these document collections are stored, 
+type:
 \begin{fullwidth}
 <<wid-80, echo=FALSE>>=
 options(width=80)
@@ -207,7 +210,7 @@ options(width=54)
 The subdirectory \textbf{acq} has 50 Reuters documents in XML format,
 \textbf{crude} has the first 23 of these, and \textbf{txt} has a
 small collection of 5 text documents from the Roman poet Ovid.
-These can be accessed and used for experimenation with the abilities
+These can be accessed and used for experimentation with the abilities
 provided in \pkg{tm}, as required.
 
 The following are the names of the five Ovid documents:

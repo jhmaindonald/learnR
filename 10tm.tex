@@ -18,19 +18,21 @@ library(tm)
 \section{Creation of a Volatile Corpus}\label{sec:volatile}
 
 \marginnote[11pt]{A pdf to text converter has taken the pdf for this
-  document, and extracted the three chapter ranges into the
-  respective files {\bf ch1-5prelims.txt}, {\bf ch6-7data.txt}, and
-  {\bf ch8-9graphics.txt}.}
+  document, and extracted the first three chapters into the
+  respective files \textbf{1getStarted.txt}, \textbf{2workenv.txt},
+  and \textbf{3statsExs.txt}.}
 
 The data used is from three text files, stored in the \pkg{DAAGviz}
-directory tree.  They hold text from the respective chapter ranges 1 -
-5, 6 - 7, and 8 - 9 of an older version of this present document.
-We show two ways to use
-it to form a corpus.  The first breaks the process down into detailed
-steps, while the second uses a much terser and summary approach.  The
-resultant corpus is {\em volatile}, so described because stored in the
-workspace.  Unless saved separately or as part of the workspace, it
-will disappear at the end of the session.
+directory tree.  They hold text from the respective chapters 1, 2, 
+and 3, from a (possibly older) version of this present document. We 
+show two ways to use it to form a volatile corpus, i.e., a corpus that 
+is stored in memory. The first breaks the process down into detailed
+steps, while the second uses a much terser and summary approach.  
+
+Unless a `volatile' corpus is saved separately or as part of the 
+workspace, it will disappear at the end of the session. The \pkg{tm}
+package offers, as an alternative, the creation of a `permanent' 
+corpus; see \code{tm::PCorpus}.
 
 \subsection*{Detailed steps}
 
@@ -44,7 +46,7 @@ txdir <- system.file("texts", package="DAAGviz")
 dir(txdir, pattern=".txt$")
 \end{Sinput}
 \begin{Soutput}
-[1] "1getStarted.txt" "2workenv.txt"    "ch4-5.txt"      
+[1] "1getStarted.txt" "2workenv.txt"    "3statsExs.txt"   "4and5data.txt"  
 \end{Soutput}
 \begin{Sinput}
 txfiles <- dir(txdir, pattern=".txt$", full.names=TRUE)
@@ -62,7 +64,8 @@ of each line:
 ## Input first file, with one text string per line
 tx1 <- readLines(txfiles[1], encoding="latin1", warn=FALSE, 
                  skipNul = TRUE)
-## Join the separate text strings end to end
+## Join the separate text strings end to end,
+## and remove comon non-ASCII characters.
 tx1 <- textclean::replace_non_ascii(paste(tx1, collapse=" "))
 \end{Sinput}
 \end{Schunk}
@@ -293,7 +296,8 @@ txx.tdm <- TermDocumentMatrix(fromPDF, control=ctl)
 \section{Document Collections Supplied With \pkg{tm}}
 Several document collections are supplied with the package,
 as text files or as XML files.  To get the path to the
-directories where these document collections are stored, type
+subdirectories where these document collections are stored, 
+type:
 \begin{fullwidth}
 
 \begin{Schunk}
@@ -317,7 +321,7 @@ dir(pathto)
 The subdirectory \textbf{acq} has 50 Reuters documents in XML format,
 \textbf{crude} has the first 23 of these, and \textbf{txt} has a
 small collection of 5 text documents from the Roman poet Ovid.
-These can be accessed and used for experimenation with the abilities
+These can be accessed and used for experimentation with the abilities
 provided in \pkg{tm}, as required.
 
 The following are the names of the five Ovid documents:

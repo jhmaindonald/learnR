@@ -1,335 +1,335 @@
 \begin{theindex}
 
   \item analysis issues
-    \subitem analysis of summary data, 75, 102
-    \subitem assumptions, 44, 48, 152, 155, 158, 160--162, 172, 182, 
-		185, 188, 194, 199, 200, 206
+    \subitem analysis of summary data, 73, 100
+    \subitem assumptions, 44, 48, 150, 153, 156, 158--160, 170, 180, 
+		183, 186, 192, 197, 198, 204
     \subitem deficiencies, 47
-    \subitem independence, 48, 152, 161
-    \subitem nonparametric methods, 197, 200
-    \subitem robust \& resistant methods, 45, 48, 185, 200
-    \subitem source/target differences, 245
-    \subitem styles of analysis, 59, 189, 235
+    \subitem independence, 48, 150, 159
+    \subitem nonparametric methods, 195, 198
+    \subitem robust \& resistant methods, 45, 48, 183, 198
+    \subitem source/target differences, 243
+    \subitem styles of analysis, 59, 187, 233
   \item analysis of variance model (aov)
-    \subitem one-way layout, 166
+    \subitem one-way layout, 164
   \item argument, \see {function}{}
   \item array
-    \subitem dimensions, 69, 72, 78, 86, 102, 103, 106
-  \item assignment, 21, 40, 148, 201
+    \subitem dimensions, 67, 70, 76, 84, 100, 101, 104
+  \item assignment, 21, 40, 146, 199
 
   \indexspace
 
   \item Bayesian methods, 44
-    \subitem prior density or probability, 44, 199
+    \subitem prior density or probability, 44, 197
   \item bootstrap, \see {resampling methods}{}
   \item boxplot, \see {graphics, box \& whisker}{}
 
   \indexspace
 
-  \item classes \& methods, 82--84, 197, 204, 212, 220--222
-    \subitem S4, 197
+  \item classes \& methods, 80--82, 195, 202, 210, 218--220
+    \subitem S4, 195
   \item commands
-    \subitem comment character, 13, 15, 35, 90, 94
+    \subitem comment character, 13, 15, 35, 88, 92
     \subitem continuation character, 13
-  \item concatenation, 67
+  \item concatenation, 65
   \item confidence interval (CI), 2, 6--8, 12--24, 28, 29, 31--34, 36, 
-		38--41, 44--56, 58--60, 64--67, 69, 70, 72--82, 84, 
-		86, 87, 90, 91, 94, 95, 97, 99, 102, 103, 105, 106, 
-		109, 113, 114, 118--124, 129, 131, 132, 134, 135, 
-		138, 139, 142--145, 147, 149, 150, 152--164, 166--170, 
-		172--181, 183--186, 188--190, 192, 195--197, 199--202, 
-		204, 206--208, 210--212, 214, 216, 218--220, 222, 224, 
-		226, 227, 234--236, 239, 240, 243, 245
+		38--41, 44--56, 58, 60, 62--65, 67, 68, 70--80, 82, 
+		84, 85, 88, 89, 92, 93, 95, 97, 100, 101, 103, 104, 
+		107, 111, 112, 116--122, 127, 129, 130, 132, 133, 
+		136, 137, 140--143, 145, 147, 148, 150--162, 164--168, 
+		170--179, 181--184, 186--188, 190, 193--195, 197--200, 
+		202, 204--206, 208--210, 212, 214, 216--218, 220, 222, 
+		224, 225, 232--234, 237, 238, 241, 243
     \subitem median
-      \subsubitem bootstrap, 174
-    \subitem predicted values, 53, 154, 160, 185, 199
+      \subsubitem bootstrap, 172
+    \subitem predicted values, 53, 152, 158, 183, 197
   \item contrasts, \see {factor}{}
   \item correlation
-    \subitem linear (Pearson), 50, 51, 57, 161, 190
+    \subitem linear (Pearson), 50, 51, 57, 159, 168, 188
   \item cross-validation see {resampling methods}, 1
 
   \indexspace
 
   \item data
-    \subitem input, 29, 90, 91, 93, 95, 97, 99
-      \subsubitem comment character, 15, 90, 91, 94
-    \subitem management strategies, 39, 103, 105, 107, 109, 111--113, 
-		115
-    \subitem measurement issues, 48, 84, 128, 135, 184, 185, 197, 204
-    \subitem summary, 75, 102
+    \subitem input, 29, 88, 89, 91, 93, 95, 97
+      \subsubitem comment character, 15, 88, 89, 92
+    \subitem management strategies, 39, 101, 103, 105, 107, 109--111, 
+		113
+    \subitem measurement issues, 48, 82, 126, 133, 182, 183, 195, 202
+    \subitem summary, 73, 100
   \item data analysis \& commentary
     \subitem alcohol consumed, by year \& country ({\tt grog}), 
-		130, 131, 147
-    \subitem Antiguan corn yields ({\tt ant111b}), 88, 188
+		128, 129, 145
+    \subitem Antiguan corn yields ({\tt ant111b}), 86, 186
     \subitem Australian athletes, morphology \& biochemistry ({\tt ais}), 
-		128, 140, 141
+		126, 138, 139
     \subitem book weight vs dimensions ({\tt allbacks}, {\tt softbacks}), 
-		88
+		86
     \subitem book weight vs dimensions, biased sample ({\tt oddbooks}), 
-		186
-    \subitem Canadian city populations ({\tt cities}), 204, 206
+		184
+    \subitem Canadian city populations ({\tt cities}), 202, 204
     \subitem car data
       \subsubitem fuel consumption, etc, 1974 data ({\tt mtcar} {\itshape datasets}), 
-		216, 217
+		214, 215
       \subsubitem speed vs distance to stop ({\tt cars}, {\itshape datasets}), 
-		216, 217
-    \subitem cricketer survival rates ({cricketer}), 109, 110
-    \subitem depression vs lawn roller weight ({\tt roller}), 153, 154
+		214, 215
+    \subitem cricketer survival rates ({cricketer}), 107, 108
+    \subitem depression vs lawn roller weight ({\tt roller}), 151, 152
     \subitem elastic bands, distance vs stretch ({\tt elastic1}, {\tt elastic2}, {\tt elasticband}), 
-		85, 118, 186
+		83, 116, 184
     \subitem height \& weight of women ({\tt women}, {\itshape datasets}), 
-		40, 47, 118
+		40, 47, 116
     \subitem hill race times ({\tt nihills}, {\tt hills2000}), 24, 
-		56, 57, 98, 145, 146, 156, 157, 159--161, 169--171, 
-		186
+		55--57, 96, 143, 144, 154, 155, 157--159, 167--169, 
+		184
     \subitem human power vs O$_2$ intake ({\tt humanpower1}, {\tt humanpower2}), 
-		220, 221
-    \subitem hurricane death data ({\tt hurricNamed}), 197
-    \subitem jobs, by region of Canada ({\tt jobs}), 81, 133, 134
+		218, 219
+    \subitem hurricane death data ({\tt hurricNamed}), 195
+    \subitem jobs, by region of Canada ({\tt jobs}), 79, 131, 132
     \subitem population growth
-      \subsubitem Australian states ({\tt austpop}), 118, 128
+      \subsubitem Australian states ({\tt austpop}), 116, 126
     \subitem pressure of mercury vapour, vs temp ({\tt pressure}, {\itshape datasets}), 
-		45, 245
-    \subitem primate body \& brain weights ({\tt primates}), 119, 
-		127, 128, 136, 137
+		45, 243
+    \subitem primate body \& brain weights ({\tt primates}), 117, 
+		125, 126, 134, 135
     \subitem track \& road record times ({worldRecords}), 51--55, 60
     \subitem tree dimensions \& biomass ({\tt rainforest}), 40, 41
     \subitem UCB admissions, by sex \& dept ({\tt UCBAdmissions}, datasets), 
-		76, 78, 102--105, 108
+		74, 76, 100--103, 106
   \item data frame, 1
-    \subitem as database, 98
-    \subitem as list, 15, 20, 23, 57, 64, 69, 70, 72, 73, 78, 81--86, 
-		102, 106, 107, 148, 150, 198, 216
-    \subitem attach \& detach, 20, 24, 29, 85
-    \subitem column \& row names, 103, 107
-    \subitem convert to/from tables or matrices, 103
-    \subitem joining (cbind, rbind), 70
-    \subitem omit rows with NAs, 71, 72, 83
-    \subitem reshape, 75, 106, 107, 110, 111
-    \subitem split to list, 79, 82, 83, 108, 109, 200
-    \subitem writing, 23, 36, 79, 86, 87, 90, 107, 111, 139, 165, 198, 
-		200
-  \item data mining, 231
-  \item degrees of freedom, 55, 181
+    \subitem as database, 96
+    \subitem as list, 15, 20, 23, 56, 62, 67, 68, 70, 71, 76, 79--84, 
+		100, 104, 105, 146, 148, 196, 214
+    \subitem attach \& detach, 20, 24, 29, 50, 83
+    \subitem column \& row names, 101, 105
+    \subitem convert to/from tables or matrices, 101
+    \subitem joining (cbind, rbind), 68
+    \subitem omit rows with NAs, 69, 70, 81
+    \subitem reshape, 73, 104, 105, 108, 109
+    \subitem split to list, 77, 80, 81, 106, 107, 198
+    \subitem writing, 23, 36, 77, 84, 85, 88, 105, 109, 137, 163, 196, 
+		198
+  \item data mining, 229
+  \item degrees of freedom, 55, 179
   \item density
-    \subitem estimate, 51, 124, 140
+    \subitem estimate, 50, 122, 138
       \subsubitem plot, {\itshape} plot, 1
   \item designed experiment, 6, 47
   \item deviance, \see {model}{}
   \item discriminant analysis
-    \subitem linear, 69, 197, 198, 203
-  \item distance measure, 204, 205
+    \subitem linear, 67, 195, 196, 201
+  \item distance measure, 202, 203
   \item distribution
-    \subitem $t$-distribution, 172
-      \subsubitem degrees of freedom, 172
+    \subitem $t$-distribution, 170
+      \subsubitem degrees of freedom, 170
     \subitem betabinomial, 49
-    \subitem binomial, 49, 180
-    \subitem cumulative probability, 123
-    \subitem density, 51, 123, 124, 140, 141, 149, 150, 180
+    \subitem binomial, 49, 178
+    \subitem cumulative probability, 121
+    \subitem density, 50, 121, 122, 138, 139, 147, 148, 178
     \subitem exponential, 49
-    \subitem normal, 40, 48, 49, 123--125, 149, 150, 155, 156, 159, 160, 
-		199
-    \subitem Poisson, 196
-    \subitem sampling distribution, 48, 156
-    \subitem skew, 50, 51, 57, 156, 176, 180
-    \subitem uniform, 149, 150
+    \subitem normal, 40, 48, 49, 121--123, 147, 148, 153, 154, 157, 158, 
+		197
+    \subitem Poisson, 194
+    \subitem sampling distribution, 48, 154
+    \subitem skew, 50, 51, 57, 154, 174, 178
+    \subitem uniform, 147, 148
   \item document preparation
     \subitem Sweave, 34, 38, 39
 
   \indexspace
 
-  \item exploratory data analysis (EDA), 28, 82, 85, 94, 108, 122, 159, 
-		179, 182
+  \item exploratory data analysis (EDA), 28, 80, 83, 92, 106, 120, 157, 
+		177, 180
   \item expression
-    \subitem evaluate, 23, 126, 218, 236
+    \subitem evaluate, 23, 124, 216, 234
 
   \indexspace
 
-  \item factor, 64, 66, 67, 71, 85, 86, 90, 110, 112, 129, 132, 
-		164, 165, 168, 200, 212
-    \subitem columns in model matrix, 167
-    \subitem contrasts, 168
-    \subitem in model formula, 152, 153
-    \subitem levels, 85, 110, 164
-      \subsubitem order, 85, 110, 164
-    \subitem ordered, 67
-    \subitem splitting by levels, 173, 200
-  \item file names, 13, 14, 19--21, 23, 24, 28--31, 35--37, 39, 40, 70, 
-		77, 78, 90, 91, 94--96, 99, 111, 112, 146, 210, 
-		212, 213, 219, 225, 228
+  \item factor, 62, 64, 65, 69, 83, 84, 88, 108, 110, 127, 130, 
+		162, 163, 166, 198, 210
+    \subitem columns in model matrix, 165
+    \subitem contrasts, 166
+    \subitem in model formula, 150, 151
+    \subitem levels, 83, 108, 162
+      \subsubitem order, 83, 108, 162
+    \subitem ordered, 65
+    \subitem splitting by levels, 171, 198
+  \item file names, 13, 14, 19--21, 23, 24, 28--31, 35--37, 39, 40, 68, 
+		75, 76, 88, 89, 92--94, 97, 109, 110, 144, 208, 
+		210, 211, 217, 223, 226
   \item fixed effects, \see {multi-level model}{}
-  \item function, 12, 23, 28, 39, 57, 58, 64, 66, 67, 70, 74, 84, 85, 
-		91, 92, 98, 99, 109, 111, 118, 126, 128--130, 132, 
-		135--140, 143, 145, 148, 149, 173, 183, 196, 206, 
-		211--213, 218, 219, 227, 230, 243
-    \subitem anonymous, 77, 79
-    \subitem argument, 137
-      \subsubitem abbreviated, 80
-      \subsubitem pass via list, 137
+  \item function, 12, 23, 28, 39, 56, 57, 62, 64, 65, 68, 72, 82, 83, 
+		89, 90, 96, 97, 107, 109, 116, 124, 126--128, 130, 
+		133--138, 141, 143, 146, 147, 171, 181, 194, 204, 
+		209--211, 216, 217, 225, 228, 241
+    \subitem anonymous, 75, 77
+    \subitem argument, 135
+      \subsubitem abbreviated, 78
+      \subsubitem pass via list, 135
       \subsubitem the \texttt{\ldots} argument, 18
-    \subitem common useful functions, 20, 21, 44, 49, 54, 55, 57, 64, 
-		68--70, 73, 82, 84, 86, 106, 119, 152, 158, 176, 184, 
-		189, 194, 195, 204, 205, 211, 212, 222, 236, 243
-    \subitem environment, 31, 39, 41, 212, 218, 221, 222, 228, 235
-      \subsubitem evaluation frame, 29, 41, 212, 218
-    \subitem generic, 44, 54, 55, 83--86, 203, 220
-    \subitem issues for writing \& use, 44, 49, 57, 64, 102, 148, 163, 
-		183, 184, 196, 211, 236
-    \subitem return value, 40, 68, 69, 73, 74, 77, 78, 82, 84, 85, 88, 
-		92, 102, 106--108, 127--129, 138, 148, 152, 154, 158, 
-		212, 219
-    \subitem utility functions, 112
+    \subitem common useful functions, 20, 21, 44, 49, 50, 54, 55, 57, 
+		62, 66--68, 71, 80, 82, 84, 104, 117, 150, 156, 174, 
+		182, 187, 192, 193, 202, 203, 209, 210, 220, 234, 241
+    \subitem environment, 31, 39, 41, 210, 216, 219, 220, 226, 233
+      \subsubitem evaluation frame, 29, 41, 210, 216
+    \subitem generic, 44, 54, 55, 81--84, 201, 218
+    \subitem issues for writing \& use, 44, 49, 57, 62, 100, 146, 161, 
+		181, 182, 194, 209, 234
+    \subitem return value, 40, 66, 67, 71, 72, 75, 76, 80, 82, 83, 86, 
+		90, 100, 104--106, 125--127, 136, 146, 150, 152, 156, 
+		210, 217
+    \subitem utility functions, 110
 
   \indexspace
 
   \item generalized linear model, \seealso{regression}{}
-    \subitem deviance, 181, 199
-      \subsubitem deviance residuals, 181, 199
-    \subitem family, 180, 181
-      \subsubitem betabinomial, 180, 181
-      \subsubitem binomial, 180, 181
-      \subsubitem poisson, 180, 181
-      \subsubitem quasibinomial, 180, 181
-      \subsubitem quasipoisson, 180, 181
-    \subitem linear predictor, 173, 181, 199
-    \subitem logistic regression, 199
+    \subitem deviance, 179, 197
+      \subsubitem deviance residuals, 179, 197
+    \subitem family, 178, 179
+      \subsubitem betabinomial, 178, 179
+      \subsubitem binomial, 178, 179
+      \subsubitem poisson, 178, 179
+      \subsubitem quasibinomial, 178, 179
+      \subsubitem quasipoisson, 178, 179
+    \subitem linear predictor, 171, 179, 197
+    \subitem logistic regression, 197
     \subitem predicted values,
-      \subsubitem linear predictor, 199
-      \subsubitem response, 199
+      \subsubitem linear predictor, 197
+      \subsubitem response, 197
     \subitem residuals
-      \subsubitem working, 158, 163
-    \subitem SEs \& Wald ($z-$) statistics for coefficients, 173, 199
-      \subsubitem Hauck-Donner effect, 173, 199
-  \item ggplot2 graphics, 3, 31, 58, 117--119, 121, 123, 125--127, 129, 
-		131, 133, 135, 137--141, 143--145, 147--149, 243
-    \subitem use of quickplot(), 58, 138--143
+      \subsubitem working, 156, 161
+    \subitem SEs \& Wald ($z-$) statistics for coefficients, 171, 197
+      \subsubitem Hauck-Donner effect, 171, 197
+  \item ggplot2 graphics, 3, 31, 57, 115--117, 119, 121, 123--125, 127, 
+		129, 131, 133, 135--139, 141--143, 145--147, 241
+    \subitem use of quickplot(), 57, 136--141
   \item graph
     \subitem {\itshape see} plot, 1
   \item graphics, \seealso{ggplot2, lattice}{}
-    \subitem aspect ratio, 52, 53, 122, 127, 129, 134, 148, 198, 203, 
-		236
+    \subitem aspect ratio, 52, 120, 125, 127, 132, 146, 196, 201, 234
     \subitem box-\&-whisker
-      \subsubitem outlier criterion, 142
-    \subitem contour, 127, 140--142, 159, 180, 183
-    \subitem dates as axis labels, 81, 134
-    \subitem devices, 52, 119, 123, 128--130, 133, 219
-    \subitem histogram, 123, 124, 135, 138, 140, 149
-    \subitem simulated data, 162, 163
-    \subitem transformation of scales, 44, 49, 50, 123, 158, 180, 206
+      \subsubitem outlier criterion, 140
+    \subitem contour, 125, 138--140, 157, 178, 181
+    \subitem dates as axis labels, 79, 132
+    \subitem devices, 52, 117, 121, 126--128, 131, 217
+    \subitem histogram, 121, 122, 133, 136, 138, 147
+    \subitem simulated data, 160, 161
+    \subitem transformation of scales, 44, 49, 50, 121, 156, 178, 204
   \item graphics (base graphics)
-    \subitem axes, 19, 50--52, 121, 132, 133, 138, 139, 141, 144, 147, 
-		206, 216
-    \subitem identifying points, 51, 90, 146
-    \subitem interaction plot, 59, 152, 156, 172, 176, 203
-    \subitem legend, 121, 132, 180
-    \subitem normal probability, 123--125, 149
-    \subitem panel function, 56, 135--137
-    \subitem shaded regions, 193
-    \subitem size of points \& text, 18, 19, 50, 51, 59, 119--122, 129, 
-		137, 139, 159, 166, 180, 194, 212, 213
+    \subitem axes, 19, 50--52, 119, 130, 131, 136, 137, 139, 142, 145, 
+		204, 214
+    \subitem identifying points, 51, 88, 144
+    \subitem interaction plot, 58, 59, 150, 154, 170, 174, 201
+    \subitem legend, 119, 130, 178
+    \subitem normal probability, 121--123, 147
+    \subitem panel function, 56, 133--135
+    \subitem shaded regions, 191
+    \subitem size of points \& text, 18, 19, 50, 51, 59, 117--120, 127, 
+		135, 137, 157, 164, 178, 192, 210, 211
 
   \indexspace
 
   \item image file, \see {R session}{}
-  \item inference, 46--48, 102
+  \item inference, 46--48, 100
     \subitem bootstrap methods, \see {resampling methods}{}
     \subitem confidence interval, \see {confidence interval}{}
-  \item interaction plot, 59
+  \item information criteria
+    \subitem Akaike Information Criterion (AIC), 177, 179
 
   \indexspace
 
-  \item lattice graphics, 3, 24, 31, 52, 56, 57, 66, 75, 81, 84, 
-		117--119, 121, 123, 125--129, 131--135, 137--139, 141, 
-		143--145, 147--150, 170, 188, 198, 230, 236
-    \subitem add smooth curve, 119, 121, 131, 139, 143, 188
-    \subitem adding to plots, 31, 127, 135, 137, 149
-    \subitem box plot, 144
-    \subitem built on grid package, 118, 127, 132, 138, 141
-    \subitem conditioning factor or variable, 129, 141, 230
-    \subitem dotplot, 75, 134
-    \subitem keys \& legends, 52, 119, 121, 129, 131, 132, 135, 137, 
-		139, 150, 198
-    \subitem layout of panels, 56, 123, 127, 128, 133, 149
-    \subitem panel function, 56, 135, 137
-    \subitem point \& text size, 52, 57, 84, 118, 119, 121, 123, 
-		125, 126, 128, 129, 131--133, 137, 139, 143, 145, 147, 
-		149, 150, 170
-    \subitem printing from user functions, 126, 128
-    \subitem scaling of axes, 24, 52, 57, 81, 84, 129, 132, 133, 
-		137--139, 141, 147, 150, 170, 188, 198
-    \subitem strip plot, 132, 144, 150, 188
-  \item library, \seealso{package}{}, 7, 28, 30, 32, 58, 127, 198, 212, 
-		220, 230, 239
-  \item linear model (lm), 73, 152, 164, 173, 182, 236
-    \subitem assumptions, 182
+  \item lattice graphics, 3, 24, 31, 52, 56, 64, 73, 79, 82, 115--117, 
+		119, 121, 123--127, 129--133, 135--137, 139, 141--143, 
+		145--148, 168, 186, 196, 228, 234
+    \subitem add smooth curve, 117, 119, 129, 137, 141, 186
+    \subitem adding to plots, 31, 125, 133, 135, 147
+    \subitem box plot, 142
+    \subitem built on grid package, 116, 125, 130, 136, 139
+    \subitem conditioning factor or variable, 127, 139, 228
+    \subitem dotplot, 73, 132
+    \subitem keys \& legends, 52, 117, 119, 127, 129, 130, 133, 135, 
+		137, 148, 196
+    \subitem layout of panels, 56, 121, 125, 126, 131, 147
+    \subitem panel function, 56, 133, 135
+    \subitem point \& text size, 52, 82, 116, 117, 119, 121, 123, 124, 
+		126, 127, 129--131, 135, 137, 141, 143, 145, 147, 148, 
+		168
+    \subitem printing from user functions, 124, 126
+    \subitem scaling of axes, 24, 52, 79, 82, 127, 130, 131, 135--137, 
+		139, 145, 148, 168, 186, 196
+    \subitem strip plot, 130, 142, 148, 186
+  \item library, \seealso{package}{}, 7, 28, 30, 32, 125, 196, 210, 
+		218, 228, 237
+  \item linear model (lm), 71, 150, 162, 171, 180, 234
+    \subitem assumptions, 180
     \subitem bootstrap, \see {resampling methods}{}
-    \subitem check for linearity, 173, 182
-    \subitem confusion between $x$ \& $y$, 184
+    \subitem check for linearity, 171, 180
+    \subitem confusion between $x$ \& $y$, 182
     \subitem cross-validation, \see {resampling methods}{}
-    \subitem design, 236
+    \subitem design, 234
     \subitem diagnostic plots
-      \subsubitem residuals vs leverage, 152
+      \subsubitem residuals vs leverage, 150
     \subitem errors in $x$, \see {regression}{}
     \subitem explanatory variables
-      \subsubitem relationships, 152, 164, 173
+      \subsubitem relationships, 150, 162, 171
     \subitem fitted values, \see {predicted values}{}
-    \subitem hat matrix, 73, 152, 164, 173, 182, 236
-    \subitem model formula, 152, 153
-    \subitem model matrix, 152
-      \subsubitem one term; several columns, 152, 155, 165--167
-    \subitem modeling non-linear responses, 51, 152, 203
+    \subitem hat matrix, 71, 150, 162, 171, 180, 234
+    \subitem model formula, 150, 151
+    \subitem model matrix, 150
+      \subsubitem one term; several columns, 150, 153, 163--165
+    \subitem modeling non-linear responses, 51, 150, 201
     \subitem outliers, \see {regression, outliers}{}
     \subitem predicted values
-      \subsubitem validity of SE estimates, 182
-    \subitem prediction interval (new $y$-value), 152
+      \subsubitem validity of SE estimates, 180
+    \subitem prediction interval (new $y$-value), 150
     \subitem regression spline, \see {regression}{}
     \subitem residual SE
-      \subsubitem degrees of freedom, 182
+      \subsubitem degrees of freedom, 180
     \subitem residuals, \see {regression}{}
     \subitem robust \& resistant methods, \see {regression}{}
-    \subitem straight line model, 152
-      \subsubitem fitted values, 152
-      \subsubitem residual, 152
+    \subitem straight line model, 150
+      \subsubitem fitted values, 150
+      \subsubitem residual, 150
     \subitem strategies for fitting models, \see {regression}{}
-    \subitem term plots, 152, 165--167, 171, 177, 181
-    \subitem terms, 152, 164, 173, 182, 236
-    \subitem variable selection, 172, 173
-      \subsubitem realistic SEs, 172, 173
-      \subsubitem simulation, 172, 173
-  \item list, 64, 102
-  \item list, concatenate (join), 86
+    \subitem term plots, 150, 163--165, 169, 175, 179
+    \subitem terms, 150, 162, 171, 180, 234
+    \subitem variable selection, 170, 171
+      \subsubitem realistic SEs, 170, 171
+      \subsubitem simulation, 170, 171
+  \item list, 62, 100
+  \item list, concatenate (join), 84
 
   \indexspace
 
-  \item matrix, 44, 50, 56, 68--70, 72, 78, 86, 90, 102, 106, 114, 115, 
-		152, 155, 170, 175, 197, 206, 212
-    \subitem arithmetic, 114, 155
-    \subitem conversion to/from data frame, 70, 211
-    \subitem conversion to/from vector, 20, 69, 70, 72, 75, 78, 86, 102, 
-		106, 155, 212
-    \subitem joining (cbind, rbind), 70
-    \subitem number of rows \& columns, 69, 72, 78, 86, 102, 106, 107, 
-		197, 198, 202--204, 206
-    \subitem storage in memory, 86
-    \subitem subscripts, 20, 114, 212
-  \item missing values, 40, 66, 68, 71, 74, 85, 86, 88, 92, 150
-    \subitem count \& identify, 40, 66, 85
-    \subitem remove, 68, 74
+  \item matrix, 44, 50, 56, 66--68, 70, 76, 84, 88, 100, 104, 112, 113, 
+		150, 153, 168, 173, 195, 204, 210
+    \subitem arithmetic, 112, 153
+    \subitem conversion to/from data frame, 68, 209
+    \subitem conversion to/from vector, 20, 67, 68, 70, 73, 76, 84, 100, 
+		104, 153, 210
+    \subitem joining (cbind, rbind), 68
+    \subitem number of rows \& columns, 67, 70, 76, 84, 100, 104, 105, 
+		195, 196, 200--202, 204
+    \subitem storage in memory, 84
+    \subitem subscripts, 20, 112, 210
+  \item missing values, 40, 64, 66, 69, 72, 83, 84, 86, 90, 148
+    \subitem count \& identify, 40, 64, 83
+    \subitem remove, 66, 72
   \item model
     \subitem classification, \see {discriminant analysis}{}
     \subitem discriminant, \see {discriminant analysis}{}
     \subitem generalized linear model, 
 		\see {regression, generalized linear model}{}
     \subitem linear model, \see {regression, linear model}{}
-    \subitem model formula, 152, 153
-    \subitem model object, 44, 53--55, 64, 73, 86, 102, 152, 154, 231
+    \subitem model formula, 150, 151
+    \subitem model object, 44, 53--55, 62, 71, 84, 100, 150, 152, 229
       \subsubitem extractor function, 44, 55
-    \subitem parameters, 152, 163, 164, 167, 176
+    \subitem parameters, 150, 161, 162, 165, 174
     \subitem survival analysis, \see {survival analysis}{}
     \subitem time series, \see {time series}{}
   \item multi-dimensional scaling (MDS), \see {ordination}{}
-  \item multilevel model, 188, 189
-  \item multivariate analysis, 189, 199
+  \item multilevel model, 186, 187
+  \item multivariate analysis, 187, 197
 
   \indexspace
 
@@ -338,81 +338,81 @@
   \indexspace
 
   \item object
-    \subitem saving, 12, 13, 23, 28--30, 39, 112, 113, 115, 138, 140, 
-		154, 212
-  \item operator, 16, 135, 139, 143, 220
-    \subitem arithmetic, 16, 135, 139, 220
+    \subitem saving, 12, 13, 23, 28--30, 39, 110, 111, 113, 136, 138, 
+		152, 210
+  \item operator, 16, 133, 137, 141, 218
+    \subitem arithmetic, 16, 133, 137, 218
     \subitem relational, 16
   \item ordination
     \subitem distance measure, \see {distance measure}{}
-    \subitem multi-dimensional scaling (MDS), 203, 207, 208
-    \subitem principal components analysis (PCA), 69, 97, 206
-      \subsubitem PCA scores in regression, 69
+    \subitem multi-dimensional scaling (MDS), 201, 205, 206
+    \subitem principal components analysis (PCA), 67, 95, 204
+      \subsubitem PCA scores in regression, 67
 
   \indexspace
 
   \item package
-    \subitem base, 6, 10, 12, 14, 22, 25, 28, 30--32, 77, 80, 90, 
-		95--98, 103, 106, 109, 118, 120, 127, 128, 135, 137, 
-		143--145, 147, 149, 150, 152, 197, 200, 212, 219, 228, 
-		230, 234--236
-    \subitem boot, 152
-    \subitem car, 6, 23, 40, 90, 145, 227, 230
-    \subitem cluster, 205
-    \subitem DAAG, 7, 21, 24, 30, 32, 40, 56, 75, 82, 91, 99, 105, 106, 
-		110, 111, 118, 128, 135, 145, 147, 149, 163, 179, 181, 
-		186, 188, 189, 193, 200, 210, 213, 225, 239
-    \subitem datasets, 7, 19, 31, 40, 45, 50, 88, 106, 111, 114, 115, 
-		118, 239
-    \subitem dr, 15, 20, 34, 36, 45, 90--92, 95, 96, 98, 107, 114, 127, 
-		137, 145, 182, 188, 189, 197, 199, 224, 227, 230, 
-		234--236
-    \subitem foreign, 91
-    \subitem gam, 182, 191, 193, 195
-    \subitem ggplot2, 31, 58, 118, 127, 135, 137, 138, 143--145, 147, 
-		149, 243
-    \subitem grid, 118, 127, 138, 205, 221
-    \subitem lme4, 84, 102, 189
-    \subitem MASS, 31, 40, 45, 50, 197
-    \subitem mgcv, 182, 191
-    \subitem nlme, 189
+    \subitem base, 6, 10, 12, 14, 22, 25, 28, 30--32, 75, 78, 88, 
+		93--96, 101, 104, 107, 116, 118, 125, 126, 133, 135, 
+		141--143, 145, 147, 148, 150, 195, 198, 210, 217, 226, 
+		228, 232--234
+    \subitem boot, 150
+    \subitem car, 6, 23, 40, 45, 88, 143, 225, 228
+    \subitem cluster, 50, 203
+    \subitem DAAG, 7, 21, 24, 30, 32, 40, 55, 73, 80, 89, 97, 103, 104, 
+		108, 109, 116, 126, 133, 143, 145, 147, 161, 177, 179, 
+		184, 186, 187, 191, 198, 208, 211, 223, 237
+    \subitem datasets, 7, 19, 31, 40, 45, 50, 86, 104, 109, 112, 113, 
+		116, 237
+    \subitem dr, 15, 20, 34, 36, 45, 55, 88--90, 93, 94, 96, 105, 112, 
+		125, 135, 143, 180, 186, 187, 195, 197, 222, 225, 228, 
+		232--234
+    \subitem foreign, 89
+    \subitem gam, 180, 189, 191, 193
+    \subitem ggplot2, 31, 57, 116, 125, 133, 135, 136, 141--143, 145, 
+		147, 241
+    \subitem grid, 116, 125, 136, 203, 219
+    \subitem lme4, 82, 100, 187
+    \subitem MASS, 31, 40, 45, 50, 195
+    \subitem mgcv, 180, 189
+    \subitem nlme, 187
     \subitem R Commander (Rcmdr), 15
-    \subitem RColorBrewer, 120
-    \subitem rpart, 200
-    \subitem RSQLite, RMySQL, ROracle, DBI, 98
-    \subitem stats, 22, 31, 208, 243
+    \subitem RColorBrewer, 118
+    \subitem rpart, 198
+    \subitem RSQLite, RMySQL, ROracle, DBI, 96
+    \subitem stats, 22, 31, 206, 241
   \item plot, \see {graphics}{}
   \item posterior density or probability, \see {Bayesian methods}{}
   \item predictive accuracy, 
 		\see {regression, generalized linear model, linear model (lm), model, survival analysis}{}
   \item principal components analysis (PCA), \see {ordination}{}
-  \item printing, 12, 37, 79, 80, 126, 128, 218
-    \subitem digits, 32, 80, 169, 198
+  \item printing, 12, 37, 77, 78, 124, 126, 216
+    \subitem digits, 32, 78, 167, 196
   \item prior density or probability, \see {Bayesian methods}{}
 
   \indexspace
 
-  \item quitting a session, 14, 28, 112
+  \item quitting a session, 14, 28, 110
 
   \indexspace
 
   \item R session
-    \subitem image file, 24, 28, 29, 31, 40, 112, 113, 115, 148
-    \subitem quitting, 14, 28, 112
+    \subitem image file, 24, 28, 29, 31, 40, 110, 111, 113, 146
+    \subitem quitting, 14, 28, 110
     \subitem search list, 28, 31, 39
-      \subsubitem database, 20, 28, 31, 39, 219
-    \subitem working directory, 7, 13, 14, 21, 24, 28, 29, 39, 40, 91, 
-		98, 112, 224, 227, 239
+      \subsubitem database, 20, 28, 31, 39, 217
+    \subitem working directory, 7, 13, 14, 21, 24, 28, 29, 39, 40, 89, 
+		96, 110, 222, 225, 237
       \subsubitem changing, 21
     \subitem workspace, 7, 11--14, 17, 19--21, 23, 24, 28, 29, 31, 39, 
-		64, 85, 112, 113, 115, 148, 210, 212, 218, 227, 230, 
-		239
-      \subsubitem image, 12, 14, 20, 24, 28, 29, 31, 39, 112, 113, 115, 
-		148, 212, 230
-      \subsubitem management, 39, 112, 113, 115
+		62, 83, 110, 111, 113, 146, 208, 210, 216, 225, 228, 
+		237
+      \subsubitem image, 12, 14, 20, 24, 28, 29, 31, 39, 110, 111, 113, 
+		146, 210, 228
+      \subsubitem management, 39, 110, 111, 113
   \item random
     \subitem numbers, 41
-    \subitem sample, 44, 149, 201, 202
+    \subitem sample, 44, 147, 199, 200
   \item regression, 
 		\seealso{discriminant analysis, generalized additive model, tree-based methods, survival analysis, time series}{}
     \subitem AIC (Akaike), BIC (Bayesian), Cp (Mallows), 
@@ -420,31 +420,31 @@
     \subitem bootstrap, \see {resampling methods}{}
     \subitem coefficients
       \subsubitem confidence interval, \see {confidence interval}{}
-      \subsubitem interpretation, 53, 164
-      \subsubitem standard error, 55, 152, 172, 174
-    \subitem comparison of models, 57, 59, 156, 169, 189, 199, 235
-    \subitem diagnostics, 44, 54, 60, 152, 158, 159, 162
-    \subitem extrapolation, 161, 194
+      \subsubitem interpretation, 53, 162
+      \subsubitem standard error, 55, 150, 170, 172
+    \subitem comparison of models, 57, 154, 167, 187, 197, 233
+    \subitem diagnostics, 44, 53, 60, 150, 156, 157, 160
+    \subitem extrapolation, 159, 192
     \subitem generalized additive model, 
 		\see {generalized additive model}{}
     \subitem generalized linear model, 
 		\see {generalized linear model}{}
     \subitem linear model, \see {linear model}{}
-    \subitem non-linear model, 152
-    \subitem observational data, 46, 164
-    \subitem outlier, 160, 172, 186
+    \subitem non-linear model, 150
+    \subitem observational data, 46, 162
+    \subitem outlier, 50, 158, 170, 184
     \subitem predictive accuracy
       \subsubitem bootstrap, 44
-      \subsubitem cross-validation, 152
+      \subsubitem cross-validation, 150
       \subsubitem validity of bootstrap estimate, 44
     \subitem residuals
-      \subsubitem normal probability plots, 182
+      \subsubitem normal probability plots, 180
     \subitem spline smoother, \seealso{Generalized Additive Model}{}, 
-		182
+		180
   \item replication, 46
   \item resampling methods
-    \subitem bootstrap, 44, 152, 174, 201, 202
-    \subitem cross-validation, 44, 152, 174, 198
+    \subitem bootstrap, 44, 150, 172, 199, 200
+    \subitem cross-validation, 44, 150, 172, 196
   \item rounding, 18, 37
 
   \indexspace
@@ -453,78 +453,78 @@
     \subitem cluster sampling, 48
     \subitem with/without replacement, 44
   \item search list, \see {R session}{}
-  \item selection bias, 174
-  \item simulation, 158, 162, 163, 173, 174, 184, 192, 193, 195
-  \item smoother, 143, 152, 181, 182, 194
-    \subitem Generalized Additive Model, 182, 194
-    \subitem lowess, 181, 182
-  \item spline, 119, 143, 152, 174, 182, 236
-  \item standard deviation, 48, 77, 86--88, 204, 205
-  \item standard error (SE), 16, 21, 37, 44, 55, 58, 64--66, 68, 70, 71, 
-		74, 75, 79, 90, 94, 97, 121, 124, 130--133, 143, 144, 
-		146, 152, 155, 172, 174--176, 178, 184, 186, 190, 194, 
-		196, 198, 206, 210, 212, 213, 227, 228
-    \subitem of mean (SEM), 172, 174, 184
-    \subitem of median, 174
-    \subitem of residual, 55, 172
+  \item selection bias, 172
+  \item simulation, 156, 160, 161, 171, 172, 182, 190, 191, 193
+  \item smoother, 141, 150, 179, 180, 192
+    \subitem Generalized Additive Model, 180, 192
+    \subitem lowess, 179, 180
+  \item spline, 117, 141, 150, 172, 180, 234
+  \item standard deviation, 48, 75, 84--86, 202, 203
+  \item standard error (SE), 16, 21, 37, 44, 55, 58, 62--64, 66, 68, 69, 
+		72, 73, 77, 88, 92, 95, 119, 122, 128--131, 141, 142, 
+		144, 150, 153, 170, 172--174, 176, 182, 184, 188, 192, 
+		194, 196, 204, 208, 210, 211, 225, 226
+    \subitem of mean (SEM), 170, 172, 182
+    \subitem of median, 172
+    \subitem of residual, 55, 170
 
   \indexspace
 
   \item table
     \subitem of frequencies
-      \subsubitem table formula, 18, 66, 76, 106, 129, 154, 216, 222, 
-		236
+      \subsubitem table formula, 18, 64, 74, 104, 127, 152, 214, 220, 
+		234
   \item test
-    \subitem correlation, 60, 194
-    \subitem F-statistic, 172
+    \subitem correlation, 59, 192
+    \subitem F-statistic, 170
     \subitem homogeneity of variance, 48
-    \subitem proportion(s), 205
-    \subitem sequential correlation, 218
-    \subitem type III, 176
-  \item time series, 94, 161, 185, 189, 190, 192, 193, 195
-    \subitem ARMA or ARIMA model, 195
-      \subsubitem automated selection, 195
-    \subitem autocorrelation, 190--192, 194, 195
-    \subitem autoregressive (AR) model, 2, 3, 6--25, 28--42, 44--61, 
-		64--88, 90--99, 102--115, 118--186, 188--208, 210--214, 
-		216--222, 224--228, 230, 231, 234--236, 239, 240, 
-		242--245
-    \subitem moving average (MA) model, 195
+    \subitem proportion(s), 52, 203
+    \subitem sequential correlation, 216
+    \subitem type III, 174
+  \item time series, 92, 159, 183, 187, 188, 190, 191, 193
+    \subitem ARMA or ARIMA model, 193
+      \subsubitem automated selection, 193
+    \subitem autocorrelation, 188--190, 192, 193
+    \subitem autoregressive (AR) model, 2, 3, 6--25, 28--42, 44--60, 
+		62--86, 88--97, 100--113, 116--184, 186--206, 208--212, 
+		214--220, 222--226, 228, 229, 232--234, 237, 238, 
+		240--243
+    \subitem moving average (MA) model, 193
   \item transformation
     \subitem count data
-      \subsubitem angular, 123, 205
-    \subitem logarithmic, 49, 50, 158, 180, 205
-    \subitem use of, 44, 46, 49, 50, 123, 158, 205, 206
+      \subsubitem angular, 121, 203
+    \subitem logarithmic, 49, 50, 156, 178, 203
+    \subitem use of, 44, 46, 49, 50, 121, 156, 203, 204
   \item tree-based methods
-    \subitem random forests (randomForest), 40, 41, 197, 199--203
+    \subitem random forests (randomForest), 40, 41, 195, 197--201
     \subitem rpart
-      \subsubitem classification, 197, 201--203
-      \subsubitem error or impurity measures, 199
-      \subsubitem information on each split, 200
-      \subsubitem output, 200
-      \subsubitem predictive accuracy, 203
-      \subsubitem pruning, 201
-      \subsubitem regression, 50, 184, 197, 201
-      \subsubitem tree diagram, 51, 141, 201, 202
+      \subsubitem classification, 195, 199--201
+      \subsubitem error or impurity measures, 197
+      \subsubitem information on each split, 198
+      \subsubitem output, 198
+      \subsubitem predictive accuracy, 201
+      \subsubitem pruning, 199
+      \subsubitem regression, 50, 182, 195, 199
+      \subsubitem tree diagram, 51, 139, 199, 200
 
   \indexspace
 
   \item variability
     \subitem heterogeneity, \see {model, homogeneity of variance}{}
   \item vector
-    \subitem atomic, 64, 74, 86, 102
-    \subitem character, 17, 20, 23, 64, 66, 68--70, 74, 79, 80, 85, 210, 
-		212, 244
-      \subsubitem number of characters, 79
-      \subsubitem splitting, 79
-    \subitem complex, 64, 68, 85
-    \subitem concatenation, 67
-    \subitem logical, 23, 64, 65, 68, 69, 74, 80, 85
-    \subitem numeric, 17, 21, 23, 25, 64, 66, 68--70, 74, 75, 80, 85, 
-		87, 88, 102, 103, 106, 212, 244
-    \subitem recursive (list), 20, 23, 30, 64, 68--70, 72, 74, 78, 82, 
-		85, 86, 96, 102, 106, 212
-    \subitem subset, 64, 65, 69, 70, 87
+    \subitem atomic, 62, 72, 84, 100
+    \subitem character, 17, 20, 23, 62, 64, 66--68, 72, 77, 78, 83, 208, 
+		210, 242
+      \subsubitem number of characters, 77
+      \subsubitem splitting, 77
+    \subitem complex, 62, 66, 83
+    \subitem concatenation, 65
+    \subitem logical, 23, 62, 63, 66, 67, 72, 78, 83
+    \subitem numeric, 17, 21, 23, 25, 62, 64, 66--68, 72, 73, 78, 83, 
+		85, 86, 100, 101, 104, 210, 242
+    \subitem recursive (list), 20, 23, 30, 62, 66--68, 70, 72, 76, 80, 
+		83, 84, 94, 100, 104, 210
+    \subitem subset, 62, 63, 67, 68, 85
 
   \indexspace
 

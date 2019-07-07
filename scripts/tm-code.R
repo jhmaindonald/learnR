@@ -14,7 +14,8 @@ txfiles <- dir(txdir, pattern=".txt$", full.names=TRUE)
 ## Input first file, with one text string per line
 tx1 <- readLines(txfiles[1], encoding="latin1", warn=FALSE, 
                  skipNul = TRUE)
-## Join the separate text strings end to end
+## Join the separate text strings end to end,
+## and remove comon non-ASCII characters.
 tx1 <- textclean::replace_non_ascii(paste(tx1, collapse=" "))
 
 ## ---- readLines2-3 ----
@@ -75,9 +76,9 @@ wordcloud(names(fnam3), fnam3, max.words=80, colors=pal[-1],
           random.order=FALSE, scale=c(9,.8))
 mtext(side=3, line=3.5, "Chs 4,5: Data . . .", adj=0, cex=1.8)
 
-## ---- sec-11.2 ----
+## ---- sec-10.2 ----
 
-## ---- get-path ----
+## ---- paths2pdfs ----
 uri <- system.file("pdf", package="DAAGviz")
 ## Check names of files in directory
 dir(uri)

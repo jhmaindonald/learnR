@@ -1,558 +1,558 @@
 \begin{theindex}
 
-  \item .First ({\em base}), 228
-  \item .Last ({\em base}), 228
-  \item .libPaths ({\em base}), 227, 228
+  \item .First ({\em base}), 226
+  \item .Last ({\em base}), 226
+  \item .libPaths ({\em base}), 225, 226
   \item .packages ({\em base}), 16
   \item .path.package ({\em base}), 30
 
   \indexspace
 
-  \item aaply ({\em plyr}), 108
-  \item abbreviate ({\em base}), 149
-  \item abline ({\em graphics}), 53, 153, 196
-  \item acast ({\em reshape2}), 110, 111, 115
-  \item acf ({\em stats}), 60, 61, 189, 190, 195
-  \item add1 ({\em stats}), 176, 179
-  \item adjustcolor ({\em grDevices}), 122, 175, 176, 180
-  \item adply ({\em plyr}), 103, 104, 107
-  \item aes ({\em ggplot2}), 139, 142, 143
-  \item aggregate ({\em stats}), 82, 83
-  \item all.vars ({\em base}), 216, 217
+  \item aaply ({\em plyr}), 106
+  \item abbreviate ({\em base}), 147
+  \item abline ({\em graphics}), 53, 151, 194
+  \item acast ({\em reshape2}), 108, 109, 113
+  \item acf ({\em stats}), 59, 60, 187, 188, 193
+  \item add1 ({\em stats}), 174, 177
+  \item adjustcolor ({\em grDevices}), 120, 173, 174, 178
+  \item adply ({\em plyr}), 101, 102, 105
+  \item aes ({\em ggplot2}), 137, 140, 141
+  \item aggregate ({\em stats}), 80, 81
+  \item all.vars ({\em base}), 214, 215
   \item annotation ({\em memisc}), 19
-  \item anova ({\em stats}), 169, 178
-  \item any ({\em base}), 74
-  \item aov ({\em stats}), 58, 165--168
-  \item apply ({\em base}), 78, 106, 108, 114, 115, 186, 198
+  \item anova ({\em stats}), 167, 176
+  \item any ({\em base}), 72
+  \item aov ({\em stats}), 58, 163--166
+  \item apply ({\em base}), 76, 104, 106, 112, 113, 184, 196
   \item apropos ({\em utils}), 22, 23
-  \item ar ({\em stats}), 192
-  \item area ({\em MASS}), 70
-  \item args ({\em base}), 18, 74
-  \item arima ({\em stats}), 189, 193
-  \item arima.sim ({\em stats}), 193
-  \item as ({\em methods}), 60, 72, 74, 75, 218, 221
-  \item as.character ({\em base}), 97, 112, 244
-  \item as.data.frame ({\em base}), 69, 75, 92, 95, 96, 103
-  \item as.data.frame.table ({\em base}), 76, 103
-  \item as.data.set ({\em memisc}), 92, 94
-  \item as.Date ({\em base}), 80--82, 96, 97, 134, 196
-  \item as.formula ({\em stats}), 216
-  \item as.layer ({\em latticeExtra}), 137
-  \item as.matrix ({\em Matrix}), 69, 72, 212
-  \item as.numeric ({\em base}), 112
-  \item as.vector ({\em base}), 82, 191
+  \item ar ({\em stats}), 190
+  \item area ({\em MASS}), 68
+  \item args ({\em base}), 18, 72
+  \item arima ({\em stats}), 187, 191
+  \item arima.sim ({\em stats}), 191
+  \item as ({\em methods}), 60, 70, 72, 73, 216, 219
+  \item as.character ({\em base}), 95, 110, 242
+  \item as.data.frame ({\em base}), 67, 73, 90, 93, 94, 101
+  \item as.data.frame.table ({\em base}), 74, 101
+  \item as.data.set ({\em memisc}), 90, 92
+  \item as.Date ({\em base}), 78--80, 94, 95, 132, 194
+  \item as.formula ({\em stats}), 214
+  \item as.layer ({\em latticeExtra}), 135
+  \item as.matrix ({\em Matrix}), 67, 70, 210
+  \item as.numeric ({\em base}), 110
+  \item as.vector ({\em base}), 80, 189
   \item attach ({\em base}), 20, 24, 29, 31, 39
-  \item attr ({\em base}), 66, 69, 81, 84, 103
-  \item auto.arima ({\em forecast}), 195
-  \item axis ({\em graphics}), 118, 125, 196
+  \item attr ({\em base}), 64, 67, 79, 82, 101
+  \item auto.arima ({\em forecast}), 193
+  \item axis ({\em graphics}), 116, 123, 194
 
   \indexspace
 
-  \item bestsetNoise ({\em DAAG}), 173
-  \item bkde2D ({\em KernSmooth}), 180
-  \item boxplot ({\em graphics}), 125, 134
-  \item brewer.pal ({\em RColorBrewer}), 121, 212
+  \item bestsetNoise ({\em DAAG}), 171
+  \item bkde2D ({\em KernSmooth}), 178
+  \item boxplot ({\em graphics}), 123, 132
+  \item brewer.pal ({\em RColorBrewer}), 119, 210
   \item browseVignettes ({\em utils}), 22, 23
-  \item bsnVaryNvar ({\em DAAG}), 174
-  \item bubble ({\em sp}), 84
-  \item bwplot ({\em lattice}), 134, 144
+  \item bsnVaryNvar ({\em DAAG}), 172
+  \item bubble ({\em sp}), 82
+  \item bwplot ({\em lattice}), 132, 142
 
   \indexspace
 
-  \item c ({\em base}), 7, 15--20, 29, 32, 40, 41, 64--69, 71, 72, 74, 
-		77, 78, 80--83, 86, 88, 91, 93, 95--97, 106--108, 
-		110, 111, 113, 119--124, 129, 131--133, 135--137, 140, 
-		142--144, 150, 162--164, 168, 176, 180, 183, 190, 193, 
-		200, 210--213, 217, 218, 239
-  \item C ({\em stats}), 213
-  \item call ({\em base}), 139, 218
-  \item cat ({\em base}), 74, 227
-  \item cbind ({\em base}), 70, 97, 180
-  \item character ({\em base}), 74, 79, 91
-  \item charmatch ({\em base}), 79
+  \item c ({\em base}), 7, 15--20, 29, 32, 40, 41, 62--67, 69, 70, 72, 
+		75, 76, 78--81, 84, 86, 89, 91, 93--95, 104--106, 
+		108, 109, 111, 117--122, 127, 129--131, 133--135, 138, 
+		140--142, 148, 160--162, 166, 174, 178, 181, 188, 191, 
+		198, 208--211, 215, 216, 237
+  \item C ({\em stats}), 211
+  \item call ({\em base}), 137, 216
+  \item cat ({\em base}), 72, 225
+  \item cbind ({\em base}), 68, 95, 178
+  \item character ({\em base}), 72, 77, 89
+  \item charmatch ({\em base}), 77
   \item chooseCRANmirror ({\em utils}), 30
-  \item class ({\em base}), 83, 84, 88
-  \item cloud ({\em lattice}), 127
-  \item cm.colors ({\em grDevices}), 121
-  \item cmdscale ({\em stats}), 202, 206, 207
-  \item codebook ({\em memisc}), 92, 93
-  \item coef ({\em stats}), 53, 55, 58, 73, 86, 154, 157, 160, 161, 166, 
-		168, 171, 177, 178, 221
-  \item coefficients ({\em stats}), 55, 154, 166
-  \item col ({\em base}), 120
-  \item colnames ({\em base}), 70
-  \item colorRampPalette ({\em grDevices}), 120--122
-  \item colors ({\em grDevices}), 120
-  \item colwise ({\em plyr}), 108
-  \item complete.cases ({\em stats}), 40, 71, 150
-  \item confusion ({\em DAAG}), 198
-  \item content\_transformer ({\em tm}), 211, 213
-  \item contour ({\em graphics}), 180
-  \item contourplot ({\em lattice}), 127
-  \item coord\_equal ({\em ggplot2}), 138, 141
-  \item coord\_fixed ({\em ggplot2}), 138, 139
-  \item coordinates ({\em sp}), 84, 85
+  \item class ({\em base}), 81, 82, 86
+  \item cloud ({\em lattice}), 125
+  \item cm.colors ({\em grDevices}), 119
+  \item cmdscale ({\em stats}), 200, 204, 205
+  \item codebook ({\em memisc}), 90, 91
+  \item coef ({\em stats}), 53, 55, 58, 71, 84, 152, 155, 158, 159, 164, 
+		166, 169, 175, 176, 219
+  \item coefficients ({\em stats}), 55, 152, 164
+  \item col ({\em base}), 118
+  \item colnames ({\em base}), 68
+  \item colorRampPalette ({\em grDevices}), 118--120
+  \item colors ({\em grDevices}), 118
+  \item colwise ({\em plyr}), 106
+  \item complete.cases ({\em stats}), 40, 69, 148
+  \item confusion ({\em DAAG}), 196
+  \item content\_transformer ({\em tm}), 209, 211
+  \item contour ({\em graphics}), 178
+  \item contourplot ({\em lattice}), 125
+  \item coord\_equal ({\em ggplot2}), 136, 139
+  \item coord\_fixed ({\em ggplot2}), 136, 137
+  \item coordinates ({\em sp}), 82, 83
   \item cor ({\em stats}), 56
-  \item Corpus ({\em tm}), 211, 213, 214
-  \item count.fields ({\em utils}), 90
-  \item cumprod ({\em base}), 74
-  \item cumsum ({\em base}), 74
+  \item Corpus ({\em tm}), 209, 211, 212
+  \item count.fields ({\em utils}), 88
+  \item cumprod ({\em base}), 72
+  \item cumsum ({\em base}), 72
   \item current.panel.limits ({\em lattice}), 56
-  \item curve ({\em graphics}), 182, 219
-  \item cut ({\em base}), 82, 105, 106
+  \item curve ({\em graphics}), 180, 217
+  \item cut ({\em base}), 80, 103, 104
 
   \indexspace
 
-  \item daply ({\em plyr}), 107, 108
-  \item data ({\em utils}), 84, 125, 165, 175, 192
-  \item data.frame ({\em base}), 15, 19, 60, 70, 71, 82, 91, 191
-  \item datafile ({\em DAAG}), 21, 39, 40, 78, 91
-  \item date ({\em base}), 82
-  \item dbConnect ({\em RSQLite}), 98
-  \item dbDisconnect ({\em RSQLite}), 98
-  \item dbDriver ({\em RSQLite}), 98
-  \item dbGetQuery ({\em RSQLite}), 98
-  \item dbListTables ({\em RSQLite}), 98
-  \item dbWriteTable ({\em RSQLite}), 98
-  \item dcast ({\em reshape2}), 110, 111, 115
-  \item ddply ({\em plyr}), 108
-  \item demo ({\em utils}), 14, 16, 22, 118, 126, 127, 148
-  \item density ({\em stats}), 24, 124, 149
-  \item densityplot ({\em lattice}), 135, 150
-  \item deparse ({\em base}), 217
-  \item description ({\em memisc}), 92
-  \item detach ({\em base}), 20, 24, 31, 107, 109
-  \item dev.off ({\em grDevices}), 219
-  \item diff ({\em Matrix}), 56, 74, 80, 82
-  \item dim ({\em base}), 40, 69, 72, 88, 114, 195
+  \item daply ({\em plyr}), 105, 106
+  \item data ({\em utils}), 82, 123, 163, 173, 190
+  \item data.frame ({\em base}), 15, 19, 60, 68, 69, 80, 89, 189
+  \item datafile ({\em DAAG}), 21, 39, 40, 76, 89
+  \item date ({\em base}), 80
+  \item dbConnect ({\em RSQLite}), 96
+  \item dbDisconnect ({\em RSQLite}), 96
+  \item dbDriver ({\em RSQLite}), 96
+  \item dbGetQuery ({\em RSQLite}), 96
+  \item dbListTables ({\em RSQLite}), 96
+  \item dbWriteTable ({\em RSQLite}), 96
+  \item dcast ({\em reshape2}), 108, 109, 113
+  \item ddply ({\em plyr}), 106
+  \item demo ({\em utils}), 14, 16, 22, 116, 124, 125, 146
+  \item density ({\em stats}), 24, 122, 147
+  \item densityplot ({\em lattice}), 133, 148
+  \item deparse ({\em base}), 215
+  \item description ({\em memisc}), 90
+  \item detach ({\em base}), 20, 24, 31, 105, 107
+  \item dev.off ({\em grDevices}), 217
+  \item diff ({\em Matrix}), 56, 72, 78, 80
+  \item dim ({\em base}), 40, 67, 70, 86, 112, 193
   \item dimensions ({\em sp}), 40
-  \item dir ({\em base}), 7, 21, 77, 112, 210, 213, 214, 239
-  \item DirSource ({\em tm}), 211, 213, 214
-  \item display.brewer.all ({\em RColorBrewer}), 121
-  \item dist ({\em stats}), 205
-  \item do.call ({\em base}), 96, 217
-  \item DocumentTermMatrix ({\em tm}), 211
-  \item dotplot ({\em lattice}), 75, 134
+  \item dir ({\em base}), 7, 21, 75, 110, 208, 211, 212, 237
+  \item DirSource ({\em tm}), 209, 211, 212
+  \item display.brewer.all ({\em RColorBrewer}), 119
+  \item dist ({\em stats}), 203
+  \item do.call ({\em base}), 94, 215
+  \item DocumentTermMatrix ({\em tm}), 209
+  \item dotplot ({\em lattice}), 73, 132
   \item download.packages ({\em utils}), 30
-  \item droplevels ({\em base}), 67, 71, 98, 142
-  \item dump ({\em base}), 29, 113
+  \item droplevels ({\em base}), 65, 69, 96, 140
+  \item dump ({\em base}), 29, 111
 
   \indexspace
 
-  \item effects ({\em stats}), 176
-  \item eval ({\em base}), 218
-  \item eventCounts ({\em gamclass}), 196
-  \item example ({\em utils}), 22, 103, 119
-  \item exp ({\em base}), 134, 160
-  \item expand ({\em Matrix}), 94
-  \item expression ({\em base}), 125, 126
+  \item effects ({\em stats}), 174
+  \item eval ({\em base}), 216
+  \item eventCounts ({\em gamclass}), 194
+  \item example ({\em utils}), 22, 101, 117
+  \item exp ({\em base}), 132, 158
+  \item expand ({\em Matrix}), 92
+  \item expression ({\em base}), 123, 124
 
   \indexspace
 
-  \item facet\_grid ({\em ggplot2}), 141
-  \item factor ({\em base}), 66, 67, 86, 110, 164, 165, 200
+  \item facet\_grid ({\em ggplot2}), 139
+  \item factor ({\em base}), 64, 65, 84, 108, 162, 163, 198
   \item file ({\em base}), 39
-  \item file.show ({\em base}), 7, 24, 40, 239
-  \item filter ({\em dplyr}), 110
-  \item first ({\em dplyr}), 46, 105, 212
-  \item fitted ({\em stats}), 55, 73, 86, 154, 167
-  \item fitted.values ({\em stats}), 55, 154
-  \item for ({\em base}), 95, 96, 121, 193, 195, 213
-  \item forecast ({\em forecast}), 193
-  \item format ({\em Matrix}), 80, 81, 134, 196
-  \item format.Date ({\em base}), 110
-  \item formula ({\em stats}), 217
-  \item fromJSON ({\em RJSONIO}), 96, 98
-  \item function ({\em base}), 18, 56, 77--79, 82, 83, 88, 95--97, 105, 
-		107, 108, 119, 126, 137, 198, 211, 213, 216--219, 221, 
-		227
+  \item file.show ({\em base}), 7, 24, 40, 237
+  \item filter ({\em dplyr}), 108
+  \item first ({\em dplyr}), 46, 103, 210
+  \item fitted ({\em stats}), 55, 71, 84, 152, 165
+  \item fitted.values ({\em stats}), 55, 152
+  \item for ({\em base}), 93, 94, 119, 191, 193, 211
+  \item forecast ({\em forecast}), 191
+  \item format ({\em Matrix}), 78, 79, 132, 194
+  \item format.Date ({\em base}), 108
+  \item formula ({\em stats}), 215
+  \item fromJSON ({\em RJSONIO}), 94, 96
+  \item function ({\em base}), 18, 56, 75--77, 80, 81, 86, 93--95, 103, 
+		105, 106, 117, 124, 135, 196, 209, 211, 214--217, 219, 
+		225
 
   \indexspace
 
-  \item gam ({\em mgcv}), 182, 183, 191, 193, 195, 196
-  \item geom\_boxplot ({\em ggplot2}), 142
-  \item geom\_density ({\em ggplot2}), 140
-  \item geom\_histogram ({\em ggplot2}), 140
-  \item geom\_line ({\em ggplot2}), 140
-  \item geom\_path ({\em ggplot2}), 140
-  \item geom\_point ({\em ggplot2}), 139, 140, 142, 143
-  \item geom\_quantile ({\em ggplot2}), 143
-  \item geom\_smooth ({\em ggplot2}), 139, 140, 143
-  \item getAnywhere ({\em utils}), 98, 221
-  \item getFromNamespace ({\em utils}), 221
-  \item getReaders ({\em tm}), 213
-  \item getwd ({\em base}), 28, 112
-  \item ggplot ({\em ggplot2}), 139--143
-  \item ggtitle ({\em ggplot2}), 141
-  \item glayer ({\em latticeExtra}), 137
-  \item glm ({\em stats}), 180, 199
-  \item gray ({\em grDevices}), 142
-  \item grep ({\em base}), 79
-  \item group\_by ({\em dplyr}), 104, 109, 110
-  \item gsub ({\em base}), 79, 213
-  \item gvisMotionChart ({\em googleVis}), 98, 147, 148
-  \item gzfile ({\em base}), 99
+  \item gam ({\em mgcv}), 180, 181, 189, 191, 193, 194
+  \item geom\_boxplot ({\em ggplot2}), 140
+  \item geom\_density ({\em ggplot2}), 138
+  \item geom\_histogram ({\em ggplot2}), 138
+  \item geom\_line ({\em ggplot2}), 138
+  \item geom\_path ({\em ggplot2}), 138
+  \item geom\_point ({\em ggplot2}), 137, 138, 140, 141
+  \item geom\_quantile ({\em ggplot2}), 141
+  \item geom\_smooth ({\em ggplot2}), 137, 138, 141
+  \item getAnywhere ({\em utils}), 96, 219
+  \item getFromNamespace ({\em utils}), 219
+  \item getReaders ({\em tm}), 211
+  \item getwd ({\em base}), 28, 110
+  \item ggplot ({\em ggplot2}), 137--141
+  \item ggtitle ({\em ggplot2}), 139
+  \item glayer ({\em latticeExtra}), 135
+  \item glm ({\em stats}), 178, 197
+  \item gray ({\em grDevices}), 140
+  \item grep ({\em base}), 77
+  \item group\_by ({\em dplyr}), 102, 107, 108
+  \item gsub ({\em base}), 77, 211
+  \item gvisMotionChart ({\em googleVis}), 96, 145, 146
+  \item gzfile ({\em base}), 97
 
   \indexspace
 
-  \item hat ({\em stats}), 126
-  \item head ({\em Matrix}), 41, 76, 103, 119, 200
-  \item heat.colors ({\em grDevices}), 121
-  \item help ({\em utils}), 13, 14, 21--23, 32, 79, 80, 82, 87, 90, 94, 
-		96, 103, 113, 120, 125, 126, 128, 141, 146, 168, 186, 
-		203, 211, 220, 221, 225, 226, 228
+  \item hat ({\em stats}), 124
+  \item head ({\em Matrix}), 41, 74, 101, 117, 198
+  \item heat.colors ({\em grDevices}), 119
+  \item help ({\em utils}), 13, 14, 21--23, 32, 77, 78, 80, 85, 88, 92, 
+		94, 101, 111, 118, 123, 124, 126, 139, 144, 166, 184, 
+		201, 209, 218, 219, 223, 224, 226
   \item help.search ({\em utils}), 14, 22, 23
   \item help.start ({\em utils}), 14, 22, 23
-  \item hist ({\em graphics}), 124, 149
-  \item histogram ({\em lattice}), 135, 149
+  \item hist ({\em graphics}), 122, 147
+  \item histogram ({\em lattice}), 133, 147
 
   \indexspace
 
-  \item I ({\em base}), 139, 142, 143
-  \item iconv ({\em base}), 211
-  \item identify ({\em graphics}), 19, 118, 119, 149, 206
-  \item identify3d ({\em rgl}), 145, 146
-  \item identity ({\em base}), 103
-  \item if ({\em base}), 82
-  \item image ({\em Matrix}), 8, 230, 240
+  \item I ({\em base}), 137, 140, 141
+  \item iconv ({\em base}), 209
+  \item identify ({\em graphics}), 19, 116, 117, 147, 204
+  \item identify3d ({\em rgl}), 143, 144
+  \item identity ({\em base}), 101
+  \item if ({\em base}), 80
+  \item image ({\em Matrix}), 8, 228, 238
   \item include\_graphics ({\em knitr}), 38
   \item install.packages ({\em utils}), 15, 30
   \item interaction.plot ({\em stats}), 59
-  \item intervals ({\em nlme}), 220
-  \item is ({\em methods}), 14, 74, 168
-  \item is.na ({\em base}), 64, 68, 74, 79, 82, 83, 85
-  \item is.null ({\em base}), 82
+  \item intervals ({\em nlme}), 218
+  \item is ({\em methods}), 14, 72, 166
+  \item is.na ({\em base}), 62, 66, 72, 77, 80, 81, 83
+  \item is.null ({\em base}), 80
 
   \indexspace
 
-  \item julian ({\em base}), 81, 196
+  \item julian ({\em base}), 79, 194
 
   \indexspace
 
-  \item labels ({\em memisc}), 92
-  \item labs ({\em ggplot2}), 141
-  \item lag.plot ({\em stats}), 60, 61, 190
-  \item lapply ({\em base}), 78
-  \item layer ({\em latticeExtra}), 31, 135, 137
-  \item lda ({\em MASS}), 69, 197, 198, 203, 204
-  \item legend ({\em graphics}), 121, 180
-  \item length ({\em base}), 69, 72, 74, 82, 83, 108, 110, 121, 134, 
-		206
-  \item lengths ({\em base}), 149
-  \item levelplot ({\em lattice}), 127
-  \item levels ({\em base}), 66, 79, 112, 132, 134, 189, 193
-  \item library ({\em base}), 7, 16, 28, 30, 31, 40, 49, 51, 52, 57--59, 
-		75, 76, 78, 79, 81, 84, 88, 92, 96--98, 104, 106--111, 
-		118, 120, 123, 127, 138, 143, 145--147, 150, 153, 170, 
-		174, 175, 180, 183, 191, 193, 196--198, 200, 201, 210, 
-		212, 220, 221, 230, 239
-  \item line ({\em stats}), 19, 182, 186, 226
-  \item lines ({\em graphics}), 59, 118, 124, 182
-  \item list ({\em base}), 31, 52, 53, 57, 72, 81--84, 91, 95, 107, 121, 
-		129--135, 137, 148, 150, 188, 193, 198, 203, 211, 
-		213, 214, 217, 236
-  \item lm ({\em stats}), 53--55, 57, 58, 68, 73, 152--157, 159--161, 
-		165, 169, 171, 177, 178, 186
-  \item lme ({\em nlme}), 188
-  \item lmer ({\em lme4}), 188
-  \item lmList ({\em lme4}), 220, 221
-  \item load ({\em base}), 8, 29, 240
-  \item locator ({\em graphics}), 119
-  \item loess ({\em stats}), 181, 182
-  \item loess.smooth ({\em stats}), 182
-  \item log ({\em base}), 16, 24, 46, 52--55, 57, 68, 78, 123, 134, 
-		145, 146, 157--161, 164, 166, 170, 171, 176--181, 186, 
-		199, 200
-  \item log10 ({\em base}), 16, 141
+  \item labels ({\em memisc}), 90
+  \item labs ({\em ggplot2}), 139
+  \item lag.plot ({\em stats}), 60, 188
+  \item lapply ({\em base}), 76
+  \item layer ({\em latticeExtra}), 31, 133, 135
+  \item lda ({\em MASS}), 67, 195, 196, 201, 202
+  \item legend ({\em graphics}), 119, 178
+  \item length ({\em base}), 67, 70, 72, 80, 81, 106, 108, 119, 132, 
+		204
+  \item lengths ({\em base}), 147
+  \item levelplot ({\em lattice}), 125
+  \item levels ({\em base}), 64, 77, 110, 130, 132, 187, 191
+  \item library ({\em base}), 7, 16, 28, 30, 31, 40, 49, 51, 52, 56, 57, 
+		59, 73, 74, 76, 77, 79, 82, 86, 90, 94--96, 102, 
+		104--109, 116, 118, 121, 125, 136, 141, 143--145, 148, 
+		151, 168, 172, 173, 178, 181, 189, 191, 194--196, 
+		198, 199, 208, 210, 218, 219, 228, 237
+  \item line ({\em stats}), 19, 180, 184, 224
+  \item lines ({\em graphics}), 59, 116, 122, 180
+  \item list ({\em base}), 31, 52, 56, 57, 70, 79--82, 89, 93, 105, 119, 
+		127--133, 135, 146, 148, 186, 191, 196, 201, 209, 
+		211, 212, 215, 234
+  \item lm ({\em stats}), 53--55, 57, 58, 66, 71, 150--155, 157--159, 
+		163, 167, 169, 175, 176, 184
+  \item lme ({\em nlme}), 186
+  \item lmer ({\em lme4}), 186
+  \item lmList ({\em lme4}), 218, 219
+  \item load ({\em base}), 8, 29, 238
+  \item locator ({\em graphics}), 117
+  \item loess ({\em stats}), 179, 180
+  \item loess.smooth ({\em stats}), 180
+  \item log ({\em base}), 16, 24, 46, 52--55, 57, 66, 76, 121, 132, 
+		143, 144, 155--159, 162, 164, 168, 169, 174--179, 184, 
+		197, 198
+  \item log10 ({\em base}), 16, 139
   \item log2 ({\em base}), 16
-  \item logical ({\em base}), 65, 74
-  \item lowess ({\em stats}), 59, 60, 68, 181, 182
-  \item lpoints ({\em lattice}), 136
+  \item logical ({\em base}), 63, 72
+  \item lowess ({\em stats}), 59, 60, 66, 179, 180
+  \item lpoints ({\em lattice}), 134
   \item ls ({\em base}), 11, 12, 17, 28
 
   \indexspace
 
-  \item margin.table ({\em base}), 105
-  \item match ({\em base}), 79, 98
-  \item matrix ({\em base}), 78, 107, 114
-  \item max ({\em base}), 56, 82, 196
-  \item mean ({\em Matrix}), 16, 40, 68, 74, 77, 78, 88, 188, 191, 196, 
-		217, 218
-  \item median ({\em stats}), 41, 68, 74, 78
-  \item melt ({\em reshape2}), 110, 111, 115
+  \item margin.table ({\em base}), 103
+  \item match ({\em base}), 77, 96
+  \item matrix ({\em base}), 76, 105, 112
+  \item max ({\em base}), 56, 80, 194
+  \item mean ({\em Matrix}), 16, 40, 66, 72, 75, 76, 86, 186, 189, 194, 
+		215, 216
+  \item median ({\em stats}), 41, 66, 72, 76
+  \item melt ({\em reshape2}), 108, 109, 113
   \item menu ({\em utils}), 28
-  \item methods ({\em utils}), 84
-  \item min ({\em base}), 56, 82
-  \item missing.values ({\em memisc}), 92
-  \item mode ({\em base}), 64, 74, 86
-  \item model.matrix ({\em SparseM}), 167
-  \item months ({\em base}), 81
-  \item mtext ({\em graphics}), 50, 118, 122, 126, 144, 166, 183, 194, 
-		212, 213
+  \item methods ({\em utils}), 82
+  \item min ({\em base}), 56, 80
+  \item missing.values ({\em memisc}), 90
+  \item mode ({\em base}), 62, 72, 84
+  \item model.matrix ({\em SparseM}), 165
+  \item months ({\em base}), 79
+  \item mtext ({\em graphics}), 50, 116, 120, 124, 142, 164, 181, 192, 
+		210, 211
 
   \indexspace
 
-  \item na.exclude ({\em stats}), 68
-  \item na.omit ({\em stats}), 68, 71, 72, 83
-  \item names ({\em base}), 24, 55, 57, 66, 70, 72, 85, 88, 91, 95--98, 
-		104, 109--111, 121, 133, 154, 170, 171, 212, 216, 225
-  \item nchar ({\em base}), 79
-  \item normalizePath ({\em base}), 32, 225
-  \item nrow ({\em base}), 108, 121
-  \item ns ({\em splines}), 143
-  \item numeric ({\em base}), 74
+  \item na.exclude ({\em stats}), 66
+  \item na.omit ({\em stats}), 66, 69, 70, 81
+  \item names ({\em base}), 24, 55, 57, 64, 68, 70, 83, 86, 89, 93--96, 
+		102, 107--109, 119, 131, 152, 168, 169, 210, 214, 223
+  \item nchar ({\em base}), 77
+  \item normalizePath ({\em base}), 32, 223
+  \item nrow ({\em base}), 106, 119
+  \item ns ({\em splines}), 141
+  \item numeric ({\em base}), 72
 
   \indexspace
 
-  \item objects ({\em base}), 64, 102, 113
-  \item open3d ({\em rgl}), 146
-  \item options ({\em base}), 32, 70, 108, 168, 228
-  \item order ({\em base}), 74, 87, 193
-  \item ordered ({\em base}), 67, 110
-  \item oz ({\em oz}), 207
+  \item objects ({\em base}), 62, 100, 111
+  \item open3d ({\em rgl}), 144
+  \item options ({\em base}), 32, 68, 106, 166, 226
+  \item order ({\em base}), 72, 85, 191
+  \item ordered ({\em base}), 65, 108
+  \item oz ({\em oz}), 205
 
   \indexspace
 
-  \item pacf ({\em stats}), 60, 61
-  \item packageStatus ({\em utils}), 227
-  \item page ({\em utils}), 208, 234
-  \item pairs ({\em graphics}), 51, 56
-  \item palette ({\em grDevices}), 120, 121
-  \item panel.abline ({\em lattice}), 136
-  \item panel.arrows ({\em lattice}), 136
-  \item panel.average ({\em lattice}), 136
-  \item panel.curve ({\em lattice}), 136
-  \item panel.fill ({\em lattice}), 136
-  \item panel.lines ({\em lattice}), 136
-  \item panel.lmline ({\em lattice}), 136
-  \item panel.loess ({\em lattice}), 136
-  \item panel.mathdensity ({\em lattice}), 136
-  \item panel.points ({\em lattice}), 128, 136
-  \item panel.polygon ({\em lattice}), 136
-  \item panel.rect ({\em lattice}), 136
-  \item panel.refline ({\em lattice}), 136
-  \item panel.rug ({\em lattice}), 136
-  \item panel.segments ({\em lattice}), 136
-  \item panel.superpose ({\em lattice}), 135
-  \item panel.text ({\em lattice}), 56, 128, 136, 137
-  \item panel.xyplot ({\em lattice}), 56, 135, 137
-  \item par ({\em graphics}), 119, 120, 123, 144, 159, 207
-  \item par3d ({\em rgl}), 146
-  \item parallel ({\em lattice}), 127
-  \item paste ({\em base}), 56, 57, 79, 87, 95, 97, 193, 195, 210, 214, 
-		216, 217, 244
-  \item paste0 ({\em base}), 57, 79, 87, 95, 96, 134, 170, 171, 219
-  \item pdf ({\em grDevices}), 219
+  \item pacf ({\em stats}), 59, 60
+  \item packageStatus ({\em utils}), 225
+  \item page ({\em utils}), 206, 232
+  \item pairs ({\em graphics}), 50, 51, 56
+  \item palette ({\em grDevices}), 118, 119
+  \item panel.abline ({\em lattice}), 134
+  \item panel.arrows ({\em lattice}), 134
+  \item panel.average ({\em lattice}), 134
+  \item panel.curve ({\em lattice}), 134
+  \item panel.fill ({\em lattice}), 134
+  \item panel.lines ({\em lattice}), 134
+  \item panel.lmline ({\em lattice}), 134
+  \item panel.loess ({\em lattice}), 134
+  \item panel.mathdensity ({\em lattice}), 134
+  \item panel.points ({\em lattice}), 126, 134
+  \item panel.polygon ({\em lattice}), 134
+  \item panel.rect ({\em lattice}), 134
+  \item panel.refline ({\em lattice}), 134
+  \item panel.rug ({\em lattice}), 134
+  \item panel.segments ({\em lattice}), 134
+  \item panel.superpose ({\em lattice}), 133
+  \item panel.text ({\em lattice}), 56, 126, 134, 135
+  \item panel.xyplot ({\em lattice}), 56, 133, 135
+  \item par ({\em graphics}), 117, 118, 121, 142, 157, 205
+  \item par3d ({\em rgl}), 144
+  \item parallel ({\em lattice}), 125
+  \item paste ({\em base}), 56, 57, 77, 85, 93, 95, 191, 193, 208, 212, 
+		214, 215, 242
+  \item paste0 ({\em base}), 57, 77, 85, 93, 94, 132, 168, 169, 217
+  \item pdf ({\em grDevices}), 217
   \item plot ({\em sp}), 13, 18--20, 24, 35, 37, 38, 44, 50, 51, 53--55, 
-		59, 68, 73, 83, 84, 118, 119, 121--124, 126--128, 135, 
-		144, 147--149, 152, 153, 159, 160, 180, 182, 189, 191, 
-		193, 194, 196, 201, 203, 206, 216, 217
-  \item plotSimDiags ({\em DAAG}), 162, 163
-  \item plotSimScat ({\em DAAG}), 162, 163
-  \item pmatch ({\em base}), 79
-  \item points ({\em graphics}), 19, 118, 119, 121, 128
-  \item prcomp ({\em stats}), 69
-  \item predict ({\em stats}), 155, 167, 183, 186, 196, 198
-  \item pretty ({\em base}), 134, 180
-  \item print ({\em Matrix}), 13, 31, 44, 54, 55, 73, 74, 83, 84, 86, 
-		95, 97, 111, 127, 128, 131, 144, 169, 198, 219
-  \item print.data.frame ({\em base}), 84
-  \item print.default ({\em base}), 84
-  \item print.factor ({\em base}), 84
-  \item prop.table ({\em base}), 105
+		59, 66, 71, 81, 82, 116, 117, 119--122, 124--126, 133, 
+		142, 145--147, 150, 151, 157, 158, 178, 180, 187, 189, 
+		191, 192, 194, 199, 201, 204, 214, 215
+  \item plotSimDiags ({\em DAAG}), 160, 161
+  \item plotSimScat ({\em DAAG}), 160, 161
+  \item pmatch ({\em base}), 77
+  \item points ({\em graphics}), 19, 116, 117, 119, 126
+  \item prcomp ({\em stats}), 67
+  \item predict ({\em stats}), 153, 165, 181, 184, 194, 196
+  \item pretty ({\em base}), 132, 178
+  \item print ({\em Matrix}), 13, 31, 44, 54, 55, 71, 72, 81, 82, 84, 
+		93, 95, 109, 125, 126, 129, 142, 167, 196, 217
+  \item print.data.frame ({\em base}), 82
+  \item print.default ({\em base}), 82
+  \item print.factor ({\em base}), 82
+  \item prop.table ({\em base}), 103
 
   \indexspace
 
   \item q ({\em base}), 12, 13, 23, 28, 49
-  \item qda ({\em MASS}), 197
-  \item qplot ({\em ggplot2}), 139--141
-  \item qqmath ({\em lattice}), 127
-  \item qqnorm ({\em stats}), 125, 149
-  \item qr ({\em Matrix}), 106
-  \item quarters ({\em base}), 81
-  \item quickplot ({\em ggplot2}), 58, 138--143
+  \item qda ({\em MASS}), 195
+  \item qplot ({\em ggplot2}), 137--139
+  \item qqmath ({\em lattice}), 125
+  \item qqnorm ({\em stats}), 123, 147
+  \item qr ({\em Matrix}), 104
+  \item quarters ({\em base}), 79
+  \item quickplot ({\em ggplot2}), 57, 58, 136--141
 
   \indexspace
 
-  \item R.home ({\em base}), 32, 77, 225
-  \item rainbow ({\em grDevices}), 120
-  \item randomForest ({\em randomForest}), 201--204
-  \item range ({\em base}), 40, 56, 74, 78, 109, 180, 183
-  \item read.csv ({\em utils}), 21, 23, 36, 90, 94, 97, 111
+  \item R.home ({\em base}), 32, 75, 223
+  \item rainbow ({\em grDevices}), 118
+  \item randomForest ({\em randomForest}), 199--202
+  \item range ({\em base}), 40, 56, 72, 76, 107, 178, 181
+  \item read.csv ({\em utils}), 21, 23, 36, 88, 92, 95, 109
   \item read.delim ({\em utils}), 21, 23
-  \item read.table ({\em utils}), 19, 21, 23, 24, 36, 40, 70, 78, 
-		90, 91, 94, 95
+  \item read.table ({\em utils}), 19, 21, 23, 24, 36, 40, 68, 76, 
+		88, 89, 92, 93
   \item read\_csv ({\em readr}), 36
   \item read\_table ({\em readr}), 36
-  \item readHTMLTable ({\em XML}), 95, 96
-  \item readLines ({\em base}), 99, 210
-  \item readPDF ({\em tm}), 213
-  \item regexpr ({\em base}), 79
+  \item readHTMLTable ({\em XML}), 93, 94
+  \item readLines ({\em base}), 97, 208
+  \item readPDF ({\em tm}), 211
+  \item regexpr ({\em base}), 77
   \item relevel ({\em stats}), 58
-  \item reorder ({\em stats}), 188
-  \item rep ({\em base}), 67, 86, 91, 110, 114, 121, 164, 175, 176, 206
+  \item reorder ({\em stats}), 186
+  \item rep ({\em base}), 65, 84, 89, 108, 112, 119, 162, 173, 174, 204
   \item repeat ({\em base}), 58
-  \item resid ({\em stats}), 55, 73, 86, 154, 157, 195
-  \item residuals ({\em stats}), 55, 154
-  \item rev ({\em base}), 74, 121
-  \item rgl.snapshot ({\em rgl}), 146
-  \item rm ({\em base}), 20, 28, 29, 86, 113
-  \item rnorm ({\em stats}), 40, 77, 88, 114, 125, 195, 218
-  \item round ({\em base}), 18, 32, 56, 58, 83, 106, 134, 157, 160, 161, 
-		166, 168, 171, 177, 178, 198
-  \item row.names ({\em memisc}), 70, 88, 146
-  \item rownames ({\em base}), 70, 83, 119, 137, 161, 206
-  \item rowSums ({\em Matrix}), 114
-  \item rpart ({\em rpart}), 200, 202
+  \item resid ({\em stats}), 55, 71, 84, 152, 155, 193
+  \item residuals ({\em stats}), 55, 152
+  \item rev ({\em base}), 72, 119
+  \item rgl.snapshot ({\em rgl}), 144
+  \item rm ({\em base}), 20, 28, 29, 84, 111
+  \item rnorm ({\em stats}), 40, 75, 86, 112, 123, 193, 216
+  \item round ({\em base}), 18, 32, 56, 58, 81, 104, 132, 155, 158, 159, 
+		164, 166, 169, 175, 176, 196
+  \item row.names ({\em memisc}), 68, 86, 144
+  \item rownames ({\em base}), 68, 81, 117, 135, 159, 204
+  \item rowSums ({\em Matrix}), 112
+  \item rpart ({\em rpart}), 198, 200
   \item RSiteSearch ({\em utils}), 22
-  \item rug ({\em graphics}), 125
-  \item runif ({\em stats}), 149, 150
+  \item rug ({\em graphics}), 123
+  \item runif ({\em stats}), 147, 148
 
   \indexspace
 
-  \item s ({\em mgcv}), 183, 191, 193, 195, 196
-  \item sammon ({\em MASS}), 207
-  \item sample ({\em memisc}), 121
-  \item sapply ({\em base}), 78, 79, 83, 88, 96, 97, 115, 212
-  \item save ({\em base}), 24, 29, 40, 112
+  \item s ({\em mgcv}), 181, 189, 191, 193, 194
+  \item sammon ({\em MASS}), 205
+  \item sample ({\em memisc}), 119
+  \item sapply ({\em base}), 76, 77, 81, 86, 94, 95, 113, 210
+  \item save ({\em base}), 24, 29, 40, 110
   \item save.image ({\em base}), 28, 29
-  \item scale\_x\_continuous ({\em ggplot2}), 139, 141
-  \item scale\_x\_date ({\em ggplot2}), 141
-  \item scale\_x\_discrete ({\em ggplot2}), 141
-  \item scale\_y\_continuous ({\em ggplot2}), 139
-  \item scan ({\em base}), 91, 94, 99, 211
-  \item scatter.smooth ({\em stats}), 182
-  \item scatter3d ({\em car}), 145, 146, 230
-  \item scatterplot ({\em car}), 230
-  \item sd ({\em stats}), 77, 88
+  \item scale\_x\_continuous ({\em ggplot2}), 137, 139
+  \item scale\_x\_date ({\em ggplot2}), 139
+  \item scale\_x\_discrete ({\em ggplot2}), 139
+  \item scale\_y\_continuous ({\em ggplot2}), 137
+  \item scan ({\em base}), 89, 92, 97, 209
+  \item scatter.smooth ({\em stats}), 180
+  \item scatter3d ({\em car}), 143, 144, 228
+  \item scatterplot ({\em car}), 228
+  \item sd ({\em stats}), 75, 86
   \item search ({\em base}), 28, 30, 31
-  \item selectMethod ({\em methods}), 221
-  \item seq ({\em base}), 81, 82, 134, 196
-  \item seq.Date ({\em base}), 82
-  \item sessionInfo ({\em utils}), 30, 31, 77
-  \item set.seed ({\em base}), 174, 200
-  \item setRepositories ({\em utils}), 226
-  \item setupKnitr ({\em rgl}), 145
-  \item setwd ({\em base}), 112
-  \item show ({\em lme4}), 92
-  \item show.settings ({\em lattice}), 133
-  \item showMethods ({\em methods}), 85, 221
+  \item selectMethod ({\em methods}), 219
+  \item seq ({\em base}), 79, 80, 132, 194
+  \item seq.Date ({\em base}), 80
+  \item sessionInfo ({\em utils}), 30, 31, 75
+  \item set.seed ({\em base}), 172, 198
+  \item setRepositories ({\em utils}), 224
+  \item setupKnitr ({\em rgl}), 143
+  \item setwd ({\em base}), 110
+  \item show ({\em lme4}), 90
+  \item show.settings ({\em lattice}), 131
+  \item showMethods ({\em methods}), 83, 219
   \item signif ({\em base}), 32
-  \item simpleKey ({\em lattice}), 132
-  \item simpleTheme ({\em lattice}), 129--131, 133, 135, 202
-  \item sin ({\em base}), 122
-  \item slot ({\em methods}), 85, 220, 221
-  \item slotNames ({\em methods}), 85, 220
-  \item smoothScatter ({\em graphics}), 121, 122
-  \item solve ({\em Matrix}), 106
-  \item some ({\em car}), 86
-  \item sort ({\em base}), 66, 74, 110, 211
-  \item source ({\em XML}), 7, 15, 29, 113, 239
-  \item spline ({\em stats}), 119
-  \item split ({\em sp}), 83
-  \item splom ({\em lattice}), 56, 57, 170
-  \item spm ({\em car}), 175, 176
-  \item sprintf ({\em base}), 79
-  \item spss.fixed.file ({\em memisc}), 91
-  \item spss.portable.file ({\em memisc}), 91, 92
-  \item spss.system.file ({\em memisc}), 91
-  \item sqrt ({\em base}), 32, 68, 123
-  \item Stata.file ({\em memisc}), 91
-  \item stem ({\em graphics}), 149
-  \item stopwords ({\em tm}), 211, 212
-  \item str ({\em utils}), 24, 51, 56, 74, 76, 88, 103, 169
-  \item stripplot ({\em lattice}), 132, 134, 144, 150, 188
-  \item strsplit ({\em base}), 79, 97
-  \item sub ({\em base}), 79, 110, 134
-  \item subset ({\em memisc}), 41, 65, 71, 87, 92, 93, 98, 109, 
-		124, 125, 142, 161, 180, 183
+  \item simpleKey ({\em lattice}), 130
+  \item simpleTheme ({\em lattice}), 127--129, 131, 133, 200
+  \item sin ({\em base}), 120
+  \item slot ({\em methods}), 83, 218, 219
+  \item slotNames ({\em methods}), 83, 218
+  \item smoothScatter ({\em graphics}), 119, 120
+  \item solve ({\em Matrix}), 104
+  \item some ({\em car}), 84
+  \item sort ({\em base}), 64, 72, 108, 209
+  \item source ({\em XML}), 7, 15, 29, 111, 237
+  \item spline ({\em stats}), 117
+  \item split ({\em sp}), 81
+  \item splom ({\em lattice}), 56, 57, 168
+  \item spm ({\em car}), 173, 174
+  \item sprintf ({\em base}), 77
+  \item spss.fixed.file ({\em memisc}), 89
+  \item spss.portable.file ({\em memisc}), 89, 90
+  \item spss.system.file ({\em memisc}), 89
+  \item sqrt ({\em base}), 32, 66, 121
+  \item Stata.file ({\em memisc}), 89
+  \item stem ({\em graphics}), 147
+  \item stopwords ({\em tm}), 209, 210
+  \item str ({\em utils}), 24, 51, 55, 72, 74, 86, 101, 167
+  \item stripplot ({\em lattice}), 130, 132, 142, 148, 186
+  \item strsplit ({\em base}), 77, 95
+  \item sub ({\em base}), 77, 108, 132
+  \item subset ({\em memisc}), 41, 63, 69, 85, 90, 91, 96, 107, 
+		122, 123, 140, 159, 178, 181
   \item subsets ({\em car}), 44
-  \item substitute ({\em base}), 126, 217
-  \item substring ({\em base}), 79, 97, 112
-  \item sum ({\em base}), 16, 41, 67, 79, 82, 83, 104, 105, 108--110, 
-		198
-  \item summarise ({\em plyr}), 104, 109, 110
-  \item summary ({\em rgdal}), 24, 35, 37, 44, 54, 55, 73, 83, 84, 86, 
-		177, 178, 180, 227
-  \item summary.lm ({\em stats}), 55, 58, 166, 168
-  \item svd ({\em base}), 106
-  \item switch ({\em base}), 95
-  \item symbols ({\em graphics}), 129
-  \item sys.call ({\em base}), 218, 219
-  \item Sys.Date ({\em base}), 82
-  \item sys.frame ({\em base}), 218
-  \item Sys.getenv ({\em base}), 225
-  \item sys.nframe ({\em base}), 218
-  \item sys.parent ({\em base}), 218
-  \item system.file ({\em base}), 7, 32, 92, 111, 210, 213, 225, 239
+  \item substitute ({\em base}), 124, 215
+  \item substring ({\em base}), 77, 95, 110
+  \item sum ({\em base}), 16, 41, 65, 77, 80, 81, 102, 103, 106--108, 
+		196
+  \item summarise ({\em plyr}), 102, 107, 108
+  \item summary ({\em rgdal}), 24, 35, 37, 44, 54, 55, 71, 81, 82, 84, 
+		175, 176, 178, 225
+  \item summary.lm ({\em stats}), 55, 58, 164, 166
+  \item svd ({\em base}), 104
+  \item switch ({\em base}), 93
+  \item symbols ({\em graphics}), 127
+  \item sys.call ({\em base}), 216, 217
+  \item Sys.Date ({\em base}), 80
+  \item sys.frame ({\em base}), 216
+  \item Sys.getenv ({\em base}), 223
+  \item sys.nframe ({\em base}), 216
+  \item sys.parent ({\em base}), 216
+  \item system.file ({\em base}), 7, 32, 90, 109, 208, 211, 223, 237
 
   \indexspace
 
-  \item t ({\em Matrix}), 83, 106
-  \item table ({\em base}), 18, 40, 41, 66--68, 71, 75, 76, 82, 85--88, 
-		98, 103, 106, 128, 198
-  \item tapply ({\em base}), 78
-  \item tempfile ({\em base}), 92
-  \item TermDocumentMatrix ({\em tm}), 211, 213
-  \item termFreq ({\em tm}), 211
-  \item termplot ({\em stats}), 152, 165, 166, 171, 177, 181
-  \item terms ({\em stats}), 156, 172
-  \item terrain.colors ({\em grDevices}), 121
-  \item text ({\em graphics}), 19, 118, 119, 126, 201, 207
-  \item textGrob ({\em grid}), 132
-  \item time ({\em stats}), 60, 161, 191
-  \item tm\_map ({\em tm}), 211, 213
-  \item tmd ({\em lattice}), 127
-  \item trellis.device ({\em lattice}), 129, 130, 133
-  \item trellis.par.get ({\em lattice}), 133
-  \item trellis.par.set ({\em lattice}), 130, 133
-  \item tuneRF ({\em randomForest}), 203
+  \item t ({\em Matrix}), 81, 104
+  \item table ({\em base}), 18, 40, 41, 64--66, 69, 73, 74, 80, 83--86, 
+		96, 101, 104, 126, 196
+  \item tapply ({\em base}), 76
+  \item tempfile ({\em base}), 90
+  \item TermDocumentMatrix ({\em tm}), 209, 211
+  \item termFreq ({\em tm}), 209
+  \item termplot ({\em stats}), 150, 163, 164, 169, 175, 179
+  \item terms ({\em stats}), 154, 170
+  \item terrain.colors ({\em grDevices}), 119
+  \item text ({\em graphics}), 19, 116, 117, 124, 199, 205
+  \item textGrob ({\em grid}), 130
+  \item time ({\em stats}), 60, 159, 189
+  \item tm\_map ({\em tm}), 209, 211
+  \item tmd ({\em lattice}), 125
+  \item trellis.device ({\em lattice}), 127, 128, 131
+  \item trellis.par.get ({\em lattice}), 131
+  \item trellis.par.set ({\em lattice}), 128, 131
+  \item tuneRF ({\em randomForest}), 201
 
   \indexspace
 
-  \item unclass ({\em base}), 66, 80
-  \item unique ({\em memisc}), 74, 110
-  \item unit ({\em grid}), 132
-  \item unlist ({\em base}), 70, 85, 134
+  \item unclass ({\em base}), 64, 78
+  \item unique ({\em memisc}), 72, 108
+  \item unit ({\em grid}), 130
+  \item unlist ({\em base}), 68, 83, 132
   \item unstack ({\em utils}), 18
-  \item unzip ({\em utils}), 92
-  \item update ({\em Matrix}), 128, 131, 134, 135, 137, 161--163
-  \item update.packages ({\em utils}), 30, 227
+  \item unzip ({\em utils}), 90
+  \item update ({\em Matrix}), 126, 129, 132, 133, 135, 159--161
+  \item update.packages ({\em utils}), 30, 225
   \item UseMethod ({\em base}), 55
 
   \indexspace
 
-  \item VCorpus ({\em tm}), 210
-  \item vector ({\em base}), 25, 96
-  \item VectorSource ({\em tm}), 210
-  \item vignette ({\em utils}), 22, 36, 94, 110, 114, 147
-  \item vis.gam ({\em mgcv}), 183
+  \item VCorpus ({\em tm}), 208
+  \item vector ({\em base}), 25, 94
+  \item VectorSource ({\em tm}), 208
+  \item vignette ({\em utils}), 22, 36, 92, 108, 112, 145
+  \item vis.gam ({\em mgcv}), 181
 
   \indexspace
 
-  \item WDI ({\em WDI}), 96--98
-  \item WDIsearch ({\em WDI}), 97
-  \item weekdays ({\em base}), 81
-  \item weights ({\em stats}), 165, 188
-  \item window ({\em stats}), 182, 230
-  \item wireframe ({\em lattice}), 127
-  \item with ({\em base}), 20, 24, 40, 59, 70, 71, 75, 106, 118, 119, 
-		122--125, 128, 146, 149, 171, 180, 182, 188
-  \item within ({\em memisc}), 58, 112, 200
-  \item wordcloud ({\em wordcloud}), 212
+  \item WDI ({\em WDI}), 94--96
+  \item WDIsearch ({\em WDI}), 95
+  \item weekdays ({\em base}), 79
+  \item weights ({\em stats}), 163, 186
+  \item window ({\em stats}), 180, 228
+  \item wireframe ({\em lattice}), 125
+  \item with ({\em base}), 20, 24, 40, 59, 68, 69, 73, 104, 116, 117, 
+		120--123, 126, 144, 147, 169, 178, 180, 186
+  \item within ({\em memisc}), 58, 110, 198
+  \item wordcloud ({\em wordcloud}), 210
   \item write.table ({\em utils}), 29
 
   \indexspace
 
-  \item x11 ({\em grDevices}), 123
-  \item xlab ({\em ggplot2}), 141, 143
-  \item xtabs ({\em stats}), 18, 71, 75, 76, 85, 104, 222
-  \item xyplot ({\em lattice}), 24, 52, 81, 127--131, 133, 135--137, 
-		198, 202
-  \item xzfile ({\em base}), 99
+  \item x11 ({\em grDevices}), 121
+  \item xlab ({\em ggplot2}), 139, 141
+  \item xtabs ({\em stats}), 18, 69, 73, 74, 83, 102, 220
+  \item xyplot ({\em lattice}), 24, 52, 79, 125--129, 131, 133--135, 
+		196, 200
+  \item xzfile ({\em base}), 97
 
   \indexspace
 
-  \item ylab ({\em ggplot2}), 143
+  \item ylab ({\em ggplot2}), 141
 
 \end{theindex}

@@ -6,7 +6,7 @@
 
 
 
-%\noindent
+\noindent
 \fbox{\parbox{\textwidth}{
 \vspace*{-2pt}
 
@@ -33,10 +33,10 @@ List objects & An \code{lm} model object is a list object. Lists are\\
 }}
 \vspace*{8pt}
 
-\marginnote[12pt]{Issues that will be noted include the use
-  of {\em generic} functions such as \code{plot()} and \code{print()},
-  the way that regression model objects are structured, and the use of
-  extractor functions to extract information from model objects.}
+\marginnote[12pt]{Issues that will be noted include the use of
+  {\em generic} functions such as \code{plot()} and \code{print()},
+  the way that regression model objects are structured, and the use
+  of extractor functions to extract information from model objects.}
 This chapter will use examples to illustrate common issues in the
 exploration of data and the fitting of regression models.  It will
 round out the discussion of Chapters \ref{ch:getStart} and
@@ -99,10 +99,8 @@ that might be reported in a scientific paper, or that might form
 the basis for a business or government policy.  Statistical
 issues and ideas are fundamental to any use of data to make
 generalizations that extend beyond the particular data that
-have been collected, or that are otherwise available.  They are
-fundamental, in that sense, to any scientific use of data.
-It is, at the same time, important to acknowledge that there
-are strict limits to what statistical analysis can achieve.
+have been used for analysis.  They set strict limits to the 
+range of generalizations that are scientifically legitimate.
 Statistical analysis is a partner to, and not a substitute
 for, robust scientific processes.  The use of experimental data
 provides the simplest context in which to explore this point
@@ -808,11 +806,12 @@ data are:
 str(nihills)
 \end{Sinput}
 \begin{Soutput}
-'data.frame':	23 obs. of  4 variables:
- $ dist : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
- $ climb: int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
- $ time : num  0.858 0.467 0.703 1.039 0.541 ...
- $ timef: num  1.064 0.623 0.887 1.214 0.637 ...
+'data.frame':	23 obs. of  5 variables:
+ $ dist    : num  7.5 4.2 5.9 6.8 5 4.8 4.3 3 2.5 12 ...
+ $ climb   : int  1740 1110 1210 3300 1200 950 1600 1500 1500 5080 ...
+ $ time    : num  0.858 0.467 0.703 1.039 0.541 ...
+ $ timef   : num  1.064 0.623 0.887 1.214 0.637 ...
+ $ gradient: num  232 264 205 485 240 ...
 \end{Soutput}
 \end{Schunk}
 \end{fullwidth}

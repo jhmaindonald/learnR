@@ -1706,15 +1706,15 @@ features are time specific, or location specific, or otherwise
 specific to the particular choice of training data.  
 
 Issues with image recognition software illustrate some of the
-subtleties.  There have been a number of papers pointing out the extent to which
-convolutional neural networks (CNNs) can be fooled by adversarial
-images, e.g., minor doctoring of an image of an orange leads to its
+subtleties.  Image recognition software, using convolutional  neural networks (CNNs), can be readily fooled by `adversarial' images.
+Thus, minor doctoring of an image of an orange may lead to its
 recognition as a power drill.  See \citet{Zhou2019} for a detailed
 discussion.
 
 Such examples indicate that the software involved is focusing on
 features of the data that have scant connection with the robust
-mechanisms that the human brain uses.
+mechanisms that the human brain uses.  Wider experience of the 
+outside world may in part explain the difference.
 
 \section{References and further reading}
 

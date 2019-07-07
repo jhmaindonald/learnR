@@ -19,7 +19,7 @@ oldopt <- options(digits=4)
 read_chunk("../scripts/statsExs-code.R")
 @ 
 
-%\noindent
+\noindent
 \fbox{\parbox{\textwidth}{
 \vspace*{-2pt}
 
@@ -46,10 +46,10 @@ List objects & An \code{lm} model object is a list object. Lists are\\
 }}
 \vspace*{8pt}
 
-\marginnote[12pt]{Issues that will be noted include the use
-  of {\em generic} functions such as \code{plot()} and \code{print()},
-  the way that regression model objects are structured, and the use of
-  extractor functions to extract information from model objects.}
+\marginnote[12pt]{Issues that will be noted include the use of
+  {\em generic} functions such as \code{plot()} and \code{print()},
+  the way that regression model objects are structured, and the use
+  of extractor functions to extract information from model objects.}
 This chapter will use examples to illustrate common issues in the
 exploration of data and the fitting of regression models.  It will
 round out the discussion of Chapters \ref{ch:getStart} and
@@ -112,10 +112,8 @@ that might be reported in a scientific paper, or that might form
 the basis for a business or government policy.  Statistical
 issues and ideas are fundamental to any use of data to make
 generalizations that extend beyond the particular data that
-have been collected, or that are otherwise available.  They are
-fundamental, in that sense, to any scientific use of data.
-It is, at the same time, important to acknowledge that there
-are strict limits to what statistical analysis can achieve.
+have been used for analysis.  They set strict limits to the 
+range of generalizations that are scientifically legitimate.
 Statistical analysis is a partner to, and not a substitute
 for, robust scientific processes.  The use of experimental data
 provides the simplest context in which to explore this point
